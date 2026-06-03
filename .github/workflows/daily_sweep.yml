@@ -1,0 +1,41 @@
+name: Master Market Data Pipeline
+
+on:
+  schedule:
+    # Run 1: 7:00 PM IST (13:30 UTC) - Primary post-market data gather
+    - cron: '30 13 * * *'
+    # Run 2: 10:00 PM IST (16:30 UTC) - Late-night sweep for earnings & delayed OI
+    - cron: '0 16 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  run-master-pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests pymupdf4llm pandas lxml html5lib tabulate yfinance
+
+      - name: Execute Master Pipeline
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python forensic_sweep.py
+
+      - name: Commit and Push Database Updates
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add market_data/ corporate_data/ master_forensic_db.json
+          git diff --staged --quiet || (git commit -m "chore: exchange-synchronized data sync" && git push)
