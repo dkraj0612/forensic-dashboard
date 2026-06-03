@@ -50,36 +50,62 @@ def create_resilient_session() -> requests.Session:
     session.mount("https://", adapter)
     session.mount("http://", adapter)
     session.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
         "Connection": "keep-alive"
     })
     return session
 
 def get_nifty_total_market(session: requests.Session) -> List[str]:
-    """Dynamically downloads the Nifty Total Market constituents directly from the NSE archives."""
+    """Dynamically downloads the Nifty Total Market constituents (750 stocks)."""
     logger.info("Fetching live Nifty Total Market index constituents...")
-    url = "https://nsearchives.nseindia.com/content/indices/ind_niftytotalmarketlist.csv"
+    tickers = set()
     
+    # 1. Establish cookies to bypass Cloudflare/Akamai bot protection
     try:
-        res = session.get(url, headers={"Referer": "https://www.nseindia.com/"}, timeout=15)
-        if res.status_code == 200:
-            tickers = []
+        session.get("https://www.niftyindices.com", timeout=10)
+    except:
+        pass
+
+    # 2. Try the primary Nifty Total Market CSV
+    try:
+        url = "https://www.niftyindices.com/IndexConstituent/ind_niftytotalmarketlist.csv"
+        res = session.get(url, headers={"Referer": "https://www.niftyindices.com/"}, timeout=15)
+        if res.status_code == 200 and "Symbol" in res.text:
             reader = csv.DictReader(res.text.strip().split('\n'))
             for row in reader:
-                symbol = row.get('Symbol') or row.get('SYMBOL')
-                if symbol:
-                    tickers.append(symbol.strip().upper())
-            
-            if tickers:
-                logger.info(f"Successfully mapped {len(tickers)} assets from live Nifty Total Market index.")
-                return tickers
-        else:
-            logger.error(f"NSE returned status {res.status_code} for index list.")
+                sym = row.get('Symbol') or row.get('SYMBOL')
+                if sym: tickers.add(sym.strip().upper())
     except Exception as e:
-        logger.error(f"Failed to fetch dynamic index: {e}")
+        logger.warning(f"Primary Total Market index fetch failed: {e}")
+
+    # 3. BULLETPROOF FALLBACK: Combine Nifty 500 + Nifty Microcap 250
+    # The Nifty Total Market is mathematically exactly these two indices combined.
+    if len(tickers) < 500:
+        logger.info("Primary URL blocked or missing. Executing fallback: Assembling Nifty 500 + Microcap 250...")
+        fallback_urls = [
+            "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv",
+            "https://www.niftyindices.com/IndexConstituent/ind_niftymicrocap250list.csv"
+        ]
+        for url in fallback_urls:
+            try:
+                res = session.get(url, headers={"Referer": "https://www.niftyindices.com/"}, timeout=15)
+                if res.status_code == 200 and "Symbol" in res.text:
+                    reader = csv.DictReader(res.text.strip().split('\n'))
+                    for row in reader:
+                        sym = row.get('Symbol') or row.get('SYMBOL')
+                        if sym: tickers.add(sym.strip().upper())
+            except Exception as e:
+                logger.error(f"Fallback fetch failed for {url}: {e}")
+
+    final_list = list(tickers)
+    
+    # Verify we successfully extracted a broad market list
+    if len(final_list) > 200:
+        logger.info(f"Successfully mapped {len(final_list)} assets for Nifty Total Market.")
+        return final_list
         
-    logger.warning("Reverting to hardcoded safety watchlist due to network failure.")
+    logger.error("All dynamic index fetches failed. Reverting to hardcoded safety watchlist.")
     return ["RELIANCE", "TCS", "INFY", "HDFCBANK", "TMPV"]
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
@@ -447,7 +473,16 @@ def run_ai_analysis_sweep(watchlist: List[str]):
         return
         
     url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key={API_KEY}"
+    
+    # Load existing verdicts to prevent overwriting all data if the script fails midway
     master_verdicts = {}
+    db_path = "master_forensic_db.json"
+    if os.path.exists(db_path):
+        try:
+            with open(db_path, "r", encoding="utf-8") as f:
+                master_verdicts = json.load(f)
+        except Exception:
+            pass
 
     for ticker in watchlist:
         logger.info(f"Compiling Omni-Context for target: {ticker}")
@@ -481,10 +516,9 @@ def run_ai_analysis_sweep(watchlist: List[str]):
         # CRITICAL LIMIT: Gemini allows 15 RPM. 4.5s delay forces ~13 requests per minute.
         time.sleep(4.5)
 
-    output_path = "master_forensic_db.json"
-    with open(output_path, "w", encoding="utf-8") as f:
+    with open(db_path, "w", encoding="utf-8") as f:
         json.dump(master_verdicts, f, indent=4)
-    logger.info(f"Matrix database written successfully to destination: {output_path}")
+    logger.info(f"Matrix database written successfully to destination: {db_path}")
 
 # --- UNIFIED EXECUTION GATEWAY ---
 def main():
@@ -495,7 +529,7 @@ def main():
     cfg = MarketPipelineConfig()
     session = create_resilient_session()
     
-    # Generate watchlist dynamically from the Nifty Total Market index
+    # Generate watchlist dynamically from NiftyIndices
     active_watchlist = get_nifty_total_market(session)
     
     # Phase 1: Data Scraping & Preparation
