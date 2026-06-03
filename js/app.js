@@ -304,5 +304,6 @@ document.getElementById('force-sync-btn').addEventListener('click', async (e) =>
     setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 600);
 });
 
-setupAuthObserver();
+document.getElementById("system-lock-overlay").classList.add("hidden");
+initDataPipeline();
 reinitializeSchedulerLoop();
