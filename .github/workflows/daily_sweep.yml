@@ -2,11 +2,9 @@ name: Master Market Data Pipeline
 
 on:
   schedule:
-    # Run 1: 7:00 PM IST (13:30 UTC) - Primary post-market data gather
-    - cron: '30 13 * * *'
-    # Run 2: 10:00 PM IST (16:30 UTC) - Late-night sweep for earnings & delayed OI
-    - cron: '0 16 * * *'
-  workflow_dispatch:
+    - cron: '30 13 * * *'  # Runs daily at 7:00 PM IST (13:30 UTC)
+    - cron: '0 16 * * *'   # Fallback run at 9:30 PM IST (16:00 UTC)
+  workflow_dispatch:        # Allows you to trigger the pipeline manually anytime
 
 permissions:
   contents: write
@@ -17,25 +15,53 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0    # Fetches full history so rebasing works perfectly
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'      # Speeds up daily builds by caching installed packages
 
-      - name: Install Dependencies
+      - name: Install System and Python Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pymupdf4llm pandas lxml html5lib tabulate yfinance
+          pip install requests pandas lxml html5lib tabulate yfinance
 
-      - name: Execute Master Pipeline
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: python forensic_sweep.py
+      # --- STAGE 1: DATA INGESTION ---
+      - name: Run Data Ingestion Engine
+        run: python data_ingestion.py
 
-      - name: Commit and Push Database Updates
+      - name: Commit and Push Market Data Securely
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add market_data/ corporate_data/ master_forensic_db.json
-          git diff --staged --quiet || (git commit -m "chore: exchange-synchronized data sync" && git push)
+          git add market_data/ corporate_data/ active_watchlist.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: exchange data ingestion complete [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No new market changes detected."
+          fi
+
+      # --- STAGE 2: AI ORCHESTRATION ---
+      - name: Run AI Analysis Engine
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python ai_analysis.py
+
+      - name: Commit and Push Final AI Verdicts
+        if: always()        # Ensures verdicts are saved even if a specific ticker timed out
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add master_forensic_db.json
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: master forensic database updated [skip ci]"
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "No new AI verdicts to commit."
+          fi
