@@ -8,7 +8,7 @@ body {
 
 /* Custom Scrollbars */
 .custom-scrollbar::-webkit-scrollbar { 
-    width: 4px; /* Slightly thinner for mobile */
+    width: 4px; 
     height: 4px; 
 }
 
@@ -138,5 +138,8 @@ body {
     }
 }
 
+/* Watchlist Screen Transitions */
+.scale-100 { transform: scale(1); }
+.opacity-100 { opacity: 1; }
 
 
