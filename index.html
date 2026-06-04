@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-[#121212] text-zinc-100 antialiased">
 <head>
@@ -5,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FORENSIC STUDIO</title>
     
+    <!-- Core Engine Scripts -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     
     <link rel="stylesheet" href="CSS/styles.css">
 
@@ -26,8 +28,8 @@
                         'kite-red': '#eb5757',
                         'kite-orange': '#ff9500'
                     },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                    fontFamily: { 
+                        sans: ['Inter', 'sans-serif'] 
                     }
                 }
             }
@@ -36,274 +38,184 @@
 </head>
 <body class="h-full flex flex-col overflow-hidden select-none font-sans bg-kite-bg">
 
-    <div id="system-lock-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-kite-bg px-4">
-        <div class="w-full max-w-sm rounded-lg border border-kite-border bg-kite-panel p-6 shadow-2xl">
-            <div class="flex flex-col items-center mb-6">
-                <i class="ph-bold ph-shield-checkered text-4xl text-kite-blue mb-2"></i>
-                <h2 class="text-xl font-bold tracking-tight">SYSTEM ACCESS REQUIRED</h2>
-                <p class="text-xs text-zinc-500 mt-1 text-center">Enter valid credential mappings to initialize data pipeline</p>
-            </div>
-            <form id="auth-form" class="space-y-4">
-                <div>
-                    <label for="auth-username" class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">User Identification</label>
-                    <input type="text" id="auth-username" required autocomplete="username" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-kite-blue focus:outline-none" placeholder="OPERATOR_ID">
-                </div>
-                <div>
-                    <label for="auth-password" class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">Master Gateway Key</label>
-                    <input type="password" id="auth-password" required autocomplete="current-password" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-kite-blue focus:outline-none" placeholder="Enter 'admin'">
-                </div>
-                <button type="submit" class="w-full rounded bg-kite-blue py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600 focus:outline-none">
-                    VALIDATE ARCHITECTURE
-                </button>
-            </form>
-            <p id="auth-status" class="text-center text-xs mt-4 text-zinc-500 min-h-[1rem]"></p>
-        </div>
-    </div>
+    <!-- TOAST CONTAINER -->
+    <div id="toast-container" class="fixed top-4 right-4 flex flex-col gap-2 z-[9999] pointer-events-none"></div>
 
-    <div class="flex flex-1 w-full h-full overflow-hidden relative">
+    <!-- MAIN APP CONTAINER -->
+    <div id="main-app" class="flex-1 flex w-full h-full overflow-hidden relative">
+        
+        <!-- MOBILE SIDEBAR BACKDROP -->
+        <div id="sidebar-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm z-30 hidden md:hidden transition-opacity opacity-0 duration-300"></div>
 
-        <div id="sidebar-backdrop" class="fixed inset-0 z-30 bg-black/60 hidden md:hidden"></div>
-
-        <aside id="global-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 -translate-x-full border-r border-kite-border bg-kite-panel flex flex-col transition-transform duration-200 ease-in-out md:static md:w-64 lg:w-80 md:translate-x-0">
-            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4">
+        <!-- SIDEBAR -->
+        <aside id="global-sidebar" class="absolute inset-y-0 left-0 z-40 w-[80vw] max-w-[280px] md:w-72 border-r border-kite-border bg-kite-panel flex flex-col transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 shrink-0">
+            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 shrink-0">
                 <div class="flex items-center gap-2">
                     <i class="ph-bold ph-crosshair text-kite-blue text-lg animate-pulse"></i>
                     <span class="font-black text-sm tracking-widest text-zinc-100 uppercase">FORENSIC//STUDIO</span>
                 </div>
-                <button id="sidebar-close-btn" class="p-1 text-zinc-400 hover:text-zinc-100 md:hidden focus:outline-none">
+                <!-- Mobile Close Button -->
+                <button id="mobile-close-sidebar" class="md:hidden text-zinc-400 hover:text-zinc-100 p-1 focus:outline-none">
                     <i class="ph-bold ph-x text-lg"></i>
                 </button>
             </div>
 
-            <div class="p-3 border-b border-kite-border bg-kite-bg/50 relative">
+            <!-- Autocomplete Controller -->
+            <div class="p-3 border-b border-kite-border bg-kite-bg/50 relative shrink-0">
                 <div class="relative">
                     <i class="ph ph-magnifying-glass absolute left-3 top-2.5 text-zinc-500"></i>
-                    <label for="forensic-watchlist-search" class="sr-only">Search Watchlist</label>
-                    <input type="text" id="forensic-watchlist-search" class="w-full rounded border border-kite-border bg-kite-bg pl-9 pr-8 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Search or add instrument...">
-                    <i class="ph ph-command absolute right-3 top-2.5 text-xs text-zinc-600"></i>
+                    <input type="text" id="new-stock-input" class="w-full rounded border border-kite-border bg-kite-bg pl-9 pr-3 py-1.5 text-[16px] md:text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Search or add instrument..." autocomplete="off">
                 </div>
-                <div id="search-autocomplete-box" class="absolute left-3 right-3 top-full mt-1 z-50 rounded border border-kite-border bg-kite-panel shadow-2xl max-h-60 overflow-y-auto hidden"></div>
+                <div id="autocomplete-dropdown" class="absolute left-3 right-3 top-full mt-1 z-50 rounded border border-kite-border bg-kite-panel shadow-2xl max-h-48 overflow-y-auto hidden"></div>
             </div>
 
-            <div id="forensic-watchlist-container" class="flex-1 overflow-y-auto divide-y divide-kite-border/40"></div>
+            <div class="px-4 py-2 border-b border-kite-border bg-kite-bg/30 flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-zinc-500 shrink-0">
+                <span>Local Sessions</span>
+                <span id="sync-badge" class="text-kite-green flex items-center gap-1">
+                    <i class="ph ph-check-circle"></i> Synced
+                </span>
+            </div>
+
+            <div id="session-list" class="flex-1 overflow-y-auto custom-scrollbar p-2 space-y-1"></div>
+
+            <div class="p-3 border-t border-kite-border shrink-0">
+                <button id="new-chat-btn" class="w-full flex items-center justify-center gap-2 bg-kite-blue/10 hover:bg-kite-blue/20 text-kite-blue border border-kite-blue/30 px-3 py-2 rounded transition-colors text-xs font-semibold focus:outline-none">
+                    <i class="ph ph-plus font-bold"></i> New Analysis
+                </button>
+            </div>
         </aside>
 
-        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
-
-            <header class="h-14 border-b border-kite-border bg-kite-panel flex items-center justify-between px-4 z-20 shrink-0">
-                <div class="flex items-center gap-3">
-                    <button id="mobile-sidebar-toggle" class="p-2 -ml-2 rounded text-zinc-400 hover:text-zinc-100 md:hidden focus:outline-none">
+        <!-- MAIN WORKSPACE -->
+        <main class="flex-1 flex flex-col h-full w-full bg-kite-bg relative overflow-hidden">
+            
+            <!-- RESPONSIVE HEADER -->
+            <header class="h-14 border-b border-kite-border bg-kite-panel flex items-center justify-between px-2 md:px-4 z-20 shrink-0 gap-1">
+                <div class="flex items-center gap-1 md:gap-3 flex-1 min-w-0">
+                    <!-- Hamburger Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden p-1.5 text-zinc-400 hover:text-zinc-100 focus:outline-none shrink-0">
                         <i class="ph-bold ph-list text-xl"></i>
                     </button>
+
+                    <select id="watchlist-dropdown" class="bg-kite-bg border border-kite-border rounded px-2 py-1.5 text-[10px] md:text-xs text-zinc-200 focus:outline-none focus:border-kite-blue w-28 md:w-48 font-mono appearance-none cursor-pointer truncate shrink-0">
+                        <option value="">No Active Target</option>
+                    </select>
                     
-                    <nav class="flex items-center border border-kite-border rounded p-0.5 bg-kite-bg">
-                        <button id="nav-general" title="View a broad list of analyzed stocks and scores." class="px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm">
-                            General Mode
+                    <nav class="flex items-center border border-kite-border rounded p-0.5 bg-kite-bg shrink-0">
+                        <button id="mode-general" class="px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-border text-zinc-100">
+                            GEN
                         </button>
-                        <button id="nav-forensic" title="Deep dive into individual stock analytics and transcripts." class="px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200">
-                            Forensic Mode
+                        <button id="mode-forensic" class="px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all text-zinc-400 hover:text-zinc-200">
+                            AUDIT
                         </button>
                     </nav>
+
+                    <button id="run-radar-btn" class="px-2 py-1.5 md:px-3 md:py-1.5 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-orange/10 text-kite-orange border border-kite-orange/20 flex items-center gap-1 hover:bg-kite-orange/20 shrink-0">
+                        <i class="ph-bold ph-broadcast animate-pulse text-sm"></i>
+                        <span class="hidden md:inline">Radar</span>
+                    </button>
                 </div>
 
-                <div class="flex items-center gap-4">
-                    <button id="global-download-btn" title="Context Actions: General (Fetch NSE static list) | Forensic (Download GAS transcript)" class="p-1.5 rounded border border-kite-border text-zinc-400 hover:text-zinc-100 hover:border-zinc-700 bg-kite-bg transition-colors flex items-center justify-center">
-                        <i class="ph-bold ph-download-simple text-sm"></i>
+                <div class="flex items-center gap-1 md:gap-3 shrink-0">
+                    <button id="download-db-btn" title="Export Context" class="p-1.5 rounded border border-kite-border text-zinc-400 hover:text-zinc-100 bg-kite-bg transition-colors focus:outline-none">
+                        <i class="ph-bold ph-download-simple text-sm md:text-base"></i>
                     </button>
-
-                    <div class="flex items-center gap-1.5 px-2 py-1 rounded border border-zinc-800/80 bg-zinc-900/40 text-[10px] font-mono tracking-wider font-semibold text-zinc-400">
-                        <span class="h-1.5 w-1.5 rounded-full bg-kite-green animate-pulse"></span>
-                        <span class="hidden sm:inline">DB SYNCHED</span>
-                    </div>
-
-                    <button id="menu-dots-btn" title="Open Settings Panel" class="p-2 rounded text-zinc-400 hover:text-zinc-100 hover:bg-kite-border/50 transition-colors focus:outline-none relative">
-                        <i class="ph-bold ph-sliders text-base"></i>
-                        <span id="scheduler-indicator" class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-kite-orange hidden"></span>
+                    
+                    <button id="settings-btn" title="Open Settings" class="p-1.5 rounded border border-kite-border text-zinc-400 hover:text-zinc-100 bg-kite-bg transition-colors focus:outline-none">
+                        <i class="ph-bold ph-sliders text-sm md:text-base"></i>
                     </button>
-
-                    <button id="logout-btn" class="h-7 w-7 rounded-full bg-kite-border border border-zinc-700 flex items-center justify-center text-xs font-mono font-bold text-kite-blue tracking-tighter hover:border-zinc-500 focus:outline-none">
-                        OP
+                    
+                    <button id="logout-btn" title="Factory Reset Memory" class="h-6 w-6 md:h-7 md:w-7 rounded-full bg-kite-border border border-zinc-700 flex items-center justify-center focus:outline-none ml-1 hover:bg-zinc-800 transition-colors">
+                        <i class="ph-bold ph-power text-xs text-kite-red"></i>
                     </button>
                 </div>
             </header>
 
-            <main class="flex-1 overflow-hidden relative bg-kite-bg">
-
-                <section id="screen-general" class="absolute inset-0 z-10 flex flex-col overflow-hidden p-4 fade-in">
-                    <div class="mb-3 shrink-0">
-                        <div class="relative max-w-xs">
-                            <i class="ph ph-funnel absolute left-3 top-2 text-zinc-500 text-xs"></i>
-                            <label for="full-watchlist-search" class="sr-only">Filter General View</label>
-                            <input type="text" id="full-watchlist-search" class="w-full rounded border border-kite-border bg-kite-panel pl-8 pr-3 py-1 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Filter active tabular matrix...">
-                        </div>
-                    </div>
-
-                    <div class="flex-1 border border-kite-border bg-kite-panel rounded-lg overflow-x-auto overflow-y-auto">
-                        <table class="w-full border-collapse text-left text-xs select-none min-w-[700px]">
-                            <thead class="sticky top-0 z-20 border-b border-kite-border bg-kite-panel text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
-                                <tr>
-                                    <th class="sticky left-0 bg-kite-panel z-30 px-4 py-3 min-w-[120px]">Asset Name</th>
-                                    <th class="px-4 py-3 text-center">Health Score</th>
-                                    <th class="px-4 py-3">Momentum Vector</th>
-                                    <th class="px-4 py-3">Regulatory Risk</th>
-                                    <th class="px-4 py-3 text-right">AI Verdict</th>
-                                </tr>
-                            </thead>
-                            <tbody id="watchlist-table-body" class="divide-y divide-kite-border/40"></tbody>
-                        </table>
-                    </div>
-                </section>
-
-                <section id="screen-forensic" class="absolute inset-0 z-0 hidden flex-col overflow-y-auto p-4 fade-in">
-                    <div id="empty-state" class="flex-1 flex flex-col items-center justify-center border border-dashed border-kite-border rounded-lg bg-kite-panel/30 p-8">
-                        <i class="ph ph-chart-line-up text-4xl text-zinc-600 mb-2"></i>
-                        <p class="text-xs text-zinc-400 font-medium">Select an asset from the left watchlist to mount forensic telemetry.</p>
-                    </div>
-
-                    <div id="active-content" class="hidden space-y-4 w-full">
-                        <div class="flex flex-wrap items-center justify-between border border-kite-border bg-kite-panel px-4 py-3 rounded-lg gap-2">
-                            <div>
-                                <h1 id="target-title" class="text-base font-bold tracking-tight text-white uppercase">UNASSIGNED</h1>
-                                <p class="text-[10px] font-mono text-zinc-500 tracking-wider uppercase mt-0.5">Primary Forensic Target Focus</p>
-                            </div>
-                            <div class="flex items-center gap-4 font-mono text-right">
-                                <div>
-                                    <div id="live-price" class="text-base font-bold text-zinc-200 transition-colors">--.--</div>
-                                    <div id="live-price-label" class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Last Traded Price</div>
-                                </div>
-                                <div class="border-l border-kite-border pl-4 flex items-center gap-4">
-                                    <div>
-                                        <div id="target-score" class="text-sm font-bold text-kite-blue">--/100</div>
-                                        <div class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Diagnostic Score</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="border border-kite-border bg-kite-panel p-2 rounded-lg shadow-inner overflow-hidden">
-                            <div id="tv-chart-view-frame" class="w-full h-[300px] sm:h-[380px] md:h-[400px] tv-chart-container rounded relative"></div>
-                        </div>
-
-                        <div id="analysis-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 prose max-w-none"></div>
-                    </div>
-                </section>
-            </main>
-        </div>
-
-        <div id="options-dropdown" class="fixed inset-y-0 right-0 z-50 w-80 translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-200 ease-in-out">
-            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 bg-kite-bg/30">
-                <div class="flex items-center gap-2">
-                    <i class="ph-bold ph-sliders text-kite-blue text-sm"></i>
-                    <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">SYSTEM CONTROL PANEL</span>
+            <!-- CHAT STREAM CANVAS -->
+            <div id="chat-container" class="flex-1 overflow-y-auto custom-scrollbar p-3 md:p-6 space-y-4 md:space-y-6 pb-28 md:pb-32 w-full">
+                <div id="welcome-screen" class="flex flex-col items-center justify-center h-full text-center opacity-50 px-4">
+                    <i class="ph ph-terminal-window text-5xl md:text-6xl text-zinc-600 mb-2 md:mb-4"></i>
+                    <h2 class="text-[10px] md:text-xs font-mono tracking-widest text-zinc-400 uppercase">Omni-Engine Ready</h2>
                 </div>
-                <button id="close-vault-drawer" class="p-1 text-zinc-500 hover:text-zinc-100 focus:outline-none">
-                    <i class="ph-bold ph-caret-right text-base"></i>
+            </div>
+
+            <!-- PROMPT FOOTER -->
+            <footer class="absolute bottom-0 w-full bg-kite-panel/90 backdrop-blur border-t border-kite-border p-2 md:p-4 pb-[max(0.5rem,env(safe-area-inset-bottom))]">
+                <form id="search-form" class="max-w-4xl mx-auto flex gap-2 md:gap-3 relative items-end bg-kite-bg border border-kite-border rounded-lg p-1.5 focus-within:border-kite-blue transition-colors shadow-inner">
+                    <textarea id="search-input" rows="1" placeholder="Inquire asset footprints or execute structural trace..." required class="flex-1 bg-transparent resize-none focus:outline-none text-[16px] md:text-sm text-zinc-100 placeholder:text-zinc-600 py-1.5 md:py-2 px-2 custom-scrollbar max-h-32 min-h-[34px] md:min-h-[38px]"></textarea>
+                    <button type="submit" id="run-btn" class="bg-kite-blue hover:bg-blue-600 text-white p-2 md:p-2.5 rounded focus:outline-none transition-colors shrink-0 mb-0.5 mr-0.5">
+                        <i class="ph-bold ph-paper-plane-right text-sm md:text-base"></i>
+                    </button>
+                </form>
+            </footer>
+        </main>
+
+        <!-- 3. CONFIGURATION DRAWER (SETTINGS) -->
+        <div id="settings-modal" class="fixed inset-y-0 right-0 z-50 w-full max-w-[320px] translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-300 ease-in-out">
+            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 bg-kite-bg/30 shrink-0">
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-cpu text-kite-blue text-sm"></i>
+                    <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">SYSTEM ARCHITECT</span>
+                </div>
+                <button id="close-settings-btn" class="text-zinc-500 hover:text-zinc-100 focus:outline-none">
+                    <i class="ph-bold ph-x text-base"></i>
                 </button>
             </div>
 
-            <div class="flex-1 p-4 space-y-5 overflow-y-auto">
-                <div class="space-y-2.5 pb-4 border-b border-kite-border/60">
-                    <label for="ai-model-selector" class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Inference Core Model</label>
-                    <div class="relative">
-                        <select id="ai-model-selector" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer appearance-none">
-                            <option value="gemini-3.5-flash" selected>Gemini 3.5 Flash</option>
-                            <option value="gemini-3.1-pro">Gemini 3.1 Pro</option>
-                            <option value="gemini-2.5-pro">Gemini 2.5 Pro</option>
-                            <option value="gemini-2.5-flash">Gemini 2.5 Flash</option>
-                        </select>
-                        <i class="ph ph-caret-down absolute right-3 top-2.5 text-zinc-500 text-xs pointer-events-none"></i>
-                    </div>
-                </div>
-
+            <div class="flex-1 p-4 space-y-5 overflow-y-auto custom-scrollbar">
+                
+                <!-- AI Engine -->
                 <div class="space-y-3 pb-4 border-b border-kite-border/60">
-                    <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Git Repository Target</label>
-                    <div>
-                        <label for="git-repo-url" class="block text-[9px] font-semibold text-zinc-500 uppercase mb-1">Target Repository URI</label>
-                        <input type="text" id="git-repo-url" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-kite-blue focus:outline-none font-mono" placeholder="https://github.com/user/repo.git">
+                    <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Inference Core Router</label>
+                    <select id="api-model-select" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none focus:border-kite-blue">
+                        <option value="google|gemini-3.5-flash">Gemini 3.5 Flash</option>
+                        <option value="google|gemini-2.5-pro">Gemini 2.5 Pro</option>
+                        <option value="openai|gpt-4o">GPT-4o</option>
+                        <option value="anthropic|claude-3-5-sonnet-20241022">Claude 3.5 Sonnet</option>
+                    </select>
+                    
+                    <div id="key-container-google" class="key-container">
+                        <input type="password" id="api-key-google" placeholder="Google API Key" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
                     </div>
-                    <div>
-                        <label for="git-access-token" class="block text-[9px] font-semibold text-zinc-500 uppercase mb-1">Personal Access Token</label>
-                        <input type="password" id="git-access-token" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-kite-blue focus:outline-none font-mono" placeholder="ghp_****************************">
+                    
+                    <div id="key-container-openai" class="key-container hidden">
+                        <input type="password" id="api-key-openai" placeholder="OpenAI API Key" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
                     </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label for="scheduler-interval" class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Auto-Fetch Automation</label>
-                    <div class="relative">
-                        <select id="scheduler-interval" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer appearance-none">
-                            <option value="1">1 Minute Fetch Cycle</option>
-                            <option value="5" selected>5 Minute Fetch Cycle</option>
-                            <option value="15">15 Minute Fetch Cycle</option>
-                        </select>
-                        <i class="ph ph-caret-down absolute right-3 top-2.5 text-zinc-500 text-xs pointer-events-none"></i>
+                    
+                    <div id="key-container-anthropic" class="key-container hidden">
+                        <input type="password" id="api-key-anthropic" placeholder="Anthropic API Key" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
                     </div>
                 </div>
 
-                <div class="rounded border border-kite-border bg-kite-bg/60 p-3 flex items-center justify-between font-mono text-xs">
-                    <span class="text-zinc-500">Next Vault Pulldown:</span>
-                    <span id="scheduler-countdown" class="font-bold text-kite-orange">--:--</span>
+                <!-- GitHub Vault -->
+                <div class="space-y-3 pb-4 border-b border-kite-border/60">
+                    <label class="block text-[10px] font-bold text-kite-green uppercase tracking-widest">GitHub Vault Sync</label>
+                    <input type="password" id="git-token-input" placeholder="Personal Access Token" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
+                    
+                    <div class="flex gap-2">
+                        <input type="text" id="git-user-input" placeholder="Owner" class="w-1/2 rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
+                        <input type="text" id="git-repo-input" placeholder="Repo" class="w-1/2 rounded border border-kite-border bg-kite-bg px-3 py-2 text-[16px] md:text-xs text-zinc-200 focus:outline-none">
+                    </div>
+                    
+                    <div class="flex gap-2 pt-2">
+                        <button id="git-pull-btn" class="flex-1 bg-kite-bg border border-kite-border text-blue-400 py-1.5 rounded text-xs font-semibold hover:border-blue-500 flex items-center justify-center gap-1 focus:outline-none transition-colors">
+                            <i class="ph ph-download-simple"></i> Pull
+                        </button>
+                        <button id="git-push-btn" class="flex-1 bg-kite-bg border border-kite-border text-kite-green py-1.5 rounded text-xs font-semibold hover:border-kite-green flex items-center justify-center gap-1 focus:outline-none transition-colors">
+                            <i class="ph ph-upload-simple"></i> Push
+                        </button>
+                    </div>
                 </div>
 
-                <div class="pt-1 space-y-2">
-                    <button id="force-sync-btn" class="w-full flex items-center justify-center gap-2 rounded border border-kite-border bg-kite-bg py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-kite-border/80 transition-colors focus:outline-none">
-                        <i class="ph ph-arrows-clockwise"></i>
-                        FORCE VAULT PULL
-                    </button>
-                    <button id="vault-push-btn" class="w-full flex items-center justify-center gap-2 rounded border border-transparent bg-zinc-800 text-zinc-500 cursor-not-allowed py-2 text-xs font-semibold focus:outline-none transition-colors">
-                        <i class="ph ph-cloud-arrow-up"></i>
-                        PUSH DATA OVERRIDES
-                    </button>
-                </div>
-            </div>
-
-            <div class="p-3 border-t border-kite-border bg-kite-bg/20 text-[10px] font-mono text-zinc-600 text-center">
-                ENGINE STATE: ACTIVE_MONITORING
+                <button id="save-settings-btn" class="w-full rounded bg-kite-blue py-2 text-xs font-bold text-white transition-colors hover:bg-blue-600 focus:outline-none">
+                    Save Config
+                </button>
             </div>
         </div>
     </div>
 
     <script src="js/app.js"></script>
-    <script>
-        // Synchronous Native Layout UI Toggles
-        const vaultBtn = document.getElementById('menu-dots-btn');
-        const vaultDrawer = document.getElementById('options-dropdown');
-        const closeVaultBtn = document.getElementById('close-vault-drawer');
-        const logoutBtn = document.getElementById('logout-btn');
-        
-        const mobileToggle = document.getElementById('mobile-sidebar-toggle');
-        const sidebar = document.getElementById('global-sidebar');
-        const sidebarClose = document.getElementById('sidebar-close-btn');
-        const backdrop = document.getElementById('sidebar-backdrop');
-
-        vaultBtn.addEventListener('click', () => {
-            vaultDrawer.classList.remove('translate-x-full');
-            vaultDrawer.classList.add('translate-x-0');
-        });
-        closeVaultBtn.addEventListener('click', () => {
-            vaultDrawer.classList.remove('translate-x-0');
-            vaultDrawer.classList.add('translate-x-full');
-        });
-
-        logoutBtn.addEventListener('click', () => {
-            if(confirm("Lock Terminal and purge session context?")) {
-                location.reload();
-            }
-        });
-
-        const toggleMobileSidebar = (show) => {
-            if(show) {
-                sidebar.classList.remove('-translate-x-full');
-                sidebar.classList.add('translate-x-0');
-                backdrop.classList.remove('hidden');
-            } else {
-                sidebar.classList.remove('translate-x-0');
-                sidebar.classList.add('-translate-x-full');
-                backdrop.classList.add('hidden');
-            }
-        };
-        mobileToggle.addEventListener('click', () => toggleMobileSidebar(true));
-        sidebarClose.addEventListener('click', () => toggleMobileSidebar(false));
-        backdrop.addEventListener('click', () => toggleMobileSidebar(false));
-    </script>
 </body>
 </html>
+
+
+```
