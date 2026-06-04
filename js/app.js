@@ -1,7 +1,8 @@
 // PROXY CONFIGURATION ABSTRACTION
 const PROXY_BASE = "https://api.corsproxy.io/?url=";
 // GOOGLE APPS SCRIPT PLATFORM ENTRYPOINT (For Forensic Mode Document Processing)
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx4X78LZ3cpk88sgJOwcsZrs1gy1JL-v7Co5_8F_3x3dASUfSW4esRH1PBseAWDOlnfcA/exec";
+// IMPORTANT: Replace this with your actual Google Script URL
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
 // Initialization and Core State Allocation
 localforage.config({ name: 'ForensicStudio', storeName: 'analytics_cache' });
@@ -55,13 +56,13 @@ function switchScreen(target) {
     }
 }
 
-// Authentication Framework (Preserved explicitly untouched)
+// Authentication Framework (Using the new password input, bypassing prompt blocks)
 function setupAuthObserver() {
     const authForm = document.getElementById('auth-form');
     authForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const username = document.getElementById('auth-username').value.trim();
-        const secureKey = prompt("Enter Master Gateway Authentication Key:");
+        const secureKey = document.getElementById('auth-password').value.trim();
 
         if (secureKey === "admin") {
             document.getElementById('auth-status').className = "text-center text-xs mt-4 text-kite-green font-semibold";
@@ -165,6 +166,7 @@ function buildFullGeneralWatchlist(filterText = "") {
     const tbody = document.getElementById('watchlist-table-body');
     tbody.innerHTML = "";
     
+    // Performance fix: DocumentFragment
     const fragment = document.createDocumentFragment();
 
     Object.keys(masterForensicDatabase).forEach(ticker => {
@@ -288,6 +290,8 @@ function renderYahooChartInstance(ticker) {
     if (activePriceStream) clearInterval(activePriceStream);
     
     const chartFrame = document.getElementById('tv-chart-view-frame');
+    
+    // Performance fix: Explicit chart destruction
     if (chartInstance) {
         chartInstance.remove();
         chartInstance = null;
@@ -360,7 +364,6 @@ function setupAutocompleteEngine() {
 
         autoBox.innerHTML = "";
         
-        // Match query across the comprehensive global static list if available, else fallback to analytical data
         const workingUniverse = nseMasterList.length > 0 ? nseMasterList : Object.keys(masterForensicDatabase);
         let matches = workingUniverse.filter(ticker => ticker.includes(query)).slice(0, 20);
 
@@ -474,15 +477,22 @@ async function executeContextualExport() {
             // ==========================================
             // GENERAL MODE: FETCH STATIC LIST FROM NSE
             // ==========================================
-            const staticNseUrl = `${PROXY_BASE}${encodeURIComponent('https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv')}`;
-            const response = await fetch(staticNseUrl);
-            if (!response.ok) throw new Error("NSE connection failed.");
+            let csvData = "";
+            
+            try {
+                const primaryUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent('https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv')}`;
+                const response = await fetch(primaryUrl);
+                if (!response.ok) throw new Error("Primary proxy blocked by NSE.");
+                csvData = await response.text();
+            } catch (proxyError) {
+                console.warn("NSE actively blocking proxies. Injecting fallback local cache.");
+                // Emergency Fallback
+                csvData = "SYMBOL\nRELIANCE\nTCS\nHDFCBANK\nICICIBANK\nINFY\nITC\nSBIN\nBHARTIARTL\nBAJFINANCE\nLARSEN\nKOTAKBANK\nAXISBANK\nHCLTECH\nASIANPAINT\nMARUTI\nSUNPHARMA\nTITAN\nULTRACEMCO\nTATAMOTORS\nNTPC\nPOWERGRID\nONGC\nCOALINDIA";
+            }
 
-            const csvData = await response.text();
             const lines = csvData.split('\n');
             let parsedSymbols = [];
 
-            // Skip line 0 (Header Row: SYMBOL,NAME OF COMPANY...)
             for (let i = 1; i < lines.length; i++) {
                 const columns = lines[i].split(',');
                 if (columns[0]) {
@@ -493,13 +503,16 @@ async function executeContextualExport() {
 
             if (parsedSymbols.length === 0) throw new Error("Parsed symbol matrix array empty.");
 
-            // Commit static exchange array mapping directly to client storage
             nseMasterList = parsedSymbols;
             await localforage.setItem('cached_nse_list', nseMasterList);
             
-            // Clean up old instances and reboot search mapping references
             setupAutocompleteEngine();
-            alert(`Success! Loaded ${nseMasterList.length} static public equities out of the official NSE tracking index directly into client storage.`);
+            
+            if (parsedSymbols.length > 50) {
+                alert(`Success! Loaded ${nseMasterList.length} static public equities out of the official NSE tracking index directly into client storage.`);
+            } else {
+                alert("NSE Firewall blocked live download. Loaded offline emergency cache of major tokens for Autocomplete.");
+            }
 
         } else {
             // ==========================================
@@ -530,7 +543,7 @@ async function executeContextualExport() {
     }
 }
 
-// Memory Safe Native Blob Downloader (Protects against empty file outputs on strict platforms)
+// Memory Safe Native Blob Downloader
 function triggerDownload(content, filename, mimeType) {
     const blob = new Blob([content], { type: mimeType });
     const url = URL.createObjectURL(blob);
