@@ -7,7 +7,6 @@ import sys
 import logging
 from datetime import datetime
 import requests
-import yfinance as yf
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
@@ -28,39 +27,55 @@ def create_resilient_session() -> requests.Session:
     session.mount("http://", adapter)
     return session
 
-def gather_omni_context(ticker: str, session: requests.Session) -> tuple[str, int]:
+def gather_omni_context(ticker: str) -> tuple[str, int]:
     context = f"--- ASSET FORENSIC PROFILE: {ticker} ---\n\n"
-    
-    # Ingest Live Fundamentals via YFinance Wrapper
-    try:
-        info = yf.Ticker(f"{ticker}.NS", session=session).info
-        context += f"### [LIVE FUNDAMENTALS]\n"
-        context += f"Trailing P/E: {info.get('trailingPE', 'N/A')} | Forward P/E: {info.get('forwardPE', 'N/A')}\n"
-        context += f"Profit Margin: {info.get('profitMargins', 'N/A')} | ROE: {info.get('returnOnEquity', 'N/A')}\n"
-        context += f"Debt-to-Equity: {info.get('debtToEquity', 'N/A')} | Total Cash: {info.get('totalCash', 'N/A')}\n\n"
-    except Exception: 
-        logger.warning(f"Failed to fetch YF fundamentals for {ticker}")
-
-    # Process Historical Matrix Folders
+    historical_data = ""
     valid_days_count = 0
+    
+    # 1. FAIL-FAST LOGIC: Process Historical Matrix Folders FIRST
     if os.path.exists("market_data"):
         all_dates = sorted([d for d in os.listdir("market_data") if re.match(r'\d{4}-\d{2}-\d{2}', d)])
         
         for d in all_dates:
             day_has_data = False
-            for m_file in ["cash_market.md", "derivatives.md", "macro_flows.md", "surveillance.md"]:
+            # UPGRADE: Included new forensic markdown files in the LLM context sweep
+            for m_file in ["cash_market.md", "derivatives.md", "macro_flows.md", "insider_trading.md", "promoter_pledges.md", "index_options.md"]:
                 path = f"market_data/{d}/{m_file}"
                 if os.path.exists(path):
                     with open(path, "r", encoding="utf-8") as f:
-                        # Extract only lines relevant to the specific ticker to save LLM context tokens
-                        lines = [l for l in f.readlines() if ticker in l or l.startswith("#")]
+                        lines = [l for l in f.readlines() if ticker in l or l.startswith("#") or "NIFTY" in l]
                         if len(lines) > 2: 
-                            context += f"[{d} - {m_file}]\n{''.join(lines)}\n"
+                            historical_data += f"[{d} - {m_file}]\n{''.join(lines)}\n"
                             day_has_data = True
             if day_has_data:
                 valid_days_count += 1
+                
+    # If we don't have enough baseline data, abort instantly to save API hanging
+    if valid_days_count < 10:
+        return context, valid_days_count
+        
+    # 2. LIGHTNING FETCH: Direct API bypasses the slow 'yfinance' library
+    try:
+        url = f"https://query2.finance.yahoo.com/v10/finance/quoteSummary/{ticker}.NS?modules=summaryDetail,financialData"
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
+        res = requests.get(url, headers=headers, timeout=4) 
+        
+        if res.status_code == 200:
+            data = res.json().get('quoteSummary', {}).get('result', [{}])[0]
+            summary = data.get('summaryDetail', {})
+            financials = data.get('financialData', {})
+            
+            context += f"### [LIVE FUNDAMENTALS]\n"
+            context += f"Trailing P/E: {summary.get('trailingPE', {}).get('fmt', 'N/A')} | Forward P/E: {summary.get('forwardPE', {}).get('fmt', 'N/A')}\n"
+            context += f"Profit Margin: {financials.get('profitMargins', {}).get('fmt', 'N/A')} | ROE: {financials.get('returnOnEquity', {}).get('fmt', 'N/A')}\n"
+            context += f"Debt-to-Equity: {financials.get('debtToEquity', {}).get('fmt', 'N/A')} | Total Cash: {financials.get('totalCash', {}).get('fmt', 'N/A')}\n\n"
+    except Exception as e: 
+        logger.warning(f"Fast-fetch fundamentals failed for {ticker}: {e}")
+
+    # Append the historical data we mapped earlier
+    context += historical_data
                         
-    # Inject Specific Corporate Filings
+    # 3. Inject Specific Corporate Filings
     corp = f"corporate_data/{ticker}"
     if os.path.exists(corp):
         for r, _, files in os.walk(corp):
@@ -90,7 +105,6 @@ def run_ai_analysis_sweep(watchlist: list, session: requests.Session):
     today = datetime.today().strftime('%Y-%m-%d')
     start_time = time.time()
 
-    # --- ARCHITECTURAL FIX: Strict Alignment with Frontend UI Schema A ---
     system_prompt = """You are an elite Institutional Forensic Analyst. You are analyzing raw exchange data and corporate filings. 
     You MUST output your response STRICTLY as a valid JSON object matching the exact structure below. Do NOT output any markdown wrappers, conversational text, or explanations outside the JSON object.
     
@@ -128,14 +142,13 @@ def run_ai_analysis_sweep(watchlist: list, session: requests.Session):
             logger.warning("5.5 hour execution limit reached. Halting AI loop gracefully to prevent CI runner termination.")
             break
             
-        # Prevent redundant processing on the same calendar day
         if ticker in verdicts and verdicts[ticker].get("metadata", {}).get("analysis_date") == today:
             logger.info(f"⏭️ SKIP: {ticker} has already been processed and logged today.")
             continue
 
-        ctx, days_count = gather_omni_context(ticker, session)
+        ctx, days_count = gather_omni_context(ticker)
         
-        # Reduced threshold to 10 days to allow for faster onboarding
+        # Immediate skip if data is insufficient (happens in milliseconds now)
         if days_count < 10: 
             logger.info(f"⚠️ DATA HOLD: {ticker} only has {days_count} days of market data. Skipping deep analysis.")
             continue
@@ -150,20 +163,20 @@ def run_ai_analysis_sweep(watchlist: list, session: requests.Session):
         
         for attempt in range(4):
             try:
-                res = requests.post(url, json=payload, timeout=45)
+                res = session.post(url, json=payload, timeout=45)
                 
                 if res.status_code == 200:
                     raw_text = res.json()['candidates'][0]['content']['parts'][0]['text'].strip()
                     
-                    # --- FIX: Using {3} quantifier to stop markdown parsers from shattering the UI block ---
+                    # Safe Regex multiline stripping
                     clean_json_str = re.sub(r'^`{3}(?:json)?\s*|\s*`{3}$', '', raw_text, flags=re.MULTILINE | re.IGNORECASE)
                     
                     parsed_json = json.loads(clean_json_str)
-                    parsed_json["metadata"]["analysis_date"] = today # Force timestamp override
+                    parsed_json["metadata"]["analysis_date"] = today 
                     
                     verdicts[ticker] = parsed_json
                     
-                    # Commit to disk immediately after each success to prevent data loss on crash
+                    # Commit to disk immediately
                     with open(db_path, "w", encoding="utf-8") as f: 
                         json.dump(verdicts, f, indent=4)
                         
