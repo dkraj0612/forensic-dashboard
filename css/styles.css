@@ -1,106 +1,142 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
-:root {
-    --kite-bg: #121212;
-    --kite-panel: #1c1c1e;
-    --kite-border: #2c2c2e;
-    --kite-blue: #437efd;
-    --kite-orange: #ff9500;
-    --text-muted: #a1a1aa;
-    --text-main: #e4e4e7;
+body { 
+    font-family: 'Inter', sans-serif; 
+    -webkit-tap-highlight-color: transparent; 
 }
 
-body {
-    font-family: 'Inter', sans-serif;
-    -webkit-tap-highlight-color: transparent;
-    background-color: var(--kite-bg);
+/* Custom Scrollbars */
+.custom-scrollbar::-webkit-scrollbar { 
+    width: 4px; /* Slightly thinner for mobile */
+    height: 4px; 
 }
 
-::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--kite-border);
-    border-radius: 20px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #3a3a3c;
-}
-
-.fade-in {
-    animation: layoutFadeIn 0.22s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-@keyframes layoutFadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.995);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
+@media (min-width: 768px) {
+    .custom-scrollbar::-webkit-scrollbar { 
+        width: 6px; 
+        height: 6px; 
     }
 }
 
-.prose h3 {
-    color: #ffffff;
-    font-size: 13px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin-bottom: 8px;
-    border-left: 2px solid var(--kite-blue);
-    padding-left: 6px;
+.custom-scrollbar::-webkit-scrollbar-track { 
+    background: transparent; 
 }
 
-.prose p {
-    color: var(--text-muted);
-    font-size: 13px;
-    line-height: 1.55;
-    margin-bottom: 12px;
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+    background: #2c2c2e; 
+    border-radius: 20px; 
 }
 
-.prose ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-bottom: 12px;
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { 
+    background: #3a3a3c; 
 }
 
-.prose li {
-    position: relative;
-    padding-left: 14px;
-    color: var(--text-main);
-    font-size: 13px;
-    line-height: 1.5;
-    margin-bottom: 4px;
+/* Toast Animations */
+.toast-enter { 
+    animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards; 
 }
 
-.prose li::before {
-    content: "▪";
-    position: absolute;
-    left: 0;
-    color: var(--kite-blue);
-    font-size: 10px;
-    top: -1px;
+.toast-exit { 
+    animation: fadeOut 0.3s forwards; 
 }
 
-.prose code {
-    background-color: var(--kite-bg);
-    color: var(--kite-orange);
-    font-family: monospace;
-    padding: 2px 4px;
-    border-radius: 4px;
-    font-size: 11px;
-    border: 1px solid var(--kite-border);
+@keyframes slideInRight { 
+    from { 
+        transform: translateX(100%); 
+        opacity: 0; 
+    } 
+    to { 
+        transform: translateX(0); 
+        opacity: 1; 
+    } 
 }
 
-.tv-chart-container {
-    width: 100% !important;
+@keyframes fadeOut { 
+    to { 
+        opacity: 0; 
+    } 
 }
+
+/* Vault Sync Pulse */
+@keyframes pulse-amber { 
+    0%, 100% { 
+        opacity: 1; 
+        transform: scale(1); 
+    } 
+    50% { 
+        opacity: .5; 
+        transform: scale(1.05); 
+    } 
+}
+
+.pulse-dirty { 
+    animation: pulse-amber 2s infinite; 
+}
+
+/* Prose / Markdown Styling for Chat Bubbles */
+.prose p { 
+    margin-bottom: 1em; 
+    line-height: 1.6; 
+}
+
+.prose h1, .prose h2, .prose h3 { 
+    color: #f4f4f5; 
+    font-weight: 700; 
+    margin-top: 1.5em; 
+    margin-bottom: 0.5em; 
+    text-transform: uppercase; 
+    letter-spacing: 0.05em; 
+    border-left: 2px solid #437efd; 
+    padding-left: 6px; 
+}
+
+.prose ul { 
+    list-style-type: none; 
+    padding-left: 0; 
+    margin-bottom: 1em; 
+}
+
+.prose li { 
+    position: relative; 
+    padding-left: 14px; 
+    margin-bottom: 4px; 
+}
+
+.prose li::before { 
+    content: "▪"; 
+    position: absolute; 
+    left: 0; 
+    color: #437efd; 
+    font-size: 10px; 
+    top: -1px; 
+}
+
+.prose code { 
+    background-color: #121212; 
+    color: #ff9500; 
+    font-family: monospace; 
+    padding: 2px 4px; 
+    border-radius: 4px; 
+    font-size: 11px; 
+    border: 1px solid #2c2c2e; 
+}
+
+/* TradingView Canvas Frame - Adapts height slightly for mobile vs desktop */
+.tv-chart-container { 
+    width: 100%; 
+    height: 280px; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    margin-top: 15px; 
+    border: 1px solid #2c2c2e; 
+}
+
+@media (min-width: 768px) {
+    .tv-chart-container {
+        height: 350px;
+    }
+}
+
+
+
