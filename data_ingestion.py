@@ -53,23 +53,19 @@ def create_resilient_session() -> requests.Session:
     return session
 
 def fetch_text_with_waterfall(session: requests.Session, url: str) -> Optional[str]:
-    """Bypasses Datacenter blocks with fast-fail logic for dead links."""
     headers = {"Referer": "https://www.nseindia.com/"}
     
-    # 1. Attempt Direct Fetch
     try:
-        res = session.get(url, headers=headers, timeout=10)
+        res = session.get(url, headers=headers, timeout=12)
         if res.status_code == 200:
             return res.text
             
         if res.status_code in [404, 400]:
-            logger.info(f"Exchange returned 404/400. File not published today: {url}")
+            logger.info(f"Exchange returned 404. File not published today: {url}")
             return None
-            
     except Exception as e:
         logger.debug(f"Direct fetch exception: {e}")
 
-    # 2. Proxy Waterfall (Isolated requests, no internal urllib retries to prevent hanging)
     proxies = [
         f"https://corsproxy.io/?url={url}",
         f"https://api.allorigins.win/raw?url={url}"
@@ -89,7 +85,6 @@ def fetch_text_with_waterfall(session: requests.Session, url: str) -> Optional[s
     return None
 
 def write_fallback_markdown(filepath: str, title: str):
-    """Guarantees a file is always created to prevent pipeline crashes."""
     if not os.path.exists(filepath):
         with open(filepath, "w", encoding="utf-8") as f:
             f.write(f"# {title}\n\n*No data published by exchange for this date.*")
@@ -127,7 +122,6 @@ def get_nifty_total_market(session: requests.Session) -> List[str]:
     if len(final_list) > 200: 
         return final_list
         
-    logger.error("Using offline diagnostic list.")
     return ["RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK"]
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
@@ -138,10 +132,13 @@ def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[s
         md.append("| " + " | ".join([str(row.get(h, '')).replace('|', '\\|').strip() for h in headers]) + " |")
     return "\n".join(md) + "\n"
 
+# --- CORE MODULES ---
+
 def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/cash_market.md"
     prices, indices = [], []
     
+    # 1. Primary NSE Cash Market
     try:
         res = session.get(f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{cfg.date_ddmmyyyy}.csv", headers={"Referer": "https://www.nseindia.com/"}, timeout=15)
         if res.status_code == 200:
@@ -151,11 +148,34 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
                     prices.append({
                         "Ticker": clean.get('SYMBOL'), "Open": clean.get('OPEN_PRICE'), 
                         "High": clean.get('HIGH_PRICE'), "Low": clean.get('LOW_PRICE'), 
-                        "Close": clean.get('CLOSE_PRICE'), "Volume": clean.get('TTL_TRD_QNTY')
+                        "Close": clean.get('CLOSE_PRICE'), 
+                        "Volume": clean.get('TTL_TRD_QNTY') or clean.get('TOT_TRD_QTY', 'N/A'),
+                        "Delivery_Qty": clean.get('DELIV_QTY', 'N/A'),
+                        "Delivery_Pct": clean.get('DELIV_PER', 'N/A')
                     })
     except Exception: pass
     
+    # 2. NSE Classic ZIP Fallback
     if not prices:
+        try:
+            res = session.get(f"https://nsearchives.nseindia.com/content/historical/EQUITIES/{cfg.date_yyyy}/{cfg.date_mmm}/cm{cfg.date_ddmmmyyyy}bhav.csv.zip", headers={"Referer": "https://www.nseindia.com/"}, timeout=15)
+            if res.status_code == 200:
+                with zipfile.ZipFile(io.BytesIO(res.content)) as z:
+                    for filename in z.namelist():
+                        with z.open(filename) as f:
+                            for r in csv.DictReader(io.TextIOWrapper(f, encoding='utf-8')):
+                                if r.get('SERIES') in ['EQ', 'SM']:
+                                    prices.append({
+                                        "Ticker": r.get('SYMBOL'), "Open": r.get('OPEN'), 
+                                        "High": r.get('HIGH'), "Low": r.get('LOW'), 
+                                        "Close": r.get('CLOSE'), "Volume": r.get('TOTTRDQTY', 'N/A'),
+                                        "Delivery_Qty": "N/A", "Delivery_Pct": "N/A"
+                                    })
+        except Exception: pass
+
+    # 3. Ultimate BSE Fallback Backup
+    if not prices:
+        logger.info("NSE Cash completely blocked. Executing BSE Fallback routine...")
         try:
             res = session.get(f"https://www.bseindia.com/download/BhavCopy/Equity/EQ{cfg.date_yymmdd}_CSV.ZIP", headers={"Referer": "https://www.bseindia.com/"}, timeout=15)
             if res.status_code == 200:
@@ -166,10 +186,11 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
                                 prices.append({
                                     "Ticker": r.get('SC_NAME', '').strip(), "Open": r.get('OPEN'), 
                                     "High": r.get('HIGH'), "Low": r.get('LOW'), "Close": r.get('CLOSE'), 
-                                    "Volume": r.get('NO_OF_SHRS')
+                                    "Volume": r.get('NO_OF_SHRS', 'N/A'), "Delivery_Qty": "N/A", "Delivery_Pct": "N/A"
                                 })
         except Exception: pass
 
+    # Indices Backup
     try:
         text = fetch_text_with_waterfall(session, f"https://nsearchives.nseindia.com/content/indices/ind_close_all_{cfg.date_ddmmyyyy}.csv")
         if text:
@@ -185,13 +206,19 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
     if prices or indices:
         with open(target, "w", encoding="utf-8") as f: 
             f.write(f"# Cash Market Analysis ({cfg.date_iso})\n\n## Broad Indices\n{to_md_table(indices)}\n## Equity Pricing\n{to_md_table(prices)}")
-        logger.info(f"Cash market processed: {len(prices)} equities.")
+        logger.info(f"Cash market processed: {len(prices)} equities mapped with Delivery metrics.")
     else:
         write_fallback_markdown(target, "Cash Market Analysis")
 
-def process_derivatives(cfg: MarketPipelineConfig, session: requests.Session):
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/derivatives.md"
+def process_derivatives_and_options(cfg: MarketPipelineConfig, session: requests.Session):
+    target_fno = f"{cfg.base_market_dir}/{cfg.date_iso}/derivatives.md"
+    target_opt = f"{cfg.base_market_dir}/{cfg.date_iso}/index_options.md"
+    
     fno, oi, ban = [], [], []
+    options_data = {
+        "NIFTY": {"CE": 0, "PE": 0}, "BANKNIFTY": {"CE": 0, "PE": 0}, 
+        "FINNIFTY": {"CE": 0, "PE": 0}, "MIDCPNIFTY": {"CE": 0, "PE": 0}
+    }
     
     try:
         fo_url = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{cfg.date_yyyy}/{cfg.date_mmm}/fo{cfg.date_ddmmmyyyy}bhav.csv.zip"
@@ -201,11 +228,20 @@ def process_derivatives(cfg: MarketPipelineConfig, session: requests.Session):
                 for file_name in z.namelist():
                     with z.open(file_name) as zf:
                         for r in csv.DictReader(io.TextIOWrapper(zf, encoding='utf-8')):
-                            if r.get('INSTRUMENT') in ['FUTSTK', 'FUTIDX']: 
+                            inst = r.get('INSTRUMENT')
+                            sym = r.get('SYMBOL')
+                            open_int = int(r.get('OPEN_INT', 0))
+                            
+                            if inst in ['FUTSTK', 'FUTIDX']: 
                                 fno.append({
-                                    "Contract": r.get('SYMBOL'), "Expiry": r.get('EXPIRY_DT'), 
-                                    "Close": r.get('CLOSE'), "OI": r.get('OPEN_INT')
+                                    "Contract": sym, "Expiry": r.get('EXPIRY_DT'), 
+                                    "Close": r.get('CLOSE'), "OI": open_int
                                 })
+                            
+                            if inst == 'OPTIDX' and sym in options_data:
+                                opt_typ = r.get('OPTION_TYP')
+                                if opt_typ in ['CE', 'PE']:
+                                    options_data[sym][opt_typ] += open_int
     except Exception as e: logger.debug(f"Derivatives ZIP Error: {e}")
     
     try:
@@ -223,11 +259,24 @@ def process_derivatives(cfg: MarketPipelineConfig, session: requests.Session):
     except Exception: pass
 
     if fno or oi or ban:
-        with open(target, "w", encoding="utf-8") as f: 
+        with open(target_fno, "w", encoding="utf-8") as f: 
             f.write(f"# Derivatives Profile\n\n## Exchange Ban List\n{to_md_table(ban)}\n## Participant OI Flow\n{to_md_table(oi)}\n## Futures Open Interest\n{to_md_table(fno[:500])}")
         logger.info(f"Derivatives mapped. FNO: {len(fno)}")
     else:
-        write_fallback_markdown(target, "Derivatives Profile")
+        write_fallback_markdown(target_fno, "Derivatives Profile")
+        
+    final_pcr_data = []
+    for idx, data in options_data.items():
+        if data["CE"] > 0 or data["PE"] > 0:
+            pcr = round(data["PE"] / data["CE"], 3) if data["CE"] > 0 else 0
+            final_pcr_data.append({"Index": idx, "Call_OI": data["CE"], "Put_OI": data["PE"], "PCR": pcr})
+            
+    if final_pcr_data:
+        with open(target_opt, "w", encoding="utf-8") as f: 
+            f.write(f"# Major Indices Options Chain (Locally Computed)\n\n{to_md_table(final_pcr_data)}")
+        logger.info("Index Options PCR computed successfully offline.")
+    else:
+        write_fallback_markdown(target_opt, "Major Indices Options Chain")
 
 def process_macro_flows(cfg: MarketPipelineConfig, session: requests.Session):
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/macro_flows.md"
@@ -254,99 +303,53 @@ def process_macro_flows(cfg: MarketPipelineConfig, session: requests.Session):
     else:
         write_fallback_markdown(target, "Institutional Flows")
 
-# --- NEW FORENSIC MODULES ---
-
-def process_insider_trading(cfg: MarketPipelineConfig, session: requests.Session):
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/insider_trading.md"
-    pit_data = []
+def process_bse_regulatory_data(cfg: MarketPipelineConfig, session: requests.Session):
+    target_pit = f"{cfg.base_market_dir}/{cfg.date_iso}/insider_trading.md"
+    target_sast = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
+    
+    pit_data, sast_data = [], []
     
     try:
-        text = fetch_text_with_waterfall(session, "https://www.nseindia.com/api/corporates-pit?index=equities")
-        if text:
-            data = json.loads(text).get('data', [])
-            for row in data:
-                # Extract relevant structural PIT data
-                sym = row.get("symbol")
-                if not sym: continue
-                pit_data.append({
-                    "Symbol": sym,
-                    "Person": row.get("personName", "Unknown"),
-                    "Category": row.get("personCategory", "Unknown"),
-                    "Txn_Type": row.get("tdpTransactionType", "Unknown"),
-                    "Securities": row.get("secAcq", 0) or row.get("secDisp", 0),
-                    "Value": row.get("secVal", "0")
-                })
-    except Exception as e:
-        logger.debug(f"PIT fetch failed: {e}")
-        
+        res = session.get(f"https://api.bseindia.com/BseIndiaAPI/api/InsiderTrading/w?pageno=1&strCat=-1&strPrevDate={cfg.date_ddmmyyyy}&strScrip=&strSearch=&strToDate={cfg.date_ddmmyyyy}", headers={"Referer": "https://www.bseindia.com/"}, timeout=15)
+        if res.status_code == 200:
+            for item in res.json().get('Table', []):
+                sym = item.get('SLONGNAME') or item.get('COMPANY_NAME')
+                if sym:
+                    pit_data.append({
+                        "Symbol": sym.strip(),
+                        "Acquirer": item.get('NAME_OF_THE_ACQUIRER_DISPOSER') or item.get('ACQUIRER_NAME', 'Unknown'),
+                        "Category": item.get('CATEGORY_OF_PERSON', 'Unknown'),
+                        "Action": item.get('ACQUISITION_DISPOSAL_TRANSACTION_TYPE', 'Unknown'),
+                        "Qty": item.get('NO_OF_SECURITIES') or item.get('NO_OF_SHARES', 0)
+                    })
+    except Exception as e: logger.debug(f"BSE PIT Error: {e}")
+
+    try:
+        res = session.get(f"https://api.bseindia.com/BseIndiaAPI/api/SastData/w?pageno=1&strCat=-1&strPrevDate={cfg.date_ddmmyyyy}&strScrip=&strSearch=&strToDate={cfg.date_ddmmyyyy}", headers={"Referer": "https://www.bseindia.com/"}, timeout=15)
+        if res.status_code == 200:
+            for item in res.json().get('Table', []):
+                sym = item.get('COMPANY_NAME') or item.get('SLONGNAME')
+                if sym:
+                    sast_data.append({
+                        "Symbol": sym.strip(),
+                        "Promoter": item.get('PROMOTER_NAME', 'Unknown'),
+                        "Event": item.get('EVENT_TYPE', 'Unknown'),
+                        "Shares": item.get('NO_OF_SHARES', 0),
+                        "Percent": item.get('PERCENTAGE', 0)
+                    })
+    except Exception as e: logger.debug(f"BSE SAST Error: {e}")
+
     if pit_data:
-        with open(target, "w", encoding="utf-8") as f: 
-            f.write(f"# Insider Trading Disclosures (PIT)\n\n{to_md_table(pit_data)}")
-        logger.info(f"Insider trading records processed: {len(pit_data)}")
+        with open(target_pit, "w", encoding="utf-8") as f: f.write(f"# Insider Trading Disclosures (PIT)\n\n{to_md_table(pit_data)}")
+        logger.info(f"Insider trading records processed via BSE: {len(pit_data)}")
     else:
-        write_fallback_markdown(target, "Insider Trading Disclosures (PIT)")
-
-def process_promoter_pledges(cfg: MarketPipelineConfig, session: requests.Session):
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
-    sast_data = []
-    
-    try:
-        text = fetch_text_with_waterfall(session, "https://www.nseindia.com/api/corporate-pledge-data?index=equities")
-        if text:
-            data = json.loads(text).get('data', [])
-            for row in data:
-                sym = row.get("symbol")
-                if not sym: continue
-                sast_data.append({
-                    "Symbol": sym,
-                    "Promoter": row.get("promoter", "Unknown"),
-                    "Action": row.get("reason", "Unknown"),
-                    "Shares_Pledged": row.get("noOfShares", 0),
-                    "Pct_of_Total": row.get("percOfTotalShares", 0)
-                })
-    except Exception as e:
-        logger.debug(f"SAST fetch failed: {e}")
+        write_fallback_markdown(target_pit, "Insider Trading Disclosures (PIT)")
         
     if sast_data:
-        with open(target, "w", encoding="utf-8") as f: 
-            f.write(f"# Promoter Pledged Shares (SAST)\n\n{to_md_table(sast_data)}")
-        logger.info(f"Promoter pledge records processed: {len(sast_data)}")
+        with open(target_sast, "w", encoding="utf-8") as f: f.write(f"# Promoter Pledged Shares (SAST)\n\n{to_md_table(sast_data)}")
+        logger.info(f"Promoter pledge records processed via BSE: {len(sast_data)}")
     else:
-        write_fallback_markdown(target, "Promoter Pledged Shares (SAST)")
-
-def process_index_options(cfg: MarketPipelineConfig, session: requests.Session):
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/index_options.md"
-    indices = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY"]
-    options_data = []
-    
-    for idx in indices:
-        try:
-            url = f"https://www.nseindia.com/api/option-chain-indices?symbol={idx}"
-            text = fetch_text_with_waterfall(session, url)
-            if text:
-                data = json.loads(text).get("filtered", {})
-                if data:
-                    tot_ce = data.get("CE", {}).get("totOI", 0)
-                    tot_pe = data.get("PE", {}).get("totOI", 0)
-                    # PCR Calculation
-                    pcr = round(tot_pe / tot_ce, 3) if tot_ce > 0 else 0
-                    
-                    options_data.append({
-                        "Index": idx,
-                        "Call_OI": tot_ce,
-                        "Put_OI": tot_pe,
-                        "PCR": pcr
-                    })
-        except Exception as e:
-            logger.debug(f"Option chain fetch failed for {idx}: {e}")
-            
-    if options_data:
-        with open(target, "w", encoding="utf-8") as f: 
-            f.write(f"# Major Indices Options Chain\n\n{to_md_table(options_data)}")
-        logger.info(f"Index options chain processed: {len(options_data)} records.")
-    else:
-        write_fallback_markdown(target, "Major Indices Options Chain")
-
+        write_fallback_markdown(target_sast, "Promoter Pledged Shares (SAST)")
 
 def process_corporate_events(cfg: MarketPipelineConfig, session: requests.Session, watchlist: list):
     SEBI_MATERIAL_KEYWORDS = ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"]
@@ -367,20 +370,33 @@ def process_corporate_events(cfg: MarketPipelineConfig, session: requests.Sessio
             headline_lower = headline.lower()
             company_clean = item.get('SLONGNAME', 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
             
+            # Construct the direct PDF URL for the AI/User to reference
+            attachment = item.get('ATTACHMENTNAME')
+            pdf_link = f"https://www.bseindia.com/xml-data/corpfiling/AttachLive/{attachment}" if attachment else "No PDF Attached"
+            
             is_material = any(w in headline_lower for w in SEBI_MATERIAL_KEYWORDS)
             if any(b in headline_lower for b in ADMINISTRATIVE_NOISE) and not is_material:
                 continue 
 
-            td = f"{cfg.base_corp_dir}/{company_clean}/" + ("earnings" if "result" in cat else ("concalls" if "transcript" in headline_lower else "filings"))
+            is_concall = "transcript" in headline_lower or "concall" in headline_lower
+            
+            if is_concall:
+                td = f"{cfg.base_corp_dir}/{company_clean}/concalls"
+                logger.info(f"🎤 Concall Transcript logged for: {company_clean}")
+            elif "result" in cat:
+                td = f"{cfg.base_corp_dir}/{company_clean}/earnings"
+            else:
+                td = f"{cfg.base_corp_dir}/{company_clean}/filings"
+                
             os.makedirs(td, exist_ok=True)
             
             file_path = f"{td}/{cfg.date_iso}_{item.get('NEWSID')}.md"
             if not os.path.exists(file_path):
                 with open(file_path, "w", encoding="utf-8") as f: 
-                    f.write(f"# {headline}\n\n**Category:** {item.get('CATEGORYNAME')}\n\n{item.get('HEADLINE', '')}")
+                    f.write(f"# {headline}\n\n**Category:** {item.get('CATEGORYNAME')}\n**PDF Source:** {pdf_link}\n\n{item.get('HEADLINE', '')}")
                 material_hits += 1
                 
-        logger.info(f"Routed {material_hits} corporate filings.")
+        logger.info(f"Routed {material_hits} corporate filings via BSE.")
     except Exception as e: 
         logger.warning(f"Corporate event extraction failed: {e}")
 
@@ -397,14 +413,11 @@ def main():
         logger.error(f"Watchlist error: {e}")
         watchlist = []
         
-    # SANDBOXED EXECUTION: One failure will NEVER crash the others
     for module_name, module_func in [
         ("Cash Market", lambda: process_market_action(cfg, session)),
-        ("Derivatives", lambda: process_derivatives(cfg, session)),
+        ("Derivatives & Options (Local Compute)", lambda: process_derivatives_and_options(cfg, session)),
         ("Macro Flows", lambda: process_macro_flows(cfg, session)),
-        ("Insider Trading (PIT)", lambda: process_insider_trading(cfg, session)),
-        ("Promoter Pledges", lambda: process_promoter_pledges(cfg, session)),
-        ("Index Options (PCR)", lambda: process_index_options(cfg, session)),
+        ("Regulatory Data (BSE Fast-Track)", lambda: process_bse_regulatory_data(cfg, session)),
         ("Corporate Events", lambda: process_corporate_events(cfg, session, watchlist))
     ]:
         try:
