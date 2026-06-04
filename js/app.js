@@ -1,11 +1,13 @@
 // PROXY CONFIGURATION ABSTRACTION
-// Update this string to your own Cloudflare Worker URL when moving to production
 const PROXY_BASE = "https://api.corsproxy.io/?url=";
+// GOOGLE APPS SCRIPT PLATFORM ENTRYPOINT (For Forensic Mode Document Processing)
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
 
 // Initialization and Core State Allocation
 localforage.config({ name: 'ForensicStudio', storeName: 'analytics_cache' });
 
 let masterForensicDatabase = {};
+let nseMasterList = []; 
 let userPinnedWatchlist = []; 
 let activePriceStream = null;
 let chartInstance = null;
@@ -19,27 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAuthObserver();
 });
 
-// App Router Architecture Handling Transitions Contextually
-function switchScreen(target) {
-    const dash = document.getElementById('screen-dashboard');
-    const term = document.getElementById('screen-terminal');
-    const btnDash = document.getElementById('nav-dashboard');
-    const btnTerm = document.getElementById('nav-terminal');
-
-    if (target === 'dashboard') {
-        dash.classList.remove('hidden'); dash.classList.add('z-10');
-        term.classList.add('hidden'); term.classList.remove('z-10');
-        btnDash.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
-        btnTerm.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
+// Contextual Routing and Guard Checks
+function handleViewSwitchIntent(targetMode) {
+    let confirmationInfo = "";
+    
+    if (targetMode === 'general') {
+        confirmationInfo = "Switch to GENERAL MODE?\n\n• View comprehensive matrix tracking across model diagnostic assets.\n• Trigger direct sync of static global NSE stock ledgers to local system memory.";
     } else {
-        term.classList.remove('hidden'); term.classList.add('z-10');
-        dash.classList.add('hidden'); dash.classList.remove('z-10');
-        btnTerm.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
-        btnDash.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
+        confirmationInfo = "Switch to FORENSIC MODE?\n\n• Deploy continuous deep diagnostics for an isolated ticker asset.\n• Activate streaming live exchange telemetry charts.\n• Request contextual report files (transcripts, results, ownership records) via GAS.";
+    }
+
+    if (confirm(confirmationInfo)) {
+        switchScreen(targetMode);
     }
 }
 
-// Security Authentication Pipeline Observer Setup (Kept explicitly as requested)
+function switchScreen(target) {
+    const generalScreen = document.getElementById('screen-general');
+    const forensicScreen = document.getElementById('screen-forensic');
+    const btnGeneral = document.getElementById('nav-general');
+    const btnForensic = document.getElementById('nav-forensic');
+
+    if (target === 'general') {
+        generalScreen.classList.remove('hidden'); generalScreen.classList.add('z-10');
+        forensicScreen.classList.add('hidden'); forensicScreen.classList.remove('z-10');
+        btnGeneral.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
+        btnForensic.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
+    } else {
+        forensicScreen.classList.remove('hidden'); forensicScreen.classList.add('z-10');
+        generalScreen.classList.add('hidden'); generalScreen.classList.remove('z-10');
+        btnForensic.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
+        btnGeneral.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
+    }
+}
+
+// Authentication Framework (Preserved explicitly untouched)
 function setupAuthObserver() {
     const authForm = document.getElementById('auth-form');
     authForm.addEventListener('submit', (e) => {
@@ -49,7 +65,7 @@ function setupAuthObserver() {
 
         if (secureKey === "admin") {
             document.getElementById('auth-status').className = "text-center text-xs mt-4 text-kite-green font-semibold";
-            document.getElementById('auth-status').innerText = "ACCESS GRANTED. INITIALIZING TELMETRY SYSTEMS...";
+            document.getElementById('auth-status').innerText = "ACCESS GRANTED. INITIALIZING SYSTEMS...";
             setTimeout(() => {
                 document.getElementById('system-lock-overlay').classList.add('hidden');
                 document.getElementById('logout-btn').innerText = username.substring(0,2).toUpperCase();
@@ -62,7 +78,7 @@ function setupAuthObserver() {
     });
 }
 
-// Data Storage Caching Operations
+// Memory & Datastore Context Setup
 async function initDataPipeline() {
     try {
         const response = await fetch(`master_forensic_db.json?t=${Date.now()}`);
@@ -73,6 +89,8 @@ async function initDataPipeline() {
         masterForensicDatabase = await localforage.getItem('cached_forensic_db') || {};
     }
     
+    nseMasterList = await localforage.getItem('cached_nse_list') || [];
+
     if (userPinnedWatchlist.length === 0 && Object.keys(masterForensicDatabase).length > 0) {
         userPinnedWatchlist = Object.keys(masterForensicDatabase).slice(0, 5);
     }
@@ -95,8 +113,8 @@ async function initDataPipeline() {
 }
 
 function setupGlobalNavigationHooks() {
-    document.getElementById('nav-dashboard').addEventListener('click', () => switchScreen('dashboard'));
-    document.getElementById('nav-terminal').addEventListener('click', () => switchScreen('terminal'));
+    document.getElementById('nav-general').addEventListener('click', () => handleViewSwitchIntent('general'));
+    document.getElementById('nav-forensic').addEventListener('click', () => handleViewSwitchIntent('forensic'));
     document.getElementById('force-sync-btn').addEventListener('click', () => executeBackgroundGitFetch());
     document.getElementById('global-download-btn').addEventListener('click', () => executeContextualExport());
     document.getElementById('vault-push-btn').addEventListener('click', () => executeBackgroundGitPush());
@@ -139,15 +157,14 @@ function getVerdictStyles(verdict) {
 }
 
 function renderViews() {
-    buildFullDashboardWatchlist("");
-    buildTerminalSidebarWatchlist("");
+    buildFullGeneralWatchlist("");
+    buildForensicSidebarWatchlist("");
 }
 
-function buildFullDashboardWatchlist(filterText = "") {
+function buildFullGeneralWatchlist(filterText = "") {
     const tbody = document.getElementById('watchlist-table-body');
     tbody.innerHTML = "";
     
-    // Performance fix: Use Document Fragment to prevent DOM thrashing
     const fragment = document.createDocumentFragment();
 
     Object.keys(masterForensicDatabase).forEach(ticker => {
@@ -162,7 +179,7 @@ function buildFullDashboardWatchlist(filterText = "") {
 
         const tr = document.createElement('tr');
         tr.className = "hover:bg-zinc-900/40 cursor-pointer border-b border-kite-border/20 transition-colors";
-        tr.onclick = () => { switchScreen('terminal'); renderDiagnosticTerminal(ticker); };
+        tr.onclick = () => { switchScreen('forensic'); renderDiagnosticTerminal(ticker); };
 
         tr.innerHTML = `
             <td class="sticky left-0 bg-[#1c1c1e] md:bg-transparent z-10 px-4 py-3 font-semibold text-white font-mono">${ticker} <span class="block text-[10px] text-zinc-500 font-normal font-sans uppercase">${structure}</span></td>
@@ -175,24 +192,22 @@ function buildFullDashboardWatchlist(filterText = "") {
     });
 
     tbody.appendChild(fragment);
-    document.getElementById('full-watchlist-search').oninput = (e) => buildFullDashboardWatchlist(e.target.value);
+    document.getElementById('full-watchlist-search').oninput = (e) => buildFullGeneralWatchlist(e.target.value);
 }
 
-function buildTerminalSidebarWatchlist(filterText = "") {
-    const container = document.getElementById('terminal-watchlist-container');
+function buildForensicSidebarWatchlist(filterText = "") {
+    const container = document.getElementById('forensic-watchlist-container');
     container.innerHTML = "";
     
-    // Performance fix: Use Document Fragment
     const fragment = document.createDocumentFragment();
 
     userPinnedWatchlist.forEach(ticker => {
         const asset = masterForensicDatabase[ticker];
-        if (!asset) return;
         if (filterText && !ticker.includes(filterText.toUpperCase())) return;
 
-        const structure = asset.governance?.risk_level || "Equity Asset";
-        const score = asset.score || "--";
-        const verdict = asset.verdict || "HOLD";
+        const structure = asset ? (asset.governance?.risk_level || "Equity Asset") : "System Token";
+        const score = asset ? (asset.score || "--") : "--";
+        const verdict = asset ? (asset.verdict || "HOLD") : "UNTRACKED";
 
         const row = document.createElement('div');
         row.className = "p-3 flex items-center justify-between hover:bg-zinc-900/30 cursor-pointer border-l-2 border-transparent transition-all";
@@ -219,17 +234,11 @@ function buildTerminalSidebarWatchlist(filterText = "") {
 
 function renderDiagnosticTerminal(ticker) {
     const data = masterForensicDatabase[ticker];
-    if (!data) return;
 
     document.getElementById('empty-state').classList.add('hidden');
     document.getElementById('active-content').classList.remove('hidden');
 
-    const structure = data.governance?.risk_level || "Classification";
     document.getElementById('target-title').innerText = ticker;
-    document.getElementById('target-title').nextElementSibling.innerText = structure;
-    document.getElementById('target-score').innerText = `${data.score || "--"}/100`;
-
-    // Reset live price to loading state explicitly
     const priceNode = document.getElementById('live-price');
     priceNode.innerText = "--.--";
     priceNode.className = "text-base font-bold text-zinc-200";
@@ -237,6 +246,22 @@ function renderDiagnosticTerminal(ticker) {
 
     const grid = document.getElementById('analysis-grid');
     grid.innerHTML = "";
+
+    if (!data) {
+        document.getElementById('target-title').nextElementSibling.innerText = "UNTRACKED INSTRUMENT";
+        document.getElementById('target-score').innerText = "--/100";
+        grid.innerHTML = `
+            <div class="lg:col-span-2 bg-kite-panel border border-kite-border rounded-lg p-6 text-center text-xs text-zinc-500">
+                This asset exists in the global token registry but has no local intelligence profile data. Run python processing models or check upstream repositories.
+            </div>
+        `;
+        renderYahooChartInstance(ticker);
+        return;
+    }
+
+    const structure = data.governance?.risk_level || "Classification";
+    document.getElementById('target-title').nextElementSibling.innerText = structure;
+    document.getElementById('target-score').innerText = `${data.score || "--"}/100`;
 
     const modules = [
         { title: "Financial Health", payload: data.financial_health?.revenue_quality },
@@ -263,13 +288,10 @@ function renderYahooChartInstance(ticker) {
     if (activePriceStream) clearInterval(activePriceStream);
     
     const chartFrame = document.getElementById('tv-chart-view-frame');
-    
-    // Performance fix: Explicitly destroy old chart context from RAM
     if (chartInstance) {
         chartInstance.remove();
         chartInstance = null;
     }
-    
     chartFrame.innerHTML = "";
 
     chartInstance = LightweightCharts.createChart(chartFrame, {
@@ -305,7 +327,7 @@ function startLivePriceFeed(ticker) {
         const liveUrl = `${PROXY_BASE}${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=1d&interval=1m`)}`;
         
         fetch(liveUrl).then(res => {
-            if (!res.ok) throw new Error("Proxy connection dropped");
+            if (!res.ok) throw new Error("Dropped");
             return res.json();
         }).then(json => {
             const data = json.chart.result[0].meta;
@@ -318,7 +340,6 @@ function startLivePriceFeed(ticker) {
             priceNode.className = `text-base font-bold font-mono ${pctChange >= 0 ? 'text-kite-green' : 'text-kite-red'}`;
             document.getElementById('live-price-label').innerText = "Last Traded Price";
         }).catch(() => {
-            // Error fix: Explicitly warn the operator if the live feed dies
             const priceNode = document.getElementById('live-price');
             priceNode.innerText = "[ OFFLINE ]";
             priceNode.className = "text-sm font-bold font-mono text-kite-orange animate-pulse";
@@ -330,7 +351,7 @@ function startLivePriceFeed(ticker) {
 }
 
 function setupAutocompleteEngine() {
-    const searchInput = document.getElementById('terminal-watchlist-search');
+    const searchInput = document.getElementById('forensic-watchlist-search');
     const autoBox = document.getElementById('search-autocomplete-box');
 
     searchInput.addEventListener('input', (e) => {
@@ -338,21 +359,24 @@ function setupAutocompleteEngine() {
         if (!query) { autoBox.classList.add('hidden'); return; }
 
         autoBox.innerHTML = "";
-        let matches = Object.keys(masterForensicDatabase).filter(key => key.includes(query));
+        
+        // Match query across the comprehensive global static list if available, else fallback to analytical data
+        const workingUniverse = nseMasterList.length > 0 ? nseMasterList : Object.keys(masterForensicDatabase);
+        let matches = workingUniverse.filter(ticker => ticker.includes(query)).slice(0, 20);
 
         if (matches.length === 0) {
-            autoBox.innerHTML = `<div class="p-3 text-xs text-zinc-500">No matching pipeline tokens found</div>`;
+            autoBox.innerHTML = `<div class="p-3 text-xs text-zinc-500">No matching registry entries found</div>`;
         } else {
             matches.forEach(match => {
-                const asset = masterForensicDatabase[match];
                 const row = document.createElement('div');
                 row.className = "p-2.5 flex items-center justify-between hover:bg-zinc-800 cursor-pointer text-xs transition-colors border-b border-kite-border/30";
                 const isPinned = userPinnedWatchlist.includes(match);
+                const hasModelAnalysis = masterForensicDatabase[match] ? "Analyzed Profile" : "No Core Data";
 
                 row.innerHTML = `
                     <div class="flex-1 font-mono">
                         <span class="font-bold text-white block">${match}</span>
-                        <span class="text-[10px] text-zinc-500 block uppercase">${asset.governance?.risk_level || "Equity"}</span>
+                        <span class="text-[10px] text-zinc-500 block uppercase">${hasModelAnalysis}</span>
                     </div>
                     <button class="add-token-btn p-1 rounded text-zinc-400 hover:text-kite-blue"><i class="${isPinned ? 'ph-fill ph-push-pin text-kite-blue' : 'ph ph-push-pin'} text-sm"></i></button>
                 `;
@@ -360,7 +384,7 @@ function setupAutocompleteEngine() {
                 row.querySelector('.add-token-btn').onclick = (event) => {
                     event.stopPropagation();
                     isPinned ? userPinnedWatchlist = userPinnedWatchlist.filter(id => id !== match) : userPinnedWatchlist.push(match);
-                    buildTerminalSidebarWatchlist();
+                    buildForensicSidebarWatchlist();
                     setupAutocompleteEngine(); 
                     autoBox.classList.add('hidden'); searchInput.value = "";
                 };
@@ -431,30 +455,93 @@ async function executeBackgroundGitPush() {
     pushBtn.innerHTML = `<i class="ph ph-cloud-arrow-up animate-pulse"></i> COMMITTING CHANGES...`;
 
     setTimeout(() => {
-        alert(`Git Vault Pipeline Synchronization Successful!\n\nMetrics derived via [${model}] have been committed and pushed to the upstream repository.`);
+        alert(`Git Vault Synchronization Successful via [${model}].`);
         evaluateGitPushState();
     }, 1500);
 }
 
-function executeContextualExport() {
-    const isDashboard = !document.getElementById('screen-dashboard').classList.contains('hidden');
-    if (isDashboard) {
-        let csv = "Asset Token,Health Score,Momentum,Risk Vector,Verdict\n";
-        Object.keys(masterForensicDatabase).forEach(key => {
-            const asset = masterForensicDatabase[key];
-            csv += `${key},${asset.score || "--"},"${asset.market_momentum?.trend || ""}","${asset.regulatory_surveillance?.framework || ""}",${asset.verdict || ""}\n`;
-        });
-        triggerDownload(encodeURI("data:text/csv;charset=utf-8," + csv), `Screener_Matrix_${Date.now()}.csv`);
-    } else {
-        const ticker = document.getElementById('target-title').innerText;
-        if (!ticker || ticker === "UNASSIGNED") return;
-        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(masterForensicDatabase[ticker], null, 2));
-        triggerDownload(dataStr, `Forensic_Analysis_${ticker}.json`);
+// Contextual Data Extraction Pipeline Handler
+async function executeContextualExport() {
+    const isGeneralMode = !document.getElementById('screen-general').classList.contains('hidden');
+    const downloadBtn = document.getElementById('global-download-btn');
+    const originalIcon = downloadBtn.innerHTML;
+    
+    downloadBtn.innerHTML = `<i class="ph ph-circle-notch animate-spin text-sm"></i>`;
+    downloadBtn.disabled = true;
+
+    try {
+        if (isGeneralMode) {
+            // ==========================================
+            // GENERAL MODE: FETCH STATIC LIST FROM NSE
+            // ==========================================
+            const staticNseUrl = `${PROXY_BASE}${encodeURIComponent('https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv')}`;
+            const response = await fetch(staticNseUrl);
+            if (!response.ok) throw new Error("NSE connection failed.");
+
+            const csvData = await response.text();
+            const lines = csvData.split('\n');
+            let parsedSymbols = [];
+
+            // Skip line 0 (Header Row: SYMBOL,NAME OF COMPANY...)
+            for (let i = 1; i < lines.length; i++) {
+                const columns = lines[i].split(',');
+                if (columns[0]) {
+                    const cleanSymbol = columns[0].replace(/['"]+/g, '').trim();
+                    if (cleanSymbol) parsedSymbols.push(cleanSymbol.toUpperCase());
+                }
+            }
+
+            if (parsedSymbols.length === 0) throw new Error("Parsed symbol matrix array empty.");
+
+            // Commit static exchange array mapping directly to client storage
+            nseMasterList = parsedSymbols;
+            await localforage.setItem('cached_nse_list', nseMasterList);
+            
+            // Clean up old instances and reboot search mapping references
+            setupAutocompleteEngine();
+            alert(`Success! Loaded ${nseMasterList.length} static public equities out of the official NSE tracking index directly into client storage.`);
+
+        } else {
+            // ==========================================
+            // FORENSIC MODE: FETCH VIA GOOGLE APPS SCRIPT
+            // ==========================================
+            const ticker = document.getElementById('target-title').innerText;
+            if (!ticker || ticker === "UNASSIGNED") {
+                alert("Mount active asset profile to prompt GAS target pull.");
+                return;
+            }
+
+            const targetUrl = `${GAS_WEB_APP_URL}?ticker=${ticker}`;
+            const response = await fetch(targetUrl, { method: 'GET', redirect: 'follow' });
+            
+            if (!response.ok) throw new Error("GAS engine rejected structural pull.");
+            
+            const payload = await response.text();
+            if (!payload || payload.trim() === "") throw new Error("GAS payload empty.");
+
+            triggerDownload(payload, `${ticker}_Transcripts_Ownership_Results.csv`, 'text/csv;charset=utf-8;');
+        }
+    } catch (error) {
+        console.error("Pipeline Sync Halt:", error);
+        alert("Action dropped: Pipeline transmission timeout, CORS error, or structural failure.");
+    } finally {
+        downloadBtn.innerHTML = originalIcon;
+        downloadBtn.disabled = false;
     }
 }
 
-function triggerDownload(uri, filename) {
+// Memory Safe Native Blob Downloader (Protects against empty file outputs on strict platforms)
+function triggerDownload(content, filename, mimeType) {
+    const blob = new Blob([content], { type: mimeType });
+    const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
-    link.setAttribute("href", uri); link.setAttribute("download", filename);
-    document.body.appendChild(link); link.click(); document.body.removeChild(link);
+    
+    link.setAttribute("href", url);
+    link.setAttribute("download", filename);
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    setTimeout(() => URL.revokeObjectURL(url), 100);
 }
