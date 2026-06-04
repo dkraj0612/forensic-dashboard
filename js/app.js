@@ -1,7 +1,7 @@
 // PROXY CONFIGURATION ABSTRACTION
 const PROXY_BASE = "https://api.corsproxy.io/?url=";
 // GOOGLE APPS SCRIPT PLATFORM ENTRYPOINT (For Forensic Mode Document Processing)
-const GAS_WEB_APP_URL = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec";
+const GAS_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx4X78LZ3cpk88sgJOwcsZrs1gy1JL-v7Co5_8F_3x3dASUfSW4esRH1PBseAWDOlnfcA/exec";
 
 // Initialization and Core State Allocation
 localforage.config({ name: 'ForensicStudio', storeName: 'analytics_cache' });
