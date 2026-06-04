@@ -1,309 +1,450 @@
+// Initialization and Core State Allocation
 localforage.config({ name: 'ForensicStudio', storeName: 'analytics_cache' });
 
-let masterForensicDatabase = null;
-let activeChartInstance = null;
+let masterForensicDatabase = {};
+let userPinnedWatchlist = ['INFY', 'RELIANCE', 'TCS']; // Default initial configuration array
 let activePriceStream = null;
-let operatorId = "";
+let chartInstance = null;
+let candleSeries = null;
 
-const navDashboard = document.getElementById('nav-dashboard');
-const navTerminal = document.getElementById('nav-terminal');
-const screenDashboard = document.getElementById('screen-dashboard');
-const screenTerminal = document.getElementById('screen-terminal');
+let schedulerIntervalId = null;
+let countdownIntervalId = null;
+let currentCountdownSeconds = 300;
 
-function switchScreen(screenName) {
-    if (screenName === 'dashboard') {
-        screenDashboard.classList.remove('hidden'); screenTerminal.classList.add('hidden');
-        navDashboard.classList.replace('text-kite-muted', 'text-kite-blue');
-        navDashboard.classList.replace('border-transparent', 'border-kite-blue');
-        navTerminal.classList.replace('text-kite-blue', 'text-kite-muted');
-        navTerminal.classList.replace('border-kite-blue', 'border-transparent');
-    } else if (screenName === 'terminal') {
-        screenTerminal.classList.remove('hidden'); screenDashboard.classList.add('hidden');
-        navTerminal.classList.replace('text-kite-muted', 'text-kite-blue');
-        navTerminal.classList.replace('border-transparent', 'border-kite-blue');
-        navDashboard.classList.replace('text-kite-blue', 'text-kite-muted');
-        navDashboard.classList.replace('border-kite-blue', 'border-transparent');
+document.addEventListener('DOMContentLoaded', () => {
+    setupAuthObserver();
+});
+
+// App Router Architecture Handling Transitions Contextually
+function switchScreen(target) {
+    const dash = document.getElementById('screen-dashboard');
+    const term = document.getElementById('screen-terminal');
+    const btnDash = document.getElementById('nav-dashboard');
+    const btnTerm = document.getElementById('nav-terminal');
+
+    if (target === 'dashboard') {
+        dash.classList.remove('hidden');
+        dash.classList.add('z-10');
+        term.classList.add('hidden');
+        term.classList.remove('z-10');
+        
+        btnDash.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
+        btnTerm.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
+    } else {
+        term.classList.remove('hidden');
+        term.classList.add('z-10');
+        dash.classList.add('hidden');
+        dash.classList.remove('z-10');
+
+        btnTerm.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm";
+        btnDash.className = "px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200";
     }
 }
 
-navDashboard.onclick = () => switchScreen('dashboard');
-navTerminal.onclick = () => switchScreen('terminal');
-
+// Security Authentication Pipeline Observer Setup
 function setupAuthObserver() {
-    if (typeof window.firebaseOnAuthChange !== 'function') {
-        setTimeout(setupAuthObserver, 100); return;
-    }
-    window.firebaseOnAuthChange(window.auth, (user) => {
-        if (user) {
-            operatorId = user.email.split('@')[0].toUpperCase();
-            document.getElementById("system-lock-overlay").classList.add("opacity-0", "pointer-events-none");
-            setTimeout(() => document.getElementById("system-lock-overlay").classList.add("hidden"), 300);
-            document.getElementById("logout-btn").innerText = operatorId.substring(0, 2);
-            initDataPipeline();
+    const authForm = document.getElementById('auth-form');
+    authForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const username = document.getElementById('auth-username').value.trim();
+        const secureKey = prompt("Enter Master Gateway Authentication Key:");
+
+        if (secureKey === "admin") {
+            document.getElementById('auth-status').className = "text-center text-xs mt-4 text-kite-green font-semibold";
+            document.getElementById('auth-status').innerText = "ACCESS GRANTED. INITIALIZING TELMETRY SYSTEMS...";
+            
+            setTimeout(() => {
+                document.getElementById('system-lock-overlay').classList.add('hidden');
+                document.getElementById('logout-btn').innerText = username.substring(0,2).toUpperCase();
+                initDataPipeline();
+            }, 800);
         } else {
-            document.getElementById("system-lock-overlay").classList.remove("hidden", "opacity-0", "pointer-events-none");
+            document.getElementById('auth-status').className = "text-center text-xs mt-4 text-kite-red font-semibold";
+            document.getElementById('auth-status').innerText = "INVALID PIPELINE ACCESS SIGNATURE.";
         }
     });
 }
 
-document.getElementById('auth-form').onsubmit = async (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('auth-username').value.trim();
-    const passwordInput = prompt(`Enter security credentials for ${emailInput}:`);
-    const btn = document.getElementById('auth-submit-btn');
-    if (!emailInput || !passwordInput) return alert("Credentials incomplete.");
-    btn.innerText = "Authenticating..."; btn.disabled = true;
-    try { await window.firebaseSignIn(window.auth, emailInput, passwordInput); } 
-    catch (error) { alert("Authentication Refused: " + error.code); btn.innerText = "Login"; btn.disabled = false; }
-};
-document.getElementById('logout-btn').onclick = () => window.firebaseSignOut(window.auth);
-
+// Data Storage Caching Operations
 async function initDataPipeline() {
     try {
-        const response = await fetch(`./master_forensic_db.json?t=${Date.now()}`);
-        if (!response.ok) throw new Error("Local matrix missing.");
+        const response = await fetch(`master_forensic_db.json?t=${Date.now()}`);
+        if (!response.ok) throw new Error("Server transmission error.");
         masterForensicDatabase = await response.json();
-        await localforage.setItem('cached_master_db', masterForensicDatabase);
-        renderViews();
-    } catch (error) {
-        masterForensicDatabase = await localforage.getItem('cached_master_db');
-        if (masterForensicDatabase) renderViews();
-        else document.getElementById("watchlist-table-body").innerHTML = `<tr><td colspan="6" class="p-4 text-kite-red text-center">Database empty.</td></tr>`;
+        await localforage.setItem('cached_forensic_db', masterForensicDatabase);
+    } catch (err) {
+        console.warn("Pipeline link broken. Attempting IndexedDB extraction...", err);
+        masterForensicDatabase = await localforage.getItem('cached_forensic_db');
+        if (!masterForensicDatabase) {
+            masterForensicDatabase = getFallbackDevelopmentDatabase();
+        }
+    }
+    renderViews();
+    reinitializeSchedulerLoop();
+    setupAutocompleteEngine();
+    setupGlobalNavigationHooks();
+}
+
+function setupGlobalNavigationHooks() {
+    document.getElementById('nav-dashboard').addEventListener('click', () => switchScreen('dashboard'));
+    document.getElementById('nav-terminal').addEventListener('click', () => switchScreen('terminal'));
+    document.getElementById('force-sync-btn').addEventListener('click', () => executeBackgroundGitFetch());
+    document.getElementById('global-download-btn').addEventListener('click', () => executeContextualExport());
+}
+
+// Dynamic DOM View Engine Compilation Rules
+function getVerdictStyles(verdict) {
+    switch (verdict?.toUpperCase()) {
+        case 'BUY': return 'text-kite-green bg-kite-green/10 border-kite-green/20';
+        case 'AVOID': return 'text-kite-red bg-kite-red/10 border-kite-red/20';
+        default: return 'text-kite-blue bg-kite-blue/10 border-kite-blue/20';
     }
 }
 
 function renderViews() {
-    buildFullDashboardWatchlist(masterForensicDatabase);
-    buildTerminalSidebarWatchlist(masterForensicDatabase);
+    buildFullDashboardWatchlist("");
+    buildTerminalSidebarWatchlist("");
 }
 
-function getVerdictStyles(verdict) {
-    if (!verdict) return { color: 'text-kite-muted', bg: 'bg-transparent' };
-    const v = verdict.toUpperCase();
-    if (v.includes('BUY')) return { color: 'text-kite-green', bg: 'bg-kite-green/10' };
-    if (v.includes('AVOID')) return { color: 'text-kite-red', bg: 'bg-kite-red/10' };
-    return { color: 'text-kite-blue', bg: 'bg-kite-blue/10' };
-}
+function buildFullDashboardWatchlist(filterText = "") {
+    const tbody = document.getElementById('watchlist-table-body');
+    tbody.innerHTML = "";
 
-function buildFullDashboardWatchlist(database, filterText = "") {
-    const tbody = document.getElementById("watchlist-table-body"); tbody.innerHTML = "";
-    const tickers = Object.keys(database).filter(t => t.toLowerCase().includes(filterText.toLowerCase()));
-    if (tickers.length === 0) return;
+    Object.keys(masterForensicDatabase).forEach(key => {
+        const asset = masterForensicDatabase[key];
+        if (filterText && !key.toLowerCase().includes(filterText.toLowerCase()) && !asset.name.toLowerCase().includes(filterText.toLowerCase())) return;
 
-    tickers.forEach(ticker => {
-        const data = database[ticker];
-        const vStyle = getVerdictStyles(data.verdict);
-        const tr = document.createElement("tr");
-        tr.className = "border-b border-kite-border hover:bg-kite-nav transition-colors";
+        const tr = document.createElement('tr');
+        tr.className = "hover:bg-zinc-900/40 cursor-pointer border-b border-kite-border/20 transition-colors";
+        tr.onclick = () => {
+            switchScreen('terminal');
+            renderDiagnosticTerminal(key);
+        };
+
         tr.innerHTML = `
-            <td class="py-4 font-mono"><div class="text-kite-blue font-semibold">${ticker}</div><div class="text-[10px] text-kite-muted mt-1 uppercase">${data.governance?.risk_level || "Standard Structure"}</div></td>
-            <td class="py-4"><div class="text-kite-text font-medium">${data.score || "--"} / 100</div></td>
-            <td class="py-4"><div class="text-kite-text text-xs">${data.market_momentum?.trend || "Neutral"}</div></td>
-            <td class="py-4 text-xs text-kite-muted">${data.regulatory_surveillance?.framework || "Normal"}</td>
-            <td class="py-4"><span class="px-2 py-1 rounded text-[10px] font-bold ${vStyle.bg} ${vStyle.color}">${data.verdict || 'HOLD'}</span></td>
-            <td class="py-4 text-right"><button class="bg-kite-blue/10 text-kite-blue px-4 py-1.5 rounded text-xs transition-colors" data-ticker="${ticker}">Analyze Asset</button></td>
+            <td class="sticky left-0 bg-[#1c1c1e] md:bg-transparent z-10 px-4 py-3 font-semibold text-white">${key} <span class="block text-[10px] text-zinc-500 font-normal">${asset.name}</span></td>
+            <td class="px-4 py-3 text-center font-mono font-bold text-zinc-300">${asset.health_score}</td>
+            <td class="px-4 py-3 text-zinc-400 font-medium">${asset.momentum}</td>
+            <td class="px-4 py-3 text-zinc-400 font-medium">${asset.risk}</td>
+            <td class="px-4 py-3 text-right"><span class="px-2 py-0.5 rounded text-[10px] font-bold border ${getVerdictStyles(asset.verdict)}">${asset.verdict}</span></td>
         `;
-        tr.querySelector('button').onclick = () => { switchScreen('terminal'); renderDiagnosticTerminal(ticker, data); };
         tbody.appendChild(tr);
     });
-}
-document.getElementById('full-watchlist-search').addEventListener('input', (e) => { if(masterForensicDatabase) buildFullDashboardWatchlist(masterForensicDatabase, e.target.value); });
 
-function buildTerminalSidebarWatchlist(database, filterText = "") {
-    const container = document.getElementById("terminal-watchlist-container"); container.innerHTML = "";
-    Object.keys(database).filter(t => t.toLowerCase().includes(filterText.toLowerCase())).forEach(ticker => {
-        const data = database[ticker];
-        const vStyle = getVerdictStyles(data.verdict);
-        const item = document.createElement("div");
-        item.className = "group flex justify-between items-center px-4 py-3 border-b border-kite-border hover:bg-kite-nav cursor-pointer transition-colors";
-        item.innerHTML = `<div class="flex flex-col"><span class="text-sm font-medium ${vStyle.color}">${ticker}</span></div><div class="flex flex-col items-end"><span class="text-xs font-semibold ${vStyle.color}">${data.score || '--'}</span></div>`;
-        item.onclick = () => renderDiagnosticTerminal(ticker, data);
-        container.appendChild(item);
+    document.getElementById('full-watchlist-search').oninput = (e) => buildFullDashboardWatchlist(e.target.value);
+}
+
+function buildTerminalSidebarWatchlist(filterText = "") {
+    const container = document.getElementById('terminal-watchlist-container');
+    container.innerHTML = "";
+
+    userPinnedWatchlist.forEach(key => {
+        const asset = masterForensicDatabase[key];
+        if (!asset) return;
+        if (filterText && !key.toLowerCase().includes(filterText.toLowerCase()) && !asset.name.toLowerCase().includes(filterText.toLowerCase())) return;
+
+        const row = document.createElement('div');
+        row.className = "p-3 flex items-center justify-between hover:bg-zinc-900/30 cursor-pointer border-l-2 border-transparent transition-all";
+        row.onclick = () => {
+            if(window.innerWidth < 768) document.getElementById('sidebar-close-btn').click();
+            renderDiagnosticTerminal(key);
+        };
+
+        row.innerHTML = `
+            <div>
+                <div class="font-bold text-xs text-zinc-200 tracking-tight uppercase">${key}</div>
+                <div class="text-[10px] text-zinc-500 max-w-[140px] truncate">${asset.name}</div>
+            </div>
+            <div class="text-right">
+                <span class="text-[11px] font-mono font-bold block text-zinc-400">Score: ${asset.health_score}</span>
+                <span class="text-[9px] font-semibold tracking-wider ${asset.verdict === 'BUY' ? 'text-kite-green' : asset.verdict === 'AVOID' ? 'text-kite-red' : 'text-kite-blue'}">${asset.verdict}</span>
+            </div>
+        `;
+        container.appendChild(row);
     });
 }
-document.getElementById('terminal-watchlist-search').addEventListener('input', (e) => { if(masterForensicDatabase) buildTerminalSidebarWatchlist(masterForensicDatabase, e.target.value); });
 
-function renderDiagnosticTerminal(ticker, data) {
-    document.getElementById("empty-state").classList.add("hidden");
-    document.getElementById("active-content").classList.remove("hidden");
-    
-    document.getElementById("target-title").innerText = ticker;
-    document.getElementById("target-score").innerText = data.score || "--";
-    
-    const vStyle = getVerdictStyles(data.verdict);
-    const badge = document.getElementById("target-verdict");
-    badge.innerText = data.verdict || "UNKNOWN";
-    badge.className = `px-3 py-1.5 rounded text-xs font-bold tracking-wide ${vStyle.bg} ${vStyle.color}`;
+// Workspace Diagnostic Construction & API Routing Execution 
+function renderDiagnosticTerminal(ticker) {
+    const data = masterForensicDatabase[ticker];
+    if (!data) return;
 
-    const grid = document.getElementById("analysis-grid"); grid.innerHTML = "";
-    const modules = [
-        { title: "Financial Health", val: data.financial_health?.revenue_quality },
-        { title: "Corporate Governance", val: data.governance?.details },
-        { title: "Shareholding Trends", val: data.shareholding_trends?.description },
-        { title: "Momentum", val: `Trend: ${data.market_momentum?.trend}` },
-        { title: "Surveillance Risk", val: `Risk Level: ${data.regulatory_surveillance?.risk}` },
-        { title: "Catalysts", val: data.catalysts_and_sentiment?.description }
+    document.getElementById('empty-state').classList.add('hidden');
+    document.getElementById('active-content').classList.remove('hidden');
+
+    document.getElementById('target-title').innerText = `${ticker} : ${data.name}`;
+    document.getElementById('target-score').innerText = `${data.health_score}/100`;
+
+    // Parse diagnostic properties mapping into analysis columns grid
+    const grid = document.getElementById('analysis-grid');
+    grid.innerHTML = "";
+
+    const diagnosticModules = [
+        { title: "Financial Forensic Matrix", payload: data.financial_health_markdown },
+        { title: "Corporate Governance Integrity", payload: data.governance_markdown }
     ];
-    modules.forEach(m => {
-        if (!m.val) return; 
-        const tile = document.createElement("div"); tile.className = "border border-kite-border bg-kite-nav rounded p-4";
-        tile.innerHTML = `<h4 class="text-xs font-semibold text-kite-muted uppercase mb-3 border-b border-kite-border pb-2">${m.title}</h4><div class="prose">${marked.parse(m.val)}</div>`;
-        grid.appendChild(tile);
+
+    diagnosticModules.forEach(mod => {
+        if (!mod.payload) return;
+        const card = document.createElement('div');
+        card.className = "bg-kite-panel border border-kite-border rounded-lg p-4 shadow-sm";
+        card.innerHTML = `
+            <h3 class="text-xs font-bold text-white tracking-wider mb-3 uppercase border-l-2 border-kite-blue pl-2">${mod.title}</h3>
+            <div class="prose max-w-none text-zinc-400">${marked.parse(mod.payload)}</div>
+        `;
+        grid.appendChild(card);
     });
 
     renderYahooChartInstance(ticker);
 }
 
-// YAHOO HISTORICAL CHART LOADER
-async function renderYahooChartInstance(ticker) {
-    const container = document.getElementById("tv-chart-view-frame");
-    container.innerHTML = `<div class="p-4 text-kite-blue text-xs font-mono flex items-center gap-2"><i class="ph ph-circle-notch animate-spin"></i> Fetching market data...</div>`;
-    
+// Lightweight TradingView Visual Composition Logic
+function renderYahooChartInstance(ticker) {
     if (activePriceStream) clearInterval(activePriceStream);
+    
+    const chartFrame = document.getElementById('tv-chart-view-frame');
+    chartFrame.innerHTML = "";
 
-    try {
-        const yahooTicker = `${ticker}.NS`; 
-        const url = `https://query1.finance.yahoo.com/v8/finance/chart/${yahooTicker}?interval=1d&range=90d`;
-        const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
-        
-        const response = await fetch(proxyUrl);
-        if (!response.ok) throw new Error("API Blocked");
-        const json = await response.json();
-        
-        const timestamps = json.chart.result[0].timestamp;
-        const quotes = json.chart.result[0].indicators.quote[0];
-        let formattedData = [];
-        
-        for (let i = 0; i < timestamps.length; i++) {
-            if (quotes.open[i] !== null) { 
-                formattedData.push({ time: new Date(timestamps[i] * 1000).toISOString().split('T')[0], open: quotes.open[i], high: quotes.high[i], low: quotes.low[i], close: quotes.close[i] });
-            }
-        }
-        
-        container.innerHTML = "";
-        activeChartInstance = LightweightCharts.createChart(container, {
-            layout: { background: { type: 'solid', color: 'transparent' }, textColor: '#9b9b9b' },
-            grid: { vertLines: { color: '#2b2b2b' }, horzLines: { color: '#2b2b2b' } },
-            timeScale: { borderColor: '#2b2b2b' }
-        });
-        const candleSeries = activeChartInstance.addCandlestickSeries({ upColor: '#4caf50', downColor: '#f44336', borderVisible: false });
-        candleSeries.setData(formattedData);
-        activeChartInstance.timeScale().fitContent();
+    chartInstance = LightweightCharts.createChart(chartFrame, {
+        layout: { background: { color: '#1c1c1e' }, textColor: '#a1a1aa' },
+        grid: { vertLines: { color: '#2c2c2e' }, horzLines: { color: '#2c2c2e' } },
+        crosshair: { mode: LightweightCharts.CrosshairMode.Normal },
+        timeScale: { borderColor: '#2c2c2e' }
+    });
 
-        startLivePriceFeed(yahooTicker);
-    } catch (error) {
-        container.innerHTML = `<div class="p-4 text-kite-red text-xs">Market data unavailable for ${ticker}.</div>`;
-    }
+    candleSeries = chartInstance.addCandlestickSeries({
+        upColor: '#00b067', downColor: '#eb5757',
+        borderUpColor: '#00b067', borderDownColor: '#eb5757',
+        wickUpColor: '#00b067', wickDownColor: '#eb5757'
+    });
+
+    const proxyUrl = `https://api.corsproxy.io/?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=90d&interval=1d`)}`;
+
+    fetch(proxyUrl)
+        .then(res => res.json())
+        .then(json => {
+            const chartData = json.chart.result[0];
+            const timestamps = chartData.timestamp;
+            const indicators = chartData.indicators.quote[0];
+
+            const parsedMatrix = timestamps.map((ts, idx) => ({
+                time: ts,
+                open: indicators.open[idx] || indicators.close[idx],
+                high: indicators.high[idx] || indicators.close[idx],
+                low: indicators.low[idx] || indicators.close[idx],
+                close: indicators.close[idx]
+            })).filter(item => item.open && item.close);
+
+            candleSeries.setData(parsedMatrix);
+            chartInstance.timeScale().fitContent();
+
+            startLivePriceFeed(ticker);
+        })
+        .catch(err => console.error("Historical tracking failure over active proxy execution loop:", err));
 }
 
-// LIVE PRICE TICKER FEED
-function startLivePriceFeed(yahooTicker) {
-    const livePriceEl = document.getElementById("live-price");
-    const liveChangeEl = document.getElementById("live-change");
-    
-    const fetchLiveQuote = async () => {
-        try {
-            const url = `https://query1.finance.yahoo.com/v8/finance/chart/${yahooTicker}?interval=1m&range=1d`;
-            const proxyUrl = `https://corsproxy.io/?url=${encodeURIComponent(url)}`;
-            const res = await fetch(proxyUrl);
-            const json = await res.json();
-            
-            const meta = json.chart.result[0].meta;
-            const cmp = meta.regularMarketPrice;
-            const prevClose = meta.chartPreviousClose;
-            
-            const change = cmp - prevClose;
-            const percentChange = (change / prevClose) * 100;
-            const colorClass = change >= 0 ? "text-kite-green" : "text-kite-red";
-            const sign = change >= 0 ? "+" : "";
-            
-            livePriceEl.innerText = `₹${cmp.toFixed(2)}`;
-            livePriceEl.className = `text-2xl font-bold font-mono ${colorClass}`;
-            liveChangeEl.innerText = `${sign}${change.toFixed(2)} (${sign}${percentChange.toFixed(2)}%)`;
-            liveChangeEl.className = `text-xs font-semibold mt-0.5 ${colorClass}`;
-        } catch (e) {
-            console.log("Silent background ping failed.");
-        }
+function startLivePriceFeed(ticker) {
+    const fetchLatestTick = () => {
+        const liveProxyUrl = `https://api.corsproxy.io/?url=${encodeURIComponent(`https://query1.finance.yahoo.com/v8/finance/chart/${ticker}?range=1d&interval=1m`)}`;
+        fetch(liveProxyUrl)
+            .then(res => res.json())
+            .then(json => {
+                const data = json.chart.result[0].meta;
+                const price = data.regularMarketPrice;
+                const prevClose = data.chartPreviousClose;
+                const pctChange = ((price - prevClose) / prevClose) * 100;
+
+                const priceNode = document.getElementById('live-price');
+                priceNode.innerText = price.toFixed(2);
+                priceNode.className = `text-base font-bold font-mono ${pctChange >= 0 ? 'text-kite-green' : 'text-kite-red'}`;
+            })
+            .catch(err => console.warn("Live monitoring telemetry packet dropped:", err));
     };
-    
-    fetchLiveQuote();
-    activePriceStream = setInterval(fetchLiveQuote, 10000);
+
+    fetchLatestTick();
+    activePriceStream = setInterval(fetchLatestTick, 10000);
 }
 
-window.addEventListener('resize', () => {
-    if(activeChartInstance && document.getElementById('tv-chart-view-frame')) {
-       activeChartInstance.resize(document.getElementById('tv-chart-view-frame').clientWidth, 400);
-    }
-});
+// Universal Autocomplete Search Engine Setup 
+function setupAutocompleteEngine() {
+    const searchInput = document.getElementById('terminal-watchlist-search');
+    const autoBox = document.getElementById('search-autocomplete-box');
 
-let fetchSchedulerTimer = null;
-let countdownTrackerTimer = null;
-let secondsRemainingUntilFetch = 300; 
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim().toUpperCase();
+        if (!query) {
+            autoBox.classList.add('hidden');
+            return;
+        }
 
-const schedulerIntervalSelect = document.getElementById('scheduler-interval');
-const schedulerStatus = document.getElementById('scheduler-status');
-const schedulerCountdown = document.getElementById('scheduler-countdown');
-const schedulerIndicator = document.getElementById('scheduler-indicator');
+        autoBox.innerHTML = "";
+        let matches = Object.keys(masterForensicDatabase).filter(key => key.includes(query) || masterForensicDatabase[key].name.toUpperCase().includes(query));
 
-document.getElementById('menu-dots-btn').addEventListener('click', (e) => {
-    e.stopPropagation(); document.getElementById('options-dropdown').classList.toggle('hidden');
-});
-document.addEventListener('click', (e) => {
-    const dropdown = document.getElementById('options-dropdown');
-    if (!dropdown.classList.contains('hidden') && !dropdown.contains(e.target)) dropdown.classList.add('hidden');
-});
+        if (matches.length === 0) {
+            autoBox.innerHTML = `<div class="p-3 text-xs text-zinc-500">No matching pipeline tokens found</div>`;
+        } else {
+            matches.forEach(match => {
+                const row = document.createElement('div');
+                row.className = "p-2.5 flex items-center justify-between hover:bg-zinc-800 cursor-pointer text-xs transition-colors border-b border-kite-border/30";
+                
+                const isPinned = userPinnedWatchlist.includes(match);
 
-async function executeBackgroundGitFetch() {
-    schedulerStatus.innerText = "Fetching..."; schedulerStatus.className = "text-kite-blue font-medium";
-    schedulerIndicator.className = "w-2 h-2 rounded-full bg-kite-blue animate-spin";
-    try {
-        const response = await fetch(`./master_forensic_db.json?t=${Date.now()}`);
-        masterForensicDatabase = await response.json();
-        await localforage.setItem('cached_master_db', masterForensicDatabase);
-        buildFullDashboardWatchlist(masterForensicDatabase, document.getElementById('full-watchlist-search').value);
-        buildTerminalSidebarWatchlist(masterForensicDatabase, document.getElementById('terminal-watchlist-search').value);
-        schedulerStatus.innerText = "Synchronized"; schedulerStatus.className = "text-kite-green font-medium";
-        schedulerIndicator.className = "w-2 h-2 rounded-full bg-kite-green animate-pulse";
-    } catch (error) {
-        schedulerStatus.innerText = "Sync Error"; schedulerStatus.className = "text-kite-red font-medium";
-        schedulerIndicator.className = "w-2 h-2 rounded-full bg-kite-red";
-    }
+                row.innerHTML = `
+                    <div class="flex-1">
+                        <span class="font-bold text-white block">${match}</span>
+                        <span class="text-[10px] text-zinc-500 block truncate max-w-[180px]">${masterForensicDatabase[match].name}</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <button class="add-token-btn p-1 rounded text-zinc-400 hover:text-kite-blue focus:outline-none" title="Pin instrument to Watchlist">
+                            <i class="${isPinned ? 'ph-fill ph-push-pin text-kite-blue' : 'ph ph-push-pin'} text-sm"></i>
+                        </button>
+                    </div>
+                `;
+
+                row.querySelector('.add-token-btn').onclick = (event) => {
+                    event.stopPropagation();
+                    if (!isPinned) {
+                        userPinnedWatchlist.push(match);
+                    } else {
+                        userPinnedWatchlist = userPinnedWatchlist.filter(id => id !== match);
+                    }
+                    buildTerminalSidebarWatchlist();
+                    setupAutocompleteEngine(); 
+                    autoBox.classList.add('hidden');
+                    searchInput.value = "";
+                };
+
+                row.onclick = () => {
+                    renderDiagnosticTerminal(match);
+                    autoBox.classList.add('hidden');
+                    searchInput.value = "";
+                };
+
+                autoBox.appendChild(row);
+            });
+        }
+        autoBox.classList.remove('hidden');
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!searchInput.contains(e.target) && !autoBox.contains(e.target)) {
+            autoBox.classList.add('hidden');
+        }
+    });
+}
+
+// Git Vault Automated Cron Execution Architecture
+function reinitializeSchedulerLoop() {
+    if (schedulerIntervalId) clearInterval(schedulerIntervalId);
+    if (countdownIntervalId) clearInterval(countdownIntervalId);
+
+    const intervalMinutes = parseInt(document.getElementById('scheduler-interval').value);
+    currentCountdownSeconds = intervalMinutes * 60;
+
+    countdownIntervalId = setInterval(manageCountdownDisplay, 1000);
+    schedulerIntervalId = setInterval(executeBackgroundGitFetch, intervalMinutes * 60 * 1000);
+    manageCountdownDisplay();
 }
 
 function manageCountdownDisplay() {
-    if (secondsRemainingUntilFetch <= 0) return; 
-    secondsRemainingUntilFetch--;
-    const mins = Math.floor(secondsRemainingUntilFetch / 60); const secs = secondsRemainingUntilFetch % 60;
-    schedulerCountdown.innerText = `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+    currentCountdownSeconds--;
+    if (currentCountdownSeconds < 0) return;
+
+    const mins = Math.floor(currentCountdownSeconds / 60);
+    const secs = currentCountdownSeconds % 60;
+    document.getElementById('scheduler-countdown').innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
 
-function reinitializeSchedulerLoop() {
-    clearInterval(fetchSchedulerTimer); clearInterval(countdownTrackerTimer);
-    const configuredMinutes = parseInt(schedulerIntervalSelect.value);
-    if (configuredMinutes === 0) {
-        schedulerStatus.innerText = "Manual Only"; schedulerStatus.className = "text-kite-muted font-medium";
-        schedulerCountdown.innerText = "--:--"; schedulerIndicator.className = "w-2 h-2 rounded-full bg-kite-muted"; return;
-    }
-    secondsRemainingUntilFetch = configuredMinutes * 60;
-    schedulerStatus.innerText = "Monitoring"; schedulerStatus.className = "text-kite-green font-medium";
-    schedulerIndicator.className = "w-2 h-2 rounded-full bg-kite-green animate-pulse";
+async function executeBackgroundGitFetch() {
+    const indicator = document.getElementById('scheduler-indicator');
+    const syncBtn = document.getElementById('force-sync-btn');
     
-    countdownTrackerTimer = setInterval(manageCountdownDisplay, 1000);
-    fetchSchedulerTimer = setInterval(async () => {
-        await executeBackgroundGitFetch(); secondsRemainingUntilFetch = configuredMinutes * 60; 
-    }, configuredMinutes * 60 * 1000);
+    indicator.classList.remove('hidden');
+    syncBtn.disabled = true;
+    syncBtn.innerHTML = `<i class="ph ph-arrows-clockwise animate-spin"></i> PIPELINE SYNCING...`;
+
+    try {
+        const response = await fetch(`master_forensic_db.json?t=${Date.now()}`);
+        masterForensicDatabase = await response.json();
+        await localforage.setItem('cached_forensic_db', masterForensicDatabase);
+        renderViews();
+    } catch (e) {
+        console.error("Repository sync packet dropped:", e);
+    } finally {
+        setTimeout(() => {
+            indicator.classList.add('hidden');
+            syncBtn.disabled = false;
+            syncBtn.innerHTML = `<i class="ph ph-arrows-clockwise"></i> FORCE VAULT PULL`;
+            reinitializeSchedulerLoop();
+        }, 1200);
+    }
 }
 
-schedulerIntervalSelect.addEventListener('change', reinitializeSchedulerLoop);
-document.getElementById('force-sync-btn').addEventListener('click', async (e) => {
-    const btn = e.currentTarget; const originalText = btn.innerHTML;
-    btn.disabled = true; btn.innerHTML = `<i class="ph ph-circle-notch animate-spin"></i> Processing...`;
-    await executeBackgroundGitFetch();
-    const configuredMinutes = parseInt(schedulerIntervalSelect.value);
-    if (configuredMinutes > 0) secondsRemainingUntilFetch = configuredMinutes * 60; 
-    setTimeout(() => { btn.disabled = false; btn.innerHTML = originalText; }, 600);
-});
+document.getElementById('scheduler-interval').addEventListener('change', reinitializeSchedulerLoop);
 
-document.getElementById("system-lock-overlay").classList.add("hidden");
-initDataPipeline();
-reinitializeSchedulerLoop();
+// Contextual Analytics Data Extraction Processor
+function executeContextualExport() {
+    const isDashboard = !document.getElementById('screen-dashboard').classList.contains('hidden');
+    
+    if (isDashboard) {
+        let csvContent = "data:text/csv;charset=utf-8,Asset Token,Asset Name,Health Score,Momentum,Risk Vector,Verdict\n";
+        Object.keys(masterForensicDatabase).forEach(key => {
+            const asset = masterForensicDatabase[key];
+            csvContent += `${key},"${asset.name}",${asset.health_score},"${asset.momentum}","${asset.risk}",${asset.verdict}\n`;
+        });
+        
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `Forensic_Screener_Matrix_${Date.now()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    } else {
+        const activeHeaders = document.getElementById('target-title').innerText.split(' : ');
+        const ticker = activeHeaders[0];
+        if (!ticker || ticker === "UNASSIGNED") return;
+
+        const assetJson = JSON.stringify(masterForensicDatabase[ticker], null, 2);
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(assetJson);
+        const link = document.createElement("a");
+        link.setAttribute("href", dataStr);
+        link.setAttribute("download", `Forensic_Analysis_${ticker}_${Date.now()}.json`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
+}
+
+// Development Runtime Default Backup Configuration Objects
+function getFallbackDevelopmentDatabase() {
+    return {
+        "INFY": {
+            "name": "Infosys Limited",
+            "health_score": 88,
+            "momentum": "Strong Bullish Vector",
+            "risk": "Low Operational Risk Profile",
+            "verdict": "BUY",
+            "financial_health_markdown": "### Financial Overview\n* Operating Margin: `24.2%` tracking flat\n* Free Cash Flow conversion over net profit sits at `102%`.\n* Revenue realization timelines are running optimal.",
+            "governance_markdown": "### Audit Matrix Details\n* Auditor independence confirmations evaluated cleanly.\n* Internal accounting controls verified completely."
+        },
+        "RELIANCE": {
+            "name": "Reliance Industries",
+            "health_score": 79,
+            "momentum": "Consolidating Range Structure",
+            "risk": "Moderate Capital Overhead",
+            "verdict": "HOLD",
+            "financial_health_markdown": "### Financial Overview\n* Capital expenditure programs impacting current net realization yields.\n* Leverage metrics track completely within baseline parameters.",
+            "governance_markdown": "### Audit Matrix Details\n* Related party transactions show no standard valuation mismatch structural faults."
+        },
+        "TCS": {
+            "name": "Tata Consultancy Services",
+            "health_score": 92,
+            "momentum": "Bullish Trend Continuation",
+            "risk": "Negligible Operational Risk",
+            "verdict": "BUY",
+            "financial_health_markdown": "### Financial Overview\n* Industry leading returns on equity scaling over `45%` parameters.\n* Order conversion pipeline metrics established historical highs.",
+            "governance_markdown": "### Audit Matrix Details\n* Exceptional whistle-blower framework structural responses observed throughout periods."
+        }
+    };
+}
