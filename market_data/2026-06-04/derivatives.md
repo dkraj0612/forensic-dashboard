@@ -1,12 +1,12 @@
-# Derivatives
+# Derivatives Profile
 
-## Ban List
+## Exchange Ban List
 | Symbol |
 | --- |
 | AMBER |
 | KAYNES |
 
-## OI
+## Participant OI Flow
 | Client | Future_Long | Future_Short |
 | --- | --- | --- |
 | None | None | None |
@@ -16,5 +16,5 @@
 | None | None | None |
 | None | None | None |
 
-## Futures
-*No data logged.*
+## Futures Open Interest
+*No data available.*

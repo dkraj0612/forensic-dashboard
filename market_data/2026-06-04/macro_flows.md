@@ -1,9 +1,12 @@
-# Flows
+# Institutional Flows
+
+## FII/DII Net
 | Category | Net_Value |
 | --- | --- |
 | DII | 4360.14 |
 | FII/FPI | -4447.06 |
 
+## Dark Pool Deals (Bulk/Block)
 | Type | Symbol | Client | Txn |
 | --- | --- | --- | --- |
 | BULK | APOLLO | HRTI PRIVATE LIMITED | BUY |
