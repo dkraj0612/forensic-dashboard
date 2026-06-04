@@ -37,8 +37,8 @@ class MarketPipelineConfig:
 def create_resilient_session() -> requests.Session:
     session = requests.Session()
     retry = Retry(
-        total=5, 
-        backoff_factor=1.5, 
+        total=3, 
+        backoff_factor=1.0, 
         status_forcelist=[403, 429, 500, 502, 503, 504], 
         raise_on_status=False
     )
@@ -48,64 +48,67 @@ def create_resilient_session() -> requests.Session:
     session.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
         "Connection": "keep-alive"
     })
     return session
 
 def fetch_text_with_waterfall(session: requests.Session, url: str) -> Optional[str]:
-    """Bypasses Datacenter blocks by routing through external proxy endpoints if direct fetch fails."""
+    """Bypasses Datacenter blocks with fast-fail logic for dead links."""
     headers = {"Referer": "https://www.nseindia.com/"}
     
     # 1. Attempt Direct Fetch
     try:
-        res = session.get(url, headers=headers, timeout=12)
+        res = session.get(url, headers=headers, timeout=10)
         if res.status_code == 200:
             return res.text
-        logger.warning(f"Direct fetch blocked (HTTP {res.status_code}): {url}")
+            
+        if res.status_code in [404, 400]:
+            logger.info(f"Exchange returned 404/400. File not published today: {url}")
+            return None
+            
     except Exception as e:
-        logger.warning(f"Direct fetch exception: {e}")
+        logger.debug(f"Direct fetch exception: {e}")
 
-    # 2. Proxy Waterfall (Masks GitHub Actions IP)
+    # 2. Proxy Waterfall (Isolated requests, no internal urllib retries to prevent hanging)
     proxies = [
-        f"https://api.allorigins.win/raw?url={url}",
-        f"https://corsproxy.io/?url={url}"
+        f"https://corsproxy.io/?url={url}",
+        f"https://api.allorigins.win/raw?url={url}"
     ]
     
     for proxy in proxies:
         try:
-            logger.info(f"Rerouting via Proxy: {proxy}")
-            res = session.get(proxy, timeout=15)
-            # Ensure it didn't return an HTML error page instead of raw CSV/JSON data
-            if res.status_code == 200 and not res.text.strip().lower().startswith("<!doctype html>"):
-                return res.text
+            logger.info(f"Rerouting via Proxy: {proxy.split('/')[2]}")
+            proxy_res = requests.get(proxy, timeout=10)
+            
+            if proxy_res.status_code == 200 and not proxy_res.text.strip().lower().startswith("<!doctype html>"):
+                return proxy_res.text
         except Exception:
             pass
             
-    logger.error(f"FATAL: All proxy routing failed for {url}")
+    logger.error(f"All network routes exhausted for {url}")
     return None
+
+def write_fallback_markdown(filepath: str, title: str):
+    """Guarantees a file is always created to prevent pipeline crashes."""
+    if not os.path.exists(filepath):
+        with open(filepath, "w", encoding="utf-8") as f:
+            f.write(f"# {title}\n\n*No data published by exchange for this date.*")
 
 def get_nifty_total_market(session: requests.Session) -> List[str]:
     logger.info("Fetching live Nifty Total Market index constituents...")
     tickers = set()
     
-    # Prime cookies for NSE endpoints
-    try: session.get("https://www.nseindia.com", timeout=10)
-    except: pass
-    try: session.get("https://www.niftyindices.com", timeout=10)
+    try: session.get("https://www.nseindia.com", timeout=5)
     except: pass
 
-    # Attempt 1: Nifty Total Market
     try:
         text = fetch_text_with_waterfall(session, "https://www.niftyindices.com/IndexConstituent/ind_niftytotalmarketlist.csv")
         if text and "Symbol" in text:
             for row in csv.DictReader(text.strip().split('\n')):
                 sym = row.get('Symbol') or row.get('SYMBOL')
                 if sym: tickers.add(sym.strip().upper())
-    except Exception as e: 
-        logger.warning(f"Primary index fetch failed: {e}")
+    except Exception: pass
 
-    # Fallback: Assemble Nifty 500 + Microcap 250
     if len(tickers) < 500:
         logger.info("Executing fallback: Assembling Nifty 500 + Microcap 250...")
         for url in [
@@ -118,19 +121,17 @@ def get_nifty_total_market(session: requests.Session) -> List[str]:
                     for row in csv.DictReader(text.strip().split('\n')):
                         sym = row.get('Symbol') or row.get('SYMBOL')
                         if sym: tickers.add(sym.strip().upper())
-            except Exception: 
-                pass
+            except Exception: pass
 
     final_list = list(tickers)
     if len(final_list) > 200: 
         return final_list
         
-    logger.error("All exchange fetches failed. Using hardcoded offline diagnostic list.")
-    return ["RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK", "SBIN", "ITC"]
+    logger.error("Using offline diagnostic list.")
+    return ["RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK"]
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
-    if not data_list: 
-        return "*No data logged.*\n"
+    if not data_list: return "*No data available.*\n"
     headers = custom_headers if custom_headers else list(data_list[0].keys())
     md = ["| " + " | ".join(headers) + " |", "| " + " | ".join(["---"] * len(headers)) + " |"]
     for row in data_list: 
@@ -139,12 +140,8 @@ def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[s
 
 def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/cash_market.md"
-    if os.path.exists(target): 
-        return
-        
     prices, indices = [], []
     
-    # Extract Cash Market Bhavcopy (NSE directly to BSE Fallback due to file size)
     try:
         res = session.get(f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{cfg.date_ddmmyyyy}.csv", headers={"Referer": "https://www.nseindia.com/"}, timeout=15)
         if res.status_code == 200:
@@ -154,15 +151,11 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
                     prices.append({
                         "Ticker": clean.get('SYMBOL'), "Open": clean.get('OPEN_PRICE'), 
                         "High": clean.get('HIGH_PRICE'), "Low": clean.get('LOW_PRICE'), 
-                        "Close": clean.get('CLOSE_PRICE'), "Volume": clean.get('TTL_TRD_QNTY'), 
-                        "Delivery_Qty": clean.get('DELIV_QTY'), "Delivery_Pct": clean.get('DELIV_PER')
+                        "Close": clean.get('CLOSE_PRICE'), "Volume": clean.get('TTL_TRD_QNTY')
                     })
-    except Exception: 
-        pass
+    except Exception: pass
     
-    # Fallback to BSE if NSE fails (Massive savior for Actions Runners)
     if not prices:
-        logger.info("NSE Cash blocked. Executing BSE Fallback routine...")
         try:
             res = session.get(f"https://www.bseindia.com/download/BhavCopy/Equity/EQ{cfg.date_yymmdd}_CSV.ZIP", headers={"Referer": "https://www.bseindia.com/"}, timeout=15)
             if res.status_code == 200:
@@ -173,12 +166,10 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
                                 prices.append({
                                     "Ticker": r.get('SC_NAME', '').strip(), "Open": r.get('OPEN'), 
                                     "High": r.get('HIGH'), "Low": r.get('LOW'), "Close": r.get('CLOSE'), 
-                                    "Volume": r.get('NO_OF_SHRS'), "Delivery_Qty": "N/A", "Delivery_Pct": "N/A"
+                                    "Volume": r.get('NO_OF_SHRS')
                                 })
-        except Exception: 
-            pass
+        except Exception: pass
 
-    # Extract Index Closing Values via Waterfall
     try:
         text = fetch_text_with_waterfall(session, f"https://nsearchives.nseindia.com/content/indices/ind_close_all_{cfg.date_ddmmyyyy}.csv")
         if text:
@@ -189,24 +180,19 @@ def process_market_action(cfg: MarketPipelineConfig, session: requests.Session):
                         "High": r.get('High Index Value'), "Low": r.get('Low Index Value'), 
                         "Close": r.get('Closing Index Value')
                     })
-    except Exception: 
-        pass
+    except Exception: pass
 
     if prices or indices:
         with open(target, "w", encoding="utf-8") as f: 
             f.write(f"# Cash Market Analysis ({cfg.date_iso})\n\n## Broad Indices\n{to_md_table(indices)}\n## Equity Pricing\n{to_md_table(prices)}")
-        logger.info(f"Cash market payload processed: {len(prices)} individual equities mapped.")
+        logger.info(f"Cash market processed: {len(prices)} equities.")
     else:
-        logger.error("FATAL: Failed to capture both NSE and BSE Cash Market data.")
+        write_fallback_markdown(target, "Cash Market Analysis")
 
 def process_derivatives(cfg: MarketPipelineConfig, session: requests.Session):
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/derivatives.md"
-    if os.path.exists(target): 
-        return
-        
     fno, oi, ban = [], [], []
     
-    # Futures & Options Matrix (ZIP - Direct only to prevent proxy corruption)
     try:
         fo_url = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{cfg.date_yyyy}/{cfg.date_mmm}/fo{cfg.date_ddmmmyyyy}bhav.csv.zip"
         res = session.get(fo_url, headers={"Referer": "https://www.nseindia.com/"}, timeout=15)
@@ -218,144 +204,174 @@ def process_derivatives(cfg: MarketPipelineConfig, session: requests.Session):
                             if r.get('INSTRUMENT') in ['FUTSTK', 'FUTIDX']: 
                                 fno.append({
                                     "Contract": r.get('SYMBOL'), "Expiry": r.get('EXPIRY_DT'), 
-                                    "Close": r.get('CLOSE'), "OI": r.get('OPEN_INT'), "Change_In_OI": r.get('CHG_IN_OI')
+                                    "Close": r.get('CLOSE'), "OI": r.get('OPEN_INT')
                                 })
-        else:
-            logger.warning(f"Derivatives ZIP blocked directly (HTTP {res.status_code}).")
-    except Exception as e: 
-        logger.warning(f"Derivatives ZIP Error: {e}")
+    except Exception as e: logger.debug(f"Derivatives ZIP Error: {e}")
     
-    # Client Level OI Participant Data
     try:
         text = fetch_text_with_waterfall(session, f"https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_{cfg.date_ddmmyyyy}.csv")
         if text:
             for r in csv.DictReader(text.strip().split('\n')): 
-                oi.append({
-                    "Client": r.get('Client Type'), "Future_Long": r.get('Future Index Long'), 
-                    "Future_Short": r.get('Future Index Short')
-                })
-    except Exception: 
-        pass
+                oi.append({"Client": r.get('Client Type'), "Future_Long": r.get('Future Index Long'), "Future_Short": r.get('Future Index Short')})
+    except Exception: pass
 
-    # Regulatory F&O Ban List
     try:
         text = fetch_text_with_waterfall(session, "https://nsearchives.nseindia.com/content/fo/fo_secban.csv")
         if text:
             for line in text.strip().split('\n')[1:]:
-                if ',' in line: 
-                    ban.append({"Symbol": line.split(',')[1].strip()})
-    except Exception: 
-        pass
+                if ',' in line: ban.append({"Symbol": line.split(',')[1].strip()})
+    except Exception: pass
 
     if fno or oi or ban:
         with open(target, "w", encoding="utf-8") as f: 
             f.write(f"# Derivatives Profile\n\n## Exchange Ban List\n{to_md_table(ban)}\n## Participant OI Flow\n{to_md_table(oi)}\n## Futures Open Interest\n{to_md_table(fno[:500])}")
-        logger.info(f"Derivatives mapped. FNO: {len(fno)} | Ban List: {len(ban)}")
+        logger.info(f"Derivatives mapped. FNO: {len(fno)}")
     else:
-        logger.warning("Warning: Complete Derivatives payload failed to capture.")
+        write_fallback_markdown(target, "Derivatives Profile")
 
 def process_macro_flows(cfg: MarketPipelineConfig, session: requests.Session):
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/macro_flows.md"
-    if os.path.exists(target): 
-        return
-        
     fii, deals = [], []
     
-    # FII / DII Institutional Flows
     try:
         text = fetch_text_with_waterfall(session, "https://www.nseindia.com/api/fiidiiTradeReact")
         if text:
-            for i in json.loads(text): 
-                fii.append({"Category": i.get('category'), "Net_Value": i.get('netValue')})
-    except Exception: 
-        pass
+            for i in json.loads(text): fii.append({"Category": i.get('category'), "Net_Value": i.get('netValue')})
+    except Exception: pass
         
-    # Bulk & Block Deals
     for url, t in [("https://nsearchives.nseindia.com/content/equities/bulk.csv", "BULK"), ("https://nsearchives.nseindia.com/content/equities/block.csv", "BLOCK")]:
         try:
             text = fetch_text_with_waterfall(session, url)
             if text:
                 for r in csv.DictReader(text.strip().split('\n')): 
                     deals.append({"Type": t, "Symbol": r.get('Symbol'), "Client": r.get('Client Name'), "Txn": r.get('Buy/Sell')})
-        except Exception: 
-            pass
+        except Exception: pass
             
     if fii or deals:
         with open(target, "w", encoding="utf-8") as f: 
             f.write(f"# Institutional Flows\n\n## FII/DII Net\n{to_md_table(fii)}\n## Dark Pool Deals (Bulk/Block)\n{to_md_table(deals)}")
-        logger.info("Institutional Capital Flows captured.")
+        logger.info("Macro flows captured.")
+    else:
+        write_fallback_markdown(target, "Institutional Flows")
 
-def process_surveillance(cfg: MarketPipelineConfig, session: requests.Session):
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/surveillance.md"
-    if os.path.exists(target): 
-        return
-        
-    risk = []
+# --- NEW FORENSIC MODULES ---
+
+def process_insider_trading(cfg: MarketPipelineConfig, session: requests.Session):
+    target = f"{cfg.base_market_dir}/{cfg.date_iso}/insider_trading.md"
+    pit_data = []
     
-    # Regulatory Surveillance Grids (ASM / GSM)
-    for url, t in [("https://nsearchives.nseindia.com/content/circulars/surveillance/ASM_latest.csv", "ASM Framework"), ("https://nsearchives.nseindia.com/content/circulars/surveillance/GSM_latest.csv", "GSM Framework")]:
+    try:
+        text = fetch_text_with_waterfall(session, "https://www.nseindia.com/api/corporates-pit?index=equities")
+        if text:
+            data = json.loads(text).get('data', [])
+            for row in data:
+                # Extract relevant structural PIT data
+                sym = row.get("symbol")
+                if not sym: continue
+                pit_data.append({
+                    "Symbol": sym,
+                    "Person": row.get("personName", "Unknown"),
+                    "Category": row.get("personCategory", "Unknown"),
+                    "Txn_Type": row.get("tdpTransactionType", "Unknown"),
+                    "Securities": row.get("secAcq", 0) or row.get("secDisp", 0),
+                    "Value": row.get("secVal", "0")
+                })
+    except Exception as e:
+        logger.debug(f"PIT fetch failed: {e}")
+        
+    if pit_data:
+        with open(target, "w", encoding="utf-8") as f: 
+            f.write(f"# Insider Trading Disclosures (PIT)\n\n{to_md_table(pit_data)}")
+        logger.info(f"Insider trading records processed: {len(pit_data)}")
+    else:
+        write_fallback_markdown(target, "Insider Trading Disclosures (PIT)")
+
+def process_promoter_pledges(cfg: MarketPipelineConfig, session: requests.Session):
+    target = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
+    sast_data = []
+    
+    try:
+        text = fetch_text_with_waterfall(session, "https://www.nseindia.com/api/corporate-pledge-data?index=equities")
+        if text:
+            data = json.loads(text).get('data', [])
+            for row in data:
+                sym = row.get("symbol")
+                if not sym: continue
+                sast_data.append({
+                    "Symbol": sym,
+                    "Promoter": row.get("promoter", "Unknown"),
+                    "Action": row.get("reason", "Unknown"),
+                    "Shares_Pledged": row.get("noOfShares", 0),
+                    "Pct_of_Total": row.get("percOfTotalShares", 0)
+                })
+    except Exception as e:
+        logger.debug(f"SAST fetch failed: {e}")
+        
+    if sast_data:
+        with open(target, "w", encoding="utf-8") as f: 
+            f.write(f"# Promoter Pledged Shares (SAST)\n\n{to_md_table(sast_data)}")
+        logger.info(f"Promoter pledge records processed: {len(sast_data)}")
+    else:
+        write_fallback_markdown(target, "Promoter Pledged Shares (SAST)")
+
+def process_index_options(cfg: MarketPipelineConfig, session: requests.Session):
+    target = f"{cfg.base_market_dir}/{cfg.date_iso}/index_options.md"
+    indices = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY"]
+    options_data = []
+    
+    for idx in indices:
         try:
+            url = f"https://www.nseindia.com/api/option-chain-indices?symbol={idx}"
             text = fetch_text_with_waterfall(session, url)
             if text:
-                for r in csv.DictReader(text.strip().split('\n')):
-                    s = r.get('Symbol') or r.get('SYMBOL')
-                    if s: risk.append({"Symbol": s.strip(), "Framework": t})
-        except Exception: 
-            pass
+                data = json.loads(text).get("filtered", {})
+                if data:
+                    tot_ce = data.get("CE", {}).get("totOI", 0)
+                    tot_pe = data.get("PE", {}).get("totOI", 0)
+                    # PCR Calculation
+                    pcr = round(tot_pe / tot_ce, 3) if tot_ce > 0 else 0
+                    
+                    options_data.append({
+                        "Index": idx,
+                        "Call_OI": tot_ce,
+                        "Put_OI": tot_pe,
+                        "PCR": pcr
+                    })
+        except Exception as e:
+            logger.debug(f"Option chain fetch failed for {idx}: {e}")
             
-    if risk:
+    if options_data:
         with open(target, "w", encoding="utf-8") as f: 
-            f.write(f"# SEBI Surveillance Matrix\n\n{to_md_table(risk)}")
-        logger.info(f"Regulatory surveillance mapped: {len(risk)} assets flagged.")
+            f.write(f"# Major Indices Options Chain\n\n{to_md_table(options_data)}")
+        logger.info(f"Index options chain processed: {len(options_data)} records.")
+    else:
+        write_fallback_markdown(target, "Major Indices Options Chain")
+
 
 def process_corporate_events(cfg: MarketPipelineConfig, session: requests.Session, watchlist: list):
-    watchlist_set = set(watchlist)
-
-    SEBI_MATERIAL_KEYWORDS = [
-        "resignation", "appointment", "acquisition", "merger", "amalgamation", 
-        "dividend", "financial result", "earnings", "rating", "fraud", "default", 
-        "auditor", "strike", "lockout", "capacity addition", "order", "contract", 
-        "penalty", "subpoena", "bankruptcy", "insolvency", "delisting", "pledge", "revocation"
-    ]
-
-    ADMINISTRATIVE_NOISE = [
-        "loss of share", "duplicate share", "trading window closure", 
-        "newspaper publication", "newspaper advertisement", "compliance certificate"
-    ]
+    SEBI_MATERIAL_KEYWORDS = ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"]
+    ADMINISTRATIVE_NOISE = ["loss of share", "duplicate share", "trading window closure", "newspaper publication"]
 
     try:
-        # BSE API is typically extremely open to Actions, no proxy needed
         res = session.get(
             "https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", 
             params={"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_ddmmyyyy, "strScrip": "", "strSearch": "", "strToDate": cfg.date_ddmmyyyy, "strType": "C"}, 
             headers={"Referer": "https://www.bseindia.com/"}, 
             timeout=15
         )
-        if res.status_code != 200: 
-            logger.warning("BSE Corp Events API unreachable.")
-            return
+        if res.status_code != 200: return
         
         material_hits = 0
-        
         for item in res.json().get('Table', []):
-            headline = item.get('NEWSSUB', '').strip()
+            headline, cat = item.get('NEWSSUB', '').strip(), item.get('CATEGORYNAME', '').lower()
             headline_lower = headline.lower()
-            cat = item.get('CATEGORYNAME', '').lower()
             company_clean = item.get('SLONGNAME', 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
             
             is_material = any(w in headline_lower for w in SEBI_MATERIAL_KEYWORDS)
-            is_noise = any(b in headline_lower for b in ADMINISTRATIVE_NOISE)
-
-            if is_noise and not is_material:
+            if any(b in headline_lower for b in ADMINISTRATIVE_NOISE) and not is_material:
                 continue 
 
-            if "result" in cat:
-                td = f"{cfg.base_corp_dir}/{company_clean}/earnings"
-            elif "transcript" in headline_lower or "concall" in headline_lower:
-                td = f"{cfg.base_corp_dir}/{company_clean}/concalls"
-            else:
-                td = f"{cfg.base_corp_dir}/{company_clean}/filings"
-                
+            td = f"{cfg.base_corp_dir}/{company_clean}/" + ("earnings" if "result" in cat else ("concalls" if "transcript" in headline_lower else "filings"))
             os.makedirs(td, exist_ok=True)
             
             file_path = f"{td}/{cfg.date_iso}_{item.get('NEWSID')}.md"
@@ -364,27 +380,40 @@ def process_corporate_events(cfg: MarketPipelineConfig, session: requests.Sessio
                     f.write(f"# {headline}\n\n**Category:** {item.get('CATEGORYNAME')}\n\n{item.get('HEADLINE', '')}")
                 material_hits += 1
                 
-        logger.info(f"Extracted and routed {material_hits} material corporate filings.")
-                
+        logger.info(f"Routed {material_hits} corporate filings.")
     except Exception as e: 
         logger.warning(f"Corporate event extraction failed: {e}")
 
 def main():
-    logger.info("--- INITIALIZING ROBUST MARKET INGESTION AUTOMATION PIPELINE ---")
+    logger.info("--- INITIALIZING ROBUST INGESTION PIPELINE ---")
     cfg = MarketPipelineConfig()
     session = create_resilient_session()
     
-    watchlist = get_nifty_total_market(session)
-    with open("active_watchlist.json", "w") as f:
-        json.dump(watchlist, f)
+    try:
+        watchlist = get_nifty_total_market(session)
+        with open("active_watchlist.json", "w") as f:
+            json.dump(watchlist, f)
+    except Exception as e:
+        logger.error(f"Watchlist error: {e}")
+        watchlist = []
         
-    process_market_action(cfg, session)
-    process_derivatives(cfg, session)
-    process_macro_flows(cfg, session)
-    process_surveillance(cfg, session)
-    process_corporate_events(cfg, session, watchlist)
-    
-    logger.info("--- PIPELINE EXECUTION COMPLETE. DATA AWAITING AI PROCESSING ---")
+    # SANDBOXED EXECUTION: One failure will NEVER crash the others
+    for module_name, module_func in [
+        ("Cash Market", lambda: process_market_action(cfg, session)),
+        ("Derivatives", lambda: process_derivatives(cfg, session)),
+        ("Macro Flows", lambda: process_macro_flows(cfg, session)),
+        ("Insider Trading (PIT)", lambda: process_insider_trading(cfg, session)),
+        ("Promoter Pledges", lambda: process_promoter_pledges(cfg, session)),
+        ("Index Options (PCR)", lambda: process_index_options(cfg, session)),
+        ("Corporate Events", lambda: process_corporate_events(cfg, session, watchlist))
+    ]:
+        try:
+            logger.info(f"Triggering Module: {module_name}...")
+            module_func()
+        except Exception as e:
+            logger.error(f"Module {module_name} crashed entirely: {e}")
+            
+    logger.info("--- PIPELINE EXECUTION COMPLETE ---")
 
 if __name__ == "__main__":
     main()
