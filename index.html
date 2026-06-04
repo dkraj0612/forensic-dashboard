@@ -1,193 +1,260 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full bg-[#121212] text-zinc-100 antialiased">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Kite | Institutional Forensic Studio</title>
+    <title>FORENSIC STUDIO</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts@4.1.1/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
     
-    <link rel="stylesheet" href="./css/styles.css">
-    
+    <link rel="stylesheet" href="CSS/styles.css">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        kite: {
-                            bg: '#121212', nav: '#1e1e1e', border: '#2b2b2b',
-                            text: '#ececec', muted: '#9b9b9b', blue: '#4184f3',
-                            green: '#4caf50', red: '#f44336'
-                        }
+                        'kite-bg': '#121212',
+                        'kite-panel': '#1c1c1e',
+                        'kite-border': '#2c2c2e',
+                        'kite-blue': '#437efd',
+                        'kite-green': '#00b067',
+                        'kite-red': '#eb5757',
+                        'kite-orange': '#ff9500'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
 </head>
-<body class="h-screen w-full flex flex-col overflow-hidden bg-kite-bg text-kite-text antialiased">
+<body class="h-full flex flex-col overflow-hidden select-none font-sans bg-kite-bg">
 
-    <div id="system-lock-overlay" class="fixed inset-0 bg-kite-bg z-[100] flex items-center justify-center transition-opacity duration-300">
-        <div class="w-full max-w-sm">
-            <div class="text-center mb-8">
-                <i class="ph-fill ph-target text-kite-blue text-5xl mb-4 inline-block"></i>
-                <h1 class="text-2xl font-semibold tracking-tight">Login to Studio</h1>
+    <div id="system-lock-overlay" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-kite-bg px-4">
+        <div class="w-full max-w-sm rounded-lg border border-kite-border bg-kite-panel p-6 shadow-2xl">
+            <div class="flex flex-col items-center mb-6">
+                <i class="ph-bold ph-shield-checkered text-4xl text-kite-blue mb-2"></i>
+                <h2 class="text-xl font-bold tracking-tight">SYSTEM ACCESS REQUIRED</h2>
+                <p class="text-xs text-zinc-500 mt-1 text-center">Enter valid credential mappings to initialize data pipeline</p>
             </div>
             <form id="auth-form" class="space-y-4">
                 <div>
-                    <p class="text-xs text-kite-muted mb-1 font-semibold tracking-wide">USER ID</p>
-                    <input type="text" id="auth-username" class="w-full bg-transparent border border-kite-border rounded text-sm px-3 py-2.5 focus:border-kite-blue focus:outline-none transition-colors uppercase" autocomplete="off" required title="Enter your registered operator email address here.">
+                    <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">User Identification</label>
+                    <input type="text" id="auth-username" required autocomplete="username" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-kite-blue focus:outline-none" placeholder="OPERATOR_ID">
                 </div>
-                <button type="submit" id="auth-submit-btn" class="w-full bg-kite-blue hover:bg-blue-600 text-white font-semibold py-2.5 rounded text-sm transition-colors mt-2" title="Click to securely log into the system.">Login</button>
+                <button type="submit" class="w-full rounded bg-kite-blue py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600 focus:outline-none">
+                    VALIDATE ARCHITECTURE
+                </button>
             </form>
-            <p class="text-center text-xs text-kite-muted mt-8" id="auth-status-text">Connecting to Firebase Auth...</p>
+            <p id="auth-status" class="text-center text-xs mt-4 text-zinc-500 min-h-[1rem]"></p>
         </div>
     </div>
 
-    <header class="h-14 border-b border-kite-border bg-kite-nav flex items-center justify-between px-6 shrink-0 z-30">
-        <div class="flex items-center gap-6 h-full">
-            <h1 class="font-bold text-lg tracking-tight text-kite-blue flex items-center gap-2" title="Institutional Forensic Studio">
-                <i class="ph-fill ph-target"></i> FORENSIC
-            </h1>
-            <nav class="hidden md:flex items-center gap-6 text-sm font-medium h-full pt-1">
-                <button id="nav-dashboard" class="h-full text-kite-blue border-b-2 border-kite-blue transition-colors" title="View a broad list of all stocks and their AI scores.">Dashboard</button>
-                <button id="nav-terminal" class="h-full text-kite-muted border-b-2 border-transparent hover:text-kite-text transition-colors" title="Deep dive into a single stock's charts and AI details.">Terminal</button>
-            </nav>
-        </div>
-        
-        <div class="flex items-center gap-4 relative">
-            <div class="text-xs font-mono text-kite-green flex items-center gap-1 bg-kite-green/10 px-2 py-1 rounded" title="The app is successfully connected to your local database.">
-                <span class="w-1.5 h-1.5 bg-kite-green rounded-full animate-pulse"></span> DB SYNCHED
-            </div>
-            <button id="logout-btn" class="w-7 h-7 rounded-full bg-kite-blue/20 text-kite-blue flex items-center justify-center font-bold text-xs" title="Click to lock the screen and hide your data.">OP</button>
-            <button id="menu-dots-btn" class="w-8 h-8 rounded hover:bg-kite-border text-kite-muted hover:text-kite-text flex items-center justify-center text-xl transition-colors focus:outline-none" title="Auto-update settings and system utilities.">
-                <i class="ph ph-dots-three-vertical"></i>
-            </button>
-            
-            <div id="options-dropdown" class="hidden absolute right-0 top-11 w-64 bg-kite-nav border border-kite-border rounded shadow-2xl py-1 z-50 text-xs fade-in">
-                <div class="px-4 py-2.5 border-b border-kite-border font-semibold text-kite-text tracking-wide flex items-center justify-between bg-kite-bg/50">
-                    <span>SYSTEM UTILITIES</span>
-                    <span id="scheduler-indicator" class="w-2 h-2 rounded-full bg-kite-green animate-pulse"></span>
+    <div class="flex flex-1 w-full h-full overflow-hidden relative">
+
+        <div id="sidebar-backdrop" class="fixed inset-0 z-30 bg-black/60 hidden md:hidden"></div>
+
+        <aside id="global-sidebar" class="fixed inset-y-0 left-0 z-40 w-72 -translate-x-full border-r border-kite-border bg-kite-panel flex flex-col transition-transform duration-200 ease-in-out md:static md:w-64 lg:w-80 md:translate-x-0">
+            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4">
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-crosshair text-kite-blue text-lg animate-pulse"></i>
+                    <span class="font-black text-sm tracking-widest text-zinc-100 uppercase">FORENSIC//STUDIO</span>
                 </div>
-                <div class="p-4 space-y-4">
-                    <div>
-                        <label class="block text-kite-muted font-medium mb-1.5 uppercase tracking-wider text-[10px]">Auto-Fetch Interval</label>
-                        <select id="scheduler-interval" class="w-full bg-kite-bg border border-kite-border rounded px-2.5 py-1.5 text-kite-text focus:outline-none focus:border-kite-blue cursor-pointer" title="Choose how often the app automatically checks the cloud for fresh data.">
-                            <option value="0">Manual Refreshes Only</option>
-                            <option value="1">Every 1 Minute</option>
-                            <option value="5" selected>Every 5 Minutes</option>
-                            <option value="15">Every 15 Minutes</option>
-                        </select>
+                <button id="sidebar-close-btn" class="p-1 text-zinc-400 hover:text-zinc-100 md:hidden focus:outline-none">
+                    <i class="ph-bold ph-x text-lg"></i>
+                </button>
+            </div>
+
+            <div class="p-3 border-b border-kite-border bg-kite-bg/50 relative">
+                <div class="relative">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-2.5 text-zinc-500"></i>
+                    <input type="text" id="terminal-watchlist-search" class="w-full rounded border border-kite-border bg-kite-bg pl-9 pr-8 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Search or add instrument...">
+                    <i class="ph ph-command absolute right-3 top-2.5 text-xs text-zinc-600"></i>
+                </div>
+
+                <div id="search-autocomplete-box" class="absolute left-3 right-3 top-full mt-1 z-50 rounded border border-kite-border bg-kite-panel shadow-2xl max-h-60 overflow-y-auto hidden"></div>
+            </div>
+
+            <div id="terminal-watchlist-container" class="flex-1 overflow-y-auto divide-y divide-kite-border/40"></div>
+        </aside>
+
+        <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
+
+            <header class="h-14 border-b border-kite-border bg-kite-panel flex items-center justify-between px-4 z-20 shrink-0">
+                <div class="flex items-center gap-3">
+                    <button id="mobile-sidebar-toggle" class="p-2 -ml-2 rounded text-zinc-400 hover:text-zinc-100 md:hidden focus:outline-none">
+                        <i class="ph-bold ph-list text-xl"></i>
+                    </button>
+                    
+                    <nav class="flex items-center border border-kite-border rounded p-0.5 bg-kite-bg">
+                        <button id="nav-dashboard" title="View a broad list of all stocks and their AI scores." class="px-3 py-1 rounded text-xs font-medium transition-all text-zinc-100 bg-kite-border shadow-sm">
+                            Dashboard
+                        </button>
+                        <button id="nav-terminal" title="Deep dive into a single stock's charts and AI details." class="px-3 py-1 rounded text-xs font-medium transition-all text-zinc-400 hover:text-zinc-200">
+                            Terminal
+                        </button>
+                    </nav>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button id="global-download-btn" title="Export current analytical workspace metrics" class="p-1.5 rounded border border-kite-border text-zinc-400 hover:text-zinc-100 hover:border-zinc-700 bg-kite-bg transition-colors flex items-center justify-center">
+                        <i class="ph-bold ph-download-simple text-sm"></i>
+                    </button>
+
+                    <div class="flex items-center gap-1.5 px-2 py-1 rounded border border-zinc-800/80 bg-zinc-900/40 text-[10px] font-mono tracking-wider font-semibold text-zinc-400">
+                        <span class="h-1.5 w-1.5 rounded-full bg-kite-green animate-pulse"></span>
+                        <span class="hidden sm:inline">DB SYNCHED</span>
                     </div>
-                    <div class="border-t border-kite-border/60 pt-3 space-y-2 text-[11px] font-mono text-kite-muted">
-                        <div class="flex justify-between">
-                            <span>Engine Status:</span>
-                            <span id="scheduler-status" class="text-kite-green font-medium">Monitoring</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span>Next Fetch In:</span>
-                            <span id="scheduler-countdown" class="text-kite-blue font-medium">05:00</span>
+
+                    <button id="menu-dots-btn" title="Open Git Vault Pipeline Controls" class="p-2 rounded text-zinc-400 hover:text-zinc-100 hover:bg-kite-border/50 transition-colors focus:outline-none relative">
+                        <i class="ph-bold ph-git-fork text-base"></i>
+                        <span id="scheduler-indicator" class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-kite-orange hidden"></span>
+                    </button>
+
+                    <button id="logout-btn" class="h-7 w-7 rounded-full bg-kite-border border border-zinc-700 flex items-center justify-center text-xs font-mono font-bold text-kite-blue tracking-tighter hover:border-zinc-500 focus:outline-none">
+                        OP
+                    </button>
+                </div>
+            </header>
+
+            <main class="flex-1 overflow-hidden relative bg-kite-bg">
+
+                <section id="screen-dashboard" class="absolute inset-0 z-10 flex flex-col overflow-hidden p-4 fade-in">
+                    <div class="mb-3 shrink-0">
+                        <div class="relative max-w-xs">
+                            <i class="ph ph-funnel absolute left-3 top-2 text-zinc-500 text-xs"></i>
+                            <input type="text" id="full-watchlist-search" class="w-full rounded border border-kite-border bg-kite-panel pl-8 pr-3 py-1 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Filter active tabular matrix...">
                         </div>
                     </div>
-                    <button id="force-sync-btn" class="w-full bg-kite-blue text-white hover:bg-blue-600 font-semibold py-2 rounded text-xs transition-colors text-center flex items-center justify-center gap-1.5" title="Click to instantly pull the newest data from the cloud right now.">
-                        <i class="ph ph-arrows-clockwise"></i> Force Data Sync
+
+                    <div class="flex-1 border border-kite-border bg-kite-panel rounded-lg overflow-x-auto overflow-y-auto">
+                        <table class="w-full border-collapse text-left text-xs select-none min-w-[700px]">
+                            <thead class="sticky top-0 z-20 border-b border-kite-border bg-kite-panel text-zinc-400 font-mono text-[10px] uppercase tracking-wider">
+                                <tr>
+                                    <th class="sticky left-0 bg-kite-panel z-30 px-4 py-3 min-w-[120px]">Asset Name</th>
+                                    <th class="px-4 py-3 text-center">Health Score</th>
+                                    <th class="px-4 py-3">Momentum Vector</th>
+                                    <th class="px-4 py-3">Regulatory Risk</th>
+                                    <th class="px-4 py-3 text-right">AI Verdict</th>
+                                </tr>
+                            </thead>
+                            <tbody id="watchlist-table-body" class="divide-y divide-kite-border/40"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section id="screen-terminal" class="absolute inset-0 z-0 hidden flex-col overflow-y-auto p-4 fade-in">
+                    <div id="empty-state" class="flex-1 flex flex-col items-center justify-center border border-dashed border-kite-border rounded-lg bg-kite-panel/30 p-8">
+                        <i class="ph ph-chart-line-up text-4xl text-zinc-600 mb-2"></i>
+                        <p class="text-xs text-zinc-400 font-medium">Select an asset from the left watchlist to mount forensic telemetry.</p>
+                    </div>
+
+                    <div id="active-content" class="hidden space-y-4 w-full">
+                        <div class="flex flex-wrap items-center justify-between border border-kite-border bg-kite-panel px-4 py-3 rounded-lg gap-2">
+                            <div>
+                                <h1 id="target-title" class="text-base font-bold tracking-tight text-white uppercase">UNASSIGNED</h1>
+                                <p class="text-[10px] font-mono text-zinc-500 tracking-wider uppercase mt-0.5">Primary Forensic Workspace Target</p>
+                            </div>
+                            <div class="flex items-center gap-4 font-mono text-right">
+                                <div>
+                                    <div id="live-price" class="text-base font-bold text-zinc-200">--.--</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Last Traded Price</div>
+                                </div>
+                                <div class="border-l border-kite-border pl-4">
+                                    <div id="target-score" class="text-sm font-bold text-kite-blue">--/100</div>
+                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Diagnostic Score</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border border-kite-border bg-kite-panel p-2 rounded-lg shadow-inner overflow-hidden">
+                            <div id="tv-chart-view-frame" class="w-full h-[300px] sm:h-[380px] md:h-[400px] tv-chart-container rounded"></div>
+                        </div>
+
+                        <div id="analysis-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 prose max-w-none"></div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <div id="options-dropdown" class="fixed inset-y-0 right-0 z-50 w-80 translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-200 ease-in-out">
+            <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 bg-kite-bg/30">
+                <div class="flex items-center gap-2">
+                    <i class="ph-bold ph-database text-kite-orange text-sm"></i>
+                    <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">Git Vault Core Panel</span>
+                </div>
+                <button id="close-vault-drawer" class="p-1 text-zinc-500 hover:text-zinc-100 focus:outline-none">
+                    <i class="ph-bold ph-caret-right text-base"></i>
+                </button>
+            </div>
+
+            <div class="flex-1 p-4 space-y-6 overflow-y-auto">
+                <div class="space-y-3">
+                    <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest">Auto-Fetch Frame Interval</label>
+                    <select id="scheduler-interval" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer">
+                        <option value="1">1 Minute Fetch Cycle</option>
+                        <option value="5" selected>5 Minute Fetch Cycle</option>
+                        <option value="15">15 Minute Fetch Cycle</option>
+                    </select>
+                </div>
+
+                <div class="rounded border border-kite-border bg-kite-bg/60 p-3 flex items-center justify-between font-mono text-xs">
+                    <span class="text-zinc-500">Next Vault Pulldown:</span>
+                    <span id="scheduler-countdown" class="font-bold text-kite-orange">--:--</span>
+                </div>
+
+                <div class="pt-2 space-y-3">
+                    <button id="force-sync-btn" class="w-full flex items-center justify-center gap-2 rounded border border-kite-border bg-kite-bg py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-kite-border/80 transition-colors focus:outline-none">
+                        <i class="ph ph-arrows-clockwise"></i>
+                        FORCE VAULT PULL
+                    </button>
+                    <button id="vault-push-btn" class="w-full flex items-center justify-center gap-2 rounded bg-zinc-800 text-zinc-400 cursor-not-allowed py-2 text-xs font-semibold focus:outline-none" disabled>
+                        <i class="ph ph-cloud-arrow-up"></i>
+                        PUSH OVERRIDES TO REPO
                     </button>
                 </div>
             </div>
-        </div>
-    </header>
 
-    <div class="flex flex-1 overflow-hidden relative">
-        <div id="screen-dashboard" class="absolute inset-0 z-20 bg-kite-bg overflow-y-auto flex flex-col fade-in">
-            <div class="px-8 py-6 border-b border-kite-border flex justify-between items-end sticky top-0 bg-kite-bg z-10">
-                <div>
-                    <h2 class="text-2xl font-semibold text-kite-text tracking-tight">Market Screener</h2>
-                    <p class="text-xs text-kite-muted mt-1">Cross-sectional momentum, F&O positioning, and health metrics.</p>
-                </div>
-                <div class="relative">
-                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-kite-muted"></i>
-                    <input type="text" id="full-watchlist-search" class="w-64 bg-kite-nav border border-kite-border rounded text-sm pl-9 pr-3 py-2.5 focus:border-kite-blue focus:outline-none transition-colors" placeholder="Filter assets..." title="Type a name to quickly find a stock in the list.">
-                </div>
-            </div>
-            
-            <div class="px-8 py-4 flex-1">
-                <table class="w-full text-left border-collapse">
-                    <thead>
-                        <tr class="text-[11px] text-kite-muted border-b border-kite-border uppercase tracking-wider">
-                            <th class="pb-3 font-medium w-1/4">Asset & Structure</th>
-                            <th class="pb-3 font-medium">Health Score</th>
-                            <th class="pb-3 font-medium">Momentum & F&O</th>
-                            <th class="pb-3 font-medium">Regulatory Risk</th>
-                            <th class="pb-3 font-medium">AI Verdict</th>
-                            <th class="pb-3 font-medium text-right">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody id="watchlist-table-body" class="text-sm"></tbody>
-                </table>
+            <div class="p-3 border-t border-kite-border bg-kite-bg/20 text-[10px] font-mono text-zinc-600 text-center">
+                ENGINE STATE: ACTIVE_MONITORING
             </div>
         </div>
 
-        <div id="screen-terminal" class="absolute inset-0 z-10 flex w-full h-full hidden fade-in">
-            <aside class="w-[320px] lg:w-[380px] border-r border-kite-border bg-kite-bg flex flex-col shrink-0">
-                <div class="p-3 border-b border-kite-border">
-                    <div class="relative">
-                        <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-kite-muted"></i>
-                        <input type="text" id="terminal-watchlist-search" class="w-full bg-kite-nav border border-kite-border rounded text-sm pl-9 pr-3 py-2 focus:border-kite-blue focus:outline-none transition-colors" placeholder="Search ticker..." title="Search for a specific stock to analyze.">
-                    </div>
-                </div>
-                <div id="terminal-watchlist-container" class="flex-1 overflow-y-auto"></div>
-            </aside>
-
-            <main class="flex-1 flex flex-col bg-kite-bg overflow-hidden relative">
-                <div id="empty-state" class="absolute inset-0 flex flex-col items-center justify-center text-kite-muted z-10 bg-kite-bg">
-                    <i class="ph ph-chart-line-up text-6xl mb-4 opacity-50"></i>
-                    <p class="text-sm">Select an asset from the left to view its forensic analysis.</p>
-                </div>
-
-                <div id="active-content" class="hidden flex-1 overflow-y-auto pb-10">
-                    
-                    <div class="px-6 py-4 border-b border-kite-border flex justify-between items-end sticky top-0 bg-kite-bg z-10">
-                        <div class="flex items-center gap-6">
-                            <div>
-                                <h2 id="target-title" class="text-2xl font-semibold text-kite-text tracking-tight">TICKER</h2>
-                                <p id="target-subtitle" class="text-xs text-kite-muted mt-0.5">NSE Equity • Classification</p>
-                            </div>
-                            
-                            <div class="border-l border-kite-border pl-6">
-                                <div id="live-price" class="text-2xl font-bold font-mono text-kite-text">₹ --</div>
-                                <div id="live-change" class="text-xs font-semibold text-kite-muted mt-0.5">-- (--%)</div>
-                            </div>
-                        </div>
-
-                        <div class="flex items-center gap-3">
-                            <div id="target-verdict" class="px-3 py-1.5 rounded bg-kite-border text-xs font-bold tracking-wide">VERDICT</div>
-                            <div class="text-right">
-                                <p id="target-score" class="text-xl font-mono font-medium text-kite-blue">--</p>
-                                <p class="text-[10px] text-kite-muted uppercase">Health Score</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-4">
-                        <div class="border border-kite-border rounded relative">
-                            <div id="tv-chart-view-frame" class="tv-chart-container" title="Interactive price chart"></div>
-                        </div>
-                    </div>
-
-                    <div class="px-6 py-2">
-                        <h3 class="text-sm font-semibold text-kite-muted uppercase tracking-wider mb-4 px-1">AI Forensic Modules</h3>
-                        <div id="analysis-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
-                    </div>
-                </div>
-            </main>
-        </div>
     </div>
 
-    <script type="module" src="./js/firebase-auth.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Synchronous Native Layout UI Toggles
+        const vaultBtn = document.getElementById('menu-dots-btn');
+        const vaultDrawer = document.getElementById('options-dropdown');
+        const closeVaultBtn = document.getElementById('close-vault-drawer');
+        
+        const mobileToggle = document.getElementById('mobile-sidebar-toggle');
+        const sidebar = document.getElementById('global-sidebar');
+        const sidebarClose = document.getElementById('sidebar-close-btn');
+        const backdrop = document.getElementById('sidebar-backdrop');
+
+        vaultBtn.addEventListener('click', () => vaultDrawer.classList.remove('translate-x-full'));
+        closeVaultBtn.addEventListener('click', () => vaultDrawer.classList.add('translate-x-full'));
+
+        const toggleMobileSidebar = (show) => {
+            if(show) {
+                sidebar.classList.remove('-translate-x-full');
+                backdrop.classList.remove('hidden');
+            } else {
+                sidebar.classList.add('-translate-x-full');
+                backdrop.classList.add('hidden');
+            }
+        };
+        mobileToggle.addEventListener('click', () => toggleMobileSidebar(true));
+        sidebarClose.addEventListener('click', () => toggleMobileSidebar(false));
+        backdrop.addEventListener('click', () => toggleMobileSidebar(false));
+    </script>
 </body>
 </html>
