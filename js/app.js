@@ -9,18 +9,25 @@ localforage.config({
     storeName: 'studio_core_datastore' 
 });
 
-let currentOperator = "LOCAL_USER";
 let isForensicMode = false;
 let currentSessionId = Date.now().toString();
 
 let savedSessions = {};
-let localWatchlist = []; // Format: [{ symbol: "RELIANCE", addedAt: 1234, addedPrice: 2000.50, currentPrice: 2050, dayChange: 1.2, totalPnl: 2.5 }]
+
+// Watchlist State Migration to Multi-Tab Array
+// Format: [{ id: "wl_123", name: "Watchlist 1", stocks: [{symbol, addedPrice, currentPrice, ...}] }]
+let watchlists = []; 
+let activeWatchlistId = null;
+
 let alphaLedger = [];
 let forensicArchives = {};
 let nseMasterList = []; 
 let activeChartInstances = [];
 let hasUnsyncedChanges = false;
 let currentForensicTarget = null; 
+
+// Global cache to prevent redundant API calls when iterating across tabs
+let globalPriceCache = {};
 
 // Prompts & Routing
 const JSON_SCHEMA_ROUTER = `
@@ -36,8 +43,8 @@ let SMART_MASTER_PROMPT = `You are an elite Institutional Forensic Analyst. ` + 
 const RADAR_PROMPT = `Analyze the provided watchlist data based on the latest news (last 24-48 hrs). OUTPUT STRICTLY VALID JSON. Schema: { "type": "radar", "radar_date": "Today's Date", "market_sentiment_summary": "1-2 sentence overview", "stock_updates": [ { "ticker": "STOCK_NAME", "news_summary": "2-3 crisp bullet points", "sentiment": "Positive / Negative / Neutral", "severity": "High / Medium / Low" } ] }`;
 
 const NETWORK_PROXIES = [
-    "https://api.allorigins.win/raw?url=", 
     "https://corsproxy.io/?", 
+    "https://api.allorigins.win/raw?url=",
     "https://api.codetabs.com/v1/proxy?quest="
 ];
 
@@ -190,38 +197,50 @@ async function fetchStockDataFromGoogle(symbol) {
 }
 
 // ==========================================
-// 4. SYSTEM INITIALIZATION (NO AUTH)
+// 4. SYSTEM INITIALIZATION & STATE MIGRATION
 // ==========================================
 async function initApp() {
     try {
         savedSessions = await localforage.getItem('sessions') || {};
-        
-        // Auto-migrate old string-based watchlists to the new PnL object format
-        const storedWatchlist = await localforage.getItem('watchlist') || [];
-        let requiresMigrationSave = false;
-        
-        localWatchlist = storedWatchlist.map(item => {
-            if (typeof item === 'string') {
-                requiresMigrationSave = true;
-                return { symbol: item, addedAt: Date.now(), addedPrice: null }; 
-            }
-            return item;
-        });
-        
-        if (requiresMigrationSave) {
-            await localforage.setItem('watchlist', localWatchlist);
-        }
-        
         alphaLedger = await localforage.getItem('alpha_ledger') || [];
         forensicArchives = await localforage.getItem('forensic_archives') || {};
+        
+        // Multi-Tab Watchlist Migration Engine
+        const storedWatchlists = await localforage.getItem('watchlists');
+        
+        if (storedWatchlists && storedWatchlists.length > 0) {
+            watchlists = storedWatchlists;
+        } else {
+            // Check if there is a legacy flat array to migrate
+            const oldFlatList = await localforage.getItem('watchlist');
+            let initialStocks = [];
+            
+            if (oldFlatList && oldFlatList.length > 0) {
+                initialStocks = oldFlatList.map(s => {
+                    if (typeof s === 'string') return { symbol: s, addedAt: Date.now(), addedPrice: null };
+                    return s;
+                });
+            }
+            
+            // Build the default Watchlist 1
+            watchlists = [{
+                id: 'wl_default_' + Date.now(),
+                name: 'Watchlist 1',
+                stocks: initialStocks
+            }];
+            await localforage.setItem('watchlists', watchlists);
+        }
+        
+        activeWatchlistId = watchlists[0]?.id;
         
         await loadNseMasterList();
         updateModeUI();
         
         // Boot UI
         renderSessionsSidebar();
+        renderWatchlistTabs();
         
-        // Initial PnL Fetch & Render
+        // Initial PnL Fetch
         await fetchWatchlistPrices();
         
         // Background Polling Engine (30s) updates prices silently
@@ -355,7 +374,6 @@ document.getElementById('search-form').onsubmit = async (e) => {
     const memoryContext = alphaLedger.length > 0 ? `\n[PAST MEMORY]: ${JSON.stringify(alphaLedger.slice(-10))}` : "";
 
     if (isForensicMode) {
-        // Use explicitly set target or default to the first word of query
         let activeTarget = currentForensicTarget || q.toUpperCase().split(' ')[0];
         
         let injectedDataText = "";
@@ -383,17 +401,20 @@ document.getElementById('search-form').onsubmit = async (e) => {
 };
 
 document.getElementById('run-radar-btn').onclick = async () => {
-    if (localWatchlist.length === 0) {
-        return showToast("Watchlist empty.", "error");
+    // Collect all symbols from all watchlists for a macro radar
+    const allSymbols = new Set();
+    watchlists.forEach(wl => wl.stocks.forEach(s => allSymbols.add(s.symbol)));
+    
+    if (allSymbols.size === 0) {
+        return showToast("No assets in any Watchlist to scan.", "error");
     }
     
     isForensicMode = true; 
     updateModeUI();
     
-    // Extract just symbols for the radar prompt
-    const symbolsOnly = localWatchlist.map(w => w.symbol);
-    const promptText = `Watchlist: ${symbolsOnly.join(', ')}. Date: ${new Date().toISOString()}`;
-    const uiText = `RUN RADAR: Scrape Data for ${localWatchlist.length} Stocks`;
+    const symbolsArray = Array.from(allSymbols);
+    const promptText = `Watchlist: ${symbolsArray.join(', ')}. Date: ${new Date().toISOString()}`;
+    const uiText = `RUN RADAR: Scrape Data for ${symbolsArray.length} Stocks`;
     
     addMessageToDOM("user", `<span class="text-kite-orange font-bold flex items-center gap-2"><i class="ph-bold ph-broadcast animate-pulse"></i> ${escapeHTML(uiText)}</span>`, true);
     
@@ -520,7 +541,7 @@ document.getElementById('new-chat-btn').onclick = () => {
     currentSessionId = Date.now().toString();
     activeChartInstances = []; 
     currentForensicTarget = null;
-    updateWatchlistHeaderButton(); // Reset header UI
+    updateWatchlistHeaderButton(); 
     
     document.getElementById('chat-container').innerHTML = `
         <div id="welcome-screen" class="flex flex-col items-center justify-center h-full text-center opacity-50 px-4">
@@ -577,8 +598,132 @@ function renderSessionsSidebar() {
 }
 
 // ==========================================
-// 8. WATCHLIST, PNL LOGIC & DEDICATED SCREEN
+// 8. WATCHLISTS, TABS & PNL LOGIC
 // ==========================================
+
+// Overlay Controllers
+const watchlistScreen = document.getElementById('watchlist-screen');
+const openWatchlistBtn = document.getElementById('open-watchlist-btn');
+const closeWatchlistBtn = document.getElementById('close-watchlist-btn');
+
+openWatchlistBtn.onclick = () => {
+    renderWatchlistTabs();
+    renderWatchlistGrid();
+    watchlistScreen.classList.remove('hidden');
+    setTimeout(() => {
+        watchlistScreen.classList.remove('scale-95', 'opacity-0');
+        watchlistScreen.classList.add('scale-100', 'opacity-100');
+    }, 10);
+};
+
+function hideWatchlistScreen() {
+    watchlistScreen.classList.remove('scale-100', 'opacity-100');
+    watchlistScreen.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+        watchlistScreen.classList.add('hidden');
+    }, 300);
+}
+
+closeWatchlistBtn.onclick = hideWatchlistScreen;
+
+// Tab Management
+window.createNewWatchlist = async () => {
+    const newId = 'wl_' + Date.now();
+    const newName = `Watchlist ${watchlists.length + 1}`;
+    
+    watchlists.push({ id: newId, name: newName, stocks: [] });
+    activeWatchlistId = newId;
+    
+    await localforage.setItem('watchlists', watchlists);
+    triggerDirtyState(true);
+    
+    renderWatchlistTabs();
+    renderWatchlistGrid();
+};
+
+window.renameWatchlist = async (id, e) => {
+    e.stopPropagation(); // Don't trigger tab selection
+    const wl = watchlists.find(w => w.id === id);
+    if (!wl) return;
+    
+    const newName = prompt("Rename Portfolio Ledger:", wl.name);
+    if (newName && newName.trim() !== "") {
+        wl.name = newName.trim();
+        await localforage.setItem('watchlists', watchlists);
+        triggerDirtyState(true);
+        renderWatchlistTabs();
+    }
+};
+
+window.deleteWatchlist = async (id, e) => {
+    e.stopPropagation();
+    if (watchlists.length <= 1) {
+        return showToast("Cannot delete the final tracking ledger.", "warn");
+    }
+    
+    if (confirm("Delete this entire portfolio ledger and all its assets?")) {
+        watchlists = watchlists.filter(w => w.id !== id);
+        if (activeWatchlistId === id) {
+            activeWatchlistId = watchlists[0].id;
+        }
+        
+        await localforage.setItem('watchlists', watchlists);
+        triggerDirtyState(true);
+        
+        renderWatchlistTabs();
+        renderWatchlistGrid();
+    }
+};
+
+function renderWatchlistTabs() {
+    const container = document.getElementById('watchlist-tabs-container');
+    if (!container) return;
+    container.innerHTML = '';
+    
+    watchlists.forEach(wl => {
+        const isActive = wl.id === activeWatchlistId;
+        const tab = document.createElement('div');
+        
+        // Tab Styling
+        let baseStyle = "px-4 py-2 cursor-pointer text-xs font-bold uppercase tracking-widest border-b-2 transition-colors flex items-center gap-2 select-none group ";
+        if (isActive) {
+            baseStyle += "border-kite-blue text-white bg-kite-bg/30";
+        } else {
+            baseStyle += "border-transparent text-zinc-500 hover:text-zinc-300";
+        }
+        
+        tab.className = baseStyle;
+        
+        tab.innerHTML = `
+            <span class="truncate max-w-[100px] md:max-w-[150px]">${escapeHTML(wl.name)}</span>
+            <button class="text-zinc-500 hover:text-white p-0.5 focus:outline-none md:opacity-0 md:group-hover:opacity-100 transition-opacity" onclick="renameWatchlist('${wl.id}', event)" title="Rename">
+                <i class="ph-bold ph-pencil-simple"></i>
+            </button>
+            ${watchlists.length > 1 ? `
+                <button class="text-zinc-500 hover:text-kite-red p-0.5 focus:outline-none md:opacity-0 md:group-hover:opacity-100 transition-opacity" onclick="deleteWatchlist('${wl.id}', event)" title="Delete">
+                    <i class="ph-bold ph-trash"></i>
+                </button>
+            ` : ''}
+        `;
+        
+        tab.onclick = () => { 
+            activeWatchlistId = wl.id; 
+            renderWatchlistTabs(); 
+            renderWatchlistGrid(); 
+        };
+        
+        container.appendChild(tab);
+    });
+    
+    // Add New Tab Button
+    const addBtn = document.createElement('div');
+    addBtn.className = "px-3 py-2 cursor-pointer text-xs font-bold text-zinc-500 hover:text-white transition-colors flex items-center border-b-2 border-transparent select-none";
+    addBtn.innerHTML = `<i class="ph-bold ph-plus text-base"></i>`;
+    addBtn.onclick = createNewWatchlist;
+    container.appendChild(addBtn);
+}
+
+// Watchlist Search & Add Logic
 document.getElementById('new-stock-input').addEventListener('input', function() {
     const val = this.value.toUpperCase().trim();
     const dropdown = document.getElementById('autocomplete-dropdown');
@@ -600,29 +745,29 @@ document.getElementById('new-stock-input').addEventListener('input', function() 
 
     matches.forEach(s => {
         const div = document.createElement('div'); 
-        div.className = "px-3 py-2 hover:bg-zinc-800 cursor-pointer flex justify-between items-center border-b border-kite-border/50 text-xs transition-colors";
+        div.className = "px-4 py-2 hover:bg-zinc-800 cursor-pointer flex justify-between items-center border-b border-kite-border/50 text-xs transition-colors";
         div.innerHTML = `
             <span class="font-bold text-kite-blue font-mono">${s.symbol}</span> 
-            <button class="p-1 rounded text-zinc-400 hover:text-kite-green"><i class="ph-bold ph-plus"></i></button>
+            <span class="text-[10px] text-zinc-500 truncate ml-4 flex-1 text-right">${s.name || ''}</span>
         `;
         
         div.onclick = async () => { 
-            // Prevent duplicates
-            if(!localWatchlist.some(w => w.symbol === s.symbol)) { 
-                localWatchlist.push({ symbol: s.symbol, addedAt: Date.now(), addedPrice: null }); 
-                await localforage.setItem('watchlist', localWatchlist); 
+            const activeWl = watchlists.find(w => w.id === activeWatchlistId);
+            
+            if (activeWl && !activeWl.stocks.some(w => w.symbol === s.symbol)) { 
+                activeWl.stocks.push({ symbol: s.symbol, addedAt: Date.now(), addedPrice: null }); 
+                await localforage.setItem('watchlists', watchlists); 
                 triggerDirtyState(true); 
+                
+                // Immediately fetch to get the baseline addedPrice
                 await fetchWatchlistPrices(); 
-            } 
+                showToast(`${s.symbol} injected into ${activeWl.name}.`, "success"); 
+            } else {
+                showToast("Asset already exists in this ledger.", "warn");
+            }
             
             document.getElementById('new-stock-input').value = ''; 
             dropdown.classList.add('hidden'); 
-            showToast("Target Added"); 
-            
-            if (window.innerWidth < 768) {
-                document.getElementById('new-stock-input').blur();
-                toggleMobileSidebar(false);
-            }
         };
         
         dropdown.appendChild(div);
@@ -630,54 +775,23 @@ document.getElementById('new-stock-input').addEventListener('input', function() 
     dropdown.classList.remove('hidden');
 });
 
-// Dedicated Watchlist Screen Overlays
-const watchlistScreen = document.getElementById('watchlist-screen');
-const openWatchlistBtn = document.getElementById('open-watchlist-btn');
-const closeWatchlistBtn = document.getElementById('close-watchlist-btn');
-
-openWatchlistBtn.onclick = () => {
-    renderWatchlistGrid();
-    watchlistScreen.classList.remove('hidden');
-    // Micro-delay for smooth transition
-    setTimeout(() => {
-        watchlistScreen.classList.remove('scale-95', 'opacity-0');
-        watchlistScreen.classList.add('scale-100', 'opacity-100');
-    }, 10);
-};
-
-function hideWatchlistScreen() {
-    watchlistScreen.classList.remove('scale-100', 'opacity-100');
-    watchlistScreen.classList.add('scale-95', 'opacity-0');
-    setTimeout(() => {
-        watchlistScreen.classList.add('hidden');
-    }, 300);
-}
-
-closeWatchlistBtn.onclick = hideWatchlistScreen;
-
-function selectWatchlistItem(itemObj) {
-    currentForensicTarget = itemObj.symbol;
-    updateWatchlistHeaderButton();
-    hideWatchlistScreen();
-
-    // Auto-fill prompt if in Forensic Mode
-    if (isForensicMode) {
-        const input = document.getElementById('search-input');
-        input.value = `Execute full structural institutional financial forensics evaluation loop data scan against tracking profile target parameters on asset: ${itemObj.symbol}`;
-        input.focus();
-    } else {
-        // Auto-switch to forensic mode if not active to save a click
-        document.getElementById('mode-forensic').click();
-        const input = document.getElementById('search-input');
-        input.value = `Execute full structural institutional financial forensics evaluation loop data scan against tracking profile target parameters on asset: ${itemObj.symbol}`;
-        input.focus();
+// Hide dropdown if clicked outside
+document.addEventListener('click', (e) => {
+    const dropdown = document.getElementById('autocomplete-dropdown');
+    const input = document.getElementById('new-stock-input');
+    if (dropdown && !dropdown.contains(e.target) && e.target !== input) {
+        dropdown.classList.add('hidden');
     }
-}
+});
 
-async function removeWatchlistItem(symbol, e) {
-    e.stopPropagation(); // Stop click from triggering select
-    localWatchlist = localWatchlist.filter(w => w.symbol !== symbol);
-    await localforage.setItem('watchlist', localWatchlist);
+// Grid UI Logic
+window.removeWatchlistItem = async (symbol, e) => {
+    e.stopPropagation(); 
+    const activeWl = watchlists.find(w => w.id === activeWatchlistId);
+    if (!activeWl) return;
+    
+    activeWl.stocks = activeWl.stocks.filter(w => w.symbol !== symbol);
+    await localforage.setItem('watchlists', watchlists);
     triggerDirtyState(true);
     
     if (currentForensicTarget === symbol) {
@@ -686,58 +800,89 @@ async function removeWatchlistItem(symbol, e) {
     }
     
     renderWatchlistGrid();
+};
+
+function selectWatchlistItem(itemObj) {
+    currentForensicTarget = itemObj.symbol;
+    updateWatchlistHeaderButton();
+    hideWatchlistScreen();
+
+    // Auto-switch & Auto-fill Forensic Prompt
+    if (!isForensicMode) document.getElementById('mode-forensic').click();
+    
+    const input = document.getElementById('search-input');
+    input.value = `Execute full structural institutional financial forensics evaluation loop data scan against tracking profile target parameters on asset: ${itemObj.symbol}`;
+    input.focus();
 }
 
 async function fetchWatchlistPrices() {
-    if (localWatchlist.length === 0) {
+    // Collect all unique symbols across ALL watchlists
+    const allSymbols = new Set();
+    watchlists.forEach(wl => wl.stocks.forEach(s => allSymbols.add(s.symbol)));
+    
+    if (allSymbols.size === 0) {
         updateWatchlistHeaderButton();
-        renderWatchlistGrid();
+        if (!watchlistScreen.classList.contains('hidden')) renderWatchlistGrid();
         return;
     }
     
     try {
-        const queryUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${localWatchlist.map(w=>`${w.symbol}.NS`).join(',')}`;
+        const queryStr = Array.from(allSymbols).map(s => s.includes('USD') || s.includes('BTC') ? s : `${s}.NS`).join(',');
+        const queryUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${queryStr}`;
+        
         const data = await fetchWithWaterfall(queryUrl);
         const quotes = JSON.parse(data).quoteResponse.result;
         
         let needsDbUpdate = false;
 
-        localWatchlist.forEach(w => {
-            const quote = quotes.find(item => item.symbol === `${w.symbol}.NS`);
-            
-            if (quote) {
-                w.currentPrice = quote.regularMarketPrice;
-                w.dayChange = quote.regularMarketChangePercent;
+        // Cache the live responses
+        quotes.forEach(q => {
+            const rawSym = q.symbol.replace('.NS', '');
+            globalPriceCache[rawSym] = {
+                price: q.regularMarketPrice,
+                change: q.regularMarketChangePercent
+            };
+        });
+
+        // Distribute cached prices mathematically across all watchlists
+        watchlists.forEach(wl => {
+            wl.stocks.forEach(w => {
+                const cacheData = globalPriceCache[w.symbol];
                 
-                // Stamp entry price on first fetch
-                if (w.addedPrice === null || w.addedPrice === undefined) {
-                    w.addedPrice = w.currentPrice;
-                    needsDbUpdate = true;
+                if (cacheData) {
+                    w.currentPrice = cacheData.price;
+                    w.dayChange = cacheData.change;
+                    
+                    // Stamp entry baseline on first successful fetch
+                    if (w.addedPrice === null || w.addedPrice === undefined) {
+                        w.addedPrice = w.currentPrice;
+                        needsDbUpdate = true;
+                    }
+                    
+                    // Calculate running PnL
+                    if (w.addedPrice && w.addedPrice > 0) {
+                        w.totalPnl = ((w.currentPrice - w.addedPrice) / w.addedPrice) * 100;
+                    } else {
+                        w.totalPnl = 0;
+                    }
                 }
-                
-                // Calculate PnL
-                if (w.addedPrice && w.addedPrice > 0) {
-                    w.totalPnl = ((w.currentPrice - w.addedPrice) / w.addedPrice) * 100;
-                } else {
-                    w.totalPnl = 0;
-                }
-            }
+            });
         });
         
         if (needsDbUpdate) {
-            await localforage.setItem('watchlist', localWatchlist);
+            await localforage.setItem('watchlists', watchlists);
             triggerDirtyState(true);
         }
 
         updateWatchlistHeaderButton();
         
-        // Re-render grid if screen is open
+        // Re-render grid if overlay is active
         if (!watchlistScreen.classList.contains('hidden')) {
             renderWatchlistGrid();
         }
 
     } catch (err) {
-        console.warn("Pricing fetch failed", err);
+        console.warn("Pricing fetch cascade failed", err);
     }
 }
 
@@ -746,27 +891,32 @@ function updateWatchlistHeaderButton() {
     const pnlSpan = document.getElementById('header-target-pnl');
 
     if (!currentForensicTarget) {
-        symbolSpan.textContent = "Targets (Live)";
-        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-400 truncate w-full text-left";
+        symbolSpan.textContent = "No Target";
+        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-400 truncate w-full text-left transition-colors group-hover:text-kite-blue";
         pnlSpan.classList.add('hidden');
         return;
     }
 
-    const activeData = localWatchlist.find(w => w.symbol === currentForensicTarget);
+    // Hunt for the active target's data in the cache or watchlists
+    let activeData = null;
+    for (const wl of watchlists) {
+        const found = wl.stocks.find(w => w.symbol === currentForensicTarget);
+        if (found) { activeData = found; break; }
+    }
     
     if (activeData) {
         symbolSpan.textContent = activeData.symbol;
-        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-200 truncate w-full text-left";
+        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-200 truncate w-full text-left transition-colors group-hover:text-kite-blue";
         
         const pColor = activeData.totalPnl >= 0 ? 'text-kite-green' : 'text-kite-red';
         const pSign = activeData.totalPnl > 0 ? '+' : '';
         const pStr = activeData.totalPnl !== undefined ? `${pSign}${activeData.totalPnl.toFixed(2)}%` : '--';
         const livePrc = activeData.currentPrice ? `₹${activeData.currentPrice.toFixed(2)}` : '--';
 
-        pnlSpan.innerHTML = `${livePrc} <span class="mx-1">•</span> <span class="${pColor}">${pStr}</span>`;
+        pnlSpan.innerHTML = `${livePrc} <span class="mx-1 opacity-50">•</span> <span class="${pColor}">${pStr}</span>`;
         pnlSpan.classList.remove('hidden');
     } else {
-        symbolSpan.textContent = "Targets (Live)";
+        symbolSpan.textContent = currentForensicTarget;
         pnlSpan.classList.add('hidden');
     }
 }
@@ -776,12 +926,14 @@ function renderWatchlistGrid() {
     if (!grid) return;
     grid.innerHTML = '';
 
-    if (localWatchlist.length === 0) {
-        grid.innerHTML = `<div class="col-span-full text-center py-10 text-zinc-500 font-mono text-xs">No active assets in ledger. Add targets via the sidebar.</div>`;
+    const activeWl = watchlists.find(w => w.id === activeWatchlistId);
+
+    if (!activeWl || activeWl.stocks.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-10 text-zinc-500 font-mono text-xs border border-dashed border-kite-border rounded-xl mx-4 mt-4 h-32 flex items-center justify-center">No assets bound to this tracking ledger. Use the search input above to inject targets.</div>`;
         return;
     }
 
-    localWatchlist.forEach(w => {
+    activeWl.stocks.forEach(w => {
         const priceStr = w.currentPrice ? `₹${w.currentPrice.toFixed(2)}` : 'Loading...';
         const addedPriceStr = w.addedPrice ? `₹${w.addedPrice.toFixed(2)}` : '--';
         
@@ -789,33 +941,33 @@ function renderWatchlistGrid() {
         const dSign = w.dayChange > 0 ? '+' : '';
         const dStr = w.dayChange !== undefined ? `${dSign}${w.dayChange.toFixed(2)}%` : '--';
 
-        const pColor = w.totalPnl >= 0 ? 'text-kite-green bg-kite-green/10' : 'text-kite-red bg-kite-red/10';
+        const pColor = w.totalPnl >= 0 ? 'text-kite-green bg-kite-green/10 border-kite-green/20' : 'text-kite-red bg-kite-red/10 border-kite-red/20';
         const pSign = w.totalPnl > 0 ? '+' : '';
         const pStr = w.totalPnl !== undefined ? `${pSign}${w.totalPnl.toFixed(2)}%` : '--';
         
         const isActive = currentForensicTarget === w.symbol;
-        const activeBorder = isActive ? 'border-kite-blue shadow-lg shadow-kite-blue/10' : 'border-kite-border hover:border-zinc-500';
+        const activeBorder = isActive ? 'border-kite-blue shadow-[0_0_15px_rgba(67,126,253,0.15)]' : 'border-kite-border hover:border-zinc-500';
 
         const card = document.createElement('div');
         card.className = `bg-kite-panel border rounded-xl p-4 flex flex-col cursor-pointer transition-all ${activeBorder}`;
         
         card.innerHTML = `
-            <div class="flex justify-between items-start mb-3">
+            <div class="flex justify-between items-start mb-4">
                 <div class="flex flex-col">
-                    <span class="font-bold text-sm text-white">${w.symbol}</span>
-                    <span class="text-[10px] font-mono text-zinc-500">Entry: ${addedPriceStr}</span>
+                    <span class="font-bold text-sm md:text-base text-white tracking-tight">${w.symbol}</span>
+                    <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-0.5">Entry: ${addedPriceStr}</span>
                 </div>
-                <button class="text-zinc-600 hover:text-kite-red p-1 rounded-full transition-colors focus:outline-none" onclick="removeWatchlistItem('${w.symbol}', event)">
+                <button class="text-zinc-600 hover:text-kite-red p-1 rounded-md transition-colors focus:outline-none hover:bg-kite-red/10" onclick="removeWatchlistItem('${w.symbol}', event)">
                     <i class="ph-bold ph-x text-sm"></i>
                 </button>
             </div>
             
-            <div class="flex justify-between items-end mt-auto pt-2">
+            <div class="flex justify-between items-end mt-auto">
                 <div class="flex flex-col">
                     <span class="text-sm font-mono text-zinc-200">${priceStr}</span>
-                    <span class="text-[10px] font-mono ${dColor}">${dStr} (Day)</span>
+                    <span class="text-[10px] font-mono ${dColor} mt-0.5">${dStr} <span class="text-zinc-600">(Day)</span></span>
                 </div>
-                <div class="px-2 py-1 rounded text-xs font-bold font-mono ${pColor}">
+                <div class="px-2.5 py-1.5 rounded border text-xs font-bold font-mono ${pColor}">
                     ${pStr}
                 </div>
             </div>
@@ -878,6 +1030,7 @@ function addMessageToDOM(role, text, isRawHtml = false) {
     }
 }
 
+// Utilizing safe RegExp constructors
 function extractJSON(text) { 
     try { 
         let cleaned = text.replace(new RegExp('`{3}json\\n?', 'g'), '').replace(new RegExp('`{3}\\n?', 'g'), '').trim(); 
@@ -1084,7 +1237,6 @@ document.getElementById('download-db-btn').onclick = () => {
         if (!nseMasterList.length) {
             return showToast("Master list empty", "error");
         }
-        // Extract symbols since Watchlist uses Objects now
         let csvContent = "SYMBOL,COMPANY\n" + nseMasterList.map(s => `${s.symbol},${s.name?.replace(/,/g, '')}`).join('\n');
         const blob = new Blob([csvContent], { type: 'text/csv' });
         const link = document.createElement('a'); 
@@ -1126,7 +1278,7 @@ async function gitSync(action) {
         if (action === 'push') {
             const uploadPayload = { 
                 sessions: savedSessions, 
-                watchlist: localWatchlist, 
+                watchlists: watchlists, 
                 ledger: alphaLedger, 
                 archives: forensicArchives 
             };
@@ -1153,12 +1305,12 @@ async function gitSync(action) {
             const payload = JSON.parse(atou(content));
             
             if (payload.sessions) savedSessions = payload.sessions; 
-            if (payload.watchlist) localWatchlist = payload.watchlist;
+            if (payload.watchlists) watchlists = payload.watchlists; // Replaced flat watchlist logic
             if (payload.ledger) alphaLedger = payload.ledger; 
             if (payload.archives) forensicArchives = payload.archives;
             
             await localforage.setItem('sessions', savedSessions); 
-            await localforage.setItem('watchlist', localWatchlist);
+            await localforage.setItem('watchlists', watchlists);
             
             renderSessionsSidebar(); 
             updateWatchlistHeaderButton();
