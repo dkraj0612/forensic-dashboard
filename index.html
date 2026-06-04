@@ -45,7 +45,7 @@
             </div>
             <form id="auth-form" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">User Identification</label>
+                    <label for="auth-username" class="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-1">User Identification</label>
                     <input type="text" id="auth-username" required autocomplete="username" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-sm text-zinc-100 placeholder-zinc-600 focus:border-kite-blue focus:outline-none" placeholder="OPERATOR_ID">
                 </div>
                 <button type="submit" class="w-full rounded bg-kite-blue py-2.5 text-sm font-semibold text-white transition-colors hover:bg-blue-600 focus:outline-none">
@@ -74,6 +74,7 @@
             <div class="p-3 border-b border-kite-border bg-kite-bg/50 relative">
                 <div class="relative">
                     <i class="ph ph-magnifying-glass absolute left-3 top-2.5 text-zinc-500"></i>
+                    <label for="terminal-watchlist-search" class="sr-only">Search Watchlist</label>
                     <input type="text" id="terminal-watchlist-search" class="w-full rounded border border-kite-border bg-kite-bg pl-9 pr-8 py-1.5 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Search or add instrument...">
                     <i class="ph ph-command absolute right-3 top-2.5 text-xs text-zinc-600"></i>
                 </div>
@@ -112,8 +113,8 @@
                         <span class="hidden sm:inline">DB SYNCHED</span>
                     </div>
 
-                    <button id="menu-dots-btn" title="Open Git Vault Pipeline Controls" class="p-2 rounded text-zinc-400 hover:text-zinc-100 hover:bg-kite-border/50 transition-colors focus:outline-none relative">
-                        <i class="ph-bold ph-git-fork text-base"></i>
+                    <button id="menu-dots-btn" title="Open Settings & Git Infrastructure Controls" class="p-2 rounded text-zinc-400 hover:text-zinc-100 hover:bg-kite-border/50 transition-colors focus:outline-none relative">
+                        <i class="ph-bold ph-sliders text-base"></i>
                         <span id="scheduler-indicator" class="absolute top-1.5 right-1.5 h-1.5 w-1.5 rounded-full bg-kite-orange hidden"></span>
                     </button>
 
@@ -129,6 +130,7 @@
                     <div class="mb-3 shrink-0">
                         <div class="relative max-w-xs">
                             <i class="ph ph-funnel absolute left-3 top-2 text-zinc-500 text-xs"></i>
+                            <label for="full-watchlist-search" class="sr-only">Filter Dashboard</label>
                             <input type="text" id="full-watchlist-search" class="w-full rounded border border-kite-border bg-kite-panel pl-8 pr-3 py-1 text-xs text-zinc-200 placeholder-zinc-500 focus:border-kite-blue focus:outline-none" placeholder="Filter active tabular matrix...">
                         </div>
                     </div>
@@ -163,8 +165,8 @@
                             </div>
                             <div class="flex items-center gap-4 font-mono text-right">
                                 <div>
-                                    <div id="live-price" class="text-base font-bold text-zinc-200">--.--</div>
-                                    <div class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Last Traded Price</div>
+                                    <div id="live-price" class="text-base font-bold text-zinc-200 transition-colors">--.--</div>
+                                    <div id="live-price-label" class="text-[10px] text-zinc-500 uppercase tracking-widest mt-0.5">Last Traded Price</div>
                                 </div>
                                 <div class="border-l border-kite-border pl-4">
                                     <div id="target-score" class="text-sm font-bold text-kite-blue">--/100</div>
@@ -174,7 +176,7 @@
                         </div>
 
                         <div class="border border-kite-border bg-kite-panel p-2 rounded-lg shadow-inner overflow-hidden">
-                            <div id="tv-chart-view-frame" class="w-full h-[300px] sm:h-[380px] md:h-[400px] tv-chart-container rounded"></div>
+                            <div id="tv-chart-view-frame" class="w-full h-[300px] sm:h-[380px] md:h-[400px] tv-chart-container rounded relative"></div>
                         </div>
 
                         <div id="analysis-grid" class="grid grid-cols-1 lg:grid-cols-2 gap-4 prose max-w-none"></div>
@@ -186,22 +188,52 @@
         <div id="options-dropdown" class="fixed inset-y-0 right-0 z-50 w-80 translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-200 ease-in-out">
             <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 bg-kite-bg/30">
                 <div class="flex items-center gap-2">
-                    <i class="ph-bold ph-database text-kite-orange text-sm"></i>
-                    <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">Git Vault Core Panel</span>
+                    <i class="ph-bold ph-sliders text-kite-blue text-sm"></i>
+                    <span class="font-bold text-xs uppercase tracking-wider text-zinc-300">SYSTEM CONTROL PANEL</span>
                 </div>
                 <button id="close-vault-drawer" class="p-1 text-zinc-500 hover:text-zinc-100 focus:outline-none">
                     <i class="ph-bold ph-caret-right text-base"></i>
                 </button>
             </div>
 
-            <div class="flex-1 p-4 space-y-6 overflow-y-auto">
+            <div class="flex-1 p-4 space-y-5 overflow-y-auto">
+                
+                <div class="space-y-2.5 pb-4 border-b border-kite-border/60">
+                    <label for="ai-model-selector" class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Inference Core Model</label>
+                    <div class="relative">
+                        <select id="ai-model-selector" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer appearance-none">
+                            <option value="gemini-3.5-flash" selected>Gemini 3.5 Flash (Latest High Speed)</option>
+                            <option value="gemini-3.1-pro">Gemini 3.1 Pro (Advanced Reasoning)</option>
+                            <option value="gemini-2.5-pro">Gemini 2.5 Pro (Stable Deep Context)</option>
+                            <option value="gemini-2.5-flash">Gemini 2.5 Flash (Optimized Execution)</option>
+                            <option value="gemini-2.5-flash-lite">Gemini 2.5 Flash Lite (Ultra-Low Latency)</option>
+                        </select>
+                        <i class="ph ph-caret-down absolute right-3 top-2.5 text-zinc-500 text-xs pointer-events-none"></i>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pb-4 border-b border-kite-border/60">
+                    <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Git Vault Infrastructure</label>
+                    <div>
+                        <label for="git-repo-url" class="block text-[9px] font-semibold text-zinc-500 uppercase mb-1">Target Repository URI</label>
+                        <input type="text" id="git-repo-url" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-kite-blue focus:outline-none font-mono" placeholder="https://github.com/user/repo.git">
+                    </div>
+                    <div>
+                        <label for="git-access-token" class="block text-[9px] font-semibold text-zinc-500 uppercase mb-1">Personal Access Token</label>
+                        <input type="password" id="git-access-token" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-1.5 text-xs text-zinc-200 placeholder-zinc-600 focus:border-kite-blue focus:outline-none font-mono" placeholder="ghp_****************************">
+                    </div>
+                </div>
+
                 <div class="space-y-3">
-                    <label class="block text-[11px] font-bold text-zinc-400 uppercase tracking-widest">Auto-Fetch Frame Interval</label>
-                    <select id="scheduler-interval" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer">
-                        <option value="1">1 Minute Fetch Cycle</option>
-                        <option value="5" selected>5 Minute Fetch Cycle</option>
-                        <option value="15">15 Minute Fetch Cycle</option>
-                    </select>
+                    <label for="scheduler-interval" class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Auto-Fetch Automation</label>
+                    <div class="relative">
+                        <select id="scheduler-interval" class="w-full rounded border border-kite-border bg-kite-bg px-3 py-2 text-xs text-zinc-200 focus:border-kite-blue focus:outline-none cursor-pointer appearance-none">
+                            <option value="1">1 Minute Fetch Cycle</option>
+                            <option value="5" selected>5 Minute Fetch Cycle</option>
+                            <option value="15">15 Minute Fetch Cycle</option>
+                        </select>
+                        <i class="ph ph-caret-down absolute right-3 top-2.5 text-zinc-500 text-xs pointer-events-none"></i>
+                    </div>
                 </div>
 
                 <div class="rounded border border-kite-border bg-kite-bg/60 p-3 flex items-center justify-between font-mono text-xs">
@@ -209,14 +241,14 @@
                     <span id="scheduler-countdown" class="font-bold text-kite-orange">--:--</span>
                 </div>
 
-                <div class="pt-2 space-y-3">
+                <div class="pt-1 space-y-2">
                     <button id="force-sync-btn" class="w-full flex items-center justify-center gap-2 rounded border border-kite-border bg-kite-bg py-2 text-xs font-semibold text-zinc-200 hover:text-white hover:bg-kite-border/80 transition-colors focus:outline-none">
                         <i class="ph ph-arrows-clockwise"></i>
                         FORCE VAULT PULL
                     </button>
-                    <button id="vault-push-btn" class="w-full flex items-center justify-center gap-2 rounded bg-zinc-800 text-zinc-400 cursor-not-allowed py-2 text-xs font-semibold focus:outline-none" disabled>
+                    <button id="vault-push-btn" class="w-full flex items-center justify-center gap-2 rounded border border-transparent bg-zinc-800 text-zinc-500 cursor-not-allowed py-2 text-xs font-semibold focus:outline-none transition-colors">
                         <i class="ph ph-cloud-arrow-up"></i>
-                        PUSH OVERRIDES TO REPO
+                        PUSH DATA OVERRIDES
                     </button>
                 </div>
             </div>
@@ -234,20 +266,35 @@
         const vaultBtn = document.getElementById('menu-dots-btn');
         const vaultDrawer = document.getElementById('options-dropdown');
         const closeVaultBtn = document.getElementById('close-vault-drawer');
+        const logoutBtn = document.getElementById('logout-btn');
         
         const mobileToggle = document.getElementById('mobile-sidebar-toggle');
         const sidebar = document.getElementById('global-sidebar');
         const sidebarClose = document.getElementById('sidebar-close-btn');
         const backdrop = document.getElementById('sidebar-backdrop');
 
-        vaultBtn.addEventListener('click', () => vaultDrawer.classList.remove('translate-x-full'));
-        closeVaultBtn.addEventListener('click', () => vaultDrawer.classList.add('translate-x-full'));
+        vaultBtn.addEventListener('click', () => {
+            vaultDrawer.classList.remove('translate-x-full');
+            vaultDrawer.classList.add('translate-x-0');
+        });
+        closeVaultBtn.addEventListener('click', () => {
+            vaultDrawer.classList.remove('translate-x-0');
+            vaultDrawer.classList.add('translate-x-full');
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            if(confirm("Lock Terminal and purge session context?")) {
+                location.reload();
+            }
+        });
 
         const toggleMobileSidebar = (show) => {
             if(show) {
                 sidebar.classList.remove('-translate-x-full');
+                sidebar.classList.add('translate-x-0');
                 backdrop.classList.remove('hidden');
             } else {
+                sidebar.classList.remove('translate-x-0');
                 sidebar.classList.add('-translate-x-full');
                 backdrop.classList.add('hidden');
             }
