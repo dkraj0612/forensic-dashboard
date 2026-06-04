@@ -1,8 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap');
 
+/* CSS Variables for single-source-of-truth theming */
+:root {
+    --kite-bg: #121212;
+    --kite-panel: #1c1c1e;
+    --kite-border: #2c2c2e;
+    --kite-blue: #437efd;
+    --kite-orange: #ff9500;
+    --text-muted: #a1a1aa;
+    --text-main: #e4e4e7;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     -webkit-tap-highlight-color: transparent;
+    background-color: var(--kite-bg);
 }
 
 /* Custom Scrollbar Styling Optimization */
@@ -16,7 +28,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: #2c2c2e;
+    background: var(--kite-border);
     border-radius: 20px;
 }
 
@@ -48,12 +60,12 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.05em;
     margin-bottom: 8px;
-    border-left: 2px solid #437efd;
+    border-left: 2px solid var(--kite-blue);
     padding-left: 6px;
 }
 
 .prose p {
-    color: #a1a1aa;
+    color: var(--text-muted);
     font-size: 13px;
     line-height: 1.55;
     margin-bottom: 12px;
@@ -68,7 +80,7 @@ body {
 .prose li {
     position: relative;
     padding-left: 14px;
-    color: #e4e4e7;
+    color: var(--text-main);
     font-size: 13px;
     line-height: 1.5;
     margin-bottom: 4px;
@@ -78,19 +90,19 @@ body {
     content: "▪";
     position: absolute;
     left: 0;
-    color: #437efd;
+    color: var(--kite-blue);
     font-size: 10px;
     top: -1px;
 }
 
 .prose code {
-    background-color: #121212;
-    color: #ff9500;
+    background-color: var(--kite-bg);
+    color: var(--kite-orange);
     font-family: monospace;
     padding: 2px 4px;
     border-radius: 4px;
     font-size: 11px;
-    border: 1px solid #2c2c2e;
+    border: 1px solid var(--kite-border);
 }
 
 /* Container Bounds for Chart Injections */
