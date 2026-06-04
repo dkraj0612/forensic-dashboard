@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="h-full bg-[#121212] text-zinc-100 antialiased">
 <head>
@@ -46,14 +47,13 @@
         <!-- MOBILE SIDEBAR BACKDROP -->
         <div id="sidebar-backdrop" class="absolute inset-0 bg-black/60 backdrop-blur-sm z-30 hidden md:hidden transition-opacity opacity-0 duration-300"></div>
 
-        <!-- SIDEBAR -->
+        <!-- SIDEBAR (Sessions & Ticker Search) -->
         <aside id="global-sidebar" class="absolute inset-y-0 left-0 z-40 w-[80vw] max-w-[280px] md:w-72 border-r border-kite-border bg-kite-panel flex flex-col transform -translate-x-full md:relative md:translate-x-0 transition-transform duration-300 shrink-0">
             <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 shrink-0">
                 <div class="flex items-center gap-2">
                     <i class="ph-bold ph-crosshair text-kite-blue text-lg animate-pulse"></i>
                     <span class="font-black text-sm tracking-widest text-zinc-100 uppercase">FORENSIC//STUDIO</span>
                 </div>
-                <!-- Mobile Close Button -->
                 <button id="mobile-close-sidebar" class="md:hidden text-zinc-400 hover:text-zinc-100 p-1 focus:outline-none">
                     <i class="ph-bold ph-x text-lg"></i>
                 </button>
@@ -95,9 +95,14 @@
                         <i class="ph-bold ph-list text-xl"></i>
                     </button>
 
-                    <select id="watchlist-dropdown" class="bg-kite-bg border border-kite-border rounded px-2 py-1.5 text-[10px] md:text-xs text-zinc-200 focus:outline-none focus:border-kite-blue w-28 md:w-48 font-mono appearance-none cursor-pointer truncate shrink-0">
-                        <option value="">No Active Target</option>
-                    </select>
+                    <!-- WATCHLIST OVERLAY TRIGGER BUTTON -->
+                    <button id="open-watchlist-btn" class="bg-kite-bg border border-kite-border rounded px-3 py-1 flex items-center justify-between cursor-pointer w-32 md:w-48 h-[34px] md:h-[36px] transition-colors hover:border-kite-blue select-none shrink-0 focus:outline-none">
+                        <div class="flex flex-col items-start truncate overflow-hidden pr-2 w-full">
+                            <span id="header-target-symbol" class="text-[10px] md:text-xs font-bold text-zinc-200 truncate w-full text-left">No Target</span>
+                            <span id="header-target-pnl" class="text-[9px] font-mono text-zinc-500 hidden truncate w-full text-left"></span>
+                        </div>
+                        <i class="ph-bold ph-list-dashes text-zinc-400 shrink-0 text-sm"></i>
+                    </button>
                     
                     <nav class="flex items-center border border-kite-border rounded p-0.5 bg-kite-bg shrink-0">
                         <button id="mode-general" class="px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-border text-zinc-100">
@@ -108,7 +113,7 @@
                         </button>
                     </nav>
 
-                    <button id="run-radar-btn" class="px-2 py-1.5 md:px-3 md:py-1.5 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-orange/10 text-kite-orange border border-kite-orange/20 flex items-center gap-1 hover:bg-kite-orange/20 shrink-0">
+                    <button id="run-radar-btn" class="px-2 py-1.5 md:px-3 md:py-1.5 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-orange/10 text-kite-orange border border-kite-orange/20 flex items-center gap-1 hover:bg-kite-orange/20 shrink-0 focus:outline-none">
                         <i class="ph-bold ph-broadcast animate-pulse text-sm"></i>
                         <span class="hidden md:inline">Radar</span>
                     </button>
@@ -146,10 +151,33 @@
                     </button>
                 </form>
             </footer>
+            
         </main>
 
-        <!-- 3. CONFIGURATION DRAWER (SETTINGS) -->
-        <div id="settings-modal" class="fixed inset-y-0 right-0 z-50 w-full max-w-[320px] translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-300 ease-in-out">
+        <!-- 3. DEDICATED WATCHLIST FULL-SCREEN OVERLAY -->
+        <div id="watchlist-screen" class="absolute inset-0 z-[60] bg-kite-bg flex flex-col hidden transition-opacity duration-300 transform scale-95 opacity-0">
+            <!-- Screen Header -->
+            <header class="h-14 border-b border-kite-border bg-kite-panel flex items-center justify-between px-4 shrink-0">
+                <div class="flex items-center gap-3">
+                    <i class="ph-bold ph-chart-polar text-kite-blue text-xl"></i>
+                    <div class="flex flex-col">
+                        <span class="font-black text-xs md:text-sm tracking-widest text-zinc-100 uppercase leading-none">TARGET LEDGER</span>
+                        <span class="text-[9px] font-mono text-zinc-500 uppercase tracking-widest mt-0.5">Running PnL Tracking</span>
+                    </div>
+                </div>
+                <button id="close-watchlist-btn" class="text-zinc-400 hover:text-zinc-100 focus:outline-none p-2 rounded-full hover:bg-zinc-800 transition-colors">
+                    <i class="ph-bold ph-x text-xl"></i>
+                </button>
+            </header>
+            
+            <!-- Screen Grid Content -->
+            <div id="watchlist-grid" class="flex-1 overflow-y-auto custom-scrollbar p-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 content-start pb-20">
+                <!-- Watchlist Cards Injected Here by JS -->
+            </div>
+        </div>
+
+        <!-- 4. CONFIGURATION DRAWER (SETTINGS) -->
+        <div id="settings-modal" class="fixed inset-y-0 right-0 z-[70] w-full max-w-[320px] translate-x-full border-l border-kite-border bg-kite-panel flex flex-col shadow-2xl transition-transform duration-300 ease-in-out">
             <div class="h-14 border-b border-kite-border flex items-center justify-between px-4 bg-kite-bg/30 shrink-0">
                 <div class="flex items-center gap-2">
                     <i class="ph-bold ph-cpu text-kite-blue text-sm"></i>
@@ -215,3 +243,5 @@
     <script src="js/app.js"></script>
 </body>
 </html>
+
+
