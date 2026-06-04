@@ -14,7 +14,7 @@ let isForensicMode = false;
 let currentSessionId = Date.now().toString();
 
 let savedSessions = {};
-let localWatchlist = [];
+let localWatchlist = []; // Format: [{ symbol: "RELIANCE", addedAt: 1234, addedPrice: 2000.50, currentPrice: 2050, dayChange: 1.2, totalPnl: 2.5 }]
 let alphaLedger = [];
 let forensicArchives = {};
 let nseMasterList = []; 
@@ -190,27 +190,47 @@ async function fetchStockDataFromGoogle(symbol) {
 }
 
 // ==========================================
-// 4. SYSTEM INITIALIZATION
+// 4. SYSTEM INITIALIZATION (NO AUTH)
 // ==========================================
 async function initApp() {
     try {
         savedSessions = await localforage.getItem('sessions') || {};
-        localWatchlist = await localforage.getItem('watchlist') || [];
+        
+        // Auto-migrate old string-based watchlists to the new PnL object format
+        const storedWatchlist = await localforage.getItem('watchlist') || [];
+        let requiresMigrationSave = false;
+        
+        localWatchlist = storedWatchlist.map(item => {
+            if (typeof item === 'string') {
+                requiresMigrationSave = true;
+                return { symbol: item, addedAt: Date.now(), addedPrice: null }; 
+            }
+            return item;
+        });
+        
+        if (requiresMigrationSave) {
+            await localforage.setItem('watchlist', localWatchlist);
+        }
+        
         alphaLedger = await localforage.getItem('alpha_ledger') || [];
         forensicArchives = await localforage.getItem('forensic_archives') || {};
         
         await loadNseMasterList();
         updateModeUI();
         
+        // Boot UI
         renderSessionsSidebar();
-        renderWatchlistDropdown(); 
-        fetchWatchlistPrices();            
+        
+        // Initial PnL Fetch & Render
+        await fetchWatchlistPrices();
+        
+        // Background Polling Engine (30s) updates prices silently
+        setInterval(fetchWatchlistPrices, 30000);
         
         const sessionKeys = Object.keys(savedSessions).sort((a,b) => savedSessions[b].updatedAt - savedSessions[a].updatedAt);
         if (sessionKeys.length > 0) {
             loadSession(sessionKeys[0]);
         } else {
-            // Auto-start a new chat if local memory is completely empty
             document.getElementById('new-chat-btn').click();
         }
     } catch (e) { 
@@ -218,7 +238,7 @@ async function initApp() {
     }
 }
 
-// Factory Reset Button
+// Factory Reset
 document.getElementById('logout-btn').onclick = () => { 
     if(confirm("Are you sure you want to factory reset local memory? All unsynced data will be wiped.")) {
         localforage.clear().then(() => {
@@ -335,15 +355,16 @@ document.getElementById('search-form').onsubmit = async (e) => {
     const memoryContext = alphaLedger.length > 0 ? `\n[PAST MEMORY]: ${JSON.stringify(alphaLedger.slice(-10))}` : "";
 
     if (isForensicMode) {
-        currentForensicTarget = document.getElementById('watchlist-dropdown').value || q.toUpperCase().split(' ')[0];
-        let injectedDataText = "";
+        // Use explicitly set target or default to the first word of query
+        let activeTarget = currentForensicTarget || q.toUpperCase().split(' ')[0];
         
-        const loaderId = showLoadingUI(`Extracting filings for ${currentForensicTarget}...`);
-        const fetchedData = await fetchStockDataFromGoogle(currentForensicTarget);
+        let injectedDataText = "";
+        const loaderId = showLoadingUI(`Extracting filings for ${activeTarget}...`);
+        const fetchedData = await fetchStockDataFromGoogle(activeTarget);
         removeLoader(loaderId);
 
         if (fetchedData && !fetchedData.error) {
-            forensicArchives[currentForensicTarget] = fetchedData;
+            forensicArchives[activeTarget] = fetchedData;
             await localforage.setItem('forensic_archives', forensicArchives);
             injectedDataText = `\n[DATA]: Base analysis strictly on this JSON:\n${JSON.stringify(fetchedData)}`;
         }
@@ -369,7 +390,9 @@ document.getElementById('run-radar-btn').onclick = async () => {
     isForensicMode = true; 
     updateModeUI();
     
-    const promptText = `Watchlist: ${localWatchlist.join(', ')}. Date: ${new Date().toISOString()}`;
+    // Extract just symbols for the radar prompt
+    const symbolsOnly = localWatchlist.map(w => w.symbol);
+    const promptText = `Watchlist: ${symbolsOnly.join(', ')}. Date: ${new Date().toISOString()}`;
     const uiText = `RUN RADAR: Scrape Data for ${localWatchlist.length} Stocks`;
     
     addMessageToDOM("user", `<span class="text-kite-orange font-bold flex items-center gap-2"><i class="ph-bold ph-broadcast animate-pulse"></i> ${escapeHTML(uiText)}</span>`, true);
@@ -444,7 +467,7 @@ function loadSession(id) {
 }
 
 // ==========================================
-// 7. UI MODES & SIDEBAR (RESPONSIVE)
+// 7. UI MODES & RESPONSIVE SIDEBAR
 // ==========================================
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileCloseBtn = document.getElementById('mobile-close-sidebar');
@@ -475,7 +498,7 @@ function updateModeUI() {
     if (isForensicMode) {
         forBtn.className = "px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-border text-zinc-100";
         genBtn.className = "px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all text-zinc-400 hover:text-zinc-200";
-        searchInput.placeholder = "Analyze asset (e.g. RELIANCE)...";
+        searchInput.placeholder = "Analyze target asset (e.g. RELIANCE)...";
     } else {
         genBtn.className = "px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all bg-kite-border text-zinc-100";
         forBtn.className = "px-2 md:px-3 py-1 rounded text-[10px] md:text-[11px] font-semibold transition-all text-zinc-400 hover:text-zinc-200";
@@ -497,6 +520,7 @@ document.getElementById('new-chat-btn').onclick = () => {
     currentSessionId = Date.now().toString();
     activeChartInstances = []; 
     currentForensicTarget = null;
+    updateWatchlistHeaderButton(); // Reset header UI
     
     document.getElementById('chat-container').innerHTML = `
         <div id="welcome-screen" class="flex flex-col items-center justify-center h-full text-center opacity-50 px-4">
@@ -553,7 +577,7 @@ function renderSessionsSidebar() {
 }
 
 // ==========================================
-// 8. WATCHLIST YAHOO DATA & AUTOCOMPLETE
+// 8. WATCHLIST, PNL LOGIC & DEDICATED SCREEN
 // ==========================================
 document.getElementById('new-stock-input').addEventListener('input', function() {
     const val = this.value.toUpperCase().trim();
@@ -583,18 +607,22 @@ document.getElementById('new-stock-input').addEventListener('input', function() 
         `;
         
         div.onclick = async () => { 
-            if(!localWatchlist.includes(s.symbol)) { 
-                localWatchlist.push(s.symbol); 
+            // Prevent duplicates
+            if(!localWatchlist.some(w => w.symbol === s.symbol)) { 
+                localWatchlist.push({ symbol: s.symbol, addedAt: Date.now(), addedPrice: null }); 
                 await localforage.setItem('watchlist', localWatchlist); 
                 triggerDirtyState(true); 
-                renderWatchlistDropdown(); 
-                fetchWatchlistPrices(); 
+                await fetchWatchlistPrices(); 
             } 
+            
             document.getElementById('new-stock-input').value = ''; 
             dropdown.classList.add('hidden'); 
             showToast("Target Added"); 
             
-            if (window.innerWidth < 768) document.getElementById('new-stock-input').blur();
+            if (window.innerWidth < 768) {
+                document.getElementById('new-stock-input').blur();
+                toggleMobileSidebar(false);
+            }
         };
         
         dropdown.appendChild(div);
@@ -602,46 +630,200 @@ document.getElementById('new-stock-input').addEventListener('input', function() 
     dropdown.classList.remove('hidden');
 });
 
-function renderWatchlistDropdown() {
-    const sel = document.getElementById('watchlist-dropdown');
-    sel.innerHTML = '<option value="">No Active Target</option>';
+// Dedicated Watchlist Screen Overlays
+const watchlistScreen = document.getElementById('watchlist-screen');
+const openWatchlistBtn = document.getElementById('open-watchlist-btn');
+const closeWatchlistBtn = document.getElementById('close-watchlist-btn');
+
+openWatchlistBtn.onclick = () => {
+    renderWatchlistGrid();
+    watchlistScreen.classList.remove('hidden');
+    // Micro-delay for smooth transition
+    setTimeout(() => {
+        watchlistScreen.classList.remove('scale-95', 'opacity-0');
+        watchlistScreen.classList.add('scale-100', 'opacity-100');
+    }, 10);
+};
+
+function hideWatchlistScreen() {
+    watchlistScreen.classList.remove('scale-100', 'opacity-100');
+    watchlistScreen.classList.add('scale-95', 'opacity-0');
+    setTimeout(() => {
+        watchlistScreen.classList.add('hidden');
+    }, 300);
+}
+
+closeWatchlistBtn.onclick = hideWatchlistScreen;
+
+function selectWatchlistItem(itemObj) {
+    currentForensicTarget = itemObj.symbol;
+    updateWatchlistHeaderButton();
+    hideWatchlistScreen();
+
+    // Auto-fill prompt if in Forensic Mode
+    if (isForensicMode) {
+        const input = document.getElementById('search-input');
+        input.value = `Execute full structural institutional financial forensics evaluation loop data scan against tracking profile target parameters on asset: ${itemObj.symbol}`;
+        input.focus();
+    } else {
+        // Auto-switch to forensic mode if not active to save a click
+        document.getElementById('mode-forensic').click();
+        const input = document.getElementById('search-input');
+        input.value = `Execute full structural institutional financial forensics evaluation loop data scan against tracking profile target parameters on asset: ${itemObj.symbol}`;
+        input.focus();
+    }
+}
+
+async function removeWatchlistItem(symbol, e) {
+    e.stopPropagation(); // Stop click from triggering select
+    localWatchlist = localWatchlist.filter(w => w.symbol !== symbol);
+    await localforage.setItem('watchlist', localWatchlist);
+    triggerDirtyState(true);
     
-    localWatchlist.forEach(w => { 
-        const opt = document.createElement('option'); 
-        opt.value = w; 
-        opt.textContent = w; 
-        sel.appendChild(opt); 
-    });
+    if (currentForensicTarget === symbol) {
+        currentForensicTarget = null;
+        updateWatchlistHeaderButton();
+    }
+    
+    renderWatchlistGrid();
 }
 
 async function fetchWatchlistPrices() {
-    if (localWatchlist.length === 0) return;
+    if (localWatchlist.length === 0) {
+        updateWatchlistHeaderButton();
+        renderWatchlistGrid();
+        return;
+    }
+    
     try {
-        const queryUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${localWatchlist.map(s=>`${s}.NS`).join(',')}`;
+        const queryUrl = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${localWatchlist.map(w=>`${w.symbol}.NS`).join(',')}`;
         const data = await fetchWithWaterfall(queryUrl);
         const quotes = JSON.parse(data).quoteResponse.result;
         
-        const sel = document.getElementById('watchlist-dropdown');
-        sel.innerHTML = '<option value="">No Active Target</option>';
-        
+        let needsDbUpdate = false;
+
         localWatchlist.forEach(w => {
-            const opt = document.createElement('option'); 
-            opt.value = w;
-            const quote = quotes.find(item => item.symbol === `${w}.NS`);
+            const quote = quotes.find(item => item.symbol === `${w.symbol}.NS`);
             
             if (quote) {
-                const price = quote.regularMarketPrice.toFixed(2);
-                const change = quote.regularMarketChangePercent.toFixed(2);
-                const sign = quote.regularMarketChangePercent >= 0 ? '+' : '';
-                opt.textContent = `${w} | ₹${price} (${sign}${change}%)`;
-            } else {
-                opt.textContent = w;
+                w.currentPrice = quote.regularMarketPrice;
+                w.dayChange = quote.regularMarketChangePercent;
+                
+                // Stamp entry price on first fetch
+                if (w.addedPrice === null || w.addedPrice === undefined) {
+                    w.addedPrice = w.currentPrice;
+                    needsDbUpdate = true;
+                }
+                
+                // Calculate PnL
+                if (w.addedPrice && w.addedPrice > 0) {
+                    w.totalPnl = ((w.currentPrice - w.addedPrice) / w.addedPrice) * 100;
+                } else {
+                    w.totalPnl = 0;
+                }
             }
-            sel.appendChild(opt);
         });
+        
+        if (needsDbUpdate) {
+            await localforage.setItem('watchlist', localWatchlist);
+            triggerDirtyState(true);
+        }
+
+        updateWatchlistHeaderButton();
+        
+        // Re-render grid if screen is open
+        if (!watchlistScreen.classList.contains('hidden')) {
+            renderWatchlistGrid();
+        }
+
     } catch (err) {
         console.warn("Pricing fetch failed", err);
     }
+}
+
+function updateWatchlistHeaderButton() {
+    const symbolSpan = document.getElementById('header-target-symbol');
+    const pnlSpan = document.getElementById('header-target-pnl');
+
+    if (!currentForensicTarget) {
+        symbolSpan.textContent = "Targets (Live)";
+        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-400 truncate w-full text-left";
+        pnlSpan.classList.add('hidden');
+        return;
+    }
+
+    const activeData = localWatchlist.find(w => w.symbol === currentForensicTarget);
+    
+    if (activeData) {
+        symbolSpan.textContent = activeData.symbol;
+        symbolSpan.className = "text-[10px] md:text-xs font-bold text-zinc-200 truncate w-full text-left";
+        
+        const pColor = activeData.totalPnl >= 0 ? 'text-kite-green' : 'text-kite-red';
+        const pSign = activeData.totalPnl > 0 ? '+' : '';
+        const pStr = activeData.totalPnl !== undefined ? `${pSign}${activeData.totalPnl.toFixed(2)}%` : '--';
+        const livePrc = activeData.currentPrice ? `₹${activeData.currentPrice.toFixed(2)}` : '--';
+
+        pnlSpan.innerHTML = `${livePrc} <span class="mx-1">•</span> <span class="${pColor}">${pStr}</span>`;
+        pnlSpan.classList.remove('hidden');
+    } else {
+        symbolSpan.textContent = "Targets (Live)";
+        pnlSpan.classList.add('hidden');
+    }
+}
+
+function renderWatchlistGrid() {
+    const grid = document.getElementById('watchlist-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+
+    if (localWatchlist.length === 0) {
+        grid.innerHTML = `<div class="col-span-full text-center py-10 text-zinc-500 font-mono text-xs">No active assets in ledger. Add targets via the sidebar.</div>`;
+        return;
+    }
+
+    localWatchlist.forEach(w => {
+        const priceStr = w.currentPrice ? `₹${w.currentPrice.toFixed(2)}` : 'Loading...';
+        const addedPriceStr = w.addedPrice ? `₹${w.addedPrice.toFixed(2)}` : '--';
+        
+        const dColor = w.dayChange >= 0 ? 'text-kite-green' : 'text-kite-red';
+        const dSign = w.dayChange > 0 ? '+' : '';
+        const dStr = w.dayChange !== undefined ? `${dSign}${w.dayChange.toFixed(2)}%` : '--';
+
+        const pColor = w.totalPnl >= 0 ? 'text-kite-green bg-kite-green/10' : 'text-kite-red bg-kite-red/10';
+        const pSign = w.totalPnl > 0 ? '+' : '';
+        const pStr = w.totalPnl !== undefined ? `${pSign}${w.totalPnl.toFixed(2)}%` : '--';
+        
+        const isActive = currentForensicTarget === w.symbol;
+        const activeBorder = isActive ? 'border-kite-blue shadow-lg shadow-kite-blue/10' : 'border-kite-border hover:border-zinc-500';
+
+        const card = document.createElement('div');
+        card.className = `bg-kite-panel border rounded-xl p-4 flex flex-col cursor-pointer transition-all ${activeBorder}`;
+        
+        card.innerHTML = `
+            <div class="flex justify-between items-start mb-3">
+                <div class="flex flex-col">
+                    <span class="font-bold text-sm text-white">${w.symbol}</span>
+                    <span class="text-[10px] font-mono text-zinc-500">Entry: ${addedPriceStr}</span>
+                </div>
+                <button class="text-zinc-600 hover:text-kite-red p-1 rounded-full transition-colors focus:outline-none" onclick="removeWatchlistItem('${w.symbol}', event)">
+                    <i class="ph-bold ph-x text-sm"></i>
+                </button>
+            </div>
+            
+            <div class="flex justify-between items-end mt-auto pt-2">
+                <div class="flex flex-col">
+                    <span class="text-sm font-mono text-zinc-200">${priceStr}</span>
+                    <span class="text-[10px] font-mono ${dColor}">${dStr} (Day)</span>
+                </div>
+                <div class="px-2 py-1 rounded text-xs font-bold font-mono ${pColor}">
+                    ${pStr}
+                </div>
+            </div>
+        `;
+
+        card.onclick = () => selectWatchlistItem(w);
+        grid.appendChild(card);
+    });
 }
 
 // ==========================================
@@ -696,7 +878,6 @@ function addMessageToDOM(role, text, isRawHtml = false) {
     }
 }
 
-// Utilizing safe RegExp constructors
 function extractJSON(text) { 
     try { 
         let cleaned = text.replace(new RegExp('`{3}json\\n?', 'g'), '').replace(new RegExp('`{3}\\n?', 'g'), '').trim(); 
@@ -740,7 +921,11 @@ function buildForensicHTML(obj) {
     let chartId = `chart-${Date.now()}`;
     
     if (obj.metadata) {
-        currentForensicTarget = ticker;
+        if (!currentForensicTarget) {
+            currentForensicTarget = ticker;
+            updateWatchlistHeaderButton();
+        }
+        
         let verdictStyle = "text-zinc-300 border-zinc-600";
         
         if (obj.kpis?.final_verdict?.includes('BUY')) {
@@ -899,6 +1084,7 @@ document.getElementById('download-db-btn').onclick = () => {
         if (!nseMasterList.length) {
             return showToast("Master list empty", "error");
         }
+        // Extract symbols since Watchlist uses Objects now
         let csvContent = "SYMBOL,COMPANY\n" + nseMasterList.map(s => `${s.symbol},${s.name?.replace(/,/g, '')}`).join('\n');
         const blob = new Blob([csvContent], { type: 'text/csv' });
         const link = document.createElement('a'); 
@@ -975,7 +1161,7 @@ async function gitSync(action) {
             await localforage.setItem('watchlist', localWatchlist);
             
             renderSessionsSidebar(); 
-            renderWatchlistDropdown(); 
+            updateWatchlistHeaderButton();
             fetchWatchlistPrices(); 
             triggerDirtyState(false); 
             showToast("Vault Pulled", "success");
@@ -1036,6 +1222,5 @@ document.getElementById('save-settings-btn').onclick = () => {
 
 // Boot Sequence
 initApp();
-
 
 
