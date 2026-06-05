@@ -159,10 +159,10 @@ class OmniFetcher:
         logger.error(f"Ultimate binary download failed for: {url}")
         return None
 
-    def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
+        def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
-        # Phase 1: Standard Requests
+        # Phase 1: Standard Requests Waterfall
         try:
             resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code == 200:
@@ -170,29 +170,29 @@ class OmniFetcher:
                 if data: return data
         except Exception: pass
             
-        # Phase 2: Playwright DOM-Level Fetch
+        # Phase 2: Playwright Fallback (Direct Navigation Method)
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
             url = f"{url}?{qs}"
             
         try:
-            logger.info("Executing DOM-level JSON fetch to bypass Cloudflare HTML block...")
-            # We execute the Javascript INSIDE the already-verified browser tab. WAF cannot block this.
-            json_data = self.page.evaluate(f"""async () => {{
-                const res = await fetch('{url}', {{ headers: {{ 'Accept': 'application/json' }} }});
-                return await res.json();
-            }}""")
+            logger.info("Executing direct browser navigation to JSON endpoint...")
+            # Navigate the physical tab directly to the API URL
+            self.page.goto(url, wait_until="domcontentloaded", timeout=timeout*1000)
             
-            # Verify we didn't just parse an empty WAF string
-            if json_data: 
-                return json_data
+            # Extract the raw text rendered on the page by the browser
+            page_text = self.page.locator("body").inner_text()
+            
+            if page_text:
+                return json.loads(page_text)
             else:
-                logger.error("Playwright DOM fetch succeeded, but returned empty JSON.")
+                logger.error("Playwright navigated to JSON endpoint, but page body was empty.")
         except Exception as e: 
-            logger.error(f"Playwright DOM fetch failed: {e}")
+            logger.error(f"Playwright JSON navigation failed: {e}")
         
         return None
+
         
     def close(self):
         if self.pw_context:
