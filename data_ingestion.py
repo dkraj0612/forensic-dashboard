@@ -129,7 +129,7 @@ class OmniFetcher:
         
         return None
 
-    def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
+        def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
         # Phase 1: Proxy Waterfall
@@ -144,17 +144,33 @@ class OmniFetcher:
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
-        # Phase 2: Playwright Fallback (HTTP/2 Disabled)
+        # Phase 2: Playwright Fallback (Native Download Simulation)
         self._init_playwright()
         try:
-            logger.info("Physical Browser Download Triggered (HTTP/2 Bypassed)...")
-            resp = self.page.request.get(url, headers={"Referer": "https://www.nseindia.com/", "Accept": "*/*"}, timeout=60000)
-            body = resp.body()
+            logger.info("Physical Browser Download Triggered (Human-Click Simulation)...")
+            
+            # Wait for a native Chrome download event to trigger
+            with self.page.expect_download(timeout=60000) as download_info:
+                # Use JavaScript to force the browser window to navigate to the ZIP file
+                self.page.evaluate(f"window.location.href = '{url}'")
+                
+            # Grab the physical file Chrome just downloaded to the server's temp folder
+            download = download_info.value
+            path = download.path()
+            
+            # Read the binary data from the temp file
+            with open(path, 'rb') as f:
+                body = f.read()
+                
             if body.startswith(b'PK'): 
                 return body
             else:
-                logger.error("Playwright downloaded file, but it is not a valid ZIP.")
-        except Exception as e: logger.error(f"Playwright ZIP fetch failed: {e}")
+                # If it still fails, print the exact HTML the NSE sent us so we can read it
+                snippet = body[:200].decode('utf-8', errors='ignore').replace('\n', ' ')
+                logger.error(f"File is not a valid ZIP. NSE Server responded with: {snippet}")
+                
+        except Exception as e: 
+            logger.error(f"Playwright native download failed: {e}")
         
         logger.error(f"Ultimate binary download failed for: {url}")
         return None
