@@ -53,7 +53,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests playwright
           playwright install chromium
-          playwright install -deps
+          playwright install-deps
       - name: Run Data Hunter
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
