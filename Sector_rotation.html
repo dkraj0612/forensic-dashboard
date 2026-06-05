@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian Equity Sector Rotation Analysis - June 2025</title>
+    <style>
+        @page { size: A4; margin: 1.5cm; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 10pt; line-height: 1.4; color: #222; max-width: 210mm; margin: 0 auto; background: white; }
+        h1 { font-size: 18pt; color: #1a1a1a; border-bottom: 3px solid #0046cc; padding-bottom: 8px; margin-bottom: 12px; page-break-after: avoid; }
+        h2 { font-size: 14pt; color: #0046cc; margin-top: 16px; margin-bottom: 8px; border-left: 4px solid #0046cc; padding-left: 8px; page-break-after: avoid; }
+        h3 { font-size: 12pt; color: #333; margin-top: 12px; margin-bottom: 6px; font-weight: 600; page-break-after: avoid; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 8.5pt; page-break-inside: avoid; }
+        th { background-color: #0046cc; color: white; padding: 6px 8px; text-align: left; font-weight: 600; font-size: 9pt; }
+        td { padding: 5px 8px; border-bottom: 1px solid #ddd; vertical-align: top; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .overweight { color: #00aa00; font-weight: 700; }
+        .underweight { color: #cc0000; font-weight: 700; }
+        .neutral { color: #666; font-weight: 600; }
+        .stage-accumulation { background-color: #e6f2ff; }
+        .stage-expansion { background-color: #e6ffe6; }
+        .stage-distribution { background-color: #fff3cd; }
+        .stage-contraction { background-color: #f8d7da; }
+        .conviction-high { font-weight: 700; color: #000; }
+        .conviction-medium { font-weight: 600; color: #444; }
+        .conviction-low { font-weight: 400; color: #777; }
+        ul, ol { margin: 8px 0; padding-left: 20px; }
+        li { margin-bottom: 4px; }
+        .executive-summary { background-color: #f0f7ff; border-left: 5px solid #0046cc; padding: 12px; margin: 12px 0; page-break-inside: avoid; }
+        .critical-call { background-color: #fff8e6; border-left: 4px solid #ffaa00; padding: 8px; margin: 8px 0; font-weight: 600; }
+        .data-date { font-size: 9pt; color: #666; font-style: italic; text-align: right; margin-bottom: 10px; }
+        @media print {
+            body { font-size: 9pt; }
+            h1 { font-size: 16pt; }
+            h2 { font-size: 12pt; }
+            h3 { font-size: 10pt; }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Indian Equity Sector Rotation Analysis</h1>
+    <p class="data-date">Analysis Date: June 2025 | Data as of: May 2025</p>
+
+    <div class="executive-summary">
+        <h2>Executive Summary</h2>
+        <p>The Indian equity market has shifted structurally into <strong>Stage 3: Distribution (Late Cycle Peak)</strong>. While headline macro variables remain superficially robust, a sharp deceleration in earnings momentum, coupled with severe margin contractions across high-beta manufacturing and government capex proxies, signals an immediate need to reallocate capital. Domestic liquidity via SIP flows (stable at ₹22,400 crore/month) continues to artificially sustain mid- and small-cap valuations, masking deep institutional distribution by Foreign Portfolio Investors (FPIs). This framework executes a non-negotiable pivot out of heavily congested, hyper-inflated cyclical pockets into mispriced defensive compounders and late-cycle insulation plays.</p>
+        <p><strong>Top 3 Overweight:</strong> Private Sector Banks (deep value, clean balance sheets), IT Services Large-Caps (earnings resilience, global demand inflection), and Pharmaceuticals Domestic Formulations (pricing inelasticity, secular defensive hedge).</p>
+        <p><strong>Top 3 Underweight:</strong> Defense (extreme structural bubble, impossible execution targets), Capital Goods (unsustainable peak book-to-bill multiples), and PSU Banks (peak margins behind, normalization of credit costs underway).</p>
+        <p><strong>Biggest Risk:</strong> A systemic liquidity freeze in the SME/mid-cap segments triggered by regulatory mandates or microfinance/unsecured retail credit defaults defaults.</p>
+        <p><strong>Biggest Opportunity:</strong> Capture structural alpha through the historic valuation divergence between large-cap financial compounders and lower-tier, momentum-driven cyclicals.</p>
+    </div>
+
+    <h2>I. Global Macro Context</h2>
+    <h3>A. Global Monetary & Currency Environment</h3>
+    <ul>
+        <li><strong>US Fed Policy:</strong> Fed Funds target rate holds steady at 4.50%-4.75%. The terminal rate narrative has adjusted higher; the central bank indicates a prolonged hold due to sticky core service inflation. Quantitative Tightening (QT) continues at a reduced pace ($40Bn/month). Real yields (US 10-Year Treasury minus CPI) remain highly restrictive at +1.85%, limiting valuation expansion in emerging market long-duration equities.</li>
+        <li><strong>DXY & INR/USD:</strong> The Dollar Index (DXY) remains structurally resilient between 103.80 and 105.20. The INR/USD pair tests the 83.45-83.60 corridor. RBI interventions remain aggressive, utilizing foreign exchange reserves to suppress volatility. The 1-year forward premium hovers near historical lows at 1.65%, discouraging aggressive currency hedging by exporters.</li>
+        <li><strong>Cross-Currency Dynamics:</strong> EUR/USD trades weakly at 1.0650 on Eurozone industrial stagnation. USD/CNY is actively managed at 7.26; aggressive Chinese industrial overcapacity and export price dumping are undercutting Indian manufacturing competitiveness across third-party markets.</li>
+        <li><strong>FII Flow Implications:</strong> High global risk-free rates compress the Emerging Market equity risk premium. Structural active FII money is rotating out of expensive domestic market components into cheaper North Asian alternatives, leaving India heavily reliant on domestic passive inflows.</li>
+    </ul>
+
+    <h3>B. Commodity Price Positioning</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Commodity</th>
+                <th>Current Price</th>
+                <th>6M Trend</th>
+                <th>Global Supply/Demand Dynamics</th>
+                <th>Sectoral Impact & Actionable Directives</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Crude Oil (Brent)</strong></td>
+                <td>$81.50 / bbl</td>
+                <td>Sideways</td>
+                <td>OPEC+ voluntary production cuts offset by rising non-OPEC output (US, Guyana). Global demand remains soft.</td>
+                <td>OMCs face restricted marketing margins. Aviation margins stabilize via flat ATF. CAD remains manageable. <strong>Action: Neutral OMCs.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Base Metals (Cu/Al/Zn)</strong></td>
+                <td>Cu: $9,450 / t</td>
+                <td>Upward</td>
+                <td>LME inventories tight; structural demand from global grid upgrades and EV infrastructure outpaces supply.</td>
+                <td>Severe input cost pressure for capital goods, auto OEMs, and white goods. Positive for domestic primary miners. <strong>Action: OW Miners.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Steel (HRC)</strong></td>
+                <td>₹52,800 / t</td>
+                <td>Downward</td>
+                <td>Massive Chinese steel inventories being dumped into South Asia. Domestic demand robust but pricing capped.</td>
+                <td>Domestic steel spreads compress. Tailwind for Automobile OEMs and Infrastructure developers. <strong>Action: UW Steel Cos.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Thermal Coal</strong></td>
+                <td>$132 / t</td>
+                <td>Softening</td>
+                <td>High domestic production in India and China reduces seaborne demand. Global inventories remain comfortable.</td>
+                <td>Merchant power tariffs soften but lower fuel costs protect domestic independent power producer (IPP) margins. <strong>Action: OW Utilities.</strong></td>
+            </tr>
+            <tr>
+                <td><strong>Gold</strong></td>
+                <td>$2,340 / oz</td>
+                <td>Upward</td>
+                <td>Sustained central bank accumulation and escalating geopolitical risk premiums in the Middle East drive safe-haven bids.</td>
+                <td>Jewelry retail volume growth compresses due to price shock. Gold Loan NBFCs see structural AUM expansion. <strong>Action: OW Gold NBFCs.</strong></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>C. China Plus-One Reality Check</h3>
+    <ul>
+        <li><strong>Genuine Structural Allocation:</strong> Electronics Manufacturing Services (EMS) and specific high-end Auto Components continue to secure meaningful global supply chain migration. Production Linked Incentive (PLI) schemes provide necessary margin cushions, ensuring genuine volume execution.</li>
+        <li><strong>Consensus Failure Pockets:</strong> Specialty Chemicals and Textiles are failing the transition narrative. China's domestic economic deceleration has caused massive local supply overcapacity, resulting in aggressive international dumping that destroys the pricing power of Indian chemical producers.</li>
+    </ul>
+
+    <h2>II. Indian Macroeconomic Snapshot</h2>
+    <h3>A. Growth & Activity Indicators</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Indicator</th>
+                <th>Current Value</th>
+                <th>6M Trend</th>
+                <th>Macroeconomic Implication & Structural Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>GDP Growth (YoY)</strong></td>
+                <td>6.6%</td>
+                <td>Moderating</td>
+                <td>Real fixed capital formation is plateauing. Growth is heavily skewed toward premium urban demand, while low-income sectors remain flat.</td>
+            </tr>
+            <tr>
+                <td><strong>Manufacturing PMI</strong></td>
+                <td>56.8</td>
+                <td>Slowing</td>
+                <td>Remains in expansion territory, but output prices are rising faster than new orders, signaling incipient margin compression.</td>
+            </tr>
+            <tr>
+                <td><strong>Services PMI</strong></td>
+                <td>59.4</td>
+                <td>Moderating</td>
+                <td>Reflects softening discretionary consumption across metro centers; travel and premium hospitality spending are flattening.</td>
+            </tr>
+            <tr>
+                <td><strong>Core Sector Growth</strong></td>
+                <td>4.2% YoY</td>
+                <td>Downward</td>
+                <td>Slowing infrastructure execution post-general elections. Cement and steel output show clear early signs of structural deceleration.</td>
+            </tr>
+            <tr>
+                <td><strong>GST Collections</strong></td>
+                <td>₹1.92 Lakh Cr</td>
+                <td>Plateauing</td>
+                <td>Reflects structural economic formalization, though absolute sequential growth rates have flattened over consecutive quarters.</td>
+            </tr>
+            <tr>
+                <td><strong>Bank Credit Growth</strong></td>
+                <td>14.8% YoY</td>
+                <td>Slowing</td>
+                <td>RBI's higher risk-weights on unsecured loans have successfully decelerated retail loan growth, creating structural headwinds for retail NBFCs.</td>
+            </tr>
+            <tr>
+                <td><strong>Power Demand Growth</strong></td>
+                <td>8.2% YoY</td>
+                <td>Surging</td>
+                <td>Driven by industrial base expansion and severe seasonal weather patterns. Confirms peak asset utilization across power generation fleets.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>B. Inflation, Monetary Policy & Credit Realities</h3>
+    <ul>
+        <li><strong>CPI/WPI Dynamics:</strong> Headline CPI is sticky at 4.65% YoY, driven by volatile food sub-indices. Core CPI remains benign at 3.35%. WPI trends upward at 2.20% due to rising global base metal input costs. The RBI's 4.0% inflation target remains unachieved.</li>
+        <li><strong>Monetary Policy Stance:</strong> RBI Repo Rate stands at 6.50% under a "hawkish pause" bias. The central bank emphasizes liquidity withdrawal. Domestic rate cuts are deferred to late FY26, supporting defensive banking models with low loan-to-deposit ratios.</li>
+        <li><strong>Credit-Deposit (CD) Gap and ALM Risks:</strong> The banking system's Credit-Deposit ratio is elevated at 79.5%. Systemic liquidity is in a structural deficit of ₹80,000 crore. Banks are forced to issue high-cost Certificates of Deposit (CDs), compressing Net Interest Margins (NIMs) for institutions reliant on wholesale liability markets.</li>
+    </ul>
+
+    <h3>C. Fiscal & External Position</h3>
+    <ul>
+        <li><strong>Fiscal Trajectory:</strong> The FY25 fiscal deficit target of 5.1% of GDP remains on track. However, capital expenditure outlays are heavily front-loaded; public sector capex spending will act as a growth drag in H2 FY25.</li>
+        <li><strong>External Balance:</strong> Current Account Deficit (CAD) is well-anchored at 1.1% of GDP due to strong software exports and steady remittance inflows. Foreign exchange reserves stand at an all-time high of $654 Billion, providing a strong cushion against sudden capital flight.</li>
+    </ul>
+
+    <h2>III. Market Valuation & Positioning</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Valuation Metric</th>
+                <th>Current Level</th>
+                <th>10-Year Median</th>
+                <th>Historical Percentile</th>
+                <th>Institutional Assessment & Strategy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Nifty 50 PE (Forward)</strong></td>
+                <td>21.2x</td>
+                <td>18.4x</td>
+                <td>84th Percentile</td>
+                <td><span class="underweight">Expensive.</span> Requires precise bottom-up stock selection; index beta expansion is exhausted.</td>
+            </tr>
+            <tr>
+                <td><strong>Nifty 50 PB</strong></td>
+                <td>3.45x</td>
+                <td>2.90x</td>
+                <td>89th Percentile</td>
+                <td><span class="underweight">Expensive.</span> ROE expansions are fully priced in across large-caps.</td>
+            </tr>
+            <tr>
+                <td><strong>Nifty Midcap 150 PE</strong></td>
+                <td>31.2x</td>
+                <td>22.5x</td>
+                <td>98th Percentile</td>
+                <td><span class="underweight">Euphoric Bubble.</span> Completely disconnected from underlying earnings capacity. Reduce exposure immediately.</td>
+            </tr>
+            <tr>
+                <td><strong>Nifty Smallcap 250 PE</strong></td>
+                <td>28.4x</td>
+                <td>18.2x</td>
+                <td>99th Percentile</td>
+                <td><span class="underweight">Euphoric Bubble.</span> Sostained entirely by retail inflows. Institutional exit liquidity is highly restricted.</td>
+            </tr>
+            <tr>
+                <td><strong>Market Cap to GDP Ratio</strong></td>
+                <td>138%</td>
+                <td>86%</td>
+                <td>100th Percentile</td>
+                <td><span class="underweight">Extreme Valuation Distortion.</span> Signals clear long-term cyclical top for domestic equities.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li><strong>Technical Market Breadth:</strong> The percentage of Nifty 500 stocks trading above their 200-day Moving Average has collapsed from 84% to 52%. The index is held up by a narrow cluster of heavyweights, a classic late-cycle distribution indicator.</li>
+        <li><strong>Derivatives & Institutional Positioning:</strong> FII Net Long position in Index Futures sits at 18%, down from seasonal highs of 65%. FIIs are systematically shorting index futures while distributing cash shares. India VIX trades at 13.20, indicating unwarranted market complacency.</li>
+        <li><strong>Earnings Revision Trends:</strong> The corporate Earnings Revision Ratio (ERR) has declined to 0.68. Downgrades outnumber upgrades across consumer durables, automobiles, cement, and specialty chemicals.</li>
+    </ul>
+
+    <h2>IV. Sector-by-Sector Rotation Matrix</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Sector Name</th>
+                <th>Rotation Cycle Stage</th>
+                <th>Conv.</th>
+                <th>Historical Valuation</th>
+                <th>Earnings Momentum</th>
+                <th>FII / DII Flow Alignment</th>
+                <th>Key Fundamental Driver</th>
+                <th>Actionable Portfolio Directive</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="stage-accumulation">
+                <td><strong>1. Private Sector Banks</strong></td>
+                <td>Accumulation</td>
+                <td class="conviction-high">High</td>
+                <td>Cheap</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>LDR normalization underway; superior asset quality; valuation at 10-year discount to broad market.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>2. PSU Banks</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Buy</td>
+                <td>NPA recovery tailwinds fully priced; NIM compression intensifying due to high deposit costs.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>3. NBFCs (Retail)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Mixed</td>
+                <td>FII Sell / DII Buy</td>
+                <td>RBI risk-weight hikes compress margins and moderate high-growth loan books. Focus on premium asset originators.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>4. Housing Finance (HFCs)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Sustained demand in premium and mid-tier housing segments; loan book seasoning limits credit costs.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>5. Life Insurance</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-medium">Med</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>New surrender value norms impact profitability; growth in high-margin non-PAR products plateaus.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>6. General Insurance</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Premium hikes in health and motor lines stick; combined ratios improve across top-tier private players.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>7. Stock Exchanges & Depositories</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Euphoric</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>Regulatory curbs on index derivatives directly compress cash cows; high retail churn risk.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>8. AMCs</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-medium">Med</td>
+                <td>Expensive</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>SIP inflows are steady, but institutional yield compression and passive market share gains cap margin expansion.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>9. Broking & Wealth Mgmt</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Euphoric</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>Cyclical peak in retail cash volume; derivative clampdowns reduce high-ARPU customer trading.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-accumulation">
+                <td><strong>10. IT Services (Large-cap)</strong></td>
+                <td>Accumulation</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>US financial vertical tech spending recovering; operational cost optimization drives margin recovery.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>11. IT Services (Mid-cap/ER&D)</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Valuation premiums vs large-caps are unsustainable; localized client concentration risks elevating.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>12. Digital & Internet Platforms</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-low">Low</td>
+                <td>Expensive</td>
+                <td>Upgrades</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>Monetization and path to profitability are validated; high absolute valuations limit immediate multiple expansion.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>13. Pharma (Domestic Formulations)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Chronic portfolio outperformance; inelastic pricing power allows reliable pass-through of cost increases.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>14. Pharma (US Generics/APIs)</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Cheap</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Neutral</td>
+                <td>US base price erosion moderates, but ongoing USFDA compliance audits create structural volatility.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>15. Hospitals & Diagnostics</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-high">High</td>
+                <td>Expensive</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>ARPOB gains sustained via high-end tertiary surgical mix; bed expansion self-funded through internal cash.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>16. FMCG (Staples)</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>Rural real wage growth remains flat; low-tier volume growth stays below 4%; high ad spend compresses margins.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>17. Consumer Durables</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-medium">Med</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Summer demand peak is fully historical; rising global copper/aluminum prices squeeze gross margins.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>18. Retail (Organized)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-low">Low</td>
+                <td>Expensive</td>
+                <td>Upgrades</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>K-shaped economic recovery benefits scale operators; smaller brick-and-mortar players face quick-commerce disruption.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>19. QSR & Food Services</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Same-Store Sales Growth (SSSG) turns negative; rising input costs cannot be passed to consumers.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>20. Apparel & Lifestyle</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-low">Low</td>
+                <td>Fair</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Neutral</td>
+                <td>Channel inventory accumulation high; mass-market fashion consumption slows across tier-2 cities.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>21. Passenger Vehicles & 2W</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>PV dealer stock hits record 62 days; heavy discounting cycles begin; peak structural demand is behind us.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>22. Commercial Vehicles & Tractors</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Core freight rates soften; fleet replacement demand tapers; infrastructure project execution slows down.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>23. Auto Components</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Global OEM sourcing diversification out of China cushions cooling domestic assemblies.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>24. Capital Goods</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Euphoric</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Order intake growth rates peak; forward valuations exceed 55x PE, pricing in implausible execution schedules.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>25. Infrastructure & EPC</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-low">Low</td>
+                <td>Fair</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>NHAI project awarding experiences post-election inertia; working capital cycles lengthen.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>26. Real Estate Developers</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>Luxury booking velocity slows sequentially; launch pipelines face local structural execution delays.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>27. Cement</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Neutral / DII Neutral</td>
+                <td>Aggressive institutional capacity additions run ahead of real demand, suppressing regional price hikes.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>28. Building Materials</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-low">Low</td>
+                <td>Expensive</td>
+                <td>Mixed</td>
+                <td>FII Sell / DII Buy</td>
+                <td>Reflects trailing link to real estate completions; PVC resin and raw input volatility hurts margins.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>29. Oil & Gas (OMCs)</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>Gross Refining Margins (GRMs) normalize down globally; marketing margins subject to state intervention risks.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>30. Oil & Gas (Upstream/Midstream)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Cheap</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Domestic gas utilization volumes climb; upstream production profiles expand; legacy gas pricing reforms stick.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>31. Power Generation</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Sustained peak demand guarantees elevated merchant power pricing; regulated thermal PPA assets generate clean cash.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>32. Power Transmission & Dist.</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-low">Low</td>
+                <td>Euphoric</td>
+                <td>Mixed</td>
+                <td>FII Sell / DII Buy</td>
+                <td>Valuations disconnected from asset-base growth; equipment delays lengthen commissioning timelines.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>33. Metals & Mining (Steel)</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Spreads under heavy pressure from cheap imports; coking coal costs offer limited downside relief.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>34. Metals (Non-Ferrous)</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Neutral</td>
+                <td>Aluminium smelter power cost optimizations secure margins; copper supply deficits protect absolute pricing.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-accumulation">
+                <td><strong>35. Chemicals & Specialty Petrochem</strong></td>
+                <td>Accumulation</td>
+                <td class="conviction-high">High</td>
+                <td>Cheap</td>
+                <td>Upgrades</td>
+                <td>FII Neutral / DII Buy</td>
+                <td>Global channel destocking concludes; local margin structures recover off historical cyclical troughs.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>36. Defense & Aerospace</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-high">High</td>
+                <td>Euphoric</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Sell</td>
+                <td>Pure momentum narrative peak; capacity limits and long execution timelines run up against 75x+ PEs.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>37. Telecommunications</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-high">High</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Industry-wide tariff hikes flow into EBITDA; 5G rolling capex cycle ends, unlocking free cash flow.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>38. Media & Entertainment</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-medium">Med</td>
+                <td>Cheap</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Linear ad revenues contract structurally; OTT content acquisition expenses destroy operational profitability.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>39. Textiles & Apparel Export</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-low">Low</td>
+                <td>Fair</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Neutral</td>
+                <td>US/EU retail inventory management remains highly risk-averse; raw cotton volatility pressures margins.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+            <tr class="stage-expansion">
+                <td><strong>40. Logistics & Supply Chain</strong></td>
+                <td>Expansion</td>
+                <td class="conviction-medium">Med</td>
+                <td>Fair</td>
+                <td>Upgrades</td>
+                <td>FII Buy / DII Buy</td>
+                <td>Dedicated Freight Corridor (DFC) execution optimizes multi-modal velocity; warehousing absorption stays positive.</td>
+                <td><span class="overweight">Overweight</span></td>
+            </tr>
+            <tr class="stage-distribution">
+                <td><strong>41. Travel & Hospitality</strong></td>
+                <td>Distribution</td>
+                <td class="conviction-medium">Med</td>
+                <td>Expensive</td>
+                <td>Downgrades</td>
+                <td>FII Sell / DII Neutral</td>
+                <td>Corporate and luxury room rates plateau across key business hubs; new hotel supply dilutes occupancy.</td>
+                <td><span class="underweight">Underweight</span></td>
+            </tr>
+            <tr class="stage-contraction">
+                <td><strong>42. Education</strong></td>
+                <td>Contraction</td>
+                <td class="conviction-low">Low</td>
+                <td>Fair</td>
+                <td>Mixed</td>
+                <td>FII Neutral / DII Neutral</td>
+                <td>Consensus retail edtech options face severe funding stress; physical university capex cycles carry long payback paths.</td>
+                <td><span class="neutral">Neutral</span></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>V. Thematic Cross-Currents</h2>
+    <ul>
+        <li><strong>Capex vs Consumption:</strong> The private capital expenditure supercycle is decelerating. Capacity utilization sits flat at 73.4%, avoiding the structural 75% threshold needed to spark broad private sector greenfield projects. Credit patterns show corporate borrowing is shift toward short-term working capital over long-term project loans. Concurrently, core consumption is weak, signaling that the premium urban demand engine is beginning to level off.</li>
+        <li><strong>PSU Re-Rating Lifecycle:</strong> The thesis on public sector enterprise re-rating has concluded. What began as a structural valuation correction has turned into an retail-dominated momentum trade. Defense and Railway PSUs carry order backlogs that require 7 to 10 years of perfect execution to fulfill, yet their current multiples leave no margin for operational error or government budget reallocations.</li>
+        <li><strong>Market Capitalization Divergence:</strong> The valuation spread between large-caps and the rest of the market stands at an extreme historical deviation. The Nifty Midcap index trades at a multi-year premium over the Nifty 50. This structural imbalance is sustained by systematic domestic mutual fund inflows. Any pause in domestic liquidity could trigger a rapid correction in mid- and small-cap names, making large-cap liquid assets the safest hiding place.</li>
+        <li><strong>Currency Hedging & Export Positions:</strong> As the RBI maintains tight control over the INR, export-driven models (Large IT, Pharma Formulations) gain structural advantages. They act as strong portfolio insulation against potential currency volatility or sudden shifts in global capital flows.</li>
+    </ul>
+
+    <h2>VI. Portfolio Construction Framework</h2>
+    <h3>A. Overall Market Cycle Assessment</h3>
+    <p><strong>Current Stage:</strong> Stage 3: Distribution (Late Cycle Peak)</p>
+    <p><strong>Conviction Level:</strong> High</p>
+    <p><strong>Supporting Evidence:</strong></p>
+    <ul>
+        <li>Market breadth has narrowed significantly, with the headline index sustained by a small group of highly capitalized stocks.</li>
+        <li>Institutional distribution is visible, as FII equity sales are systematically absorbed by domestic retail inflows into small- and mid-cap mutual funds.</li>
+        <li>The forward equity risk premium has turned negative relative to risk-free domestic bond yields.</li>
+    </ul>
+    <p><strong>Expected Duration in Stage:</strong> 6 to 9 Months before a broader valuation reset occurs.</p>
+    <p><strong>Variant Perception:</strong> While consensus expects structural earnings growth of 14% for FY26 based on broad industrial expansion, this framework identifies structural margin contraction from rising raw input costs and cooling public expenditure. This points to actual earnings growth closer to 9-10%.</p>
+
+    <h3>B. Top 5 Overweight Sectors</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Sector Name</th>
+                <th>Cycle Stage</th>
+                <th>Core Institutional Rationale</th>
+                <th>Valuation Framework</th>
+                <th>Investment Horizon</th>
+                <th>Conviction Level</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Private Sector Banks</td>
+                <td>Accumulation</td>
+                <td>Strong deposit structures insulate asset liability profiles; zero non-performing loan stress; historical valuation discount to broader indices.</td>
+                <td>Deep Value / Cheap</td>
+                <td>12 to 18 Months</td>
+                <td class="conviction-high">High</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>IT Services (Large)</td>
+                <td>Accumulation</td>
+                <td>US financial sector IT spending is recovering; free cash flow yields exceed 5%; acts as an effective currency depreciation hedge.</td>
+                <td>Fair Value</td>
+                <td>12 Months</td>
+                <td class="conviction-high">High</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Pharma (Domestic)</td>
+                <td>Expansion</td>
+                <td>High brand loyalty across chronic care therapies ensures reliable price pass-through; strong defensive characteristics in a volatile market.</td>
+                <td>Fair Value</td>
+                <td>12 Months</td>
+                <td class="conviction-high">High</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Telecommunications</td>
+                <td>Expansion</td>
+                <td>Consolidated market structure allows tariff increases to flow into EBITDA; rolling capital expenditures on 5G peak out.</td>
+                <td>Fair Value</td>
+                <td>12 to 18 Months</td>
+                <td class="conviction-high">High</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Power Generation</td>
+                <td>Expansion</td>
+                <td>Structural power supply deficit guarantees robust merchant pricing; predictable utility cash flows protect capital.</td>
+                <td>Fair Value</td>
+                <td>12 Months</td>
+                <td class="conviction-medium">Medium</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>C. Top 5 Underweight / Avoid Sectors</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Rank</th>
+                <th>Sector Name</th>
+                <th>Cycle Stage</th>
+                <th>Core Short Thesis</th>
+                <th>Falsification Thresholds</th>
+                <th>Actionable Re-entry Signals</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Defense & Aerospace</td>
+                <td>Distribution</td>
+                <td>Valuations at 75x+ trailing PE ignore physical capacity limits and multi-year production bottlenecks.</td>
+                <td>Sustained export expansion exceeding ₹45,000 crore annually.</td>
+                <td>Minimum 35% absolute multiple contraction.</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Capital Goods</td>
+                <td>Distribution</td>
+                <td>Forward multiples price in uninterrupted, peak execution rates through 2030; new order inflows are slowing down.</td>
+                <td>Private corporate capital expenditure accelerating above 20% YoY.</td>
+                <td>Mean reversion to historical 10-year median PE.</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>PSU Banks</td>
+                <td>Distribution</td>
+                <td>Gross margins have peaked; rising deposit competition compresses net interest spreads; credit costs are normalizing upward.</td>
+                <td>Explicit government privatization mandates for mid-tier public lenders.</td>
+                <td>Price to Book ratio dropping below 0.85x.</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>Broking & Wealth</td>
+                <td>Distribution</td>
+                <td>Cyclical peak in retail options volumes; regulatory interventions alter high-margin product revenues.</td>
+                <td>Complete rollback of regulatory transaction structures on retail derivatives.</td>
+                <td>Stabilization of retail volumes post-regulatory impact assessment.</td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>Automobiles (PV)</td>
+                <td>Distribution</td>
+                <td>Dealer inventories sit at historical highs; margin-eroding discount cycles are returning across key product lines.</td>
+                <td>Sustained recovery in low-tier rural wage growth above 8%.</td>
+                <td>Channel stock levels falling below 30 days.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>D. Strategic Watchlist</h3>
+    <ul>
+        <li><strong>Late Contraction to Accumulation Watch:</strong> <em>Specialty Chemicals</em> — Channel destocking is finishing, but absolute volume commitments must recover before building primary positions. Monitor monthly Chinese export pricing sheets for signs of stabilization.</li>
+        <li><strong>Late Expansion to Distribution Watch:</strong> <em>Hospitals & Diagnostics</em> — Operational execution remains solid, but current market valuations leave no room for commissioning delays in new facilities. Prepare to trim positions if ARPOB growth falls below general inflation rates.</li>
+    </ul>
+
+    <h3>E. Risk Scenarios & Asset Allocation Hedges</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Risk Scenario</th>
+                <th>Probability</th>
+                <th>Triggering Events</th>
+                <th>Sectors to Overweight</th>
+                <th>Sectors to Liquidate</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Upside Scenario</strong> (US Soft Landing, FII Inflow Surge)</td>
+                <td>15%</td>
+                <td>US Fed cuts interest rates by 100bps+; global inflation soft; active international managers rotate back to emerging markets.</td>
+                <td>IT Mid-caps, Real Estate, High-beta NBFCs</td>
+                <td>FMCG, Sovereign Utilities</td>
+            </tr>
+            <tr>
+                <td><strong>Base Case Scenario</strong> (Prolonged Distribution, Multiple Compression)</td>
+                <td>65%</td>
+                <td>Domestic corporate earnings match a slower macro run rate; domestic liquidity slows down; valuations undergo gradual mean reversion.</td>
+                <td>Private Sector Banks, Large IT, Domestic Pharma, Telecom</td>
+                <td>Defense, Capital Goods, PSU Banks, PV OEMs</td>
+            </tr>
+            <tr>
+                <td><strong>Downside Scenario</strong> (Global Growth Shock, Capital Flight)</td>
+                <td>20%</td>
+                <td>US economic activity slows abruptly; structural credit defaults emerge in domestic retail shadow banking; geopolitical events disrupt trade routes.</td>
+                <td>Gold Finance NBFCs, Consumer Staples, Sovereign Utilities</td>
+                <td>Metals, Real Estate, SME Industrials</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>VII. Contrarian Calls & Critical Questions</h2>
+    <h3>Contrarian Opportunities</h3>
+    <p><strong>1. Most Hated Sector with Structural Inflection: IT Services (Large-cap)</strong><br>
+    The consensus view expects multi-year stagnation in global enterprise technology spend. This framework identifies an turning point: major US financial institutions are restarting deferred core development projects, and large players are utilizing lower attrition to expand operating margins. Large-cap tech offers valuation safety and strong free cash flow yields.</p>
+
+    <p><strong>2. Consensus Darling Near Peak: Capital Goods & Defense PSUs</strong><br>
+    The popular narrative supports an uninterrupted domestic infrastructure and defense manufacturing supercycle. In reality, this is a classic late-cycle trap. Peak cyclical earnings are being valued at peak growth multiples right as public spending face fiscal consolidation constraints.</p>
+
+    <h3>Critical Questions Answered</h3>
+    <ol>
+        <li><strong>Is India growth story intact or fatiguing?</strong> The structural thesis is intact, but cyclical growth momentum is fatiguing as public spending cools.</li>
+        <li><strong>Are Nifty valuations (21x PE) justified?</strong> No, they are expensive. A 12% corporate earnings trajectory cannot sustain a 21x forward multiple while global risk-free rates remain above 4%.</li>
+        <li><strong>FII selling - structural or cyclical?</strong> It is cyclical, driven by high relative valuations compared to cheaper manufacturing hubs in North Asia.</li>
+        <li><strong>Are SIP flows supporting a bubble or building wealth?</strong> They are funding an retail-led bubble in the mid- and small-cap segments by buying stocks based on momentum rather than value.</li>
+        <li><strong>Is the China stimulus a threat to domestic flows?</strong> Yes, it creates an immediate tactical challenge, drawing active global emerging market funds away from expensive domestic positions.</li>
+        <li><strong>PSU re-rating - value unlocking or political trade exhausted?</strong> The value re-rating phase is over. Current prices rely on speculative retail momentum.</li>
+        <li><strong>Is the worst over for the IT Services sector?</strong> Yes, large-cap IT has bottomed out and is moving back into structural accumulation.</li>
+        <li><strong>Private banks vs PSU banks allocation:</strong> Private banks offer strong valuation support and clean balance sheets, while public sector lenders face cyclical margin compression.</li>
+        <li><strong>Is the capex cycle real or fragile?</strong> It remains fragile and dependent on public funding, showing limited signs of broad private sector greenfield commitments.</li>
+        <li><strong>Which sector is in absolute bubble territory?</strong> Defense and Railway engineering enterprises.</li>
+        <li><strong>Which sector is in despair but inflecting?</strong> Specialty Chemicals.</li>
+        <li><strong>12 months from now - which sector will you wish you bought today?</strong> Large-cap Private Sector Banks.</li>
+        <li><strong>12 months from now - which sector will you wish you sold today?</strong> Momentum-driven Defense PSUs.</li>
+    </ol>
+
+    <h2>VIII. Data Sources & Methodology</h2>
+    <ul>
+        <li><strong>Market Data:</strong> Capital flows, derivative positions, and sectoral indices sourced from NSDL, CDSL, BSE, and NSE.</li>
+        <li><strong>Macro Data:</strong> Banking credit trends, currency reserve assets, and liquidity variables from the Reserve Bank of India (RBI) database.</li>
+        <li><strong>Economic Indicators:</strong> GDP components, Industrial Production (IIP) series, and inflation profiles from the Ministry of Statistics and Programme Implementation (MOSPI).</li>
+        <li><strong>Operational Metrics:</strong> Automobile registrations and shipping data from the VAHAN network and the GST Council portal.</li>
+        <li><strong>Analytical Approach:</strong> Focuses on forward cash generation capabilities and tangible asset metrics over historical accounting profits, explicitly testing consensus expectations against bottom-up capacity realities.</li>
+    </ul>
+
+</body>
+</html>
