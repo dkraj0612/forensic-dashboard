@@ -5,7 +5,7 @@ import json
 import time
 import sys
 import logging
-from datetime import datetime
+from datetime import datetime, timedelta
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
@@ -27,18 +27,48 @@ def create_resilient_session() -> requests.Session:
     session.mount("http://", adapter)
     return session
 
+def is_fundamental_fresh(ticker: str) -> bool:
+    """Gatekeeper: Ensures fundamentals exist and are not older than 14 days."""
+    path = f"corporate_data/{ticker}/fundamentals.json"
+    if not os.path.exists(path):
+        return False
+    
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            sync_date_str = data.get('sync_date')
+            if not sync_date_str: return False
+            
+            sync_date = datetime.strptime(sync_date_str, '%Y-%m-%d')
+            # 14-day freshness window check
+            return datetime.today() - sync_date < timedelta(days=14)
+    except Exception:
+        return False
+
 def gather_omni_context(ticker: str) -> tuple[str, int]:
     context = f"--- ASSET FORENSIC PROFILE: {ticker} ---\n\n"
     historical_data = ""
     valid_days_count = 0
     
-    # 1. FAIL-FAST LOGIC: Process Historical Matrix Folders FIRST
+    # 1. LOAD FUNDAMENTALS FROM DISK (No Live Yahoo API Calls here!)
+    fund_path = f"corporate_data/{ticker}/fundamentals.json"
+    if os.path.exists(fund_path):
+        try:
+            with open(fund_path, "r", encoding="utf-8") as f:
+                f_data = json.load(f)
+                context += f"### [LATEST FUNDAMENTALS]\n"
+                context += f"Trailing P/E: {f_data.get('pe', 'N/A')} | Forward P/E: {f_data.get('forward_pe', 'N/A')}\n"
+                context += f"Profit Margin: {f_data.get('margins', 'N/A')} | ROE: {f_data.get('roe', 'N/A')}\n"
+                context += f"Debt-to-Equity: {f_data.get('de', 'N/A')} | Total Cash: {f_data.get('cash', 'N/A')}\n\n"
+        except Exception as e:
+            logger.debug(f"Error reading fundamentals for {ticker}: {e}")
+
+    # 2. PROCESS HISTORICAL MATRIX FOLDERS (FULL LIST RETAINED)
     if os.path.exists("market_data"):
         all_dates = sorted([d for d in os.listdir("market_data") if re.match(r'\d{4}-\d{2}-\d{2}', d)])
         
         for d in all_dates:
             day_has_data = False
-            # UPGRADE: Included new forensic markdown files in the LLM context sweep
             for m_file in ["cash_market.md", "derivatives.md", "macro_flows.md", "insider_trading.md", "promoter_pledges.md", "index_options.md"]:
                 path = f"market_data/{d}/{m_file}"
                 if os.path.exists(path):
@@ -50,32 +80,13 @@ def gather_omni_context(ticker: str) -> tuple[str, int]:
             if day_has_data:
                 valid_days_count += 1
                 
-    # If we don't have enough baseline data, abort instantly to save API hanging
+    # If we don't have enough baseline data, abort instantly to save Gemini API calls
     if valid_days_count < 10:
         return context, valid_days_count
         
-    # 2. LIGHTNING FETCH: Direct API bypasses the slow 'yfinance' library
-    try:
-        url = f"https://query2.finance.yahoo.com/v10/finance/quoteSummary/{ticker}.NS?modules=summaryDetail,financialData"
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}
-        res = requests.get(url, headers=headers, timeout=4) 
-        
-        if res.status_code == 200:
-            data = res.json().get('quoteSummary', {}).get('result', [{}])[0]
-            summary = data.get('summaryDetail', {})
-            financials = data.get('financialData', {})
-            
-            context += f"### [LIVE FUNDAMENTALS]\n"
-            context += f"Trailing P/E: {summary.get('trailingPE', {}).get('fmt', 'N/A')} | Forward P/E: {summary.get('forwardPE', {}).get('fmt', 'N/A')}\n"
-            context += f"Profit Margin: {financials.get('profitMargins', {}).get('fmt', 'N/A')} | ROE: {financials.get('returnOnEquity', {}).get('fmt', 'N/A')}\n"
-            context += f"Debt-to-Equity: {financials.get('debtToEquity', {}).get('fmt', 'N/A')} | Total Cash: {financials.get('totalCash', {}).get('fmt', 'N/A')}\n\n"
-    except Exception as e: 
-        logger.warning(f"Fast-fetch fundamentals failed for {ticker}: {e}")
-
-    # Append the historical data we mapped earlier
     context += historical_data
                         
-    # 3. Inject Specific Corporate Filings
+    # 3. INJECT SPECIFIC CORPORATE FILINGS
     corp = f"corporate_data/{ticker}"
     if os.path.exists(corp):
         for r, _, files in os.walk(corp):
@@ -141,6 +152,11 @@ def run_ai_analysis_sweep(watchlist: list, session: requests.Session):
         if (time.time() - start_time) > 19800:
             logger.warning("5.5 hour execution limit reached. Halting AI loop gracefully to prevent CI runner termination.")
             break
+
+        # GATEKEEPER: Ensure fundamentals are fresh before spending Gemini API tokens
+        if not is_fundamental_fresh(ticker):
+            logger.warning(f"⚠️ GATEKEEPER HOLD: {ticker} fundamentals are missing or older than 14 days. Skipping analysis.")
+            continue
             
         if ticker in verdicts and verdicts[ticker].get("metadata", {}).get("analysis_date") == today:
             logger.info(f"⏭️ SKIP: {ticker} has already been processed and logged today.")
