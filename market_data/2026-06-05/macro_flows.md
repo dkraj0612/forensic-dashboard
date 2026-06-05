@@ -1,10 +1,7 @@
 # Institutional Flows
 
 ## FII/DII Net
-| Category | Net_Value |
-| --- | --- |
-| DII | 4360.14 |
-| FII/FPI | -4447.06 |
+*No data available.*
 
 ## Dark Pool Deals (Bulk/Block)
 | Type | Symbol | Client | Txn |
