@@ -38,7 +38,9 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
+    """The Ultimate Fetcher: 3-Layer Proxies + Playwright DOM-Level WAF Bypass"""
     def __init__(self):
+        # --- 1. LIGHTWEIGHT REQUESTS ENGINE ---
         self.session = requests.Session()
         self.u_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -47,7 +49,7 @@ class OmniFetcher:
         self.session.headers.update({
             "User-Agent": random.choice(self.u_agents),
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "Accept-Encoding": "gzip, deflate, br",
+            "Accept-Encoding": "gzip, deflate", # Removed br to avoid compression issues
             "Connection": "keep-alive"
         })
         
@@ -56,35 +58,59 @@ class OmniFetcher:
         self.session.mount("https://", adapter)
         self.session.mount("http://", adapter)
 
-        self.proxies = ["", "https://api.allorigins.win/raw?url=", "https://corsproxy.io/?url="]
+        self.proxies = [
+            "",                                      # Layer 1: Direct
+            "https://api.allorigins.win/raw?url=",   # Layer 2: AllOrigins
+            "https://corsproxy.io/?url="             # Layer 3: CorsProxy
+        ]
+
+        # --- 2. HEAVY PLAYWRIGHT ENGINE ---
         self.pw = None
         self.browser = None
         self.pw_context = None
+        self.page = None
 
     def _init_playwright(self):
+        """Launches the WAF-Bypass Browser Context"""
         if self.pw_context is None:
             logger.warning("Engaging Playwright Ghost-Human Browser...")
             self.pw = sync_playwright().start()
-            self.browser = self.pw.chromium.launch(headless=True)
+            
+            # WAF BYPASS: Disable HTTP/2 & Automation Flags to defeat Akamai/Cloudflare
+            self.browser = self.pw.chromium.launch(
+                headless=True, 
+                args=[
+                    "--disable-http2", 
+                    "--disable-blink-features=AutomationControlled",
+                    "--no-sandbox"
+                ]
+            )
+            
             self.pw_context = self.browser.new_context(
                 user_agent=random.choice(self.u_agents),
                 viewport={"width": 1920, "height": 1080},
-                accept_downloads=True
+                ignore_https_errors=True
             )
+            self.page = self.pw_context.new_page()
+            
+            logger.info("Priming cookies and solving firewall challenges...")
             try:
-                page = self.pw_context.new_page()
-                page.goto("https://www.nseindia.com", timeout=30000, wait_until="domcontentloaded")
-                page.goto("https://www.bseindia.com", timeout=30000, wait_until="domcontentloaded")
-                page.close()
+                self.page.goto("https://www.nseindia.com", wait_until="domcontentloaded", timeout=45000)
+                time.sleep(3) # Allow scripts to run
+                self.page.goto("https://www.bseindia.com", wait_until="domcontentloaded", timeout=45000)
+                time.sleep(3)
             except Exception as e:
-                logger.debug(f"Cookie priming timeout: {e}")
+                logger.debug(f"Priming took too long: {e}")
 
     def prime_bse_cookies(self):
-        try: self.session.get("https://www.bseindia.com", timeout=15)
+        try:
+            self.session.get("https://www.bseindia.com", timeout=15)
         except Exception: pass
 
     def get_text(self, url: str, timeout: int = 25) -> Optional[str]:
         headers = {"Referer": "https://www.nseindia.com/"}
+        
+        # Phase 1: Proxy Waterfall
         for proxy in self.proxies:
             target = f"{proxy}{url}" if proxy else url
             try:
@@ -94,19 +120,19 @@ class OmniFetcher:
                     return resp.text
             except Exception: pass
             
+        # Phase 2: Playwright Fallback
         self._init_playwright()
         try:
-            page = self.pw_context.new_page()
-            page.goto(url, timeout=timeout*1000, wait_until="domcontentloaded")
-            page.wait_for_timeout(2000) # Wait for WAF to clear
-            text = page.locator("body").inner_text()
-            page.close()
-            return text
+            resp = self.page.request.get(url, headers=headers, timeout=timeout*1000)
+            if resp.ok: return resp.text()
         except Exception as e: logger.error(f"Playwright text fetch failed: {e}")
+        
         return None
 
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
+        
+        # Phase 1: Proxy Waterfall
         try:
             resp = self.session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
@@ -118,54 +144,59 @@ class OmniFetcher:
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
+        # Phase 2: Playwright Fallback (HTTP/2 Disabled)
         self._init_playwright()
         try:
-            page = self.pw_context.new_page()
-            logger.info("Physical Browser Download Triggered...")
-            with page.expect_download(timeout=60000) as download_info:
-                page.goto(url)
-            dl = download_info.value
-            path = dl.path()
-            with open(path, "rb") as f:
-                body = f.read()
-            page.close()
-            if body.startswith(b'PK'): return body
-        except Exception as e: logger.error(f"Playwright ZIP download blocked: {e}")
+            logger.info("Physical Browser Download Triggered (HTTP/2 Bypassed)...")
+            resp = self.page.request.get(url, headers={"Referer": "https://www.nseindia.com/", "Accept": "*/*"}, timeout=60000)
+            body = resp.body()
+            if body.startswith(b'PK'): 
+                return body
+            else:
+                logger.error("Playwright downloaded file, but it is not a valid ZIP.")
+        except Exception as e: logger.error(f"Playwright ZIP fetch failed: {e}")
         
+        logger.error(f"Ultimate binary download failed for: {url}")
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
-        headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json, text/plain, */*"}
+        headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
+        # Phase 1: Standard Requests
         try:
             resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
-            if resp.status_code == 200: return resp.json()
+            if resp.status_code == 200:
+                data = resp.json()
+                if data: return data
         except Exception: pass
             
+        # Phase 2: Playwright DOM-Level Fetch
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
             url = f"{url}?{qs}"
             
         try:
-            page = self.pw_context.new_page()
-            page.goto(url, timeout=timeout*1000, wait_until="domcontentloaded")
-            page.wait_for_timeout(3000) # Let the Cloudflare/BSE JS verify the browser
+            logger.info("Executing DOM-level JSON fetch to bypass Cloudflare HTML block...")
+            # We execute the Javascript INSIDE the already-verified browser tab. WAF cannot block this.
+            json_data = self.page.evaluate(f"""async () => {{
+                const res = await fetch('{url}', {{ headers: {{ 'Accept': 'application/json' }} }});
+                return await res.json();
+            }}""")
             
-            # Extract pure text from the DOM to avoid HTML block pages
-            body_text = page.locator("body").inner_text()
-            page.close()
-            
-            return json.loads(body_text)
-        except json.JSONDecodeError:
-            logger.error("Playwright bypassed firewall but received HTML page instead of JSON.")
+            # Verify we didn't just parse an empty WAF string
+            if json_data: 
+                return json_data
+            else:
+                logger.error("Playwright DOM fetch succeeded, but returned empty JSON.")
         except Exception as e: 
-            logger.error(f"Playwright JSON fetch failed: {e}")
+            logger.error(f"Playwright DOM fetch failed: {e}")
         
         return None
         
     def close(self):
         if self.pw_context:
+            self.page.close()
             self.pw_context.close()
             self.browser.close()
             self.pw.stop()
@@ -181,6 +212,7 @@ def send_telegram_alert(message: str):
         logger.error(f"Failed to send Telegram alert: {e}")
 
 def is_valid_file(filepath: str) -> bool:
+    """Checks if file exists AND has content (not empty)."""
     return os.path.exists(filepath) and os.path.getsize(filepath) > 50
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
@@ -216,6 +248,7 @@ def get_nifty_total_market(fetcher: OmniFetcher) -> List[str]:
             if sym: tickers.add(sym.strip().upper())
 
     if len(tickers) < 700:
+        logger.info(f"Primary fetch got {len(tickers)}. Falling back to multi-index assembly...")
         for idx in ["nifty500", "niftymicrocap250", "niftysmallcap250"]:
             fallback = fetch_index(idx)
             if fallback:
@@ -274,7 +307,8 @@ def process_derivatives(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target_fno = f"{cfg.base_market_dir}/{cfg.date_iso}/derivatives.md"
     target_opt = f"{cfg.base_market_dir}/{cfg.date_iso}/index_options.md"
     
-    if is_valid_file(target_fno) and is_valid_file(target_opt): return "✅ Skipped (Already Secure)"
+    if is_valid_file(target_fno) and is_valid_file(target_opt):
+        return "✅ Skipped (Already Secure)"
 
     fno, oi, ban = [], [], []
     options_data = {"NIFTY": {"CE": 0, "PE": 0}, "BANKNIFTY": {"CE": 0, "PE": 0}, "FINNIFTY": {"CE": 0, "PE": 0}}
