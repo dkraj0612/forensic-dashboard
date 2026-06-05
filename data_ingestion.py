@@ -38,7 +38,7 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: 3-Layer Proxies + Playwright DOM-Level WAF Bypass"""
+    """The Ultimate Fetcher: Proxies + Playwright Native Download + Direct Navigation WAF Bypass"""
     def __init__(self):
         # --- 1. LIGHTWEIGHT REQUESTS ENGINE ---
         self.session = requests.Session()
@@ -129,7 +129,7 @@ class OmniFetcher:
         
         return None
 
-        def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
+    def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
         # Phase 1: Proxy Waterfall
@@ -165,7 +165,6 @@ class OmniFetcher:
             if body.startswith(b'PK'): 
                 return body
             else:
-                # If it still fails, print the exact HTML the NSE sent us so we can read it
                 snippet = body[:200].decode('utf-8', errors='ignore').replace('\n', ' ')
                 logger.error(f"File is not a valid ZIP. NSE Server responded with: {snippet}")
                 
@@ -175,7 +174,7 @@ class OmniFetcher:
         logger.error(f"Ultimate binary download failed for: {url}")
         return None
 
-        def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
+    def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
         # Phase 1: Standard Requests Waterfall
@@ -186,7 +185,7 @@ class OmniFetcher:
                 if data: return data
         except Exception: pass
             
-        # Phase 2: Playwright Fallback (Direct Navigation Method)
+        # Phase 2: Playwright Fallback (Direct Navigation Method to bypass CORS)
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
@@ -208,7 +207,6 @@ class OmniFetcher:
             logger.error(f"Playwright JSON navigation failed: {e}")
         
         return None
-
         
     def close(self):
         if self.pw_context:
