@@ -3,10 +3,16 @@ name: Master Market Data Pipeline
 
 on:
   schedule:
-    - cron: '30 13 * * *'  # Runs daily at 7:00 PM IST (13:30 UTC)
-    - cron: '0 16 * * *'   # Fallback run at 9:30 PM IST (16:00 UTC)
-    - cron: '0 5 * * 6'    # Weekly Fundamental Sync at 10:30 AM IST (05:00 UTC) Saturday
-  workflow_dispatch:        # Allows you to trigger the pipeline manually anytime
+    # THE PERSISTENT HUNTER: Runs at 13:00, 14:00, 15:00, 16:00, 17:00 UTC 
+    # (6:30 PM, 7:30 PM, 8:30 PM, 9:30 PM, 10:30 PM IST)
+    - cron: '0 13,14,15,16,17 * * 1-5'
+    
+    # THE AI ANALYST: Runs strictly at 17:30 UTC (11:00 PM IST)
+    - cron: '30 17 * * 1-5'
+    
+    # WEEKLY SYNC: Saturday 5:00 UTC (10:30 AM IST)
+    - cron: '0 5 * * 6'
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -17,107 +23,80 @@ jobs:
     if: github.event.schedule == '0 5 * * 6'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'
-
-      - name: Install Dependencies for Sync
-        run: |
-          python -m pip install --upgrade pip
-          pip install requests
-
-      - name: Run Fundamental Sync
-        run: python fundamental_sync.py
-
-      - name: Commit and Push Fundamentals
-        run: |
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11', cache: 'pip' }
+      - run: pip install requests
+      - run: python fundamental_sync.py
+      - run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Safely add the new corporate data fundamentals
           git add corporate_data/
-          
           if ! git diff --staged --quiet; then
             git commit -m "chore: weekly fundamentals synced [skip ci]"
             git pull --rebase origin main
             git push origin main
-          else
-            echo "No new fundamental changes detected."
           fi
 
-  # --- DAILY JOB: INGESTION & AI ANALYSIS ---
-  run-master-pipeline:
-    if: github.event.schedule != '0 5 * * 6'
+  # --- HOURLY JOB: PERSISTENT HUNTER INGESTION ---
+  data-hunter:
+    if: github.event.schedule == '0 13,14,15,16,17 * * 1-5' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0    # Fetches full history so rebasing works perfectly
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip'      # Speeds up daily builds by caching installed packages
-
-      - name: Install System and Python Dependencies
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11', cache: 'pip' }
+      - name: Install Playwright & Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests pandas lxml html5lib tabulate yfinance
-
-      # --- STAGE 1: DATA INGESTION ---
-      - name: Run Data Ingestion Engine
+          pip install requests playwright
+          playwright install chromium
+      - name: Run Data Hunter
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python data_ingestion.py
-
-      - name: Commit and Push Market Data Securely
+      - name: Commit Captured Data
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # ARCHITECTURE FIX: Use 'git add .' to safely add whatever the python script generated
-          # without crashing if a specific folder wasn't created today.
           git add .
-          
           if ! git diff --staged --quiet; then
-            git commit -m "chore: exchange data ingestion complete [skip ci]"
+            git commit -m "chore: hunter captured new market data [skip ci]"
             git pull --rebase origin main
             git push origin main
-          else
-            echo "No new market changes detected."
           fi
 
-      # --- STAGE 2: AI ORCHESTRATION ---
-      - name: Run AI Analysis Engine
+  # --- NIGHTLY JOB: AI ANALYSIS ---
+  ai-analysis:
+    if: github.event.schedule == '30 17 * * 1-5'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.11', cache: 'pip' }
+      - run: pip install requests
+      - name: Run AI Analysis
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python ai_analysis.py
-
-      - name: Commit and Push Final AI Verdicts
-        if: always()        # Ensures verdicts are saved even if a specific ticker timed out
+      - name: Commit AI Verdicts
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # Safely add the DB only if it exists
           if [ -f master_forensic_db.json ]; then
             git add master_forensic_db.json
             if ! git diff --staged --quiet; then
-              git commit -m "chore: master forensic database updated [skip ci]"
+              git commit -m "chore: nightly AI verdicts committed [skip ci]"
               git pull --rebase origin main
               git push origin main
-            else
-              echo "No new AI verdicts to commit."
             fi
-          else
-            echo "Database file not found. Skipping commit."
           fi
 
 
+`
