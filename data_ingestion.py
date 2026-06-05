@@ -112,28 +112,43 @@ def write_fallback_markdown(filepath: str, title: str):
             f.write(f"# {title}\n\n*No data published by exchange for this date.*")
 
 def get_nifty_total_market(fetcher: BulletproofFetcher) -> List[str]:
-    logger.info("Fetching live Nifty Total Market index constituents...")
+    logger.info("Fetching live market index constituents...")
     tickers = set()
 
-    text = fetcher.get_text("https://www.niftyindices.com/IndexConstituent/ind_niftytotalmarketlist.csv")
-    if text and "Symbol" in text:
-        for row in csv.DictReader(text.strip().split('\n')):
+    def fetch_index(index_name):
+        """Automatically tries both NSE naming conventions for any index."""
+        for suffix in ["list.csv", "_list.csv"]:
+            url = f"https://www.niftyindices.com/IndexConstituent/ind_{index_name}{suffix}"
+            text = fetcher.get_text(url)
+            if text and "Symbol" in text:
+                return text
+        return None
+
+    # 1. Try the Primary Total Market Index (750 stocks)
+    logger.info("Attempting primary: Nifty Total Market...")
+    total_market_text = fetch_index("niftytotalmarket")
+    if total_market_text:
+        for row in csv.DictReader(total_market_text.strip().split('\n')):
             sym = row.get('Symbol') or row.get('SYMBOL')
             if sym: tickers.add(sym.strip().upper())
 
-    if len(tickers) < 500:
-        logger.info("Executing fallback: Assembling Nifty 500 + Microcap 250...")
-        for url in [
-            "https://www.niftyindices.com/IndexConstituent/ind_nifty500list.csv", 
-            "https://www.niftyindices.com/IndexConstituent/ind_niftymicrocap250list.csv"
-        ]:
-            text = fetcher.get_text(url)
-            if text:
-                for row in csv.DictReader(text.strip().split('\n')):
+    # 2. Threshold Check & Aggressive Fallback
+    # If Total Market fails or returns fewer than 700 stocks, assemble them manually.
+    if len(tickers) < 700:
+        logger.info(f"Primary fetch returned {len(tickers)} stocks. Triggering aggressive fallback assembly...")
+        
+        fallback_indices = ["nifty500", "niftymicrocap250", "niftysmallcap250"]
+        for idx in fallback_indices:
+            fallback_text = fetch_index(idx)
+            if fallback_text:
+                for row in csv.DictReader(fallback_text.strip().split('\n')):
                     sym = row.get('Symbol') or row.get('SYMBOL')
                     if sym: tickers.add(sym.strip().upper())
 
     final_list = list(tickers)
+    logger.info(f"Successfully assembled {len(final_list)} unique tickers for the Watchlist.")
+    
+    # Absolute worst-case scenario safety net
     return final_list if len(final_list) > 200 else ["RELIANCE", "TCS", "INFY", "HDFCBANK", "ICICIBANK"]
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
