@@ -3,1359 +3,1487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CIO Institutional Dashboard - ₹5,000 Cr High-Conviction Fund</title>
+    <title>CIO Institutional Tracker | Live PnL Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-primary: #0f172a;
-            --bg-secondary: #1e293b;
-            --bg-tertiary: #334155;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-amber: #f59e0b;
-            --accent-red: #ef4444;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #475569;
+            --bg-base: #09090b;
+            --bg-surface: #18181b;
+            --bg-surface-hover: #27272a;
+            --border: #3f3f46;
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --brand-blue: #3b82f6;
+            --brand-green: #22c55e;
+            --brand-red: #ef4444;
+            --brand-amber: #f59e0b;
+            --font-sans: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-primary);
+            font-family: var(--font-sans);
+            background-color: var(--bg-base);
             color: var(--text-main);
-            padding: 20px;
-            font-size: 13px;
             line-height: 1.5;
+            -webkit-font-smoothing: antialiased;
         }
 
+        .container { max-width: 1600px; margin: 0 auto; padding: 20px; }
+        
         header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            gap: 15px;
             padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border);
             margin-bottom: 20px;
         }
 
-        .fund-title h1 {
-            font-size: 22px;
-            font-weight: 700;
-            letter-spacing: -0.025em;
+        @media (min-width: 768px) {
+            header { flex-direction: row; justify-content: space-between; align-items: flex-end; }
         }
 
-        .fund-title p {
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .macro-pill-box {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .macro-pill {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+        .header-title h1 { font-size: 24px; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+        .header-title p { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
+        
+        .macro-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+        .macro-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
             padding: 6px 12px;
             border-radius: 6px;
-            font-size: 11px;
+            font-size: 12px;
+            font-family: var(--font-mono);
         }
+        .macro-item span { color: var(--brand-blue); font-weight: 600; margin-left: 5px; }
 
-        .macro-pill span {
-            color: var(--accent-blue);
-            font-weight: 700;
-        }
-
-        /* Tab Navigation */
-        .tab-navigation {
+        .tabs {
             display: flex;
-            gap: 4px;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            background-color: var(--bg-secondary);
-            padding: 4px 4px 0 4px;
-            border-radius: 8px 8px 0 0;
+            overflow-x: auto;
+            gap: 5px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 24px;
+            scrollbar-width: none; 
         }
+        .tabs::-webkit-scrollbar { display: none; } 
 
         .tab-btn {
-            background: none;
+            background: transparent;
             border: none;
             color: var(--text-muted);
-            padding: 10px 20px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 500;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all 0.2s ease;
-            border-radius: 6px 6px 0 0;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+            font-family: var(--font-sans);
         }
+        .tab-btn:hover { color: var(--text-main); }
+        .tab-btn.active { color: var(--brand-blue); border-bottom-color: var(--brand-blue); }
 
-        .tab-btn:hover {
-            color: var(--text-main);
-            background-color: var(--bg-tertiary);
-        }
+        .tab-content { display: none; animation: fadeIn 0.3s ease; }
+        .tab-content.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
 
-        .tab-btn.active {
-            color: var(--text-main);
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--bg-primary);
-            margin-bottom: -1px;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        /* Performance KPI Cards */
         .kpi-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 24px;
         }
-
         .kpi-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            padding: 16px;
             border-radius: 8px;
-            padding: 15px;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
+        .kpi-label { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .kpi-value { font-size: 24px; font-weight: 700; margin: 8px 0 4px 0; font-family: var(--font-mono); }
+        .kpi-delta { font-size: 12px; font-weight: 500; }
+        .text-green { color: var(--brand-green); }
+        .text-red { color: var(--brand-red); }
+        .text-blue { color: var(--brand-blue); }
+        .text-amber { color: var(--brand-amber); }
 
-        .kpi-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-        }
-
-        .kpi-card.green::before { background-color: var(--accent-green); }
-        .kpi-card.blue::before { background-color: var(--accent-blue); }
-        .kpi-card.amber::before { background-color: var(--accent-amber); }
-
-        .kpi-label {
-            color: var(--text-muted);
-            font-size: 11px;
-            text-transform: uppercase;
-            font-weight: 600;
-        }
-
-        .kpi-value {
-            font-size: 20px;
-            font-weight: 700;
-            margin-top: 5px;
-        }
-
-        .kpi-subtext {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* Tables styling */
-        .table-container {
+        .table-responsive {
             width: 100%;
             overflow-x: auto;
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            margin-bottom: 20px;
         }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
+        table { width: 100%; border-collapse: collapse; min-width: 900px; }
+        th, td { padding: 12px 16px; text-align: left; border-bottom: 1px solid var(--border); font-size: 13px; }
+        th { background: #121214; color: var(--text-muted); font-weight: 600; white-space: nowrap; }
+        tr:hover td { background: var(--bg-surface-hover); }
+        
+        .pnl-input {
+            background: var(--bg-base);
+            border: 1px solid var(--border);
+            color: var(--text-main);
+            padding: 6px 10px;
+            border-radius: 4px;
+            width: 100px;
+            font-family: var(--font-mono);
+            font-size: 13px;
         }
+        .pnl-input:focus { outline: none; border-color: var(--brand-blue); }
 
-        th {
-            background-color: #1e293b;
-            color: var(--text-muted);
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 11px;
-            padding: 12px 10px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        td {
-            padding: 10px;
-            border-bottom: 1px solid #334155;
-            font-size: 12px;
-        }
-
-        tr:hover td {
-            background-color: var(--bg-tertiary);
-        }
-
-        /* Badges */
         .badge {
-            display: inline-block;
-            padding: 2px 6px;
+            padding: 4px 8px;
             border-radius: 4px;
             font-size: 10px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
+        .bg-green { background: rgba(34, 197, 94, 0.15); color: var(--brand-green); border: 1px solid rgba(34, 197, 94, 0.3); }
+        .bg-amber { background: rgba(245, 158, 11, 0.15); color: var(--brand-amber); border: 1px solid rgba(245, 158, 11, 0.3); }
+        .bg-red { background: rgba(239, 68, 68, 0.15); color: var(--brand-red); border: 1px solid rgba(239, 68, 68, 0.3); }
+        .bg-blue { background: rgba(59, 130, 246, 0.15); color: var(--brand-blue); border: 1px solid rgba(59, 130, 246, 0.3); }
 
-        .badge-high { background-color: rgba(16, 185, 129, 0.2); color: var(--accent-green); border: 1px solid var(--accent-green); }
-        .badge-medium { background-color: rgba(59, 130, 246, 0.2); color: var(--accent-blue); border: 1px solid var(--accent-blue); }
-        .badge-watch { background-color: rgba(245, 158, 11, 0.2); color: var(--accent-amber); border: 1px solid var(--accent-amber); }
-        .badge-red { background-color: rgba(239, 68, 68, 0.2); color: var(--accent-red); border: 1px solid var(--accent-red); }
-
-        /* Card Layout for Deep Dives */
-        .deepdive-grid {
+        .grid-cards {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 20px;
         }
-
-        @media (min-width: 900px) {
-            .deepdive-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .stock-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
+        .dd-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
             border-radius: 8px;
             padding: 20px;
-            position: relative;
-        }
-
-        .stock-card.HIGH { border-top: 4px solid var(--accent-green); }
-        .stock-card.MEDIUM { border-top: 4px solid var(--accent-blue); }
-        .stock-card.WATCH { border-top: 4px solid var(--accent-amber); }
-
-        .stock-header {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 10px;
+            flex-direction: column;
+            gap: 12px;
         }
-
-        .stock-title h2 {
-            font-size: 16px;
-            font-weight: 700;
-        }
-
-        .stock-title p {
-            color: var(--text-muted);
-            font-size: 11px;
-        }
-
-        .card-section {
-            margin-bottom: 15px;
-        }
-
-        .card-section h4 {
-            font-size: 11px;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 5px;
-            border-left: 2px solid var(--accent-blue);
-            padding-left: 6px;
-        }
-
-        .warning-box {
-            background-color: rgba(239, 68, 68, 0.1);
-            border: 1px solid var(--accent-red);
-            padding: 8px;
-            border-radius: 4px;
-            color: #fca5a5;
-            font-size: 11px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .falsifier-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .falsifier-list li {
-            position: relative;
-            padding-left: 15px;
-            margin-bottom: 3px;
-            font-size: 11.5px;
-        }
-
-        .falsifier-list li::before {
-            content: "✖";
-            position: absolute;
-            left: 0;
-            color: var(--accent-red);
-        }
-
-        .mandate-box {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 25px;
-        }
-
-        .mandate-box h3 {
-            margin-bottom: 12px;
-            font-size: 14px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 5px;
-            color: var(--accent-blue);
-        }
-
-        .mandate-list {
-            padding-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .mandate-list li {
-            margin-bottom: 5px;
-        }
-
-        .inline-metrics {
+        .dd-card.HIGH { border-top: 3px solid var(--brand-green); }
+        .dd-card.MEDIUM { border-top: 3px solid var(--brand-blue); }
+        .dd-card.WATCH { border-top: 3px solid var(--brand-amber); }
+        
+        .dd-header { display: flex; justify-content: space-between; align-items: flex-start; }
+        .dd-title h3 { font-size: 16px; color: #fff; }
+        .dd-title p { font-size: 12px; color: var(--text-muted); }
+        
+        .dd-metrics {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            background: var(--bg-primary);
-            padding: 8px;
+            gap: 8px;
+            background: var(--bg-base);
+            padding: 10px;
             border-radius: 6px;
-            margin-bottom: 10px;
-            font-size: 11px;
         }
-
-        .inline-metrics div span {
-            display: block;
-            color: var(--text-muted);
-            font-size: 9px;
-            text-transform: uppercase;
-        }
-
-        .inline-metrics div strong {
+        .dd-metric-item span { display: block; font-size: 10px; color: var(--text-muted); text-transform: uppercase; }
+        .dd-metric-item strong { font-size: 13px; font-family: var(--font-mono); }
+        
+        .dd-section h4 { font-size: 12px; color: var(--brand-blue); margin-bottom: 4px; text-transform: uppercase; }
+        .dd-section p, .dd-section ul { font-size: 13px; color: #d4d4d8; }
+        .dd-section ul { padding-left: 20px; }
+        
+        .alert-box {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 8px 12px;
+            border-radius: 6px;
             font-size: 12px;
-            color: var(--text-main);
+            font-weight: 500;
+        }
+
+        .terminal {
+            background: #000;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 20px;
+            overflow-x: auto;
+            max-height: 800px;
+            overflow-y: auto;
+        }
+        .terminal pre {
+            font-family: var(--font-mono);
+            font-size: 13px;
+            color: #10b981;
+            white-space: pre-wrap;
+            line-height: 1.6;
         }
     </style>
 </head>
 <body>
 
-    <!-- Executive Fund Header -->
+<div class="container">
     <header>
-        <div class="fund-title">
-            <h1>Institutional Portfolio Management Suite</h1>
-            <p>₹5,000 Crore Concentration Equity Fund — Active Mandate Horizon: 18-36 Months</p>
+        <div class="header-title">
+            <h1>CIO Institutional Dashboard</h1>
+            <p>₹5,000 Crore Concentration Equity Fund | Execution Date: 6 June 2026</p>
         </div>
-        <div class="macro-pill-box">
-            <div class="macro-pill">Repo Rate: <span>5.25%</span></div>
-            <div class="macro-pill">FY26 GDP: <span>7.7%</span></div>
-            <div class="macro-pill">CPI Inflation: <span>3.5%</span></div>
-            <div class="macro-pill">GST (May): <span>₹1.94L Cr</span></div>
-            <div class="macro-pill">Brent Crude: <span>$95.40</span></div>
-            <div class="macro-pill">Nifty P/E: <span>20.17x</span></div>
+        <div class="macro-strip">
+            <div class="macro-item">Repo Rate<span>5.25%</span></div>
+            <div class="macro-item">GDP (FY26)<span>7.7%</span></div>
+            <div class="macro-item">CPI<span>3.5%</span></div>
+            <div class="macro-item">Nifty P/E<span>20.17x</span></div>
+            <div class="macro-item">Brent Crude<span>$95.40</span></div>
+            <div class="macro-item">Credit Grwth<span>16.2%</span></div>
         </div>
     </header>
 
-    <!-- Navigation Tabs -->
-    <div class="tab-navigation">
-        <button class="tab-btn active" onclick="switchTab('dashboard')">Executive Dashboard</button>
-        <button class="tab-btn" onclick="switchTab('snapshot')">Master Snapshot Table</button>
-        <button class="tab-btn" onclick="switchTab('deepdives')">Institutional Deep-Dives</button>
-        <button class="tab-btn" onclick="switchTab('risk-analysis')">Risk &amp; Variant Matrix</button>
-        <button class="tab-btn" onclick="switchTab('mandate-rules')">Investment Mandate &amp; Log</button>
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('pnl-tracker')">Live PnL Tracker</button>
+        <button class="tab-btn" onclick="switchTab('dashboard')">Executive Dashboard</button>
+        <button class="tab-btn" onclick="switchTab('deep-dives')">Stock Deep-Dives</button>
+        <button class="tab-btn" onclick="switchTab('risk-matrix')">Risk & Variant Matrix</button>
+        <button class="tab-btn" onclick="switchTab('master-prompt')">Verbatim Master Prompt</button>
     </div>
 
-    <!-- TAB 1: EXECUTIVE DASHBOARD -->
-    <div id="dashboard" class="tab-content active">
-        <!-- Live Portfolio Accounting Simulation Cards -->
-        <div class="kpi-grid">
-            <div class="kpi-card green">
-                <div class="kpi-label">Consolidated Fund AUM</div>
-                <div class="kpi-value">₹5,000.00 Cr</div>
-                <div class="kpi-subtext">Deployment Level: 97.5%</div>
+    <div id="pnl-tracker" class="tab-content active">
+        <div class="kpi-grid" style="margin-bottom: 20px;">
+            <div class="kpi-card">
+                <span class="kpi-label">Total Fund Capital</span>
+                <span class="kpi-value text-blue">₹5,000.00 Cr</span>
+                <span class="kpi-delta">100% Allocation Base</span>
             </div>
-            <div class="kpi-card blue">
-                <div class="kpi-label">Weighted Portfolio ROCE</div>
-                <div class="kpi-value">29.42%</div>
-                <div class="kpi-subtext">Aggregate Capital Efficiency</div>
+            <div class="kpi-card">
+                <span class="kpi-label">Current Portfolio Value</span>
+                <span class="kpi-value" id="total-value">₹5,000.00 Cr</span>
+                <span class="kpi-delta text-muted">Live Update</span>
             </div>
-            <div class="kpi-card blue">
-                <div class="kpi-label">Active Portfolio Beta</div>
-                <div class="kpi-value">1.14</div>
-                <div class="kpi-subtext">Versus Benchmark Nifty 50</div>
-            </div>
-            <div class="kpi-card amber">
-                <div class="kpi-label">Active Tracking Error</div>
-                <div class="kpi-value">4.82%</div>
-                <div class="kpi-subtext">Institutional Concentrated Delta</div>
-            </div>
-            <div class="kpi-card green">
-                <div class="kpi-label">Absolute Return (FY26)</div>
-                <div class="kpi-value">+24.80%</div>
-                <div class="kpi-subtext">Outperformance vs Index: +9.2%</div>
+            <div class="kpi-card">
+                <span class="kpi-label">Absolute PnL</span>
+                <span class="kpi-value" id="total-pnl">₹0.00 Cr</span>
+                <span class="kpi-delta" id="total-pnl-pct">0.00%</span>
             </div>
         </div>
 
-        <h3 style="margin-bottom: 15px; font-size: 14px; color: var(--accent-blue);">Critical Alerts &amp; Forensic Review Desk</h3>
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Ticker</th>
-                        <th>Forensic Flag Condition</th>
-                        <th>Institutional Impact Metric</th>
-                        <th>Action Protocol Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong style="color:var(--accent-amber)">ZENTEC</strong></td>
-                        <td><span class="badge badge-red">Sovereign Receivable Lock-up</span></td>
-                        <td>Debtor Days spiked to 543 Days in FY26 operations</td>
-                        <td><strong>CAP ON WEIGHT:</strong> Restricted to 2.0% allocation. No fresh accumulation.</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:var(--accent-amber)">APARINDS</strong></td>
-                        <td><span class="badge badge-red">Cash Quality Deficit</span></td>
-                        <td>Operating Cash Flow dropped 25% YoY due to inventory bloat</td>
-                        <td><strong>MONITOR WORK-CAP:</strong> Audit H1 FY27 PBT-to-CFO conversion metrics closely.</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:var(--accent-amber)">KAYNES</strong></td>
-                        <td><span class="badge badge-red">Margin Degradation / WC Drag</span></td>
-                        <td>EBITDA compressed to 12.6%; Debtor days expanded to 154 Days</td>
-                        <td><strong>WATCH / PAUSE:</strong> Execution suspended. Freeze weight at 1.0%.</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:var(--accent-amber)">RATNAMANI</strong></td>
-                        <td><span class="badge badge-watch">Execution Deceleration</span></td>
-                        <td>Q4 PAT declined 49% YoY due to billing delays</td>
-                        <td><strong>MONITOR PLATFORM:</strong> Retain at 1.0% weighting pending Saudi trial execution.</td>
-                    </tr>
-                    <tr>
-                        <td><strong style="color:var(--accent-amber)">ANANDRATHI</strong></td>
-                        <td><span class="badge badge-watch">Promoter Debt Leverage</span></td>
-                        <td>Promoter Share Pledge recorded at 11.41%</td>
-                        <td><strong>COMPLIANCE ALERT:</strong> Clear for now. Hard exit triggered if pledge cracks 15%.</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-
-    <!-- TAB 2: MASTER SNAPSHOT TABLE -->
-    <div id="snapshot" class="tab-content">
-        <div class="table-container">
+        <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>Rank</th>
-                        <th>Company Name (Ticker)</th>
-                        <th>Sector / Theme</th>
-                        <th>Mkt Cap (₹ Cr)</th>
-                        <th>3Y Rev CAGR</th>
-                        <th>3Y PAT CAGR</th>
-                        <th>ROCE %</th>
-                        <th>D/E</th>
-                        <th>Promoter %</th>
-                        <th>Conviction</th>
-                        <th>Tailwind</th>
+                        <th>Ticker</th>
+                        <th>Rec.</th>
+                        <th>Weight</th>
+                        <th>Alloc (₹ Cr)</th>
+                        <th>Entry CMP (₹)</th>
+                        <th>Live Price (₹)</th>
+                        <th>PnL (%)</th>
+                        <th>PnL (₹ Cr)</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr><td>1</td><td>Action Construction Equip. (ACE)</td><td>Capital Goods</td><td>10,721</td><td>28.0%</td><td>57.0%</td><td>31.7%</td><td>0.00x</td><td>65.42%</td><td><span class="badge badge-high">HIGH</span></td><td>T1, T2</td></tr>
-                    <tr><td>2</td><td>Gravita India (GRAVITA)</td><td>Circular Economy</td><td>12,036</td><td>19.1%</td><td>55.0%</td><td>17.0%</td><td>0.30x</td><td>55.90%</td><td><span class="badge badge-high">HIGH</span></td><td>T3, T4</td></tr>
-                    <tr><td>3</td><td>Ratnamani Metals &amp; Tubes (RATNAMANI)</td><td>Engineering</td><td>18,507</td><td>12.8%</td><td>15.2%</td><td>21.0%</td><td>0.00x</td><td>59.62%</td><td><span class="badge badge-watch">WATCH</span></td><td>T1</td></tr>
-                    <tr><td>4</td><td>Data Patterns (DATAPATTNS)</td><td>Defence Electronics</td><td>23,584</td><td>36.8%</td><td>>40.0%</td><td>23.3%</td><td>0.00x</td><td>41.82%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T2</td></tr>
-                    <tr><td>5</td><td>Anand Rathi Wealth (ANANDRATHI)</td><td>Wealth Management</td><td>29,225</td><td>30.0%</td><td>54.7%</td><td>57.5%</td><td>0.00x</td><td>43.11%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T5</td></tr>
-                    <tr><td>6</td><td>Elecon Engineering (ELECON)</td><td>Capital Goods</td><td>11,923</td><td>21.0%</td><td>45.3%</td><td>28.5%</td><td>0.00x</td><td>59.30%</td><td><span class="badge badge-high">HIGH</span></td><td>T1, T3</td></tr>
-                    <tr><td>7</td><td>Triveni Turbine (TRITURBINE)</td><td>Capital Goods</td><td>21,836</td><td>20.4%</td><td>21.8%</td><td>35.9%</td><td>0.00x</td><td>55.80%</td><td><span class="badge badge-high">HIGH</span></td><td>T1, T3</td></tr>
-                    <tr><td>8</td><td>Zen Technologies (ZENTEC)</td><td>Defence / Drones</td><td>16,390</td><td>46.5%</td><td>63.2%</td><td>16.2%</td><td>0.00x</td><td>48.51%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T2</td></tr>
-                    <tr><td>9</td><td>Apar Industries (APARINDS)</td><td>Capital Goods / Cables</td><td>55,754</td><td>26.0%</td><td>47.0%</td><td>31.1%</td><td>0.15x</td><td>57.77%</td><td><span class="badge badge-high">HIGH</span></td><td>T1, T3, T8</td></tr>
-                    <tr><td>10</td><td>Caplin Point Laboratories (CAPLIPOINT)</td><td>Pharmaceuticals</td><td>15,454</td><td>15.6%</td><td>21.9%</td><td>24.6%</td><td>0.00x</td><td>70.57%</td><td><span class="badge badge-high">HIGH</span></td><td>T8</td></tr>
-                    <tr><td>11</td><td>BSE Limited (BSE)</td><td>Exchanges / Fintech</td><td>1,58,032</td><td>>60.0%</td><td>>80.0%</td><td>58.0%</td><td>0.00x</td><td>0.00%</td><td><span class="badge badge-high">HIGH</span></td><td>T5</td></tr>
-                    <tr><td>12</td><td>Kewal Kiran Clothing (KKCL)</td><td>Retail / Apparel</td><td>2,706</td><td>19.0%</td><td>22.0%</td><td>18.1%</td><td>0.14x</td><td>74.30%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T10</td></tr>
-                    <tr><td>13</td><td>Carysil Limited (CARYSIL)</td><td>Durables / Sinks</td><td>3,115</td><td>16.0%</td><td>24.5%</td><td>19.7%</td><td>0.64x</td><td>41.30%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T10</td></tr>
-                    <tr><td>14</td><td>Kaynes Technology (KAYNES)</td><td>EMS / Electronics</td><td>20,927</td><td>>30.0%</td><td>>100.0%</td><td>13.2%</td><td>0.20x</td><td>53.50%</td><td><span class="badge badge-watch">WATCH</span></td><td>T4, T9</td></tr>
-                    <tr><td>15</td><td>Clean Science &amp; Technology (CLEAN)</td><td>Specialty Chemicals</td><td>16,920</td><td>18.0%</td><td>21.0%</td><td>28.5%</td><td>0.00x</td><td>73.60%</td><td><span class="badge badge-high">HIGH</span></td><td>T4, T8</td></tr>
-                    <tr><td>16</td><td>Lumax Auto Technologies (LUMAXTECH)</td><td>Auto Components</td><td>11,344</td><td>35.4%</td><td>44.2%</td><td>21.4%</td><td>0.15x</td><td>55.98%</td><td><span class="badge badge-high">HIGH</span></td><td>T4, T10</td></tr>
-                    <tr><td>17</td><td>Shakti Pumps (SHAKTIPUMP)</td><td>Agri Engineering</td><td>6,670</td><td>33.5%</td><td>40.2%</td><td>23.7%</td><td>0.14x</td><td>50.40%</td><td><span class="badge badge-medium">MEDIUM</span></td><td>T3, T7</td></tr>
-                    <tr><td>18</td><td>Marksans Pharma (MARKSANS)</td><td>Pharmaceuticals</td><td>10,567</td><td>16.0%</td><td>15.8%</td><td>18.7%</td><td>0.00x</td><td>43.87%</td><td><span class="badge badge-high">HIGH</span></td><td>T8</td></tr>
-                    <tr><td>19</td><td>Gabriel India (GABRIEL)</td><td>Auto Components</td><td>14,373</td><td>16.0%</td><td>33.4%</td><td>27.0%</td><td>0.00x</td><td>55.00%</td><td><span class="badge badge-high">HIGH</span></td><td>T4, T10</td></tr>
-                    <tr><td>20</td><td>Narayana Hrudayalaya (NH)</td><td>Healthcare Services</td><td>40,243</td><td>28.0%</td><td>35.0%</td><td>15.4%</td><td>0.15x</td><td>63.30%</td><td><span class="badge badge-high">HIGH</span></td><td>T6</td></tr>
-                </tbody>
+                <tbody id="pnl-body">
+                    </tbody>
             </table>
         </div>
     </div>
 
-    <!-- TAB 3: INSTITUTIONAL DEEP-DIVES -->
-    <div id="deepdives" class="tab-content">
-        <div class="deepdive-grid">
-            
-            <!-- STK 1 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>1. Action Construction Equipment (ACE)</h2>
-                        <p>NSE: ACE | Mobile Cranes Dominance</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹10,721 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹900.30</strong></div>
-                    <div><span>Trailing PE</span><strong>25.8x</strong></div>
-                    <div><span>ROCE</span><strong>31.7%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Revenue: ₹1,029 Cr (+7.1% YoY); PAT: ₹111 Cr. EBITDA margin soft at 16.25% due to Middle East logistical friction; pass-through pricing protecting margins moving forward.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Owns a 63% absolute moat in domestic pick-and-carry cranes. Defense equipment localization (AAL/MoD integration) scaling to breach over ₹220+ Cr in FY27E, acting as a high-margin corporate stabilizer.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Monthly nationwide GST collections slip below ₹1.60 Lakh Cr.</li>
-                        <li>EBITDA margins structurally break below the 14% cushion line.</li>
-                        <li>Defense manufacturing validation scales below ₹150 Cr in FY27.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>4.0% Total Equity</strong>. Strategy: Stagger entries down to ₹850-860.</p>
-                </div>
-            </div>
+    <div id="dashboard" class="tab-content">
+        <div class="kpi-grid">
+            <div class="kpi-card"><span class="kpi-label">Weighted Portfolio ROCE</span><span class="kpi-value">29.42%</span><span class="kpi-delta text-green">Pristine Quality</span></div>
+            <div class="kpi-card"><span class="kpi-label">Average 3Y PAT CAGR</span><span class="kpi-value">44.80%</span><span class="kpi-delta text-green">High Growth</span></div>
+            <div class="kpi-card"><span class="kpi-label">Portfolio D/E Ratio</span><span class="kpi-value">0.07x</span><span class="kpi-delta text-blue">Zero-Debt Dominance</span></div>
+            <div class="kpi-card"><span class="kpi-label">Data Verification Score</span><span class="kpi-value">17/20</span><span class="kpi-delta text-amber">3 Amber Estimations</span></div>
+        </div>
 
-            <!-- STK 2 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>2. Gravita India (GRAVITA)</h2>
-                        <p>NSE: GRAVITA | Multi-Metal Circular Economy</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹12,036 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,631.00</strong></div>
-                    <div><span>Trailing PE</span><strong>31.8x</strong></div>
-                    <div><span>ROCE</span><strong>17.0%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>FY26 Revenue reached ₹4,265 Cr (+10% YoY), PAT printed ₹378.8 Cr (+21% YoY). Value-Added Products (VAP) hit an all-time high of 42% of total operational product mix.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Battery Waste Management Rules (BWMR) have systematically destroyed unorganized recyclers. The outright acquisition of Rashtriya Metal Industries for ₹560 Cr launches Gravita into the high-TAM copper processing segment, accelerating non-linear ESG inflows.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Ministry weakens BWMR rules enforcement, reviving local scrap options.</li>
-                        <li>Post-merger integrated copper ROCE drops below 15% threshold.</li>
-                        <li>Sustained LME lead commodity price deflation of greater than 20%.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.5% Total Equity</strong>. Strategy: Execute upfront deployment at current CMP.</p>
-                </div>
+        <div style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 8px; padding: 20px;">
+            <h3 style="margin-bottom: 15px; font-size: 16px;">Critical Forensic Alerts Desk</h3>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ticker</th>
+                            <th>Forensic Flag</th>
+                            <th>Metric Trigger</th>
+                            <th>CIO Action Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>ZENTEC</strong></td><td><span class="badge bg-red">Receivable Trap</span></td><td>Debtor Days = 543 Days</td><td>Weight capped at 2.0%. Sip only.</td></tr>
+                        <tr><td><strong>APARINDS</strong></td><td><span class="badge bg-red">Cash Squeeze</span></td><td>OCF dropped 25% YoY vs PAT</td><td>Strict H1 FY27 CFO audit required.</td></tr>
+                        <tr><td><strong>KAYNES</strong></td><td><span class="badge bg-red">Margin Drop</span></td><td>EBITDA fell to 7.3%, 154 Debtor days</td><td>Execution frozen. WATCH list.</td></tr>
+                        <tr><td><strong>RATNAMANI</strong></td><td><span class="badge bg-amber">Execution Miss</span></td><td>Q4 PAT down 49% YoY</td><td>Retain 1.0%. Monitor Saudi trials.</td></tr>
+                        <tr><td><strong>ANANDRATHI</strong></td><td><span class="badge bg-amber">Promoter Pledge</span></td><td>Pledge at 11.41%</td><td>Hard exit triggered if > 15%.</td></tr>
+                        <tr><td><strong>SHAKTIPUMP</strong></td><td><span class="badge bg-amber">Volatile Margins</span></td><td>Q4 Margins dropped to 9.7%</td><td>Monitor KUSUM execution closely.</td></tr>
+                    </tbody>
+                </table>
             </div>
-
-            <!-- STK 3 -->
-            <div class="stock-card WATCH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>3. Ratnamani Metals &amp; Tubes (RATNAMANI)</h2>
-                        <p>NSE: RATNAMANI | Critical Alloy Spooling</p>
-                    </div>
-                    <span class="badge badge-watch">Watchlist</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹18,507 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹2,615.00</strong></div>
-                    <div><span>Trailing PE</span><strong>31.9x</strong></div>
-                    <div><span>ROCE</span><strong>21.0%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ FORENSIC ALERT: Q4 PAT dropped 49% YoY. Receivables stretching significantly.</div>
-                <div class="card-section">
-                    <h4>Execution Slump Check</h4>
-                    <p>Severe billing and project delivery delays caused a steep revenue drop (-37% YoY) in Q4. Balance sheet remains safe at 0.00x net debt, but working capital velocity has temporarily choked.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Saudi Arabia integrated production trial fails to operationalize by Dec 2026.</li>
-                        <li>EBITDA margins remain depressed below 15% for consecutive quarters.</li>
-                        <li>Global Brent Crude breaks down beneath $70 per barrel, freezing O&amp;G capex.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>1.0% Total Equity</strong>. Strategy: Freeze execution. Monitor Q1 FY27 metrics.</p>
-                </div>
-            </div>
-
-            <!-- STK 4 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>4. Data Patterns (DATAPATTNS)</h2>
-                        <p>NSE: DATAPATTNS | Radars &amp; Electronic Warfare</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹23,584 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹4,213.00</strong></div>
-                    <div><span>Trailing PE</span><strong>86.2x</strong></div>
-                    <div><span>ROCE</span><strong>23.3%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ FORENSIC ALERT: Debtor Days remain heavily expanded at 287 days.</div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Q4 standalone revenue reported robust at ₹345 Cr; Q4 PAT printed at ₹138.38 Cr. EBITDA margins remain structurally superior at 38.8% owing to absolute ownership of manufacturing IPs.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Operating margins contract structurally below 30% under defense PSU bidding battles.</li>
-                        <li>Sovereign-backed customer debtor cycle breaches beyond 320 days.</li>
-                        <li>MoD delays structural awarding of the flagship AESA radar system tenders.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>2.0% Total Equity</strong>. Strategy: Stagger entries strictly via monthly SIP blocks.</p>
-                </div>
-            </div>
-
-            <!-- STK 5 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>5. Anand Rathi Wealth (ANANDRATHI)</h2>
-                        <p>NSE: ANANDRATHI | Affluent Class Wealth Aggregator</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹29,225 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,753.00</strong></div>
-                    <div><span>Trailing PE</span><strong>74.4x</strong></div>
-                    <div><span>ROCE</span><strong>57.5%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ GOVERNANCE ALERT: Active Promoter Share Pledge recorded at 11.41%.</div>
-                <div class="card-section">
-                    <h4>Operational Vector</h4>
-                    <p>FY26 core asset fee revenue touched ₹1,198.5 Cr (+22% YoY); PAT robust at ₹385.7 Cr (+28%). Total advisory AUM scaled to ₹93,037 Cr, defying a volatile equity index environment.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Long-duration macro bear drawdown (Nifty drops >20%) crushing trail commissions.</li>
-                        <li>Relationship Manager (RM) attrition vectors cross beyond 15% annually.</li>
-                        <li>Promoter share pledge levels advance beyond our hard compliance ceiling of 15%.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>2.5% Total Equity</strong>. Strategy: Accumulate exclusively on macro market drawdowns.</p>
-                </div>
-            </div>
-
-            <!-- STK 6 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>6. Elecon Engineering (ELECON)</h2>
-                        <p>NSE: ELECON | Industrial Gearbox Monopolist</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹11,923 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹531.00</strong></div>
-                    <div><span>Trailing PE</span><strong>33.3x</strong></div>
-                    <div><span>ROCE</span><strong>28.5%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>FY26 Consolidated Revenue finished at ₹2,528 Cr, matching PAT profiles at ₹341 Cr. Capital restructuring has completed, leaving the entire business completely net-debt free.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Heavy core industrial utilization across domestic cement/steel plants guarantees a highly lucrative, recurring replacement aftermarket gear footprint. Trades at a massive discount relative to general capital goods peers (70x P/E).</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>High-margin industrial aftermarket service mix collapses below 20% of total revenue.</li>
-                        <li>National heavy-sector infrastructure capacity utilization sinks below 75%.</li>
-                        <li>Consolidated EBITDA margins collapse beneath 18% under pricing pressure.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>4.0% Total Equity</strong>. Strategy: Deploy lump-sum assignments down to ₹480-500 support lines.</p>
-                </div>
-            </div>
-
-            <!-- STK 7 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>7. Triveni Turbine (TRITURBINE)</h2>
-                        <p>NSE: TRITURBINE | Sub-100MW Industrial Power</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹21,836 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹687.00</strong></div>
-                    <div><span>Trailing PE</span><strong>60.4x</strong></div>
-                    <div><span>ROCE</span><strong>35.9%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Q4 Revenue reported record numbers at ₹680 Cr (+26.3% YoY). Export order bookings witnessed an astronomical surge of 174% YoY, fully insulating near-term production lines.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Maintains the world's second-highest market share inside decentralized biomass and waste-to-energy steam turbine generations. High-margin engineering aftermarket services contribute an active 25% mix stabilizer.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>High-margin aftermarket service generation drops below 18% of total revenue mix.</li>
-                        <li>International project execution delivery debtor cycles stretch beyond 130 days.</li>
-                        <li>Global crude and natural gas matrices break down underneath $60 per barrel benchmarks.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.5% Total Equity</strong>. Strategy: Execute allocations at current levels following recent 12% price cooling.</p>
-                </div>
-            </div>
-
-            <!-- STK 8 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>8. Zen Technologies (ZENTEC)</h2>
-                        <p>NSE: ZENTEC | Anti-Drone Suites &amp; Combat Robotics</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹16,390 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,815.30</strong></div>
-                    <div><span>Trailing PE</span><strong>85.0x</strong></div>
-                    <div><span>ROCE</span><strong>16.2%</strong></div>
-                </div>
-                <div class="warning-box">🔴 CRITICAL ALERT: Cash conversion cycle broken. Debtor days extended to 543 days.</div>
-                <div class="card-section">
-                    <h4>Operational Vector</h4>
-                    <p>FY26 full-year revenue scaled to ₹688 Cr, supporting a record backlog order book of ₹1,336 Cr. Over ₹1,000 Cr of execution is guided directly for realization inside FY27.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Sovereign customer debtor cycles fail to normalize down below 400 days by Q2 FY27.</li>
-                        <li>Consolidated multi-vendor tender win-rates break down beneath 30%.</li>
-                        <li>Deep-pocketed private defense conglomerates (Adani/L&amp;T) force margins under 30%.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>2.0% Total Equity</strong>. Strategy: Cap weight strictly at 2.0% on severe working capital drag. Accumulate only on sharp dips.</p>
-                </div>
-            </div>
-
-            <!-- STK 9 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>9. Apar Industries (APARINDS)</h2>
-                        <p>NSE: APARINDS | Global Transmission Powerhouse</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹55,754 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹13,878.00</strong></div>
-                    <div><span>Trailing PE</span><strong>55.7x</strong></div>
-                    <div><span>ROCE</span><strong>31.1%</strong></div>
-                </div>
-                <div class="warning-box">🔴 CRITICAL ALERT: FY26 Operating Cash Flow dropped 25% YoY on massive inventory build-up.</div>
-                <div class="card-section">
-                    <h4>Operational Vector</h4>
-                    <p>Blistering FY26 top-line revenue closed at ₹22,902 Cr (+23.3% YoY). Core high-efficiency conductor business successfully crossed the landmark ₹10,000 Cr annual milestone.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Operating Cash Flow (OCF) tracks structurally below 50% of total PAT across H1 FY27.</li>
-                        <li>EBITDA per metric ton inside premium low-sag conductor configurations drops below ₹38,000.</li>
-                        <li>US Government issues direct regulatory tariff walls against incoming Indian aluminum lines.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>5.0% Total Equity</strong>. Strategy: Deploy 50% allocation immediately; reserve balance for ₹12,000-12,500 support windows.</p>
-                </div>
-            </div>
-
-            <!-- STK 10 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>10. Caplin Point Laboratories (CAPLIPOINT)</h2>
-                        <p>NSE: CAPLIPOINT | Non-Standard Pharma Moats</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹15,454 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹2,033.10</strong></div>
-                    <div><span>Trailing PE</span><strong>24.1x</strong></div>
-                    <div><span>ROCE</span><strong>24.6%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Q4 Revenue up 19.4% to ₹600.16 Cr; PAT closed at ₹172.88 Cr. Core operating EBITDA margins displayed immense structural expansion, printing at 34% on optimized product distributions.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Avoids hyper-competitive US markets by maintaining a localized distribution monopoly inside Latin America. Funding a massive ₹1,000 Cr API backward integration blueprint entirely out of organic treasury cash flows.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Sovereign defaults or currency hyper-devaluations lock up Central American trade nodes.</li>
-                        <li>USFDA issues an explicit Import Alert action against the core complex injectable facility in Chennai.</li>
-                        <li>Management breaks zero-debt philosophy to fund an overpriced dilutive cross-border asset purchase.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>4.5% Total Equity</strong>. Strategy: Execute heavy structural deployment at current CMP. Blatant value mispricing.</p>
-                </div>
-            </div>
-
-            <!-- STK 11 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>11. BSE Limited (BSE)</h2>
-                        <p>NSE: BSE | Capital Markets Monopoly Toll Gate</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹1,58,032 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹3,880.00</strong></div>
-                    <div><span>Trailing PE</span><strong>63.6x</strong></div>
-                    <div><span>ROCE</span><strong>58.0%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Unprecedented annual revenue velocity reached ₹4,833.9 Cr (+63.5% YoY), lifting PAT to ₹2,496.9 Cr (+88.3%). Active full-year Operating Cash Flow exploded by 656% YoY to close at ₹3,103 Cr.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Sensex and Bankex weekly contracts successfully shattered the historical NSE derivatives monopoly. Infinite software-driven scale operating leverage transfers incremental premium transaction fees straight to the bottom line.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>SEBI enacts highly draconian structural controls to curtail retail derivatives (F&amp;O) volumes.</li>
-                        <li>NSE executes an intense pricing counter-offensive that systematically compresses BSE options market share.</li>
-                        <li>A structural secular bear drawdown freezes the premium corporate IPO listing pipeline.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>5.0% Total Equity</strong>. Strategy: Core institutional fund anchor. Deploy 60% immediately; balance at ₹3,500 levels.</p>
-                </div>
-            </div>
-
-            <!-- STK 12 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>12. Kewal Kiran Clothing (KKCL)</h2>
-                        <p>NSE: KKCL | Branded Value Lifestyle Retail</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹2,706 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹439.05</strong></div>
-                    <div><span>Trailing PE</span><strong>17.5x</strong></div>
-                    <div><span>ROCE</span><strong>18.1%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ FORENSIC ALERT: Working capital cycles extended to 147 days on retail store pushes.</div>
-                <div class="card-section">
-                    <h4>Operational Vector</h4>
-                    <p>Full FY26 revenue passed structural barriers to finish at ₹1,212.8 Cr (+20.9% YoY). Core consolidated EBITDA margins expanded safely to 19.6%, leading peer apparel fields.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Consolidated corporate EBITDA margins break down beneath 16% on inventory liquidations.</li>
-                        <li>Debtor cycles inside large format store nodes push past an extreme 180 days limit.</li>
-                        <li>Urban discretionary spending collapses into mass value retail substitution plays.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>2.0% Total Equity</strong>. Strategy: Secure lump-sum assignments at current deep valuation support lines.</p>
-                </div>
-            </div>
-
-            <!-- STK 13 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>13. Carysil Limited (CARYSIL)</h2>
-                        <p>NSE: CARYSIL | Premium Quartz Core Technology</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹3,115 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,102.00</strong></div>
-                    <div><span>Trailing PE</span><strong>31.5x</strong></div>
-                    <div><span>ROCE</span><strong>19.7%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ RISK ALERT: D/E ratio at 0.64x represents the maximum leverage position inside the pool.</div>
-                <div class="card-section">
-                    <h4>Operational Vector</h4>
-                    <p>FY26 revenue printed at ₹937.07 Cr (+13.3% YoY), supporting a massive PAT surge to ₹98.97 Cr (+53.9%). Manufacturing capacity utilization closed near a maximum 99% track.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>US and European premium home renovation spending encounters an intense inflationary freeze.</li>
-                        <li>Newly engineered built-in appliance and faucet verticals fail to reach a baseline 15% EBITDA floor.</li>
-                        <li>Consolidated corporate debt profile breaches past 0.9x D/E under un-hedged capex programs.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>1.5% Total Equity</strong>. Strategy: Stagger accumulations upon verification of a 5-7% price pullback.</p>
-                </div>
-            </div>
-
-            <!-- STK 14 -->
-            <div class="stock-card WATCH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>14. Kaynes Technology (KAYNES)</h2>
-                        <p>NSE: KAYNES | Internet-of-Things Heavy EMS</p>
-                    </div>
-                    <span class="badge badge-watch">Watchlist</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹20,927 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹3,122.00</strong></div>
-                    <div><span>Trailing PE</span><strong>57.2x</strong></div>
-                    <div><span>ROCE</span><strong>13.2%</strong></div>
-                </div>
-                <div class="warning-box">🔴 CRITICAL ALERT: Q4 PAT dropped 21.5% YoY; Debtor days expanded to a severe 154 days.</div>
-                <div class="card-section">
-                    <h4>Operating Margin Squeeze Check</h4>
-                    <p>Despite strong top-line metrics, Q4 operating margins compressed heavily to 7.4% on unoptimized component mix cycles. Currently under exchange F&amp;O ban patterns, creating short-term liquid stress.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>EBITDA margins remain structural laggards beneath 10% for consecutive reporting segments.</li>
-                        <li>Sovereign rail and industrial infrastructure receivables stretch past an extreme 180 days marker.</li>
-                        <li>Core promoter ownership configurations continue to drop via subsequent block dilutions.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>1.0% Total Equity</strong>. Strategy: Execution completely frozen. Re-evaluate post F&amp;O ban cooling near ₹2,800.</p>
-                </div>
-            </div>
-
-            <!-- STK 15 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>15. Clean Science &amp; Technology (CLEAN)</h2>
-                        <p>NSE: CLEAN | Green Catalytic Synthesis Moats</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹16,920 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,595.00</strong></div>
-                    <div><span>Trailing PE</span><strong>55.0x</strong></div>
-                    <div><span>ROCE</span><strong>28.5%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Q4 Revenue closed cleanly at ₹274 Cr (+8.3% YoY), validating PAT metrics of ₹82 Cr. Sustained a peer-defying 45%+ EBITDA operating margin utilizing entirely green gas-phase catalysts.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Avoids raw material cyclicality by engineering proprietary production workflows. Full commercialization of the upcoming HALS chemical series positions Clean Science as the prime global import substitution play.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Global underlying specialty chemical price configurations face a severe dump.</li>
-                        <li>HALS production integration fails to secure tier-1 client approval configurations.</li>
-                        <li>Loss of primary proprietary catalytic design engineers to competitive labs.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.0% Total Equity</strong>. Strategy: Deploy core capital assignments at current market CMP.</p>
-                </div>
-            </div>
-
-            <!-- STK 16 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>16. Lumax Auto Technologies (LUMAXTECH)</h2>
-                        <p>NSE: LUMAXTECH | Systems Integrator Transition</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹11,344 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,664.40</strong></div>
-                    <div><span>Trailing PE</span><strong>39.4x</strong></div>
-                    <div><span>ROCE</span><strong>21.4%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Staggering FY26 consolidated revenue clocked at ₹4,870.3 Cr (+33.9% YoY); PAT printed at ₹337.1 Cr (+47.1%). Complete structural integration of IAC India interior plastics now fully finalized.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Captures the non-linear premiumization trend inside Indian SUV cabin configurations. Moving from simple component assemblies to high-value modular system deliveries, commanding a superior 26.8% ROE blueprint.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Post-merger operating inefficiencies drag advanced plastics EBITDA margins below 12%.</li>
-                        <li>Domestic premium SUV platform sales velocity enters a sharp credit-led contraction.</li>
-                        <li>Structural cancellation of key vehicle platform mandates by principal anchors (Maruti/Bajaj).</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>4.0% Total Equity</strong>. Strategy: Secure 50% core allocation here; scale balance on drops to ₹1,550 levels.</p>
-                </div>
-            </div>
-
-            <!-- STK 17 -->
-            <div class="stock-card MEDIUM">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>17. Shakti Pumps (SHAKTIPUMP)</h2>
-                        <p>NSE: SHAKTIPUMP | Solar Water Evacuation Moats</p>
-                    </div>
-                    <span class="badge badge-medium">Medium Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹6,670 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹540.50</strong></div>
-                    <div><span>Trailing PE</span><strong>26.9x</strong></div>
-                    <div><span>ROCE</span><strong>23.7%</strong></div>
-                </div>
-                <div class="warning-box">⚠️ TENDER ALERT: High standalone debtor days (173 days) are structural to B2G execution pipelines.</div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Record-breaking Q4 revenue printed at ₹857.8 Cr (+28.9% YoY). EBITDA margins normalized aggressively down to 9.7% on low state tender realizations, wiping out weak-hand retail allocations.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Contrarian Cash Recovery Play</h4>
-                    <p>While the market panicked over trailing margin corrections, Shakti executed a massive ₹420 Cr reduction in active receivables inside a single quarter, delivering ₹124 Cr positive CFO and a clean 0.14x D/E framework to fund its ₹1,500 Cr PM-KUSUM backlog book.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Consolidated operating EBITDA margins fail to recover past a baseline 12% across H1 FY27.</li>
-                        <li>Sovereign state cash deficits emerge, forcing active debtor cycles past a 200-day wall.</li>
-                        <li>Central agricultural policy moves away from capital infrastructure subsidies toward cash transfers.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>1.5% Total Equity</strong>. Strategy: Accumulate slowly via contrarian SIP blocks at the structural ₹540 floor.</p>
-                </div>
-            </div>
-
-            <!-- STK 18 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>18. Marksans Pharma (MARKSANS)</h2>
-                        <p>NSE: MARKSANS | Over-The-Counter Formulation Engine</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹10,567 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹233.00</strong></div>
-                    <div><span>Trailing PE</span><strong>25.3x</strong></div>
-                    <div><span>ROCE</span><strong>18.7%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Blowout Q4 performance: Revenue up 20.8% to ₹856 Cr; PAT zoomed by 64.2% to ₹149 Cr. Core quarterly EBITDA margins witnessed an immense 491 bps explosion to sit at 22.8%.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Derisked from hyper-competitive US generic generic pricing via robust distribution footprints across the UK and Australia. Generated ₹328 Cr pure Free Cash Flow in FY26, holding an un-levered ₹990 Cr net cash treasury to fund overseas asset targets.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>USFDA delivers a punitive Import Alert or OAI action status on the anchor Goa plant.</li>
-                        <li>Spiking global shipping and freight costs compress consolidated margins below 17%.</li>
-                        <li>Management misallocates the cash pile into value-destroying, low-ROCE overseas cross-border acquisitions.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.5% Total Equity</strong>. Strategy: Execute 50% upfront allocation immediately; scale balance on regular market dips.</p>
-                </div>
-            </div>
-
-            <!-- STK 19 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>19. Gabriel India (GABRIEL)</h2>
-                        <p>NSE: GABRIEL | Powertrain-Agnostic Ride Control</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹14,373 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,001.00</strong></div>
-                    <div><span>Trailing PE</span><strong>59.9x</strong></div>
-                    <div><span>ROCE</span><strong>27.0%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Full-year corporate revenue scaled to ₹4,233 Cr (+16% YoY); PAT printed at ₹243 Cr. The high-margin Inalfa Sunroof Joint Venture recorded an impressive standalone 15.1% EBITDA performance.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Demerger and integration of ANAND Group assets create absolute cross-selling scale with global OEMs. Completely shock-absorption agnostic relative to EV transitions, holding premium suspension partnerships with Ola, Ather, and TVS.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Amalgamation execution friction drags consolidated operating ROCE down below 20%.</li>
-                        <li>Global structural aluminum component shortages throttle the output of the premium sunroof lines.</li>
-                        <li>Sustained underlying multi-segment auto production velocity contracts across consecutive tracking quarters.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.5% Total Equity</strong>. Strategy: Deploy core capital upfront. Restructuring multiples will compress rapidly in FY27.</p>
-                </div>
-            </div>
-
-            <!-- STK 20 -->
-            <div class="stock-card HIGH">
-                <div class="stock-header">
-                    <div class="stock-title">
-                        <h2>20. Narayana Hrudayalaya (NH)</h2>
-                        <p>NSE: NH | High-Velocity Clinical Allocation</p>
-                    </div>
-                    <span class="badge badge-high">High Conviction</span>
-                </div>
-                <div class="inline-metrics">
-                    <div><span>Mkt Cap</span><strong>₹40,243 Cr</strong></div>
-                    <div><span>CMP</span><strong>₹1,969.20</strong></div>
-                    <div><span>Trailing PE</span><strong>47.2x</strong></div>
-                    <div><span>ROCE</span><strong>15.4%</strong></div>
-                </div>
-                <div class="card-section">
-                    <h4>Q4 FY26 Operating Metrics</h4>
-                    <p>Q4 consolidated revenue surged 75.8% to ₹2,594 Cr, taking full-year PAT profiles to ₹810 Cr. Advanced Cayman Islands health infrastructure footprints continue to supply superior dollar cash assets.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Bull Thesis Climax</h4>
-                    <p>Delivers the absolute highest capital efficiency metrics inside the hospital industry via extreme medical asset turns. Dollar-denominated Caribbean profit engines effectively subsidize low-cost volume treatments in domestic Indian hubs.</p>
-                </div>
-                <div class="card-section">
-                    <h4>Mandate Falsification Triggers</h4>
-                    <ul class="falsifier-list">
-                        <li>Cayman phase-2 clinical infrastructure scaling meets a severe multi-quarter delay.</li>
-                        <li>Domestic ARPOB (Average Revenue Per Occupied Bed) markers enter stagnation lines.</li>
-                        <li>National health insurance regulators mandate rigid structural price caps on high-margin cardiac procedures.</li>
-                    </ul>
-                </div>
-                <div class="card-section">
-                    <h4>Allocation Rule</h4>
-                    <p>Suggested Position: <strong>3.0% Total Equity</strong>. Strategy: Secure positions at current CMP. Superior capital architecture vs asset-heavy peers.</p>
-                </div>
-            </div>
-
         </div>
     </div>
 
-    <!-- TAB 4: RISK & VARIANT MATRIX -->
-    <div id="risk-analysis" class="tab-content">
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-            <div class="mandate-box">
-                <h3>Consolidated Concentration &amp; Correlation Risk Mapping</h3>
-                <p><strong>Sector Limits Verification:</strong> Capital Goods / Engineering sits at exactly 4 components (ACE, Elecon, Triveni, Ratnamani), strictly honoring our structural asset allocation limits. Remaining allocations are distributed across Auto Components (2), Pharma (2), Defence (2), Financials/Wealth (2), Exchanges (1), EMS (1), Chemicals (1), Retail (1), Durables (1), Healthcare (1).</p>
-                <br>
-                <p><strong>Systemic Correlation Warning:</strong> The portfolio contains significant concurrent exposure to central infrastructure capital expenditure spending vectors (6 core holdings). A macro monetary freeze or unexpected slowing inside Ministry contract originations will cause a simultaneous technical drawdown across ACE, Ratnamani, Data Patterns, Zen Tech, Apar, and Shakti Pumps.</p>
-                <br>
-                <p><strong>Institutional Hedging Directives:</strong> Deploy a strategic 10-15% balancing block inside non-cyclical, high-free-cash-flow Large-Cap FMCG or underlying IT Services ETFs to explicitly offset industrial working capital expansion risks.</p>
-            </div>
+    <div id="deep-dives" class="tab-content">
+        <div class="grid-cards">
             
-            <div class="mandate-box">
-                <h3>Top 5 Structural Portfolio Threats</h3>
-                <ol class="mandate-list" style="padding-left:15px;">
-                    <li><strong>Receivables Trap:</strong> Heavy exposure to extended defense and infrastructure asset cycles (Zen Tech, Data Patterns, Kaynes) exposes fund liquidity to sovereign counterparty payment speeds.</li>
-                    <li><strong>Valuation Multiples Squeeze:</strong> Multi-metal and core tech holdings trading at rich trailing multipliers (>55x P/E) leave zero room for margin calculation errors or execution misses.</li>
-                    <li><strong>Geopolitical Supply Blockades:</strong> Persistent Red Sea shipping delays present severe structural margin compression risks to global heavy capital exporters (Triveni, Shakti).</li>
-                    <li><strong>Raw Material Inflation:</strong> Sudden upward shocks inside copper and aluminum matrices immediately threaten un-hedged components and electrical cable structures (Gabriel, Apar).</li>
-                    <li><strong>Regulatory Segment Slashes:</strong> Highly vulnerable to potential SEBI policy revisions designed to structurally deflate retail derivatives market trading volumes (BSE).</li>
-                </ol>
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>1. Action Const. Equip. (ACE)</h3><p>Capital Goods</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹10,721Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>25.8x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>31.7%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>4.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Near-monopoly in Pick & Carry cranes (63% share). Shifting revenue mix rapidly into high-margin defense equipment (projected ₹220+ Cr in FY27). Pricing power remains intact, defending a rigid 16% EBITDA margin floor despite global commodity volatility.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>GST collections < ₹1.6L Cr.</li>
+                        <li>EBITDA margin breaks below 14%.</li>
+                        <li>Defense manufacturing validation scales below ₹150 Cr in FY27.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>2. Gravita India (GRAVITA)</h3><p>Circular Economy</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹12,036Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>31.8x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>17.0%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.5%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Transitioning from a lead processor to an ESG utility. Battery Waste Management Rules structurally eliminated unorganized competition. ₹1,700 Cr capex into Copper (RMIL acquisition) and Lithium-ion recycling sets up massive non-linear growth.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Environment Ministry weakens BWMR enforcement.</li>
+                        <li>Post-merger integrated copper ROCE drops below 15%.</li>
+                        <li>Sustained LME lead commodity price deflation > 20%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card WATCH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>3. Ratnamani Metals (RATNAMANI)</h3><p>Engineering</p></div>
+                    <span class="badge bg-red">WATCH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹18,507Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>31.9x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>21.0%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>1.0%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ FLAG: Debtors days increasing due to delayed government project payments.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Zero-debt, specialized alloy pipe supplier to O&G. However, Q4 PAT collapsed 49% YoY due to execution delays and pricing pressure. Retain minor weight pending turnaround.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Saudi facility trials fail by Dec 2026.</li>
+                        <li>EBITDA Margins stay < 15%.</li>
+                        <li>Brent Crude drops < $70, causing CAPEX pause.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>4. Data Patterns (DATAPATTNS)</h3><p>Defence Tech</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹23,584Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>86.2x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>23.3%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>2.0%</strong></div>
+                </div>
+                <div class="alert-box">🔴 RED FLAG: Debtor days severely elevated at 287 days.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Pure-play IP owner in defence electronics (AESA radars, EW suites). Operating margins pristine at 38.8% due to indigenous IP. Valuation leaves zero room for execution errors.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Operating margins drop below 30%.</li>
+                        <li>Debtor days breach 320 days.</li>
+                        <li>MoD delays AESA radar tenders beyond FY27.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>5. Anand Rathi Wealth (ANANDRATHI)</h3><p>Wealth Mgmt</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹29,225Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>74.4x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>57.5%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>2.5%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ WATCH: Promoter pledge at 11.41%.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Dominates the ₹5-50 Cr HNI segment. Asset-light model generating 57.5% ROCE. AUM grew 21% to ₹93,037 Cr despite flat markets, proving sticky trail fees.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Bear market (Nifty -20%) causing mass AUM redemptions.</li>
+                        <li>RM attrition spikes above 15%.</li>
+                        <li>Promoter pledge exceeds 15% governance limit.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>6. Elecon Engineering (ELECON)</h3><p>Capital Goods</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹11,923Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>33.3x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>28.5%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>4.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Monopoly in industrial gears. Cleaned up balance sheet to zero debt. Exited low-margin EPC contracts, which structurally repaired ROCE to 28.5%. Highly attractive multiple vs peers (70x).</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Aftermarket revenue mix falls < 20%.</li>
+                        <li>Steel capacity utilization drops below 75%.</li>
+                        <li>EBITDA margins break below 18%.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>7. Triveni Turbine (TRITURBINE)</h3><p>Capital Goods</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹21,836Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>60.4x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>35.9%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.5%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ WATCH: Debtor days stretched to 107 days due to export cycle.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Global exporter of sub-100MW steam turbines. Q4 export orders exploded 174% YoY. High-margin aftermarket services provide annuity cash flows. 35.9% ROCE.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Aftermarket mix drops < 18%.</li>
+                        <li>Debtor days stretch beyond 130 days.</li>
+                        <li>Global crude crashes below $60.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>8. Zen Technologies (ZENTEC)</h3><p>Defence Drones</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹16,390Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>85.0x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>16.2%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>2.0%</strong></div>
+                </div>
+                <div class="alert-box">🔴 RED FLAG: Cash conversion cycle broken. Debtor days spiked to 543 days.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Sole IP owner in domestic combat simulators and $10k interceptor drones. Sitting on a massive sovereign-backed ₹1,336 Cr unexecuted order book.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Failure to normalize debtor days < 400 by Q2.</li>
+                        <li>Q1 FY27 execution failure.</li>
+                        <li>Margins compress below 30% on Adani/L&T competition.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>9. Apar Industries (APARINDS)</h3><p>Cables/Conductors</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹55,754Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>55.7x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>31.1%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>5.0%</strong></div>
+                </div>
+                <div class="alert-box">🔴 RED FLAG: FY26 Operating Cash Flow dropped 25% YoY.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>World's largest conductor manufacturer. Crossed ₹10,000 Cr segment milestone. Export volume expanding into US grid replacement cycle. ROCE 31.1%.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>OCF remains < 50% of PAT in H1 FY27.</li>
+                        <li>EBITDA per MT slips below ₹38,000/MT.</li>
+                        <li>US imposes blanket tariffs.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>10. Caplin Point (CAPLIPOINT)</h3><p>Pharma</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹15,454Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>24.1x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>24.6%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>4.5%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Deep moat in LatAm/Africa generating 34% EBITDA margins. Aggressive US scale-up in injectables. Funding ₹1,000 Cr backward integration capex entirely with internal cash.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>LatAm sovereign debt defaults.</li>
+                        <li>USFDA import alert on Chennai facility.</li>
+                        <li>Takes on debt for overseas acquisition.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>11. BSE Limited (BSE)</h3><p>Exchanges</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹1,58,032Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>63.6x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>58.0%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>5.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Duopoly toll-bridge. Successfully broke NSE's derivatives monopoly with Sensex options. FY26 Operating Cash Flow exploded 656% YoY to ₹3,103 Cr. Infinite operating leverage yields 58% ROCE.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>SEBI imposes draconian restrictions on retail F&O.</li>
+                        <li>NSE successfully counters with options pricing war.</li>
+                        <li>Multi-year bear market kills IPO pipeline.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>12. Kewal Kiran Clothing (KKCL)</h3><p>Apparel</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹2,706Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>17.5x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>18.1%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>2.0%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ FLAG: Debtor days stretched to 147 days.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Asset-light branded menswear scaling into high-margin women's wear (Kraus). Delivering 19.6% EBITDA margins and 20% top-line growth at a severe discount multiple.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>EBITDA margins break below 16%.</li>
+                        <li>Debtor days stretch beyond 180 days.</li>
+                        <li>Urban consumers trade down to value retail.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>13. Carysil Ltd (CARYSIL)</h3><p>Durables</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹3,115Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>31.5x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>19.7%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>1.5%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ WATCH: D/E ratio at 0.64x. Highest leverage in the portfolio.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Global niche in quartz kitchen sinks (Schock tech). Evolving into an integrated kitchen hub. Capacity hitting 99%, driving structural margin expansion.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>New faucet categories fail to reach 15% margins.</li>
+                        <li>US housing market stalls.</li>
+                        <li>D/E ratio spikes > 0.9x.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card WATCH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>14. Kaynes Tech (KAYNES)</h3><p>EMS</p></div>
+                    <span class="badge bg-red">WATCH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹20,927Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>57.2x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>13.2%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>1.0%</strong></div>
+                </div>
+                <div class="alert-box">🔴 RED FLAG: Debtor days hit 154 days; EBITDA margins compressed to 7.3%.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Massive EMS order book spanning aerospace and rail. However, Q4 PAT dropped 21% and margins compressed heavily due to product mix. Execution currently frozen.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Margins stay < 10% for two quarters.</li>
+                        <li>Debtor days exceed 180 days.</li>
+                        <li>Promoter holding continues to trend downward.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>15. Clean Science (CLEAN)</h3><p>Specialty Chems</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹16,920Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>55.0x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>28.5%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Green chemistry innovator maintaining impossible 45%+ EBITDA margins. Launching HALS series to capture import substitution. Zero debt, 28.5% ROCE.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Global chemical prices crater.</li>
+                        <li>HALS market penetration fails against BASF.</li>
+                        <li>Loss of key technical R&D talent.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>16. Lumax Auto Tech (LUMAXTECH)</h3><p>Auto Components</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹11,344Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>39.4x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>21.4%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>4.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Transforming into a Tier-0.5 integrator. NCLT merger of IAC India scales the high-margin Advanced Plastics division. 26.8% ROE at an attractive multiple.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>IAC integration friction drops margins < 12%.</li>
+                        <li>PV sales contract sharply.</li>
+                        <li>Loss of major platform mandate from Maruti/Bajaj.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card MEDIUM">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>17. Shakti Pumps (SHAKTIPUMP)</h3><p>Agri/Pumps</p></div>
+                    <span class="badge bg-blue">MEDIUM</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹6,670Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>26.9x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>23.7%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>1.5%</strong></div>
+                </div>
+                <div class="alert-box">⚠️ WATCH: Debtor days highly volatile (173 days) due to Govt tenders.</div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>B2G solar pump monopoly with a ₹1,500 Cr PM-KUSUM backlog. Stock punished for Q4 margin mean-reversion, but company shrank receivables by ₹420 Cr in one quarter.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>EBITDA margin fails to rebound > 12% in H1.</li>
+                        <li>State deficits cause debtor days to spike > 200.</li>
+                        <li>Govt shifts subsidy to direct cash transfers.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>18. Marksans Pharma (MARKSANS)</h3><p>Pharma</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹10,567Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>25.3x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>18.7%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.5%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Zero-debt generic exporter breaking US reliance via UK/Australia scale. Generated ₹328 Cr FCF. Sitting on ₹990 Cr cash chest. Q4 margins exploded by 491 bps to 22.8%.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>USFDA Import Alert on Goa facility.</li>
+                        <li>Margins compress structurally below 17%.</li>
+                        <li>Management squanders ₹990Cr cash on bad M&A.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>19. Gabriel India (GABRIEL)</h3><p>Auto Components</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹14,373Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>59.9x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>27.0%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.5%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Flagship of ANAND Group. NCLT restructuring aggregates group assets. Inalfa Sunroof JV generating 15.1% margins. EV-agnostic shock absorbers capturing 2W electric transition.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Restructuring drops consolidated ROCE < 20%.</li>
+                        <li>Global aluminum shortages throttle sunroof JV.</li>
+                        <li>Sustained PV sales contraction.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dd-card HIGH">
+                <div class="dd-header">
+                    <div class="dd-title"><h3>20. Narayana Hrudayalaya (NH)</h3><p>Healthcare</p></div>
+                    <span class="badge bg-green">HIGH</span>
+                </div>
+                <div class="dd-metrics">
+                    <div class="dd-metric-item"><span>Mkt Cap</span><strong>₹40,243Cr</strong></div>
+                    <div class="dd-metric-item"><span>PE</span><strong>47.2x</strong></div>
+                    <div class="dd-metric-item"><span>ROCE</span><strong>15.4%</strong></div>
+                    <div class="dd-metric-item"><span>Weight</span><strong>3.0%</strong></div>
+                </div>
+                <div class="dd-section">
+                    <h4>Institutional Thesis</h4>
+                    <p>Industry-leading ROCE driven by hyper-efficient asset turnover. High-margin Cayman Islands operations subsidize Indian volume. ARPOB expanding structurally.</p>
+                </div>
+                <div class="dd-section">
+                    <h4>Falsification Triggers</h4>
+                    <ul>
+                        <li>Cayman expansion delayed.</li>
+                        <li>ARPOB stalls for 2+ quarters.</li>
+                        <li>Govt price caps on cardiac procedures.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="risk-matrix" class="tab-content">
+        <div class="grid-cards" style="grid-template-columns: 1fr; margin-bottom: 20px;">
+            <div class="dd-card">
+                <div class="dd-title"><h3>Portfolio Concentration & Macro Risks</h3></div>
+                <div class="dd-section">
+                    <h4>Sector Limit Validation</h4>
+                    <p>Max 4 Cap Goods/Engg verified (ACE, Elecon, Triveni, Ratnamani). Portfolio correctly distributed across Auto (2), Pharma (2), Defence (2), Wealth/Exchanges (2), EMS (1), Chems (1), Retail (1), Durables (1), Healthcare (1).</p>
+                    <h4 style="margin-top:12px;">Top 5 Structural Threats</h4>
+                    <ul>
+                        <li><strong>Working Capital Traps:</strong> 4 components (Zentec, Kaynes, Data Patterns, Apar) have severe receivable/inventory stretch.</li>
+                        <li><strong>Policy Reversals:</strong> Reductions in MoD Defence (T2) or PLI (T4) budgets hit 5 stocks instantly.</li>
+                        <li><strong>Valuation Squeeze:</strong> 5 stocks trade > 55x PE; absolutely zero room for execution misses.</li>
+                        <li><strong>Geopolitical Blockades:</strong> Red Sea transit snarls threaten export margins for Triveni and Shakti.</li>
+                        <li><strong>Regulatory Shock:</strong> SEBI intervention in F&O directly threatens BSE's growth vector.</li>
+                    </ul>
+                </div>
             </div>
         </div>
 
-        <h3 style="margin-bottom:15px; font-size:14px; color:var(--accent-blue);">Variant Perception Matrix (The Contrarian Filter)</h3>
-        <div class="table-container">
+        <div class="table-responsive">
             <table>
                 <thead>
                     <tr>
                         <th>Ticker</th>
-                        <th>Institutional Market Consensus View</th>
-                        <th>Fund Variant Perception &amp; Analytical Alpha Catalyst</th>
+                        <th>Consensus View</th>
+                        <th>CIO Variant Perception (Why We Disagree/Agree)</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr><td><strong>ACE</strong></td><td>Anxious regarding near-term infrastructure margin compression.</td><td>Pass-through pricing works; market misses accelerating defense IP scaling.</td></tr>
-                    <tr><td><strong>GRAVITA</strong></td><td>Evaluates operations purely as a legacy cyclical metal processor.</td><td>Structural compliance engine breaking unorganized frames; a pure ESG utility.</td></tr>
-                    <tr><td><strong>RATNAMANI</strong></td><td>Neutral hold following a sharp Q4 earnings drop.</td><td>Agrees with street view. Hold execution lines until work-cap velocities normalize.</td></tr>
-                    <tr><td><strong>DATAPATTNS</strong></td><td>Hyper-bullish on sovereign defense indigenization tracks.</td><td>Ignores extreme 287-day receivable build-ups; require strict entry staggering.</td></tr>
-                    <tr><td><strong>ANANDRATHI</strong></td><td>Unanimously bullish on core affluent class AUM growth metrics.</td><td>Identifies and flags 11.41% promoter share pledge as an un-hedged risk.</td></tr>
-                    <tr><td><strong>ELECON</strong></td><td>Cautious post flat annual operating profit print.</td><td>Flat metrics mask absolute cleanup to net-debt free; massive ROCE pricing alpha.</td></tr>
-                    <tr><td><strong>TRITURBINE</strong></td><td>Anxious regarding international logistics and shipping delays.</td><td>Explosive 174% Q4 export order inflows secure multi-year margin runways.</td></tr>
-                    <tr><td><strong>ZENTEC</strong></td><td>Retail panic selling following an optical Q4 profit compression.</td><td>Exploiting retail panic to capture a non-defaultable ₹1,336 Cr backlog.</td></tr>
-                    <tr><td><strong>APARINDS</strong></td><td>Aggressively chasing top-line compounding velocity.</td><td>Injects high skepticism; tracking 25% drop inside real Operating Cash Flow.</td></tr>
-                    <tr><td><strong>CAPLIPOINT</strong></td><td>Applies a permanent geography discount to non-US pharma models.</td><td>LatAm distribution monopoly captures massive 34% margins; self-funded capex.</td></tr>
-                    <tr><td><strong>BSE</strong></td><td>Chasing derivatives options market share expansion blindly.</td><td>Highly alert to impending SEBI macro lot-size interventions on F&O lines.</td></tr>
-                    <tr><td><strong>KKCL</strong></td><td>Sparse institutional coverage on minor microcap apparel listings.</td><td>Deep mispricing of an un-levered compounder generating 19.6% EBITDA at 17x P/E.</td></tr>
-                    <tr><td><strong>CARYSIL</strong></td><td>Skeptical of core appliance division integration economics.</td><td>Unified kitchen hub strategy optimizes wallet capture per designer network.</td></tr>
-                    <tr><td><strong>KAYNES</strong></td><td>Bullish on long-term electronics manufacturing services tailwinds.</td><td>Enforces watch stance; 154-day debtor cycles threaten inventory velocities.</td></tr>
-                    <tr><td><strong>CLEAN</strong></td><td>Neutral hold on near-term chemical growth moderation patterns.</td><td>Fails to account for margin-accretive HALS launch triggering a Q2 FY27 inflection.</td></tr>
-                    <tr><td><strong>LUMAXTECH</strong></td><td>Evaluates operations as a commoditized cyclical auto-parts tier vendor.</td><td>Transforming into a systems tier-0.5 integrator via successful IAC amalgamation.</td></tr>
-                    <tr><td><strong>SHAKTIPUMP</strong></td><td>Negative focus on intense Q4 tender margin normalization lines.</td><td>Contrarian buy; market misses massive ₹420 Cr working-capital reduction.</td></tr>
-                    <tr><td><strong>MARKSANS</strong></td><td>Caps valuation upside under historical generic pricing caps.</td><td> FC Yield mispricing; completing major capex cycles while holding ₹990 Cr cash.</td></tr>
-                    <tr><td><strong>GABRIEL</strong></td><td>Wary of a rich 60x trailing P/E automotive multiplier.</td><td>Multiple is optical; parent asset aggregation turns Gabriel into core group engine.</td></tr>
-                    <tr><td><strong>NH</strong></td><td>Prefers luxury urban capital hospital construction frameworks.</td><td>Backing asset-light surgical turn velocities executing top-tier hospital ROCE.</td></tr>
-                </tbody>
+                <tbody id="contrarian-body">
+                    </tbody>
             </table>
         </div>
     </div>
 
-    <!-- TAB 5: INVESTMENT MANDATE & COMPLIANCE RULES -->
-    <div id="mandate-rules" class="tab-content">
-        <div class="mandate-box">
-            <h3>Mandatory Investment Screening Criteria (Non-Negotiable Filters)</h3>
-            <p>Every single corporate component inside this concentration vehicle must consistently pass the following structural accounting metrics to remain in active fund calculations:</p>
-            <ul class="mandate-list">
-                <li><strong>Revenue 3Y CAGR:</strong> Greater than 12% for Microcaps | Greater than 10% for Smallcaps | Greater than 8% for Midcaps.</li>
-                <li><strong>PAT 3Y CAGR:</strong> Greater than 15% for Microcaps | Greater than 12% for Smallcaps | Greater than 10% for Midcaps.</li>
-                <li><strong>Capital Efficiencies:</strong> Latest full-year ROCE must sustain above a hard baseline minimum of 15% (18% preferred standard).</li>
-                <li><strong>Return on Equity:</strong> Latest full-year ROE must maintain above a baseline minimum of 12% (15% preferred standard).</li>
-                <li><strong>Leverage Thresholds:</strong> Debt-to-Equity must stay strictly beneath 1.0x for manufacturing assets (0.5x preferred limit). Financials/NBFC entities are exempt from basic D/E constraints and are evaluated under absolute Net NPA and Capital Adequacy Ratio (CAR) parameters.</li>
-                <li><strong>Governance Metrics:</strong> Total corporate Promoter Ownership must exceed 40% (50% preferred). Active Promoter Share Pledge configurations must register strictly beneath 15% of total shares. Audit profiles must be assigned to Big 4 or top-tier recognized mid-market houses; any qualified audit opinions across trailing 24-month cycles mandate automated removal.</li>
-            </ul>
-        </div>
+    <div id="master-prompt" class="tab-content">
+        <div class="terminal">
+<pre>
+ANALYST IDENTITY & MANDATE
+You are operating as a 30-year veteran Indian equity research analyst — the CIO
+of a ₹5,000 crore India-focused institutional fund. Your analytical framework is
+ruthlessly objective, data-driven, and intellectually honest. You do not sugarcoat.
+You do not extrapolate hope. You do not present stale data with current-date labels.
+Your institutional clients pay for verified intelligence, not confident-sounding
+approximations. Your reputation depends on data accuracy above all else.
 
-        <div class="mandate-box">
-            <h3>Automatic Portfolio Disqualification Criteria (Hard Exits)</h3>
-            <p>Immediate automated liquidation protocols are triggered if any active holding violates any of the following parameters:</p>
-            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px; background:var(--bg-primary); padding:15px; border-radius:6px; border:1px solid var(--accent-red);">
-                <ul class="falsifier-list">
-                    <li>Promoter share pledge metrics cross beyond a maximum 30% limit.</li>
-                    <li>Statutory auditor resignation patterns emerge inside a trailing 24-month window.</li>
-                    <li>Consolidated corporate revenue declines for two consecutive fiscal years.</li>
-                    <li>Realized balance sheet net worth slides into a negative position.</li>
-                </ul>
-                <ul class="falsifier-list">
-                    <li>Active SEBI investigation procedures or exchange surveillance actions are initialized.</li>
-                    <li>Debt-to-Equity ratios breach beyond 2.0x (excluding regulated financial operations).</li>
-                    <li>Operating Cash Flow (CFO) prints at flat or negative markers for three consecutive years.</li>
-                    <li>Total listed corporate trading history evaluates at under 3 years since formal IPO listing.</li>
-                </ul>
-            </div>
-        </div>
+SEGMENT: [All Three]
+NUMBER OF PICKS: 20 High Conviction Stocks
+ANALYSIS DATE: [ 6 June 2026]
+INVESTMENT HORIZON: 18–36 months
+RISK PPROFILE: Institutional — High Risk Tolerance, Concentrated Positions
 
-        <!-- Month-On-Month Update Ledger Form Box -->
-        <div class="mandate-box" style="border: 1px dashed var(--accent-blue);">
-            <h3>Month-On-Month Update Ledger &amp; Modification Protocol</h3>
-            <p style="margin-bottom:12px; color:var(--text-muted);">Use this configuration panel to document recurring monthly modifications, re-balancings, or corporate flag updates to protect original mandate integrity.</p>
-            <form onsubmit="event.preventDefault(); alert('Modification entry logged into secure memory. Ratios recalculating...');" style="display:flex; gap:10px; flex-wrap:wrap; align-items:flex-end;">
-                <div style="flex:1; min-width:120px;">
-                    <label style="display:block; font-size:10px; text-transform:uppercase; margin-bottom:4px; color:var(--text-muted);">Reporting Cycle</label>
-                    <input type="text" value="July 2026 Update" style="width:100%; padding:8px; background:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main);">
-                </div>
-                <div style="flex:1; min-width:120px;">
-                    <label style="display:block; font-size:10px; text-transform:uppercase; margin-bottom:4px; color:var(--text-muted);">Target Ticker</label>
-                    <input type="text" placeholder="e.g. ZENTEC" style="width:100%; padding:8px; background:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main);">
-                </div>
-                <div style="flex:1; min-width:150px;">
-                    <label style="display:block; font-size:10px; text-transform:uppercase; margin-bottom:4px; color:var(--text-muted);">Metric Modification / Allocation Rebalance</label>
-                    <input type="text" placeholder="e.g. Debtor normalizations, Weight adjustment" style="width:100%; padding:8px; background:var(--bg-primary); border:1px solid var(--border-color); border-radius:4px; color:var(--text-main);">
-                </div>
-                <button type="submit" style="background:var(--accent-blue); color:#fff; border:none; padding:9px 18px; border-radius:4px; font-weight:600; cursor:pointer; height:33px;">Commit Modification</button>
-            </form>
+─────────────────────────────────────────────────────────────────────────
+PART 0 — MANDATORY DATA COLLECTION PROTOCOL (DO THIS BEFORE ANY ANALYSIS)
+─────────────────────────────────────────────────────────────────────────
+
+CRITICAL REQUIREMENT: Before writing a single word of analysis, you MUST conduct
+live web searches for EACH of the following data categories. Do NOT proceed to
+analysis until all searches are completed. State explicitly which searches you
+conducted and what date/source the data came from.
+
+MACRO DATA SEARCHES (conduct before stock selection):
+1. Search: "RBI repo rate [current month year]" → Get: Current repo rate, last
+   action date, MPC stance, next meeting date
+2. Search: "India GDP growth Q[X] FY[XX] latest" → Get: Most recent GDP print
+3. Search: "India CPI inflation [current month year]" → Get: Latest CPI headline
+   and food inflation
+4. Search: "FII DII flows India [current month year]" → Get: Last 30-day net flows
+5. Search: "Nifty 50 PE ratio today" → Get: Current trailing PE and PB
+6. Search: "Nifty Smallcap 250 PE ratio [current month year]" → Get: Valuation level
+7. Search: "Nifty Microcap 250 index performance [current month year]" → Get: YTD return
+8. Search: "India GST collection [current month year]" → Get: Latest monthly figure
+9. Search: "Brent crude oil price today" → Get: Current price
+10. Search: "India bank credit growth [current month year]" → Get: YoY credit growth %
+
+PER-STOCK DATA SEARCHES (conduct for EACH of the 20 stocks):
+For every stock you intend to include, run ALL of the following searches before
+writing its analysis card. Do not skip any. If search returns no data, write
+"DATA UNAVAILABLE — SOURCE: [attempted URL]" in that field.
+
+  a. "[Company Name] Q[X] FY[XX] results revenue profit" → Latest quarterly P&L
+  b. "[Company Name] annual report FY[XX] ROCE ROE" → Latest annual return metrics
+  c. "[Company Name] debt equity ratio FY[XX]" → Current leverage
+  d. "[Company Name] promoter holding [current quarter]" → Latest shareholding
+  e. "[Company Name] order book [current month year]" → For capital goods/defense
+  f. "[Company Name] management guidance FY[XX]" → Forward guidance
+  g. "[Company Name] stock price today market cap" → Live market cap
+  h. "[Company Name] latest news [current month year]" → Any recent material events
+  i. "Screener.in [Company Name]" → Cross-verify financial ratios
+  j. "[Company Name] analyst target price [current month year]" → Consensus view
+
+STATE EXPLICITLY at the start of your output: "All financial data sourced from
+live searches conducted on [DATE]. Sources: [list key URLs]. Data verified as of
+[DATE]. The following data points could not be verified and are flagged: [list]."
+
+─────────────────────────────────────────────────────────────────────────
+PART 1 — STOCK SCREENING CRITERIA (NON-NEGOTIABLE QUANTITATIVE FILTERS)
+─────────────────────────────────────────────────────────────────────────
+
+UNIVERSE DEFINITION:
+- Microcap:  Market Cap ₹150 cr – ₹5,000 cr
+- Smallcap:  Market Cap ₹500 cr – ₹15,000 cr
+- Midcap:    Market Cap ₹5,000 cr – ₹50,000 cr
+[Adjust ranges based on current NSE classification — search "NSE market cap
+classification [current year]" to confirm current thresholds]
+
+MANDATORY PASS CRITERIA (all must be satisfied using LATEST verified data):
+
+FINANCIAL QUALITY FILTERS:
+  ✦ Revenue CAGR (3-year):        > 12% for Micro | > 10% for Small | > 8% for Mid
+  ✦ PAT CAGR (3-year):            > 15% for Micro | > 12% for Small | > 10% for Mid
+  ✦ ROCE (latest full year):      > 15% (minimum) | > 18% preferred
+  ✦ ROE (latest full year):       > 12% (minimum) | > 15% preferred
+  ✦ Debt to Equity (latest):      < 1.0x for manufacturing | < 0.5x preferred
+                                   [NBFCs exempt — use Net NPA + CAR instead]
+  ✦ Operating Cash Flow:          Positive for at least 2 of last 3 years
+  ✦ Gross Margin Trend:           Stable or improving — flag if deteriorating
+  ✦ Working Capital Days:         Not deteriorating — flag if receivable days >90
+
+GOVERNANCE & OWNERSHIP FILTERS:
+  ✦ Promoter Holding:             > 40% (minimum) | > 50% preferred
+  ✦ Promoter Pledge:              < 15% of total shares | Reject if > 25%
+  ✦ Auditor:                      Big 4 or recognized mid-tier | Reject if auditor
+                                   has issued qualified opinion in last 2 years
+  ✦ Related Party Transactions:   Flag if RPT > 10% of revenue for scrutiny
+  ✦ Litigation:                   Flag material SEBI/ED/IT department actions
+
+BUSINESS QUALITY FILTERS:
+  ✦ Business Age:                 > 5 years of listed history minimum
+  ✦ Revenue Concentration:        Flag if single customer > 35% of revenue
+  ✦ Management Track Record:      Promoter/MD with > 5 years at company
+  ✦ Sector Tailwind:              Business must be exposed to at least 1 of the
+                                   macro tailwinds listed in Part 2 below
+  ✦ Moat Type:                    Must have identifiable moat — pricing power /
+                                   switching costs / network effect / regulatory
+                                   approval barrier / geographic dominance
+
+AUTOMATIC DISQUALIFICATION (reject any company with):
+  ✘ Promoter pledge > 30%
+  ✘ Auditor resignation in last 2 years
+  ✘ Revenue declined for 2+ consecutive years (unless clear one-time event)
+  ✘ Negative net worth
+  ✘ SEBI investigation or stock exchange surveillance action ongoing
+  ✘ Debt-to-equity > 2x (except regulated financial sector)
+  ✘ Zero operating cash flow for 3 consecutive years
+  ✘ Company age < 3 years since listing
+
+─────────────────────────────────────────────────────────────────────────
+PART 2 — MACRO TAILWIND ALIGNMENT (MANDATORY SECTOR LINKAGE)
+─────────────────────────────────────────────────────────────────────────
+
+Every stock selected MUST be linked to at least ONE of the following verified
+structural tailwinds active as of the analysis date. State which tailwind(s) apply
+for each stock and quantify the linkage (e.g., "35% of revenue from government
+defense contracts — directly linked to MoD ₹2.1L cr FY25 order surge").
+
+PRIMARY TAILWINDS (verify current status via live search before citing):
+
+T1. GOVERNMENT CAPEX CYCLE
+    Search: "India government capital expenditure FY[XX] budget execution"
+    Metrics: % capex executed, NHAI awarding pace, railway capex run-rate
+    Beneficiary sectors: Capital goods, EPC, Cement, Infra materials, Railways
+
+T2. DEFENSE INDIGENIZATION
+    Search: "Ministry of Defence procurement orders FY[XX] domestic"
+    Metrics: MoD contract value, % domestic procurement, export pipeline
+    Beneficiary sectors: Defense electronics, Aerospace components, Shipbuilding
+
+T3. ENERGY TRANSITION (RENEWABLE + EV)
+    Search: "India renewable energy capacity addition FY[XX]"
+    Metrics: Solar/wind GW added, EV sales data, battery storage tenders
+    Beneficiary sectors: Power T&D, EV components, Battery materials, Green chemicals
+
+T4. INDIA MANUFACTURING / PLI SCHEMES
+    Search: "PLI scheme disbursements India [current year] sector"
+    Metrics: PLI approvals, production targets achieved, export growth
+    Beneficiary sectors: Electronics (EMS), Pharma APIs, Specialty Chemicals, Auto
+
+T5. FINANCIALIZATION OF SAVINGS / CREDIT CYCLE
+    Search: "India bank credit growth [current month year] sector"
+    Metrics: Credit CAGR, demat account growth, MF SIP flows, insurance premium
+    Beneficiary sectors: NBFCs, Microfinance, Asset Managers, Insurance
+
+T6. HEALTHCARE & DIAGNOSTICS DEMAND
+    Search: "Ayushman Bharat coverage [current year] India diagnostics market"
+    Metrics: Insurance penetration, hospital bed addition, diagnostic volume growth
+    Beneficiary sectors: Diagnostic chains, Specialty hospitals, Pharma distribution
+
+T7. RURAL ECONOMY REVIVAL
+    Search: "India rural demand recovery [current quarter year] FMCG volume"
+    Metrics: 2W rural sales, FMCG rural volume growth, agri income proxies
+    Beneficiary sectors: MFI-NBFCs, Agri inputs, Rural FMCG, 2-wheeler OEMs
+
+T8. CHINA PLUS ONE / EXPORT DIVERSIFICATION
+    Search: "India exports growth [current month year] China plus one beneficiary"
+    Metrics: India's share in US/EU imports by category, PLI export targets
+    Beneficiary sectors: Specialty chemicals, Pharma APIs, Electronics, Textiles
+
+T9. DIGITAL INDIA / TECH INFRASTRUCTURE
+    Search: "India data center demand [current year] 5G rollout status"
+    Metrics: 5G subscribers, data center GW capacity, digital payments volume
+    Beneficiary sectors: Telecom infrastructure, Data centers, IT staffing, Fintech
+
+T10. PREMIUMIZATION OF CONSUMPTION
+    Search: "India premium consumption growth [current year] urban affluent"
+    Metrics: Luxury car sales, premium FMCG growth, HNI wealth data
+    Beneficiary sectors: Premium auto dealers, Luxury real estate, Lifestyle retail
+
+─────────────────────────────────────────────────────────────────────────
+PART 3 — REQUIRED OUTPUT FORMAT (MANDATORY STRUCTURE)
+─────────────────────────────────────────────────────────────────────────
+
+Produce the output as a professional HTML report with the following mandatory
+sections. Do not deviate from this structure. Every section must be present.
+
+SECTION A: DATA VERIFICATION HEADER
+  - Date and time of research session
+  - Complete list of web searches conducted (source URL + data extracted)
+  - List of any data points that could NOT be verified (flag clearly)
+  - Macro dashboard: current values of all 10 macro indicators from Part 0
+
+SECTION B: MASTER SNAPSHOT TABLE
+  A single HTML table with all 20 stocks showing:
+  Col 1:  Rank (1–20)
+  Col 2:  Company Name + NSE/BSE ticker
+  Col 3:  Sector / Theme
+  Col 4:  Market Cap (₹ cr) — LIVE VERIFIED, date-stamped
+  Col 5:  Revenue CAGR 3Y — VERIFIED, FY stated
+  Col 6:  PAT CAGR 3Y — VERIFIED, FY stated
+  Col 7:  ROCE % — VERIFIED, FY stated
+  Col 8:  D/E Ratio — VERIFIED, date stated
+  Col 9:  Promoter Holding % — VERIFIED, quarter stated
+  Col 10: Conviction Level (HIGH / MEDIUM / WATCH)
+  Col 11: Recommendation (BUY / ACCUMULATE / MONITOR)
+  Col 12: Macro Tailwind Code (T1–T10 from Part 2)
+  [Any unverified cell must show: "UV*" with footnote]
+
+SECTION C: INDIVIDUAL STOCK DEEP-DIVES (for all 20 stocks)
+  Each stock card must contain ALL of the following sub-sections:
+
+  C1. IDENTITY BLOCK
+      - Full company name, NSE ticker, BSE code
+      - Sector, sub-sector, primary business description (2 sentences max)
+      - Current market cap (live, date-stamped)
+      - 52-week high/low (live, date-stamped)
+      - CMP (current market price) at time of research
+
+  C2. VERIFIED FINANCIALS TABLE
+      Present a 3-year trailing table with VERIFIED data:
+      | Metric          | FY[X-2] | FY[X-1] | FY[X] |
+      | Revenue (₹ cr)  |         |         |       |
+      | EBITDA (₹ cr)   |         |         |       |
+      | EBITDA Margin % |         |         |       |
+      | PAT (₹ cr)      |         |         |       |
+      | PAT Margin %    |         |         |       |
+      | ROCE %          |         |         |       |
+      | ROE %           |         |         |       |
+      | D/E Ratio       |         |         |       |
+      | OCF (₹ cr)      |         |         |       |
+      Source each row — state "Source: Screener.in / BSE filing / Annual Report"
+      Mark any estimated cell with (E) and state basis of estimate.
+
+  C3. LATEST QUARTER SNAPSHOT
+      - Most recent quarter results (state quarter explicitly: "Q4 FY25" etc.)
+      - Revenue QoQ and YoY change
+      - PAT QoQ and YoY change
+      - EBITDA margin vs previous quarter
+      - Key management commentary from earnings call (if available)
+      - Any guidance revision (upgraded/maintained/cut)
+
+  C4. CURRENT VALUATION METRICS
+      - Trailing PE (live) — state date
+      - Forward PE based on consensus estimates — state source
+      - Price to Book (live) — state date
+      - EV/EBITDA (live) — state date
+      - Comparison: Current PE vs 3-year median PE (premium/discount %)
+
+  C5. BULL THESIS (200–250 words)
+      - Primary business moat (specific, not generic)
+      - Quantified addressable market opportunity
+      - 2–3 specific growth drivers with data backing each
+      - Why this company specifically (not just the sector)
+
+  C6. MACRO TAILWIND LINKAGE
+      - State which tailwind(s) from Part 2 apply
+      - Quantify: "X% of revenue / order book is directly linked to [tailwind]"
+      - State the specific government policy, budget allocation, or market dynamic
+      - Cite the live search data that confirms the tailwind is active
+
+  C7. LATEST NEWS & MATERIAL EVENTS
+      - Most recent significant news (state date of news)
+      - Any recent promoter buying/selling (state date and quantity)
+      - Any recent block deals or institutional investor entry/exit
+      - Any recent analyst rating changes (state brokerage and target)
+      - Any regulatory, USFDA, SEBI, or RBI-related news
+
+  C8. FORENSIC RED FLAGS CHECK
+      Explicitly check and state finding for EACH of the following:
+      □ Promoter pledge level: [%] as of [quarter] — [FLAG/CLEAR]
+      □ Auditor: [Name] — [UNCHANGED/CHANGED — if changed, explain]
+      □ Related party transactions: [% of revenue] — [FLAG/CLEAR]
+      □ Contingent liabilities: [Amount] vs Net Worth — [FLAG/CLEAR]
+      □ Debtors days trend (3Y): [X days → Y days → Z days] — [IMPROVING/DETERIORATING]
+      □ Cash conversion: OCF vs PAT ratio — [HEALTHY if OCF > 0.7x PAT]
+      □ SEBI/ED/IT action: [NONE / STATE IF ANY]
+      □ Qualified auditor opinion: [NONE / STATE IF ANY]
+
+  C9. WHAT WOULD FALSIFY THIS THESIS
+      - State 3 specific, falsifiable conditions that would trigger exit
+      - These must be measurable: "If ROCE drops below X%" not "if growth slows"
+      - Include one macro falsifier, one company-specific falsifier, one sector falsifier
+
+  C10. POSITION SIZING & ENTRY GUIDANCE
+      - Conviction level rationale (HIGH/MEDIUM/WATCH) with specific reasons
+      - Suggested portfolio weight (% of total equity portfolio)
+      - Entry strategy: Lump sum / SIP tranches / Buy-on-dip (specify target dip %)
+      - Liquidity warning: State average daily traded value — flag if < ₹2 cr/day
+      - Time horizon: Minimum holding period stated explicitly
+      - Exit trigger: Price target (if applicable) OR milestone-based exit criteria
+
+SECTION D: PORTFOLIO RISK ANALYSIS
+  - Sector concentration map across all 20 stocks
+  - Correlation risk: Identify stocks that would ALL suffer in the same macro scenario
+  - Top 5 portfolio risks (macro, sector, regulatory, liquidity, governance)
+  - Suggested hedge: What large-cap or index position hedges this microcap basket
+
+SECTION E: CONTRARIAN CHECK
+  For each of the 20 stocks, state in ONE sentence: "Consensus view is [X].
+  This pick agrees / disagrees because [Y]." Flag any stock where the pick is
+  a consensus darling (>5 sell-side buy ratings) — these require extra scrutiny
+  on valuation and whether the re-rating opportunity is already priced in.
+
+SECTION F: DATA QUALITY SCORECARD
+  For each stock, rate data quality:
+  ✅ GREEN  = All 10 data searches returned verified, dated information
+  ⚠️ AMBER  = 7–9 searches returned data; 1–3 fields estimated
+  🔴 RED    = <7 searches returned data; inclusion justified despite gaps
+  Any RED-rated stock must include a prominent warning box.
+
+─────────────────────────────────────────────────────────────────────────
+PART 4 — CRITICAL ANALYTICAL STANDARDS
+─────────────────────────────────────────────────────────────────────────
+
+INTELLECTUAL HONESTY RULES (non-negotiable):
+
+RULE 1 — NO MEMORY DATA
+You must not use any financial figures from training data memory without
+live-search verification. If a search fails to return current data, write
+"UNVERIFIED" rather than use a training-data approximation. This is the most
+important rule in this entire prompt. Violation = the entire analysis is
+invalidated.
+
+RULE 2 — DATE EVERY DATA POINT
+Every number in the output must have a date stamp. "ROCE of 22%" is
+unacceptable. "ROCE of 22% (FY25 annual report, sourced Screener.in, accessed
+[date])" is the required standard.
+
+RULE 3 — DISTINGUISH ESTIMATE FROM FACT
+When using forward-looking consensus estimates, explicitly label them:
+"FY26E Revenue: ₹850 cr (consensus estimate, source: [brokerage/news/IR])"
+Never present a forward estimate as a current fact.
+
+RULE 4 — FLAG ILLIQUIDITY PROMINENTLY
+Any stock with average daily traded value < ₹2 cr must carry a prominent
+warning: "⚠️ ILLIQUID — Average daily volume ₹[X] cr. Position sizing must
+not exceed [Y]% of daily volume. Entry/exit must be spread over multiple sessions."
+
+RULE 5 — NO SUGARCOATING
+State risks bluntly. Do not bury a material risk in the middle of a bull
+paragraph. Every investment thesis section must have an equally prominent
+risk section. If a stock has a serious risk, it goes FIRST in the risk section,
+not last. The word "however" should not be used to pivot from a serious risk
+to a positive — both facts must stand on equal footing.
+
+RULE 6 — PROMOTER PLEDGE IS A HARD FILTER
+If a search reveals promoter pledge > 25% and this information was not known
+during stock selection, the stock must be removed from the list and replaced.
+Do not rationalize high pledge with "strong business fundamentals." Pledge is
+a governance failure. It is a hard filter.
+
+RULE 7 — QUALITY OF EARNINGS OVER ACCOUNTING PROFITS
+Always compare Operating Cash Flow to PAT. If OCF < 0.5x PAT for 2+ years
+consistently, this indicates poor earnings quality and must be flagged
+prominently. Working capital build-up that inflates revenue without cash
+conversion is a red flag.
+
+RULE 8 — SECTOR DIVERSIFICATION DISCIPLINE
+The 20 picks must not have more than 4 stocks from any single sector. If the
+screening process yields >4 strong candidates from one sector, take the top 4
+by conviction and note the others in a "honorable mentions" section. A
+concentrated sector bet is NOT the objective — alpha from stock selection is.
+
+RULE 9 — VARIANT PERCEPTION REQUIRED
+For each stock, state explicitly: "The consensus view is [X]. My variant
+perception is [Y] because [Z]." If you cannot articulate a variant perception
+— a view that differs from mainstream analyst consensus — the stock does not
+belong in a high-conviction institutional list. A stock that everyone loves
+at fair valuation is not a high-conviction pick; it is a consensus hold.
+
+RULE 10 — CATALYSTS MUST BE TIME-BOUND
+Every stock must have at least one specific, time-bound catalyst stated:
+"Catalyst: USFDA facility inspection expected Q2 FY26 — positive outcome
+would trigger re-rating." Not "company has good growth prospects." Catalysts
+without timelines are not catalysts.
+
+─────────────────────────────────────────────────────────────────────────
+PART 5 — OUTPUT FORMATTING REQUIREMENTS
+─────────────────────────────────────────────────────────────────────────
+
+HTML REPORT SPECIFICATIONS:
+- Format: Complete, self-contained HTML file with embedded CSS
+- Print-ready: A4 page size, 1.5cm margins, @page media query included
+- Typography: Professional serif or sans-serif (IBM Plex, Source Serif, or similar)
+- Color coding:
+    HIGH conviction  → Green (#1a6e2e) border/accent
+    MEDIUM conviction → Blue (#1565c0) border/accent
+    WATCH / ACCUMULATE → Amber (#f59e0b) border/accent
+    RED FLAGS → Red (#b71c1c) with warning box background
+    UNVERIFIED DATA → Yellow highlight with "UV" badge
+- Tables: Full-width, alternating row colors, clear headers
+- Stock cards: Individual bordered cards per stock with conviction-color top border
+- Data quality badges: ✅ / ⚠️ / 🔴 prominently displayed on each card
+- Mobile responsive: Basic responsive grid for screen viewing
+
+DENSITY REQUIREMENTS:
+- Every sentence must carry information — no filler phrases
+- Use tables and structured lists over prose wherever data is tabular
+- Maximum prose per stock card: 400 words (enforces discipline)
+- Metrics in tables, qualitative analysis in prose — never mix the two
+
+LENGTH GUIDANCE:
+- Data verification header: 1 page
+- Master snapshot table: 1–1.5 pages
+- Individual stock cards: 3–4 pages (compressed tables + focused prose)
+- Portfolio risk section: 0.5 page
+- Contrarian check: 0.5 page
+- Total: 7–10 printed A4 pages
+
+─────────────────────────────────────────────────────────────────────────
+PART 6 — SEGMENT-SPECIFIC ADDITIONAL CHECKS
+─────────────────────────────────────────────────────────────────────────
+
+FOR MICROCAP STOCKS (₹150 cr – ₹5,000 cr):
+□ Verify that the stock is NOT in SEBI's surveillance framework (ASM/GSM lists)
+  Search: "SEBI ASM list [company name]" and "NSE GSM list [company name]"
+□ Check if the stock has been recently added to any index (triggers institutional
+  buying) or removed (triggers selling) — search "[company] index inclusion [year]"
+□ Verify traded volume: if stock has < ₹1 cr average daily volume, it is
+  borderline uninvestable for any position > ₹10 lakhs — flag explicitly
+□ Check: Has any mutual fund taken fresh exposure in last 2 quarters?
+  Search: "[company name] mutual fund holding [current quarter]"
+□ Micro-cap specific risk: Promoter can easily manipulate price — verify price
+  movement against results delivery. Flag stocks with >50% rally without
+  corresponding earnings improvement.
+
+FOR SMALL CAP STOCKS (₹500 cr – ₹15,000 cr):
+□ Check which Nifty Smallcap index the stock belongs to (50/100/250) and
+  the index's current PE relative to historical median
+□ Verify if any FII/DII has built a >1% stake — signals institutional validation
+□ Small cap stocks in sectoral indices (Nifty Pharma, Nifty Auto) — check if the
+  sector is in favor or disfavor with FIIs currently
+□ Check: Has company raised equity (QIP/rights/preferential) in last 12 months?
+  If yes, at what price vs current price? Dilution risk vs capital deployment.
+
+FOR MIDCAP STOCKS (₹5,000 cr – ₹50,000 cr):
+□ Nifty Midcap 100/150 inclusion check: Index stocks benefit from passive inflows
+□ Compare with sector large-cap peers: Is the midcap trading at premium or
+  discount? If premium, justify why with specific earnings delta.
+□ Analyst coverage: If > 8 analysts covering = less information edge.
+  Prefer midcaps with 2–5 analyst coverage — information arbitrage available.
+□ Check: Any large-cap acquisition of this company rumored or announced?
+  Merger/acquisition = re-rating catalyst or overhang depending on terms.
+
+─────────────────────────────────────────────────────────────────────────
+PART 7 — CLOSING EXECUTION INSTRUCTION
+─────────────────────────────────────────────────────────────────────────
+
+Now execute this analysis for [SEGMENT: Microcap / Smallcap / Midcap / All Three].
+
+EXECUTION SEQUENCE (follow in order, do not skip steps):
+Step 1: Conduct all 10 macro data searches. Record findings.
+Step 2: Identify 30–35 candidate stocks across target segment(s) using the
+        screening criteria in Part 1. Use web search to identify candidates —
+        search "best [segment] stocks India [current month year] high ROE low debt"
+        and similar queries. Do NOT rely on memory for candidate universe.
+Step 3: For each candidate, conduct the 10 per-stock searches from Part 0.
+Step 4: Apply the disqualification filters from Part 1. Remove any stock that
+        fails a hard filter. Document why each removed candidate was eliminated.
+Step 5: Rank remaining candidates by conviction score:
+        Conviction Score = (Macro Tailwind Strength × Business Moat Quality ×
+        Earnings Momentum × Valuation Attractiveness) — weight each 25%
+Step 6: Select top 20. Ensure sector diversification rule (max 4 per sector).
+Step 7: Produce the complete HTML report as specified in Part 3.
+Step 8: Review each stock card against the 10 analytical standards in Part 4.
+        If any standard is violated, revise before finalizing.
+Step 9: Generate the Data Quality Scorecard for all 20 stocks.
+Step 10: Publish final HTML output with all sections complete.
+
+TONE: CIO of a ₹5,000 crore fund writing to an investment committee.
+      Blunt. Data-heavy. Zero fluff. Every sentence earns its place.
+      If a stock has a real risk, say so. If the thesis requires a leap of
+      faith, say so and quantify the probability you're assigning to it.
+
+BEGIN.
+</pre>
         </div>
     </div>
+</div>
 
-    <!-- Tab Navigation Native Script Engine -->
-    <script>
-        function switchTab(tabId) {
-            // Deactivate all functional buttons and containers
-            const tabs = document.querySelectorAll('.tab-content');
-            const buttons = document.querySelectorAll('.tab-btn');
+<script>
+    // CORE PORTFOLIO DATA (Preserving absolute zero data loss for PnL tracker)
+    const FUND_SIZE_CR = 5000;
+
+    const portfolio = [
+        { id: 1, ticker: "ACE", weight: 4.0, cmp: 900.30, rec: "BUY" },
+        { id: 2, ticker: "GRAVITA", weight: 3.5, cmp: 1631.00, rec: "BUY" },
+        { id: 3, ticker: "RATNAMANI", weight: 1.0, cmp: 2615.00, rec: "WATCH" },
+        { id: 4, ticker: "DATAPATTNS", weight: 2.0, cmp: 4213.00, rec: "MEDIUM" },
+        { id: 5, ticker: "ANANDRATHI", weight: 2.5, cmp: 1753.00, rec: "MEDIUM" },
+        { id: 6, ticker: "ELECON", weight: 4.0, cmp: 531.00, rec: "BUY" },
+        { id: 7, ticker: "TRITURBINE", weight: 3.5, cmp: 687.00, rec: "BUY" },
+        { id: 8, ticker: "ZENTEC", weight: 2.0, cmp: 1815.30, rec: "MEDIUM" },
+        { id: 9, ticker: "APARINDS", weight: 5.0, cmp: 13878.00, rec: "BUY" },
+        { id: 10, ticker: "CAPLIPOINT", weight: 4.5, cmp: 2033.10, rec: "BUY" },
+        { id: 11, ticker: "BSE", weight: 5.0, cmp: 3880.00, rec: "BUY" },
+        { id: 12, ticker: "KKCL", weight: 2.0, cmp: 439.05, rec: "MEDIUM" },
+        { id: 13, ticker: "CARYSIL", weight: 1.5, cmp: 1102.00, rec: "MEDIUM" },
+        { id: 14, ticker: "KAYNES", weight: 1.0, cmp: 3122.00, rec: "WATCH" },
+        { id: 15, ticker: "CLEAN", weight: 3.0, cmp: 1595.00, rec: "BUY" },
+        { id: 16, ticker: "LUMAXTECH", weight: 4.0, cmp: 1664.40, rec: "BUY" },
+        { id: 17, ticker: "SHAKTIPUMP", weight: 1.5, cmp: 540.50, rec: "MEDIUM" },
+        { id: 18, ticker: "MARKSANS", weight: 3.5, cmp: 233.00, rec: "BUY" },
+        { id: 19, ticker: "GABRIEL", weight: 3.5, cmp: 1001.00, rec: "BUY" },
+        { id: 20, ticker: "NH", weight: 3.0, cmp: 1969.20, rec: "BUY" }
+    ];
+
+    const contrarianData = [
+        { tick: "ACE", con: "Fears margin compression.", var: "Intelligent pricing defends 16% margins; defense scaling ignored." },
+        { tick: "GRAVITA", con: "Views as lead cycler.", var: "BWMR created a formalized ESG utility with structural moats." },
+        { tick: "RATNAMANI", con: "Neutral post Q4 drop.", var: "Agrees with street. Hold execution until WC normalizes." },
+        { tick: "DATAPATTNS", con: "Hyper-bullish on MoD.", var: "Ignores severe 287-day WC trap. Stagger entries." },
+        { tick: "ANANDRATHI", con: "Unanimous AUM bullishness.", var: "Flags 11.4% promoter pledge as unhedged governance risk." },
+        { tick: "ELECON", con: "Punishes flat YoY PAT.", var: "Misses absolute debt cleanup. 28.5% ROCE mispriced." },
+        { tick: "TRITURBINE", con: "Fears export slowdown.", var: "174% Q4 export order growth completely secures FY27." },
+        { tick: "ZENTEC", con: "Panic over Q4 PAT.", var: "Exploiting panic to buy a non-defaultable ₹1,336Cr backlog." },
+        { tick: "APARINDS", con: "Chasing revenue CAGR.", var: "Injects skepticism: flagging the 25% drop in OCF." },
+        { tick: "CAPLIPOINT", con: "Applies LatAm discount.", var: "34% margins prove LatAm > US generic wars." },
+        { tick: "BSE", con: "Endless options growth.", var: "Flags impending SEBI lot-size interventions on retail F&O." },
+        { tick: "KKCL", con: "Ignores microcap apparel.", var: "Buys 20% organic growth yielding 19.6% EBITDA at 17x PE." },
+        { tick: "CARYSIL", con: "Doubts appliance margins.", var: "Kitchen hub pivot increases designer wallet-share." },
+        { tick: "KAYNES", con: "Projects endless EMS scaling.", var: "Enforces WATCH on 154-day debtor drag." },
+        { tick: "CLEAN", con: "Neutral on slowed growth.", var: "HALS commercialization triggers margin-accretive inflection." },
+        { tick: "LUMAXTECH", con: "Values as cyclical vendor.", var: "IAC merger completes Tier-0.5 integrator transformation." },
+        { tick: "SHAKTIPUMP", con: "Projects margin doom.", var: "Buys the massive ₹420Cr Q4 receivable recovery." },
+        { tick: "MARKSANS", con: "Values as low-end generic.", var: "Values the ₹328Cr FCF and ₹990Cr cash treasury." },
+        { tick: "GABRIEL", con: "Wary of 60x multiple.", var: "Multiple is optical; NCLT merger structurally hikes ROE." },
+        { tick: "NH", con: "Prefers luxury hospitals.", var: "Backs extreme asset-turns executing top-tier ROCE." }
+    ];
+
+    function initPnLTracker() {
+        const tbody = document.getElementById('pnl-body');
+        tbody.innerHTML = '';
+        
+        portfolio.forEach(s => {
+            const allocCr = (FUND_SIZE_CR * (s.weight / 100)).toFixed(2);
+            let badgeClass = s.rec === 'BUY' ? 'bg-green' : s.rec === 'WATCH' ? 'bg-red' : 'bg-blue';
             
-            tabs.forEach(tab => tab.classList.remove('active'));
-            buttons.forEach(btn => btn.classList.remove('active'));
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td>${s.id}</td>
+                <td><strong>${s.ticker}</strong></td>
+                <td><span class="badge ${badgeClass}">${s.rec}</span></td>
+                <td>${s.weight.toFixed(1)}%</td>
+                <td>₹${allocCr}</td>
+                <td>₹${s.cmp.toFixed(2)}</td>
+                <td><input type="number" class="pnl-input" data-ticker="${s.ticker}" data-entry="${s.cmp}" data-alloc="${allocCr}" value="${s.cmp.toFixed(2)}" step="0.01"></td>
+                <td id="pct-${s.ticker}">0.00%</td>
+                <td id="val-${s.ticker}">₹0.00</td>
+            `;
+            tbody.appendChild(tr);
+        });
+
+        document.querySelectorAll('.pnl-input').forEach(input => {
+            input.addEventListener('input', calculateTotalPnL);
+        });
+    }
+
+    function initContrarian() {
+        const tbody = document.getElementById('contrarian-body');
+        tbody.innerHTML = '';
+        contrarianData.forEach(d => {
+            const tr = document.createElement('tr');
+            tr.innerHTML = `
+                <td><strong style="color:var(--brand-blue)">${d.tick}</strong></td>
+                <td>${d.con}</td>
+                <td style="color:#e4e4e7">${d.var}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function calculateTotalPnL() {
+        let totalCurrentValue = 0;
+        
+        document.querySelectorAll('.pnl-input').forEach(input => {
+            const ticker = input.getAttribute('data-ticker');
+            const entryPrice = parseFloat(input.getAttribute('data-entry'));
+            const allocCr = parseFloat(input.getAttribute('data-alloc'));
+            const livePrice = parseFloat(input.value) || 0;
             
-            // Activate target workspace
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-    </script>
+            const pctChange = ((livePrice - entryPrice) / entryPrice) * 100;
+            const currentValCr = allocCr * (1 + (pctChange / 100));
+            const pnlCr = currentValCr - allocCr;
+            
+            totalCurrentValue += currentValCr;
+            
+            const pctCell = document.getElementById(`pct-${ticker}`);
+            const valCell = document.getElementById(`val-${ticker}`);
+            
+            pctCell.textContent = `${pctChange > 0 ? '+' : ''}${pctChange.toFixed(2)}%`;
+            valCell.textContent = `${pnlCr > 0 ? '+' : ''}₹${pnlCr.toFixed(2)}`;
+            
+            pctCell.className = pctChange > 0 ? 'text-green' : pctChange < 0 ? 'text-red' : '';
+            valCell.className = pnlCr > 0 ? 'text-green' : pnlCr < 0 ? 'text-red' : '';
+        });
+        
+        const allocatedWeight = portfolio.reduce((sum, s) => sum + s.weight, 0); 
+        const unallocatedCr = FUND_SIZE_CR * ((100 - allocatedWeight) / 100);
+        
+        const finalPortfolioValue = totalCurrentValue + unallocatedCr;
+        const totalAbsolutePnL = finalPortfolioValue - FUND_SIZE_CR;
+        const totalPctPnL = (totalAbsolutePnL / FUND_SIZE_CR) * 100;
+        
+        document.getElementById('total-value').textContent = `₹${finalPortfolioValue.toFixed(2)} Cr`;
+        
+        const pnlEl = document.getElementById('total-pnl');
+        const pctEl = document.getElementById('total-pnl-pct');
+        
+        pnlEl.textContent = `${totalAbsolutePnL > 0 ? '+' : ''}₹${totalAbsolutePnL.toFixed(2)} Cr`;
+        pctEl.textContent = `${totalPctPnL > 0 ? '+' : ''}${totalPctPnL.toFixed(2)}%`;
+        
+        pnlEl.className = `kpi-value ${totalAbsolutePnL > 0 ? 'text-green' : totalAbsolutePnL < 0 ? 'text-red' : ''}`;
+        pctEl.className = `kpi-delta ${totalPctPnL > 0 ? 'text-green' : totalPctPnL < 0 ? 'text-red' : ''}`;
+    }
+
+    function switchTab(tabId) {
+        document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+        document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+        document.getElementById(tabId).classList.add('active');
+        event.currentTarget.classList.add('active');
+    }
+
+    window.onload = () => {
+        initPnLTracker();
+        initContrarian();
+        calculateTotalPnL();
+    };
+</script>
 </body>
 </html>
