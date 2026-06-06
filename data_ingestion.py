@@ -8,7 +8,7 @@ import logging
 import sys
 import random
 import time
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 
 import requests
@@ -22,25 +22,38 @@ logger = logging.getLogger(__name__)
 
 class MarketPipelineConfig:
     def __init__(self):
-        self.today = datetime.today()
-        self.date_iso = self.today.strftime('%Y-%m-%d')
-        self.date_ddmmyyyy = self.today.strftime('%d%m%Y')
-        self.date_yymmdd = self.today.strftime('%y%m%d')
-        self.date_yyyymmdd = self.today.strftime('%Y%m%d') 
-        self.date_mmm = self.today.strftime('%b').upper()
-        self.date_yyyy = self.today.strftime('%Y')
-        self.date_ddmmmyyyy = self.today.strftime('%d%b%Y').upper()
+        self.calendar_today = datetime.today()
         
+        # WEEKEND LOGIC: If Saturday (5) or Sunday (6), set Trading Day to Friday
+        if self.calendar_today.weekday() == 5:
+            self.trading_today = self.calendar_today - timedelta(days=1)
+        elif self.calendar_today.weekday() == 6:
+            self.trading_today = self.calendar_today - timedelta(days=2)
+        else:
+            self.trading_today = self.calendar_today
+
+        # Trading Dates (For NSE Files and Folders)
+        self.date_iso = self.trading_today.strftime('%Y-%m-%d')
+        self.date_ddmmyyyy = self.trading_today.strftime('%d%m%Y')
+        self.date_yymmdd = self.trading_today.strftime('%y%m%d')
+        self.date_yyyymmdd = self.trading_today.strftime('%Y%m%d') 
+        self.date_mmm = self.trading_today.strftime('%b').upper()
+        self.date_yyyy = self.trading_today.strftime('%Y')
+        self.date_ddmmmyyyy = self.trading_today.strftime('%d%b%Y').upper()
+        
+        # Calendar Date (For BSE Weekend Ranges & Skip Flags)
+        self.cal_date_yyyymmdd = self.calendar_today.strftime('%Y%m%d')
+
         self.base_market_dir = "market_data"
         self.base_corp_dir = "corporate_data"
         
+        # Everything gets saved under the Trading Day (Friday) folder
         os.makedirs(f"{self.base_market_dir}/{self.date_iso}", exist_ok=True)
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
     """The Ultimate Fetcher: Proxies + Playwright Native Download + Direct Navigation WAF Bypass"""
     def __init__(self):
-        # --- 1. LIGHTWEIGHT REQUESTS ENGINE ---
         self.session = requests.Session()
         self.u_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
@@ -64,19 +77,16 @@ class OmniFetcher:
             "https://corsproxy.io/?url="             
         ]
 
-        # --- 2. HEAVY PLAYWRIGHT ENGINE ---
         self.pw = None
         self.browser = None
         self.pw_context = None
         self.page = None
 
     def _init_playwright(self):
-        """Launches the WAF-Bypass Browser Context"""
         if self.pw_context is None:
             logger.warning("Engaging Playwright Ghost-Human Browser...")
             self.pw = sync_playwright().start()
             
-            # WAF BYPASS: Disable HTTP/2 & Automation Flags to defeat Akamai/Cloudflare
             self.browser = self.pw.chromium.launch(
                 headless=True, 
                 args=[
@@ -145,7 +155,6 @@ class OmniFetcher:
         try:
             logger.info("Physical Browser Download Triggered (Native Anchor Click)...")
             
-            # WAF BYPASS: Create a physical button on the page and click it to prevent context destruction
             self.page.set_content(f"<html><body><a id='secure-download' href='{url}'>Download</a></body></html>")
             
             with self.page.expect_download(timeout=60000) as download_info:
@@ -186,17 +195,14 @@ class OmniFetcher:
             
         try:
             logger.info("Executing direct browser navigation to JSON endpoint...")
-            # WAF BYPASS: wait_until="networkidle" allows Cloudflare time to solve its javascript challenge
             response = self.page.goto(url, wait_until="networkidle", timeout=45000)
             
-            # Try parsing the native network response first
             try:
                 if response:
                     json_data = response.json()
                     if json_data: return json_data
             except Exception: pass
             
-            # Fallback: Scrape the raw text off the screen
             page_text = self.page.locator("body").inner_text()
             if page_text:
                 try:
@@ -230,7 +236,6 @@ def send_telegram_alert(message: str):
         logger.error(f"Failed to send Telegram alert: {e}")
 
 def is_valid_file(filepath: str) -> bool:
-    """Checks if file exists AND has content (not empty)."""
     return os.path.exists(filepath) and os.path.getsize(filepath) > 50
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
@@ -394,13 +399,18 @@ def process_macro_flows(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     return "❌ Failed (Timeout)"
 
 def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    # WEEKEND FIX: Only skip if we already checked TODAY (cal_date). This allows weekend overwrites!
+    flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.reg_done_{cfg.cal_date_yyyymmdd}"
+    if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
+
     t_pit = f"{cfg.base_market_dir}/{cfg.date_iso}/insider_trading.md"
     t_sast = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
-    if is_valid_file(t_pit) and is_valid_file(t_sast): return "✅ Skipped (Already Secure)"
 
     pit_data, sast_data = [], []
     fetcher.prime_bse_cookies()
-    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.date_yyyymmdd}
+    
+    # WEEKEND FIX: Fetch from Trading Day (Friday) to Calendar Day (Saturday/Sunday)
+    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd}
     
     pit_json = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/InsiderTrading/w", params=params)
     if pit_json:
@@ -419,15 +429,20 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
             with open(t_pit, "w", encoding="utf-8") as f: f.write(f"# Insider Trading (PIT)\n\n{to_md_table(pit_data)}")
         if sast_data:
             with open(t_sast, "w", encoding="utf-8") as f: f.write(f"# Promoter Pledges (SAST)\n\n{to_md_table(sast_data)}")
+        
+        with open(flag_file, "w") as f: f.write("done")
         return f"✅ Downloaded (PIT: {len(pit_data)}, SAST: {len(sast_data)})"
+        
     return "❌ Failed (BSE No Data)"
 
 def process_corporate(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.corp_done"
-    if os.path.exists(flag_file): return "✅ Skipped (Already Secure)"
+    # WEEKEND FIX: Calendar day specific flag ensures Saturday/Sunday runs pull new events
+    flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.corp_done_{cfg.cal_date_yyyymmdd}"
+    if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
 
     fetcher.prime_bse_cookies()
-    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.date_yyyymmdd, "strType": "C"}
+    # WEEKEND FIX: Window spans Friday -> Saturday/Sunday
+    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd, "strType": "C"}
     data = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", params=params)
     if not data: return "❌ Failed (BSE Issue)"
         
