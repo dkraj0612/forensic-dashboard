@@ -52,7 +52,7 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: Proxies + Playwright Native Download + Direct Navigation WAF Bypass"""
+    """The Ultimate Fetcher: Proxies + Blank-Tab Downloader + JS Stealth Injection"""
     def __init__(self):
         self.session = requests.Session()
         self.u_agents = [
@@ -101,6 +101,16 @@ class OmniFetcher:
                 viewport={"width": 1920, "height": 1080},
                 ignore_https_errors=True
             )
+            
+            # WAF BYPASS: Javascript Stealth Injection to defeat Akamai webdriver checks
+            stealth_js = """
+                Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
+                window.chrome = { runtime: {} };
+                Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
+                Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
+            """
+            self.pw_context.add_init_script(stealth_js)
+            
             self.page = self.pw_context.new_page()
             
             logger.info("Priming cookies and solving firewall challenges...")
@@ -153,18 +163,22 @@ class OmniFetcher:
             
         self._init_playwright()
         try:
-            logger.info("Physical Browser Download Triggered (Native Anchor Click)...")
+            logger.info("Physical Browser Download Triggered (Blank Tab Method)...")
             
-            self.page.set_content(f"<html><body><a id='secure-download' href='{url}'>Download</a></body></html>")
+            # WAF BYPASS: Open a completely blank tab so NSE scripts don't freeze the DOM injection
+            dl_page = self.pw_context.new_page()
+            dl_page.set_content(f"<html><body><a id='secure-download' href='{url}'>Download</a></body></html>")
             
-            with self.page.expect_download(timeout=60000) as download_info:
-                self.page.click("#secure-download")
+            with dl_page.expect_download(timeout=60000) as download_info:
+                dl_page.click("#secure-download")
                 
             download = download_info.value
             path = download.path()
             
             with open(path, 'rb') as f:
                 body = f.read()
+                
+            dl_page.close()
                 
             if body.startswith(b'PK'): 
                 return body
@@ -174,6 +188,7 @@ class OmniFetcher:
                 
         except Exception as e: 
             logger.error(f"Playwright native download failed: {e}")
+            if 'dl_page' in locals(): dl_page.close()
         
         logger.error(f"Ultimate binary download failed for: {url}")
         return None
@@ -399,7 +414,6 @@ def process_macro_flows(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     return "❌ Failed (Timeout)"
 
 def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    # WEEKEND FIX: Only skip if we already checked TODAY (cal_date). This allows weekend overwrites!
     flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.reg_done_{cfg.cal_date_yyyymmdd}"
     if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
 
@@ -409,7 +423,6 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     pit_data, sast_data = [], []
     fetcher.prime_bse_cookies()
     
-    # WEEKEND FIX: Fetch from Trading Day (Friday) to Calendar Day (Saturday/Sunday)
     params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd}
     
     pit_json = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/InsiderTrading/w", params=params)
@@ -436,12 +449,10 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     return "❌ Failed (BSE No Data)"
 
 def process_corporate(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    # WEEKEND FIX: Calendar day specific flag ensures Saturday/Sunday runs pull new events
     flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.corp_done_{cfg.cal_date_yyyymmdd}"
     if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
 
     fetcher.prime_bse_cookies()
-    # WEEKEND FIX: Window spans Friday -> Saturday/Sunday
     params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd, "strType": "C"}
     data = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", params=params)
     if not data: return "❌ Failed (BSE Issue)"
