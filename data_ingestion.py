@@ -49,7 +49,7 @@ class OmniFetcher:
         self.session.headers.update({
             "User-Agent": random.choice(self.u_agents),
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
-            "Accept-Encoding": "gzip, deflate", # Removed br to avoid compression issues
+            "Accept-Encoding": "gzip, deflate", 
             "Connection": "keep-alive"
         })
         
@@ -59,9 +59,9 @@ class OmniFetcher:
         self.session.mount("http://", adapter)
 
         self.proxies = [
-            "",                                      # Layer 1: Direct
-            "https://api.allorigins.win/raw?url=",   # Layer 2: AllOrigins
-            "https://corsproxy.io/?url="             # Layer 3: CorsProxy
+            "",                                      
+            "https://api.allorigins.win/raw?url=",   
+            "https://corsproxy.io/?url="             
         ]
 
         # --- 2. HEAVY PLAYWRIGHT ENGINE ---
@@ -96,7 +96,7 @@ class OmniFetcher:
             logger.info("Priming cookies and solving firewall challenges...")
             try:
                 self.page.goto("https://www.nseindia.com", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(3) # Allow scripts to run
+                time.sleep(3) 
                 self.page.goto("https://www.bseindia.com", wait_until="domcontentloaded", timeout=45000)
                 time.sleep(3)
             except Exception as e:
@@ -110,7 +110,6 @@ class OmniFetcher:
     def get_text(self, url: str, timeout: int = 25) -> Optional[str]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
-        # Phase 1: Proxy Waterfall
         for proxy in self.proxies:
             target = f"{proxy}{url}" if proxy else url
             try:
@@ -120,7 +119,6 @@ class OmniFetcher:
                     return resp.text
             except Exception: pass
             
-        # Phase 2: Playwright Fallback
         self._init_playwright()
         try:
             resp = self.page.request.get(url, headers=headers, timeout=timeout*1000)
@@ -132,7 +130,6 @@ class OmniFetcher:
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
-        # Phase 1: Proxy Waterfall
         try:
             resp = self.session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
@@ -144,21 +141,19 @@ class OmniFetcher:
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
-        # Phase 2: Playwright Fallback (Native Download Simulation)
         self._init_playwright()
         try:
-            logger.info("Physical Browser Download Triggered (Human-Click Simulation)...")
+            logger.info("Physical Browser Download Triggered (Native Anchor Click)...")
             
-            # Wait for a native Chrome download event to trigger
+            # WAF BYPASS: Create a physical button on the page and click it to prevent context destruction
+            self.page.set_content(f"<html><body><a id='secure-download' href='{url}'>Download</a></body></html>")
+            
             with self.page.expect_download(timeout=60000) as download_info:
-                # Use JavaScript to force the browser window to navigate to the ZIP file
-                self.page.evaluate(f"window.location.href = '{url}'")
+                self.page.click("#secure-download")
                 
-            # Grab the physical file Chrome just downloaded to the server's temp folder
             download = download_info.value
             path = download.path()
             
-            # Read the binary data from the temp file
             with open(path, 'rb') as f:
                 body = f.read()
                 
@@ -166,7 +161,7 @@ class OmniFetcher:
                 return body
             else:
                 snippet = body[:200].decode('utf-8', errors='ignore').replace('\n', ' ')
-                logger.error(f"File is not a valid ZIP. NSE Server responded with: {snippet}")
+                logger.error(f"File is not a valid ZIP. Firewall responded with HTML: {snippet}")
                 
         except Exception as e: 
             logger.error(f"Playwright native download failed: {e}")
@@ -177,7 +172,6 @@ class OmniFetcher:
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
-        # Phase 1: Standard Requests Waterfall
         try:
             resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code == 200:
@@ -185,7 +179,6 @@ class OmniFetcher:
                 if data: return data
         except Exception: pass
             
-        # Phase 2: Playwright Fallback (Direct Navigation Method to bypass CORS)
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
@@ -193,16 +186,27 @@ class OmniFetcher:
             
         try:
             logger.info("Executing direct browser navigation to JSON endpoint...")
-            # Navigate the physical tab directly to the API URL
-            self.page.goto(url, wait_until="domcontentloaded", timeout=timeout*1000)
+            # WAF BYPASS: wait_until="networkidle" allows Cloudflare time to solve its javascript challenge
+            response = self.page.goto(url, wait_until="networkidle", timeout=45000)
             
-            # Extract the raw text rendered on the page by the browser
+            # Try parsing the native network response first
+            try:
+                if response:
+                    json_data = response.json()
+                    if json_data: return json_data
+            except Exception: pass
+            
+            # Fallback: Scrape the raw text off the screen
             page_text = self.page.locator("body").inner_text()
-            
             if page_text:
-                return json.loads(page_text)
+                try:
+                    return json.loads(page_text)
+                except json.JSONDecodeError:
+                    snippet = page_text[:150].replace('\n', ' ')
+                    logger.error(f"Playwright received HTML instead of JSON (Cloudflare Block). Snippet: {snippet}")
             else:
                 logger.error("Playwright navigated to JSON endpoint, but page body was empty.")
+                
         except Exception as e: 
             logger.error(f"Playwright JSON navigation failed: {e}")
         
@@ -484,4 +488,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
