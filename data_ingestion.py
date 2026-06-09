@@ -1,4 +1,3 @@
-
 import os
 import io
 import csv
@@ -51,7 +50,7 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: Proxies + TLS Fingerprint Evasion + DOM-Hang Evasion"""
+    """The Ultimate Fetcher: Proxies + Detached Downloads + Patient Observer JSON"""
     def __init__(self):
         self.session = requests.Session()
         self.u_agents = [
@@ -79,7 +78,6 @@ class OmniFetcher:
         self.pw = None
         self.browser = None
         self.pw_context = None
-        self.page = None
 
     def _init_playwright(self):
         if self.pw_context is None:
@@ -108,17 +106,7 @@ class OmniFetcher:
                 Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
             """
             self.pw_context.add_init_script(stealth_js)
-            
-            self.page = self.pw_context.new_page()
-            
-            logger.info("Priming cookies and solving firewall challenges...")
-            try:
-                self.page.goto("https://www.nseindia.com", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(2) 
-                self.page.goto("https://www.bseindia.com", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(2)
-            except Exception as e:
-                logger.debug(f"Priming took too long: {e}")
+            self.pw_context.set_default_timeout(45000)
 
     def prime_bse_cookies(self):
         try:
@@ -139,8 +127,13 @@ class OmniFetcher:
             
         self._init_playwright()
         try:
-            resp = self.pw_context.request.get(url, headers=headers, timeout=timeout*1000)
-            if resp.ok: return resp.text()
+            page = self.pw_context.new_page()
+            resp = page.request.get(url, headers=headers, timeout=timeout*1000)
+            if resp.ok: 
+                text = resp.text()
+                page.close()
+                return text
+            page.close()
         except Exception as e: logger.error(f"Playwright text fetch failed: {e}")
         
         return None
@@ -148,43 +141,44 @@ class OmniFetcher:
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
-        # Phase 1
         try:
             resp = self.session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
-        # Phase 2
         try:
             logger.info("Rerouting ZIP via CorsProxy...")
             resp = self.session.get(f"https://corsproxy.io/?url={url}", headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
-        # Phase 3: Playwright
         self._init_playwright()
         
         try:
-            logger.info("Physical Browser Download Triggered (Anti-Hang Method)...")
+            logger.info("Physical Browser Download Triggered (Detached Anchor Method)...")
             dl_page = self.pw_context.new_page()
             
-            # WAF BYPASS 1: 'commit' stops the NSE from freezing the DOM with heavy scripts
+            # WAF BYPASS: Establish the required NSE Referer header first
             try:
                 dl_page.goto("https://www.nseindia.com/", wait_until="commit", timeout=15000)
-            except Exception: pass # Even if it times out, the URL is set for the Referer
+            except Exception: pass 
             
-            # WAF BYPASS 2: force=True clicks the button even if NSE places an invisible overlay on top of it
-            dl_page.evaluate(f"document.body.innerHTML += '<a id=\"secure-download\" href=\"{url}\">Download</a>';")
-            
-            with dl_page.expect_download(timeout=60000) as download_info:
-                dl_page.click("#secure-download", force=True)
+            with dl_page.expect_download(timeout=45000) as download_info:
+                # WAF BYPASS: setTimeout separates the Python execution from the WAF redirect destruction
+                dl_page.evaluate(f"setTimeout(() => {{ window.location.href = '{url}'; }}, 500);")
                 
             download = download_info.value
-            path = download.path()
             
-            with open(path, 'rb') as f:
+            logger.info("Awaiting binary stream completion...")
+            temp_path = f"temp_{random.randint(1000,9999)}.zip"
+            
+            # Use save_as to bypass the infinite blocking bug in default path() method
+            download.save_as(temp_path)
+            
+            with open(temp_path, 'rb') as f:
                 body = f.read()
                 
+            os.remove(temp_path)
             dl_page.close()
                 
             if body.startswith(b'PK'): 
@@ -194,7 +188,7 @@ class OmniFetcher:
                 logger.error(f"File is not a valid ZIP. Firewall responded with HTML: {snippet}")
                 
         except Exception as e: 
-            logger.error(f"Playwright native download failed: {e}")
+            logger.error(f"Playwright native download failed/Tarpit severed: {e}")
             if 'dl_page' in locals(): dl_page.close()
         
         logger.error(f"Ultimate binary download failed for: {url}")
@@ -203,7 +197,6 @@ class OmniFetcher:
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
-        # Phase 1: Python Requests
         try:
             resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code == 200:
@@ -211,29 +204,42 @@ class OmniFetcher:
                 if data: return data
         except Exception: pass
             
-        # Phase 2: Chrome Native Network Engine
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
             url = f"{url}?{qs}"
             
         try:
-            logger.info("Retrying JSON fetch via Chrome's Native Network Engine...")
-            # WAF BYPASS 3: This uses Chrome's TLS fingerprint instead of Python's OpenSSL fingerprint. Cloudflare is blind to this.
-            pw_resp = self.pw_context.request.get(url, headers=headers, timeout=timeout*1000)
-            if pw_resp.ok:
-                data = pw_resp.json()
-                if data: return data
-            else:
-                logger.error(f"Chrome engine returned status {pw_resp.status}")
+            logger.info("Engaging 'Patient Observer' to bypass Cloudflare JS Challenge...")
+            json_page = self.pw_context.new_page()
+            
+            # WAF BYPASS: We navigate to the API and let Cloudflare load its "Checking your browser" page
+            try:
+                json_page.goto(url, wait_until="commit", timeout=15000)
+            except Exception: pass
+
+            # Polling loop: Check every 2 seconds if Cloudflare has let us through
+            for _ in range(15):
+                time.sleep(2)
+                try:
+                    text = json_page.locator("body").inner_text()
+                    if text:
+                        data = json.loads(text)
+                        json_page.close()
+                        return data # Cloudflare cleared and JSON parsed successfully!
+                except Exception:
+                    continue # Still looking at Cloudflare HTML, keep waiting
+            
+            json_page.close()
+            logger.error("Cloudflare JS challenge never cleared, or returned invalid JSON.")
+            
         except Exception as e:
-            logger.error(f"Chrome Native JSON fetch failed: {e}")
+            logger.error(f"Patient Observer JSON fetch failed: {e}")
             
         return None
         
     def close(self):
         if self.pw_context:
-            self.page.close()
             self.pw_context.close()
             self.browser.close()
             self.pw.stop()
