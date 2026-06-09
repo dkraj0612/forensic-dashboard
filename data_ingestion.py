@@ -76,7 +76,6 @@ class OmniFetcher:
 
     def get_text(self, url: str, timeout: int = 25) -> Optional[str]:
         headers = {"Referer": "https://www.nseindia.com/"}
-        
         try:
             resp = self.tls_session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
@@ -90,17 +89,17 @@ class OmniFetcher:
                 if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
                     return resp.text
             except Exception: pass
-        
         return None
 
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
-        
         try:
-            logger.info("Executing TLS-Spoofed Direct Binary Fetch...")
+            logger.info(f"Executing TLS-Spoofed Direct Binary Fetch for: {url}")
             resp = self.tls_session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): 
                 return resp.content
+            else:
+                logger.error(f"Direct binary fetch failed. Status Code: {resp.status_code}")
         except Exception as e: 
             logger.debug(f"TLS fetch blocked: {e}")
 
@@ -111,13 +110,16 @@ class OmniFetcher:
                 if resp.status_code == 200 and resp.content.startswith(b'PK'): 
                     return resp.content
             except Exception: pass
-            
-        logger.error(f"Ultimate binary download failed for: {url}")
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
-        # Note: This is hardcoded for BSE. For NSE, we use custom headers in the specific module.
-        headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
+        # Updated with Origin and User-Agent to prevent BSE blocking
+        headers = {
+            "Referer": "https://www.bseindia.com/", 
+            "Origin": "https://www.bseindia.com",
+            "Accept": "application/json, text/plain, */*",
+            "User-Agent": random.choice(self.u_agents)
+        }
         
         full_url = url
         if params:
@@ -140,7 +142,6 @@ class OmniFetcher:
                     data = resp.json()
                     if data: return data
             except Exception: pass
-            
         return None
         
     def close(self):
@@ -206,6 +207,7 @@ def get_nifty_total_market(fetcher: OmniFetcher) -> List[str]:
     return final_list
 
 def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    # Keeping historical bhavcopy logic as fallback for end-of-day equity data 
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/cash_market.md"
     if is_valid_file(target): return "✅ Skipped (Already Secure)"
 
@@ -247,127 +249,109 @@ def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         return f"✅ Downloaded ({len(prices)} equities)"
     return "❌ Failed (Timeout)"
 
-def process_derivatives(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    target_fno = f"{cfg.base_market_dir}/{cfg.date_iso}/derivatives.md"
-    target_opt = f"{cfg.base_market_dir}/{cfg.date_iso}/index_options.md"
-    
-    if is_valid_file(target_fno) and is_valid_file(target_opt):
-        return "✅ Skipped (Already Secure)"
-
-    fno, oi, ban = [], [], []
-    options_data = {"NIFTY": {"CE": 0, "PE": 0}, "BANKNIFTY": {"CE": 0, "PE": 0}, "FINNIFTY": {"CE": 0, "PE": 0}}
-    
-    content = fetcher.get_content(f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{cfg.date_yyyy}/{cfg.date_mmm}/fo{cfg.date_ddmmmyyyy}bhav.csv.zip")
-    if content:
-        with zipfile.ZipFile(io.BytesIO(content)) as z:
-            for file_name in z.namelist():
-                with z.open(file_name) as zf:
-                    for r in csv.DictReader(io.TextIOWrapper(zf, encoding='utf-8')):
-                        inst, sym = r.get('INSTRUMENT'), r.get('SYMBOL')
-                        try:
-                            oi_val = r.get('OPEN_INT', '0')
-                            open_int = int(float(oi_val)) if oi_val.strip() else 0
-                        except ValueError: open_int = 0
-                        
-                        if inst in ['FUTSTK', 'FUTIDX']: 
-                            fno.append({"Contract": sym, "Expiry": r.get('EXPIRY_DT'), "Close": r.get('CLOSE'), "OI": open_int})
-                        if inst == 'OPTIDX' and sym in options_data:
-                            opt_typ = r.get('OPTION_TYP')
-                            if opt_typ in ['CE', 'PE']: options_data[sym][opt_typ] += open_int
-    
-    text_oi = fetcher.get_text(f"https://nsearchives.nseindia.com/content/nsccl/fao_participant_oi_{cfg.date_ddmmyyyy}.csv")
-    if text_oi:
-        for r in csv.DictReader(text_oi.strip().split('\n')): 
-            if r.get('Client Type'): oi.append({"Client": r.get('Client Type'), "Future_Long": r.get('Future Index Long'), "Future_Short": r.get('Future Index Short')})
-
-    text_ban = fetcher.get_text("https://nsearchives.nseindia.com/content/fo/fo_secban.csv")
-    if text_ban:
-        for line in text_ban.strip().split('\n')[1:]:
-            if ',' in line and line.strip(): ban.append({"Symbol": line.split(',')[1].strip()})
-
-    if fno:
-        with open(target_fno, "w", encoding="utf-8") as f: 
-            f.write(f"# Derivatives Profile\n\n## Exchange Ban List\n{to_md_table(ban)}\n## Participant OI Flow\n{to_md_table(oi)}\n## Futures Open Interest\n{to_md_table(fno[:500])}")
-        
-        final_pcr = [{"Index": idx, "Call_OI": d["CE"], "Put_OI": d["PE"], "PCR": round(d["PE"]/d["CE"], 3) if d["CE"]>0 else 0} for idx, d in options_data.items() if d["CE"]>0 or d["PE"]>0]
-        if final_pcr:
-            with open(target_opt, "w", encoding="utf-8") as f: f.write(f"# Major Indices Options Chain\n\n{to_md_table(final_pcr)}")
-        return f"✅ Downloaded ({len(fno)} FNO records)"
-    return "❌ Failed (Timeout)"
-
-def process_live_derivatives_watch(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    target = f"{cfg.base_market_dir}/{cfg.date_iso}/live_derivatives_watch.md"
+def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    target = f"{cfg.base_market_dir}/{cfg.date_iso}/live_fno_watch.md"
     if is_valid_file(target): return "✅ Skipped (Already Secure)"
     
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
-        "Accept": "*/*",
+        "Accept": "application/json",
         "Accept-Language": "en-US,en;q=0.9",
         "Referer": "https://www.nseindia.com/"
     }
     
+    # Track Futures (fut) and Options (opt) for Nifty, Bank Nifty, and Midcap Nifty
+    indices = ["nse50", "nifty_bank", "midcpnifty"]
+    segments = ["fut", "opt"]
+    all_records = []
+    
     try:
-        logger.info("Establishing NSE session cookies for live derivatives...")
+        logger.info("Establishing NSE session cookies for FNO API...")
         fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
+        time.sleep(random.uniform(2.0, 4.0)) 
         
-        # Humanized delay to let the WAF accept the cookie generation
-        time.sleep(random.uniform(2.0, 4.5))
-        
-        api_url = "https://www.nseindia.com/api/liveEquity-derivatives?index=nse50_opt"
-        nse_headers["Accept"] = "application/json"
-        
-        resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
-        
-        if resp.status_code == 200:
-            data = resp.json()
-            records = []
-            
-            for item in data.get('data', []):
-                records.append({
-                    "Identifier": item.get('identifier', 'N/A'),
-                    "Last_Price": item.get('lastPrice', 0),
-                    "Change_Pct": item.get('pChange', 0),
-                    "Open": item.get('openPrice', 0),
-                    "High": item.get('highPrice', 0),
-                    "Low": item.get('lowPrice', 0),
-                    "Volume": item.get('tradedQty', 0),
-                    "Underlying": item.get('underlyingValue', 0)
-                })
+        for idx in indices:
+            for seg in segments:
+                api_url = f"https://www.nseindia.com/api/liveEquity-derivatives?index={idx}_{seg}"
+                logger.info(f"Fetching API: {idx}_{seg}")
                 
-            if records:
-                with open(target, "w", encoding="utf-8") as f:
-                    f.write(f"# Live Derivatives Watch (NSE)\n\n{to_md_table(records)}")
-                return f"✅ Downloaded ({len(records)} live options)"
-        else:
-            logger.error(f"NSE API returned status code: {resp.status_code}")
+                resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
+                
+                if resp.status_code == 200:
+                    data = resp.json()
+                    for item in data.get('data', []):
+                        all_records.append({
+                            "Type": seg.upper(),
+                            "Index": idx.upper(),
+                            "Identifier": item.get('identifier', 'N/A'),
+                            "Last_Price": item.get('lastPrice', 0),
+                            "Change_Pct": item.get('pChange', 0),
+                            "Open": item.get('openPrice', 0),
+                            "High": item.get('highPrice', 0),
+                            "Low": item.get('lowPrice', 0),
+                            "Volume": item.get('tradedQty', 0),
+                            "Underlying": item.get('underlyingValue', 0)
+                        })
+                else:
+                    logger.error(f"Failed {idx}_{seg}. WAF Status: {resp.status_code}")
+                
+                # Sleep to avoid temporary IP bans from NSE API
+                time.sleep(random.uniform(1.5, 3.5))
+
+        if all_records:
+            with open(target, "w", encoding="utf-8") as f:
+                f.write(f"# Live FNO Watch (NSE API)\n\n{to_md_table(all_records)}")
+            return f"✅ Downloaded ({len(all_records)} FNO contracts)"
             
     except Exception as e:
         logger.error(f"Live derivatives fetch failed: {e}")
         
     return "❌ Failed (NSE Blocked)"
 
-def process_macro_flows(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+def process_macro_flows_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/macro_flows.md"
     if is_valid_file(target): return "✅ Skipped (Already Secure)"
     
-    fii, deals = [], []
+    nse_headers = {
+        "User-Agent": random.choice(fetcher.u_agents),
+        "Accept": "application/json",
+        "Referer": "https://www.nseindia.com/"
+    }
+    
+    api_date = cfg.trading_today.strftime('%d-%m-%Y')
+    deals = []
+    
     try:
-        text_fii = fetcher.get_text("https://www.nseindia.com/api/fiidiiTradeReact")
-        if text_fii:
-            for i in json.loads(text_fii): fii.append({"Category": i.get('category'), "Net_Value": i.get('netValue')})
-    except: pass
+        logger.info("Establishing NSE session cookies for Macro Flows...")
+        fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
+        time.sleep(random.uniform(2.0, 3.5))
         
-    for url, t in [("https://nsearchives.nseindia.com/content/equities/bulk.csv", "BULK"), ("https://nsearchives.nseindia.com/content/equities/block.csv", "BLOCK")]:
-        text = fetcher.get_text(url)
-        if text:
-            for r in csv.DictReader(text.strip().split('\n')): 
-                if r.get('Symbol'): deals.append({"Type": t, "Symbol": r.get('Symbol'), "Client": r.get('Client Name'), "Txn": r.get('Buy/Sell')})
+        # 1. Fetch Block Deals
+        api_block = f"https://www.nseindia.com/api/historical/block-deals?from_date={api_date}&to_date={api_date}"
+        resp_block = fetcher.tls_session.get(api_block, headers=nse_headers, timeout=15)
+        if resp_block.status_code == 200:
+            for item in resp_block.json().get('data', []):
+                deals.append({"Type": "BLOCK", "Symbol": item.get('symbol'), "Client": item.get('clientName'), "Txn": item.get('buyOrSell')})
+                
+        time.sleep(random.uniform(1.5, 2.5))
+        
+        # 2. Fetch Bulk Deals
+        api_bulk = f"https://www.nseindia.com/api/historical/bulk-deals?from_date={api_date}&to_date={api_date}"
+        resp_bulk = fetcher.tls_session.get(api_bulk, headers=nse_headers, timeout=15)
+        if resp_bulk.status_code == 200:
+            for item in resp_bulk.json().get('data', []):
+                deals.append({"Type": "BULK", "Symbol": item.get('symbol'), "Client": item.get('clientName'), "Txn": item.get('buyOrSell')})
+
+        if deals:
+            with open(target, "w", encoding="utf-8") as f: 
+                f.write(f"# Institutional Deals (NSE API)\n\n{to_md_table(deals)}")
+            return f"✅ Downloaded ({len(deals)} deals)"
+        return "✅ No Deals Today"
             
-    if fii or deals:
-        with open(target, "w", encoding="utf-8") as f: 
-            f.write(f"# Institutional Flows\n\n## FII/DII Net\n{to_md_table(fii)}\n## Dark Pool Deals (Bulk/Block)\n{to_md_table(deals)}")
-        return f"✅ Downloaded ({len(deals)} deals)"
-    return "❌ Failed (Timeout)"
+    except Exception as e:
+        logger.error(f"Macro flows API fetch failed: {e}")
+        
+    return "❌ Failed (Timeout or Blocked)"
 
 def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.reg_done_{cfg.cal_date_yyyymmdd}"
@@ -402,34 +386,56 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
         
     return "❌ Failed (BSE No Data)"
 
-def process_corporate(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.corp_done_{cfg.cal_date_yyyymmdd}"
-    if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
+def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    target = f"{cfg.base_corp_dir}/nse_corporate_{cfg.date_iso}.md"
+    if is_valid_file(target): return "✅ Skipped (Already Secure Today)"
 
-    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd, "strType": "C"}
-    data = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", params=params)
-    if not data: return "❌ Failed (BSE Issue)"
-        
-    hits = 0
-    for item in data.get('Table', []):
-        headline, cat = item.get('NEWSSUB', '').strip(), item.get('CATEGORYNAME', '').lower()
-        company = item.get('SLONGNAME', 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
-        attach = item.get('ATTACHMENTNAME')
-        pdf = f"https://www.bseindia.com/xml-data/corpfiling/AttachLive/{attach}" if attach else "No PDF"
-        
-        is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
-        if any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"]) and not is_mat: continue 
+    nse_headers = {
+        "User-Agent": random.choice(fetcher.u_agents),
+        "Accept": "application/json",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+    }
 
-        td = f"{cfg.base_corp_dir}/{company}/" + ("concalls" if "transcript" in headline.lower() or "concall" in headline.lower() else "earnings" if "result" in cat else "filings")
-        os.makedirs(td, exist_ok=True)
+    try:
+        logger.info("Establishing NSE session cookies for Corporate API...")
+        fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
+        time.sleep(random.uniform(2.0, 3.0))
+
+        api_date = cfg.trading_today.strftime('%d-%m-%Y')
+        api_url = f"https://www.nseindia.com/api/corporate-announcements?index=equities&from_date={api_date}&to_date={api_date}"
         
-        fp = f"{td}/{cfg.date_iso}_{item.get('NEWSID')}.md"
-        if not os.path.exists(fp):
-            with open(fp, "w", encoding="utf-8") as f: f.write(f"# {headline}\n\n**Category:** {item.get('CATEGORYNAME')}\n**PDF Source:** {pdf}\n\n{item.get('HEADLINE', '')}")
-            hits += 1
+        resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
+        
+        if resp.status_code == 200:
+            data = resp.json()
+            records = []
             
-    with open(flag_file, "w") as f: f.write("done")
-    return f"✅ Downloaded ({hits} material events)"
+            for item in data:
+                company = item.get('symbol', 'UNKNOWN')
+                headline = item.get('desc', '').strip()
+                attach = item.get('attchmntFile')
+                pdf_link = f"https://nsearchives.nseindia.com/corporate/{attach}" if attach else "No PDF"
+                
+                records.append({
+                    "Symbol": company,
+                    "Date": item.get('an_dt', ''),
+                    "Subject": headline,
+                    "PDF": pdf_link
+                })
+
+            if records:
+                with open(target, "w", encoding="utf-8") as f:
+                    f.write(f"# NSE Corporate Announcements\n\n{to_md_table(records)}")
+                return f"✅ Downloaded ({len(records)} events)"
+            return "✅ No Events Today"
+        else:
+             logger.error(f"NSE Corp API returned: {resp.status_code}")
+
+    except Exception as e:
+        logger.error(f"Corporate API fetch failed: {e}")
+
+    return "❌ Failed (NSE Blocked)"
 
 def main():
     logger.info("--- OMNI-FETCHER PERSISTENT HUNTER ACTIVATED ---")
@@ -443,20 +449,18 @@ def main():
         wl_status = f"❌ Watchlist Failed: {e}"
         
     status = {
-        "Cash Market": "Wait", 
-        "Derivatives (Historical)": "Wait", 
-        "Derivatives (Live Watch)": "Wait",
-        "Macro Flows": "Wait", 
-        "Regulatory Data": "Wait", 
-        "Corporate Events": "Wait"
+        "Cash Market (EOD)": "Wait", 
+        "Derivatives (Live API)": "Wait",
+        "Macro Flows (Live API)": "Wait", 
+        "Regulatory Data (BSE)": "Wait", 
+        "Corporate Events (Live API)": "Wait"
     }
     
-    status["Cash Market"] = process_market_action(cfg, fetcher)
-    status["Derivatives (Historical)"] = process_derivatives(cfg, fetcher)
-    status["Derivatives (Live Watch)"] = process_live_derivatives_watch(cfg, fetcher)
-    status["Macro Flows"] = process_macro_flows(cfg, fetcher)
-    status["Regulatory Data"] = process_regulatory(cfg, fetcher)
-    status["Corporate Events"] = process_corporate(cfg, fetcher)
+    status["Cash Market (EOD)"] = process_market_action(cfg, fetcher)
+    status["Derivatives (Live API)"] = process_live_derivatives_nse(cfg, fetcher)
+    status["Macro Flows (Live API)"] = process_macro_flows_nse(cfg, fetcher)
+    status["Regulatory Data (BSE)"] = process_regulatory(cfg, fetcher)
+    status["Corporate Events (Live API)"] = process_corporate_nse(cfg, fetcher)
     
     fetcher.close()
     
