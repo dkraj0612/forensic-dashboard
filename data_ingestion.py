@@ -21,15 +21,9 @@ logger = logging.getLogger(__name__)
 
 class MarketPipelineConfig:
     def __init__(self):
-        self.calendar_today = datetime.today()
-        
-        # WEEKEND LOGIC
-        if self.calendar_today.weekday() == 5:
-            self.trading_today = self.calendar_today - timedelta(days=1)
-        elif self.calendar_today.weekday() == 6:
-            self.trading_today = self.calendar_today - timedelta(days=2)
-        else:
-            self.trading_today = self.calendar_today
+        # FORCED OVERRIDE: Hardcoded to 9th June 2026
+        self.calendar_today = datetime(2026, 6, 9)
+        self.trading_today = datetime(2026, 6, 9)
 
         self.date_iso = self.trading_today.strftime('%Y-%m-%d')
         self.date_ddmmyyyy = self.trading_today.strftime('%d%m%Y')
@@ -45,6 +39,7 @@ class MarketPipelineConfig:
         
         os.makedirs(f"{self.base_market_dir}/{self.date_iso}", exist_ok=True)
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
+        os.makedirs(self.base_corp_dir, exist_ok=True)
 
 class OmniFetcher:
     """The Ultimate Fetcher: Cryptographic TLS Spoofing + Proxy Waterfall"""
@@ -113,7 +108,6 @@ class OmniFetcher:
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
-        # Updated with Origin and User-Agent to prevent BSE blocking
         headers = {
             "Referer": "https://www.bseindia.com/", 
             "Origin": "https://www.bseindia.com",
@@ -207,7 +201,6 @@ def get_nifty_total_market(fetcher: OmniFetcher) -> List[str]:
     return final_list
 
 def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    # Keeping historical bhavcopy logic as fallback for end-of-day equity data 
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/cash_market.md"
     if is_valid_file(target): return "✅ Skipped (Already Secure)"
 
@@ -257,10 +250,10 @@ def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher
         "User-Agent": random.choice(fetcher.u_agents),
         "Accept": "application/json",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.nseindia.com/"
+        "Referer": "https://www.nseindia.com/market-data/equity-derivatives-watch",
+        "X-Requested-With": "XMLHttpRequest"
     }
     
-    # Track Futures (fut) and Options (opt) for Nifty, Bank Nifty, and Midcap Nifty
     indices = ["nse50", "nifty_bank", "midcpnifty"]
     segments = ["fut", "opt"]
     all_records = []
@@ -268,7 +261,7 @@ def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher
     try:
         logger.info("Establishing NSE session cookies for FNO API...")
         fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
-        time.sleep(random.uniform(2.0, 4.0)) 
+        time.sleep(random.uniform(2.5, 4.5)) 
         
         for idx in indices:
             for seg in segments:
@@ -278,25 +271,27 @@ def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher
                 resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
                 
                 if resp.status_code == 200:
-                    data = resp.json()
-                    for item in data.get('data', []):
-                        all_records.append({
-                            "Type": seg.upper(),
-                            "Index": idx.upper(),
-                            "Identifier": item.get('identifier', 'N/A'),
-                            "Last_Price": item.get('lastPrice', 0),
-                            "Change_Pct": item.get('pChange', 0),
-                            "Open": item.get('openPrice', 0),
-                            "High": item.get('highPrice', 0),
-                            "Low": item.get('lowPrice', 0),
-                            "Volume": item.get('tradedQty', 0),
-                            "Underlying": item.get('underlyingValue', 0)
-                        })
+                    try:
+                        data = resp.json()
+                        for item in data.get('data', []):
+                            all_records.append({
+                                "Type": seg.upper(),
+                                "Index": idx.upper(),
+                                "Identifier": item.get('identifier', 'N/A'),
+                                "Last_Price": item.get('lastPrice', 0),
+                                "Change_Pct": item.get('pChange', 0),
+                                "Open": item.get('openPrice', 0),
+                                "High": item.get('highPrice', 0),
+                                "Low": item.get('lowPrice', 0),
+                                "Volume": item.get('tradedQty', 0),
+                                "Underlying": item.get('underlyingValue', 0)
+                            })
+                    except ValueError:
+                        logger.error(f"WAF Blocked (HTML returned instead of JSON) for {idx}_{seg}")
                 else:
                     logger.error(f"Failed {idx}_{seg}. WAF Status: {resp.status_code}")
                 
-                # Sleep to avoid temporary IP bans from NSE API
-                time.sleep(random.uniform(1.5, 3.5))
+                time.sleep(random.uniform(2.0, 4.0))
 
         if all_records:
             with open(target, "w", encoding="utf-8") as f:
@@ -387,8 +382,8 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     return "❌ Failed (BSE No Data)"
 
 def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
-    target = f"{cfg.base_corp_dir}/nse_corporate_{cfg.date_iso}.md"
-    if is_valid_file(target): return "✅ Skipped (Already Secure Today)"
+    target_summary = f"{cfg.base_corp_dir}/nse_corporate_summary_{cfg.date_iso}.md"
+    if is_valid_file(target_summary): return "✅ Skipped (Already Secure Today)"
 
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
@@ -410,25 +405,64 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         if resp.status_code == 200:
             data = resp.json()
             records = []
+            downloaded_pdfs = 0
             
             for item in data:
-                company = item.get('symbol', 'UNKNOWN')
                 headline = item.get('desc', '').strip()
-                attach = item.get('attchmntFile')
-                pdf_link = f"https://nsearchives.nseindia.com/corporate/{attach}" if attach else "No PDF"
                 
+                # Materiality Filtering Strategy
+                is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
+                is_noise = any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"])
+                
+                if is_noise and not is_mat: 
+                    continue 
+
+                company = item.get('symbol', 'UNKNOWN').replace(" ", "_").replace("/", "-")
+                attach = item.get('attchmntFile')
+                
+                cat = item.get('smIndustry', '').lower()
+                td = f"{cfg.base_corp_dir}/{company}/" + ("concalls" if "transcript" in headline.lower() or "concall" in headline.lower() else "earnings" if "result" in cat or "financial" in headline.lower() else "filings")
+                os.makedirs(td, exist_ok=True)
+                
+                pdf_link = "No PDF"
+                
+                if attach:
+                    remote_pdf_url = f"https://nsearchives.nseindia.com/corporate/{attach}"
+                    local_pdf_path = f"{td}/{cfg.date_iso}_{attach}"
+                    
+                    if not os.path.exists(local_pdf_path):
+                        logger.info(f"Downloading PDF for {company}...")
+                        
+                        pdf_headers = nse_headers.copy()
+                        pdf_headers["Accept"] = "application/pdf,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+                        
+                        pdf_resp = fetcher.tls_session.get(remote_pdf_url, headers=pdf_headers, timeout=20)
+                        
+                        # Guardrail: Verify Magic Bytes for true PDF file type before writing
+                        if pdf_resp.status_code == 200 and pdf_resp.content.startswith(b'%PDF'):
+                            with open(local_pdf_path, 'wb') as f:
+                                f.write(pdf_resp.content)
+                            
+                            pdf_link = f"✅ [Local PDF Saved](../../{local_pdf_path})"
+                            downloaded_pdfs += 1
+                        else:
+                            pdf_link = f"❌ [WAF Blocked]({remote_pdf_url})"
+                            
+                        time.sleep(random.uniform(1.0, 2.5))
+                    else:
+                        pdf_link = f"✅ [Already Local](../../{local_pdf_path})"
+                        
                 records.append({
                     "Symbol": company,
-                    "Date": item.get('an_dt', ''),
                     "Subject": headline,
-                    "PDF": pdf_link
+                    "Attachment": pdf_link
                 })
 
             if records:
-                with open(target, "w", encoding="utf-8") as f:
-                    f.write(f"# NSE Corporate Announcements\n\n{to_md_table(records)}")
-                return f"✅ Downloaded ({len(records)} events)"
-            return "✅ No Events Today"
+                with open(target_summary, "w", encoding="utf-8") as f:
+                    f.write(f"# NSE Material Corporate Announcements ({cfg.date_iso})\n\n{to_md_table(records)}")
+                return f"✅ Secured ({len(records)} events, {downloaded_pdfs} PDFs)"
+            return "✅ No Material Events Today"
         else:
              logger.error(f"NSE Corp API returned: {resp.status_code}")
 
