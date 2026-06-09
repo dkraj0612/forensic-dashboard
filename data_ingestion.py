@@ -6,6 +6,7 @@ import zipfile
 import logging
 import sys
 import random
+import time
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 
@@ -115,6 +116,7 @@ class OmniFetcher:
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
+        # Note: This is hardcoded for BSE. For NSE, we use custom headers in the specific module.
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
         full_url = url
@@ -142,7 +144,7 @@ class OmniFetcher:
         return None
         
     def close(self):
-        pass # No heavy browser to clean up anymore!
+        pass
 
 # --- TELEGRAM AND HUNTER HELPERS ---
 def send_telegram_alert(message: str):
@@ -293,6 +295,57 @@ def process_derivatives(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
         return f"✅ Downloaded ({len(fno)} FNO records)"
     return "❌ Failed (Timeout)"
 
+def process_live_derivatives_watch(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    target = f"{cfg.base_market_dir}/{cfg.date_iso}/live_derivatives_watch.md"
+    if is_valid_file(target): return "✅ Skipped (Already Secure)"
+    
+    nse_headers = {
+        "User-Agent": random.choice(fetcher.u_agents),
+        "Accept": "*/*",
+        "Accept-Language": "en-US,en;q=0.9",
+        "Referer": "https://www.nseindia.com/"
+    }
+    
+    try:
+        logger.info("Establishing NSE session cookies for live derivatives...")
+        fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
+        
+        # Humanized delay to let the WAF accept the cookie generation
+        time.sleep(random.uniform(2.0, 4.5))
+        
+        api_url = "https://www.nseindia.com/api/liveEquity-derivatives?index=nse50_opt"
+        nse_headers["Accept"] = "application/json"
+        
+        resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
+        
+        if resp.status_code == 200:
+            data = resp.json()
+            records = []
+            
+            for item in data.get('data', []):
+                records.append({
+                    "Identifier": item.get('identifier', 'N/A'),
+                    "Last_Price": item.get('lastPrice', 0),
+                    "Change_Pct": item.get('pChange', 0),
+                    "Open": item.get('openPrice', 0),
+                    "High": item.get('highPrice', 0),
+                    "Low": item.get('lowPrice', 0),
+                    "Volume": item.get('tradedQty', 0),
+                    "Underlying": item.get('underlyingValue', 0)
+                })
+                
+            if records:
+                with open(target, "w", encoding="utf-8") as f:
+                    f.write(f"# Live Derivatives Watch (NSE)\n\n{to_md_table(records)}")
+                return f"✅ Downloaded ({len(records)} live options)"
+        else:
+            logger.error(f"NSE API returned status code: {resp.status_code}")
+            
+    except Exception as e:
+        logger.error(f"Live derivatives fetch failed: {e}")
+        
+    return "❌ Failed (NSE Blocked)"
+
 def process_macro_flows(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/macro_flows.md"
     if is_valid_file(target): return "✅ Skipped (Already Secure)"
@@ -389,10 +442,18 @@ def main():
     except Exception as e:
         wl_status = f"❌ Watchlist Failed: {e}"
         
-    status = {"Cash Market": "Wait", "Derivatives": "Wait", "Macro Flows": "Wait", "Regulatory Data": "Wait", "Corporate Events": "Wait"}
+    status = {
+        "Cash Market": "Wait", 
+        "Derivatives (Historical)": "Wait", 
+        "Derivatives (Live Watch)": "Wait",
+        "Macro Flows": "Wait", 
+        "Regulatory Data": "Wait", 
+        "Corporate Events": "Wait"
+    }
     
     status["Cash Market"] = process_market_action(cfg, fetcher)
-    status["Derivatives"] = process_derivatives(cfg, fetcher)
+    status["Derivatives (Historical)"] = process_derivatives(cfg, fetcher)
+    status["Derivatives (Live Watch)"] = process_live_derivatives_watch(cfg, fetcher)
     status["Macro Flows"] = process_macro_flows(cfg, fetcher)
     status["Regulatory Data"] = process_regulatory(cfg, fetcher)
     status["Corporate Events"] = process_corporate(cfg, fetcher)
