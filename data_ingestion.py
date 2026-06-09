@@ -47,12 +47,11 @@ class MarketPipelineConfig:
         self.base_market_dir = "market_data"
         self.base_corp_dir = "corporate_data"
         
-        # Everything gets saved under the Trading Day (Friday) folder
         os.makedirs(f"{self.base_market_dir}/{self.date_iso}", exist_ok=True)
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: Proxies + Cookie Smuggling + Base-Referer Download"""
+    """The Ultimate Fetcher: Proxies + TLS Fingerprint Evasion + DOM-Hang Evasion"""
     def __init__(self):
         self.session = requests.Session()
         self.u_agents = [
@@ -118,14 +117,6 @@ class OmniFetcher:
                 time.sleep(2) 
                 self.page.goto("https://www.bseindia.com", wait_until="domcontentloaded", timeout=45000)
                 time.sleep(2)
-                
-                # MAGIC: COOKIE SMUGGLING
-                # Steal the cleared cookies from the browser and give them to Python
-                pw_cookies = self.pw_context.cookies()
-                for c in pw_cookies:
-                    self.session.cookies.set(c['name'], c['value'], domain=c['domain'])
-                logger.info("Successfully smuggled WAF clearance cookies to Python Engine.")
-                
             except Exception as e:
                 logger.debug(f"Priming took too long: {e}")
 
@@ -148,11 +139,9 @@ class OmniFetcher:
             
         self._init_playwright()
         try:
-            # Retry with smuggled cookies
-            resp = self.session.get(url, headers=headers, timeout=timeout)
-            if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
-                return resp.text
-        except Exception: pass
+            resp = self.pw_context.request.get(url, headers=headers, timeout=timeout*1000)
+            if resp.ok: return resp.text()
+        except Exception as e: logger.error(f"Playwright text fetch failed: {e}")
         
         return None
 
@@ -175,24 +164,20 @@ class OmniFetcher:
         # Phase 3: Playwright
         self._init_playwright()
         
-        # Try once more with smuggled cookies
         try:
-            resp = self.session.get(url, headers=headers, timeout=timeout)
-            if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
-        except Exception: pass
-        
-        try:
-            logger.info("Physical Browser Download Triggered (Base-Referer Method)...")
-            
-            # WAF BYPASS: Go to a real NSE page so the Referer header is valid
+            logger.info("Physical Browser Download Triggered (Anti-Hang Method)...")
             dl_page = self.pw_context.new_page()
-            dl_page.goto("https://www.nseindia.com/all-reports", wait_until="domcontentloaded", timeout=45000)
             
-            # Inject link into the REAL page
+            # WAF BYPASS 1: 'commit' stops the NSE from freezing the DOM with heavy scripts
+            try:
+                dl_page.goto("https://www.nseindia.com/", wait_until="commit", timeout=15000)
+            except Exception: pass # Even if it times out, the URL is set for the Referer
+            
+            # WAF BYPASS 2: force=True clicks the button even if NSE places an invisible overlay on top of it
             dl_page.evaluate(f"document.body.innerHTML += '<a id=\"secure-download\" href=\"{url}\">Download</a>';")
             
             with dl_page.expect_download(timeout=60000) as download_info:
-                dl_page.click("#secure-download")
+                dl_page.click("#secure-download", force=True)
                 
             download = download_info.value
             path = download.path()
@@ -218,6 +203,7 @@ class OmniFetcher:
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
+        # Phase 1: Python Requests
         try:
             resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
             if resp.status_code == 200:
@@ -225,20 +211,23 @@ class OmniFetcher:
                 if data: return data
         except Exception: pass
             
+        # Phase 2: Chrome Native Network Engine
         self._init_playwright()
         if params:
             qs = "&".join([f"{k}={v}" for k, v in params.items()])
             url = f"{url}?{qs}"
             
         try:
-            logger.info("Retrying JSON fetch with smuggled WAF cookies...")
-            # WAF BYPASS: Use Python requests, but armed with the cookies Playwright stole
-            resp = self.session.get(url, headers=headers, timeout=timeout)
-            if resp.status_code == 200:
-                data = resp.json()
+            logger.info("Retrying JSON fetch via Chrome's Native Network Engine...")
+            # WAF BYPASS 3: This uses Chrome's TLS fingerprint instead of Python's OpenSSL fingerprint. Cloudflare is blind to this.
+            pw_resp = self.pw_context.request.get(url, headers=headers, timeout=timeout*1000)
+            if pw_resp.ok:
+                data = pw_resp.json()
                 if data: return data
+            else:
+                logger.error(f"Chrome engine returned status {pw_resp.status}")
         except Exception as e:
-            logger.error(f"Smuggled Cookie JSON fetch failed: {e}")
+            logger.error(f"Chrome Native JSON fetch failed: {e}")
             
         return None
         
@@ -523,4 +512,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
