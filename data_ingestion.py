@@ -52,7 +52,7 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: Proxies + Blank-Tab Downloader + JS Stealth Injection"""
+    """The Ultimate Fetcher: Proxies + Cookie Smuggling + Base-Referer Download"""
     def __init__(self):
         self.session = requests.Session()
         self.u_agents = [
@@ -97,12 +97,11 @@ class OmniFetcher:
             )
             
             self.pw_context = self.browser.new_context(
-                user_agent=random.choice(self.u_agents),
+                user_agent=self.session.headers["User-Agent"],
                 viewport={"width": 1920, "height": 1080},
                 ignore_https_errors=True
             )
             
-            # WAF BYPASS: Javascript Stealth Injection to defeat Akamai webdriver checks
             stealth_js = """
                 Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
                 window.chrome = { runtime: {} };
@@ -116,9 +115,17 @@ class OmniFetcher:
             logger.info("Priming cookies and solving firewall challenges...")
             try:
                 self.page.goto("https://www.nseindia.com", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(3) 
+                time.sleep(2) 
                 self.page.goto("https://www.bseindia.com", wait_until="domcontentloaded", timeout=45000)
-                time.sleep(3)
+                time.sleep(2)
+                
+                # MAGIC: COOKIE SMUGGLING
+                # Steal the cleared cookies from the browser and give them to Python
+                pw_cookies = self.pw_context.cookies()
+                for c in pw_cookies:
+                    self.session.cookies.set(c['name'], c['value'], domain=c['domain'])
+                logger.info("Successfully smuggled WAF clearance cookies to Python Engine.")
+                
             except Exception as e:
                 logger.debug(f"Priming took too long: {e}")
 
@@ -141,33 +148,48 @@ class OmniFetcher:
             
         self._init_playwright()
         try:
-            resp = self.page.request.get(url, headers=headers, timeout=timeout*1000)
-            if resp.ok: return resp.text()
-        except Exception as e: logger.error(f"Playwright text fetch failed: {e}")
+            # Retry with smuggled cookies
+            resp = self.session.get(url, headers=headers, timeout=timeout)
+            if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
+                return resp.text
+        except Exception: pass
         
         return None
 
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
+        # Phase 1
         try:
             resp = self.session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
+        # Phase 2
         try:
             logger.info("Rerouting ZIP via CorsProxy...")
             resp = self.session.get(f"https://corsproxy.io/?url={url}", headers=headers, timeout=timeout)
             if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
         except Exception: pass
             
+        # Phase 3: Playwright
         self._init_playwright()
+        
+        # Try once more with smuggled cookies
         try:
-            logger.info("Physical Browser Download Triggered (Blank Tab Method)...")
+            resp = self.session.get(url, headers=headers, timeout=timeout)
+            if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
+        except Exception: pass
+        
+        try:
+            logger.info("Physical Browser Download Triggered (Base-Referer Method)...")
             
-            # WAF BYPASS: Open a completely blank tab so NSE scripts don't freeze the DOM injection
+            # WAF BYPASS: Go to a real NSE page so the Referer header is valid
             dl_page = self.pw_context.new_page()
-            dl_page.set_content(f"<html><body><a id='secure-download' href='{url}'>Download</a></body></html>")
+            dl_page.goto("https://www.nseindia.com/all-reports", wait_until="domcontentloaded", timeout=45000)
+            
+            # Inject link into the REAL page
+            dl_page.evaluate(f"document.body.innerHTML += '<a id=\"secure-download\" href=\"{url}\">Download</a>';")
             
             with dl_page.expect_download(timeout=60000) as download_info:
                 dl_page.click("#secure-download")
@@ -209,28 +231,15 @@ class OmniFetcher:
             url = f"{url}?{qs}"
             
         try:
-            logger.info("Executing direct browser navigation to JSON endpoint...")
-            response = self.page.goto(url, wait_until="networkidle", timeout=45000)
+            logger.info("Retrying JSON fetch with smuggled WAF cookies...")
+            # WAF BYPASS: Use Python requests, but armed with the cookies Playwright stole
+            resp = self.session.get(url, headers=headers, timeout=timeout)
+            if resp.status_code == 200:
+                data = resp.json()
+                if data: return data
+        except Exception as e:
+            logger.error(f"Smuggled Cookie JSON fetch failed: {e}")
             
-            try:
-                if response:
-                    json_data = response.json()
-                    if json_data: return json_data
-            except Exception: pass
-            
-            page_text = self.page.locator("body").inner_text()
-            if page_text:
-                try:
-                    return json.loads(page_text)
-                except json.JSONDecodeError:
-                    snippet = page_text[:150].replace('\n', ' ')
-                    logger.error(f"Playwright received HTML instead of JSON (Cloudflare Block). Snippet: {snippet}")
-            else:
-                logger.error("Playwright navigated to JSON endpoint, but page body was empty.")
-                
-        except Exception as e: 
-            logger.error(f"Playwright JSON navigation failed: {e}")
-        
         return None
         
     def close(self):
@@ -514,5 +523,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-
 
