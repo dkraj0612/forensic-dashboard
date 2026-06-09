@@ -379,23 +379,25 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
         with open(flag_file, "w") as f: f.write("done")
         return f"✅ Downloaded (PIT: {len(pit_data)}, SAST: {len(sast_data)})"
         
-    return "❌ Failed (BSE No Data)"
+    return "✅ No Data / Failed"
 
 def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target_summary = f"{cfg.base_corp_dir}/nse_corporate_summary_{cfg.date_iso}.md"
     if is_valid_file(target_summary): return "✅ Skipped (Already Secure Today)"
 
+    # Strict AJAX headers for the JSON feed
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
         "Accept": "application/json",
         "Accept-Language": "en-US,en;q=0.9",
-        "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements"
+        "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
+        "X-Requested-With": "XMLHttpRequest"
     }
 
     try:
         logger.info("Establishing NSE session cookies for Corporate API...")
         fetcher.tls_session.get("https://www.nseindia.com", headers=nse_headers, timeout=15)
-        time.sleep(random.uniform(2.0, 3.0))
+        time.sleep(random.uniform(2.5, 4.5))
 
         api_date = cfg.trading_today.strftime('%d-%m-%Y')
         api_url = f"https://www.nseindia.com/api/corporate-announcements?index=equities&from_date={api_date}&to_date={api_date}"
@@ -403,14 +405,18 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         resp = fetcher.tls_session.get(api_url, headers=nse_headers, timeout=20)
         
         if resp.status_code == 200:
-            data = resp.json()
+            try:
+                data = resp.json()
+            except ValueError:
+                logger.error("WAF Blocked Corporate API (HTML returned instead of JSON)")
+                return "❌ Failed (WAF HTML Block)"
+
             records = []
             downloaded_pdfs = 0
             
             for item in data:
                 headline = item.get('desc', '').strip()
                 
-                # Materiality Filtering Strategy
                 is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
                 is_noise = any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"])
                 
@@ -433,12 +439,16 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
                     if not os.path.exists(local_pdf_path):
                         logger.info(f"Downloading PDF for {company}...")
                         
-                        pdf_headers = nse_headers.copy()
-                        pdf_headers["Accept"] = "application/pdf,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+                        # Clean headers for PDF download (No AJAX headers)
+                        pdf_headers = {
+                            "User-Agent": nse_headers["User-Agent"],
+                            "Accept": "application/pdf,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                            "Accept-Language": "en-US,en;q=0.9",
+                            "Referer": "https://www.nseindia.com/"
+                        }
                         
                         pdf_resp = fetcher.tls_session.get(remote_pdf_url, headers=pdf_headers, timeout=20)
                         
-                        # Guardrail: Verify Magic Bytes for true PDF file type before writing
                         if pdf_resp.status_code == 200 and pdf_resp.content.startswith(b'%PDF'):
                             with open(local_pdf_path, 'wb') as f:
                                 f.write(pdf_resp.content)
@@ -471,6 +481,94 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
 
     return "❌ Failed (NSE Blocked)"
 
+def process_corporate_bse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
+    target_summary = f"{cfg.base_corp_dir}/bse_corporate_summary_{cfg.date_iso}.md"
+    if is_valid_file(target_summary): return "✅ Skipped (Already Secure Today)"
+
+    params = {
+        "pageno": 1,
+        "strCat": "-1",
+        "strPrevDate": cfg.date_yyyymmdd,
+        "strScrip": "",
+        "strSearch": "",
+        "strToDate": cfg.cal_date_yyyymmdd,
+        "strType": "C"
+    }
+    
+    try:
+        logger.info("Fetching BSE Corporate Announcements...")
+        data = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", params=params)
+        
+        if not data or 'Table' not in data:
+            return "✅ No Events Today (Or BSE API returned empty)"
+            
+        records = []
+        downloaded_pdfs = 0
+        
+        for item in data.get('Table', []):
+            headline = item.get('NEWSSUB', '').strip()
+            cat = item.get('CATEGORYNAME', '').lower()
+            
+            is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
+            is_noise = any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"])
+            
+            if is_noise and not is_mat: 
+                continue 
+
+            company = item.get('SLONGNAME', 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
+            attach = item.get('ATTACHMENTNAME')
+            
+            td = f"{cfg.base_corp_dir}/{company}/" + ("concalls" if "transcript" in headline.lower() or "concall" in headline.lower() else "earnings" if "result" in cat or "financial" in headline.lower() else "filings")
+            os.makedirs(td, exist_ok=True)
+            
+            pdf_link = "No PDF"
+            
+            if attach:
+                remote_pdf_url = f"https://www.bseindia.com/xml-data/corpfiling/AttachLive/{attach}"
+                local_pdf_path = f"{td}/BSE_{cfg.date_iso}_{attach}"
+                
+                if not os.path.exists(local_pdf_path):
+                    logger.info(f"Downloading BSE PDF for {company}...")
+                    
+                    pdf_headers = {
+                        "User-Agent": random.choice(fetcher.u_agents),
+                        "Accept": "application/pdf,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+                        "Accept-Language": "en-US,en;q=0.9",
+                        "Referer": "https://www.bseindia.com/"
+                    }
+                    
+                    pdf_resp = fetcher.tls_session.get(remote_pdf_url, headers=pdf_headers, timeout=20)
+                    
+                    if pdf_resp.status_code == 200 and pdf_resp.content.startswith(b'%PDF'):
+                        with open(local_pdf_path, 'wb') as f:
+                            f.write(pdf_resp.content)
+                        
+                        pdf_link = f"✅ [Local PDF Saved](../../{local_pdf_path})"
+                        downloaded_pdfs += 1
+                    else:
+                        pdf_link = f"❌ [Failed/Blocked]({remote_pdf_url})"
+                        
+                    time.sleep(random.uniform(1.0, 2.0))
+                else:
+                    pdf_link = f"✅ [Already Local](../../{local_pdf_path})"
+                    
+            records.append({
+                "Symbol": company,
+                "Category": item.get('CATEGORYNAME', 'N/A'),
+                "Subject": headline,
+                "Attachment": pdf_link
+            })
+
+        if records:
+            with open(target_summary, "w", encoding="utf-8") as f:
+                f.write(f"# BSE Material Corporate Announcements ({cfg.date_iso})\n\n{to_md_table(records)}")
+            return f"✅ Secured ({len(records)} BSE events, {downloaded_pdfs} PDFs)"
+        return "✅ No Material BSE Events Today"
+
+    except Exception as e:
+        logger.error(f"BSE Corporate API fetch failed: {e}")
+        return "❌ Failed (Error)"
+
 def main():
     logger.info("--- OMNI-FETCHER PERSISTENT HUNTER ACTIVATED ---")
     cfg = MarketPipelineConfig()
@@ -487,14 +585,16 @@ def main():
         "Derivatives (Live API)": "Wait",
         "Macro Flows (Live API)": "Wait", 
         "Regulatory Data (BSE)": "Wait", 
-        "Corporate Events (Live API)": "Wait"
+        "Corp Events (NSE)": "Wait",
+        "Corp Events (BSE)": "Wait"
     }
     
     status["Cash Market (EOD)"] = process_market_action(cfg, fetcher)
     status["Derivatives (Live API)"] = process_live_derivatives_nse(cfg, fetcher)
     status["Macro Flows (Live API)"] = process_macro_flows_nse(cfg, fetcher)
     status["Regulatory Data (BSE)"] = process_regulatory(cfg, fetcher)
-    status["Corporate Events (Live API)"] = process_corporate_nse(cfg, fetcher)
+    status["Corp Events (NSE)"] = process_corporate_nse(cfg, fetcher)
+    status["Corp Events (BSE)"] = process_corporate_bse(cfg, fetcher)
     
     fetcher.close()
     
