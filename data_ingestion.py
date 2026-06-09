@@ -6,14 +6,13 @@ import zipfile
 import logging
 import sys
 import random
-import time
 from datetime import datetime, timedelta
 from typing import List, Dict, Any, Optional
 
 import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
-from playwright.sync_api import sync_playwright
+from curl_cffi import requests as tls_requests
 
 # Configure Logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s | %(levelname)-8s | %(message)s', handlers=[logging.StreamHandler(sys.stdout)])
@@ -23,7 +22,7 @@ class MarketPipelineConfig:
     def __init__(self):
         self.calendar_today = datetime.today()
         
-        # WEEKEND LOGIC: If Saturday (5) or Sunday (6), set Trading Day to Friday
+        # WEEKEND LOGIC
         if self.calendar_today.weekday() == 5:
             self.trading_today = self.calendar_today - timedelta(days=1)
         elif self.calendar_today.weekday() == 6:
@@ -31,7 +30,6 @@ class MarketPipelineConfig:
         else:
             self.trading_today = self.calendar_today
 
-        # Trading Dates (For NSE Files and Folders)
         self.date_iso = self.trading_today.strftime('%Y-%m-%d')
         self.date_ddmmyyyy = self.trading_today.strftime('%d%m%Y')
         self.date_yymmdd = self.trading_today.strftime('%y%m%d')
@@ -39,8 +37,6 @@ class MarketPipelineConfig:
         self.date_mmm = self.trading_today.strftime('%b').upper()
         self.date_yyyy = self.trading_today.strftime('%Y')
         self.date_ddmmmyyyy = self.trading_today.strftime('%d%b%Y').upper()
-        
-        # Calendar Date (For BSE Weekend Ranges & Skip Flags)
         self.cal_date_yyyymmdd = self.calendar_today.strftime('%Y%m%d')
 
         self.base_market_dir = "market_data"
@@ -50,91 +46,49 @@ class MarketPipelineConfig:
         os.makedirs(f"{self.base_market_dir}/adjustments", exist_ok=True)
 
 class OmniFetcher:
-    """The Ultimate Fetcher: Proxies + Detached Downloads + Patient Observer JSON"""
+    """The Ultimate Fetcher: Cryptographic TLS Spoofing + Proxy Waterfall"""
     def __init__(self):
-        self.session = requests.Session()
         self.u_agents = [
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36"
         ]
-        self.session.headers.update({
+        
+        # Phase 1: The Silver Bullet (JA3 TLS Cryptographic Spoofing)
+        self.tls_session = tls_requests.Session(impersonate="chrome120")
+        
+        # Phase 2: Standard Session for Proxies
+        self.std_session = requests.Session()
+        self.std_session.headers.update({
             "User-Agent": random.choice(self.u_agents),
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
             "Accept-Encoding": "gzip, deflate", 
             "Connection": "keep-alive"
         })
-        
         retry = Retry(total=2, backoff_factor=1.0, status_forcelist=[403, 429, 500, 502, 503, 504], raise_on_status=False)
         adapter = HTTPAdapter(max_retries=retry, pool_connections=25, pool_maxsize=25)
-        self.session.mount("https://", adapter)
-        self.session.mount("http://", adapter)
+        self.std_session.mount("https://", adapter)
 
         self.proxies = [
-            "",                                      
             "https://api.allorigins.win/raw?url=",   
             "https://corsproxy.io/?url="             
         ]
 
-        self.pw = None
-        self.browser = None
-        self.pw_context = None
-
-    def _init_playwright(self):
-        if self.pw_context is None:
-            logger.warning("Engaging Playwright Ghost-Human Browser...")
-            self.pw = sync_playwright().start()
-            
-            self.browser = self.pw.chromium.launch(
-                headless=True, 
-                args=[
-                    "--disable-http2", 
-                    "--disable-blink-features=AutomationControlled",
-                    "--no-sandbox"
-                ]
-            )
-            
-            self.pw_context = self.browser.new_context(
-                user_agent=self.session.headers["User-Agent"],
-                viewport={"width": 1920, "height": 1080},
-                ignore_https_errors=True
-            )
-            
-            stealth_js = """
-                Object.defineProperty(navigator, 'webdriver', {get: () => undefined});
-                window.chrome = { runtime: {} };
-                Object.defineProperty(navigator, 'languages', { get: () => ['en-US', 'en'] });
-                Object.defineProperty(navigator, 'plugins', { get: () => [1, 2, 3, 4, 5] });
-            """
-            self.pw_context.add_init_script(stealth_js)
-            self.pw_context.set_default_timeout(45000)
-
-    def prime_bse_cookies(self):
-        try:
-            self.session.get("https://www.bseindia.com", timeout=15)
-        except Exception: pass
-
     def get_text(self, url: str, timeout: int = 25) -> Optional[str]:
         headers = {"Referer": "https://www.nseindia.com/"}
         
+        try:
+            resp = self.tls_session.get(url, headers=headers, timeout=timeout)
+            if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
+                return resp.text
+        except Exception: pass
+            
         for proxy in self.proxies:
-            target = f"{proxy}{url}" if proxy else url
             try:
-                if proxy: logger.info(f"Rerouting text via Proxy: {proxy.split('/')[2]}")
-                resp = self.session.get(target, headers=headers, timeout=timeout)
+                logger.info(f"Rerouting text via Proxy: {proxy.split('/')[2]}")
+                resp = self.std_session.get(f"{proxy}{url}", headers=headers, timeout=timeout)
                 if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
                     return resp.text
             except Exception: pass
-            
-        self._init_playwright()
-        try:
-            page = self.pw_context.new_page()
-            resp = page.request.get(url, headers=headers, timeout=timeout*1000)
-            if resp.ok: 
-                text = resp.text()
-                page.close()
-                return text
-            page.close()
-        except Exception as e: logger.error(f"Playwright text fetch failed: {e}")
         
         return None
 
@@ -142,107 +96,53 @@ class OmniFetcher:
         headers = {"Referer": "https://www.nseindia.com/"}
         
         try:
-            resp = self.session.get(url, headers=headers, timeout=timeout)
-            if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
-        except Exception: pass
-            
-        try:
-            logger.info("Rerouting ZIP via CorsProxy...")
-            resp = self.session.get(f"https://corsproxy.io/?url={url}", headers=headers, timeout=timeout)
-            if resp.status_code == 200 and resp.content.startswith(b'PK'): return resp.content
-        except Exception: pass
-            
-        self._init_playwright()
-        
-        try:
-            logger.info("Physical Browser Download Triggered (Detached Anchor Method)...")
-            dl_page = self.pw_context.new_page()
-            
-            # WAF BYPASS: Establish the required NSE Referer header first
-            try:
-                dl_page.goto("https://www.nseindia.com/", wait_until="commit", timeout=15000)
-            except Exception: pass 
-            
-            with dl_page.expect_download(timeout=45000) as download_info:
-                # WAF BYPASS: setTimeout separates the Python execution from the WAF redirect destruction
-                dl_page.evaluate(f"setTimeout(() => {{ window.location.href = '{url}'; }}, 500);")
-                
-            download = download_info.value
-            
-            logger.info("Awaiting binary stream completion...")
-            temp_path = f"temp_{random.randint(1000,9999)}.zip"
-            
-            # Use save_as to bypass the infinite blocking bug in default path() method
-            download.save_as(temp_path)
-            
-            with open(temp_path, 'rb') as f:
-                body = f.read()
-                
-            os.remove(temp_path)
-            dl_page.close()
-                
-            if body.startswith(b'PK'): 
-                return body
-            else:
-                snippet = body[:200].decode('utf-8', errors='ignore').replace('\n', ' ')
-                logger.error(f"File is not a valid ZIP. Firewall responded with HTML: {snippet}")
-                
+            logger.info("Executing TLS-Spoofed Direct Binary Fetch...")
+            resp = self.tls_session.get(url, headers=headers, timeout=timeout)
+            if resp.status_code == 200 and resp.content.startswith(b'PK'): 
+                return resp.content
         except Exception as e: 
-            logger.error(f"Playwright native download failed/Tarpit severed: {e}")
-            if 'dl_page' in locals(): dl_page.close()
-        
+            logger.debug(f"TLS fetch blocked: {e}")
+
+        for proxy in self.proxies:
+            try:
+                logger.info(f"Rerouting ZIP via Proxy: {proxy.split('/')[2]}")
+                resp = self.std_session.get(f"{proxy}{url}", headers=headers, timeout=timeout)
+                if resp.status_code == 200 and resp.content.startswith(b'PK'): 
+                    return resp.content
+            except Exception: pass
+            
         logger.error(f"Ultimate binary download failed for: {url}")
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
         headers = {"Referer": "https://www.bseindia.com/", "Accept": "application/json"}
         
+        full_url = url
+        if params:
+            qs = "&".join([f"{k}={v}" for k, v in params.items()])
+            full_url = f"{url}?{qs}"
+
         try:
-            resp = self.session.get(url, params=params, headers=headers, timeout=timeout)
+            logger.info("Executing TLS-Spoofed Direct JSON Fetch...")
+            resp = self.tls_session.get(full_url, headers=headers, timeout=timeout)
             if resp.status_code == 200:
                 data = resp.json()
                 if data: return data
         except Exception: pass
             
-        self._init_playwright()
-        if params:
-            qs = "&".join([f"{k}={v}" for k, v in params.items()])
-            url = f"{url}?{qs}"
-            
-        try:
-            logger.info("Engaging 'Patient Observer' to bypass Cloudflare JS Challenge...")
-            json_page = self.pw_context.new_page()
-            
-            # WAF BYPASS: We navigate to the API and let Cloudflare load its "Checking your browser" page
+        for proxy in self.proxies:
             try:
-                json_page.goto(url, wait_until="commit", timeout=15000)
+                logger.info(f"Rerouting JSON via Proxy: {proxy.split('/')[2]}")
+                resp = self.std_session.get(f"{proxy}{full_url}", headers=headers, timeout=timeout)
+                if resp.status_code == 200:
+                    data = resp.json()
+                    if data: return data
             except Exception: pass
-
-            # Polling loop: Check every 2 seconds if Cloudflare has let us through
-            for _ in range(15):
-                time.sleep(2)
-                try:
-                    text = json_page.locator("body").inner_text()
-                    if text:
-                        data = json.loads(text)
-                        json_page.close()
-                        return data # Cloudflare cleared and JSON parsed successfully!
-                except Exception:
-                    continue # Still looking at Cloudflare HTML, keep waiting
-            
-            json_page.close()
-            logger.error("Cloudflare JS challenge never cleared, or returned invalid JSON.")
-            
-        except Exception as e:
-            logger.error(f"Patient Observer JSON fetch failed: {e}")
             
         return None
         
     def close(self):
-        if self.pw_context:
-            self.pw_context.close()
-            self.browser.close()
-            self.pw.stop()
+        pass # No heavy browser to clean up anymore!
 
 # --- TELEGRAM AND HUNTER HELPERS ---
 def send_telegram_alert(message: str):
@@ -399,7 +299,6 @@ def process_macro_flows(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     
     fii, deals = [], []
     try:
-        fetcher.session.get("https://www.nseindia.com", timeout=15)
         text_fii = fetcher.get_text("https://www.nseindia.com/api/fiidiiTradeReact")
         if text_fii:
             for i in json.loads(text_fii): fii.append({"Category": i.get('category'), "Net_Value": i.get('netValue')})
@@ -425,8 +324,6 @@ def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     t_sast = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
 
     pit_data, sast_data = [], []
-    fetcher.prime_bse_cookies()
-    
     params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd}
     
     pit_json = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/InsiderTrading/w", params=params)
@@ -456,7 +353,6 @@ def process_corporate(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.corp_done_{cfg.cal_date_yyyymmdd}"
     if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
 
-    fetcher.prime_bse_cookies()
     params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd, "strType": "C"}
     data = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/AnnSubCategoryGetData/w", params=params)
     if not data: return "❌ Failed (BSE Issue)"
