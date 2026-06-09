@@ -16,14 +16,25 @@ from urllib3.util.retry import Retry
 from curl_cffi import requests as tls_requests
 
 # Configure Logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s | %(levelname)-8s | %(message)s', handlers=[logging.StreamHandler(sys.stdout)])
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s | %(levelname)-8s | %(message)s', 
+    handlers=[logging.StreamHandler(sys.stdout)]
+)
 logger = logging.getLogger(__name__)
 
 class MarketPipelineConfig:
     def __init__(self):
-        # FORCED OVERRIDE: Hardcoded to 9th June 2026
-        self.calendar_today = datetime(2026, 6, 9)
-        self.trading_today = datetime(2026, 6, 9)
+        # Dynamic dating restored for production autonomy
+        self.calendar_today = datetime.today()
+        
+        # WEEKEND LOGIC
+        if self.calendar_today.weekday() == 5:
+            self.trading_today = self.calendar_today - timedelta(days=1)
+        elif self.calendar_today.weekday() == 6:
+            self.trading_today = self.calendar_today - timedelta(days=2)
+        else:
+            self.trading_today = self.calendar_today
 
         self.date_iso = self.trading_today.strftime('%Y-%m-%d')
         self.date_ddmmyyyy = self.trading_today.strftime('%d%m%Y')
@@ -75,7 +86,8 @@ class OmniFetcher:
             resp = self.tls_session.get(url, headers=headers, timeout=timeout)
             if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
                 return resp.text
-        except Exception: pass
+        except Exception: 
+            pass
             
         for proxy in self.proxies:
             try:
@@ -83,7 +95,8 @@ class OmniFetcher:
                 resp = self.std_session.get(f"{proxy}{url}", headers=headers, timeout=timeout)
                 if resp.status_code == 200 and not resp.text.strip().lower().startswith("<!doctype html>"):
                     return resp.text
-            except Exception: pass
+            except Exception: 
+                pass
         return None
 
     def get_content(self, url: str, timeout: int = 45) -> Optional[bytes]:
@@ -104,7 +117,8 @@ class OmniFetcher:
                 resp = self.std_session.get(f"{proxy}{url}", headers=headers, timeout=timeout)
                 if resp.status_code == 200 and resp.content.startswith(b'PK'): 
                     return resp.content
-            except Exception: pass
+            except Exception: 
+                pass
         return None
 
     def get_json(self, url: str, params: dict = None, timeout: int = 25) -> Optional[dict]:
@@ -126,7 +140,8 @@ class OmniFetcher:
             if resp.status_code == 200:
                 data = resp.json()
                 if data: return data
-        except Exception: pass
+        except Exception: 
+            pass
             
         for proxy in self.proxies:
             try:
@@ -135,19 +150,32 @@ class OmniFetcher:
                 if resp.status_code == 200:
                     data = resp.json()
                     if data: return data
-            except Exception: pass
+            except Exception: 
+                pass
         return None
         
     def close(self):
-        pass
+        """Safely tears down active network sessions to prevent socket exhaustion."""
+        try:
+            self.std_session.close()
+            self.tls_session.close()
+        except Exception as e:
+            logger.debug(f"Session teardown issue: {e}")
 
 # --- TELEGRAM AND HUNTER HELPERS ---
 def send_telegram_alert(message: str):
     token = os.environ.get("TELEGRAM_BOT_TOKEN")
     chat_id = os.environ.get("TELEGRAM_CHAT_ID")
-    if not token or not chat_id: return
+    
+    if not token or not chat_id: 
+        return
+        
     try:
-        requests.post(f"https://api.telegram.org/bot{token}/sendMessage", json={"chat_id": chat_id, "text": message, "parse_mode": "Markdown"})
+        requests.post(
+            f"https://api.telegram.org/bot{token}/sendMessage", 
+            json={"chat_id": chat_id, "text": message, "parse_mode": "Markdown"},
+            timeout=10
+        )
     except Exception as e:
         logger.error(f"Failed to send Telegram alert: {e}")
 
@@ -155,9 +183,12 @@ def is_valid_file(filepath: str) -> bool:
     return os.path.exists(filepath) and os.path.getsize(filepath) > 50
 
 def to_md_table(data_list: List[Dict[str, Any]], custom_headers: Optional[List[str]] = None) -> str:
-    if not data_list: return "*No data available.*\n"
+    if not data_list: 
+        return "*No data available.*\n"
+        
     headers = custom_headers if custom_headers else list(data_list[0].keys())
     md = ["| " + " | ".join(headers) + " |", "| " + " | ".join(["---"] * len(headers)) + " |"]
+    
     for row in data_list: 
         md.append("| " + " | ".join([str(row.get(h, '')).replace('|', '\\|').strip() for h in headers]) + " |")
     return "\n".join(md) + "\n"
@@ -177,14 +208,16 @@ def get_nifty_total_market(fetcher: OmniFetcher) -> List[str]:
     def fetch_index(index_name):
         for suffix in ["list.csv", "_list.csv"]:
             text = fetcher.get_text(f"https://www.niftyindices.com/IndexConstituent/ind_{index_name}{suffix}")
-            if text and "Symbol" in text: return text
+            if text and "Symbol" in text: 
+                return text
         return None
 
     tm_text = fetch_index("niftytotalmarket")
     if tm_text:
         for r in csv.DictReader(tm_text.strip().split('\n')):
             sym = r.get('Symbol') or r.get('SYMBOL')
-            if sym: tickers.add(sym.strip().upper())
+            if sym: 
+                tickers.add(sym.strip().upper())
 
     if len(tickers) < 700:
         logger.info(f"Primary fetch got {len(tickers)}. Falling back to multi-index assembly...")
@@ -193,28 +226,37 @@ def get_nifty_total_market(fetcher: OmniFetcher) -> List[str]:
             if fallback:
                 for r in csv.DictReader(fallback.strip().split('\n')):
                     sym = r.get('Symbol') or r.get('SYMBOL')
-                    if sym: tickers.add(sym.strip().upper())
+                    if sym: 
+                        tickers.add(sym.strip().upper())
 
     final_list = list(tickers)
     if len(final_list) > 200:
-        with open("active_watchlist.json", "w") as f: json.dump(final_list, f)
+        with open("active_watchlist.json", "w") as f: 
+            json.dump(final_list, f)
+            
     return final_list
 
 def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/cash_market.md"
-    if is_valid_file(target): return "✅ Skipped (Already Secure)"
+    if is_valid_file(target): 
+        return "✅ Skipped (Already Secure)"
 
     prices, indices = [], []
     text = fetcher.get_text(f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{cfg.date_ddmmyyyy}.csv")
+    
     if text:
         for r in csv.DictReader(text.strip().split('\n')):
             clean = {k.strip(): v.strip() for k, v in r.items() if k}
             if clean.get('SERIES') in ['EQ', 'SM']:
                 prices.append({
-                    "Ticker": clean.get('SYMBOL'), "Open": clean.get('OPEN_PRICE'), "High": clean.get('HIGH_PRICE'), 
-                    "Low": clean.get('LOW_PRICE'), "Close": clean.get('CLOSE_PRICE'), 
+                    "Ticker": clean.get('SYMBOL'), 
+                    "Open": clean.get('OPEN_PRICE'), 
+                    "High": clean.get('HIGH_PRICE'), 
+                    "Low": clean.get('LOW_PRICE'), 
+                    "Close": clean.get('CLOSE_PRICE'), 
                     "Volume": clean.get('TTL_TRD_QNTY') or clean.get('TOT_TRD_QTY', 'N/A'),
-                    "Delivery_Qty": clean.get('DELIV_QTY', 'N/A'), "Delivery_Pct": clean.get('DELIV_PER', 'N/A')
+                    "Delivery_Qty": clean.get('DELIV_QTY', 'N/A'), 
+                    "Delivery_Pct": clean.get('DELIV_PER', 'N/A')
                 })
     
     if not prices:
@@ -226,25 +268,39 @@ def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
                         for r in csv.DictReader(io.TextIOWrapper(f, encoding='utf-8')):
                             if r.get('SERIES') in ['EQ', 'SM']:
                                 prices.append({
-                                    "Ticker": r.get('SYMBOL'), "Open": r.get('OPEN'), "High": r.get('HIGH'), "Low": r.get('LOW'), 
-                                    "Close": r.get('CLOSE'), "Volume": r.get('TOTTRDQTY', 'N/A'), "Delivery_Qty": "N/A", "Delivery_Pct": "N/A"
+                                    "Ticker": r.get('SYMBOL'), 
+                                    "Open": r.get('OPEN'), 
+                                    "High": r.get('HIGH'), 
+                                    "Low": r.get('LOW'), 
+                                    "Close": r.get('CLOSE'), 
+                                    "Volume": r.get('TOTTRDQTY', 'N/A'), 
+                                    "Delivery_Qty": "N/A", 
+                                    "Delivery_Pct": "N/A"
                                 })
 
     idx_text = fetcher.get_text(f"https://nsearchives.nseindia.com/content/indices/ind_close_all_{cfg.date_ddmmyyyy}.csv")
     if idx_text:
         for r in csv.DictReader(idx_text.strip().split('\n')):
             if r.get('Index Name', '').strip() in ['Nifty 50', 'Nifty 500', 'Nifty Midcap 150', 'Nifty Smallcap 250']:
-                indices.append({"Index": r.get('Index Name', '').strip(), "Open": r.get('Open Index Value'), "High": r.get('High Index Value'), "Low": r.get('Low Index Value'), "Close": r.get('Closing Index Value')})
+                indices.append({
+                    "Index": r.get('Index Name', '').strip(), 
+                    "Open": r.get('Open Index Value'), 
+                    "High": r.get('High Index Value'), 
+                    "Low": r.get('Low Index Value'), 
+                    "Close": r.get('Closing Index Value')
+                })
 
     if prices:
         with open(target, "w", encoding="utf-8") as f: 
             f.write(f"# Cash Market Analysis ({cfg.date_iso})\n\n## Broad Indices\n{to_md_table(indices)}\n## Equity Pricing\n{to_md_table(prices)}")
         return f"✅ Downloaded ({len(prices)} equities)"
+        
     return "❌ Failed (Timeout)"
 
 def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/live_fno_watch.md"
-    if is_valid_file(target): return "✅ Skipped (Already Secure)"
+    if is_valid_file(target): 
+        return "✅ Skipped (Already Secure)"
     
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
@@ -305,7 +361,8 @@ def process_live_derivatives_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher
 
 def process_macro_flows_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target = f"{cfg.base_market_dir}/{cfg.date_iso}/macro_flows.md"
-    if is_valid_file(target): return "✅ Skipped (Already Secure)"
+    if is_valid_file(target): 
+        return "✅ Skipped (Already Secure)"
     
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
@@ -324,23 +381,36 @@ def process_macro_flows_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> 
         # 1. Fetch Block Deals
         api_block = f"https://www.nseindia.com/api/historical/block-deals?from_date={api_date}&to_date={api_date}"
         resp_block = fetcher.tls_session.get(api_block, headers=nse_headers, timeout=15)
+        
         if resp_block.status_code == 200:
             for item in resp_block.json().get('data', []):
-                deals.append({"Type": "BLOCK", "Symbol": item.get('symbol'), "Client": item.get('clientName'), "Txn": item.get('buyOrSell')})
+                deals.append({
+                    "Type": "BLOCK", 
+                    "Symbol": item.get('symbol'), 
+                    "Client": item.get('clientName'), 
+                    "Txn": item.get('buyOrSell')
+                })
                 
         time.sleep(random.uniform(1.5, 2.5))
         
         # 2. Fetch Bulk Deals
         api_bulk = f"https://www.nseindia.com/api/historical/bulk-deals?from_date={api_date}&to_date={api_date}"
         resp_bulk = fetcher.tls_session.get(api_bulk, headers=nse_headers, timeout=15)
+        
         if resp_bulk.status_code == 200:
             for item in resp_bulk.json().get('data', []):
-                deals.append({"Type": "BULK", "Symbol": item.get('symbol'), "Client": item.get('clientName'), "Txn": item.get('buyOrSell')})
+                deals.append({
+                    "Type": "BULK", 
+                    "Symbol": item.get('symbol'), 
+                    "Client": item.get('clientName'), 
+                    "Txn": item.get('buyOrSell')
+                })
 
         if deals:
             with open(target, "w", encoding="utf-8") as f: 
                 f.write(f"# Institutional Deals (NSE API)\n\n{to_md_table(deals)}")
             return f"✅ Downloaded ({len(deals)} deals)"
+            
         return "✅ No Deals Today"
             
     except Exception as e:
@@ -350,42 +420,68 @@ def process_macro_flows_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> 
 
 def process_regulatory(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     flag_file = f"{cfg.base_market_dir}/{cfg.date_iso}/.reg_done_{cfg.cal_date_yyyymmdd}"
-    if os.path.exists(flag_file): return "✅ Skipped (Already Secure Today)"
+    if os.path.exists(flag_file): 
+        return "✅ Skipped (Already Secure Today)"
 
     t_pit = f"{cfg.base_market_dir}/{cfg.date_iso}/insider_trading.md"
     t_sast = f"{cfg.base_market_dir}/{cfg.date_iso}/promoter_pledges.md"
 
     pit_data, sast_data = [], []
-    params = {"pageno": 1, "strCat": "-1", "strPrevDate": cfg.date_yyyymmdd, "strScrip": "", "strSearch": "", "strToDate": cfg.cal_date_yyyymmdd}
+    params = {
+        "pageno": 1, 
+        "strCat": "-1", 
+        "strPrevDate": cfg.date_yyyymmdd, 
+        "strScrip": "", 
+        "strSearch": "", 
+        "strToDate": cfg.cal_date_yyyymmdd
+    }
     
     pit_json = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/InsiderTrading/w", params=params)
     if pit_json:
         for i in pit_json.get('Table', []):
             sym = i.get('SLONGNAME') or i.get('COMPANY_NAME')
-            if sym: pit_data.append({"Symbol": sym.strip(), "Acquirer": i.get('ACQUIRER_NAME', 'Unknown'), "Category": i.get('CATEGORY_OF_PERSON', 'Unknown'), "Action": i.get('ACQUISITION_DISPOSAL_TRANSACTION_TYPE', 'Unknown'), "Qty": i.get('NO_OF_SECURITIES', 0)})
+            if sym: 
+                pit_data.append({
+                    "Symbol": sym.strip(), 
+                    "Acquirer": i.get('ACQUIRER_NAME', 'Unknown'), 
+                    "Category": i.get('CATEGORY_OF_PERSON', 'Unknown'), 
+                    "Action": i.get('ACQUISITION_DISPOSAL_TRANSACTION_TYPE', 'Unknown'), 
+                    "Qty": i.get('NO_OF_SECURITIES', 0)
+                })
 
     sast_json = fetcher.get_json("https://api.bseindia.com/BseIndiaAPI/api/SastData/w", params=params)
     if sast_json:
         for i in sast_json.get('Table', []):
             sym = i.get('COMPANY_NAME') or i.get('SLONGNAME')
-            if sym: sast_data.append({"Symbol": sym.strip(), "Promoter": i.get('PROMOTER_NAME', 'Unknown'), "Event": i.get('EVENT_TYPE', 'Unknown'), "Shares": i.get('NO_OF_SHARES', 0), "Percent": i.get('PERCENTAGE', 0)})
+            if sym: 
+                sast_data.append({
+                    "Symbol": sym.strip(), 
+                    "Promoter": i.get('PROMOTER_NAME', 'Unknown'), 
+                    "Event": i.get('EVENT_TYPE', 'Unknown'), 
+                    "Shares": i.get('NO_OF_SHARES', 0), 
+                    "Percent": i.get('PERCENTAGE', 0)
+                })
 
     if pit_data or sast_data:
         if pit_data:
-            with open(t_pit, "w", encoding="utf-8") as f: f.write(f"# Insider Trading (PIT)\n\n{to_md_table(pit_data)}")
+            with open(t_pit, "w", encoding="utf-8") as f: 
+                f.write(f"# Insider Trading (PIT)\n\n{to_md_table(pit_data)}")
         if sast_data:
-            with open(t_sast, "w", encoding="utf-8") as f: f.write(f"# Promoter Pledges (SAST)\n\n{to_md_table(sast_data)}")
+            with open(t_sast, "w", encoding="utf-8") as f: 
+                f.write(f"# Promoter Pledges (SAST)\n\n{to_md_table(sast_data)}")
         
-        with open(flag_file, "w") as f: f.write("done")
+        with open(flag_file, "w") as f: 
+            f.write("done")
+            
         return f"✅ Downloaded (PIT: {len(pit_data)}, SAST: {len(sast_data)})"
         
     return "✅ No Data / Failed"
 
 def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target_summary = f"{cfg.base_corp_dir}/nse_corporate_summary_{cfg.date_iso}.md"
-    if is_valid_file(target_summary): return "✅ Skipped (Already Secure Today)"
+    if is_valid_file(target_summary): 
+        return "✅ Skipped (Already Secure Today)"
 
-    # Strict AJAX headers for the JSON feed
     nse_headers = {
         "User-Agent": random.choice(fetcher.u_agents),
         "Accept": "application/json",
@@ -393,6 +489,9 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         "Referer": "https://www.nseindia.com/companies-listing/corporate-filings-announcements",
         "X-Requested-With": "XMLHttpRequest"
     }
+    
+    material_keywords = ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"]
+    noise_keywords = ["loss of share", "duplicate share", "trading window closure"]
 
     try:
         logger.info("Establishing NSE session cookies for Corporate API...")
@@ -415,19 +514,29 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
             downloaded_pdfs = 0
             
             for item in data:
-                headline = item.get('desc', '').strip()
+                headline = (item.get('desc') or '').strip()
+                headline_lower = headline.lower()
                 
-                is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
-                is_noise = any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"])
+                is_mat = any(w in headline_lower for w in material_keywords)
+                is_noise = any(b in headline_lower for b in noise_keywords)
                 
                 if is_noise and not is_mat: 
                     continue 
 
-                company = item.get('symbol', 'UNKNOWN').replace(" ", "_").replace("/", "-")
+                company = (item.get('symbol') or 'UNKNOWN').replace(" ", "_").replace("/", "-")
                 attach = item.get('attchmntFile')
                 
-                cat = item.get('smIndustry', '').lower()
-                td = f"{cfg.base_corp_dir}/{company}/" + ("concalls" if "transcript" in headline.lower() or "concall" in headline.lower() else "earnings" if "result" in cat or "financial" in headline.lower() else "filings")
+                cat = (item.get('smIndustry') or '').lower()
+                
+                # Determine folder topology
+                if "transcript" in headline_lower or "concall" in headline_lower:
+                    folder_type = "concalls"
+                elif "result" in cat or "financial" in headline_lower:
+                    folder_type = "earnings"
+                else:
+                    folder_type = "filings"
+                    
+                td = f"{cfg.base_corp_dir}/{company}/{folder_type}"
                 os.makedirs(td, exist_ok=True)
                 
                 pdf_link = "No PDF"
@@ -439,7 +548,6 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
                     if not os.path.exists(local_pdf_path):
                         logger.info(f"Downloading PDF for {company}...")
                         
-                        # Clean headers for PDF download (No AJAX headers)
                         pdf_headers = {
                             "User-Agent": nse_headers["User-Agent"],
                             "Accept": "application/pdf,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -472,6 +580,7 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
                 with open(target_summary, "w", encoding="utf-8") as f:
                     f.write(f"# NSE Material Corporate Announcements ({cfg.date_iso})\n\n{to_md_table(records)}")
                 return f"✅ Secured ({len(records)} events, {downloaded_pdfs} PDFs)"
+                
             return "✅ No Material Events Today"
         else:
              logger.error(f"NSE Corp API returned: {resp.status_code}")
@@ -479,11 +588,12 @@ def process_corporate_nse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
     except Exception as e:
         logger.error(f"Corporate API fetch failed: {e}")
 
-    return "❌ Failed (NSE Blocked)"
+    return "❌ Failed (Code Error)"
 
 def process_corporate_bse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> str:
     target_summary = f"{cfg.base_corp_dir}/bse_corporate_summary_{cfg.date_iso}.md"
-    if is_valid_file(target_summary): return "✅ Skipped (Already Secure Today)"
+    if is_valid_file(target_summary): 
+        return "✅ Skipped (Already Secure Today)"
 
     params = {
         "pageno": 1,
@@ -494,6 +604,9 @@ def process_corporate_bse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         "strToDate": cfg.cal_date_yyyymmdd,
         "strType": "C"
     }
+    
+    material_keywords = ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"]
+    noise_keywords = ["loss of share", "duplicate share", "trading window closure"]
     
     try:
         logger.info("Fetching BSE Corporate Announcements...")
@@ -506,19 +619,28 @@ def process_corporate_bse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
         downloaded_pdfs = 0
         
         for item in data.get('Table', []):
-            headline = item.get('NEWSSUB', '').strip()
-            cat = item.get('CATEGORYNAME', '').lower()
+            headline = (item.get('NEWSSUB') or '').strip()
+            headline_lower = headline.lower()
+            cat = (item.get('CATEGORYNAME') or '').lower()
             
-            is_mat = any(w in headline.lower() for w in ["resignation", "appointment", "acquisition", "merger", "dividend", "financial result", "earnings", "fraud", "default", "auditor", "strike", "lockout", "penalty", "subpoena", "bankruptcy", "pledge"])
-            is_noise = any(b in headline.lower() for b in ["loss of share", "duplicate share", "trading window closure"])
+            is_mat = any(w in headline_lower for w in material_keywords)
+            is_noise = any(b in headline_lower for b in noise_keywords)
             
             if is_noise and not is_mat: 
                 continue 
 
-            company = item.get('SLONGNAME', 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
+            company = (item.get('SLONGNAME') or 'UNKNOWN').strip().replace(" ", "_").replace("/", "-")
             attach = item.get('ATTACHMENTNAME')
             
-            td = f"{cfg.base_corp_dir}/{company}/" + ("concalls" if "transcript" in headline.lower() or "concall" in headline.lower() else "earnings" if "result" in cat or "financial" in headline.lower() else "filings")
+            # Determine folder topology
+            if "transcript" in headline_lower or "concall" in headline_lower:
+                folder_type = "concalls"
+            elif "result" in cat or "financial" in headline_lower:
+                folder_type = "earnings"
+            else:
+                folder_type = "filings"
+                
+            td = f"{cfg.base_corp_dir}/{company}/{folder_type}"
             os.makedirs(td, exist_ok=True)
             
             pdf_link = "No PDF"
@@ -563,11 +685,12 @@ def process_corporate_bse(cfg: MarketPipelineConfig, fetcher: OmniFetcher) -> st
             with open(target_summary, "w", encoding="utf-8") as f:
                 f.write(f"# BSE Material Corporate Announcements ({cfg.date_iso})\n\n{to_md_table(records)}")
             return f"✅ Secured ({len(records)} BSE events, {downloaded_pdfs} PDFs)"
+            
         return "✅ No Material BSE Events Today"
 
     except Exception as e:
         logger.error(f"BSE Corporate API fetch failed: {e}")
-        return "❌ Failed (Error)"
+        return "❌ Failed (Code Error)"
 
 def main():
     logger.info("--- OMNI-FETCHER PERSISTENT HUNTER ACTIVATED ---")
@@ -596,10 +719,12 @@ def main():
     status["Corp Events (NSE)"] = process_corporate_nse(cfg, fetcher)
     status["Corp Events (BSE)"] = process_corporate_bse(cfg, fetcher)
     
+    # Properly shutdown persistent connections to avoid resource leakage
     fetcher.close()
     
     report = f"📊 *Market Hunter Report: {cfg.date_iso}*\n\n"
     report += f"📋 Watchlist: {wl_status}\n"
+    
     for k, v in status.items():
         report += f"{'✅' if '✅' in v else '❌'} {k}: {v.replace('✅ ', '').replace('❌ ', '')}\n"
         
