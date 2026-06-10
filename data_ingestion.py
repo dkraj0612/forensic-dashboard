@@ -54,6 +54,7 @@ class OmniFetcher:
         try:
             self.session.get("https://www.nseindia.com", headers=headers, timeout=10)
             self.session.get("https://nsearchives.nseindia.com", headers=headers, timeout=10)
+            self.session.get("https://archives.nseindia.com", headers=headers, timeout=10) # Added legacy archive priming
         except Exception:
             pass
 
@@ -100,7 +101,8 @@ def process_market_action(cfg: MarketPipelineConfig, fetcher: OmniFetcher):
     prices = []
     urls_to_try = [
         f"https://nsearchives.nseindia.com/content/cm/BhavCopy_NSE_CM_0_0_0_{cfg.date_yyyymmdd}_F_0000.csv.zip",
-        f"https://nsearchives.nseindia.com/content/historical/EQUITIES/{cfg.date_yyyy}/{cfg.date_mmm}/cm{cfg.date_ddmmmyyyy}bhav.csv.zip"
+        f"https://nsearchives.nseindia.com/content/historical/EQUITIES/{cfg.date_yyyy}/{cfg.date_mmm}/cm{cfg.date_ddmmmyyyy}bhav.csv.zip",
+        f"https://archives.nseindia.com/content/historical/EQUITIES/{cfg.date_yyyy}/{cfg.date_mmm}/cm{cfg.date_ddmmmyyyy}bhav.csv.zip"
     ]
     
     content = None
@@ -135,9 +137,13 @@ def process_derivatives(cfg: MarketPipelineConfig, fetcher: OmniFetcher):
     fno = []
     pr_date_str = cfg.trading_today.strftime('%d%m%y')
     
+    # CARPET-BOMBING URLS: Hit all known current and legacy NSE endpoints
     urls_to_try = [
         f"https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{cfg.date_yyyymmdd}_F_0000.csv.zip",
-        f"https://nsearchives.nseindia.com/archives/equities/bhavcopy/pr/PR{pr_date_str}.zip"
+        f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{cfg.date_yyyy}/{cfg.date_mmm}/fo{cfg.date_ddmmmyyyy}bhav.csv.zip",
+        f"https://archives.nseindia.com/content/historical/DERIVATIVES/{cfg.date_yyyy}/{cfg.date_mmm}/fo{cfg.date_ddmmmyyyy}bhav.csv.zip",
+        f"https://nsearchives.nseindia.com/archives/equities/bhavcopy/pr/PR{pr_date_str}.zip",
+        f"https://archives.nseindia.com/archives/equities/bhavcopy/pr/PR{pr_date_str}.zip"
     ]
     
     content = None
