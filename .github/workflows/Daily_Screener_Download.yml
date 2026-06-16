@@ -29,8 +29,7 @@ jobs:
 
       - name: Run Market Pulse Script
         env:
-          SCREENER_USERNAME: ${{ secrets.SCREENER_USERNAME }}
-          SCREENER_PASSWORD: ${{ secrets.SCREENER_PASSWORD }}
+          SCREENER_COOKIE: ${{ secrets.SCREENER_COOKIE }}
         run: python screener_daily_feed.py
 
       - name: Commit and Push Downloaded PDFs
