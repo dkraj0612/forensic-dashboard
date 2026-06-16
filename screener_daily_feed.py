@@ -449,7 +449,7 @@ def register_successful_metric(ticker: str, category: str):
     PIPELINE_METRICS["total_unique_stocks"].add(ticker)
     save_metrics()
 
-def extract_stock_data(ticker):
+def extract_stock_data(ticker):def extract_stock_data(ticker):
     url = f"https://www.screener.in/company/{ticker}/"
     try:
         resp = session.get(url, headers=HEADERS, timeout=15)
@@ -483,8 +483,22 @@ def extract_stock_data(ticker):
             try:
                 full_url = urljoin("https://www.screener.in", href)
                 if '.pdf' in full_url.lower() or 'concalls' in full_url.lower() or 'announcements' in full_url.lower():
-                    file_resp = session.get(full_url, headers=HEADERS, stream=True, timeout=30)
+                    
+                    # Removed stream=True to prevent incomplete buffering 
+                    file_resp = session.get(full_url, headers=HEADERS, timeout=45)
+                    
                     if file_resp.status_code == 200:
+                        
+                        # GUARDRAIL 1: Verify the file is actually a document/audio, NOT an HTML error page
+                        content_type = file_resp.headers.get("Content-Type", "").lower()
+                        if "text/html" in content_type:
+                            print(f"      [!] Blocked by external server firewall (HTML returned). Skipping {filename}")
+                            continue
+                            
+                        # GUARDRAIL 2: Verify the file isn't an empty 0-byte ghost file
+                        if len(file_resp.content) < 1000:
+                            print(f"      [!] File is corrupted or empty (< 1KB). Skipping {filename}")
+                            continue
                         
                         if is_audio:
                             with open(save_path, 'wb') as f: f.write(file_resp.content)
@@ -507,10 +521,10 @@ def extract_stock_data(ticker):
                             else:
                                 fallback_path = save_path.replace(".md", ".pdf")
                                 with open(fallback_path, 'wb') as f: f.write(file_resp.content)
-                                print(f"      [!] Complex parse failed (Scanned/Short). Safely secured raw PDF -> {fallback_path.split('/')[-1]}")
+                                print(f"      [!] Complex parse failed. Safely secured raw PDF -> {fallback_path.split('/')[-1]}")
                                 register_successful_metric(ticker, matched_category)
                                 
-                        time.sleep(random.uniform(1.0, 2.0))
+                        time.sleep(random.uniform(1.5, 3.0))
             except Exception as e:
                 print(f"      [!] Processing failure on {filename}: {e}")
 
