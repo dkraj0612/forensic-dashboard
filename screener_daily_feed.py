@@ -21,7 +21,7 @@ except ImportError:
 DASHBOARD_URL = "https://www.screener.in/market-pulse/"  
 
 # 2. You MUST paste your 'sessionid' cookie here so the script can log in.
-SESSION_ID_COOKIE = "PASTE_YOUR_SESSION_ID_HERE"
+SESSION_ID_COOKIE = "1f4z98mwvz8ekft5cr5czpdsxoba9n7i"
 
 # 3. Output Location
 OUTPUT_DIR = r"C:\Users\Test\Downloads\corporate_data\market_pulse_daily"
