@@ -8,16 +8,17 @@ from bs4 import BeautifulSoup
 from io import StringIO
 
 try:
-    from curl_cffi import requests as tls_requests
+    from playwright.sync_api import sync_playwright
     import pandas as pd
 except ImportError:
-    print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas lxml html5lib beautifulsoup4")
+    print("[CRITICAL] Missing libraries. Run: pip install playwright pandas beautifulsoup4 lxml html5lib")
     sys.exit(1)
 
 # ==========================================
 #               CONFIGURATION
 # ==========================================
-SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE")
+USERNAME = os.getenv("SCREENER_USERNAME")
+PASSWORD = os.getenv("SCREENER_PASSWORD")
 OUTPUT_DIR = "market_pulse_data"
 # ==========================================
 
@@ -25,7 +26,6 @@ TODAY = datetime.today().strftime('%Y-%m-%d')
 STOCKS_DIR = os.path.join(OUTPUT_DIR, "Stocks")
 GLOBAL_DIR = os.path.join(OUTPUT_DIR, "Global_Data")
 
-# Advanced Mapping: Uses partial paths instead of exact URLs to guarantee a match
 TARGET_CATEGORIES = {
     "Concalls": {"type": "doc", "pattern": r'/concalls/$'},
     "Upcoming_Concalls": {"type": "table", "pattern": r'/concalls/upcoming'},
@@ -43,71 +43,19 @@ TARGET_CATEGORIES = {
     "Dividends": {"type": "table", "pattern": r'dividend'}
 }
 
-# Raw injection of the cookie to bypass Cloudflare POST-login blocks
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Accept-Language': 'en-US,en;q=0.9',
-    'Referer': 'https://www.screener.in/',
-    'Connection': 'keep-alive',
-    'Cookie': f'sessionid={SESSION_ID_COOKIE}' if SESSION_ID_COOKIE else ''
-}
-
-session = tls_requests.Session(impersonate="chrome124")
-
-def map_dashboard_links():
-    """Scans the live dashboard to find the true, current URLs for all categories."""
-    print("\n[*] Initializing dynamic endpoint mapper on Dashboard...")
-    dashboard_url = "https://www.screener.in/market-pulse/"
-    live_endpoints = {}
-    
-    try:
-        resp = session.get(dashboard_url, headers=HEADERS, timeout=15)
-        
-        if "login" in resp.url.lower():
-            print("      [CRITICAL] Dashboard redirected to login. Your SESSION_ID_COOKIE is expired or missing.")
-            return {}
-            
-        soup = BeautifulSoup(resp.text, 'html.parser')
-        
-        for a in soup.find_all('a'):
-            href = a.get('href', '')
-            if not href:
-                continue
-                
-            for cat_name, props in TARGET_CATEGORIES.items():
-                if cat_name not in live_endpoints:
-                    # If the link matches our safety regex pattern, store the full URL
-                    if re.search(props['pattern'], href, re.IGNORECASE):
-                        live_endpoints[cat_name] = {
-                            "url": urljoin(dashboard_url, href),
-                            "type": props["type"]
-                        }
-                        
-        print(f"      [OK] Dynamically mapped {len(live_endpoints)} out of {len(TARGET_CATEGORIES)} active endpoints.")
-        
-        missing = set(TARGET_CATEGORIES.keys()) - set(live_endpoints.keys())
-        if missing:
-            print(f"      [!] Failed to locate endpoints for: {', '.join(missing)}")
-            
-        return live_endpoints
-    except Exception as e:
-        print(f"      [!] Network mapper failed: {e}")
-        return {}
-
 def sanitize_filename(text: str) -> str:
     clean = re.sub(r'[\\/*?:"<>|\'’]', "", text)
     return clean.replace(" ", "_").strip()[:100]
 
-def extract_tables(category_name, resp):
-    soup = BeautifulSoup(resp.text, 'html.parser')
+def extract_tables(category_name, page_content):
+    soup = BeautifulSoup(page_content, 'html.parser')
     html_tables = soup.find_all('table')
     
     try:
-        html_stream = StringIO(resp.text)
+        html_stream = StringIO(page_content)
         pandas_tables = pd.read_html(html_stream)
     except ValueError:
-        print(f"      [-] No structured data tables found on page.")
+        print(f"      [-] No structural data tables found on page.")
         return
 
     for idx, df in enumerate(pandas_tables):
@@ -141,7 +89,6 @@ def extract_tables(category_name, resp):
             if symbol == "GLOBAL":
                 csv_path = os.path.join(GLOBAL_DIR, f"{category_name}_{TODAY}.csv")
                 clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Logged Global Data -> Global_Data/{category_name}_{TODAY}.csv")
             else:
                 stock_table_dir = os.path.join(STOCKS_DIR, symbol, "Tables")
                 os.makedirs(stock_table_dir, exist_ok=True)
@@ -156,10 +103,10 @@ def extract_tables(category_name, resp):
                         clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
                 else:
                     clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Updated Stock Row -> Stocks/{symbol}/Tables/{category_name}.csv")
+        print(f"      [OK] Parsed and saved table data for {category_name}.")
 
-def extract_documents(resp):
-    soup = BeautifulSoup(resp.text, 'html.parser')
+def extract_documents(page_content, context):
+    soup = BeautifulSoup(page_content, 'html.parser')
     valid_doc_keywords = ['transcript', 'audio', 'presentation', 'summary', 'report', 'notes']
     doc_count = 0
     
@@ -189,63 +136,96 @@ def extract_documents(resp):
         if not os.path.exists(save_path):
             full_url = urljoin("https://www.screener.in", href)
             try:
-                file_resp = session.get(full_url, headers=HEADERS, stream=True, timeout=30)
-                if file_resp.status_code == 200:
+                # Use the browser's internal network context to download the file directly
+                response = context.request.get(full_url)
+                if response.ok:
                     with open(save_path, 'wb') as f:
-                        for chunk in file_resp.iter_content(chunk_size=8192):
-                            if chunk: f.write(chunk)
-                    print(f"      [OK] Downloaded Document -> Stocks/{symbol}/Documents/{filename}")
+                        f.write(response.body())
+                    print(f"      [OK] Downloaded -> {symbol}/Documents/{filename}")
                     doc_count += 1
-                    time.sleep(1.5)
+                    time.sleep(1) # Polite delay
             except Exception as e:
                 print(f"      [!] Failed to download {filename}: {e}")
                 
     if doc_count == 0:
         print("      [-] No new documents found.")
 
-def main():
-    if not SESSION_ID_COOKIE:
-        print("[CRITICAL] SCREENER_COOKIE missing from GitHub environment.")
+def run_scraper():
+    if not USERNAME or not PASSWORD:
+        print("[CRITICAL] Missing SCREENER_USERNAME or SCREENER_PASSWORD in GitHub secrets.")
         sys.exit(1)
 
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(GLOBAL_DIR, exist_ok=True)
     
     print(f"\n{'='*50}")
-    print("=== DYNAMIC MARKET PULSE PIPELINE ===")
+    print("=== PLAYWRIGHT CLOUD BROWSER INITIALIZED ===")
     print(f"{'='*50}")
-    
-    # Let the script find the exact URLs itself
-    live_endpoints = map_dashboard_links()
-    
-    if not live_endpoints:
-        print("[CRITICAL] Could not map any active endpoints. Exiting.")
-        sys.exit(1)
+
+    with sync_playwright() as p:
+        # Launch an invisible Chromium browser
+        browser = p.chromium.launch(headless=True)
+        context = browser.new_context(
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+        )
+        page = context.new_page()
+
+        print("[*] Navigating to Login and bypassing firewalls...")
+        page.goto("https://www.screener.in/login/")
         
-    for category_name, payload in live_endpoints.items():
-        print(f"\n>>> Processing Category Endpoint: {category_name}")
-        url = payload["url"]
-        data_type = payload["type"]
+        # Fill in credentials and log in
+        page.fill("input[name='username']", USERNAME)
+        page.fill("input[name='password']", PASSWORD)
+        page.click("button[type='submit']")
         
-        try:
-            resp = session.get(url, headers=HEADERS, timeout=15)
-            print(f"      [DIAGNOSTIC] Status: {resp.status_code} | Landed URL: {resp.url}")
-            
-            if resp.status_code != 200 or "login" in resp.url.lower():
-                print(f"      [!] Verification failure on {category_name}.")
-                continue
+        # Wait for the dashboard to load (ensures Cloudflare JS passes)
+        page.wait_for_url("**/market-pulse/**", timeout=20000)
+        print("      [OK] Successfully authenticated and loaded Market Pulse!")
+
+        # 1. Dynamically map the dashboard links
+        print("\n[*] Mapping live category endpoints...")
+        dashboard_content = page.content()
+        soup = BeautifulSoup(dashboard_content, 'html.parser')
+        
+        live_endpoints = {}
+        for a in soup.find_all('a'):
+            href = a.get('href', '')
+            if not href: continue
                 
-            if data_type == "table":
-                extract_tables(category_name, resp)
-            elif data_type == "doc":
-                extract_documents(resp)
-                
-        except Exception as e:
-            print(f"      [!] Socket transport error: {e}")
-            
-        time.sleep(2.5)
+            for cat_name, props in TARGET_CATEGORIES.items():
+                if cat_name not in live_endpoints and re.search(props['pattern'], href, re.IGNORECASE):
+                    live_endpoints[cat_name] = {
+                        "url": urljoin("https://www.screener.in", href),
+                        "type": props["type"]
+                    }
         
-    print("\n=== SYSTEM PROCESSING COMPLETE ===")
+        print(f"      [OK] Mapped {len(live_endpoints)} active targets.")
+        
+        # 2. Process each endpoint
+        for category_name, payload in live_endpoints.items():
+            print(f"\n>>> Processing Category: {category_name}")
+            try:
+                # Command the browser to visit the page
+                page.goto(payload["url"])
+                page.wait_for_load_state("domcontentloaded")
+                time.sleep(2) # Give the data tables an extra second to render
+                
+                content = page.content()
+                
+                if "login" in page.url.lower():
+                    print("      [!] Kicked back to login. Session dropped.")
+                    continue
+
+                if payload["type"] == "table":
+                    extract_tables(category_name, content)
+                elif payload["type"] == "doc":
+                    extract_documents(content, context)
+                    
+            except Exception as e:
+                print(f"      [!] Browser navigation error: {e}")
+                
+        browser.close()
+        print("\n=== CLOUD BROWSER EXTRACTION COMPLETE ===")
 
 if __name__ == "__main__":
-    main()
+    run_scraper()
