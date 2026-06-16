@@ -17,8 +17,17 @@ except ImportError:
 # ==========================================
 #               CONFIGURATION
 # ==========================================
-# Reads from GitHub Secrets automatically; falls back to manual string if running locally
-SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE", "SCREENER_COOKIE")
+# Look for the GitHub environment variable first
+SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE")
+
+# --- TEMPORARY DEBUG BLOCK ---
+if not SESSION_ID_COOKIE:
+    print("[DEBUG ERROR] Python cannot find the SCREENER_COOKIE environment variable at all!")
+    # Fallback to local testing string if needed
+    SESSION_ID_COOKIE = "PASTE_YOUR_LOCAL_COOKIE_HERE"
+else:
+    print(f"[DEBUG SUCCESS] Python successfully read the cookie! Length: {len(SESSION_ID_COOKIE)} characters.")
+# ==========================================
 OUTPUT_DIR = "market_pulse_data"
 # ==========================================
 
