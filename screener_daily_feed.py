@@ -26,25 +26,27 @@ TODAY = datetime.today().strftime('%Y-%m-%d')
 STOCKS_DIR = os.path.join(OUTPUT_DIR, "Stocks")
 GLOBAL_DIR = os.path.join(OUTPUT_DIR, "Global_Data")
 
-TARGET_URLS = {
-    "Concalls": ("doc", "https://www.screener.in/concalls/"),
-    "Upcoming_Concalls": ("table", "https://www.screener.in/concalls/upcoming/"),
-    "Annual_Reports": ("doc", "https://www.screener.in/reports/"),
-    "FII_Investment": ("table", "https://www.screener.in/fii-fpi-investment/"),
-    "Upcoming_Results": ("table", "https://www.screener.in/results/upcoming/"),
-    "Bulk_Deals": ("table", "https://www.screener.in/bulk-deals/"),
-    "Block_Deals": ("table", "https://www.screener.in/block-deals/"),
-    "SAST_Trades": ("table", "https://www.screener.in/sast-trades/"),
-    "Insider_Trades": ("table", "https://www.screener.in/insider-trades/"),
-    "Bonus_Issues": ("table", "https://www.screener.in/corporate-actions/bonus/"),
-    "Right_Issues": ("table", "https://www.screener.in/corporate-actions/rights/"),
-    "Stock_Splits": ("table", "https://www.screener.in/corporate-actions/split/"),
-    "Buy_Backs": ("table", "https://www.screener.in/corporate-actions/buy-back/"),
-    "Dividends": ("table", "https://www.screener.in/corporate-actions/dividend/")
+# We map the exact text from your screenshot to the type of data we want to extract.
+# Announcements and Industries Overview are INTENTIONALLY excluded here.
+TARGET_CATEGORIES = {
+    "Concalls": "doc",
+    "Upcoming Concalls": "table",
+    "Annual Reports": "doc",
+    "FII Investment": "table",
+    "Upcoming Results": "table",
+    "Bulk Deals": "table",
+    "Block Deals": "table",
+    "SAST Trades": "table",
+    "Insider Trades": "table",
+    "Bonus": "table",
+    "Right": "table",
+    "Split": "table",
+    "Buy Back": "table",
+    "Dividend": "table"
 }
 
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
     'Accept-Language': 'en-US,en;q=0.9',
 }
@@ -52,7 +54,7 @@ HEADERS = {
 session = tls_requests.Session(impersonate="chrome124")
 
 def authenticate_session():
-    """Logs into Screener natively via the cloud runner IP environment."""
+    """Logs into Screener natively via the cloud runner environment."""
     print("[*] Initiating Native Cloud Authentication...")
     login_url = "https://www.screener.in/login/"
     
@@ -84,10 +86,38 @@ def authenticate_session():
         else:
             print("      [!] Authentication rejected. Check password/username secrets.")
             return False
-            
     except Exception as e:
         print(f"      [!] Login execution failed: {e}")
         return False
+
+def map_dashboard_links():
+    """Visits the Market Pulse dashboard and dynamically extracts the actual live URLs."""
+    print("\n[*] Mapping live category endpoints from Dashboard...")
+    dashboard_url = "https://www.screener.in/market-pulse/"
+    live_endpoints = {}
+    
+    try:
+        resp = session.get(dashboard_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(resp.text, 'html.parser')
+        
+        for a in soup.find_all('a'):
+            text = a.get_text(separator=" ", strip=True).strip()
+            
+            for cat_name, data_type in TARGET_CATEGORIES.items():
+                # If the exact dashboard link text matches our target list, grab the hidden href
+                if cat_name.lower() in text.lower() and a.get('href'):
+                    # Prevent overwriting if already mapped
+                    if cat_name not in live_endpoints:
+                        live_endpoints[cat_name] = {
+                            "url": urljoin(dashboard_url, a.get('href')),
+                            "type": data_type
+                        }
+                        
+        print(f"      [OK] Mapped {len(live_endpoints)} out of {len(TARGET_CATEGORIES)} target categories.")
+        return live_endpoints
+    except Exception as e:
+        print(f"      [!] Failed to map dashboard: {e}")
+        return {}
 
 def sanitize_filename(text: str) -> str:
     clean = re.sub(r'[\\/*?:"<>|\'’]', "", text)
@@ -132,14 +162,16 @@ def extract_tables(category_name, resp):
         
         for symbol, group in df.groupby('Ticker_Symbol'):
             clean_group = group.drop(columns=['Ticker_Symbol'])
+            safe_cat_name = sanitize_filename(category_name)
+            
             if symbol == "GLOBAL":
-                csv_path = os.path.join(GLOBAL_DIR, f"{category_name}_{TODAY}.csv")
+                csv_path = os.path.join(GLOBAL_DIR, f"{safe_cat_name}_{TODAY}.csv")
                 clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Logged Global Data -> Global_Data/{category_name}_{TODAY}.csv")
+                print(f"      [OK] Logged Global Data -> Global_Data/{safe_cat_name}_{TODAY}.csv")
             else:
                 stock_table_dir = os.path.join(STOCKS_DIR, symbol, "Tables")
                 os.makedirs(stock_table_dir, exist_ok=True)
-                csv_path = os.path.join(stock_table_dir, f"{category_name}.csv")
+                csv_path = os.path.join(stock_table_dir, f"{safe_cat_name}.csv")
                 
                 if os.path.exists(csv_path):
                     try:
@@ -150,7 +182,7 @@ def extract_tables(category_name, resp):
                         clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
                 else:
                     clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Updated Stock Row -> Stocks/{symbol}/Tables/{category_name}.csv")
+                print(f"      [OK] Updated Stock Row -> Stocks/{symbol}/Tables/{safe_cat_name}.csv")
 
 def extract_documents(resp):
     soup = BeautifulSoup(resp.text, 'html.parser')
@@ -212,17 +244,28 @@ def main():
     if not authenticate_session():
         print("[CRITICAL] Aborting extraction due to authentication failure.")
         sys.exit(1)
+        
+    # Step 1: Map the actual, real URLs from the dashboard
+    live_endpoints = map_dashboard_links()
     
-    for category_name, (data_type, url) in TARGET_URLS.items():
+    if not live_endpoints:
+        print("[CRITICAL] Could not map any endpoints. Exiting.")
+        sys.exit(1)
+    
+    # Step 2: Loop through the successfully mapped URLs
+    for category_name, payload in live_endpoints.items():
         print(f"\n>>> Processing Category Endpoint: {category_name}")
+        url = payload["url"]
+        data_type = payload["type"]
+        
         try:
             resp = session.get(url, headers=HEADERS, timeout=15)
             
-            # DIAGNOSTIC LOG: This tracks exactly what the server does to your cloud session
+            # Diagnostic to ensure we aren't getting 404s anymore
             print(f"      [DIAGNOSTIC] Status: {resp.status_code} | Landed URL: {resp.url}")
             
             if resp.status_code != 200 or "login" in resp.url.lower():
-                print(f"      [!] Session verification failure on {category_name}.")
+                print(f"      [!] Verification failure on {category_name}.")
                 continue
                 
             if data_type == "table":
