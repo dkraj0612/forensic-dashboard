@@ -28,7 +28,8 @@ jobs:
           pip install curl_cffi beautifulsoup4 pandas lxml html5lib
 
       - name: Run Screener Scraper
-        # Tell it to run the new script
+        env:
+          SCREENER_COOKIE: ${{ secrets.SCREENER_COOKIE }}
         run: python screener_daily_feed.py
 
       - name: Commit and Push Downloaded PDFs
