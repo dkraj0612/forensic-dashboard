@@ -17,7 +17,8 @@ except ImportError:
 # ==========================================
 #               CONFIGURATION
 # ==========================================
-SESSION_ID_COOKIE = "1f4z98mwvz8ekft5cr5czpdsxoba9n7i"
+# Reads from GitHub Secrets automatically; falls back to manual string if running locally
+SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE", "SCREENER_COOKIE")
 OUTPUT_DIR = "market_pulse_data"
 # ==========================================
 
