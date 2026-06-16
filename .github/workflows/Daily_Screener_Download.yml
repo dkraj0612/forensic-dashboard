@@ -25,7 +25,7 @@ jobs:
       - name: Install Dependencies and Headless Browser
         run: |
           python -m pip install --upgrade pip
-          pip install playwright pandas beautifulsoup4 lxml html5lib
+          pip install  curl_cffi beautifulsoup4
           playwright install chromium
 
       - name: Run Market Pulse Extractor
