@@ -106,7 +106,7 @@ def save_metrics():
 PIPELINE_METRICS = load_metrics()
 
 def send_telegram_summary():
-    """Compiles local metrics and securely dispatches the daily summary payload."""
+    """Compiles local metrics, appends specific stock tickers, and securely dispatches the daily summary payload."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("\n[!] Telegram configuration missing. Summary notification bypassed.")
         return
@@ -122,7 +122,12 @@ def send_telegram_summary():
 
     for cat, stocks in PIPELINE_METRICS['category_counts'].items():
         if stocks:
+            # Sort the tickers alphabetically and join them with a comma
+            stock_list = ", ".join(sorted(list(stocks)))
+            
+            # Append the count, followed by the specific tickers underneath
             msg += f"• *{cat}:* {len(stocks)} stocks\n"
+            msg += f"  └ `{stock_list}`\n\n"
 
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "Markdown"}
