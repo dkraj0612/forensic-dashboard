@@ -24,7 +24,7 @@ DASHBOARD_URL = "https://www.screener.in/market-pulse/"
 SESSION_ID_COOKIE = "1f4z98mwvz8ekft5cr5czpdsxoba9n7i"
 
 # 3. Output Location
-OUTPUT_DIR = r"C:\Users\Test\Downloads\corporate_data\market_pulse_daily"
+OUTPUT_DIR = "market_pulse_daily"
 # ==========================================
 
 TODAY = datetime.today().strftime('%Y-%m-%d')
