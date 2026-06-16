@@ -1,0 +1,39 @@
+name: Daily Screener Downloader
+
+on:
+  schedule:
+    # Runs at 13:30 UTC every day (which is 7:00 PM IST after market closes)
+    - cron: '30 13 * * *'
+  workflow_dispatch: # Allows you to click a button to run it manually anytime
+
+permissions:
+  contents: write # Allows the bot to save the PDFs back to your repository
+
+jobs:
+  scrape-and-download:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install curl_cffi beautifulsoup4
+
+      - name: Run Screener Scraper
+        run: python screener_daily_feed.py
+
+      - name: Commit and Push Downloaded PDFs
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add daily_filings/* || true
+          git commit -m "Automated Market Feed Download: $(date +'%Y-%m-%d')" || true
+          git push
