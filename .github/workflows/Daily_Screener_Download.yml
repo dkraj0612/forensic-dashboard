@@ -1,13 +1,13 @@
-name: Daily Screener Downloader
+name: Daily Market Pulse Downloader
 
 on:
   schedule:
-    # Runs at 13:30 UTC every day (which is 7:00 PM IST after market closes)
+    # Runs at 13:30 UTC every day (which is 7:00 PM IST)
     - cron: '30 13 * * *'
-  workflow_dispatch: # Allows you to click a button to run it manually anytime
+  workflow_dispatch: # Allows you to run it manually by clicking a button
 
 permissions:
-  contents: write # Allows the bot to save the PDFs back to your repository
+  contents: write # Allows the bot to save files back to your repository
 
 jobs:
   scrape-and-download:
@@ -22,22 +22,23 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Dependencies
+      - name: Install Dependencies and Headless Browser
         run: |
           python -m pip install --upgrade pip
           pip install playwright pandas beautifulsoup4 lxml html5lib
           playwright install chromium
 
-      - name: Run Market Pulse Script
+      - name: Run Market Pulse Extractor
         env:
-          SCREENER_COOKIE: ${{ secrets.SCREENER_COOKIE }}
+          # Passes your native credentials to the Playwright browser
+          SCREENER_USERNAME: ${{ secrets.SCREENER_USERNAME }}
+          SCREENER_PASSWORD: ${{ secrets.SCREENER_PASSWORD }}
         run: python screener_daily_feed.py
 
-      - name: Commit and Push Downloaded PDFs
+      - name: Commit and Push Downloaded Data
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          # Tell git to track the new folder name
-          git add market_pulse_daily/* || true
-          git commit -m "Automated Market Pulse Download: $(date +'%Y-%m-%d')" || true
+          git add market_pulse_data/* || true
+          git commit -m "Automated Market Data Update: $(date +'%Y-%m-%d')" || true
           git push
