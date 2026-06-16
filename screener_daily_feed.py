@@ -11,14 +11,14 @@ try:
     from curl_cffi import requests as tls_requests
     import pandas as pd
 except ImportError:
-    print("[CRITICAL] Missing dependencies. Run: pip install curl_cffi pandas lxml html5lib beautifulsoup4")
+    print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas lxml html5lib beautifulsoup4")
     sys.exit(1)
 
 # ==========================================
 #               CONFIGURATION
 # ==========================================
-# Securely pull authentication data from environment scopes
-SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE")
+USERNAME = os.getenv("SCREENER_USERNAME")
+PASSWORD = os.getenv("SCREENER_PASSWORD")
 OUTPUT_DIR = "market_pulse_data"
 # ==========================================
 
@@ -47,25 +47,47 @@ HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
     'Accept-Language': 'en-US,en;q=0.9',
-    'Referer': 'https://www.screener.in/',
-    'Connection': 'keep-alive',
 }
 
 session = tls_requests.Session(impersonate="chrome124")
 
-def verify_and_inject_auth():
-    """Validates the structure of the input token environment layer."""
-    global HEADERS
-    if not SESSION_ID_COOKIE:
-        print("[CRITICAL ERROR] The environment variable 'SCREENER_COOKIE' is entirely empty.")
-        print("                 Ensure your GitHub Repository Secret is explicitly mapped in the workflow YAML file.")
-        sys.exit(1)
-        
-    clean_cookie = SESSION_ID_COOKIE.strip()
-    print(f"[SYSTEM] Validating pipeline token initialization (Length: {len(clean_cookie)} characters)...")
+def authenticate_session():
+    """Logs into Screener natively via the cloud runner IP environment."""
+    print("[*] Initiating Native Cloud Authentication...")
+    login_url = "https://www.screener.in/login/"
     
-    # Inject directly into transport header map to bypass internal session manager rewrites
-    HEADERS['Cookie'] = f"sessionid={clean_cookie}"
+    try:
+        get_resp = session.get(login_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(get_resp.text, 'html.parser')
+        csrf_tag = soup.find('input', {'name': 'csrfmiddlewaretoken'})
+        
+        if not csrf_tag:
+            print("      [!] Could not locate CSRF token on login page.")
+            return False
+            
+        payload = {
+            'csrfmiddlewaretoken': csrf_tag.get('value'),
+            'username': USERNAME,
+            'password': PASSWORD,
+            'next': '/market-pulse/'
+        }
+        
+        login_headers = HEADERS.copy()
+        login_headers['Referer'] = login_url
+        login_headers['Origin'] = "https://www.screener.in"
+        
+        post_resp = session.post(login_url, data=payload, headers=login_headers, timeout=15)
+        
+        if "login" not in post_resp.url.lower():
+            print("      [OK] Successfully authenticated credentials.")
+            return True
+        else:
+            print("      [!] Authentication rejected. Check password/username secrets.")
+            return False
+            
+    except Exception as e:
+        print(f"      [!] Login execution failed: {e}")
+        return False
 
 def sanitize_filename(text: str) -> str:
     clean = re.sub(r'[\\/*?:"<>|\'’]', "", text)
@@ -79,7 +101,7 @@ def extract_tables(category_name, resp):
         html_stream = StringIO(resp.text)
         pandas_tables = pd.read_html(html_stream)
     except ValueError:
-        print(f"      [-] No parsable structural data matrix located on page DOM.")
+        print(f"      [-] No structural data tables found on page.")
         return
 
     for idx, df in enumerate(pandas_tables):
@@ -113,7 +135,7 @@ def extract_tables(category_name, resp):
             if symbol == "GLOBAL":
                 csv_path = os.path.join(GLOBAL_DIR, f"{category_name}_{TODAY}.csv")
                 clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Logged Global Dataset Segment -> Global_Data/{category_name}_{TODAY}.csv")
+                print(f"      [OK] Logged Global Data -> Global_Data/{category_name}_{TODAY}.csv")
             else:
                 stock_table_dir = os.path.join(STOCKS_DIR, symbol, "Tables")
                 os.makedirs(stock_table_dir, exist_ok=True)
@@ -128,7 +150,7 @@ def extract_tables(category_name, resp):
                         clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
                 else:
                     clean_group.to_csv(csv_path, index=False, encoding='utf-8-sig')
-                print(f"      [OK] Synchronized Ticker Registry Path -> Stocks/{symbol}/Tables/{category_name}.csv")
+                print(f"      [OK] Updated Stock Row -> Stocks/{symbol}/Tables/{category_name}.csv")
 
 def extract_documents(resp):
     soup = BeautifulSoup(resp.text, 'html.parser')
@@ -166,37 +188,41 @@ def extract_documents(resp):
                     with open(save_path, 'wb') as f:
                         for chunk in file_resp.iter_content(chunk_size=8192):
                             if chunk: f.write(chunk)
-                    print(f"      [OK] Downloaded Document Attachment -> Stocks/{symbol}/Documents/{filename}")
+                    print(f"      [OK] Downloaded Document -> Stocks/{symbol}/Documents/{filename}")
                     doc_count += 1
                     time.sleep(1.5)
             except Exception as e:
-                print(f"      [!] Transmission failure targeting {filename}: {e}")
+                print(f"      [!] Failed to download {filename}: {e}")
                 
     if doc_count == 0:
-        print("      [-] No unresolved archival documents detected on current trace.")
+        print("      [-] No new documents found.")
 
 def main():
+    if not USERNAME or not PASSWORD:
+        print("[CRITICAL] SCREENER_USERNAME and/or SCREENER_PASSWORD missing from GitHub environment.")
+        sys.exit(1)
+
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(GLOBAL_DIR, exist_ok=True)
     
     print(f"\n{'='*50}")
-    print("=== PIPELINE AUDIT AND TRACKING ENGINE ===")
+    print("=== LIVE NATIVE CREDENTIALS RUN ===")
     print(f"{'='*50}")
     
-    verify_and_inject_auth()
+    if not authenticate_session():
+        print("[CRITICAL] Aborting extraction due to authentication failure.")
+        sys.exit(1)
     
     for category_name, (data_type, url) in TARGET_URLS.items():
-        print(f"\n>>> Querying Category Endpoint: {category_name}")
+        print(f"\n>>> Processing Category Endpoint: {category_name}")
         try:
             resp = session.get(url, headers=HEADERS, timeout=15)
             
-            # CRITICAL AUDIT: Trace exact delivery endpoints to uncover silent routing drops
-            print(f"      [DIAGNOSTIC] Response Code: {resp.status_code} | Target URL: {resp.url}")
+            # DIAGNOSTIC LOG: This tracks exactly what the server does to your cloud session
+            print(f"      [DIAGNOSTIC] Status: {resp.status_code} | Landed URL: {resp.url}")
             
-            if "login" in resp.url.lower() or resp.status_code == 403:
-                print(f"      [!] Access Denied on {category_name}. Session dropped by security gateway.")
-                if "challenges.cloudflare.com" in resp.text or "sucuri" in resp.text.lower():
-                    print("          -> Detected active JavaScript WAF Challenge Interstitial Page.")
+            if resp.status_code != 200 or "login" in resp.url.lower():
+                print(f"      [!] Session verification failure on {category_name}.")
                 continue
                 
             if data_type == "table":
@@ -205,11 +231,11 @@ def main():
                 extract_documents(resp)
                 
         except Exception as e:
-            print(f"      [!] Connection dropping at socket layer: {e}")
+            print(f"      [!] Socket transport error: {e}")
             
         time.sleep(2.5)
         
-    print("\n=== ENGINE OPERATION COMPLETE ===")
+    print("\n=== SYSTEM PROCESSING COMPLETE ===")
 
 if __name__ == "__main__":
     main()
