@@ -17,16 +17,11 @@ except ImportError:
 # ==========================================
 #               CONFIGURATION
 # ==========================================
-SESSION_ID_COOKIE = os.getenv("SCREENER_COOKIE")
+# Pulling live credentials natively from GitHub Secrets
+USERNAME = os.getenv("SCREENER_USERNAME")
+PASSWORD = os.getenv("SCREENER_PASSWORD")
 OUTPUT_DIR = "market_pulse_data"
 # ==========================================
-
-# Print confirmation to GitHub Logs securely
-if not SESSION_ID_COOKIE:
-    print("[ERROR] SCREENER_COOKIE environment variable is empty or missing.")
-    sys.exit(1)
-else:
-    print(f"[SYSTEM] Cookie successfully injected into pipeline. Length: {len(SESSION_ID_COOKIE)} chars.")
 
 TODAY = datetime.today().strftime('%Y-%m-%d')
 STOCKS_DIR = os.path.join(OUTPUT_DIR, "Stocks")
@@ -49,17 +44,55 @@ TARGET_URLS = {
     "Dividends": ("table", "https://www.screener.in/corporate-actions/dividend/")
 }
 
-# Bulletproof Header Structuring: Forcing the cookie at the root request layer
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
     'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8',
     'Accept-Language': 'en-US,en;q=0.9',
-    'Referer': 'https://www.screener.in/',
-    'Connection': 'keep-alive',
-    'Cookie': f'sessionid={SESSION_ID_COOKIE}'
 }
 
+# The TLS session automatically collects and manages authorized cookies
 session = tls_requests.Session(impersonate="chrome124")
+
+def authenticate_session():
+    """Logs into Screener natively to generate a trusted, location-matched session token."""
+    print("[*] Initiating Native Cloud Authentication Sequence...")
+    login_url = "https://www.screener.in/login/"
+    
+    try:
+        # Step 1: Hit the login page to grab the hidden CSRF security token
+        get_resp = session.get(login_url, headers=HEADERS, timeout=15)
+        soup = BeautifulSoup(get_resp.text, 'html.parser')
+        csrf_tag = soup.find('input', {'name': 'csrfmiddlewaretoken'})
+        
+        if not csrf_tag:
+            print("      [!] Could not locate CSRF security token on login page.")
+            return False
+            
+        # Step 2: Construct the login payload
+        payload = {
+            'csrfmiddlewaretoken': csrf_tag.get('value'),
+            'username': USERNAME,
+            'password': PASSWORD,
+            'next': '/market-pulse/'
+        }
+        
+        login_headers = HEADERS.copy()
+        login_headers['Referer'] = login_url
+        login_headers['Origin'] = "https://www.screener.in"
+        
+        # Step 3: Execute the login
+        post_resp = session.post(login_url, data=payload, headers=login_headers, timeout=15)
+        
+        if "login" not in post_resp.url.lower():
+            print("      [OK] Successfully authenticated! Secure cloud session established.")
+            return True
+        else:
+            print("      [!] Authentication failed. Please verify your GitHub Secrets.")
+            return False
+            
+    except Exception as e:
+        print(f"      [!] Login network sequence failed: {e}")
+        return False
 
 def sanitize_filename(text: str) -> str:
     clean = re.sub(r'[\\/*?:"<>|\'’]', "", text)
@@ -175,22 +208,29 @@ def extract_documents(resp):
         print("      [-] No new documents found.")
 
 def main():
+    if not USERNAME or not PASSWORD:
+        print("[CRITICAL] SCREENER_USERNAME and/or SCREENER_PASSWORD missing from environment.")
+        sys.exit(1)
+
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(GLOBAL_DIR, exist_ok=True)
     
     print(f"\n{'='*50}")
-    print("=== DIRECT HEADER INJECTION PIPELINE ===")
+    print("=== NATIVE CLOUD AUTHENTICATION PIPELINE ===")
     print(f"{'='*50}")
+    
+    # Run the native login before doing any scraping
+    if not authenticate_session():
+        print("[CRITICAL] Aborting extraction due to authentication failure.")
+        sys.exit(1)
     
     for category_name, (data_type, url) in TARGET_URLS.items():
         print(f"\n>>> Processing Category Endpoint: {category_name}")
         try:
-            # Passing HEADERS containing the forced Cookie string directly
             resp = session.get(url, headers=HEADERS, timeout=15)
             
-            # If redirected to login, the cookie is dead or blocked by location firewalls
             if resp.status_code != 200 or "login" in resp.url.lower():
-                print(f"      [!] Session verification failure on {category_name}. Server rejected token header.")
+                print(f"      [!] Session verification failure on {category_name}.")
                 continue
                 
             if data_type == "table":
