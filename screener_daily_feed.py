@@ -5,6 +5,7 @@ import time
 from datetime import datetime
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
+from io import StringIO  # <--- CRITICAL FIX FOR PANDAS 2.0+
 
 try:
     from curl_cffi import requests as tls_requests
@@ -17,10 +18,10 @@ except ImportError:
 #               CONFIGURATION
 # ==========================================
 # 1. Paste the exact URL of the dashboard page from your screenshot:
-DASHBOARD_URL = "https://www.screener.in/market-pulse/"  # <--- UPDATE THIS TO THE REAL URL
+DASHBOARD_URL = "https://www.screener.in/market-pulse/"  
 
 # 2. You MUST paste your 'sessionid' cookie here so the script can log in.
-SESSION_ID_COOKIE = "1f4z98mwvz8ekft5cr5czpdsxoba9n7i"
+SESSION_ID_COOKIE = "PASTE_YOUR_SESSION_ID_HERE"
 
 # 3. Output Location
 OUTPUT_DIR = r"C:\Users\Test\Downloads\corporate_data\market_pulse_daily"
@@ -79,8 +80,10 @@ def process_category(category_name, url):
 
     # 1. EXTRACT DATA TABLES (Bulk Deals, Dividends, etc.)
     try:
-        # Pandas magically finds all HTML tables and converts them to DataFrames
-        tables = pd.read_html(resp.text)
+        # FIX: Wrap raw HTML string inside StringIO so Pandas reads it safely
+        html_stream = StringIO(resp.text)
+        tables = pd.read_html(html_stream)
+        
         for idx, df in enumerate(tables):
             if not df.empty:
                 csv_filename = f"{safe_name}_{TODAY}_Table_{idx+1}.csv"
@@ -90,7 +93,7 @@ def process_category(category_name, url):
                 df.to_csv(csv_path, index=False, encoding='utf-8-sig')
                 print(f"      [OK] Extracted Data Table -> {csv_filename}")
     except ValueError:
-        pass # No tables found on this specific page
+        pass # No clean structural tables found on this specific sub-page
 
     # 2. EXTRACT DOCUMENTS (Concalls, Reports) & ANNOUNCEMENTS
     doc_count = 0
@@ -135,8 +138,9 @@ def main():
     print("=== MARKET PULSE DYNAMIC EXTRACTOR ===")
     print(f"{'='*50}")
     
-    if not SESSION_ID_COOKIE:
-        print("[!] WARNING: No session cookie provided. This dashboard likely requires it.")
+    if not SESSION_ID_COOKIE or SESSION_ID_COOKIE == "PASTE_YOUR_SESSION_ID_HERE":
+        print("[CRITICAL] You must configure your 'SESSION_ID_COOKIE' variable before running.")
+        sys.exit(1)
         
     print(f"[*] Accessing Dashboard: {DASHBOARD_URL}")
     try:
@@ -155,7 +159,6 @@ def main():
     for a in soup.find_all('a'):
         text = a.get_text(separator=" ", strip=True).strip()
         for target in TARGET_CATEGORIES:
-            # If the link matches our target (e.g., "Bulk Deals"), grab its underlying URL
             if target.lower() in text.lower() and a.get('href'):
                 category_links[target] = urljoin(DASHBOARD_URL, a.get('href'))
                 
