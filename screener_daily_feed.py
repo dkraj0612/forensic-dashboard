@@ -281,35 +281,66 @@ quant_engine = TranscriptIntelligence()
 # =====================================================================
 def download_nse_bhavcopies():
     os.makedirs(BHAV_DIR, exist_ok=True)
+    
+    # 1. Cash Market SEC Bhavcopy (Legacy format still actively supported by NSE)
     sec_url = f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{DDMMYYYY}.csv"
     sec_save_path = os.path.join(BHAV_DIR, f"SEC_BHAV_{TODAY_STR}.csv")
     
     if not os.path.exists(sec_save_path):
         try:
+            print("      [~] Requesting SEC Bhavdata...")
             resp = session.get(sec_url, headers=HEADERS, timeout=20)
             if resp.status_code == 200:
                 with open(sec_save_path, 'wb') as f: f.write(resp.content)
                 PIPELINE_METRICS["bhavcopy_sec"] = True
                 save_metrics()
-        except Exception: pass
+                print("      [OK] SEC Bhavcopy saved successfully.")
+            else:
+                print(f"      [!] SEC Bhavcopy not available yet (Status {resp.status_code}).")
+        except Exception as e:
+            print(f"      [!] SEC Data Error: {e}")
     else:
         PIPELINE_METRICS["bhavcopy_sec"] = True
 
-    fno_url = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{YYYY}/{MMM}/fo{DD_MMM_YYYY}bhav.csv.zip"
+    # 2. FNO Bhavcopy (Updated to new NSE UDiFF Architecture)
+    YYYYMMDD = NOW.strftime('%Y%m%d')
+    fno_url_udiff = f"https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{YYYYMMDD}_F_0000.csv.zip"
+    fno_url_legacy = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{YYYY}/{MMM}/fo{DD_MMM_YYYY}bhav.csv.zip"
+    
     fno_save_path = os.path.join(BHAV_DIR, f"FNO_BHAV_{TODAY_STR}.csv")
     
     if not os.path.exists(fno_save_path):
         try:
-            resp = session.get(fno_url, headers=HEADERS, timeout=20)
+            print("      [~] Requesting FNO Bhavdata Archive...")
+            
+            # Try New UDiFF Format First
+            resp = session.get(fno_url_udiff, headers=HEADERS, timeout=20)
+            if resp.status_code != 200:
+                # Fallback to Legacy Format if UDiFF isn't published yet
+                resp = session.get(fno_url_legacy, headers=HEADERS, timeout=20)
+                
             if resp.status_code == 200:
                 with zipfile.ZipFile(BytesIO(resp.content)) as z:
                     csv_filename = z.namelist()[0]
                     with z.open(csv_filename) as f:
                         df = pd.read_csv(f)
-                        df[df['INSTRUMENT'] != 'OPTSTK'].to_csv(fno_save_path, index=False)
+                        
+                        # Handle Column Mapping Changes dynamically
+                        instrument_col = 'FinInstrmTp' if 'FinInstrmTp' in df.columns else 'INSTRUMENT'
+                        
+                        if instrument_col in df.columns:
+                            # Filter out 'OPTSTK' (Stock Options)
+                            df = df[df[instrument_col] != 'OPTSTK']
+                            
+                        df.to_csv(fno_save_path, index=False)
+                        
                 PIPELINE_METRICS["bhavcopy_fno"] = True
                 save_metrics()
-        except Exception: pass
+                print("      [OK] FNO Bhavcopy processed and saved.")
+            else:
+                print(f"      [!] FNO Bhavcopy not available yet (Status {resp.status_code}).")
+        except Exception as e:
+            print(f"      [!] FNO Data Error: {e}")
     else:
         PIPELINE_METRICS["bhavcopy_fno"] = True
 
