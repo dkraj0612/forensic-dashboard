@@ -28,12 +28,14 @@ jobs:
           pip install curl_cffi beautifulsoup4 pandas lxml html5lib
 
       - name: Run Screener Scraper
-        run: python screener_daily_feed.py
+        # Tell it to run the new script
+        run: python screener_market_pulse.py
 
       - name: Commit and Push Downloaded PDFs
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add daily_filings/* || true
-          git commit -m "Automated Market Feed Download: $(date +'%Y-%m-%d')" || true
+          # Tell git to track the new folder name
+          git add market_pulse_daily/* || true
+          git commit -m "Automated Market Pulse Download: $(date +'%Y-%m-%d')" || true
           git push
