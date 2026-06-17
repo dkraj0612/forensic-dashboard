@@ -122,10 +122,7 @@ def send_telegram_summary():
 
     for cat, stocks in PIPELINE_METRICS['category_counts'].items():
         if stocks:
-            # Sort the tickers alphabetically and join them with a comma
             stock_list = ", ".join(sorted(list(stocks)))
-            
-            # Append the count, followed by the specific tickers underneath
             msg += f"• *{cat}:* {len(stocks)} stocks\n"
             msg += f"  └ `{stock_list}`\n\n"
 
@@ -287,7 +284,6 @@ quant_engine = TranscriptIntelligence()
 def download_nse_bhavcopies():
     os.makedirs(BHAV_DIR, exist_ok=True)
     
-    # 1. Cash Market SEC Bhavcopy (Legacy format still actively supported by NSE)
     sec_url = f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{DDMMYYYY}.csv"
     sec_save_path = os.path.join(BHAV_DIR, f"SEC_BHAV_{TODAY_STR}.csv")
     
@@ -307,7 +303,6 @@ def download_nse_bhavcopies():
     else:
         PIPELINE_METRICS["bhavcopy_sec"] = True
 
-    # 2. FNO Bhavcopy (Updated to new NSE UDiFF Architecture)
     YYYYMMDD = NOW.strftime('%Y%m%d')
     fno_url_udiff = f"https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{YYYYMMDD}_F_0000.csv.zip"
     fno_url_legacy = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{YYYY}/{MMM}/fo{DD_MMM_YYYY}bhav.csv.zip"
@@ -318,10 +313,8 @@ def download_nse_bhavcopies():
         try:
             print("      [~] Requesting FNO Bhavdata Archive...")
             
-            # Try New UDiFF Format First
             resp = session.get(fno_url_udiff, headers=HEADERS, timeout=20)
             if resp.status_code != 200:
-                # Fallback to Legacy Format if UDiFF isn't published yet
                 resp = session.get(fno_url_legacy, headers=HEADERS, timeout=20)
                 
             if resp.status_code == 200:
@@ -330,11 +323,9 @@ def download_nse_bhavcopies():
                     with z.open(csv_filename) as f:
                         df = pd.read_csv(f)
                         
-                        # Handle Column Mapping Changes dynamically
                         instrument_col = 'FinInstrmTp' if 'FinInstrmTp' in df.columns else 'INSTRUMENT'
                         
                         if instrument_col in df.columns:
-                            # Filter out 'OPTSTK' (Stock Options)
                             df = df[df[instrument_col] != 'OPTSTK']
                             
                         df.to_csv(fno_save_path, index=False)
@@ -349,14 +340,55 @@ def download_nse_bhavcopies():
     else:
         PIPELINE_METRICS["bhavcopy_fno"] = True
 
-def get_dynamic_nse_list():
-    url = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
+# =====================================================================
+# NSE PRE-FILTER ENGINE
+# =====================================================================
+def get_targeted_daily_tickers():
+    """
+    Fetches the live list of companies from NSE, filtering ONLY for events
+    that match our TARGET_CATEGORIES (SAST, SHP, Concalls, Results, etc).
+    """
+    print("\n[*] Fetching and filtering corporate announcements from NSE...")
+    
+    base_url = "https://www.nseindia.com"
+    api_url = "https://www.nseindia.com/api/corporate-announcements"
+    
+    # Combined keywords covering all areas of the NLP/Target Categories
+    target_keywords = [
+        "sast", "substantial acquisition", "reg 29", "shareholding", "shp",
+        "insider", "reg 7", "transcript", "audio", "concall", "earnings call",
+        "result", "financial", "dividend", "bonus", "split"
+    ]
+    
     try:
-        resp = session.get(url, headers=HEADERS, timeout=20)
-        if resp.status_code == 200:
-            return pd.read_csv(StringIO(resp.text))['SYMBOL'].dropna().astype(str).str.strip().unique().tolist()
+        # Establish session cookies
+        session.get(base_url, headers=HEADERS, timeout=15)
+        time.sleep(1) 
+        
+        response = session.get(api_url, headers=HEADERS, timeout=15)
+        
+        if response.status_code != 200:
+            print(f"[!] NSE API rejected the request. Status Code: {response.status_code}")
+            return []
+            
+        data = response.json()
+        active_tickers = set()
+        
+        for item in data:
+            symbol = item.get("symbol", "")
+            description = str(item.get("desc", "")).lower() + " " + str(item.get("subject", "")).lower()
+            
+            if symbol and symbol != "NIFTY":
+                # Check if any of our target keywords are in the announcement description
+                if any(keyword in description for keyword in target_keywords):
+                    active_tickers.add(symbol.upper().strip())
+                
+        print(f"[+] Found {len(active_tickers)} companies with relevant updates.")
+        return sorted(list(active_tickers))
+        
+    except Exception as e:
+        print(f"[!] Critical failure fetching NSE Pre-Filter Tickers: {e}")
         return []
-    except Exception: return []
 
 def get_completed_today():
     if not os.path.exists(PROGRESS_FILE): return set()
@@ -484,18 +516,14 @@ def extract_stock_data(ticker):
                 full_url = urljoin("https://www.screener.in", href)
                 if '.pdf' in full_url.lower() or 'concalls' in full_url.lower() or 'announcements' in full_url.lower():
                     
-                    # Removed stream=True to prevent incomplete buffering 
                     file_resp = session.get(full_url, headers=HEADERS, timeout=45)
                     
                     if file_resp.status_code == 200:
-                        
-                        # GUARDRAIL 1: Verify the file is actually a document/audio, NOT an HTML error page
                         content_type = file_resp.headers.get("Content-Type", "").lower()
                         if "text/html" in content_type:
                             print(f"      [!] Blocked by external server firewall (HTML returned). Skipping {filename}")
                             continue
                             
-                        # GUARDRAIL 2: Verify the file isn't an empty 0-byte ghost file
                         if len(file_resp.content) < 1000:
                             print(f"      [!] File is corrupted or empty (< 1KB). Skipping {filename}")
                             continue
@@ -538,18 +566,21 @@ def main():
     
     download_nse_bhavcopies()
     
-    all_nse_tickers = get_dynamic_nse_list()
-    if not all_nse_tickers: sys.exit(1)
-        
-    completed_today = get_completed_today()
-    remaining_tickers = [t for t in all_nse_tickers if t not in completed_today]
+    # Executing the dynamic Pre-Filter logic
+    all_nse_tickers = get_targeted_daily_tickers()
     
-    for idx, ticker in enumerate(remaining_tickers, 1):
-        sys.stdout.write(f"\r>>> Processing [{idx}/{len(remaining_tickers)}] Ticker: {ticker} ...")
-        sys.stdout.flush()
-        extract_stock_data(ticker)
-        mark_completed(ticker)
-        time.sleep(random.uniform(1.2, 2.8))
+    if not all_nse_tickers:
+        print("\n[*] No relevant corporate actions found today or API unavailable. Exiting sweep loop.")
+    else:
+        completed_today = get_completed_today()
+        remaining_tickers = [t for t in all_nse_tickers if t not in completed_today]
+        
+        for idx, ticker in enumerate(remaining_tickers, 1):
+            sys.stdout.write(f"\r>>> Processing [{idx}/{len(remaining_tickers)}] Ticker: {ticker} ...")
+            sys.stdout.flush()
+            extract_stock_data(ticker)
+            mark_completed(ticker)
+            time.sleep(random.uniform(1.2, 2.8))
 
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
