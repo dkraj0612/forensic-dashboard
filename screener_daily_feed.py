@@ -449,7 +449,7 @@ def register_successful_metric(ticker: str, category: str):
     PIPELINE_METRICS["total_unique_stocks"].add(ticker)
     save_metrics()
 
-def extract_stock_data(ticker):def extract_stock_data(ticker):
+def extract_stock_data(ticker):
     url = f"https://www.screener.in/company/{ticker}/"
     try:
         resp = session.get(url, headers=HEADERS, timeout=15)
