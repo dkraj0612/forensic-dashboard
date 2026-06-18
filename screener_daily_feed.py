@@ -730,7 +730,9 @@ def main():
                     docling_md_text = conv_res.document.export_to_markdown()
                     
                     # Call AI with the backoff wrapper, passing the perfect Docling Markdown instead of raw bytes
-                    ai_decision_string = safe_ai_classification(generate_ai_summary, ticker, matched_category, docling_md_text)
+                    # CORRECT:
+                    ai_decision_string = safe_ai_classification(docling_md_text)
+
                     
                     # Generate and save Markdown using the parsed Docling text
                     if matched_category == "Concalls":
