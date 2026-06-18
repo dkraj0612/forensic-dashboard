@@ -234,7 +234,7 @@ def send_telegram_summary():
     
     try:
         temp_session = tls_requests.Session(impersonate="chrome124")
-        resp = temp_session.post(url, json=payload, timeout=15)
+        resp = temp_session.post(url, json=payload, timeout=60)
         
         if resp.status_code == 200: 
             print("      [OK] Telegram summary notification dispatched securely.")
@@ -396,7 +396,7 @@ def download_nse_bhavcopies():
     if not os.path.exists(sec_save_path):
         try:
             print("      [~] Requesting SEC Bhavdata...")
-            resp = temp_session.get(sec_url, timeout=20)
+            resp = temp_session.get(sec_url, timeout=60)
             if resp.status_code == 200:
                 with open(sec_save_path, 'wb') as f: 
                     f.write(resp.content)
@@ -416,7 +416,7 @@ def download_nse_bhavcopies():
     if not os.path.exists(fno_save_path):
         try:
             print("      [~] Requesting FNO Bhavdata Archive...")
-            resp = temp_session.get(fno_url_udiff, timeout=20)
+            resp = temp_session.get(fno_url_udiff, timeout=60)
             if resp.status_code == 200:
                 with zipfile.ZipFile(BytesIO(resp.content)) as z:
                     csv_filename = z.namelist()[0]
@@ -440,7 +440,7 @@ def get_dynamic_nse_list():
     url = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
     try:
         temp_session = tls_requests.Session(impersonate="chrome124")
-        resp = temp_session.get(url, timeout=20)
+        resp = temp_session.get(url, timeout=60)
         if resp.status_code == 200:
             return pd.read_csv(StringIO(resp.text))['SYMBOL'].dropna().astype(str).str.strip().unique().tolist()
         return []
@@ -522,7 +522,7 @@ def extract_stock_data(ticker):
     downloaded_assets = [] 
     
     try:
-        resp = local_session.get(url, timeout=10)
+        resp = local_session.get(url, timeout=60)
         
         # Guardrail: Expose Screener/Cloudflare Bans
         if resp.status_code == 429:
@@ -587,7 +587,7 @@ def extract_stock_data(ticker):
             try:
                 if '.pdf' in full_url.lower() or 'concalls' in full_url.lower() or 'announcements' in full_url.lower():
                     
-                    file_resp = local_session.get(full_url, timeout=30)
+                    file_resp = local_session.get(full_url, timeout=60)
                     
                     if file_resp.status_code == 200:
                         content_type = file_resp.headers.get("Content-Type", "").lower()
@@ -726,6 +726,7 @@ def main():
                     else:
                         md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
                 
+                clean_category = matched_category.replace('_', ' ')
                 with STATE_LOCK:
                     PIPELINE_METRICS.setdefault("summaries", []).append(
                         f"• <b>{ticker}</b> ({clean_category_for_tg}): {ai_decision_string}\n  └ <a href='{full_url}'>📄 Source</a>"
