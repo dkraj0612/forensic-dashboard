@@ -519,20 +519,19 @@ def safe_ai_classification(text_content: str) -> str:
 def extract_stock_data(ticker):
     local_session = get_session()
     url = f"https://www.screener.in/company/{ticker}/"
-    downloaded_assets = [] # Holds all files downloaded for this ticker
+    downloaded_assets = [] 
     
-   try:
+    try:
         resp = local_session.get(url, timeout=10)
         
+        # Guardrail: Expose Screener/Cloudflare Bans
         if resp.status_code == 429:
             print(f"\n[!!!] SCREENER BLOCKED YOU (429 Too Many Requests). Thread pausing...")
-            time.sleep(10) # Force the thread to back off
+            time.sleep(10)
             return downloaded_assets
-            
         if resp.status_code == 403:
             print(f"\n[!!!] CLOUDFLARE BLOCKED YOU (403 Bot Detected) on {ticker}.")
             return downloaded_assets
-            
         if resp.status_code != 200: 
             return downloaded_assets
             
@@ -558,7 +557,6 @@ def extract_stock_data(ticker):
         clean_type = sanitize_filename(link_text)
         is_audio = "audio" in link_text.lower()
         
-        # We save raw PDFs here in Phase 1, NOT markdown
         ext = ".mp3" if is_audio else ".pdf" 
         filename = f"{ticker}_{matched_category}_{clean_type}{ext}"
         
@@ -567,11 +565,9 @@ def extract_stock_data(ticker):
         json_path = os.path.join(category_dir, f"{ticker}_{matched_category}_{clean_type}.json")
         full_url = urljoin("https://www.screener.in", href)
 
-        # Scenario 1: AI completed successfully before (JSON exists). Skip entirely.
         if os.path.exists(json_path):
             continue
 
-        # Scenario 2: Raw file exists, but AI crashed/timed out previously. Queue for Phase 2.
         if os.path.exists(save_path):
             print(f"      [~] FOUND UNPROCESSED FILE -> {filename} (Queueing for AI)")
             downloaded_assets.append({
@@ -585,7 +581,6 @@ def extract_stock_data(ticker):
             })
             continue
 
-        # Scenario 3: Brand new file. Download it.
         if not os.path.exists(save_path) and not os.path.exists(json_path):
             os.makedirs(category_dir, exist_ok=True)
             
@@ -600,13 +595,11 @@ def extract_stock_data(ticker):
                         if "text/html" in content_type or len(file_resp.content) < 1000:
                             continue
                         
-                        # 1. SAVE THE RAW FILE (Lightning Fast, No AI)
                         with open(save_path, 'wb') as f: 
                             f.write(file_resp.content)
                             
                         print(f"      [+] DOWNLOADED RAW FILE -> {filename}")
                         
-                        # 2. APPEND TO RETURN LIST FOR PHASE 2
                         downloaded_assets.append({
                             "ticker": ticker,
                             "category": matched_category,
