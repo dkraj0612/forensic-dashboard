@@ -491,6 +491,31 @@ def register_successful_metric(ticker: str, category: str):
         PIPELINE_METRICS["total_unique_stocks"].add(ticker)
         save_metrics()
 
+def safe_ai_classification(text_content: str) -> str:
+    """Safely calls Gemini API with exponential backoff for rate limits."""
+    if not GEMINI_API_KEY: 
+        return "AI Skipped: No API Key Provided."
+        
+    max_retries = 3
+    base_delay = 15 
+    
+    for attempt in range(max_retries):
+        try:
+            # We trim the text to 30,000 characters just to be safe with context limits
+            response = ai_model.generate_content(
+                f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
+            ) 
+            return response.text.strip().replace('\n', ' ')
+        except Exception as e:
+            if '429' in str(e) or 'quota' in str(e).lower():
+                wait_time = base_delay * (2 ** attempt) + random.uniform(1, 5)
+                print(f"      [!] API Rate Limit Hit. Sleeping for {wait_time:.1f}s...")
+                time.sleep(wait_time)
+            else:
+                return f"AI Error: {str(e)}"
+                
+    return "AI Skipped: Rate limit exceeded after maximum retries."
+
 def extract_stock_data(ticker):
     local_session = get_session()
     url = f"https://www.screener.in/company/{ticker}/"
@@ -529,12 +554,31 @@ def extract_stock_data(ticker):
         category_dir = os.path.join(STOCKS_DIR, ticker, matched_category)
         save_path = os.path.join(category_dir, filename)
         json_path = os.path.join(category_dir, f"{ticker}_{matched_category}_{clean_type}.json")
+        full_url = urljoin("https://www.screener.in", href)
 
+        # Scenario 1: AI completed successfully before (JSON exists). Skip entirely.
+        if os.path.exists(json_path):
+            continue
+
+        # Scenario 2: Raw file exists, but AI crashed/timed out previously. Queue for Phase 2.
+        if os.path.exists(save_path):
+            print(f"      [~] FOUND UNPROCESSED FILE -> {filename} (Queueing for AI)")
+            downloaded_assets.append({
+                "ticker": ticker,
+                "category": matched_category,
+                "clean_type": clean_type,
+                "file_path": save_path,
+                "json_path": json_path,
+                "url": full_url,
+                "is_audio": is_audio
+            })
+            continue
+
+        # Scenario 3: Brand new file. Download it.
         if not os.path.exists(save_path) and not os.path.exists(json_path):
             os.makedirs(category_dir, exist_ok=True)
             
             try:
-                full_url = urljoin("https://www.screener.in", href)
                 if '.pdf' in full_url.lower() or 'concalls' in full_url.lower() or 'announcements' in full_url.lower():
                     
                     file_resp = local_session.get(full_url, timeout=30)
@@ -570,15 +614,16 @@ def extract_stock_data(ticker):
 # =====================================================================
 # HIGH-SPEED CONCURRENT MAIN EXECUTION LOOP
 # =====================================================================
-def main():
+ef main():
     import concurrent.futures
     import time
+    import fitz  # PyMuPDF for lightning-fast page counting
     
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
     
     print(f"\n{'='*60}")
-    print("=== ENTERPRISE SWEEPER (NLP + CONCURRENCY + AI ENABLED) ===")
+    print("=== ENTERPRISE SWEEPER (DOCLING + CONCURRENCY + AI ENABLED) ===")
     print(f"{'='*60}")
     
     download_nse_bhavcopies()
@@ -614,7 +659,7 @@ def main():
             except Exception as e:
                 pass 
 
-    # === PHASE 2: SEQUENTIAL AI ANALYSIS ===
+    # === PHASE 2: SEQUENTIAL DOCLING & AI ANALYSIS ===
     if files_to_process:
         print(f"\n\n=== PHASE 2: SEQUENTIAL AI ANALYSIS ({len(files_to_process)} Files) ===")
         
@@ -643,21 +688,40 @@ def main():
             print(f"      [~] Extracting AI insights for {ticker}...")
             
             try:
-                with open(save_path, 'rb') as f:
-                    pdf_bytes = f.read()
+                # --- FAST 50-PAGE GUARDRAIL ---
+                try:
+                    doc = fitz.open(save_path)
+                    page_count = doc.page_count
+                    doc.close()
+                except Exception:
+                    page_count = 999 # Fail-safe, skip completely broken/corrupted PDFs
+                
+                md_path = save_path.replace(".pdf", ".md")
+                ai_decision_string = "No AI Analysis performed."
+                md_content = ""
+                
+                if page_count > 50:
+                    print(f"      [!] Document too large ({page_count} pages). Bypassing Docling/AI.")
+                    ai_decision_string = f"Skipped: Document exceeds 50 pages ({page_count} pages)."
+                    md_content = f"# {ticker} - {matched_category}\n\n⚠️ **Document bypassed ({page_count} pages).**\n🔗 **[View Original Document]({full_url})**"
                     
-                # Call AI with the backoff wrapper (assumed defined elsewhere)
-                ai_decision_string = safe_ai_classification(generate_ai_summary, ticker, matched_category, pdf_bytes)
+                else:
+                    # --- DOCLING TABLE & LAYOUT EXTRACTION ---
+                    print(f"      [~] Docling parsing layout & tables ({page_count} pages)...")
+                    conv_res = docling_converter.convert(save_path)
+                    docling_md_text = conv_res.document.export_to_markdown()
+                    
+                    # Call AI with the backoff wrapper, passing the perfect Docling Markdown instead of raw bytes
+                    ai_decision_string = safe_ai_classification(generate_ai_summary, ticker, matched_category, docling_md_text)
+                    
+                    # Generate and save Markdown using the parsed Docling text
+                    if matched_category == "Concalls":
+                        md_content = generate_enterprise_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
+                    else:
+                        md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
                 
                 with STATE_LOCK:
                     PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}\n  └ [📄 Source]({full_url})")
-
-                # Generate and save Markdown
-                md_path = save_path.replace(".pdf", ".md")
-                if matched_category == "Concalls":
-                    md_content = generate_enterprise_markdown(pdf_bytes, ticker, matched_category, clean_type, full_url, ai_decision_string)
-                else:
-                    md_content = convert_to_basic_markdown(pdf_bytes, ticker, matched_category, clean_type, full_url, ai_decision_string)
                     
                 if md_content:
                     with open(md_path, 'w', encoding='utf-8') as f: 
@@ -677,8 +741,9 @@ def main():
                 if os.path.exists(save_path): 
                     os.remove(save_path)
                 
-                # STRICT RATE LIMIT GUARD: Wait 13 seconds before the next AI call
-                time.sleep(13)
+                # STRICT RATE LIMIT GUARD: Wait 13 seconds before the next AI call (Only if AI actually ran)
+                if page_count <= 50:
+                    time.sleep(13)
                 
             except Exception as e:
                 print(f"      [!] AI Processing failure for {ticker}: {e}")
