@@ -618,7 +618,7 @@ def extract_stock_data(ticker):
 # =====================================================================
 # HIGH-SPEED CONCURRENT MAIN EXECUTION LOOP
 # =====================================================================
-ef main():
+def main():
     import concurrent.futures
     import time
     import fitz  # PyMuPDF for lightning-fast page counting
