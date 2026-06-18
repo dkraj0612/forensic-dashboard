@@ -29,13 +29,25 @@ except ImportError:
 # =====================================================================
 OUTPUT_DIR = "market_pulse_data"
 
-# TELEGRAM & AI SECURITY: Loaded exclusively from local OS environment variables
+# TELEGRAM & AI SECURITY
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-# Thread lock to guarantee file system integrity across concurrent tasks
+# Thread locks and Thread-Local Storage for true parallel networking
 STATE_LOCK = threading.Lock()
+thread_local = threading.local()
+
+def get_session():
+    """Generates a dedicated, isolated browser session for each individual thread."""
+    if not hasattr(thread_local, "session"):
+        thread_local.session = tls_requests.Session(impersonate="chrome124")
+        thread_local.session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Referer': 'https://www.nseindia.com/'
+        })
+    return thread_local.session
 
 # Initialize Gemini Client natively
 if GEMINI_API_KEY:
@@ -84,15 +96,8 @@ TARGET_CATEGORIES = {
     "Bonus": [r'bonus', r'bonus issue', r'allotment of bonus']
 }
 
-session = tls_requests.Session(impersonate="chrome124")
-HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
-    'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-    'Referer': 'https://www.nseindia.com/'
-}
-
 # =====================================================================
-# STATE TRACKING ENGINE (PREVENTS METRIC LOSS ON REBOOT)
+# STATE TRACKING ENGINE
 # =====================================================================
 def load_metrics():
     if os.path.exists(METRICS_FILE):
@@ -127,7 +132,6 @@ PIPELINE_METRICS = load_metrics()
 # MULTIMODAL AI SELECTION & ANALYSIS ENGINE
 # =====================================================================
 def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
-    """Passes the RAW PDF directly to Gemini's vision engine to extract an objective trading signal and summary."""
     if not llm_model or not pdf_bytes:
         return "Document parsed and saved safely."
         
@@ -147,25 +151,16 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
     [CLASSIFICATION] One short, punchy justification sentence. Do not include introductory text.
     """
     try:
-        pdf_document = {
-            "mime_type": "application/pdf",
-            "data": pdf_bytes
-        }
+        pdf_document = {"mime_type": "application/pdf", "data": pdf_bytes}
         response = llm_model.generate_content([prompt, pdf_document])
         clean_summary = response.text.replace('**', '').replace('*', '').strip()
-        if len(clean_summary) > 200:
-            clean_summary = clean_summary[:197] + "..."
+        if len(clean_summary) > 200: clean_summary = clean_summary[:197] + "..."
         return clean_summary
     except Exception as e:
         print(f"      [!] AI PDF Classification failed for {ticker}: {e}")
         return "⚪ [NEUTRAL] Document logged but objective AI classification timed out."
 
 def send_telegram_summary():
-    """Compiles local metrics, objective decision logs, and securely dispatches the aggregated payload."""
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        print("\n[!] Telegram configuration missing. Summary notification bypassed.")
-        return
-
     msg = "📊 *Market Sweeper AI Intelligence Report*\n"
     msg += f"📅 *Date:* {TODAY_STR}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
@@ -180,26 +175,35 @@ def send_telegram_summary():
     else:
         msg += f"🏢 *Objective Action Signals ({len(summaries)}):*\n\n"
         for summary in summaries:
-            # Prevents overflowing Telegram's maximum 4,096 character payload footprint safely
             if len(msg) + len(summary) > 3900:
                 msg += "• *CRITICAL:* Additional alerts truncated. Review filesystem logs.\n"
                 break
             msg += f"{summary}\n\n"
 
+    print("\n" + "="*70)
+    print("=== CONSOLE LOG STREAM BACKUP: DAILY MARKET INTELLIGENCE REPORT ===")
+    print("="*70)
+    print(msg.replace('*', '').replace('`', ''))
+    print("="*70 + "\n")
+
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        print("[!] Telegram configuration keys missing. Sequence bypassed.")
+        return
+
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "Markdown"}
     
     try:
-        resp = session.post(url, json=payload, timeout=15)
-        if resp.status_code == 200:
-            print("\n      [OK] Telegram summary notification dispatched securely.")
-        else:
-            print(f"\n      [!] Telegram dispatch failed: {resp.text}")
+        # Use a temporary global session just for sending the telegram message at the end
+        temp_session = tls_requests.Session(impersonate="chrome124")
+        resp = temp_session.post(url, json=payload, timeout=15)
+        if resp.status_code == 200: print("      [OK] Telegram summary notification dispatched securely.")
+        else: print(f"      [!] Telegram dispatch rejected (Status {resp.status_code}): {resp.text}")
     except Exception as e:
-        print(f"\n      [!] Socket error during Telegram notification: {e}")
+        print(f"      [!] Socket termination during Telegram pipeline transmission: {e}")
 
 # =====================================================================
-# INTEGRATED NLP ENGINE (PURE TEXT ANALYSIS)
+# INTEGRATED NLP ENGINE
 # =====================================================================
 class TranscriptIntelligence:
     def __init__(self):
@@ -250,8 +254,7 @@ class TranscriptIntelligence:
                     if re.match(r'^\d+\s*$', line_stripped) or re.match(r'^\d{2}\.\d{2}\.\d{4}$', line_stripped): continue
                     raw_lines.append(line_stripped)
             doc.close()
-        except Exception:
-            return "", "", 0
+        except Exception: return "", "", 0
 
         normalized_lines = []
         inline_pattern = re.compile(r'(\b(?:(?:Mr\.|Ms\.|Dr\.)?\s*[A-Z][a-zA-Z\.\-]+\s+[A-Z][a-zA-Z\.\-]+(?:\s+[A-Z][a-zA-Z\.\-]+){0,2}|Moderator|Operator|Management|Analyst|Participant|Speaker)\s*:)')
@@ -260,8 +263,7 @@ class TranscriptIntelligence:
             if len(parts) > 1:
                 for part in parts:
                     if part.strip(): normalized_lines.append(part.strip())
-            else:
-                normalized_lines.append(line)
+            else: normalized_lines.append(line)
 
         current_speaker = "PRE_SPEAKER_OVERFLOW_BUFFER"
         current_speech_accumulator = []
@@ -320,20 +322,13 @@ class TranscriptIntelligence:
         def get_f(val):
             try: return float(str(val).replace('%', '').replace(',', '').strip())
             except (ValueError, AttributeError, TypeError): return None
-
         hype = get_f(text_metrics.get("Hype_Density_Per_10k"))
         delivery = get_f(text_metrics.get("Delivery_Density_Per_10k"))
         evasion = get_f(text_metrics.get("Evasion_Density_Per_10k"))
 
-        if hype and delivery and hype > 5.0 and delivery < 1.0:
-            signals.append("🚨 **[BEHAVIORAL] 'Hype/Delivery Divergence':** Promoter using aggressive buzzwords (>5.0 density) with minimal operational delivery terminology.")
-            
-        if evasion and evasion > 3.0:
-            signals.append("⚠️ **[EVASION] High Evasion Density:** Management used unusually high deflection terminology (e.g., macro headwinds, take it offline).")
-
-        if not signals: 
-            signals.append("✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.")
-            
+        if hype and delivery and hype > 5.0 and delivery < 1.0: signals.append("🚨 **[BEHAVIORAL] 'Hype/Delivery Divergence':** Promoter using aggressive buzzwords (>5.0 density) with minimal operational delivery terminology.")
+        if evasion and evasion > 3.0: signals.append("⚠️ **[EVASION] High Evasion Density:** Management used unusually high deflection terminology (e.g., macro headwinds, take it offline).")
+        if not signals: signals.append("✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.")
         return signals
 
 quant_engine = TranscriptIntelligence()
@@ -344,70 +339,58 @@ quant_engine = TranscriptIntelligence()
 def download_nse_bhavcopies():
     os.makedirs(BHAV_DIR, exist_ok=True)
     
+    # Use a temporary session specifically for Bhavcopies
+    temp_session = tls_requests.Session(impersonate="chrome124")
+    temp_session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
+    
     sec_url = f"https://nsearchives.nseindia.com/products/content/sec_bhavdata_full_{DDMMYYYY}.csv"
     sec_save_path = os.path.join(BHAV_DIR, f"SEC_BHAV_{TODAY_STR}.csv")
-    
     if not os.path.exists(sec_save_path):
         try:
             print("      [~] Requesting SEC Bhavdata...")
-            resp = session.get(sec_url, headers=HEADERS, timeout=20)
+            resp = temp_session.get(sec_url, timeout=20)
             if resp.status_code == 200:
                 with open(sec_save_path, 'wb') as f: f.write(resp.content)
                 with STATE_LOCK:
                     PIPELINE_METRICS["bhavcopy_sec"] = True
                     save_metrics()
                 print("      [OK] SEC Bhavcopy saved successfully.")
-            else:
-                print(f"      [!] SEC Bhavcopy not available yet (Status {resp.status_code}).")
-        except Exception as e:
-            print(f"      [!] SEC Data Error: {e}")
+            else: print(f"      [!] SEC Bhavcopy not available yet (Status {resp.status_code}).")
+        except Exception as e: print(f"      [!] SEC Data Error: {e}")
     else:
-        with STATE_LOCK:
-            PIPELINE_METRICS["bhavcopy_sec"] = True
+        with STATE_LOCK: PIPELINE_METRICS["bhavcopy_sec"] = True
 
     YYYYMMDD = NOW.strftime('%Y%m%d')
     fno_url_udiff = f"https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{YYYYMMDD}_F_0000.csv.zip"
     fno_url_legacy = f"https://nsearchives.nseindia.com/content/historical/DERIVATIVES/{YYYY}/{MMM}/fo{DD_MMM_YYYY}bhav.csv.zip"
-    
     fno_save_path = os.path.join(BHAV_DIR, f"FNO_BHAV_{TODAY_STR}.csv")
-    
     if not os.path.exists(fno_save_path):
         try:
             print("      [~] Requesting FNO Bhavdata Archive...")
-            
-            resp = session.get(fno_url_udiff, headers=HEADERS, timeout=20)
-            if resp.status_code != 200:
-                resp = session.get(fno_url_legacy, headers=HEADERS, timeout=20)
-                
+            resp = temp_session.get(fno_url_udiff, timeout=20)
+            if resp.status_code != 200: resp = temp_session.get(fno_url_legacy, timeout=20)
             if resp.status_code == 200:
                 with zipfile.ZipFile(BytesIO(resp.content)) as z:
                     csv_filename = z.namelist()[0]
                     with z.open(csv_filename) as f:
                         df = pd.read_csv(f)
-                        
                         instrument_col = 'FinInstrmTp' if 'FinInstrmTp' in df.columns else 'INSTRUMENT'
-                        
-                        if instrument_col in df.columns:
-                            df = df[df[instrument_col] != 'OPTSTK']
-                            
+                        if instrument_col in df.columns: df = df[df[instrument_col] != 'OPTSTK']
                         df.to_csv(fno_save_path, index=False)
-                        
                 with STATE_LOCK:
                     PIPELINE_METRICS["bhavcopy_fno"] = True
                     save_metrics()
                 print("      [OK] FNO Bhavcopy processed and saved.")
-            else:
-                print(f"      [!] FNO Bhavcopy not available yet (Status {resp.status_code}).")
-        except Exception as e:
-            print(f"      [!] FNO Data Error: {e}")
+            else: print(f"      [!] FNO Bhavcopy not available yet (Status {resp.status_code}).")
+        except Exception as e: print(f"      [!] FNO Data Error: {e}")
     else:
-        with STATE_LOCK:
-            PIPELINE_METRICS["bhavcopy_fno"] = True
+        with STATE_LOCK: PIPELINE_METRICS["bhavcopy_fno"] = True
 
 def get_dynamic_nse_list():
     url = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
     try:
-        resp = session.get(url, headers=HEADERS, timeout=20)
+        temp_session = tls_requests.Session(impersonate="chrome124")
+        resp = temp_session.get(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'}, timeout=20)
         if resp.status_code == 200:
             return pd.read_csv(StringIO(resp.text))['SYMBOL'].dropna().astype(str).str.strip().unique().tolist()
         return []
@@ -500,19 +483,19 @@ behavioral_densities_per_10k:
 """
 
 def register_successful_metric(ticker: str, category: str):
-    """Safely records the download to prevent metric loss under thread concurrency."""
     with STATE_LOCK:
         PIPELINE_METRICS["category_counts"][category].add(ticker)
         PIPELINE_METRICS["total_unique_stocks"].add(ticker)
         save_metrics()
 
 def extract_stock_data(ticker):
-    # Micro-throttle to smooth out parallel domain connection hits
-    time.sleep(random.uniform(0.1, 0.4))
+    # Fetch the thread's isolated browser session to prevent global lock contention
+    local_session = get_session()
     
     url = f"https://www.screener.in/company/{ticker}/"
     try:
-        resp = session.get(url, headers=HEADERS, timeout=15)
+        # FAST FAIL: 6 Seconds. If Screener hangs, drop the stock immediately to maintain pipeline speed.
+        resp = local_session.get(url, timeout=6)
         if resp.status_code != 200: return
     except Exception: return
 
@@ -544,7 +527,8 @@ def extract_stock_data(ticker):
                 full_url = urljoin("https://www.screener.in", href)
                 if '.pdf' in full_url.lower() or 'concalls' in full_url.lower() or 'announcements' in full_url.lower():
                     
-                    file_resp = session.get(full_url, headers=HEADERS, timeout=45)
+                    # File downloads need a longer timeout (30s) because PDFs are large
+                    file_resp = local_session.get(full_url, timeout=30)
                     
                     if file_resp.status_code == 200:
                         content_type = file_resp.headers.get("Content-Type", "").lower()
@@ -564,13 +548,11 @@ def extract_stock_data(ticker):
                             register_successful_metric(ticker, matched_category)
                             
                         else:
-                            # --- NATIVE MULTIMODAL AI RUN (FIRED ONLY UPON GENUINE DOWNLOAD - ON RAW PDF BYTES) ---
                             print(f"      [~] Routing raw PDF bytes directly to Gemini AI model for {ticker}...")
                             ai_decision_string = generate_ai_summary(ticker, matched_category, file_resp.content)
                             with STATE_LOCK:
                                 PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}")
                             
-                            # Resume baseline local filesystem tracking execution
                             md_content = None
                             if matched_category == "Concalls":
                                 print(f"      [~] Executing NLP Pipeline on {ticker}...")
@@ -589,7 +571,6 @@ def extract_stock_data(ticker):
                                 print(f"      [!] Complex parse failed. Safely secured raw PDF -> {fallback_path.split('/')[-1]}")
                                 register_successful_metric(ticker, matched_category)
                                 
-                        time.sleep(random.uniform(1.5, 3.0))
             except Exception as e:
                 print(f"      [!] Processing failure on {filename}: {e}")
 
@@ -616,8 +597,8 @@ def main():
     
     print(f"\n[*] Commencing high-speed concurrent sweep of {len(remaining_tickers)} pending stocks...")
     
-    # 5 parallel processing workers maintains maximum stability while clearing 3,000 stocks under ~12 minutes
-    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    # Increased thread count to 10 for hyper-fast execution since sessions are now independent
+    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_ticker = {executor.submit(extract_stock_data, ticker): ticker for ticker in remaining_tickers}
         
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_ticker), 1):
@@ -628,11 +609,10 @@ def main():
                 sys.stdout.write(f"\r>>> Processed [{idx}/{len(remaining_tickers)}] Tickers (Latest: {ticker}) ...")
                 sys.stdout.flush()
             except Exception as e:
-                print(f"\n[!] Thread pool exception encountered running stock context [{ticker}]: {e}")
+                pass # Fail silently to keep the console clean and fast
 
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
-    # Send the final aggregated data and AI decision intelligence metrics to Telegram
     send_telegram_summary()
 
 if __name__ == "__main__":
