@@ -673,6 +673,7 @@ def main():
                 pass 
 
     # === PHASE 2: SEQUENTIAL DOCLING & AI ANALYSIS ===
+    
     if files_to_process:
         print(f"\n\n=== PHASE 2: SEQUENTIAL AI ANALYSIS ({len(files_to_process)} Files) ===")
         
@@ -686,10 +687,14 @@ def main():
             clean_type = item['clean_type']
             json_path = item['json_path']
 
+            # THE FIX: Define this variable here so both Audio and PDF blocks can safely use it
+            clean_category_for_tg = matched_category.replace('_', ' ')
+
             # 1. Handle Audio Logic
             if is_audio:
                 with STATE_LOCK:
-                    PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): Audio recording archived successfully.\n  └ [🎧 Listen to Audio]({full_url})")
+                    # FIX: Safely converted to HTML so underscores in audio don't crash Telegram
+                    PIPELINE_METRICS.setdefault("summaries", []).append(f"• <b>{ticker}</b> ({clean_category_for_tg}): Audio recording archived successfully.\n  └ <a href='{full_url}'>🎧 Listen to Audio</a>")
                 
                 json_metadata = {"ticker": ticker, "category": matched_category, "file_type": "audio", "source_url": full_url}
                 with open(json_path, 'w', encoding='utf-8') as f: 
@@ -733,7 +738,7 @@ def main():
                     else:
                         md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
                 
-                clean_category = matched_category.replace('_', ' ')
+                # THE FIX: Uses the clean_category_for_tg variable defined at the top of the loop
                 with STATE_LOCK:
                     PIPELINE_METRICS.setdefault("summaries", []).append(
                         f"• <b>{ticker}</b> ({clean_category_for_tg}): {ai_decision_string}\n  └ <a href='{full_url}'>📄 Source</a>"
@@ -767,6 +772,7 @@ def main():
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
     send_telegram_summary()
+
 
 if __name__ == "__main__":
     main()
