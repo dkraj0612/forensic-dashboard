@@ -23,6 +23,13 @@ try:
 except ImportError:
     print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai")
     sys.exit(1)
+from docling.document_converter import DocumentConverter
+
+# Initialize Docling Globally (do this right under your other global variables like GEMINI_API_KEY)
+try:
+    docling_converter = DocumentConverter()
+except Exception as e:
+    print(f"[!] Docling failed to initialize: {e}")
 
 # =====================================================================
 # SYSTEM CONFIGURATION & ZERO-DATA-LOSS GUARDRAILS
