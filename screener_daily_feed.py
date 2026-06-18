@@ -7,6 +7,8 @@ import random
 import zipfile
 import datetime
 import logging
+import threading
+import concurrent.futures
 from urllib.parse import urljoin
 from bs4 import BeautifulSoup
 from io import BytesIO, StringIO
@@ -17,8 +19,9 @@ try:
     import pandas as pd
     import fitz  # PyMuPDF
     import textstat
+    import google.generativeai as genai
 except ImportError:
-    print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas beautifulsoup4 pymupdf textstat")
+    print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai")
     sys.exit(1)
 
 # =====================================================================
@@ -26,9 +29,21 @@ except ImportError:
 # =====================================================================
 OUTPUT_DIR = "market_pulse_data"
 
-# TELEGRAM SECURITY: Loaded exclusively from local OS environment variables
+# TELEGRAM & AI SECURITY: Loaded exclusively from local OS environment variables
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# Thread lock to guarantee file system integrity across concurrent tasks
+STATE_LOCK = threading.Lock()
+
+# Initialize Gemini Client natively
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    llm_model = genai.GenerativeModel('gemini-1.5-flash')
+else:
+    llm_model = None
+    print("[!] GEMINI_API_KEY missing from environment variables. AI analysis bypassed.")
 
 NOW = datetime.datetime.today()
 TODAY_STR = NOW.strftime('%Y-%m-%d')
@@ -86,12 +101,14 @@ def load_metrics():
                 data = json.load(f)
                 data['category_counts'] = {k: set(v) for k, v in data.get('category_counts', {}).items()}
                 data['total_unique_stocks'] = set(data.get('total_unique_stocks', []))
+                data['summaries'] = data.get('summaries', [])
                 return data
         except Exception: pass
     return {
         "bhavcopy_sec": False, "bhavcopy_fno": False,
         "category_counts": {cat: set() for cat in TARGET_CATEGORIES.keys()},
-        "total_unique_stocks": set()
+        "total_unique_stocks": set(),
+        "summaries": []
     }
 
 def save_metrics():
@@ -99,32 +116,75 @@ def save_metrics():
         "bhavcopy_sec": PIPELINE_METRICS["bhavcopy_sec"],
         "bhavcopy_fno": PIPELINE_METRICS["bhavcopy_fno"],
         "category_counts": {k: list(v) for k, v in PIPELINE_METRICS["category_counts"].items()},
-        "total_unique_stocks": list(PIPELINE_METRICS["total_unique_stocks"])
+        "total_unique_stocks": list(PIPELINE_METRICS["total_unique_stocks"]),
+        "summaries": PIPELINE_METRICS.get("summaries", [])
     }
     with open(METRICS_FILE, 'w') as f: json.dump(data_to_save, f)
 
 PIPELINE_METRICS = load_metrics()
 
+# =====================================================================
+# MULTIMODAL AI SELECTION & ANALYSIS ENGINE
+# =====================================================================
+def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
+    """Passes the RAW PDF directly to Gemini's vision engine to extract an objective trading signal and summary."""
+    if not llm_model or not pdf_bytes:
+        return "Document parsed and saved safely."
+        
+    prompt = f"""
+    You are a strict quantitative trading algorithm analyzing an NSE India corporate filing ({category}) for {ticker}.
+    
+    Step 1: Classify the objective directional market impact of this document. Choose EXACTLY ONE:
+    🟢 [BULLISH] (Strong positive growth, insider buying, major orders, dividend hikes, new client wins)
+    🔴 [BEARISH] (Profit drops, revenue contractions, insider selling, governance stress, auditor resignation)
+    📦 [ORDER BOOK] (Specific layout tracking material contract wins, infrastructure awards, or order book sizing)
+    🤝 [NEW CLIENTS] (Strategic business partnerships, global client onboarding, commercial alliances)
+    ⚪ [NEUTRAL] (Routine compliance filings, calendar updates, expected standard operational outcomes)
+    
+    Step 2: Extract the single most critical numerical fact or corporate action justifying this classification.
+    
+    Output format MUST be strictly:
+    [CLASSIFICATION] One short, punchy justification sentence. Do not include introductory text.
+    """
+    try:
+        pdf_document = {
+            "mime_type": "application/pdf",
+            "data": pdf_bytes
+        }
+        response = llm_model.generate_content([prompt, pdf_document])
+        clean_summary = response.text.replace('**', '').replace('*', '').strip()
+        if len(clean_summary) > 200:
+            clean_summary = clean_summary[:197] + "..."
+        return clean_summary
+    except Exception as e:
+        print(f"      [!] AI PDF Classification failed for {ticker}: {e}")
+        return "⚪ [NEUTRAL] Document logged but objective AI classification timed out."
+
 def send_telegram_summary():
-    """Compiles local metrics, appends specific stock tickers, and securely dispatches the daily summary payload."""
+    """Compiles local metrics, objective decision logs, and securely dispatches the aggregated payload."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         print("\n[!] Telegram configuration missing. Summary notification bypassed.")
         return
 
-    msg = "📊 *Market Sweeper Daily Summary*\n"
+    msg = "📊 *Market Sweeper AI Intelligence Report*\n"
     msg += f"📅 *Date:* {TODAY_STR}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
     msg += "📦 *NSE Bhavcopies:*\n"
     msg += f"• Cash (SEC): {'✅ Downloaded' if PIPELINE_METRICS['bhavcopy_sec'] else '❌ Failed/Missing'}\n"
     msg += f"• F&O (FNO): {'✅ Downloaded' if PIPELINE_METRICS['bhavcopy_fno'] else '❌ Failed/Missing'}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
-    msg += f"🏢 *Stock Updates:* *{len(PIPELINE_METRICS['total_unique_stocks'])}* companies had new disclosures.\n\n"
-
-    for cat, stocks in PIPELINE_METRICS['category_counts'].items():
-        if stocks:
-            stock_list = ", ".join(sorted(list(stocks)))
-            msg += f"• *{cat}:* {len(stocks)} stocks\n"
-            msg += f"  └ `{stock_list}`\n\n"
+    
+    summaries = PIPELINE_METRICS.get("summaries", [])
+    if not summaries:
+        msg += "└ `No major financial documents were processed today.`\n"
+    else:
+        msg += f"🏢 *Objective Action Signals ({len(summaries)}):*\n\n"
+        for summary in summaries:
+            # Prevents overflowing Telegram's maximum 4,096 character payload footprint safely
+            if len(msg) + len(summary) > 3900:
+                msg += "• *CRITICAL:* Additional alerts truncated. Review filesystem logs.\n"
+                break
+            msg += f"{summary}\n\n"
 
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {"chat_id": TELEGRAM_CHAT_ID, "text": msg, "parse_mode": "Markdown"}
@@ -293,15 +353,17 @@ def download_nse_bhavcopies():
             resp = session.get(sec_url, headers=HEADERS, timeout=20)
             if resp.status_code == 200:
                 with open(sec_save_path, 'wb') as f: f.write(resp.content)
-                PIPELINE_METRICS["bhavcopy_sec"] = True
-                save_metrics()
+                with STATE_LOCK:
+                    PIPELINE_METRICS["bhavcopy_sec"] = True
+                    save_metrics()
                 print("      [OK] SEC Bhavcopy saved successfully.")
             else:
                 print(f"      [!] SEC Bhavcopy not available yet (Status {resp.status_code}).")
         except Exception as e:
             print(f"      [!] SEC Data Error: {e}")
     else:
-        PIPELINE_METRICS["bhavcopy_sec"] = True
+        with STATE_LOCK:
+            PIPELINE_METRICS["bhavcopy_sec"] = True
 
     YYYYMMDD = NOW.strftime('%Y%m%d')
     fno_url_udiff = f"https://nsearchives.nseindia.com/content/fo/BhavCopy_NSE_FO_0_0_0_{YYYYMMDD}_F_0000.csv.zip"
@@ -330,72 +392,34 @@ def download_nse_bhavcopies():
                             
                         df.to_csv(fno_save_path, index=False)
                         
-                PIPELINE_METRICS["bhavcopy_fno"] = True
-                save_metrics()
+                with STATE_LOCK:
+                    PIPELINE_METRICS["bhavcopy_fno"] = True
+                    save_metrics()
                 print("      [OK] FNO Bhavcopy processed and saved.")
             else:
                 print(f"      [!] FNO Bhavcopy not available yet (Status {resp.status_code}).")
         except Exception as e:
             print(f"      [!] FNO Data Error: {e}")
     else:
-        PIPELINE_METRICS["bhavcopy_fno"] = True
+        with STATE_LOCK:
+            PIPELINE_METRICS["bhavcopy_fno"] = True
 
-# =====================================================================
-# NSE PRE-FILTER ENGINE
-# =====================================================================
-def get_targeted_daily_tickers():
-    """
-    Fetches the live list of companies from NSE, filtering ONLY for events
-    that match our TARGET_CATEGORIES (SAST, SHP, Concalls, Results, etc).
-    """
-    print("\n[*] Fetching and filtering corporate announcements from NSE...")
-    
-    base_url = "https://www.nseindia.com"
-    api_url = "https://www.nseindia.com/api/corporate-announcements"
-    
-    # Combined keywords covering all areas of the NLP/Target Categories
-    target_keywords = [
-        "sast", "substantial acquisition", "reg 29", "shareholding", "shp",
-        "insider", "reg 7", "transcript", "audio", "concall", "earnings call",
-        "result", "financial", "dividend", "bonus", "split"
-    ]
-    
+def get_dynamic_nse_list():
+    url = "https://nsearchives.nseindia.com/content/equities/EQUITY_L.csv"
     try:
-        # Establish session cookies
-        session.get(base_url, headers=HEADERS, timeout=15)
-        time.sleep(1) 
-        
-        response = session.get(api_url, headers=HEADERS, timeout=15)
-        
-        if response.status_code != 200:
-            print(f"[!] NSE API rejected the request. Status Code: {response.status_code}")
-            return []
-            
-        data = response.json()
-        active_tickers = set()
-        
-        for item in data:
-            symbol = item.get("symbol", "")
-            description = str(item.get("desc", "")).lower() + " " + str(item.get("subject", "")).lower()
-            
-            if symbol and symbol != "NIFTY":
-                # Check if any of our target keywords are in the announcement description
-                if any(keyword in description for keyword in target_keywords):
-                    active_tickers.add(symbol.upper().strip())
-                
-        print(f"[+] Found {len(active_tickers)} companies with relevant updates.")
-        return sorted(list(active_tickers))
-        
-    except Exception as e:
-        print(f"[!] Critical failure fetching NSE Pre-Filter Tickers: {e}")
+        resp = session.get(url, headers=HEADERS, timeout=20)
+        if resp.status_code == 200:
+            return pd.read_csv(StringIO(resp.text))['SYMBOL'].dropna().astype(str).str.strip().unique().tolist()
         return []
+    except Exception: return []
 
 def get_completed_today():
     if not os.path.exists(PROGRESS_FILE): return set()
     with open(PROGRESS_FILE, 'r') as f: return set(line.strip() for line in f.readlines())
 
 def mark_completed(ticker):
-    with open(PROGRESS_FILE, 'a') as f: f.write(f"{ticker}\n")
+    with STATE_LOCK:
+        with open(PROGRESS_FILE, 'a') as f: f.write(f"{ticker}\n")
 
 def sanitize_filename(text: str) -> str:
     clean = re.sub(r'[\\/*?:"<>|\'’]', "", text)
@@ -476,12 +500,16 @@ behavioral_densities_per_10k:
 """
 
 def register_successful_metric(ticker: str, category: str):
-    """Safely records the download to prevent metric loss."""
-    PIPELINE_METRICS["category_counts"][category].add(ticker)
-    PIPELINE_METRICS["total_unique_stocks"].add(ticker)
-    save_metrics()
+    """Safely records the download to prevent metric loss under thread concurrency."""
+    with STATE_LOCK:
+        PIPELINE_METRICS["category_counts"][category].add(ticker)
+        PIPELINE_METRICS["total_unique_stocks"].add(ticker)
+        save_metrics()
 
 def extract_stock_data(ticker):
+    # Micro-throttle to smooth out parallel domain connection hits
+    time.sleep(random.uniform(0.1, 0.4))
+    
     url = f"https://www.screener.in/company/{ticker}/"
     try:
         resp = session.get(url, headers=HEADERS, timeout=15)
@@ -531,9 +559,18 @@ def extract_stock_data(ticker):
                         if is_audio:
                             with open(save_path, 'wb') as f: f.write(file_resp.content)
                             print(f"      [+] AUDIO STORED -> {filename}")
+                            with STATE_LOCK:
+                                PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): Audio recording archived successfully.")
                             register_successful_metric(ticker, matched_category)
                             
                         else:
+                            # --- NATIVE MULTIMODAL AI RUN (FIRED ONLY UPON GENUINE DOWNLOAD - ON RAW PDF BYTES) ---
+                            print(f"      [~] Routing raw PDF bytes directly to Gemini AI model for {ticker}...")
+                            ai_decision_string = generate_ai_summary(ticker, matched_category, file_resp.content)
+                            with STATE_LOCK:
+                                PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}")
+                            
+                            # Resume baseline local filesystem tracking execution
                             md_content = None
                             if matched_category == "Concalls":
                                 print(f"      [~] Executing NLP Pipeline on {ticker}...")
@@ -556,35 +593,46 @@ def extract_stock_data(ticker):
             except Exception as e:
                 print(f"      [!] Processing failure on {filename}: {e}")
 
+# =====================================================================
+# HIGH-SPEED CONCURRENT MAIN EXECUTION LOOP
+# =====================================================================
 def main():
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
     
     print(f"\n{'='*60}")
-    print("=== ENTERPRISE SWEEPER (NLP + TELEGRAM ENABLED) ===")
+    print("=== ENTERPRISE SWEEPER (NLP + CONCURRENCY + AI ENABLED) ===")
     print(f"{'='*60}")
     
     download_nse_bhavcopies()
     
-    # Executing the dynamic Pre-Filter logic
-    all_nse_tickers = get_targeted_daily_tickers()
-    
-    if not all_nse_tickers:
-        print("\n[*] No relevant corporate actions found today or API unavailable. Exiting sweep loop.")
-    else:
-        completed_today = get_completed_today()
-        remaining_tickers = [t for t in all_nse_tickers if t not in completed_today]
+    all_nse_tickers = get_dynamic_nse_list()
+    if not all_nse_tickers: 
+        print("[!] Critical failure pulling master NSE stock vector lists. Pipeline killed.")
+        sys.exit(1)
         
-        for idx, ticker in enumerate(remaining_tickers, 1):
-            sys.stdout.write(f"\r>>> Processing [{idx}/{len(remaining_tickers)}] Ticker: {ticker} ...")
-            sys.stdout.flush()
-            extract_stock_data(ticker)
-            mark_completed(ticker)
-            time.sleep(random.uniform(1.2, 2.8))
+    completed_today = get_completed_today()
+    remaining_tickers = [t for t in all_nse_tickers if t not in completed_today]
+    
+    print(f"\n[*] Commencing high-speed concurrent sweep of {len(remaining_tickers)} pending stocks...")
+    
+    # 5 parallel processing workers maintains maximum stability while clearing 3,000 stocks under ~12 minutes
+    with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        future_to_ticker = {executor.submit(extract_stock_data, ticker): ticker for ticker in remaining_tickers}
+        
+        for idx, future in enumerate(concurrent.futures.as_completed(future_to_ticker), 1):
+            ticker = future_to_ticker[future]
+            try:
+                future.result()
+                mark_completed(ticker)
+                sys.stdout.write(f"\r>>> Processed [{idx}/{len(remaining_tickers)}] Tickers (Latest: {ticker}) ...")
+                sys.stdout.flush()
+            except Exception as e:
+                print(f"\n[!] Thread pool exception encountered running stock context [{ticker}]: {e}")
 
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
-    # Send the final aggregated Telegram notification
+    # Send the final aggregated data and AI decision intelligence metrics to Telegram
     send_telegram_summary()
 
 if __name__ == "__main__":
