@@ -21,12 +21,23 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+          cache: 'pip'
 
+      # CACHE: Save Docling & HuggingFace Models so it doesn't download 3GB every day
+      - name: Cache AI Vision Models
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/huggingface
+            ~/.cache/docling
+          # Static key ensures it reuses the same cached models across daily runs
+          key: ${{ runner.os }}-ai-models-v1
+          
       - name: Install Dependencies
-        # Added google-generativeai for the Multimodal AI analysis
+        # Added google-generativeai for the Multimodal AI analysis AND docling
         run: |
           python -m pip install --upgrade pip
-          pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai
+          pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai docling
 
       - name: Execute Sweeper & NLP Engine
         env:
