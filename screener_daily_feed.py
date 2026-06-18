@@ -464,7 +464,18 @@ def sanitize_filename(text: str) -> str:
 
 def is_within_temporal_window(element_text: str) -> bool:
     text_lower = element_text.lower()
-    return any(pattern in text_lower for pattern in VALID_DATE_PATTERNS)
+    
+    # 1. Standard Date Patterns ("today", "1 day ago")
+    if any(pattern in text_lower for pattern in VALID_DATE_PATTERNS):
+        return True
+        
+    # 2. NEW FIX: Capture Screener Intraday Patterns ("4m ago", "2h ago", "10 mins ago")
+    if re.search(r'\b\d+\s*[mh]\s*ago\b', text_lower):
+        return True
+    if re.search(r'\b\d+\s*(mins?|hours?)\s*ago\b', text_lower):
+        return True
+        
+    return False
 
 def identify_category(link_text: str) -> str:
     text_lower = link_text.lower()
