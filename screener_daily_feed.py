@@ -521,11 +521,22 @@ def extract_stock_data(ticker):
     url = f"https://www.screener.in/company/{ticker}/"
     downloaded_assets = [] # Holds all files downloaded for this ticker
     
-    try:
-        resp = local_session.get(url, timeout=6)
+   try:
+        resp = local_session.get(url, timeout=10)
+        
+        if resp.status_code == 429:
+            print(f"\n[!!!] SCREENER BLOCKED YOU (429 Too Many Requests). Thread pausing...")
+            time.sleep(10) # Force the thread to back off
+            return downloaded_assets
+            
+        if resp.status_code == 403:
+            print(f"\n[!!!] CLOUDFLARE BLOCKED YOU (403 Bot Detected) on {ticker}.")
+            return downloaded_assets
+            
         if resp.status_code != 200: 
             return downloaded_assets
-    except Exception: 
+            
+    except Exception as e: 
         return downloaded_assets
 
     soup = BeautifulSoup(resp.text, 'html.parser')
