@@ -727,7 +727,9 @@ def main():
                         md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
                 
                 with STATE_LOCK:
-                    PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}\n  └ [📄 Source]({full_url})")
+                    PIPELINE_METRICS.setdefault("summaries", []).append(
+                        f"• <b>{ticker}</b> ({clean_category_for_tg}): {ai_decision_string}\n  └ <a href='{full_url}'>📄 Source</a>"
+                    )
                     
                 if md_content:
                     with open(md_path, 'w', encoding='utf-8') as f: 
