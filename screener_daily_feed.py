@@ -639,7 +639,9 @@ ef main():
     
     download_nse_bhavcopies()
     
-    all_nse_tickers = get_dynamic_nse_list()
+    # all_nse_tickers = get_dynamic_nse_list()
+    all_nse_tickers = ["SAVITA"] # Hardcode the stock from your screenshot
+    
     
     if not all_nse_tickers: 
         print("[!] Critical failure pulling master NSE stock vector lists. Pipeline killed.")
@@ -653,7 +655,7 @@ ef main():
     files_to_process = []
     
     # === PHASE 1: HIGH-SPEED MULTI-THREADED SWEEP ===
-    with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
+    with concurrent.futures.ThreadPoolExecutor(max_workers=3) as executor:
         future_to_ticker = {executor.submit(extract_stock_data, ticker): ticker for ticker in remaining_tickers}
         
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_ticker), 1):
