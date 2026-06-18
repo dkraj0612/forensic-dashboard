@@ -52,7 +52,7 @@ def get_session():
 # Initialize Gemini Client natively
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    llm_model = genai.GenerativeModel('gemini-1.5-flash')
+    llm_model = genai.GenerativeModel('gemini-2.5-flash')
 else:
     llm_model = None
     print("[!] GEMINI_API_KEY missing from environment variables. AI analysis bypassed.")
