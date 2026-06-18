@@ -494,13 +494,14 @@ def register_successful_metric(ticker: str, category: str):
 def extract_stock_data(ticker):
     local_session = get_session()
     url = f"https://www.screener.in/company/{ticker}/"
+    downloaded_assets = [] # Holds all files downloaded for this ticker
     
     try:
         resp = local_session.get(url, timeout=6)
         if resp.status_code != 200: 
-            return
+            return downloaded_assets
     except Exception: 
-        return
+        return downloaded_assets
 
     soup = BeautifulSoup(resp.text, 'html.parser')
 
@@ -521,12 +522,13 @@ def extract_stock_data(ticker):
         clean_type = sanitize_filename(link_text)
         is_audio = "audio" in link_text.lower()
         
-        ext = ".mp3" if is_audio else ".md"
+        # We save raw PDFs here in Phase 1, NOT markdown
+        ext = ".mp3" if is_audio else ".pdf" 
         filename = f"{ticker}_{matched_category}_{clean_type}{ext}"
         
         category_dir = os.path.join(STOCKS_DIR, ticker, matched_category)
         save_path = os.path.join(category_dir, filename)
-        json_path = save_path.replace('.md', '.json').replace('.mp3', '.json')
+        json_path = os.path.join(category_dir, f"{ticker}_{matched_category}_{clean_type}.json")
 
         if not os.path.exists(save_path) and not os.path.exists(json_path):
             os.makedirs(category_dir, exist_ok=True)
@@ -543,60 +545,35 @@ def extract_stock_data(ticker):
                         if "text/html" in content_type or len(file_resp.content) < 1000:
                             continue
                         
-                        ai_decision_string = "⚪ [NEUTRAL] Audio File Logged."
+                        # 1. SAVE THE RAW FILE (Lightning Fast, No AI)
+                        with open(save_path, 'wb') as f: 
+                            f.write(file_resp.content)
+                            
+                        print(f"      [+] DOWNLOADED RAW FILE -> {filename}")
                         
-                        if is_audio:
-                            # Audio storage & burn cycle
-                            with open(save_path, 'wb') as f: 
-                                f.write(file_resp.content)
-                                
-                            with STATE_LOCK:
-                                PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): Audio recording archived successfully.\n  └ [🎧 Listen to Audio]({full_url})")
-                                
-                            if os.path.exists(save_path): 
-                                os.remove(save_path)
-                        else:
-                            # PDF In-Memory AI Extraction
-                            print(f"      [~] Extracting AI insights for {ticker}...")
-                            ai_decision_string = generate_ai_summary(ticker, matched_category, file_resp.content)
-                            
-                            with STATE_LOCK:
-                                PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}\n  └ [📄 Source]({full_url})")
-                            
-                            # Save Markdown with AI Injection
-                            md_content = None
-                            if matched_category == "Concalls":
-                                md_content = generate_enterprise_markdown(file_resp.content, ticker, matched_category, clean_type, full_url, ai_decision_string)
-                            else:
-                                md_content = convert_to_basic_markdown(file_resp.content, ticker, matched_category, clean_type, full_url, ai_decision_string)
-                            
-                            with open(save_path, 'w', encoding='utf-8') as f: 
-                                f.write(md_content)
-                        
-                        # --- THE JSON STRUCTURED DATA EXPORT ---
-                        json_metadata = {
+                        # 2. APPEND TO RETURN LIST FOR PHASE 2
+                        downloaded_assets.append({
                             "ticker": ticker,
                             "category": matched_category,
-                            "extraction_date": TODAY_STR,
-                            "ai_classification": ai_decision_string.split("]")[0] + "]" if "]" in ai_decision_string else "UNKNOWN",
-                            "ai_summary": ai_decision_string,
-                            "source_url": full_url,
-                            "file_type": "audio" if is_audio else "pdf"
-                        }
+                            "clean_type": clean_type,
+                            "file_path": save_path,
+                            "json_path": json_path,
+                            "url": full_url,
+                            "is_audio": is_audio
+                        })
                         
-                        with open(json_path, 'w', encoding='utf-8') as f:
-                            json.dump(json_metadata, f, indent=4)
-                            
-                        print(f"      [+] SAVED -> {ticker} (JSON & Audit Files)")
-                        register_successful_metric(ticker, matched_category)
-                                
             except Exception as e:
                 print(f"      [!] Processing failure on {filename}: {e}")
+                
+    return downloaded_assets
 
 # =====================================================================
 # HIGH-SPEED CONCURRENT MAIN EXECUTION LOOP
 # =====================================================================
 def main():
+    import concurrent.futures
+    import time
+    
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
     
@@ -617,18 +594,94 @@ def main():
     
     print(f"\n[*] Commencing high-speed concurrent sweep of {len(remaining_tickers)} pending stocks...")
     
+    files_to_process = []
+    
+    # === PHASE 1: HIGH-SPEED MULTI-THREADED SWEEP ===
     with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
         future_to_ticker = {executor.submit(extract_stock_data, ticker): ticker for ticker in remaining_tickers}
         
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_ticker), 1):
             ticker = future_to_ticker[future]
             try:
-                future.result()
+                # Capture the downloaded assets from the thread result
+                assets = future.result()
+                if assets:
+                    files_to_process.extend(assets)
+                    
                 mark_completed(ticker)
                 sys.stdout.write(f"\r>>> Processed [{idx}/{len(remaining_tickers)}] Tickers (Latest: {ticker}) ...")
                 sys.stdout.flush()
-            except Exception:
+            except Exception as e:
                 pass 
+
+    # === PHASE 2: SEQUENTIAL AI ANALYSIS ===
+    if files_to_process:
+        print(f"\n\n=== PHASE 2: SEQUENTIAL AI ANALYSIS ({len(files_to_process)} Files) ===")
+        
+        # Process AI one-by-one so you never hit the 5/min Gemini limit
+        for item in files_to_process:
+            ticker = item['ticker']
+            matched_category = item['category']
+            is_audio = item['is_audio']
+            save_path = item['file_path']
+            full_url = item['url']
+            clean_type = item['clean_type']
+            json_path = item['json_path']
+
+            # 1. Handle Audio Logic
+            if is_audio:
+                with STATE_LOCK:
+                    PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): Audio recording archived successfully.\n  └ [🎧 Listen to Audio]({full_url})")
+                
+                json_metadata = {"ticker": ticker, "category": matched_category, "file_type": "audio", "source_url": full_url}
+                with open(json_path, 'w', encoding='utf-8') as f: 
+                    json.dump(json_metadata, f, indent=4)
+                register_successful_metric(ticker, matched_category)
+                continue
+                
+            # 2. Handle PDF / AI Logic
+            print(f"      [~] Extracting AI insights for {ticker}...")
+            
+            try:
+                with open(save_path, 'rb') as f:
+                    pdf_bytes = f.read()
+                    
+                # Call AI with the backoff wrapper (assumed defined elsewhere)
+                ai_decision_string = safe_ai_classification(generate_ai_summary, ticker, matched_category, pdf_bytes)
+                
+                with STATE_LOCK:
+                    PIPELINE_METRICS.setdefault("summaries", []).append(f"• *{ticker}* ({matched_category}): {ai_decision_string}\n  └ [📄 Source]({full_url})")
+
+                # Generate and save Markdown
+                md_path = save_path.replace(".pdf", ".md")
+                if matched_category == "Concalls":
+                    md_content = generate_enterprise_markdown(pdf_bytes, ticker, matched_category, clean_type, full_url, ai_decision_string)
+                else:
+                    md_content = convert_to_basic_markdown(pdf_bytes, ticker, matched_category, clean_type, full_url, ai_decision_string)
+                    
+                if md_content:
+                    with open(md_path, 'w', encoding='utf-8') as f: 
+                        f.write(md_content)
+                
+                # Generate JSON metadata
+                json_metadata = {
+                    "ticker": ticker, "category": matched_category, "extraction_date": TODAY_STR,
+                    "ai_summary": ai_decision_string, "source_url": full_url, "file_type": "pdf"
+                }
+                with open(json_path, 'w', encoding='utf-8') as f: 
+                    json.dump(json_metadata, f, indent=4)
+                
+                register_successful_metric(ticker, matched_category)
+                
+                # Cleanup: Delete the raw PDF since we now have the Markdown
+                if os.path.exists(save_path): 
+                    os.remove(save_path)
+                
+                # STRICT RATE LIMIT GUARD: Wait 13 seconds before the next AI call
+                time.sleep(13)
+                
+            except Exception as e:
+                print(f"      [!] AI Processing failure for {ticker}: {e}")
 
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
