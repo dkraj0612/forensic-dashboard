@@ -23,16 +23,17 @@ jobs:
           python-version: '3.11'
 
       - name: Install Dependencies
-        # Playwright is gone! Added PyMuPDF and Textstat
+        # Added google-generativeai for the Multimodal AI analysis
         run: |
           python -m pip install --upgrade pip
-          pip install curl_cffi pandas beautifulsoup4 pymupdf textstat
+          pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai
 
       - name: Execute Sweeper & NLP Engine
         env:
-          # Securely injects your Telegram credentials
+          # Securely injects your Telegram and Gemini AI credentials
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python screener_daily_feed.py
 
       - name: Commit and Push Data
