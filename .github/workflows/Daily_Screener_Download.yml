@@ -1,3 +1,4 @@
+
 name: Enterprise Market Sweeper
 
 on:
@@ -8,6 +9,11 @@ on:
 
 permissions:
   contents: write # Allows the bot to save files back to your repository
+
+# PREVENTS CRASHES: Stops two runners from pushing to Git at the exact same time
+concurrency:
+  group: market-sweeper
+  cancel-in-progress: true
 
 jobs:
   run-pipeline:
