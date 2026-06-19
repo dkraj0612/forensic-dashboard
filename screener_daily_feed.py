@@ -714,7 +714,7 @@ def main():
     
     download_nse_bhavcopies()
     
-        all_nse_tickers = get_dynamic_nse_list()
+    all_nse_tickers = get_dynamic_nse_list()
 
     
 
