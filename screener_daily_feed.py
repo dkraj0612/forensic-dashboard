@@ -567,33 +567,36 @@ def safe_ai_classification(text_content: str) -> str:
     import time
     import google.generativeai as genai
     
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key: 
-        return "AI Skipped: No API Key Provided."
+    try:
+        api_key = os.getenv("GEMINI_API_KEY")
+        if not api_key: 
+            return "AI Skipped: No API Key Provided."
+            
+        # BULLETPROOF FIX: Initialize a completely fresh model directly inside the function
+        genai.configure(api_key=api_key)
+        fresh_model = genai.GenerativeModel('gemini-1.5-flash')
+            
+        max_retries = 3
+        base_delay = 15 
         
-    # BULLETPROOF FIX: Initialize the model locally inside the function
-    genai.configure(api_key=api_key)
-    local_ai_model = genai.GenerativeModel('gemini-2.5-flash')
-        
-    max_retries = 3
-    base_delay = 15 
-    
-    for attempt in range(max_retries):
-        try:
-            # Trim to 30,000 characters to stay within context windows
-            response = local_ai_model.generate_content(
-                f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
-            ) 
-            return response.text.strip().replace('\n', ' ')
-        except Exception as e:
-            if '429' in str(e) or 'quota' in str(e).lower():
-                wait_time = base_delay * (2 ** attempt) + random.uniform(1, 5)
-                print(f"      [!] API Rate Limit Hit. Sleeping for {wait_time:.1f}s...")
-                time.sleep(wait_time)
-            else:
-                return f"AI Error: {str(e)}"
-                
-    return "AI Skipped: Rate limit exceeded after maximum retries."
+        for attempt in range(max_retries):
+            try:
+                # Trim to 30,000 characters to stay within context windows safely
+                response = fresh_model.generate_content(
+                    f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
+                ) 
+                return response.text.strip().replace('\n', ' ')
+            except Exception as api_error:
+                if '429' in str(api_error) or 'quota' in str(api_error).lower():
+                    wait_time = base_delay * (2 ** attempt) + random.uniform(1, 5)
+                    print(f"      [!] API Rate Limit Hit. Sleeping for {wait_time:.1f}s...")
+                    time.sleep(wait_time)
+                else:
+                    return f"API Error: {str(api_error)}"
+                    
+        return "AI Skipped: Rate limit exceeded after maximum retries."
+    except Exception as critical_error:
+        return f"Critical Execution Error: {str(critical_error)}"
 
 
 def extract_stock_data(ticker):
