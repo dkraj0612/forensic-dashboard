@@ -673,11 +673,13 @@ def extract_stock_data(ticker):
 
 # =====================================================================
 # HIGH-SPEED CONCURRENT MAIN EXECUTION LOOP
-# =====================================================================
+# ====================================================================
 def main():
     import concurrent.futures
     import time
     import fitz  # PyMuPDF for lightning-fast page counting
+    import gc    # Added for mandatory memory clearing
+    import html  # Added for safe Telegram escaping
     
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
@@ -769,7 +771,7 @@ def main():
             print(f"      [~] Extracting AI insights for {ticker}...")
             
             try:
-                # --- FAST 50-PAGE GUARDRAIL ---
+                # --- FAST 150-PAGE GUARDRAIL ---
                 try:
                     doc = fitz.open(save_path)
                     page_count = doc.page_count
@@ -781,18 +783,35 @@ def main():
                 ai_decision_string = "No AI Analysis performed."
                 md_content = ""
                 
-                if page_count > 50:
+                if page_count > 150:
                     print(f"      [!] Document too large ({page_count} pages). Bypassing Docling/AI.")
-                    ai_decision_string = f"Skipped: Document exceeds 50 pages ({page_count} pages)."
+                    ai_decision_string = f"Skipped: Document exceeds 150 pages ({page_count} pages)."
                     md_content = f"# {ticker} - {matched_category}\n\n⚠️ **Document bypassed ({page_count} pages).**\n🔗 **[View Original Document]({full_url})**"
                     
                 else:
-                    # --- DOCLING TABLE & LAYOUT EXTRACTION ---
-                    print(f"      [~] Docling parsing layout & tables ({page_count} pages)...")
-                    conv_res = docling_converter.convert(save_path)
-                    docling_md_text = conv_res.document.export_to_markdown()
+                    docling_md_text = ""
                     
-                    # Call AI with the backoff wrapper, passing the perfect Docling Markdown instead of raw bytes
+                    # --- DOCLING WITH OFFLINE FALLBACK ---
+                    if docling_converter is not None:
+                        print(f"      [~] Docling parsing layout & tables with OCR ({page_count} pages)...")
+                        try:
+                            conv_res = docling_converter.convert(save_path)
+                            docling_md_text = conv_res.document.export_to_markdown()
+                        except Exception as e:
+                            print(f"      [!] Docling OCR failed on this specific file: {e}. Falling back...")
+                    
+                    if not docling_md_text:
+                        print(f"      [~] Using Offline PyMuPDF to extract text...")
+                        try:
+                            doc = fitz.open(save_path)
+                            for page in doc:
+                                docling_md_text += page.get_text("text") + "\n\n"
+                            doc.close()
+                        except Exception as e:
+                            print(f"      [!] PyMuPDF also failed. File is likely corrupted.")
+                            continue
+                    
+                    # Call AI with the backoff wrapper, passing the perfect Markdown instead of raw bytes
                     # CORRECT:
                     ai_decision_string = safe_ai_classification(docling_md_text)
 
@@ -803,10 +822,13 @@ def main():
                     else:
                         md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
                 
+                # HTML escape fix for Telegram
+                ai_tg_safe = html.escape(ai_decision_string).replace('**', '')
+
                 # THE FIX: Uses the clean_category_for_tg variable defined at the top of the loop
                 with STATE_LOCK:
                     PIPELINE_METRICS.setdefault("summaries", []).append(
-                        f"• <b>{ticker}</b> ({clean_category_for_tg}): {ai_decision_string}\n  └ <a href='{full_url}'>📄 Source</a>"
+                        f"• <b>{ticker}</b> ({clean_category_for_tg}): {ai_tg_safe}\n  └ <a href='{full_url}'>📄 Source</a>"
                     )
                     
                 if md_content:
@@ -828,15 +850,19 @@ def main():
                     os.remove(save_path)
                 
                 # STRICT RATE LIMIT GUARD: Wait 13 seconds before the next AI call (Only if AI actually ran)
-                if page_count <= 50:
+                if page_count <= 150:
                     time.sleep(13)
                 
             except Exception as e:
                 print(f"      [!] AI Processing failure for {ticker}: {e}")
+            finally:
+                # MANDATORY RAM CLEAR (Prevents OOM Crashes on large Scanned PDFs)
+                gc.collect()
 
     print("\n\n=== REAL-TIME SWEEP CONCLUDED SUCCESSFULLY ===")
     
     send_telegram_summary()
+
 
 
 if __name__ == "__main__":
