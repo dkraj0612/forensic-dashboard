@@ -238,11 +238,13 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
         print(f"      [!] AI Classification failed for {ticker}: {e}")
         return "⚪ [NEUTRAL] Document logged but objective AI classification timed out."
 
+
 def send_telegram_summary():
-    msg = "📊 *Market Sweeper AI Intelligence Report*\n"
-    msg += f"📅 *Date:* {TODAY_STR}\n"
+    # Changed from Markdown * to HTML <b> for crash-proof Telegram formatting
+    msg = "📊 <b>Market Sweeper AI Intelligence Report</b>\n"
+    msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
-    msg += "📦 *NSE Bhavcopies:*\n"
+    msg += "📦 <b>NSE Bhavcopies:</b>\n"
     msg += f"• Cash (SEC): {'✅ Downloaded' if PIPELINE_METRICS['bhavcopy_sec'] else '❌ Failed/Missing'}\n"
     msg += f"• F&O (FNO): {'✅ Downloaded' if PIPELINE_METRICS['bhavcopy_fno'] else '❌ Failed/Missing'}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
@@ -250,12 +252,13 @@ def send_telegram_summary():
     summaries = PIPELINE_METRICS.get("summaries", [])
     
     if not summaries:
-        msg += "└ `No major financial documents were processed today.`\n"
+        msg += "└ <i>No major financial documents were processed today.</i>\n"
     else:
-        msg += f"🏢 *Objective Action Signals ({len(summaries)}):*\n\n"
+        msg += f"🏢 <b>Objective Action Signals ({len(summaries)}):</b>\n\n"
         for summary in summaries:
+            # Your exact truncation logic preserved!
             if len(msg) + len(summary) > 3900:
-                msg += "• *CRITICAL:* Additional alerts truncated. Review filesystem logs.\n"
+                msg += "• <b>CRITICAL:</b> Additional alerts truncated. Review filesystem logs.\n"
                 break
             msg += f"{summary}\n\n"
 
@@ -265,21 +268,22 @@ def send_telegram_summary():
         f.write(msg)
     print(f"\n[+] Audit Trail Saved: Telegram payload committed to {audit_log_path}")
 
-    # Console Mirror
+    # Console Mirror (Strips HTML tags for clean console viewing)
     print("\n" + "="*70)
     print("=== CONSOLE LOG STREAM BACKUP: DAILY MARKET INTELLIGENCE REPORT ===")
     print("="*70)
-    print(msg.replace('*', '').replace('`', ''))
+    clean_console_msg = msg.replace('<b>', '').replace('</b>', '').replace('<i>', '').replace('</i>', '')
+    print(clean_console_msg)
     print("="*70 + "\n")
 
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: 
         return
 
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    url = f"[https://api.telegram.org/bot](https://api.telegram.org/bot){TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID, 
         "text": msg, 
-        "parse_mode": "Markdown", 
+        "parse_mode": "HTML", # THE FIX: Changed from Markdown to HTML
         "disable_web_page_preview": True
     }
     
@@ -294,6 +298,7 @@ def send_telegram_summary():
             
     except Exception as e: 
         print(f"      [!] Socket termination during Telegram pipeline transmission: {e}")
+
 
 # =====================================================================
 # INTEGRATED NLP ENGINE & ROBUST TEXT EXTRACTOR
