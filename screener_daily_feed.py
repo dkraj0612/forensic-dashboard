@@ -86,14 +86,12 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-# INITIALIZE GEMINI MODELS GLOBALLY
+# INITIALIZE GEMINI MODELS GLOBALLY (Renamed to prevent namespace conflicts)
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
-    ai_model = genai.GenerativeModel('gemini-2.5-flash') 
-    llm_model = genai.GenerativeModel('gemini-2.5-flash')
+    global_ai_client = genai.GenerativeModel('gemini-2.5-flash') 
 else:
-    ai_model = None
-    llm_model = None
+    global_ai_client = None
     print("[!] Warning: GEMINI_API_KEY is not set. AI Analysis will be skipped.")
 
 
@@ -218,7 +216,7 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
         
     # BULLETPROOF FIX: Initialize the model locally inside the function
     genai.configure(api_key=api_key)
-    local_llm_model = genai.GenerativeModel('gemini-2.5-flash')
+    local_multimodal_client = genai.GenerativeModel('gemini-2.5-flash')
         
     prompt = f"""
     You are a strict quantitative trading algorithm analyzing an NSE India corporate filing ({category}) for {ticker}.
@@ -239,7 +237,7 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
     """
     try:
         pdf_document = {"mime_type": "application/pdf", "data": pdf_bytes}
-        response = local_llm_model.generate_content([prompt, pdf_document])
+        response = local_multimodal_client.generate_content([prompt, pdf_document])
         clean_summary = response.text.replace('**', '').replace('*', '').strip()
         
         if len(clean_summary) > 200: 
@@ -291,7 +289,6 @@ def send_telegram_summary():
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: 
         return
 
-    # FIXED: Restored clean URL format
     url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID, 
@@ -574,7 +571,7 @@ def safe_ai_classification(text_content: str) -> str:
             
         # BULLETPROOF FIX: Initialize a completely fresh model directly inside the function
         genai.configure(api_key=api_key)
-        fresh_model = genai.GenerativeModel('gemini-1.5-flash')
+        fresh_text_client = genai.GenerativeModel('gemini-2.5-flash')
             
         max_retries = 3
         base_delay = 15 
@@ -582,7 +579,7 @@ def safe_ai_classification(text_content: str) -> str:
         for attempt in range(max_retries):
             try:
                 # Trim to 30,000 characters to stay within context windows safely
-                response = fresh_model.generate_content(
+                response = fresh_text_client.generate_content(
                     f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
                 ) 
                 return response.text.strip().replace('\n', ' ')
@@ -839,12 +836,20 @@ def main():
                     # Call AI with the backoff wrapper, passing the perfect Markdown instead of raw bytes
                     ai_decision_string = safe_ai_classification(docling_md_text)
                     
-                    # Generate and save Markdown using the parsed Docling text
-                    if matched_category == "Concalls":
-                        md_content = generate_enterprise_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
-                    else:
-                        md_content = convert_to_basic_markdown(docling_md_text, ticker, matched_category, clean_type, full_url, ai_decision_string)
-                
+                    # THE CRITICAL BUG FIX: The Markdown generators expect raw binary PDF bytes (pdf_binary), 
+                    # NOT the string (docling_md_text). We safely load the binary here to prevent parsing crashes.
+                    try:
+                        with open(save_path, 'rb') as f:
+                            pdf_binary = f.read()
+                            
+                        # Generate and save Markdown using the extracted bytes
+                        if matched_category == "Concalls":
+                            md_content = generate_enterprise_markdown(pdf_binary, ticker, matched_category, clean_type, full_url, ai_decision_string)
+                        else:
+                            md_content = convert_to_basic_markdown(pdf_binary, ticker, matched_category, clean_type, full_url, ai_decision_string)
+                    except Exception as parse_e:
+                        md_content = f"# {ticker} - {matched_category}\n**Source URL:** [View Original Document]({full_url})\n\n> ❌ **FILE LOAD ERROR:** {parse_e}"
+
                 # HTML escape fix for Telegram
                 ai_tg_safe = html.escape(ai_decision_string).replace('**', '')
 
@@ -889,4 +894,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
