@@ -1,0 +1,8 @@
+{
+    "ticker": "ANIKINDS",
+    "category": "Results",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Error: name 'ai_model' is not defined",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a9ab8b18-056e-4580-95ed-db036fcc464c.pdf",
+    "file_type": "pdf"
+}
