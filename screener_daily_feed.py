@@ -147,24 +147,116 @@ def generate_lookback_patterns():
 VALID_DATE_PATTERNS = generate_lookback_patterns()
 
 TARGET_CATEGORIES = {
-    "Results": [r'financial result', r'quarterly result', r'audited result', r'unaudited result', r'results'],
-    "Concalls": [r'transcript', r'audio', r'concall', r'earnings call', r'call transcript'],
-    "Dividend": [r'dividend', r'interim dividend', r'final dividend', r'book closure for dividend'],
-    "Bonus": [r'bonus', r'bonus issue', r'allotment of bonus'],
-    "Order_Book": [r'order', r'contract', r'award', r'letter of intent', r'loi', r'tender'],
-    "Fund_Raise": [r'fund raising', r'qip', r'preferential issue', r'rights issue', r'qualified institutional'],
-    "New_Projects": [r'new project', r'commissioning', r'capacity expansion', r'commercial production'],
-    "Major_Deals": [r'block deal', r'bulk deal', r'strategic partnership', r'acquisition of', r'joint venture'],
-    "Business_Updates": [r'business update', r'monthly update', r'sales volume', r'provisional figures'],
-    "SAST": [r'sast', r'substantial acquisition', r'reg.*29', r'disclosure under regulation'],
-    "SHP": [r'shareholding pattern', r'shp', r'shareholding statement'],
-    "Insider_Trades": [r'insider', r'reg.*7', r'insider trade', r'prohibition of insider'],
-    "Buyback_Split": [r'buyback', r'buy back', r'stock split', r'sub-division', r'sub division'],
-    "Pledge_Action": [r'pledge', r'revocation of pledge', r'encumbrance'],
-    "Regulatory_Risk": [r'usfda', r'form 483', r'sebi', r'default', r'nclt', r'insolvency', r'tax', r'search and seizure'],
-    "Management_Change": [r'resignation', r'cessation', r'appointment of director', r'change in management', r'cfo'],
-    "Credit_Rating": [r'credit rating', r'crisil', r'icra', r'care rating', r'rating upgrade', r'rating downgrade']
+    # ==========================================
+    # 1. CORE FINANCIALS & FORWARD-LOOKING
+    # ==========================================
+    "Results": [
+        r'financial result', r'quarterly result', r'audited result', r'unaudited result', r'results',
+        r'outcome of board meeting', r'earnings release', r'financial statement'
+    ],
+    "Concalls": [
+        r'transcript', r'audio', r'concall', r'earnings call', r'call transcript'
+    ],
+    "Presentations_&_PR": [
+        r'investor presentation', r'corporate presentation', r'press release', r'media release'
+    ],
+    "Business_Updates": [
+        r'business update', r'monthly update', r'sales volume', r'provisional figures', 
+        r'operational update', r'kpi', r'q1 update', r'q2 update', r'q3 update', r'q4 update'
+    ],
+    "Guidance_Warnings": [ # NEW: Extremely Market Moving
+        r'profit warning', r'revision in guidance', r'earnings guidance', r'business outlook', 
+        r'revenue guidance', r'material impact on profitability'
+    ],
+
+    # ==========================================
+    # 2. SHAREHOLDER VALUE & CAPITAL STRUCTURE
+    # ==========================================
+    "Dividend": [
+        r'dividend', r'interim dividend', r'final dividend', r'special dividend', r'record date for dividend'
+    ],
+    "Bonus": [
+        r'bonus', r'bonus issue', r'allotment of bonus', r'capitali[sz]ation of reserve'
+    ],
+    "Buyback_Split": [
+        r'buyback', r'buy back', r'stock split', r'sub-division', r'sub division', r'alteration of capital'
+    ],
+    "Fund_Raise": [
+        r'fund raising', r'qip', r'preferential issue', r'rights issue', r'qualified institutional',
+        r'allotment of equity', r'allotment of share', r'private placement', r'issue of warrant', 
+        r'debt issue', r'capital raise', r'\bfpo\b', r'anchor investor'
+    ],
+    "Debt_Reduction": [ # NEW: Massive Catalyst for Indian Mid/Small Caps
+        r'repayment of debt', r'prepayment of loan', r'pre-payment of', r'debt reduction', 
+        r'debt free', r'settlement of debt', r'reduction in borrowing'
+    ],
+
+    # ==========================================
+    # 3. M&A, DEALS & OPERATIONS
+    # ==========================================
+    "Major_Deals": [
+        r'block deal', r'bulk deal', r'strategic partnership', r'acquisition', r'joint venture',
+        r'merger', r'amalgamation', r'demerger', r'scheme of arrangement', r'\bmou\b', 
+        r'memorandum of understanding', r'slump sale', r'stake sale', r'incorporation of subsidiary', 
+        r'divestment', r'\bsha\b', r'\bssa\b', r'\bbta\b', r'business transfer agreement', r'licensing agreement'
+    ],
+    "Order_Book": [
+        r'order', r'contract', r'award', r'letter of intent', r'\bloi\b', r'tender',
+        r'letter of award', r'\bloa\b', r'work order', r'receipt of order', r'\bbagged\b', r'\bl1 bidder\b', r'purchase order'
+    ],
+    "New_Projects": [
+        r'new project', r'commissioning', r'capacity expansion', r'commercial production',
+        r'brownfield', r'greenfield', r'\bcapex\b', r'inauguration', r'new facility', r'commencement of',
+        r'environmental clearance'
+    ],
+    "Product_Approvals": [
+        r'usfda approval', r'anda approval', r'patent granted', r'product launch', r'dcgi approval', r'ce mark'
+    ],
+
+    # ==========================================
+    # 4. OWNERSHIP & INSIDER ACTIVITY
+    # ==========================================
+    "SAST": [
+        r'sast', r'substantial acquisition', r'reg.*29', r'disclosure under regulation', r'takeover'
+    ],
+    "SHP": [
+        r'shareholding pattern', r'\bshp\b', r'shareholding statement'
+    ],
+    "Insider_Trades": [
+        r'insider', r'reg.*7', r'insider trade', r'prohibition of insider', r'pit regulation'
+    ],
+    "Pledge_Action": [
+        r'pledge', r'revocation of pledge', r'encumbrance', r'creation of pledge', r'invocation of pledge', r'release of pledge'
+    ],
+
+    # ==========================================
+    # 5. FORENSIC RED FLAGS & DISRUPTIONS
+    # ==========================================
+    "Regulatory_Risk": [
+        r'usfda', r'form 483', r'sebi', r'default', r'tax', r'search and seizure',
+        r'\beir\b', r'establishment inspection report', r'warning letter', r'import alert', r'show cause notice',
+        r'penalty', r'\bcbi\b', r'\bed\b', r'enforcement directorate', r'income tax', r'gst demand',
+        r'litigation', r'forensic audit', r'delay in payment', r'adjudication order'
+    ],
+    "Business_Disruption": [ # NEW: Immediate Gaps Down in Stock Price
+        r'force majeure', r'strike', r'lock-out', r'lockout', r'closure of plant', 
+        r'fire incident', r'pollution control board', r'disruption of operation'
+    ],
+    "Insolvency_CIRP": [ # NEW: Total Capital Wipeout Tracking
+        r'\bnclt\b', r'insolvency', r'\bibc\b', r'bankruptcy', r'\bcirp\b', 
+        r'corporate insolvency', r'resolution professional', r'committee of creditors', r'liquidation'
+    ],
+    "Management_Change": [
+        r'resignation', r'cessation', r'appointment of director', r'change in management', r'\bcfo\b',
+        r'md & ceo', r'managing director', r'key managerial personnel', r'\bkmp\b', 
+        r'resignation of statutory auditor', r'resignation of independent director' # Massive red flags
+    ],
+    "Credit_Rating": [
+        r'credit rating', r'crisil', r'icra', r'care rating', r'rating upgrade', r'rating downgrade',
+        r'india ratings', r'brickwork', r'fitch', r'moody', r's&p'
+    ]
 }
+
 
 # =====================================================================
 # STATE TRACKING ENGINE
