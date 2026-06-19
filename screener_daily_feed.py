@@ -1,3 +1,4 @@
+
 import os
 import re
 import sys
@@ -71,7 +72,7 @@ def bootstrap_docling():
     print("[!] Failed to boot Docling after max retries. Pipeline will route to offline PyMuPDF.")
     return None
 
-# Initialize Docling Globally (do this right under your other global variables like GEMINI_API_KEY)
+# Initialize Docling Globally
 docling_converter = bootstrap_docling()
 
 
@@ -84,11 +85,15 @@ OUTPUT_DIR = "market_pulse_data"
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# INITIALIZE GEMINI MODELS GLOBALLY
 if GEMINI_API_KEY:
     genai.configure(api_key=GEMINI_API_KEY)
     ai_model = genai.GenerativeModel('gemini-2.5-flash') 
+    llm_model = genai.GenerativeModel('gemini-2.5-flash')
 else:
     ai_model = None
+    llm_model = None
     print("[!] Warning: GEMINI_API_KEY is not set. AI Analysis will be skipped.")
 
 
@@ -106,14 +111,6 @@ def get_session():
             'Referer': 'https://www.nseindia.com/'
         })
     return thread_local.session
-
-# Initialize Gemini Client natively
-if GEMINI_API_KEY:
-    genai.configure(api_key=GEMINI_API_KEY)
-    llm_model = genai.GenerativeModel('gemini-2.5-flash')
-else:
-    llm_model = None
-    print("[!] GEMINI_API_KEY missing from environment variables. AI analysis bypassed.")
 
 NOW = datetime.datetime.today()
 TODAY_STR = NOW.strftime('%Y-%m-%d')
@@ -247,7 +244,6 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
 
 
 def send_telegram_summary():
-    # Changed from Markdown * to HTML <b> for crash-proof Telegram formatting
     msg = "📊 <b>Market Sweeper AI Intelligence Report</b>\n"
     msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
     msg += "━━━━━━━━━━━━━━━━━━━━\n"
@@ -263,7 +259,6 @@ def send_telegram_summary():
     else:
         msg += f"🏢 <b>Objective Action Signals ({len(summaries)}):</b>\n\n"
         for summary in summaries:
-            # Your exact truncation logic preserved!
             if len(msg) + len(summary) > 3900:
                 msg += "• <b>CRITICAL:</b> Additional alerts truncated. Review filesystem logs.\n"
                 break
@@ -286,11 +281,12 @@ def send_telegram_summary():
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: 
         return
 
-    url = f"[https://api.telegram.org/bot](https://api.telegram.org/bot){TELEGRAM_BOT_TOKEN}/sendMessage"
+    # FIXED: Restored clean URL format
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     payload = {
         "chat_id": TELEGRAM_CHAT_ID, 
         "text": msg, 
-        "parse_mode": "HTML", # THE FIX: Changed from Markdown to HTML
+        "parse_mode": "HTML", 
         "disable_web_page_preview": True
     }
     
@@ -528,11 +524,11 @@ def sanitize_filename(text: str) -> str:
 def is_within_temporal_window(element_text: str) -> bool:
     text_lower = element_text.lower()
     
-    # 1. Standard Date Patterns ("today", "1 day ago")
+    # 1. Standard Date Patterns
     if any(pattern in text_lower for pattern in VALID_DATE_PATTERNS):
         return True
         
-    # 2. NEW FIX: Capture Screener Intraday Patterns ("4m ago", "2h ago", "10 mins ago")
+    # 2. Screener Intraday Patterns ("4m ago", "2h ago")
     if re.search(r'\b\d+\s*[mh]\s*ago\b', text_lower):
         return True
     if re.search(r'\b\d+\s*(mins?|hours?)\s*ago\b', text_lower):
@@ -556,7 +552,7 @@ def register_successful_metric(ticker: str, category: str):
 
 def safe_ai_classification(text_content: str) -> str:
     """Safely calls Gemini API with exponential backoff for rate limits."""
-    if not GEMINI_API_KEY: 
+    if not GEMINI_API_KEY or ai_model is None: 
         return "AI Skipped: No API Key Provided."
         
     max_retries = 3
@@ -564,7 +560,7 @@ def safe_ai_classification(text_content: str) -> str:
     
     for attempt in range(max_retries):
         try:
-            # We trim the text to 30,000 characters just to be safe with context limits
+            # Trim to 30,000 characters to stay within context windows
             response = ai_model.generate_content(
                 f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
             ) 
@@ -713,8 +709,6 @@ def main():
         "VAIBHAVGBL", "VMSTMT", "WESTLIFE", "ZFSTEERING", "ZIMLAB", "ZODIAC"
     ]
 
-    
-    
     if not all_nse_tickers: 
         print("[!] Critical failure pulling master NSE stock vector lists. Pipeline killed.")
         sys.exit(1)
@@ -819,9 +813,7 @@ def main():
                             continue
                     
                     # Call AI with the backoff wrapper, passing the perfect Markdown instead of raw bytes
-                    # CORRECT:
                     ai_decision_string = safe_ai_classification(docling_md_text)
-
                     
                     # Generate and save Markdown using the parsed Docling text
                     if matched_category == "Concalls":
@@ -871,6 +863,6 @@ def main():
     send_telegram_summary()
 
 
-
 if __name__ == "__main__":
     main()
+
