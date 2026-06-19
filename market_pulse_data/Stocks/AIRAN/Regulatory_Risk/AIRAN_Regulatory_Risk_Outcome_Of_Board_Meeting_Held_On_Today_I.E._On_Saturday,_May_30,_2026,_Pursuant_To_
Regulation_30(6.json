@@ -1,8 +1,0 @@
-{
-    "ticker": "AIRAN",
-    "category": "Regulatory_Risk",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3e826a1-9a35-4846-94b8-1ec92000d7ee.pdf",
-    "file_type": "pdf"
-}
