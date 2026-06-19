@@ -83,7 +83,13 @@ OUTPUT_DIR = "market_pulse_data"
 # TELEGRAM & AI SECURITY
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    ai_model = genai.GenerativeModel('gemini-2.5-flash') 
+else:
+    ai_model = None
+    print("[!] Warning: GEMINI_API_KEY is not set. AI Analysis will be skipped.")
+
 
 # Thread locks and Thread-Local Storage for true parallel networking
 STATE_LOCK = threading.Lock()
