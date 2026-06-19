@@ -1,8 +1,0 @@
-{
-    "ticker": "HILTON",
-    "category": "Fund_Raise",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b1cfc71-d014-4b58-8cf4-f2f92fca62d8.pdf",
-    "file_type": "pdf"
-}

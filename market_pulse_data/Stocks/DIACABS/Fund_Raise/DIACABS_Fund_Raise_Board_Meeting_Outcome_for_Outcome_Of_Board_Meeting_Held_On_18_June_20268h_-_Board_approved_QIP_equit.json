@@ -1,8 +1,0 @@
-{
-    "ticker": "DIACABS",
-    "category": "Fund_Raise",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c664ea73-4fb6-403e-8a90-3a056ea98d64.pdf",
-    "file_type": "pdf"
-}

@@ -1,8 +1,0 @@
-{
-    "ticker": "GICRE",
-    "category": "Management_Change",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4883caf9-fdab-405f-93b6-edbf07e82024.pdf",
-    "file_type": "pdf"
-}

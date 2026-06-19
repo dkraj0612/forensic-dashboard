@@ -1,8 +1,0 @@
-{
-    "ticker": "KRISHIVAL",
-    "category": "Insider_Trades",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a59fec02-36e0-4861-aab2-70ddefeccad5.pdf",
-    "file_type": "pdf"
-}

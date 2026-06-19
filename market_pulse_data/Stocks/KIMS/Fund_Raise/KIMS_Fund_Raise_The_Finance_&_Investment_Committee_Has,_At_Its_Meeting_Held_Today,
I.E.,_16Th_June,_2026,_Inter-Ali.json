@@ -1,8 +1,0 @@
-{
-    "ticker": "KIMS",
-    "category": "Fund_Raise",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=562ca201-468d-4ea5-aca2-ac858e9f898f.pdf",
-    "file_type": "pdf"
-}

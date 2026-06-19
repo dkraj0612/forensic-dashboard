@@ -1,8 +1,0 @@
-{
-    "ticker": "AARVI",
-    "category": "Order_Book",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://nsearchives.nseindia.com/corporate/AARVI_18062026180009_NSE20262710WorkOrderIntimation_Revised.pdf",
-    "file_type": "pdf"
-}

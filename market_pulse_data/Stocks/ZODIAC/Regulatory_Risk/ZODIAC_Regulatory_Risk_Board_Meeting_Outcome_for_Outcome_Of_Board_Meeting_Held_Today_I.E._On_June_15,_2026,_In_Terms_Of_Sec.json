@@ -1,8 +1,0 @@
-{
-    "ticker": "ZODIAC",
-    "category": "Regulatory_Risk",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d33d40ce-f182-4c11-9bd4-6c2bf8236bbb.pdf",
-    "file_type": "pdf"
-}

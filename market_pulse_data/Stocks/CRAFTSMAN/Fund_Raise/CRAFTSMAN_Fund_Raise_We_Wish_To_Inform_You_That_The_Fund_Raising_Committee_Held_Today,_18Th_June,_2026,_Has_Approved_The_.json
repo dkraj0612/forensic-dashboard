@@ -1,8 +1,0 @@
-{
-    "ticker": "CRAFTSMAN",
-    "category": "Fund_Raise",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1810663-610f-4e55-a786-bec0051c5a61.pdf",
-    "file_type": "pdf"
-}

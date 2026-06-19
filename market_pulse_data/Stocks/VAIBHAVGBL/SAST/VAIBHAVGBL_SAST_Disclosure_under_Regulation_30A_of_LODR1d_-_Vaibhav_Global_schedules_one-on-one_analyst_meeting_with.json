@@ -1,8 +1,0 @@
-{
-    "ticker": "VAIBHAVGBL",
-    "category": "SAST",
-    "extraction_date": "2026-06-19",
-    "ai_summary": "AI Error: name 'ai_model' is not defined",
-    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca36b535-7f1e-4db6-bc9e-7f6ea628e3cd.pdf",
-    "file_type": "pdf"
-}
