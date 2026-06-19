@@ -716,11 +716,10 @@ def main():
     
     all_nse_tickers = get_dynamic_nse_list()
 
-    
-
     if not all_nse_tickers: 
         print("[!] Critical failure pulling master NSE stock vector lists. Pipeline killed.")
         sys.exit(1)
+
         
     completed_today = get_completed_today()
     remaining_tickers = [t for t in all_nse_tickers if t not in completed_today]
