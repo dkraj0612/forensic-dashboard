@@ -2,7 +2,7 @@
 📅 <b>Date:</b> 2026-06-19
 ━━━━━━━━━━━━━━━━━━━━
 📦 <b>NSE Bhavcopies:</b>
-• Cash (SEC): ❌ Failed/Missing
+• Cash (SEC): ✅ Downloaded
 • F&O (FNO): ❌ Failed/Missing
 ━━━━━━━━━━━━━━━━━━━━
 🏢 <b>Objective Action Signals (24):</b>
