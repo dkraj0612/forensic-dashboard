@@ -23,13 +23,57 @@ try:
 except ImportError:
     print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas beautifulsoup4 pymupdf textstat google-generativeai")
     sys.exit(1)
-from docling.document_converter import DocumentConverter
+
+
+import gc
+import html
+
+# Disable Telemetry to prevent unnecessary Hugging Face pings
+os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
+
+def bootstrap_docling():
+    """
+    Boots up Docling with Low-RAM OCR for Scanned PDFs. 
+    Waits up to ~2 hours if Hugging Face rate limits the IP.
+    """
+    from docling.document_converter import DocumentConverter, PdfFormatOption
+    from docling.datamodel.base_models import InputFormat
+    from docling.datamodel.pipeline_options import PdfPipelineOptions
+
+    # Enterprise low-RAM config for 100+ page scans
+    pipeline_options = PdfPipelineOptions()
+    pipeline_options.do_ocr = True                 # Actively read scanned images
+    pipeline_options.generate_page_images = False  # NEVER save images to RAM
+
+    # Wait delays: 1 min, 5 mins, 15 mins, 30 mins, 60 mins
+    wait_times = [60, 300, 900, 1800, 3600] 
+    
+    for attempt, wait in enumerate(wait_times, 1):
+        try:
+            print(f"[*] Booting Docling AI Models (Attempt {attempt}/{len(wait_times)})...")
+            converter = DocumentConverter(
+                allowed_formats=[InputFormat.PDF],
+                format_options={
+                    InputFormat.PDF: PdfFormatOption(pipeline_options=pipeline_options)
+                }
+            )
+            print("[+] Docling successfully loaded into memory!")
+            return converter
+            
+        except Exception as e:
+            if "429" in str(e) or "Too Many Requests" in str(e):
+                print(f"      [!] Hugging Face rate limit hit. Waiting {wait} seconds to try again...")
+                time.sleep(wait)
+            else:
+                print(f"      [!] Critical Docling Boot Error: {e}")
+                break
+                
+    print("[!] Failed to boot Docling after max retries. Pipeline will route to offline PyMuPDF.")
+    return None
 
 # Initialize Docling Globally (do this right under your other global variables like GEMINI_API_KEY)
-try:
-    docling_converter = DocumentConverter()
-except Exception as e:
-    print(f"[!] Docling failed to initialize: {e}")
+docling_converter = bootstrap_docling()
+
 
 # =====================================================================
 # SYSTEM CONFIGURATION & ZERO-DATA-LOSS GUARDRAILS
