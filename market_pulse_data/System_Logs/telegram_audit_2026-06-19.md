@@ -3,7 +3,7 @@
 ━━━━━━━━━━━━━━━━━━━━
 📦 <b>NSE Bhavcopies:</b>
 • Cash (SEC): ✅ Downloaded
-• F&O (FNO): ❌ Failed/Missing
+• F&O (FNO): ✅ Downloaded
 ━━━━━━━━━━━━━━━━━━━━
 🏢 <b>Objective Action Signals (31):</b>
 
