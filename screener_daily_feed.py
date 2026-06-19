@@ -297,8 +297,11 @@ PIPELINE_METRICS = load_metrics()
 # =====================================================================
 # MULTIMODAL AI SELECTION & ANALYSIS ENGINE
 # =====================================================================
+
 def send_telegram_summary():
     import html # Ensure HTML library is available
+    import time # Ensure time is available for our strict sleep delays
+    import os   # Ensure OS is available for audit logging
     
     summaries = PIPELINE_METRICS.get("summaries", [])
     
@@ -307,6 +310,7 @@ def send_telegram_summary():
     current_chunk = ""
     
     for s in summaries:
+        # 3500 characters safely bypasses Telegram's 4096 limit, leaving room for headers
         if len(current_chunk) + len(s) > 3500:
             summary_chunks.append(current_chunk)
             current_chunk = s + "\n\n"
@@ -320,38 +324,44 @@ def send_telegram_summary():
     messages_to_send = []
 
     # --- STEP 2: BUILD AESTHETIC MESSAGES ---
-    sec_status = '✅' if PIPELINE_METRICS['bhavcopy_sec'] else '❌'
-    fno_status = '✅' if PIPELINE_METRICS['bhavcopy_fno'] else '❌'
+    # Upgraded visuals from basic checkmarks to colored status dots
+    sec_status = '🟢 Downloaded' if PIPELINE_METRICS.get('bhavcopy_sec') else '🔴 Missing'
+    fno_status = '🟢 Downloaded' if PIPELINE_METRICS.get('bhavcopy_fno') else '🔴 Missing'
 
     if total_chunks == 0:
         msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
         msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
-        msg += "━━━━━━━━━━━━━━━━━━━━\n"
-        msg += f"📦 <b>Bhavcopies:</b> SEC {sec_status} | FNO {fno_status}\n"
-        msg += "━━━━━━━━━━━━━━━━━━━━\n"
-        msg += "💤 <i>No major financial documents were processed today. The market is quiet.</i>"
+        msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        msg += f"📦 <b>SEC Cash:</b> {sec_status}\n"
+        msg += f"📦 <b>FNO Data:</b> {fno_status}\n"
+        msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
+        msg += "💤 <i>No major financial documents triggered AI alerts today. The market is quiet.</i>"
         messages_to_send.append(msg)
     else:
         for i, chunk_text in enumerate(summary_chunks, 1):
             if i == 1:
+                # Master Header
                 msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
                 msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
-                msg += "━━━━━━━━━━━━━━━━━━━━\n"
-                msg += f"📦 <b>Bhavcopies:</b> SEC {sec_status} | FNO {fno_status}\n"
-                msg += "━━━━━━━━━━━━━━━━━━━━\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
+                msg += f"📦 <b>SEC Cash:</b> {sec_status}\n"
+                msg += f"📦 <b>FNO Data:</b> {fno_status}\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n"
                 if total_chunks > 1:
                     msg += f"🏢 <b>AI Action Signals ({len(summaries)} Total)</b> <i>[Part {i} of {total_chunks}]</i> 👇\n\n"
                 else:
                     msg += f"🏢 <b>AI Action Signals ({len(summaries)} Total):</b>\n\n"
                 msg += chunk_text
             else:
+                # Continuity Header
                 msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
                 msg += f"📅 <b>Date:</b> {TODAY_STR} <i>[Part {i} of {total_chunks}]</i>\n"
-                msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n\n"
                 msg += chunk_text
                 
             if i == total_chunks:
-                msg += "━━━━━━━━━━━━━━━━━━━━\n🏁 <i>End of daily intelligence report.</i>"
+                # Clean Finish Footer
+                msg += "━━━━━━━━━━━━━━━━━━━━━━━━\n🏁 <i>End of daily intelligence report.</i>"
                 
             messages_to_send.append(msg)
 
@@ -366,7 +376,8 @@ def send_telegram_summary():
     print("=== CONSOLE LOG STREAM BACKUP: DAILY MARKET INTELLIGENCE REPORT ===")
     print("="*70)
     for m in messages_to_send:
-        clean_console_msg = m.replace('<b>', '').replace('</b>', '').replace('<i>', '').replace('</i>', '').replace('&#x27;', "'").replace('&amp;', '&')
+        # Strip all HTML tags securely so the console output looks pristine
+        clean_console_msg = m.replace('<b>', '').replace('</b>', '').replace('<i>', '').replace('</i>', '').replace('&#x27;', "'").replace('&quot;', '"').replace('&amp;', '&')
         print(clean_console_msg)
         print("-" * 35)
     print("="*70 + "\n")
@@ -380,7 +391,8 @@ def send_telegram_summary():
     temp_session = tls_requests.Session(impersonate="chrome124")
     
     for idx, chunk in enumerate(messages_to_send):
-        final_text = chunk.replace('&#x27;', "'") 
+        # Prevent quotes and apostrophes from looking broken on mobile
+        final_text = chunk.replace('&#x27;', "'").replace('&quot;', '"')
         
         payload = {
             "chat_id": TELEGRAM_CHAT_ID, 
@@ -389,7 +401,7 @@ def send_telegram_summary():
             "disable_web_page_preview": True
         }
         
-        # Robust Retry Mechanism (Handles 429s and 500s safely)
+        # Robust Retry Mechanism (Handles 429s and 500s safely without losing data)
         max_retries = 3
         for attempt in range(max_retries):
             try:
@@ -415,6 +427,7 @@ def send_telegram_summary():
         # CRITICAL: 3.1 second sleep guarantees we NEVER exceed 20 msgs/min (Telegram's hard limit)
         if idx < len(messages_to_send) - 1:
             time.sleep(3.1)
+
 
 
 
