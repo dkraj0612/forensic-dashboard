@@ -1,0 +1,8 @@
+{
+    "ticker": "MADHAVIPL",
+    "category": "Results",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fc9e2800-b1c9-4ba8-b6de-e4053c93f768.pdf",
+    "file_type": "pdf"
+}

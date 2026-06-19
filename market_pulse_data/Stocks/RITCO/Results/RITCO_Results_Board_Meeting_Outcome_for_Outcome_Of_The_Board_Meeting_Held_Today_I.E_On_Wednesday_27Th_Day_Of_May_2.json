@@ -1,0 +1,8 @@
+{
+    "ticker": "RITCO",
+    "category": "Results",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=481a97d2-b67c-458b-8806-3403712daa8f.pdf",
+    "file_type": "pdf"
+}

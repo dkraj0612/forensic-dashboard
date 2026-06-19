@@ -1,0 +1,8 @@
+{
+    "ticker": "TTL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c5cce380-6200-4d74-bdae-0f418ad7823a.pdf",
+    "file_type": "pdf"
+}

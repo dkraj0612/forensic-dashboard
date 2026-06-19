@@ -1,0 +1,8 @@
+{
+    "ticker": "ROLLT",
+    "category": "Results",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fbd2e10a-eec9-4431-a69e-767637491849.pdf",
+    "file_type": "pdf"
+}

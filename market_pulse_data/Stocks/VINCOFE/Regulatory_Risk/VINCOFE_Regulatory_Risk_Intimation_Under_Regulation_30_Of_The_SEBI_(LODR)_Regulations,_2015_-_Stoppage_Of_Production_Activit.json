@@ -1,0 +1,8 @@
+{
+    "ticker": "VINCOFE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=259c6500-7b26-409d-9736-7b63190125e0.pdf",
+    "file_type": "pdf"
+}

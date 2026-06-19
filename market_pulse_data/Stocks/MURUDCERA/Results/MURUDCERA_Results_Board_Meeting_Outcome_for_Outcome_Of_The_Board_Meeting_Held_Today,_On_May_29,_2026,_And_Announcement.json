@@ -1,0 +1,8 @@
+{
+    "ticker": "MURUDCERA",
+    "category": "Results",
+    "extraction_date": "2026-06-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7f2fe31b-0dd1-4235-a5db-9588d9f0e15c.pdf",
+    "file_type": "pdf"
+}
