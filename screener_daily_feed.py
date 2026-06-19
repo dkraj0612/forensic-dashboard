@@ -297,49 +297,124 @@ PIPELINE_METRICS = load_metrics()
 # =====================================================================
 # MULTIMODAL AI SELECTION & ANALYSIS ENGINE
 # =====================================================================
-def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
-    """Multimodal fallback for direct PDF binary processing."""
-    import os
-    import google.generativeai as genai
+def send_telegram_summary():
+    import html # Ensure HTML library is available
     
-    api_key = os.getenv("GEMINI_API_KEY")
-    if not api_key or not pdf_bytes: 
-        return "⚪ [NEUTRAL] Document parsed safely without AI."
-        
-    # BULLETPROOF FIX: Initialize the model locally inside the function
-    genai.configure(api_key=api_key)
-    local_multimodal_client = genai.GenerativeModel('gemini-2.5-flash')
-        
-    prompt = f"""
-    You are a strict quantitative trading algorithm analyzing an NSE India corporate filing ({category}) for {ticker}.
+    summaries = PIPELINE_METRICS.get("summaries", [])
     
-    Step 1: Classify the objective directional market impact of this document. Choose EXACTLY ONE:
-    🟢 [BULLISH] (Strong positive growth, insider buying, major orders, dividend hikes, new client wins)
-    🔴 [BEARISH] (Profit drops, revenue contractions, insider selling, governance stress, auditor resignation)
-    📦 [ORDER BOOK] (Specific layout tracking material contract wins, infrastructure awards, or order book sizing)
-    🤝 [NEW CLIENTS] (Strategic business partnerships, global client onboarding, commercial alliances)
-    ⚠️ [RISK] (Auditor resignations, tax raids, FDA warnings, credit downgrades, promoter pledging)
-    📊 [METRICS] (Monthly sales volumes, provisional business updates, loan growth)
-    ⚪ [NEUTRAL] (Routine compliance filings, calendar updates, expected standard operational outcomes)
+    # --- STEP 1: PRE-CALCULATE CHUNKS TO PREVENT TRUNCATION ---
+    summary_chunks = []
+    current_chunk = ""
     
-    Step 2: Extract the single most critical numerical fact or corporate action justifying this classification.
-    
-    Output format MUST be strictly:
-    [CLASSIFICATION] One short, punchy justification sentence. Do not include introductory text.
-    """
-    try:
-        pdf_document = {"mime_type": "application/pdf", "data": pdf_bytes}
-        response = local_multimodal_client.generate_content([prompt, pdf_document])
-        clean_summary = response.text.replace('**', '').replace('*', '').strip()
-        
-        if len(clean_summary) > 200: 
-            clean_summary = clean_summary[:197] + "..."
+    for s in summaries:
+        if len(current_chunk) + len(s) > 3500:
+            summary_chunks.append(current_chunk)
+            current_chunk = s + "\n\n"
+        else:
+            current_chunk += s + "\n\n"
             
-        return clean_summary
+    if current_chunk:
+        summary_chunks.append(current_chunk)
         
-    except Exception as e:
-        print(f"      [!] AI Classification failed for {ticker}: {e}")
-        return "⚪ [NEUTRAL] Document logged but objective AI classification timed out."
+    total_chunks = len(summary_chunks)
+    messages_to_send = []
+
+    # --- STEP 2: BUILD AESTHETIC MESSAGES ---
+    sec_status = '✅' if PIPELINE_METRICS['bhavcopy_sec'] else '❌'
+    fno_status = '✅' if PIPELINE_METRICS['bhavcopy_fno'] else '❌'
+
+    if total_chunks == 0:
+        msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
+        msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
+        msg += "━━━━━━━━━━━━━━━━━━━━\n"
+        msg += f"📦 <b>Bhavcopies:</b> SEC {sec_status} | FNO {fno_status}\n"
+        msg += "━━━━━━━━━━━━━━━━━━━━\n"
+        msg += "💤 <i>No major financial documents were processed today. The market is quiet.</i>"
+        messages_to_send.append(msg)
+    else:
+        for i, chunk_text in enumerate(summary_chunks, 1):
+            if i == 1:
+                msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
+                msg += f"📅 <b>Date:</b> {TODAY_STR}\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━\n"
+                msg += f"📦 <b>Bhavcopies:</b> SEC {sec_status} | FNO {fno_status}\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━\n"
+                if total_chunks > 1:
+                    msg += f"🏢 <b>AI Action Signals ({len(summaries)} Total)</b> <i>[Part {i} of {total_chunks}]</i> 👇\n\n"
+                else:
+                    msg += f"🏢 <b>AI Action Signals ({len(summaries)} Total):</b>\n\n"
+                msg += chunk_text
+            else:
+                msg = "📊 <b>MARKET SWEEPER INTELLIGENCE</b> 🧠\n"
+                msg += f"📅 <b>Date:</b> {TODAY_STR} <i>[Part {i} of {total_chunks}]</i>\n"
+                msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+                msg += chunk_text
+                
+            if i == total_chunks:
+                msg += "━━━━━━━━━━━━━━━━━━━━\n🏁 <i>End of daily intelligence report.</i>"
+                
+            messages_to_send.append(msg)
+
+    # --- STEP 3: AUDIT TRAIL LOGGING ---
+    audit_log_path = os.path.join(LOG_DIR, f"telegram_audit_{TODAY_STR}.md")
+    with open(audit_log_path, 'w', encoding='utf-8') as f:
+        f.write("\n\n--- NEXT MESSAGE CHUNK ---\n\n".join(messages_to_send))
+    print(f"\n[+] Audit Trail Saved: Telegram payload committed to {audit_log_path}")
+
+    # --- STEP 4: CONSOLE MIRRORING ---
+    print("\n" + "="*70)
+    print("=== CONSOLE LOG STREAM BACKUP: DAILY MARKET INTELLIGENCE REPORT ===")
+    print("="*70)
+    for m in messages_to_send:
+        clean_console_msg = m.replace('<b>', '').replace('</b>', '').replace('<i>', '').replace('</i>', '').replace('&#x27;', "'").replace('&amp;', '&')
+        print(clean_console_msg)
+        print("-" * 35)
+    print("="*70 + "\n")
+
+    # --- STEP 5: BULLETPROOF TELEGRAM DISPATCH LOOP ---
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: 
+        print("      [!] Missing Telegram Credentials. Bypassing Dispatch.")
+        return
+
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    temp_session = tls_requests.Session(impersonate="chrome124")
+    
+    for idx, chunk in enumerate(messages_to_send):
+        final_text = chunk.replace('&#x27;', "'") 
+        
+        payload = {
+            "chat_id": TELEGRAM_CHAT_ID, 
+            "text": final_text, 
+            "parse_mode": "HTML", 
+            "disable_web_page_preview": True
+        }
+        
+        # Robust Retry Mechanism (Handles 429s and 500s safely)
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                resp = temp_session.post(url, json=payload, timeout=60)
+                
+                if resp.status_code == 200: 
+                    print(f"      [OK] Telegram summary chunk [{idx+1}/{total_chunks}] dispatched securely.")
+                    break  # Success, exit the retry loop
+                    
+                elif resp.status_code == 429: # Telegram telling us we are sending too fast
+                    retry_after = int(resp.json().get('parameters', {}).get('retry_after', 5))
+                    print(f"      [!] Telegram Rate Limit (429). Sleeping for {retry_after}s...")
+                    time.sleep(retry_after + 1)
+                    
+                else: 
+                    print(f"      [!] Telegram error (Status {resp.status_code}): {resp.text}")
+                    time.sleep(3) # Wait 3 seconds before trying again on 500/502 errors
+                    
+            except Exception as e: 
+                print(f"      [!] Network fault during transmission (Attempt {attempt+1}/{max_retries}): {e}")
+                time.sleep(5) # Wait 5 seconds on total connection loss
+        
+        # CRITICAL: 3.1 second sleep guarantees we NEVER exceed 20 msgs/min (Telegram's hard limit)
+        if idx < len(messages_to_send) - 1:
+            time.sleep(3.1)
 
 
 
