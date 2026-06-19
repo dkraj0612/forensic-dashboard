@@ -208,8 +208,17 @@ PIPELINE_METRICS = load_metrics()
 # MULTIMODAL AI SELECTION & ANALYSIS ENGINE
 # =====================================================================
 def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
-    if not llm_model or not pdf_bytes: 
+    """Multimodal fallback for direct PDF binary processing."""
+    import os
+    import google.generativeai as genai
+    
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key or not pdf_bytes: 
         return "⚪ [NEUTRAL] Document parsed safely without AI."
+        
+    # BULLETPROOF FIX: Initialize the model locally inside the function
+    genai.configure(api_key=api_key)
+    local_llm_model = genai.GenerativeModel('gemini-2.5-flash')
         
     prompt = f"""
     You are a strict quantitative trading algorithm analyzing an NSE India corporate filing ({category}) for {ticker}.
@@ -230,7 +239,7 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
     """
     try:
         pdf_document = {"mime_type": "application/pdf", "data": pdf_bytes}
-        response = llm_model.generate_content([prompt, pdf_document])
+        response = local_llm_model.generate_content([prompt, pdf_document])
         clean_summary = response.text.replace('**', '').replace('*', '').strip()
         
         if len(clean_summary) > 200: 
@@ -241,6 +250,7 @@ def generate_ai_summary(ticker: str, category: str, pdf_bytes: bytes) -> str:
     except Exception as e:
         print(f"      [!] AI Classification failed for {ticker}: {e}")
         return "⚪ [NEUTRAL] Document logged but objective AI classification timed out."
+
 
 
 def send_telegram_summary():
@@ -552,8 +562,18 @@ def register_successful_metric(ticker: str, category: str):
 
 def safe_ai_classification(text_content: str) -> str:
     """Safely calls Gemini API with exponential backoff for rate limits."""
-    if not GEMINI_API_KEY or ai_model is None: 
+    import os
+    import random
+    import time
+    import google.generativeai as genai
+    
+    api_key = os.getenv("GEMINI_API_KEY")
+    if not api_key: 
         return "AI Skipped: No API Key Provided."
+        
+    # BULLETPROOF FIX: Initialize the model locally inside the function
+    genai.configure(api_key=api_key)
+    local_ai_model = genai.GenerativeModel('gemini-2.5-flash')
         
     max_retries = 3
     base_delay = 15 
@@ -561,7 +581,7 @@ def safe_ai_classification(text_content: str) -> str:
     for attempt in range(max_retries):
         try:
             # Trim to 30,000 characters to stay within context windows
-            response = ai_model.generate_content(
+            response = local_ai_model.generate_content(
                 f"Analyze this financial document. Provide a 2-3 sentence executive summary focusing on the key takeaways, material impacts, and any red flags. Format the summary cleanly.\n\nDocument text:\n{text_content[:30000]}"
             ) 
             return response.text.strip().replace('\n', ' ')
@@ -574,6 +594,7 @@ def safe_ai_classification(text_content: str) -> str:
                 return f"AI Error: {str(e)}"
                 
     return "AI Skipped: Rate limit exceeded after maximum retries."
+
 
 def extract_stock_data(ticker):
     local_session = get_session()
