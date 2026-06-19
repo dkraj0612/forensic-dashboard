@@ -637,11 +637,62 @@ def is_within_temporal_window(element_text: str) -> bool:
 
 def identify_category(link_text: str) -> str:
     text_lower = link_text.lower()
+    
+    # =========================================================
+    # 🛑 ENTERPRISE SPAM FILTER (BLOCKS SEBI LODR NOISE)
+    # =========================================================
+    spam_patterns = [
+        # 1. Trading & Administrative Noise
+        r'trading window', r'window closure',
+        r'loss of share', r'duplicate share', r'issue of duplicate',
+        r'demateriali[sz]ation', r'remateriali[sz]ation',
+        r'change in rta', r'registrar and share transfer',
+        
+        # 2. Meeting Notices & Proceedings (We only want Outcomes/Results)
+        r'intimation of board meeting', r'notice of board', 
+        r'notice of agm', r'notice of egm', r'annual general meeting',
+        r'proceedings of agm', r'proceedings of egm',
+        r'voting result', r'scrutinizer.*report',
+        
+        # 3. Routine SEBI Filings & Paperwork
+        r'newspaper publication', r'newspaper advertisement',
+        r'compliance certificate', r'pcs certificate', 
+        r'investor grievance', r'investor complaint', 
+        r'secretarial compliance', r'annual secretarial',
+        r'reconciliation of share capital', r'secretarial audit',
+        r'large corporate', r'initial disclosure', r'mgt-7', r'annual return',
+        
+        # 4. Concall Invites (We only want the actual Audio/Transcript)
+        r'schedule of.*meet', r'schedule of.*call', 
+        r'investor.*invite', r'concall invite', r'earnings call invite',
+        
+        # 5. Non-Material Personnel Changes (We keep CFO/Directors, block CS)
+        r'compliance officer', r'company secretary', 
+        
+        # 6. Routine Debt Servicing (Blocks huge NBFC spam like Bajaj Finance)
+        r'payment of interest', r'payment of principal', 
+        r'commercial paper', r'ncd', r'non[- ]convertible debenture',
+        
+        # 7. Meaningless Exchange Clarifications
+        r'clarification on price', r'spurt in volume', 
+        r'reply to clarification', r'rumour'
+    ]
+    
+    # Check if the document title contains any spam keywords
+    for spam in spam_patterns:
+        if re.search(spam, text_lower):
+            return None  # INSTANTLY DROP THE FILE! Saves Gemini API calls.
+            
+    # =========================================================
+    # ✅ IF IT PASSES THE SPAM FILTER, MATCH THE ALPHA CATEGORY
+    # =========================================================
     for category, patterns in TARGET_CATEGORIES.items():
         for pattern in patterns:
             if re.search(pattern, text_lower): 
                 return category
+                
     return None
+
 
 def register_successful_metric(ticker: str, category: str):
     with STATE_LOCK:
