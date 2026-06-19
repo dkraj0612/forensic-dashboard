@@ -714,21 +714,9 @@ def main():
     
     download_nse_bhavcopies()
     
-    #all_nse_tickers = 
-    all_nse_tickers = [
-        "AARVI", "ADVENTHTL", "AEROFLEX", "AIIL", "AIRAN", "AMBIKCO", 
-        "ANIKINDS", "ANMOL", "APOLSINHOT", "BALMLAWRIE", "BIMETAL", 
-        "BLISSGVS", "CALSOFT", "CERA", "CRAFTSMAN", "DEEDEV", "DIACABS", 
-        "DPSCLTD", "ENDURANCE", "ELLEN", "FAZE3Q", "GEEKAYWIRE", "GICRE", 
-        "GODREJAGRO", "GOLDENTOBC", "GREAVESCOT", "HATSUN", "HERANBA", 
-        "HILTON", "HINDCON", "HYBRIDFIN", "INCREDIBLE", "IPL", "KALYANI", 
-        "KERNEX", "KIMS", "KILITCH", "KNAGRI", "KRISHANA", "KRISHIVAL", 
-        "LFIC", "LLOYDSENT", "LYKALABS", "M&MFIN", "MAHABANK", "MBAPL", 
-        "MEDICO", "MENNPIS", "MKPL", "NAGREEKEXP", "NDGL", "PGHL", 
-        "RAMCOSYS", "RKEC", "ROSSELLIND", "RPPL", "SBIN", "SOLEX", 
-        "SONACOMS", "SPCENET", "STEL", "SUNDARMFIN", "TARACHAND", "THEJO", 
-        "VAIBHAVGBL", "VMSTMT", "WESTLIFE", "ZFSTEERING", "ZIMLAB", "ZODIAC"
-    ]
+        all_nse_tickers = get_dynamic_nse_list()
+
+    
 
     if not all_nse_tickers: 
         print("[!] Critical failure pulling master NSE stock vector lists. Pipeline killed.")
