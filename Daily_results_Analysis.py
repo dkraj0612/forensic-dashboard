@@ -216,28 +216,45 @@ def analyze_and_dispatch(ticker: str, csv_data: dict):
     ai_client = genai.GenerativeModel('gemini-2.5-flash')
 
     prompt = f"""
-    You are a Tier-1 Institutional Equity Analyst. 
-    The company {ticker} just declared its earnings. I am providing you with the freshly scraped CSV data from Screener containing their complete fundamentals.
-    
-    RAW CSV DATA FOR {ticker}:
-    -------------------------
-    ABOUT & KEY POINTS: {csv_data.get('About_&_Key_Points')}
-    TOP METRICS (Market Cap, P/E, Price): {csv_data.get('Top_Level_Metrics')}
-    SCREENER SUMMARY (PROS/CONS): {csv_data.get('Pros_and_Cons_Summary')}
-    CAGR METRICS: {csv_data.get('Four_CAGR_Boxes')}
-    QUARTERLY RESULTS: {csv_data.get('Quarterly_Results')}
-    BALANCE SHEET: {csv_data.get('Balance_Sheet')}
-    CASH FLOWS: {csv_data.get('Cash_Flow')}
-    DETAILED RATIOS: {csv_data.get('Detailed_Ratios')}
-    SHAREHOLDING PATTERN: {csv_data.get('Shareholding_Pattern')}
-    PEER COMPARISON: {csv_data.get('Peers')}
-    -------------------------
-    
-    Based ONLY on this data, write a highly professional, aggressive 3-paragraph fundamental thesis.
-    Paragraph 1: Executive Summary & Rating (Start with exactly one of: 🟢 BULLISH, 🔴 BEARISH, or ⚪ NEUTRAL). Analyze the YoY and QoQ growth from the Quarterly Results, incorporating their core business logic from the "About & Key Points" section.
-    Paragraph 2: Financial Health & Margins. Break down their debt profile (from the Balance Sheet), operating cash generation (from Cash Flows), and current valuation (from Top Metrics like P/E and Market Cap).
-    Paragraph 3: Red Flags & Shareholding. Note any promoter selling, working capital stress (debtor days), or trailing metrics compared to their peers.
-    Use formatting (bolding, bullet points). Do not hallucinate data. Be concise.
+    You are an elite Quantitative Equity Analyst. 
+   Analyze the provided financial data for ROLLT. Python has already calculated the exact QoQ and YoY percentage changes for you. Do not calculate your own math. Use the percentages provided.
+Output a sharp, mobile-friendly bulleted report focusing on anomalies and momentum. No Markdown tables.
+
+RAW DATA FOR ROLLT:
+-------------------------
+ABOUT & KEY POINTS: Incorporated in 1972, Rollatainers Ltd provides integrated packaging solutions. Has flexible laminates division (4000 MT/annum capacity) and cartons division (5 million cartons annually).
+TOP METRICS: Market Cap: ₹ 95 Cr, Current Price: ₹ 3.80, Stock P/E: 4.5, Book Value: ₹ 0.37.
+
+[PYTHON MATH-AUGMENTED GRIDS]
+
+QUARTERLY RESULTS (In ₹ Cr):
+Metric | Mar 2025 | Dec 2025 | Mar 2026 | [Python QoQ %] | [Python YoY %]
+Sales | 12.50 | 0.00 | 0.00 | 0.00% | -100.00%
+Expenses | 14.00 | 2.50 | 1.80 | -28.00% | -87.14%
+Operating Profit | -1.50 | -2.50 | -1.80 | +28.00% | -20.00%
+Other Income | 0.50 | 17.79 | 0.10 | -99.44% | -80.00%
+Interest | 1.00 | 1.20 | 1.20 | 0.00% | +20.00%
+Net Profit | -2.50 | 17.59 | -2.10 | -111.94% | +16.00%
+
+BALANCE SHEET (In ₹ Cr):
+Metric | Mar 2025 | Mar 2026 | [Python YoY %]
+Borrowings | 31.00 | 35.00 | +12.90%
+Trade Payables | 12.00 | 14.00 | +16.67%
+
+CASH FLOWS (In ₹ Cr):
+Metric | Mar 2025 | Mar 2026 | [Python YoY %]
+Cash from Operating Activity | -5.00 | -12.00 | -140.00%
+
+DETAILED RATIOS:
+Metric | Mar 2025 | Mar 2026 | [Python YoY Change]
+Debtor Days | 602 | 602 | 0 days
+
+SHAREHOLDING PATTERN:
+Metric | Dec 2025 | Mar 2026 | [Python QoQ Change]
+Promoters | 50.96% | 50.96% | 0.00%
+FIIs | 0.00% | 0.00% | 0.00%
+-------------------------
+
     """
     
     # --- EXPONENTIAL BACKOFF ENGINE ---
