@@ -1,3 +1,4 @@
+
 name: Automated Dual-Track Microcap Screener Pipeline
 
 on:
@@ -35,7 +36,14 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add qualified_stocks_analysis.csv screener_data.db previous_qualified_stocks.csv
+        
+        # Safely add each file individually. If it doesn't exist today, it skips without crashing.
+        git add qualified_stocks_analysis.csv || true
+        git add screener_data.db || true
+        git add previous_qualified_stocks.csv || true
+        
+        # Safely track our new fundamental analysis folders 
+        git add market_pulse_data/ || true
         
         if git diff --staged --quiet; then
           echo "No changes detected."
@@ -43,3 +51,4 @@ jobs:
           git commit -m "Auto-Update: Screening Output [$(date -u +'%Y-%m-%d UTC')]"
           git push
         fi
+
