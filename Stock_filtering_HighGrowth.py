@@ -7,16 +7,22 @@ import sqlite3
 import csv
 import logging
 import requests
+import concurrent.futures
+import glob
 from bs4 import BeautifulSoup
 import pandas as pd
 
 # Setup logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# Configuration constants
-DB_FILE = "screener_data.db"
-CSV_FILE = "qualified_stocks_analysis.csv"
-PREVIOUS_CSV_FILE = "previous_qualified_stocks.csv"
+# Configuration constants & Dynamic Date Stamping
+RUN_DATE = time.strftime("%Y-%m-%d")
+SCREENER_DATA_DIR = "ScreenerData"
+
+DB_FILE = os.path.join(SCREENER_DATA_DIR, "screener_data.db")
+CSV_FILE = os.path.join(SCREENER_DATA_DIR, f"qualified_stocks_analysis_{RUN_DATE}.csv")
+TELEGRAM_LOG_FILE = os.path.join(SCREENER_DATA_DIR, f"telegram_analysis_log_{RUN_DATE}.txt")
+
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
 HEADERS = {
@@ -28,7 +34,9 @@ TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def init_db():
-    """Initializes the SQLite database schema including the salvaged top-card data."""
+    """Initializes the master directory and SQLite database schema including the salvaged top-card data."""
+    os.makedirs(SCREENER_DATA_DIR, exist_ok=True)
+    
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     cursor.execute("""
@@ -101,26 +109,43 @@ def clean_value(val_str):
         return 0.0
 
 def extract_row_values(soup, table_id, row_label):
-    """Finds specific table rows inside the P&L, Balance Sheet, and Ratios tables."""
+    """Finds specific table rows and strictly aligns time periods by stripping 'TTM'."""
     table = soup.find(id=table_id)
     if not table:
         return []
     
+    # Detect if Screener added a 'TTM' column to this specific table
+    has_ttm = False
+    thead = table.find("thead")
+    if thead:
+        headers = thead.find_all("th")
+        if headers and "TTM" in headers[-1].text.upper():
+            has_ttm = True
+
     rows = table.find_all("tr")
     for row in rows:
         cells = row.find_all(["td", "th"])
         if cells and row_label.lower() in cells[0].text.lower():
-            return [clean_value(c.text) for c in cells[1:]]
+            vals = [clean_value(c.text) for c in cells[1:]]
+            
+            # If the table has TTM, drop the last column to align with Balance Sheet FYs
+            if has_ttm and len(vals) > 0:
+                vals = vals[:-1] 
+                
+            return vals
     return []
 
 def extract_top_ratio(soup, metric_name):
-    """Extracts unstructured top-card metrics (Market Cap, P/E, Div Yield) using regex."""
+    """Extracts unstructured top-card metrics by bypassing nested span obfuscation."""
     try:
         name_span = soup.find('span', class_='name', string=re.compile(metric_name, re.IGNORECASE))
         if name_span:
-            val_span = name_span.find_next_sibling('span', class_='number')
-            if val_span:
-                return clean_value(val_span.text)
+            # Go up to the parent 'li' to bypass the new DOM nesting
+            li_parent = name_span.find_parent('li')
+            if li_parent:
+                val_span = li_parent.find('span', class_='number')
+                if val_span:
+                    return clean_value(val_span.text)
     except Exception:
         pass
     return 0.0
@@ -154,10 +179,11 @@ def scrape_stock(symbol):
         op_years = get_metric("profit-loss", "Operating Profit", 1)
         interest_years = get_metric("profit-loss", "Interest", 1)
         
-        share_cap = get_metric("balance-sheet", "Share Capital", 2)
+        # Corrected Data Dictionary mappings to match Screener exact labels
+        share_cap = get_metric("balance-sheet", "Equity Capital", 2)
         borrowings = get_metric("balance-sheet", "Borrowings", 2)
         fixed_assets = get_metric("balance-sheet", "Fixed Assets", 2)
-        cwip = get_metric("balance-sheet", "Capital Work in Progress", 2)
+        cwip = get_metric("balance-sheet", "CWIP", 2)
         
         cfo = get_metric("cash-flow", "Cash from Operating Activity", 1)
         
@@ -171,7 +197,7 @@ def scrape_stock(symbol):
         # Extra Salvaged Data
         other_income_years = get_metric("profit-loss", "Other Income", 1)
         debtor_days = get_metric("ratios", "Debtor Days", 2)
-        payable_days = get_metric("ratios", "Payable Days", 2)
+        payable_days = get_metric("ratios", "Creditor Days", 2)
 
         return {
             "ticker": symbol,
@@ -210,16 +236,37 @@ def scrape_stock(symbol):
         return None
 
 def evaluate_framework(d):
-    """Executes the STRICT Dual-Track Logic EXACTLY as specified in the prompt."""
+    """Executes the STRICT Dual-Track Logic with Null Validation and Math Safeguards."""
     
     # 1. PHASE 1: THE UNIVERSAL SURVIVAL GATE
     gate_failures = []
-    if d["interest_y1"] > 0 and (d["operating_profit_y1"] / d["interest_y1"]) < 2.0:
-        gate_failures.append("Bankruptcy Risk")
-    if d["share_capital_y1"] > (d["share_capital_y2"] * 1.05):
+    
+    # SAFEGUARD: The Penny Stock / Nano-Cap Trap
+    if d["sales_y1"] < 50.0:
+        gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
+        
+    # SAFEGUARD: Bankruptcy Risk (Requires operating profit to be positive)
+    if d["interest_y1"] > 0:
+        if d["operating_profit_y1"] <= 0:
+            gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
+        elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0:
+            gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
+
+    # SAFEGUARD: The Dilution Trap (Strict Null Check)
+    if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05):
         gate_failures.append("The Dilution Trap")
-    if d["promoter_q1"] < 40.0:
+        
+    # SAFEGUARD: Skin in the game (Strict Null Check)
+    if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0:
         gate_failures.append("No Skin in the Game")
+        
+    # SAFEGUARD: Market Cap Ceiling
+    if d["market_cap"] > 5000:
+        gate_failures.append("Market Cap exceeds 5000Cr")
+        
+    # SAFEGUARD: Fake Profits 
+    if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]:
+        gate_failures.append("Other Income exceeds Core Profit")
         
     if len(gate_failures) > 0:
         return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
@@ -228,21 +275,35 @@ def evaluate_framework(d):
     ta_triggers = 0
     ta_details = []
     
-    if d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10) and d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]:
-        ta_triggers += 1
-        ta_details.append("Factory Go-Live Trigger")
-    if d["ccc_y2"] > 0 and d["ccc_y1"] < (d["ccc_y2"] * 0.80):
-        ta_triggers += 1
-        ta_details.append("Working Capital Squeeze Trigger")
-    if d["opm_y1"] > (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95):
-        ta_triggers += 1
-        ta_details.append("Margin Turnaround Trigger")
-        
+    # SAFEGUARD: Factory Go-Live (Prevents zero-division)
+    if d["fixed_assets_y2"] > 0 and d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10):
+        if d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]:
+            ta_triggers += 1
+            ta_details.append("Factory Go-Live")
+            
+    # SAFEGUARD: Working Capital Squeeze (Correctly handles FMCG negative cash cycles)
+    if d["ccc_y2"] != 0:
+        if (d["ccc_y2"] > 0 and d["ccc_y1"] < (d["ccc_y2"] * 0.80)) or (d["ccc_y2"] < 0 and d["ccc_y1"] < (d["ccc_y2"] * 1.20)):
+            ta_triggers += 1
+            ta_details.append("Working Capital Squeeze")
+            
+    # SAFEGUARD: Margin Turnaround (Requires historical reporting)
+    if d["opm_y2"] > 0 and d["sales_y2"] > 0:
+        if d["opm_y1"] > (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95):
+            ta_triggers += 1
+            ta_details.append("Margin Turnaround")
+            
+    # SAFEGUARD: Smart Money Creep (Requires history to calculate a "creep")
     sm_q1 = d["promoter_q1"] + d["fii_q1"] + d["dii_q1"]
     sm_q2 = d["promoter_q2"] + d["fii_q2"] + d["dii_q2"]
-    if sm_q1 > sm_q2:
+    if sm_q2 > 0 and sm_q1 > sm_q2:
         ta_triggers += 1
-        ta_details.append("Smart Money Creep Trigger")
+        ta_details.append("Smart Money Creep")
+        
+    # SAFEGUARD: Supplier Squeeze (Pricing Power check)
+    if d["days_payable_y2"] > 0 and d["days_payable_y1"] > (d["days_payable_y2"] * 1.15) and d["debtor_days_y1"] < d["debtor_days_y2"]:
+        ta_triggers += 1
+        ta_details.append("Supplier Squeeze")
         
     track_a_pass = ta_triggers >= 2
 
@@ -252,30 +313,44 @@ def evaluate_framework(d):
     
     if d["roce_y1"] > 20.0 and d["roce_y2"] > 20.0:
         tb_triggers += 1
-        tb_details.append("Elite Capital Efficiency Trigger")
-    if d["sales_y1"] > (d["sales_y2"] * 1.15) and d["sales_y2"] > (d["sales_y3"] * 1.15):
-        tb_triggers += 1
-        tb_details.append("Sustained Top-Line Growth Trigger")
+        tb_details.append("Elite ROCE")
         
+    # SAFEGUARD: Sustained Top-Line Growth (Strict Null Check)
+    if d["sales_y3"] > 0 and d["sales_y2"] > 0:
+        if d["sales_y1"] > (d["sales_y2"] * 1.15) and d["sales_y2"] > (d["sales_y3"] * 1.15):
+            tb_triggers += 1
+            tb_details.append("Top-Line Growth")
+            
+    # SAFEGUARD: Operating Leverage (Ensures Net Profit was actually positive last year to avoid negative math anomalies)
     sales_growth = (d["sales_y1"] / d["sales_y2"]) if d["sales_y2"] > 0 else 0
     profit_growth = (d["net_profit_y1"] / d["net_profit_y2"]) if d["net_profit_y2"] > 0 else 0
-    if profit_growth > sales_growth and sales_growth > 0:
+    if sales_growth > 0 and d["net_profit_y2"] > 0 and d["net_profit_y1"] > 0:
+        if profit_growth > sales_growth:
+            tb_triggers += 1
+            tb_details.append("Operating Leverage")
+            
+    # SAFEGUARD: Immaculate Cash Conversion (Ensures Net Profit is positive to avoid false flags on negative CFO)
+    if d["net_profit_y1"] > 0 and d["cfo_y1"] > (d["net_profit_y1"] * 0.70):
         tb_triggers += 1
-        tb_details.append("Operating Leverage Trigger")
+        tb_details.append("Immaculate Cash Conversion")
         
-    if d["cfo_y1"] > (d["net_profit_y1"] * 0.70):
+    if d["dividend_yield"] > 0.0:
         tb_triggers += 1
-        tb_details.append("Immaculate Cash Conversion Trigger")
-        
-    track_b_pass = tb_triggers >= 3
+        tb_details.append("Dividend Validation")
 
-    # Route classification logic
+    # SAFEGUARD: Valuation Check (Downgrades if too expensive)
+    if d["stock_pe"] > 70:
+        track_b_pass = False 
+    else:
+        track_b_pass = tb_triggers >= 3
+
+    # 4. ROUTING CLASSIFICATION
     if track_a_pass and track_b_pass:
-        return "HYPER-COMPOUNDER", f"Passed Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
+        return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
     elif track_a_pass:
-        return "EARLY INFLECTION", f"Passed Track A. Fired: {', '.join(ta_details)}"
+        return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
     elif track_b_pass:
-        return "PROVEN COMPOUNDER", f"Passed Track B. Fired: {', '.join(tb_details)}"
+        return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
     else:
         return "STAGNANT", "Passed survival checks but failed growth thresholds."
 
@@ -347,14 +422,28 @@ def save_to_db(d):
     conn.commit()
     conn.close()
 
+def save_ticker_csv(d):
+    """Saves the individual stock's scraped data into its dedicated directory with a timestamp."""
+    ticker = d["ticker"]
+    # Safely strip out special characters so we don't crash the OS folder creation
+    safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
+    ticker_dir = os.path.join(SCREENER_DATA_DIR, safe_ticker)
+    
+    # Automatically creates ScreenerData/TICKER/ if it doesn't exist
+    os.makedirs(ticker_dir, exist_ok=True)
+    
+    ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
+    df = pd.DataFrame([d])
+    df.to_csv(ticker_file, index=False)
+
 def send_telegram_alert(new_stocks, df_out):
-    """Formats the payload and sends the CSV document via Telegram."""
+    """Handles Telegram chunking and seamlessly logs the history for future AI review."""
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
         logging.warning("Telegram credentials not found. Skipping alert.")
         return
 
-    # Build the message text
-    msg = "📊 *Microcap Screener Weekly Update*\n\n"
+    # Build the core message text
+    msg = f"📊 *Microcap Screener Weekly Update ({RUN_DATE})*\n\n"
     if not new_stocks:
         msg += "No new candidates passed the framework this week."
     else:
@@ -365,25 +454,68 @@ def send_telegram_alert(new_stocks, df_out):
             reason = stock['qualification_reason']
             msg += f"🔥 *{ticker}* ({classif})\n_Reason:_ {reason}\n\n"
 
-    # Send Document endpoint
-    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
+    # Save the generated telegram analysis output directly into the Git repository context
+    try:
+        with open(TELEGRAM_LOG_FILE, "a", encoding="utf-8") as f:
+            f.write(f"\n--- Analysis Log Generated at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
+            f.write(msg + "\n")
+    except Exception as e:
+        logging.warning(f"Could not save telegram log to local directory: {e}")
+
+    # Telegram Chunking Logic: Max character limit for sendMessage is 4096. 
+    # We chunk at 4000 to be perfectly safe.
+    max_msg_length = 4000
+    msg_chunks = [msg[i:i + max_msg_length] for i in range(0, len(msg), max_msg_length)]
     
-    # Save a temporary buffer of the CSV to send
+    send_msg_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    for chunk in msg_chunks:
+        try:
+            response = requests.post(
+                send_msg_url,
+                data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "Markdown"}
+            )
+            response.raise_for_status()
+        except Exception as e:
+            logging.error(f"Failed to send Telegram message chunk: {e}")
+
+    # Send Document endpoint (Captions are limited to 1024 characters)
+    send_doc_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
+    
     csv_buffer = io.BytesIO()
     df_out.to_csv(csv_buffer, index=False)
-    csv_buffer.name = "Qualified_Microcaps.csv"
+    csv_buffer.name = f"Qualified_Microcaps_{RUN_DATE}.csv"
     csv_buffer.seek(0)
 
     try:
         response = requests.post(
-            url, 
-            data={"chat_id": TELEGRAM_CHAT_ID, "caption": msg, "parse_mode": "Markdown"}, 
+            send_doc_url, 
+            data={"chat_id": TELEGRAM_CHAT_ID, "caption": f"📄 *Attached: Weekly Qualified List ({RUN_DATE})*", "parse_mode": "Markdown"}, 
             files={"document": csv_buffer}
         )
         response.raise_for_status()
         logging.info("Telegram alert and CSV payload sent successfully.")
     except Exception as e:
-        logging.error(f"Failed to send Telegram alert: {e}")
+        logging.error(f"Failed to send Telegram document: {e}")
+
+def process_worker(symbol):
+    """The multithreaded worker function. Keeps the sleep inside the thread for desynchronized jitter."""
+    # Desynchronized Human Jitter (1.5 to 3.5 seconds)
+    # Because each thread sleeps independently, requests are safely staggered.
+    time.sleep(random.uniform(1.5, 3.5)) 
+    
+    data = scrape_stock(symbol)
+    if not data:
+        return None
+        
+    classification, reason = evaluate_framework(data)
+    data["classification"] = classification
+    data["qualification_reason"] = reason
+    
+    # Run the deep-dive textual analysis if it passes
+    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
+        data = generate_qualitative_analysis(data)
+        
+    return data
 
 def main():
     init_db()
@@ -393,48 +525,59 @@ def main():
         logging.error("No valid symbols found. Exiting.")
         return
 
-    # Load last week's tickers to compare
+    # Dynamic Historical Audit Checking
+    # Use glob to scan the folder and automatically locate the most recent past CSV run
     previous_tickers = set()
-    if os.path.exists(CSV_FILE):
+    existing_csvs = glob.glob(os.path.join(SCREENER_DATA_DIR, "qualified_stocks_analysis_*.csv"))
+    
+    # Exclude today's file to prevent a self-matching collision if re-run on the same day
+    existing_csvs = [f for f in existing_csvs if not f.endswith(f"_{RUN_DATE}.csv")]
+    
+    if existing_csvs:
+        latest_csv = max(existing_csvs, key=os.path.getmtime)
         try:
-            prev_df = pd.read_csv(CSV_FILE)
+            prev_df = pd.read_csv(latest_csv)
             previous_tickers = set(prev_df['ticker'].tolist())
-            # Rename last week's file to keep a backup
-            os.replace(CSV_FILE, PREVIOUS_CSV_FILE)
-            logging.info(f"Loaded {len(previous_tickers)} previous candidates for historical comparison.")
+            logging.info(f"Loaded {len(previous_tickers)} previous candidates from {os.path.basename(latest_csv)} for historical comparison.")
         except Exception as e:
-            logging.warning(f"Failed to load previous CSV: {e}")
+            logging.warning(f"Failed to load previous CSV ({latest_csv}): {e}")
 
     qualified_records = []
     new_candidates = []
 
-    for idx, symbol in enumerate(symbols):
-        # Introducing 'Human Jitter' (2-4 seconds) to avoid Screener Cloudflare bans during CI/CD runs
-        time.sleep(random.uniform(2.1, 4.1)) 
-        
-        if idx % 100 == 0 and idx > 0:
-            logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
+    # Configure the Thread Pool (Throttled carefully at 4 workers)
+    MAX_CONCURRENT_THREADS = 4
+    logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers...")
 
-        data = scrape_stock(symbol)
-        if not data:
-            continue
-            
-        classification, reason = evaluate_framework(data)
-        data["classification"] = classification
-        data["qualification_reason"] = reason
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
+        # Submit all tasks to the thread pool
+        future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
         
-        # If the stock passes the gate, run the deep-dive textual analysis
-        if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-            data = generate_qualitative_analysis(data)
-            qualified_records.append(data)
-            logging.info(f">>> MATCH: {symbol} classified as {classification}")
-            
-            # Check if it's a net-new addition this week
-            if symbol not in previous_tickers:
-                new_candidates.append(data)
-            
-        # Write ALL data (Rejected and Passed) to the local database
-        save_to_db(data)
+        # Process results as they complete
+        for idx, future in enumerate(concurrent.futures.as_completed(future_to_symbol)):
+            symbol = future_to_symbol[future]
+            try:
+                data = future.result()
+                if data:
+                    # Write to database and file system sequentially in the main thread 
+                    # to prevent SQLite locking errors and racing folder creation
+                    save_to_db(data)
+                    save_ticker_csv(data)
+                    
+                    classif = data["classification"]
+                    if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
+                        qualified_records.append(data)
+                        logging.info(f">>> MATCH: {symbol} classified as {classif}")
+                        
+                        # Check if it's a net-new addition this week
+                        if symbol not in previous_tickers:
+                            new_candidates.append(data)
+                            
+            except Exception as exc:
+                logging.warning(f"{symbol} generated an exception: {exc}")
+                
+            if idx % 100 == 0 and idx > 0:
+                logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
 
     # Output ONLY verified candidate records to the global tracking CSV file
     if qualified_records:
