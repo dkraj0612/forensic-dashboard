@@ -1,603 +1,490 @@
+
 import os
-import io
-import re
+import sys
 import time
+import json
 import random
-import sqlite3
-import csv
-import logging
-import requests
-import concurrent.futures
-import glob
-from bs4 import BeautifulSoup
-import pandas as pd
+import re
+import datetime
+import threading
+from io import StringIO
 
-# Setup logging configuration
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+try:
+    from curl_cffi import requests as tls_requests
+    from bs4 import BeautifulSoup
+    import pandas as pd
+    import google.generativeai as genai
+except ImportError:
+    print("[CRITICAL] Missing libraries. Run: pip install curl_cffi pandas beautifulsoup4 google-generativeai lxml")
+    sys.exit(1)
 
-# Configuration constants & Dynamic Date Stamping
-RUN_DATE = time.strftime("%Y-%m-%d")
-SCREENER_DATA_DIR = "ScreenerData"
+# =====================================================================
+# SYSTEM CONFIGURATION
+# =====================================================================
+OUTPUT_DIR = "market_pulse_data"
+STOCKS_DIR = os.path.join(OUTPUT_DIR, "Stocks")
+LOG_DIR = os.path.join(OUTPUT_DIR, "System_Logs")
+FUNDAMENTALS_DIR = os.path.join(OUTPUT_DIR, "Fundamentals")
 
-DB_FILE = os.path.join(SCREENER_DATA_DIR, "screener_data.db")
-CSV_FILE = os.path.join(SCREENER_DATA_DIR, f"qualified_stocks_analysis_{RUN_DATE}.csv")
-TELEGRAM_LOG_FILE = os.path.join(SCREENER_DATA_DIR, f"telegram_analysis_log_{RUN_DATE}.txt")
+NOW = datetime.datetime.today()
+TODAY_STR = NOW.strftime('%Y-%m-%d')
+YESTERDAY_STR = (NOW - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+TARGET_DATES = [TODAY_STR, YESTERDAY_STR]
 
-NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
-SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
-HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
-}
+# 🌟 AI MEMORY BANK (MARKDOWN FOR NATIVE GITHUB VIEWING)
+THESES_MD_FILE = os.path.join(FUNDAMENTALS_DIR, f"ai_theses_{TODAY_STR}.md") 
+DAILY_METRICS_FILE_TODAY = os.path.join(LOG_DIR, f"daily_metrics_{TODAY_STR}.json")
+DAILY_METRICS_FILE_YEST = os.path.join(LOG_DIR, f"daily_metrics_{YESTERDAY_STR}.json")
 
-# Telegram Credentials (passed securely via GitHub Secrets/Environment)
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-def init_db():
-    """Initializes the master directory and SQLite database schema."""
-    os.makedirs(SCREENER_DATA_DIR, exist_ok=True)
+os.makedirs(FUNDAMENTALS_DIR, exist_ok=True)
+
+# Initialize Markdown file with a Master Header if it doesn't exist
+if not os.path.exists(THESES_MD_FILE):
+    with open(THESES_MD_FILE, 'w', encoding='utf-8') as f:
+        f.write(f"# 📊 AI Fundamental Theses - {TODAY_STR}\n\n---\n\n")
+
+# =====================================================================
+# PHASE 1: PIPELINE STATE VALIDATION & DISCOVERY
+# =====================================================================
+def send_telegram_alert(message: str):
+    """Sends a raw administrative alert to Telegram."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: return
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    payload = {"chat_id": TELEGRAM_CHAT_ID, "text": message, "parse_mode": "HTML"}
+    try: 
+        tls_requests.post(url, json=payload, timeout=30)
+    except Exception as e: 
+        print(f"[!] Failed to send Telegram alert: {e}")
+
+def verify_pipeline_success():
+    """Checks if the Phase 1 Daily Sweeper completed successfully yesterday (or today)."""
+    print("[*] Validating Phase 1 Pipeline state (checking for yesterday's run)...")
     
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS scraped_metrics (
-            ticker TEXT PRIMARY KEY,
-            scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            classification TEXT,
-            qualification_reason TEXT,
-            
-            -- Core Framework Data
-            sales_y1 REAL, sales_y2 REAL, sales_y3 REAL,
-            sales_q1 REAL, sales_q2 REAL,
-            net_profit_y1 REAL, net_profit_y2 REAL,
-            opm_y1 REAL, opm_y2 REAL,
-            operating_profit_y1 REAL, interest_y1 REAL,
-            share_capital_y1 REAL, share_capital_y2 REAL,
-            borrowings_y1 REAL, borrowings_y2 REAL,
-            fixed_assets_y1 REAL, fixed_assets_y2 REAL,
-            cwip_y1 REAL, cwip_y2 REAL,
-            cfo_y1 REAL,
-            roce_y1 REAL, roce_y2 REAL,
-            ccc_y1 REAL, ccc_y2 REAL,
-            promoter_q1 REAL, promoter_q2 REAL,
-            fii_q1 REAL, fii_q2 REAL,
-            dii_q1 REAL, dii_q2 REAL,
-            
-            -- Salvaged Extra Data (For Querying & Context)
-            market_cap REAL,
-            stock_pe REAL,
-            dividend_yield REAL,
-            other_income_y1 REAL,
-            debtor_days_y1 REAL, debtor_days_y2 REAL,
-            days_payable_y1 REAL, days_payable_y2 REAL,
-            
-            -- Qualitative Analysis Notes
-            valuation_context TEXT,
-            earnings_quality_analysis TEXT,
-            pricing_power_analysis TEXT,
-            secondary_red_flags TEXT
-        )
-    """)
-    conn.commit()
-    conn.close()
-
-def fetch_nse_symbols():
-    """Fetches NSE symbols and filters out illiquid/suspended listings to save scraping time."""
-    logging.info("Fetching dynamic stock list from NSE...")
-    try:
-        response = requests.get(NSE_URL, headers=HEADERS, timeout=15)
-        response.raise_for_status()
-        df = pd.read_csv(io.StringIO(response.text))
+    if not (os.path.exists(DAILY_METRICS_FILE_YEST) or os.path.exists(DAILY_METRICS_FILE_TODAY)):
+        error_msg = "🚨 <b>SYSTEM ALERT</b> 🚨\n━━━━━━━━━━━━━━━━━━━━\n<b>Pipeline failed.</b> Did not run fundamental analysis.\n\n<i>Reason: Yesterday's sweeper metrics file is missing.</i>"
+        print("[!] FATAL: Daily metrics file missing. Phase 1 likely failed.")
+        send_telegram_alert(error_msg)
+        sys.exit(1) # Kill the script immediately
         
-        # Filter for standard EQ series (ignores most ETFs, NCDs, and suspended stocks)
-        df = df[df[' SERIES'] == 'EQ']
-        symbols = df['SYMBOL'].dropna().unique().tolist()
-        logging.info(f"Retrieved {len(symbols)} active EQ symbols from NSE.")
-        return symbols
-    except Exception as e:
-        logging.error(f"Failed to fetch NSE symbols: {e}")
+    print("[+] Phase 1 Pipeline success verified. Proceeding.")
+
+def get_recent_result_tickers() -> list:
+    """Scans the GitHub folder structure to find stocks that posted results recently."""
+    print(f"[*] Scanning {STOCKS_DIR} for stocks with Results filed on {TARGET_DATES}...")
+    target_tickers = set()
+    
+    if not os.path.exists(STOCKS_DIR):
         return []
 
-def clean_value(val_str):
-    """Normalizes raw text string metrics into pure floats."""
-    if not val_str or val_str.strip() == "" or val_str == "–" or val_str == "-":
-        return 0.0
-    val_str = val_str.replace(",", "").replace("%", "").replace("₹", "").replace("Cr.", "").strip()
+    for ticker in os.listdir(STOCKS_DIR):
+        results_dir = os.path.join(STOCKS_DIR, ticker, "Results")
+        if os.path.isdir(results_dir):
+            for file in os.listdir(results_dir):
+                if file.endswith('.json'):
+                    try:
+                        with open(os.path.join(results_dir, file), 'r', encoding='utf-8') as f:
+                            data = json.load(f)
+                            if data.get("extraction_date") in TARGET_DATES:
+                                target_tickers.add(ticker)
+                    except Exception: 
+                        pass
+                        
+    tickers_list = list(target_tickers)
+    print(f"[+] Found {len(tickers_list)} stocks with recent Results: {tickers_list}")
+    return tickers_list
+
+
+# =====================================================================
+# PHASE 2: DEEP SCREENER SCRAPER
+# =====================================================================
+def scrape_screener_fundamentals(ticker: str) -> dict:
+    """Scrapes comprehensive tabular data from Screener.in for a given ticker."""
+    print(f"\n      [~] Scraping deep fundamentals for {ticker}...")
+    
+    session = tls_requests.Session(impersonate="chrome124")
+    session.headers.update({'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'})
+    
+    url = f"https://www.screener.in/company/{ticker}/consolidated/"
     try:
-        return float(val_str)
-    except ValueError:
-        return 0.0
+        resp = session.get(url, timeout=30)
+        if resp.status_code == 404:
+            url = f"https://www.screener.in/company/{ticker}/"
+            resp = session.get(url, timeout=30)
+        if resp.status_code != 200: 
+            return {}
+    except Exception: 
+        return {}
 
-def extract_row_values(soup, table_id, row_label):
-    """Finds specific table rows and strictly aligns time periods by stripping 'TTM'."""
-    table = soup.find(id=table_id)
-    if not table:
-        return []
+    soup = BeautifulSoup(resp.text, 'html.parser')
     
-    # Detect if Screener added a 'TTM' column to this specific table
-    has_ttm = False
-    thead = table.find("thead")
-    if thead:
-        headers = thead.find_all("th")
-        if headers and "TTM" in headers[-1].text.upper():
-            has_ttm = True
+    data = {
+        'Ticker': ticker,
+        'Extraction_Date': TODAY_STR,
+        'About_&_Key_Points': "N/A",
+        'Top_Level_Metrics': "N/A",
+        'Pros_and_Cons_Summary': "N/A",
+        'Quarterly_Results': "N/A",
+        'Profit_Loss': "N/A",
+        'Balance_Sheet': "N/A",
+        'Cash_Flow': "N/A",
+        'Detailed_Ratios': "N/A",
+        'Four_CAGR_Boxes': "N/A",
+        'Peers': "N/A",
+        'Shareholding_Pattern': "N/A"
+    }
 
-    rows = table.find_all("tr")
-    for row in rows:
-        cells = row.find_all(["td", "th"])
-        if cells and row_label.lower() in cells[0].text.lower():
-            vals = [clean_value(c.text) for c in cells[1:]]
-            
-            # If the table has TTM, drop the last column to align with Balance Sheet FYs
-            if has_ttm and len(vals) > 0:
-                vals = vals[:-1] 
-                
-            return vals
-    return []
+    # 1. About & Key Points
+    profile = soup.find('div', class_='company-profile')
+    if profile:
+        raw_text = profile.get_text(separator='\n', strip=True)
+        clean_text = re.sub(r'(Website|BSE|NSE)\n*', '', raw_text)
+        data['About_&_Key_Points'] = clean_text.strip()
 
-def extract_top_ratio(soup, metric_name):
-    """Extracts unstructured top-card metrics by bypassing nested span obfuscation."""
-    try:
-        name_span = soup.find('span', class_='name', string=re.compile(metric_name, re.IGNORECASE))
-        if name_span:
-            # Go up to the parent 'li' to bypass the new DOM nesting
-            li_parent = name_span.find_parent('li')
-            if li_parent:
-                val_span = li_parent.find('span', class_='number')
-                if val_span:
-                    return clean_value(val_span.text)
-    except Exception:
-        pass
-    return 0.0
+    # 2. Top Level Metrics
+    ratios_ul = soup.find('ul', id='top-ratios')
+    if ratios_ul:
+        ratios_list = []
+        for li in ratios_ul.find_all('li'):
+            name_elem = li.find('span', class_='name')
+            val_elem = li.find('span', class_='value') or li.find('span', class_='number')
+            name = name_elem.get_text(strip=True) if name_elem else ''
+            val = val_elem.get_text(separator=' ', strip=True) if val_elem else ''
+            if name and val:
+                ratios_list.append(f"{name}: {val}")
+        data['Top_Level_Metrics'] = "\n".join(ratios_list)
 
-def scrape_stock(symbol):
-    """Parses both the framework data and the extra contextual data from Screener."""
-    url = SCREENER_BASE_URL.format(symbol)
-    try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
-        if response.status_code == 404:
-            url = f"https://www.screener.in/company/{symbol}/"
-            response = requests.get(url, headers=HEADERS, timeout=10)
-            if response.status_code != 200:
-                return None
-        elif response.status_code != 200:
-            return None
-            
-        soup = BeautifulSoup(response.text, 'html.parser')
-        
-        def get_metric(table, name, length=3):
-            arr = extract_row_values(soup, table, name)
-            while len(arr) < length:
-                arr.insert(0, 0.0)
-            return arr
+    # 3. Screener Summary (Pros & Cons Analysis)
+    pros_cons_text = ""
+    analysis_section = soup.find('section', id='analysis')
+    if analysis_section:
+        pros = analysis_section.find('div', class_='pros')
+        if pros:
+            pros_cons_text += "PROS:\n" + "\n".join([f"- {li.get_text(strip=True)}" for li in pros.find_all('li')]) + "\n\n"
+        cons = analysis_section.find('div', class_='cons')
+        if cons:
+            pros_cons_text += "CONS:\n" + "\n".join([f"- {li.get_text(strip=True)}" for li in cons.find_all('li')])
+    if pros_cons_text:
+        data['Pros_and_Cons_Summary'] = pros_cons_text.strip()
 
-        # Data Dictionary: Core Framework
-        sales_years = get_metric("profit-loss", "Sales", 3)
-        sales_quarters = get_metric("quarters", "Sales", 2)
-        net_profit_years = get_metric("profit-loss", "Net Profit", 2)
-        opm_years = get_metric("profit-loss", "OPM", 2)
-        op_years = get_metric("profit-loss", "Operating Profit", 1)
-        interest_years = get_metric("profit-loss", "Interest", 1)
-        
-        share_cap = get_metric("balance-sheet", "Equity Capital", 2)
-        borrowings = get_metric("balance-sheet", "Borrowings", 2)
-        fixed_assets = get_metric("balance-sheet", "Fixed Assets", 2)
-        cwip = get_metric("balance-sheet", "CWIP", 2)
-        
-        cfo = get_metric("cash-flow", "Cash from Operating Activity", 1)
-        
-        roce = get_metric("ratios", "ROCE", 2)
-        ccc = get_metric("ratios", "Cash Conversion Cycle", 2)
-        
-        promoter = get_metric("shareholding", "Promoters", 2)
-        fii = get_metric("shareholding", "FIIs", 2)
-        dii = get_metric("shareholding", "DIIs", 2)
+    # Helper function to extract HTML tables safely into CSV strings
+    def extract_table(section_id):
+        sec = soup.find('section', id=section_id)
+        if sec and sec.find('table'):
+            try: 
+                return pd.read_html(StringIO(str(sec.find('table'))))[0].to_csv(index=False).strip()
+            except Exception: 
+                pass
+        return "N/A"
 
-        # Extra Salvaged Data
-        other_income_years = get_metric("profit-loss", "Other Income", 1)
-        debtor_days = get_metric("ratios", "Debtor Days", 2)
-        payable_days = get_metric("ratios", "Creditor Days", 2)
+    # 4. Core Financial Grids
+    data['Quarterly_Results'] = extract_table('quarters')
+    data['Profit_Loss'] = extract_table('profit-loss')
+    data['Balance_Sheet'] = extract_table('balance-sheet')
+    data['Cash_Flow'] = extract_table('cash-flow')
+    data['Detailed_Ratios'] = extract_table('ratios')
+    data['Peers'] = extract_table('peers')
+    data['Shareholding_Pattern'] = extract_table('shareholding')
 
-        return {
-            "ticker": symbol,
-            "sales_y1": sales_years[-1], "sales_y2": sales_years[-2], "sales_y3": sales_years[-3],
-            "sales_q1": sales_quarters[-1], "sales_q2": sales_quarters[-2],
-            "net_profit_y1": net_profit_years[-1], "net_profit_y2": net_profit_years[-2],
-            "opm_y1": opm_years[-1], "opm_y2": opm_years[-2],
-            "operating_profit_y1": op_years[-1], "interest_y1": interest_years[-1],
-            "share_capital_y1": share_cap[-1], "share_capital_y2": share_cap[-2],
-            "borrowings_y1": borrowings[-1], "borrowings_y2": borrowings[-2],
-            "fixed_assets_y1": fixed_assets[-1], "fixed_assets_y2": fixed_assets[-2],
-            "cwip_y1": cwip[-1], "cwip_y2": cwip[-2],
-            "cfo_y1": cfo[-1],
-            "roce_y1": roce[-1], "roce_y2": roce[-2],
-            "ccc_y1": ccc[-1], "ccc_y2": ccc[-2],
-            "promoter_q1": promoter[-1], "promoter_q2": promoter[-2],
-            "fii_q1": fii[-1], "fii_q2": fii[-2],
-            "dii_q1": dii[-1], "dii_q2": dii[-2],
-            
-            # Additional Context Attributes
-            "market_cap": extract_top_ratio(soup, "Market Cap"),
-            "stock_pe": extract_top_ratio(soup, "Stock P/E"),
-            "dividend_yield": extract_top_ratio(soup, "Dividend Yield"),
-            "other_income_y1": other_income_years[-1],
-            "debtor_days_y1": debtor_days[-1], "debtor_days_y2": debtor_days[-2],
-            "days_payable_y1": payable_days[-1], "days_payable_y2": payable_days[-2],
-            
-            # Placeholders for generated text
-            "valuation_context": "",
-            "earnings_quality_analysis": "",
-            "pricing_power_analysis": "",
-            "secondary_red_flags": ""
-        }
-    except Exception as e:
-        logging.warning(f"Error parsing {symbol}: {e}")
-        return None
-
-def evaluate_framework(d):
-    """Executes the STRICT Dual-Track Logic with Null Validation and Math Safeguards."""
-    
-    # 1. PHASE 1: THE UNIVERSAL SURVIVAL GATE
-    gate_failures = []
-    
-    # SAFEGUARD: The Penny Stock / Nano-Cap Trap
-    if d["sales_y1"] < 50.0:
-        gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
-        
-    # SAFEGUARD: Bankruptcy Risk (Requires operating profit to be positive)
-    if d["interest_y1"] > 0:
-        if d["operating_profit_y1"] <= 0:
-            gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
-        elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0:
-            gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
-
-    # SAFEGUARD: The Dilution Trap (Strict Null Check)
-    if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05):
-        gate_failures.append("The Dilution Trap")
-        
-    # SAFEGUARD: Skin in the game (Strict Null Check)
-    if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0:
-        gate_failures.append("No Skin in the Game")
-        
-    # SAFEGUARD: Market Cap Ceiling
-    if d["market_cap"] > 5000:
-        gate_failures.append("Market Cap exceeds 5000Cr")
-        
-    # SAFEGUARD: Fake Profits 
-    if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]:
-        gate_failures.append("Other Income exceeds Core Profit")
-        
-    if len(gate_failures) > 0:
-        return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
-        
-    # 2. PHASE 2 / TRACK A: THE EARLY INFLECTION ENGINE
-    ta_triggers = 0
-    ta_details = []
-    
-    # SAFEGUARD: Factory Go-Live (Prevents zero-division)
-    if d["fixed_assets_y2"] > 0 and d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10):
-        if d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]:
-            ta_triggers += 1
-            ta_details.append("Factory Go-Live")
-            
-    # SAFEGUARD: Working Capital Squeeze (Correctly handles FMCG negative cash cycles)
-    if d["ccc_y2"] != 0:
-        if (d["ccc_y2"] > 0 and d["ccc_y1"] < (d["ccc_y2"] * 0.80)) or (d["ccc_y2"] < 0 and d["ccc_y1"] < (d["ccc_y2"] * 1.20)):
-            ta_triggers += 1
-            ta_details.append("Working Capital Squeeze")
-            
-    # SAFEGUARD: Margin Turnaround (Requires historical reporting)
-    if d["opm_y2"] > 0 and d["sales_y2"] > 0:
-        if d["opm_y1"] > (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95):
-            ta_triggers += 1
-            ta_details.append("Margin Turnaround")
-            
-    # SAFEGUARD: Smart Money Creep (Requires history to calculate a "creep")
-    sm_q1 = d["promoter_q1"] + d["fii_q1"] + d["dii_q1"]
-    sm_q2 = d["promoter_q2"] + d["fii_q2"] + d["dii_q2"]
-    if sm_q2 > 0 and sm_q1 > sm_q2:
-        ta_triggers += 1
-        ta_details.append("Smart Money Creep")
-        
-    # SAFEGUARD: Supplier Squeeze (Pricing Power check)
-    if d["days_payable_y2"] > 0 and d["days_payable_y1"] > (d["days_payable_y2"] * 1.15) and d["debtor_days_y1"] < d["debtor_days_y2"]:
-        ta_triggers += 1
-        ta_details.append("Supplier Squeeze")
-        
-    track_a_pass = ta_triggers >= 2
-
-    # 3. PHASE 2 / TRACK B: THE PROVEN COMPOUNDER ENGINE
-    tb_triggers = 0
-    tb_details = []
-    
-    if d["roce_y1"] > 20.0 and d["roce_y2"] > 20.0:
-        tb_triggers += 1
-        tb_details.append("Elite ROCE")
-        
-    # SAFEGUARD: Sustained Top-Line Growth (Strict Null Check)
-    if d["sales_y3"] > 0 and d["sales_y2"] > 0:
-        if d["sales_y1"] > (d["sales_y2"] * 1.15) and d["sales_y2"] > (d["sales_y3"] * 1.15):
-            tb_triggers += 1
-            tb_details.append("Top-Line Growth")
-            
-    # SAFEGUARD: Operating Leverage (Ensures Net Profit was actually positive last year to avoid negative math anomalies)
-    sales_growth = (d["sales_y1"] / d["sales_y2"]) if d["sales_y2"] > 0 else 0
-    profit_growth = (d["net_profit_y1"] / d["net_profit_y2"]) if d["net_profit_y2"] > 0 else 0
-    if sales_growth > 0 and d["net_profit_y2"] > 0 and d["net_profit_y1"] > 0:
-        if profit_growth > sales_growth:
-            tb_triggers += 1
-            tb_details.append("Operating Leverage")
-            
-    # SAFEGUARD: Immaculate Cash Conversion (Ensures Net Profit is positive to avoid false flags on negative CFO)
-    if d["net_profit_y1"] > 0 and d["cfo_y1"] > (d["net_profit_y1"] * 0.70):
-        tb_triggers += 1
-        tb_details.append("Immaculate Cash Conversion")
-        
-    if d["dividend_yield"] > 0.0:
-        tb_triggers += 1
-        tb_details.append("Dividend Validation")
-
-    # SAFEGUARD: Valuation Check (Downgrades if too expensive)
-    if d["stock_pe"] > 70:
-        track_b_pass = False 
-    else:
-        track_b_pass = tb_triggers >= 3
-
-    # 4. ROUTING CLASSIFICATION
-    if track_a_pass and track_b_pass:
-        return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
-    elif track_a_pass:
-        return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
-    elif track_b_pass:
-        return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
-    else:
-        return "STAGNANT", "Passed survival checks but failed growth thresholds."
-
-def generate_qualitative_analysis(d):
-    """Executes post-qualification analysis on the salvaged data to provide deep context."""
-    
-    # 1. Valuation Context
-    pe = d["stock_pe"]
-    mc = d["market_cap"]
-    mc_tag = f"Large/Mid-Cap (₹{mc}Cr)" if mc > 5000 else f"Micro/Small-Cap (₹{mc}Cr)"
-    
-    if pe > 70:
-        d["valuation_context"] = f"{mc_tag} priced for perfection (PE: {pe}). The easy multi-bagger money may have been made."
-    elif 0 < pe <= 20:
-        d["valuation_context"] = f"{mc_tag} trading at deep value (PE: {pe}). High margin of safety."
-    elif pe == 0:
-        d["valuation_context"] = f"{mc_tag} trading with zero/calculable PE."
-    else:
-        d["valuation_context"] = f"{mc_tag} trading at fair/standard multiple (PE: {pe})."
-
-    # 2. Quality of Earnings (Other Income Check)
-    op = d["operating_profit_y1"]
-    other_inc = d["other_income_y1"]
-    np = d["net_profit_y1"]
-    
-    if other_inc > op and op > 0:
-        d["earnings_quality_analysis"] = f"CRITICAL WARNING: Other Income (₹{other_inc}Cr) exceeds Core Operating Profit (₹{op}Cr). Profits are highly engineered."
-    elif other_inc > (np * 0.3):
-        d["earnings_quality_analysis"] = "CAUTION: >30% of Net Profit stems from Other Income. Verify asset sales."
-    elif d["dividend_yield"] > 0:
-        d["earnings_quality_analysis"] = f"Elite Quality: Earnings are clean and validated by a {d['dividend_yield']}% hard-cash dividend."
-    else:
-        d["earnings_quality_analysis"] = "Standard Quality: Earnings driven by core operations. No dividend paid."
-
-    # 3. Pricing Power (Supplier Squeeze Check)
-    dp_y1 = d["days_payable_y1"]
-    dp_y2 = d["days_payable_y2"]
-    dd_y1 = d["debtor_days_y1"]
-    dd_y2 = d["debtor_days_y2"]
-    
-    if dp_y1 > (dp_y2 * 1.15) and dd_y1 < dd_y2:
-        d["pricing_power_analysis"] = "EXTREME PRICING POWER: Forcing suppliers to wait longer for payment while forcing clients to pay cash faster."
-    elif dd_y1 > (dd_y2 * 1.25):
-        d["pricing_power_analysis"] = "WARNING: Receivables piling up. Company is giving away free credit to drive sales."
-    else:
-        d["pricing_power_analysis"] = "Neutral: Trade working capital is stable."
-
-    # 4. Secondary Red Flags
-    flags = []
-    if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0:
-        flags.append("Debt exceeds hard physical assets")
-    if d["promoter_q1"] < 50.0:
-        flags.append(f"Promoter holding is passable but low ({d['promoter_q1']}%)")
-    if d["cfo_y1"] < 0:
-        flags.append("Passed survival, but currently burning operating cash flow")
-        
-    d["secondary_red_flags"] = " | ".join(flags) if flags else "No glaring secondary red flags detected."
-    return d
-
-def save_to_db(d):
-    """Saves ALL extracted data (core + context) to the persistent SQLite database."""
-    conn = sqlite3.connect(DB_FILE)
-    cursor = conn.cursor()
-    # Constructing a dynamic SQL insert based on dict keys
-    columns = ', '.join(d.keys())
-    placeholders = ':' + ', :'.join(d.keys())
-    query = f"INSERT OR REPLACE INTO scraped_metrics ({columns}) VALUES ({placeholders})"
-    cursor.execute(query, d)
-    conn.commit()
-    conn.close()
-
-def save_ticker_csv(d):
-    """Saves the individual stock's scraped data into its dedicated directory with a timestamp."""
-    ticker = d["ticker"]
-    # Safely strip out special characters so we don't crash the OS folder creation
-    safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
-    ticker_dir = os.path.join(SCREENER_DATA_DIR, safe_ticker)
-    
-    # Automatically creates ScreenerData/TICKER/ if it doesn't exist
-    os.makedirs(ticker_dir, exist_ok=True)
-    
-    ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
-    df = pd.DataFrame([d])
-    df.to_csv(ticker_file, index=False)
-
-def send_telegram_alert(new_stocks, df_out):
-    """Handles Telegram chunking and seamlessly logs the history for future AI review."""
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        logging.warning("Telegram credentials not found. Skipping alert.")
-        return
-
-    # Build the core message text
-    msg = f"📊 *Microcap Screener Weekly Update ({RUN_DATE})*\n\n"
-    if not new_stocks:
-        msg += "No new candidates passed the framework this week."
-    else:
-        msg += f"🚨 *{len(new_stocks)} NEW CANDIDATES DETECTED* 🚨\n\n"
-        for stock in new_stocks:
-            ticker = stock['ticker']
-            classif = stock['classification']
-            reason = stock['qualification_reason']
-            msg += f"🔥 *{ticker}* ({classif})\n_Reason:_ {reason}\n\n"
-
-    # Save the generated telegram analysis output directly into the Git repository context
-    try:
-        with open(TELEGRAM_LOG_FILE, "a", encoding="utf-8") as f:
-            f.write(f"\n--- Analysis Log Generated at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
-            f.write(msg + "\n")
-    except Exception as e:
-        logging.warning(f"Could not save telegram log to local directory: {e}")
-
-    # Telegram Chunking Logic: Max character limit for sendMessage is 4096. 
-    # We chunk at 4000 to be perfectly safe.
-    max_msg_length = 4000
-    msg_chunks = [msg[i:i + max_msg_length] for i in range(0, len(msg), max_msg_length)]
-    
-    send_msg_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
-    for chunk in msg_chunks:
+    # 5. Four CAGR Boxes
+    cagr_text = ""
+    for box in soup.find_all('table', class_='ranges-table'):
         try:
-            response = requests.post(
-                send_msg_url,
-                data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "Markdown"}
-            )
-            response.raise_for_status()
-        except Exception as e:
-            logging.error(f"Failed to send Telegram message chunk: {e}")
+            df = pd.read_html(StringIO(str(box)))[0]
+            title = box.find('th').get_text(strip=True) if box.find('th') else "Metric"
+            cagr_text += f"[{title}]\n{df.to_csv(index=False, header=False).strip()}\n\n"
+        except Exception: 
+            pass
+    if cagr_text:
+        data['Four_CAGR_Boxes'] = cagr_text.strip()
 
-    # Send Document endpoint (Captions are limited to 1024 characters)
-    send_doc_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
-    
-    csv_buffer = io.BytesIO()
-    df_out.to_csv(csv_buffer, index=False)
-    csv_buffer.name = f"Qualified_Microcaps_{RUN_DATE}.csv"
-    csv_buffer.seek(0)
-
-    try:
-        response = requests.post(
-            send_doc_url, 
-            data={"chat_id": TELEGRAM_CHAT_ID, "caption": f"📄 *Attached: Weekly Qualified List ({RUN_DATE})*", "parse_mode": "Markdown"}, 
-            files={"document": csv_buffer}
-        )
-        response.raise_for_status()
-        logging.info("Telegram alert and CSV payload sent successfully.")
-    except Exception as e:
-        logging.error(f"Failed to send Telegram document: {e}")
-
-def process_worker(symbol):
-    """The multithreaded worker function. Keeps the sleep inside the thread for desynchronized jitter."""
-    # Desynchronized Human Jitter (1.5 to 3.5 seconds)
-    # Because each thread sleeps independently, requests are safely staggered.
-    time.sleep(random.uniform(1.5, 3.5)) 
-    
-    data = scrape_stock(symbol)
-    if not data:
-        return None
-        
-    classification, reason = evaluate_framework(data)
-    data["classification"] = classification
-    data["qualification_reason"] = reason
-    
-    # Run the deep-dive textual analysis if it passes
-    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-        data = generate_qualitative_analysis(data)
-        
     return data
 
-def main():
-    init_db()
-    symbols = fetch_nse_symbols()
-    
-    if not symbols:
-        logging.error("No valid symbols found. Exiting.")
+
+# =====================================================================
+# PHASE 3: PYTHON QUANTITATIVE CALCULATION ENGINE
+# =====================================================================
+def clean_num(val):
+    """Safely converts CSV strings into pure floats for calculation."""
+    if pd.isna(val): return None
+    val_str = str(val).replace(',', '').replace('%', '').strip()
+    if val_str in ['', 'N/A', '-']: return None
+    try: return float(val_str)
+    except ValueError: return None
+
+def calc_pct(latest, prev):
+    """Calculates strict percentage delta."""
+    l, p = clean_num(latest), clean_num(prev)
+    if l is not None and p is not None and p != 0:
+        return f"{((l - p) / abs(p)) * 100:+.2f}%"
+    return "N/A"
+
+def augment_grid(csv_str, keep_cols=3, is_quarterly=False):
+    """Vertical trims CSV and appends Python-calculated % Deltas."""
+    if not csv_str or csv_str == "N/A": return "N/A"
+    try:
+        df = pd.read_csv(StringIO(csv_str))
+        if df.empty or df.shape[1] < 2: return csv_str
+        
+        metric_col = df.columns[0]
+        data_cols = df.columns[1:]
+        keep = min(keep_cols, len(data_cols))
+        cols_to_keep = list(data_cols[-keep:])
+        
+        latest_col = cols_to_keep[-1]
+        prev_col = cols_to_keep[-2]
+        
+        final_df = df[[metric_col] + cols_to_keep].copy()
+        
+        # Calculate Math
+        qoq_delta = [calc_pct(row[latest_col], row[prev_col]) for _, row in df.iterrows()]
+        final_df['[Python QoQ %]'] = qoq_delta
+        
+        if is_quarterly and len(data_cols) >= 5:
+            year_ago_col = data_cols[-5]
+            yoy_delta = [calc_pct(row[latest_col], row[year_ago_col]) for _, row in df.iterrows()]
+            final_df['[Python YoY %]'] = yoy_delta
+            
+        return final_df.to_csv(index=False, sep='|').strip()
+    except Exception: return csv_str
+
+
+# =====================================================================
+# PHASE 4: AI ANALYSIS AND TELEGRAM DISPATCH
+# =====================================================================
+def analyze_and_dispatch(ticker: str, csv_data: dict):
+    if not GEMINI_API_KEY: 
         return
+    
+    print(f"      [~] Generating AI Fundamental Thesis for {ticker}...")
+    genai.configure(api_key=GEMINI_API_KEY)
+    
+    # 🌟 UPDATED: Switched model to gemini-3.1-pro 🌟
+    ai_client = genai.GenerativeModel('gemini-2.5-flash-lite')
 
-    # Dynamic Historical Audit Checking
-    # Use glob to scan the folder and automatically locate the most recent past CSV run
-    previous_tickers = set()
-    existing_csvs = glob.glob(os.path.join(SCREENER_DATA_DIR, "qualified_stocks_analysis_*.csv"))
+    # 🌟 NEW: Run Python Quant Engine before prompting AI 🌟
+    quant_q = augment_grid(csv_data.get('Quarterly_Results'), is_quarterly=True)
+    quant_bs = augment_grid(csv_data.get('Balance_Sheet'), is_quarterly=False)
+    quant_pl = augment_grid(csv_data.get('Profit_Loss'), is_quarterly=False)
+    quant_cf = augment_grid(csv_data.get('Cash_Flow'), is_quarterly=False)
+    quant_ratios = augment_grid(csv_data.get('Detailed_Ratios'), is_quarterly=False)
+    quant_shp = augment_grid(csv_data.get('Shareholding_Pattern'), is_quarterly=True)
+
+    # 🌟 NEW: Dynamically inserted Context-Isolated Prompt 🌟
+    prompt = f"""
+    [CRITICAL SYSTEM RESET] 
+    Forget all previous analysis, companies, or conversations. 
+    You are an elite Institutional Equity Analyst evaluating ONLY ONE company: {ticker}.
+    If the data provided below refers to another company, ignore it. Focus exclusively on {ticker}.
     
-    # Exclude today's file to prevent a self-matching collision if re-run on the same day
-    existing_csvs = [f for f in existing_csvs if not f.endswith(f"_{RUN_DATE}.csv")]
+    RAW DATA FOR {ticker} (Pre-calculated by Python):
+    -------------------------
+    ABOUT & KEY POINTS: {csv_data.get('About_&_Key_Points')}
+    TOP METRICS: {csv_data.get('Top_Level_Metrics')}
+    PEER COMPARISON: {csv_data.get('Peers')}
     
-    if existing_csvs:
-        latest_csv = max(existing_csvs, key=os.path.getmtime)
+    [TRIMMED & AUGMENTED GRIDS]
+    QUARTERLY RESULTS (QoQ/YoY % included):
+    {quant_q}
+    
+    PROFIT & LOSS:
+    {quant_pl}
+    
+    BALANCE SHEET:
+    {quant_bs}
+    
+    CASH FLOWS:
+    {quant_cf}
+    
+    RATIOS:
+    {quant_ratios}
+    
+    SHAREHOLDING:
+    {quant_shp}
+    -------------------------
+    
+    RULES:
+    1. Output EXCLUSIVELY for {ticker}. Do not hallucinate or use data from other stocks.
+    2. DO NOT perform any arithmetic. Rely completely on the `[Python QoQ %]` and `[Python YoY %]` columns provided.
+    3. NO MARKDOWN TABLES. Use sharp, mobile-friendly bullet points (`•`).
+    4. Focus heavily on identifying anomalies (e.g., Debt spikes, Cash flow drops, 'Other Income' distortions).
+    
+    You MUST output using this EXACT template:
+
+    **[VERDICT]** (Choose: 🟢 BULLISH BREAKOUT / 🟡 IN-LINE / 🔴 WEAK/BEARISH) - [1 sentence summary of the latest quarter].
+
+    🏢 **BUSINESS CONTEXT:**
+    • [1-2 sentences summarizing sector, operations, or capacity from 'About'].
+
+    📊 **LATEST QUARTERLY FLASH:**
+    • **Sales:** [Latest Sales] (QoQ: [Python QoQ %] | YoY: [Python YoY %]) 
+    • **Net Profit:** [Latest Profit] (QoQ: [Python QoQ %] | YoY: [Python YoY %]) 
+    • **Op Margins:** [Latest Margin vs Prior Margin]
+    *Analyst Note:* [1 sharp sentence explaining the quality of the top and bottom line. Mention 'Other Income' if it distorted the profits].
+
+    💰 **CASH & BALANCE SHEET AUDIT:**
+    • **Op. Cash Flow:** [Extract Cash from Operating Activity. Is it positive?].
+    • **Borrowings:** [Extract Latest Borrowings. Are they rising or falling?].
+    • **Debtor Days:** [Extract Latest Debtor Days].
+    *Analyst Note:* [1 sharp sentence auditing cash conversion and balance sheet stress based on the data].
+
+    📈 **VALUATION & SMART MONEY:**
+    • **Valuation:** Trading at [Extract P/E]. [Compare this to the Peer P/Es provided. Is it cheap or expensive?].
+    • **Smart Money:** [Look at Shareholding Pattern. Note if FIIs/Promoters are accumulating or selling].
+    """
+    
+    # --- EXPONENTIAL BACKOFF ENGINE ---
+    max_retries = 5
+    base_delay = 5 
+    
+    for attempt in range(max_retries):
         try:
-            prev_df = pd.read_csv(latest_csv)
-            previous_tickers = set(prev_df['ticker'].tolist())
-            logging.info(f"Loaded {len(previous_tickers)} previous candidates from {os.path.basename(latest_csv)} for historical comparison.")
-        except Exception as e:
-            logging.warning(f"Failed to load previous CSV ({latest_csv}): {e}")
-
-    qualified_records = []
-    new_candidates = []
-
-    # Configure the Thread Pool (Throttled carefully at 4 workers)
-    MAX_CONCURRENT_THREADS = 4
-    logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers...")
-
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
-        # Submit all tasks to the thread pool
-        future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
-        
-        # Process results as they complete
-        for idx, future in enumerate(concurrent.futures.as_completed(future_to_symbol)):
-            symbol = future_to_symbol[future]
+            response = ai_client.generate_content(prompt)
+            
+            # 🌟 BUG FIX: Catch silent Gemini Safety blocks 🌟
             try:
-                data = future.result()
-                if data:
-                    # Write to database and file system sequentially in the main thread 
-                    # to prevent SQLite locking errors and racing folder creation
-                    save_to_db(data)
-                    save_ticker_csv(data)
-                    
-                    classif = data["classification"]
-                    if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-                        qualified_records.append(data)
-                        logging.info(f">>> MATCH: {symbol} classified as {classif}")
-                        
-                        # Check if it's a net-new addition this week
-                        if symbol not in previous_tickers:
-                            new_candidates.append(data)
-                            
-            except Exception as exc:
-                logging.warning(f"{symbol} generated an exception: {exc}")
-                
-            if idx % 100 == 0 and idx > 0:
-                logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
+                ai_thesis_text = response.text.strip()
+            except ValueError:
+                ai_thesis_text = f"⚪ **NEUTRAL [AI BLOCKED]**\n\nGemini AI Safety Filters blocked the analysis for {ticker}. This usually happens if the raw CSV contains heavily flagged financial keywords (like 'Bankruptcy' or 'Fraud')."
+            
+            # 🌟 CONSOLE LOG MIRRORING 🌟
+            print("\n" + "="*70)
+            print(f"=== 🏛️ FUNDAMENTAL DEEP DIVE: {ticker} ===")
+            print("="*70)
+            print(ai_thesis_text)
+            print("="*70 + "\n")
 
-    # Output ONLY verified candidate records to the global tracking CSV file
-    if qualified_records:
-        df_out = pd.DataFrame(qualified_records)
-        
-        # Organize the CSV layout so textual context columns are front-and-center
-        front_cols = [
-            'ticker', 'classification', 'market_cap', 'valuation_context',
-            'earnings_quality_analysis', 'pricing_power_analysis',
-            'secondary_red_flags', 'qualification_reason'
-        ]
-        back_cols = [c for c in df_out.columns if c not in front_cols]
-        df_out = df_out[front_cols + back_cols]
-        
-        df_out.to_csv(CSV_FILE, index=False)
-        logging.info(f"Analysis complete. {len(qualified_records)} candidate(s) saved to '{CSV_FILE}'.")
-        
-        # Trigger the Telegram Push
-        send_telegram_alert(new_candidates, df_out)
+            # 🌟 GITHUB NATIVE MARKDOWN MEMORY BANK EXPORT 🌟
+            md_thesis = "\n".join([f"> {line}" for line in ai_thesis_text.split('\n')])
+            
+            with open(THESES_MD_FILE, 'a', encoding='utf-8') as f:
+                f.write(f"## 🏛️ {ticker}\n")
+                f.write(f"*Generated on {NOW.strftime('%A, %B %d, %Y at %I:%M %p')}*\n\n")
+                f.write(f"{md_thesis}\n\n---\n\n")
+            
+            print(f"      [+] AI Thesis for {ticker} successfully archived to Markdown Memory Bank.")
+
+            # Send to Telegram
+            send_to_telegram(ticker, ai_thesis_text)
+            break 
+            
+        except Exception as api_error:
+            error_str = str(api_error).lower()
+            if '429' in error_str or 'quota' in error_str:
+                wait_time = base_delay * (2 ** attempt) + random.uniform(1, 3)
+                print(f"      [!] AI Rate Limit Hit for {ticker}. Retrying in {wait_time:.1f}s (Attempt {attempt+1}/{max_retries})...")
+                time.sleep(wait_time)
+            else:
+                print(f"      [!] AI Thesis API Call failed for {ticker}: {api_error}")
+                break 
     else:
-        logging.info("Process completed. No listings matching the metrics were discovered.")
+        print(f"      [!] Failed to generate AI Thesis for {ticker} after {max_retries} attempts.")
+
+def send_to_telegram(ticker: str, text: str):
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: 
+        return
+        
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
+    session = tls_requests.Session(impersonate="chrome124")
+    
+    formatted_text = re.sub(r'\*\*(.*?)\*\*', r'<b>\1</b>', text)
+    paragraphs = formatted_text.split('\n\n')
+    summary_chunks = []
+    current_chunk = ""
+    
+    for p in paragraphs:
+        if len(current_chunk) + len(p) > 3500:
+            summary_chunks.append(current_chunk.strip())
+            current_chunk = p + "\n\n"
+        else:
+            current_chunk += p + "\n\n"
+            
+    if current_chunk:
+        summary_chunks.append(current_chunk.strip())
+        
+    total_chunks = len(summary_chunks)
+    
+    for i, chunk_text in enumerate(summary_chunks, 1):
+        if i == 1:
+            msg = f"🏛️ <b>FUNDAMENTAL DEEP DIVE: {ticker}</b>\n"
+            if total_chunks > 1:
+                msg += f"<i>[Part {i} of {total_chunks}]</i>\n"
+            msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+            msg += chunk_text
+        else:
+            msg = f"🏛️ <b>FUNDAMENTAL DEEP DIVE: {ticker}</b> <i>[Part {i} of {total_chunks}]</i>\n"
+            msg += "━━━━━━━━━━━━━━━━━━━━\n\n"
+            msg += chunk_text
+            
+        payload = {
+            "chat_id": TELEGRAM_CHAT_ID, 
+            "text": msg, 
+            "parse_mode": "HTML", 
+            "disable_web_page_preview": True
+        }
+        
+        for attempt in range(3):
+            try:
+                resp = session.post(url, json=payload, timeout=60)
+                if resp.status_code == 200:
+                    print(f"      [OK] Sent {ticker} Telegram [Part {i}/{total_chunks}]")
+                    break
+                elif resp.status_code == 429:
+                    retry_after = int(resp.json().get('parameters', {}).get('retry_after', 5))
+                    time.sleep(retry_after + 1)
+                else:
+                    time.sleep(3)
+            except Exception as e:
+                time.sleep(5)
+                
+        if i < total_chunks:
+            time.sleep(3.1)
+
+# =====================================================================
+# MAIN EXECUTION
+# =====================================================================
+def main():
+    print(f"\n{'='*60}\n=== LEVEL 2: FUNDAMENTAL DEEP DIVE ANALYZER ===\n{'='*60}")
+    
+    verify_pipeline_success()
+    
+    tickers = get_recent_result_tickers()
+    if not tickers:
+        print("[*] No new results discovered in the file system. Exiting.")
+        sys.exit(0)
+        
+    print(f"\n[*] Commencing extraction and AI Deep Dive Analysis on {len(tickers)} stocks...")
+    
+    for ticker in tickers:
+        data = scrape_screener_fundamentals(ticker)
+        
+        if data:
+            # 🌟 NEW: CREATE DEDICATED STOCK FOLDER
+            stock_folder = os.path.join(FUNDAMENTALS_DIR, ticker)
+            os.makedirs(stock_folder, exist_ok=True)
+            
+            # 🌟 NEW: FORMAT DYNAMIC FILENAME
+            month_year_str = NOW.strftime('%B %Y').lower() 
+            csv_filename = f"{month_year_str} result.csv"
+            stock_csv_path = os.path.join(stock_folder, csv_filename)
+            
+            # 🌟 CRITICAL: Archive the FULL 10-12 year raw data unchanged
+            df = pd.DataFrame([data])
+            df.to_csv(stock_csv_path, index=False)
+            print(f"      [+] Exported {ticker} FULL CSV to: Fundamentals/{ticker}/{csv_filename}")
+            
+            analyze_and_dispatch(ticker, data)
+            
+            # 🌟 UPDATED: Adjusted sleep to 35 seconds to safely handle Gemini 3.1 Pro token limits
+            print(f"      [zZz] Sleeping for 35s to respect Gemini API Limits...")
+            time.sleep(35) 
+        else:
+            time.sleep(2) 
+            
+    print("\n[+] Fundamental Analysis Pipeline Complete. All Theses committed to Markdown Memory Bank.")
 
 if __name__ == "__main__":
     main()
