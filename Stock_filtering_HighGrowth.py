@@ -16,11 +16,16 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 # Configuration constants
 DB_FILE = "screener_data.db"
 CSV_FILE = "qualified_stocks_analysis.csv"
+PREVIOUS_CSV_FILE = "previous_qualified_stocks.csv"
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
+
+# Telegram Credentials (passed securely via GitHub Secrets/Environment)
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
 def init_db():
     """Initializes the SQLite database schema including the salvaged top-card data."""
@@ -342,6 +347,44 @@ def save_to_db(d):
     conn.commit()
     conn.close()
 
+def send_telegram_alert(new_stocks, df_out):
+    """Formats the payload and sends the CSV document via Telegram."""
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
+        logging.warning("Telegram credentials not found. Skipping alert.")
+        return
+
+    # Build the message text
+    msg = "📊 *Microcap Screener Weekly Update*\n\n"
+    if not new_stocks:
+        msg += "No new candidates passed the framework this week."
+    else:
+        msg += f"🚨 *{len(new_stocks)} NEW CANDIDATES DETECTED* 🚨\n\n"
+        for stock in new_stocks:
+            ticker = stock['ticker']
+            classif = stock['classification']
+            reason = stock['qualification_reason']
+            msg += f"🔥 *{ticker}* ({classif})\n_Reason:_ {reason}\n\n"
+
+    # Send Document endpoint
+    url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
+    
+    # Save a temporary buffer of the CSV to send
+    csv_buffer = io.BytesIO()
+    df_out.to_csv(csv_buffer, index=False)
+    csv_buffer.name = "Qualified_Microcaps.csv"
+    csv_buffer.seek(0)
+
+    try:
+        response = requests.post(
+            url, 
+            data={"chat_id": TELEGRAM_CHAT_ID, "caption": msg, "parse_mode": "Markdown"}, 
+            files={"document": csv_buffer}
+        )
+        response.raise_for_status()
+        logging.info("Telegram alert and CSV payload sent successfully.")
+    except Exception as e:
+        logging.error(f"Failed to send Telegram alert: {e}")
+
 def main():
     init_db()
     symbols = fetch_nse_symbols()
@@ -350,7 +393,20 @@ def main():
         logging.error("No valid symbols found. Exiting.")
         return
 
+    # Load last week's tickers to compare
+    previous_tickers = set()
+    if os.path.exists(CSV_FILE):
+        try:
+            prev_df = pd.read_csv(CSV_FILE)
+            previous_tickers = set(prev_df['ticker'].tolist())
+            # Rename last week's file to keep a backup
+            os.replace(CSV_FILE, PREVIOUS_CSV_FILE)
+            logging.info(f"Loaded {len(previous_tickers)} previous candidates for historical comparison.")
+        except Exception as e:
+            logging.warning(f"Failed to load previous CSV: {e}")
+
     qualified_records = []
+    new_candidates = []
 
     for idx, symbol in enumerate(symbols):
         # Introducing 'Human Jitter' (2-4 seconds) to avoid Screener Cloudflare bans during CI/CD runs
@@ -373,6 +429,10 @@ def main():
             qualified_records.append(data)
             logging.info(f">>> MATCH: {symbol} classified as {classification}")
             
+            # Check if it's a net-new addition this week
+            if symbol not in previous_tickers:
+                new_candidates.append(data)
+            
         # Write ALL data (Rejected and Passed) to the local database
         save_to_db(data)
 
@@ -391,6 +451,9 @@ def main():
         
         df_out.to_csv(CSV_FILE, index=False)
         logging.info(f"Analysis complete. {len(qualified_records)} candidate(s) saved to '{CSV_FILE}'.")
+        
+        # Trigger the Telegram Push
+        send_telegram_alert(new_candidates, df_out)
     else:
         logging.info("Process completed. No listings matching the metrics were discovered.")
 
