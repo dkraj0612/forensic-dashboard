@@ -205,7 +205,55 @@ def scrape_screener_fundamentals(ticker: str) -> dict:
 
 
 # =====================================================================
-# PHASE 3 & 4: AI ANALYSIS AND TELEGRAM DISPATCH
+# PHASE 3: PYTHON QUANTITATIVE CALCULATION ENGINE
+# =====================================================================
+def clean_num(val):
+    """Safely converts CSV strings into pure floats for calculation."""
+    if pd.isna(val): return None
+    val_str = str(val).replace(',', '').replace('%', '').strip()
+    if val_str in ['', 'N/A', '-']: return None
+    try: return float(val_str)
+    except ValueError: return None
+
+def calc_pct(latest, prev):
+    """Calculates strict percentage delta."""
+    l, p = clean_num(latest), clean_num(prev)
+    if l is not None and p is not None and p != 0:
+        return f"{((l - p) / abs(p)) * 100:+.2f}%"
+    return "N/A"
+
+def augment_grid(csv_str, keep_cols=3, is_quarterly=False):
+    """Vertical trims CSV and appends Python-calculated % Deltas."""
+    if not csv_str or csv_str == "N/A": return "N/A"
+    try:
+        df = pd.read_csv(StringIO(csv_str))
+        if df.empty or df.shape[1] < 2: return csv_str
+        
+        metric_col = df.columns[0]
+        data_cols = df.columns[1:]
+        keep = min(keep_cols, len(data_cols))
+        cols_to_keep = list(data_cols[-keep:])
+        
+        latest_col = cols_to_keep[-1]
+        prev_col = cols_to_keep[-2]
+        
+        final_df = df[[metric_col] + cols_to_keep].copy()
+        
+        # Calculate Math
+        qoq_delta = [calc_pct(row[latest_col], row[prev_col]) for _, row in df.iterrows()]
+        final_df['[Python QoQ %]'] = qoq_delta
+        
+        if is_quarterly and len(data_cols) >= 5:
+            year_ago_col = data_cols[-5]
+            yoy_delta = [calc_pct(row[latest_col], row[year_ago_col]) for _, row in df.iterrows()]
+            final_df['[Python YoY %]'] = yoy_delta
+            
+        return final_df.to_csv(index=False, sep='|').strip()
+    except Exception: return csv_str
+
+
+# =====================================================================
+# PHASE 4: AI ANALYSIS AND TELEGRAM DISPATCH
 # =====================================================================
 def analyze_and_dispatch(ticker: str, csv_data: dict):
     if not GEMINI_API_KEY: 
@@ -213,48 +261,79 @@ def analyze_and_dispatch(ticker: str, csv_data: dict):
     
     print(f"      [~] Generating AI Fundamental Thesis for {ticker}...")
     genai.configure(api_key=GEMINI_API_KEY)
-    ai_client = genai.GenerativeModel('gemini-2.5-flash-lite')
+    
+    # 🌟 UPDATED: Switched model to gemini-3.1-pro 🌟
+    ai_client = genai.GenerativeModel('gemini-2.5-falsh-lite')
 
+    # 🌟 NEW: Run Python Quant Engine before prompting AI 🌟
+    quant_q = augment_grid(csv_data.get('Quarterly_Results'), is_quarterly=True)
+    quant_bs = augment_grid(csv_data.get('Balance_Sheet'), is_quarterly=False)
+    quant_pl = augment_grid(csv_data.get('Profit_Loss'), is_quarterly=False)
+    quant_cf = augment_grid(csv_data.get('Cash_Flow'), is_quarterly=False)
+    quant_ratios = augment_grid(csv_data.get('Detailed_Ratios'), is_quarterly=False)
+    quant_shp = augment_grid(csv_data.get('Shareholding_Pattern'), is_quarterly=True)
+
+    # 🌟 NEW: Dynamically inserted Context-Isolated Prompt 🌟
     prompt = f"""
-    You are an elite Quantitative Equity Analyst. 
-   Analyze the provided financial data for ROLLT. Python has already calculated the exact QoQ and YoY percentage changes for you. Do not calculate your own math. Use the percentages provided.
-Output a sharp, mobile-friendly bulleted report focusing on anomalies and momentum. No Markdown tables.
+    [CRITICAL SYSTEM RESET] 
+    Forget all previous analysis, companies, or conversations. 
+    You are an elite Institutional Equity Analyst evaluating ONLY ONE company: {ticker}.
+    If the data provided below refers to another company, ignore it. Focus exclusively on {ticker}.
+    
+    RAW DATA FOR {ticker} (Pre-calculated by Python):
+    -------------------------
+    ABOUT & KEY POINTS: {csv_data.get('About_&_Key_Points')}
+    TOP METRICS: {csv_data.get('Top_Level_Metrics')}
+    PEER COMPARISON: {csv_data.get('Peers')}
+    
+    [TRIMMED & AUGMENTED GRIDS]
+    QUARTERLY RESULTS (QoQ/YoY % included):
+    {quant_q}
+    
+    PROFIT & LOSS:
+    {quant_pl}
+    
+    BALANCE SHEET:
+    {quant_bs}
+    
+    CASH FLOWS:
+    {quant_cf}
+    
+    RATIOS:
+    {quant_ratios}
+    
+    SHAREHOLDING:
+    {quant_shp}
+    -------------------------
+    
+    RULES:
+    1. Output EXCLUSIVELY for {ticker}. Do not hallucinate or use data from other stocks.
+    2. DO NOT perform any arithmetic. Rely completely on the `[Python QoQ %]` and `[Python YoY %]` columns provided.
+    3. NO MARKDOWN TABLES. Use sharp, mobile-friendly bullet points (`•`).
+    4. Focus heavily on identifying anomalies (e.g., Debt spikes, Cash flow drops, 'Other Income' distortions).
+    
+    You MUST output using this EXACT template:
 
-RAW DATA FOR ROLLT:
--------------------------
-ABOUT & KEY POINTS: Incorporated in 1972, Rollatainers Ltd provides integrated packaging solutions. Has flexible laminates division (4000 MT/annum capacity) and cartons division (5 million cartons annually).
-TOP METRICS: Market Cap: ₹ 95 Cr, Current Price: ₹ 3.80, Stock P/E: 4.5, Book Value: ₹ 0.37.
+    **[VERDICT]** (Choose: 🟢 BULLISH BREAKOUT / 🟡 IN-LINE / 🔴 WEAK/BEARISH) - [1 sentence summary of the latest quarter].
 
-[PYTHON MATH-AUGMENTED GRIDS]
+    🏢 **BUSINESS CONTEXT:**
+    • [1-2 sentences summarizing sector, operations, or capacity from 'About'].
 
-QUARTERLY RESULTS (In ₹ Cr):
-Metric | Mar 2025 | Dec 2025 | Mar 2026 | [Python QoQ %] | [Python YoY %]
-Sales | 12.50 | 0.00 | 0.00 | 0.00% | -100.00%
-Expenses | 14.00 | 2.50 | 1.80 | -28.00% | -87.14%
-Operating Profit | -1.50 | -2.50 | -1.80 | +28.00% | -20.00%
-Other Income | 0.50 | 17.79 | 0.10 | -99.44% | -80.00%
-Interest | 1.00 | 1.20 | 1.20 | 0.00% | +20.00%
-Net Profit | -2.50 | 17.59 | -2.10 | -111.94% | +16.00%
+    📊 **LATEST QUARTERLY FLASH:**
+    • **Sales:** [Latest Sales] (QoQ: [Python QoQ %] | YoY: [Python YoY %]) 
+    • **Net Profit:** [Latest Profit] (QoQ: [Python QoQ %] | YoY: [Python YoY %]) 
+    • **Op Margins:** [Latest Margin vs Prior Margin]
+    *Analyst Note:* [1 sharp sentence explaining the quality of the top and bottom line. Mention 'Other Income' if it distorted the profits].
 
-BALANCE SHEET (In ₹ Cr):
-Metric | Mar 2025 | Mar 2026 | [Python YoY %]
-Borrowings | 31.00 | 35.00 | +12.90%
-Trade Payables | 12.00 | 14.00 | +16.67%
+    💰 **CASH & BALANCE SHEET AUDIT:**
+    • **Op. Cash Flow:** [Extract Cash from Operating Activity. Is it positive?].
+    • **Borrowings:** [Extract Latest Borrowings. Are they rising or falling?].
+    • **Debtor Days:** [Extract Latest Debtor Days].
+    *Analyst Note:* [1 sharp sentence auditing cash conversion and balance sheet stress based on the data].
 
-CASH FLOWS (In ₹ Cr):
-Metric | Mar 2025 | Mar 2026 | [Python YoY %]
-Cash from Operating Activity | -5.00 | -12.00 | -140.00%
-
-DETAILED RATIOS:
-Metric | Mar 2025 | Mar 2026 | [Python YoY Change]
-Debtor Days | 602 | 602 | 0 days
-
-SHAREHOLDING PATTERN:
-Metric | Dec 2025 | Mar 2026 | [Python QoQ Change]
-Promoters | 50.96% | 50.96% | 0.00%
-FIIs | 0.00% | 0.00% | 0.00%
--------------------------
-
+    📈 **VALUATION & SMART MONEY:**
+    • **Valuation:** Trading at [Extract P/E]. [Compare this to the Peer P/Es provided. Is it cheap or expensive?].
+    • **Smart Money:** [Look at Shareholding Pattern. Note if FIIs/Promoters are accumulating or selling].
     """
     
     # --- EXPONENTIAL BACKOFF ENGINE ---
@@ -383,21 +462,25 @@ def main():
         data = scrape_screener_fundamentals(ticker)
         
         if data:
-            # 🌟 NEW: CREATE DEDICATED STOCK FOLDER (e.g., Fundamentals/TCS/)
+            # 🌟 NEW: CREATE DEDICATED STOCK FOLDER
             stock_folder = os.path.join(FUNDAMENTALS_DIR, ticker)
             os.makedirs(stock_folder, exist_ok=True)
             
-            # 🌟 NEW: FORMAT DYNAMIC FILENAME (e.g., "june 2026 result.csv")
-            month_year_str = NOW.strftime('%B %Y').lower() # Results in "june 2026"
+            # 🌟 NEW: FORMAT DYNAMIC FILENAME
+            month_year_str = NOW.strftime('%B %Y').lower() 
             csv_filename = f"{month_year_str} result.csv"
             stock_csv_path = os.path.join(stock_folder, csv_filename)
             
+            # 🌟 CRITICAL: Archive the FULL 10-12 year raw data unchanged
             df = pd.DataFrame([data])
             df.to_csv(stock_csv_path, index=False)
-            print(f"      [+] Exported {ticker} CSV to: Fundamentals/{ticker}/{csv_filename}")
+            print(f"      [+] Exported {ticker} FULL CSV to: Fundamentals/{ticker}/{csv_filename}")
             
             analyze_and_dispatch(ticker, data)
-            time.sleep(15) 
+            
+            # 🌟 UPDATED: Adjusted sleep to 35 seconds to safely handle Gemini 3.1 Pro token limits
+            print(f"      [zZz] Sleeping for 35s to respect Gemini API Limits...")
+            time.sleep(35) 
         else:
             time.sleep(2) 
             
