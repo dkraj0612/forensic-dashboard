@@ -2,10 +2,8 @@ name: Automated Dual-Track Microcap Screener Pipeline
 
 on:
   schedule:
-    # Run automatically every Sunday at 00:00 UTC
     - cron: '0 0 * * 0'
   workflow_dispatch:
-    # Allows manual triggering directly from the GitHub actions dashboard UI
 
 jobs:
   execute-screening-engine:
@@ -27,21 +25,21 @@ jobs:
         pip install requests beautifulsoup4 pandas
 
     - name: Run Processing Engine Pipeline
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
       run: |
         python Stock_filtering_HighGrowth.py
 
-    - name: Commit and Push Updated Database and Verified CSV Output Artifacts
+    - name: Commit and Push Output Artifacts
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        git add qualified_stocks_analysis.csv screener_data.db previous_qualified_stocks.csv
         
-        # Stage the output data layers
-        git add qualified_stocks.csv screener_data.db
-        
-        # Commit variations only if actual metrics shifts have occurred
         if git diff --staged --quiet; then
-          echo "No baseline matrix changes detected this week. Skipping commit pushes."
+          echo "No changes detected."
         else
-          git commit -m "System Cron: Auto-Updated Screening Output Layers [$(date -u +'%Y-%m-%d %H:%M UTC')]"
+          git commit -m "Auto-Update: Screening Output [$(date -u +'%Y-%m-%d UTC')]"
           git push
         fi
