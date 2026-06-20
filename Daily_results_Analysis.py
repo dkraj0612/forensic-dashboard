@@ -213,7 +213,7 @@ def analyze_and_dispatch(ticker: str, csv_data: dict):
     
     print(f"      [~] Generating AI Fundamental Thesis for {ticker}...")
     genai.configure(api_key=GEMINI_API_KEY)
-    ai_client = genai.GenerativeModel('gemini-3.1-pro')
+    ai_client = genai.GenerativeModel('gemini-2.5-flash')
 
     prompt = f"""
     You are an elite Quantitative Equity Analyst. 
