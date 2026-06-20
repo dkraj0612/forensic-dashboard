@@ -263,7 +263,7 @@ def analyze_and_dispatch(ticker: str, csv_data: dict):
     genai.configure(api_key=GEMINI_API_KEY)
     
     # 🌟 UPDATED: Switched model to gemini-3.1-pro 🌟
-    ai_client = genai.GenerativeModel('gemini-2.5-falsh-lite')
+    ai_client = genai.GenerativeModel('gemini-2.5-flash-lite')
 
     # 🌟 NEW: Run Python Quant Engine before prompting AI 🌟
     quant_q = augment_grid(csv_data.get('Quarterly_Results'), is_quarterly=True)
