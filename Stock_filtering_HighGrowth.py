@@ -152,102 +152,134 @@ def extract_top_ratio(soup, metric_name):
 
 def vacuum_screener_data(soup):
     """
-    NEW FUNCTION: Sweeps the entire Screener page and formats it vertically 
+    Sweeps the entire Screener page and formats it vertically 
     for the RAW individual ticker CSV file without truncating any columns or rows.
     """
     rows = []
     
-    # 1. ABOUT & KEY POINTS
-    profile_div = soup.find('div', class_='company-profile')
-    if profile_div:
-        about_div = profile_div.find('div', class_='about')
-        if about_div:
-            rows.append(["--- ABOUT ---"])
-            rows.append([about_div.get_text(separator=' ', strip=True)])
-            rows.append([])
-        
-        key_points_div = profile_div.find('div', class_='key-points')
-        if key_points_div:
-            rows.append(["--- KEY POINTS ---"])
-            rows.append([key_points_div.get_text(separator=' ', strip=True)])
-            rows.append([])
-
-    # 2. STOCK INFO (Top Card Ratios)
-    top_ratios = soup.find('ul', id='top-ratios')
-    if top_ratios:
-        rows.append(["--- STOCK INFO ---"])
-        info_row_names = []
-        info_row_vals = []
-        for li in top_ratios.find_all('li'):
-            name_span = li.find('span', class_='name')
-            val_span = li.find('span', class_='number') or li.find('span', class_='value')
-            if name_span and val_span:
-                info_row_names.append(name_span.get_text(strip=True))
-                info_row_vals.append(val_span.get_text(strip=True))
+    try:
+        # 1. ABOUT & KEY POINTS
+        profile_div = soup.find('div', class_='company-profile')
+        if profile_div:
+            about_div = profile_div.find('div', class_='about')
+            if about_div:
+                rows.append(["--- ABOUT ---"])
+                rows.append([about_div.get_text(separator=' ', strip=True)])
+                rows.append([])
+            
+            key_points_div = profile_div.find('div', class_='company-profile-notes') # Key points class check
+            if not key_points_div: # Fallback if class structure differs
+                key_points_div = profile_div.find('div', class_='key-points')
                 
-            # Chunk into clean grids of 4 items per line for nice Excel viewing
-            if len(info_row_names) == 4:
+            if key_points_div:
+                rows.append(["--- KEY POINTS ---"])
+                rows.append([key_points_div.get_text(separator=' ', strip=True)])
+                rows.append([])
+
+        # 2. STOCK INFO (Top Card Ratios)
+        top_ratios = soup.find('ul', id='top-ratios')
+        if top_ratios:
+            rows.append(["--- STOCK INFO ---"])
+            info_row_names = []
+            info_row_vals = []
+            for li in top_ratios.find_all('li'):
+                name_span = li.find('span', class_='name')
+                val_span = li.find('span', class_='number') or li.find('span', class_='value')
+                if name_span and val_span:
+                    info_row_names.append(name_span.get_text(strip=True))
+                    info_row_vals.append(val_span.get_text(strip=True))
+                    
+                # Chunk into clean grids of 4 items per line for nice Excel viewing
+                if len(info_row_names) == 4:
+                    rows.append(info_row_names)
+                    rows.append(info_row_vals)
+                    rows.append([])
+                    info_row_names = []
+                    info_row_vals = []
+            
+            # Catch any remaining items
+            if info_row_names:
                 rows.append(info_row_names)
                 rows.append(info_row_vals)
                 rows.append([])
-                info_row_names = []
-                info_row_vals = []
+                
+        # 3. CORE FINANCIAL TABLES & PEERS
+        sections = [
+            ("PEER COMPARISON", "peers"),
+            ("QUARTERLY RESULTS", "quarters"),
+            ("ANNUAL RESULTS", "profit-loss"),
+            ("BALANCE SHEET", "balance-sheet"),
+            ("CASH FLOW", "cash-flow"),
+            ("RATIOS", "ratios"),
+            ("SHAREHOLDING PATTERN", "shareholding")
+        ]
         
-        # Catch any remaining items
-        if info_row_names:
-            rows.append(info_row_names)
-            rows.append(info_row_vals)
-            rows.append([])
-            
-    # 3. CORE FINANCIAL TABLES
-    sections = [
-        ("PEER COMPARISON", "peers"),
-        ("QUARTERLY RESULTS", "quarters"),
-        ("ANNUAL RESULTS", "profit-loss"),
-        ("BALANCE SHEET", "balance-sheet"),
-        ("CASH FLOW", "cash-flow"),
-        ("RATIOS", "ratios"),
-        ("SHAREHOLDING PATTERN", "shareholding")
-    ]
-    
-    for title, section_id in sections:
-        section = soup.find('section', id=section_id)
-        if section:
-            table = section.find('table')
-            if table:
-                rows.append([f"--- {title} ---"])
-                
-                # Extract Table Headers
-                thead = table.find('thead')
-                if thead:
-                    th_row = [th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])]
-                    rows.append(th_row)
-                
-                # Extract Table Rows
-                tbody = table.find('tbody')
-                if tbody:
-                    for tr in tbody.find_all('tr'):
-                        td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
-                        rows.append(td_row)
-                rows.append([])
-                
-    # 4. FOUR CAGR BOXES
-    pl_section = soup.find('section', id='profit-loss')
-    if pl_section:
-        cagr_tables = pl_section.find_all('table', class_='ranges-table')
-        if cagr_tables:
-            rows.append(["--- CAGR BOXES ---"])
-            for tbl in cagr_tables:
-                thead = tbl.find('thead')
-                if thead:
-                    rows.append([th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])])
-                tbody = tbl.find('tbody')
-                if tbody:
-                    for tr in tbody.find_all('tr'):
-                        rows.append([td.get_text(separator=' ', strip=True) for td in tr.find_all(['th', 'td'])])
-                rows.append([])
+        for title, section_id in sections:
+            section = soup.find('section', id=section_id)
+            if section:
+                table = section.find('table')
+                if table:
+                    rows.append([f"--- {title} ---"])
+                    
+                    # Extract Table Headers
+                    thead = table.find('thead')
+                    if thead:
+                        th_row = [th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])]
+                        rows.append(th_row)
+                    
+                    # Extract Table Rows
+                    tbody = table.find('tbody')
+                    if tbody:
+                        for tr in tbody.find_all('tr'):
+                            td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
+                            rows.append(td_row)
+                    rows.append([])
+                    
+        # 4. FOUR CAGR BOXES
+        pl_section = soup.find('section', id='profit-loss')
+        if pl_section:
+            cagr_tables = pl_section.find_all('table', class_='ranges-table')
+            if cagr_tables:
+                rows.append(["--- CAGR BOXES ---"])
+                for tbl in cagr_tables:
+                    thead = tbl.find('thead')
+                    if thead:
+                        rows.append([th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])])
+                    tbody = tbl.find('tbody')
+                    if tbody:
+                        for tr in tbody.find_all('tr'):
+                            rows.append([td.get_text(separator=' ', strip=True) for td in tr.find_all(['th', 'td'])])
+                    rows.append([])
 
+    except Exception as e:
+        logging.warning(f"Error during vacuum phase: {e}")
+        
     return rows
+
+def filter_volatile_data(csv_rows):
+    """Strips the volatile 'STOCK INFO' block from a CSV representation to allow pure fundamental comparison."""
+    filtered = []
+    skip = False
+    for row in csv_rows:
+        # Ignore empty rows for comparison
+        if not row or (len(row) == 1 and row[0].strip() == ""):
+            continue
+            
+        first_col = str(row[0]).strip()
+        
+        # If we hit a section header, determine if we should skip
+        if first_col.startswith("--- ") and first_col.endswith(" ---"):
+            if first_col == "--- STOCK INFO ---":
+                skip = True
+                continue
+            else:
+                skip = False
+                
+        if not skip:
+            # Join the row into a continuous string for strict structural comparison
+            filtered.append("|".join([str(item).strip() for item in row]))
+            
+    return filtered
 
 def scrape_stock(symbol):
     """Parses both the framework data and the extra contextual data from Screener."""
@@ -264,7 +296,7 @@ def scrape_stock(symbol):
             
         soup = BeautifulSoup(response.text, 'html.parser')
         
-        # Vacuum the entire page directly into vertical CSV layout array
+        # Execute the full-page vacuum for historical raw data archiving
         raw_vacuum_data = vacuum_screener_data(soup)
         
         def get_metric(table, name, length=3):
@@ -518,7 +550,7 @@ def generate_qualitative_analysis(d):
 def save_to_db(d):
     """Saves ALL extracted data (core + context) to the persistent SQLite database."""
     # Temporarily remove the raw_vacuum_data from the dictionary before pushing to DB 
-    # to avoid sqlite schema mismatches, since the raw grid isn't a column.
+    # to avoid sqlite schema mismatches, since the raw grid isn't a database column.
     db_payload = {k: v for k, v in d.items() if k != "raw_vacuum_data"}
     
     conn = sqlite3.connect(DB_FILE)
@@ -532,27 +564,51 @@ def save_to_db(d):
     conn.close()
 
 def save_ticker_csv(d):
-    """Saves the individual stock's RAW vacuumed data into its dedicated directory with a timestamp."""
+    """Saves the individual stock's RAW vacuumed data into an alphabetical directory with a Fundamental Delta Check."""
     ticker = d["ticker"]
     
-    # Safely strip out special characters so we don't crash the OS folder creation
+    # Extract the massive vacuum grid we attached during scrape_stock
+    new_raw_data_rows = d.get("raw_vacuum_data", [])
+    if not new_raw_data_rows:
+        return # Skip if scraping completely failed
+    
+    # Safely strip out special characters
     safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
     
-    # Updated: Placed securely inside the "stocks" hierarchy
-    ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", safe_ticker)
+    # Determine alphabetical grouping folder (A, B, C... or 0-9)
+    first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
+    ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", first_char, safe_ticker)
     
-    # Automatically creates ScreenerData/stocks/TICKER/ if it doesn't exist
+    # Automatically creates ScreenerData/stocks/A/TICKER/ if it doesn't exist
     os.makedirs(ticker_dir, exist_ok=True)
     
+    # --- FUNDAMENTAL DELTA CHECK LOGIC ---
+    # Look for the most recent historical CSV in this exact ticker's folder
+    existing_files = glob.glob(os.path.join(ticker_dir, f"{safe_ticker}_*.csv"))
+    if existing_files:
+        latest_file = max(existing_files, key=os.path.getmtime)
+        try:
+            with open(latest_file, 'r', encoding='utf-8') as f:
+                reader = csv.reader(f)
+                old_raw_data_rows = list(reader)
+            
+            # Mask the volatile stock info sections to compare pure core fundamentals
+            old_core_fundamentals = filter_volatile_data(old_raw_data_rows)
+            new_core_fundamentals = filter_volatile_data(new_raw_data_rows)
+            
+            # If the filtered core fundamentals match exactly, skip saving to prevent repo bloat
+            if old_core_fundamentals == new_core_fundamentals:
+                return 
+        except Exception as e:
+            logging.warning(f"Delta Check failed for {safe_ticker}: {e}. Proceeding to save new file.")
+
+    # --- SAVE NEW FILE ---
+    # If no file exists, or if the Delta Check proved the fundamentals changed, save the new CSV
     ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
     
-    # Pull out the massive vacuum grid we attached during scrape_stock
-    raw_data_rows = d.get("raw_vacuum_data", [])
-    
-    # Write the formatted vertical grid cleanly to the CSV
     with open(ticker_file, mode='w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
-        writer.writerows(raw_data_rows)
+        writer.writerows(new_raw_data_rows)
 
 def send_telegram_alert(new_stocks, df_out):
     """Handles Telegram chunking and seamlessly logs the history for future AI review."""
