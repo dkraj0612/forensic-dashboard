@@ -11,6 +11,7 @@ import requests
 import concurrent.futures
 import glob
 import pandas as pd
+from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import fitz  # PyMuPDF for in-memory PDF extraction
 import google.generativeai as genai # AI Structural Compiler
@@ -25,6 +26,7 @@ SCREENER_DATA_DIR = "ScreenerData"
 DB_FILE = os.path.join(SCREENER_DATA_DIR, "screener_data.db")
 CSV_FILE = os.path.join(SCREENER_DATA_DIR, f"qualified_stocks_analysis_{RUN_DATE}.csv")
 TELEGRAM_LOG_FILE = os.path.join(SCREENER_DATA_DIR, f"telegram_analysis_log_{RUN_DATE}.txt")
+MANIFEST_FILE = os.path.join(SCREENER_DATA_DIR, "manifest.json")
 
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
@@ -108,10 +110,22 @@ def init_db():
     conn.close()
 
 def fetch_nse_symbols():
-    """HARDCODED TEST MODE: Overrides NSE list to specifically target the 2 requested stocks."""
-    symbols = ["AETHER", "ATHERENERG"]
-    logging.info(f"Test Mode Initiated. Targeting explicit symbols: {symbols}")
-    return symbols
+    """Fetches NSE symbols and filters out illiquid/suspended listings to save scraping time."""
+    logging.info("Fetching dynamic stock list from NSE...")
+    try:
+        response = safe_request(NSE_URL)
+        if not response:
+            return []
+        df = pd.read_csv(io.StringIO(response.text))
+        
+        # Filter for standard EQ series (ignores most ETFs, NCDs, and suspended stocks)
+        df = df[df[' SERIES'] == 'EQ']
+        symbols = df['SYMBOL'].dropna().unique().tolist()
+        logging.info(f"Retrieved {len(symbols)} active EQ symbols from NSE.")
+        return symbols
+    except Exception as e:
+        logging.error(f"Failed to fetch NSE symbols: {e}")
+        return []
 
 def clean_value(val_str):
     """Normalizes raw text string metrics into pure floats."""
@@ -176,13 +190,12 @@ def extract_top_ratio(soup, metric_name):
 def vacuum_screener_data(soup):
     """
     Sweeps the entire Screener page and formats it vertically.
-    UPDATED: Bypasses strict tbody HTML formatting to catch all tables (High/Low, Peers, CAGR).
-    UPDATED: Uses ID-aware fallbacks for missing/renamed tables on new listings.
+    Bypasses strict tbody HTML formatting to catch all tables (High/Low, Peers, CAGR).
+    Uses ID-aware fallbacks for missing/renamed tables on new listings.
     """
     rows = []
     
     try:
-        # 1. ABOUT & KEY POINTS
         profile_div = soup.find('div', class_='company-profile')
         if profile_div:
             about_div = profile_div.find('div', class_='about')
@@ -200,7 +213,6 @@ def vacuum_screener_data(soup):
                 rows.append([key_points_div.get_text(separator=' ', strip=True)])
                 rows.append([])
 
-        # 2. STOCK INFO (Top Card Ratios)
         top_ratios = soup.find('ul', id='top-ratios')
         if top_ratios:
             rows.append(["--- STOCK INFO ---"])
@@ -208,10 +220,9 @@ def vacuum_screener_data(soup):
             info_row_vals = []
             for li in top_ratios.find_all('li'):
                 name_span = li.find('span', class_='name')
-                val_span = li.find('span', class_='value') # Captures the whole block for High/Low slashes
+                val_span = li.find('span', class_='value') 
                 if name_span and val_span:
                     info_row_names.append(name_span.get_text(strip=True))
-                    # Keeps the " / " for High/Low but safely strips out currency symbols
                     val_text = val_span.get_text(separator=' ', strip=True).replace('₹', '').replace('Cr.', '').replace('%', '').strip()
                     info_row_vals.append(val_text)
                     
@@ -227,7 +238,6 @@ def vacuum_screener_data(soup):
                 rows.append(info_row_vals)
                 rows.append([])
                 
-        # 3. CORE FINANCIAL TABLES & PEERS (Dynamic Fallbacks Included)
         sections = [
             ("PEER COMPARISON", ["peers"]),
             ("QUARTERLY RESULTS", ["quarters", "half-years", "results"]),
@@ -242,13 +252,11 @@ def vacuum_screener_data(soup):
             table = get_dynamic_table(soup, possible_ids)
             if table:
                 rows.append([f"--- {title} ---"])
-                # Natively iterates over all rows, ignoring strict HTML tbody/thead rules
                 for tr in table.find_all('tr'):
                     td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
                     rows.append(td_row)
                 rows.append([])
                     
-        # 4. FOUR CAGR BOXES
         pl_section = soup.find('section', id='profit-loss')
         if pl_section:
             cagr_tables = pl_section.find_all('table', class_='ranges-table')
@@ -275,7 +283,6 @@ def filter_volatile_data(csv_rows):
         first_col = str(row[0]).strip()
         
         if first_col.startswith("--- ") and first_col.endswith(" ---"):
-            # Mask Stock Info, Peers, and CAGR as they contain daily price-linked metrics
             if first_col in ["--- STOCK INFO ---", "--- PEER COMPARISON ---", "--- CAGR BOXES ---"]:
                 skip = True
                 continue
@@ -325,7 +332,6 @@ def get_layout_signature(ticker, sample_text, concall_dir):
         model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content(prompt)
         
-        # Regex defense against LLM conversational hallucination
         match = re.search(r'\{.*\}', response.text, re.DOTALL)
         if match:
             clean_json = match.group(0)
@@ -394,27 +400,48 @@ def parse_transcript_dynamically(full_text, signature):
     return {"transcript": parsed_dialogue}
 
 def process_concalls(ticker, html_text, ticker_dir):
-    """Finds and downloads concall PDFs using pure Regex/JSON extraction to bypass AI UI blockades."""
+    """
+    Downloads concall PDFs using pure Regex/JSON extraction with a strict 5-year boundary.
+    Applies Option 2: Pre-Download Naming & Validation via Regex.
+    """
     concall_dir = os.path.join(ticker_dir, "concalls")
     os.makedirs(concall_dir, exist_ok=True)
 
     transcript_links = {}
+    target_date_boundary = datetime.now() - timedelta(days=5*365)
+    
+    # Pre-load existing URLs to avoid duplicate network downloads
+    existing_urls = set()
+    for existing_file in glob.glob(os.path.join(concall_dir, "*.json")):
+        if "layout_signature" in existing_file: continue
+        try:
+            with open(existing_file, 'r', encoding='utf-8') as f:
+                cached_data = json.load(f)
+                if 'metadata' in cached_data and 'source_url' in cached_data['metadata']:
+                    existing_urls.add(cached_data['metadata']['source_url'])
+        except Exception:
+            pass
 
-    # Option 4 Phase A: The Backend JSON Pluck (Bypasses the UI entirely)
+    # Option 4 Phase A: The Backend JSON Pluck 
     json_match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html_text, re.DOTALL)
     if json_match:
         try:
             data = json.loads(json_match.group(1))
             
-            # Recursive JSON hunter looking specifically for the underlying "Transcript" URL
-            def search_json_for_transcripts(obj, current_date="Quarter"):
+            def search_json_for_transcripts(obj, current_date="UnknownQuarter"):
                 if isinstance(obj, dict):
-                    # Cache the most recent date heading found in the tree
                     if 'date' in obj:
                         current_date = str(obj['date']).replace(" ", "_")
-                        
+                        # 5-Year Filter
+                        try:
+                            date_obj = datetime.strptime(current_date[:10], '%Y-%m-%d')
+                            if date_obj < target_date_boundary:
+                                return # Break execution for this deep branch, it's too old
+                        except Exception:
+                            pass
+                            
                     if obj.get('name', '').lower() == 'transcript' and 'url' in obj:
-                        transcript_links[f"{current_date}_Transcript"] = obj['url']
+                        transcript_links[current_date] = obj['url']
                         
                     for v in obj.values():
                         search_json_for_transcripts(v, current_date)
@@ -426,44 +453,68 @@ def process_concalls(ticker, html_text, ticker_dir):
         except Exception as e:
             logging.warning(f"JSON Parsing failed for {ticker}: {e}. Falling back to source regex.")
 
-    # Option 4 Phase B: Raw Source Regex Fallback
+    # Option 4 Phase B: Raw Source Regex Fallback (If JSON fails)
     if not transcript_links:
         doc_match = re.search(r'id="documents"(.*?)</section>', html_text, re.IGNORECASE | re.DOTALL)
         if doc_match:
             doc_html = doc_match.group(1)
-            # Break the massive string into rough visual blocks
             blocks = re.split(r'<li|<div class="flex', doc_html)
             for idx, block in enumerate(blocks):
                 if 'transcript' in block.lower():
-                    # Pluck all actual URLs inside the block that contains the word "transcript"
                     urls = re.findall(r'href="([^"]+)"', block)
                     for link in urls:
                         if '.pdf' in link.lower() or 'concall' in link.lower() or 'transcript' in link.lower():
                             transcript_links[f"Fallback_Transcript_{idx}"] = link
                             break 
 
-    for title, pdf_url in transcript_links.items():
-        # Clean title for OS save limits
-        safe_title = "".join([c for c in title if c.isalnum() or c in ['_', '-']])[:100]
-        json_filename = os.path.join(concall_dir, f"{safe_title}.json")
+    expected_count = len(transcript_links)
+    success_count = 0
 
-        if os.path.exists(json_filename): continue
-
+    for fallback_date, pdf_url in transcript_links.items():
         if pdf_url.startswith("/"):
             pdf_url = "https://www.screener.in" + pdf_url
 
-        logging.info(f"Downloading in-memory transcript for {ticker}: {safe_title}")
+        # Check Cache to bypass network entirely
+        if pdf_url in existing_urls:
+            success_count += 1
+            continue
+
+        logging.info(f"Downloading transcript for {ticker}...")
         res = safe_request(pdf_url)
-        if not res or res.status_code != 200: continue
+        if not res or res.status_code != 200: 
+            continue
+            
+        # 3-Step Guarantee: MIME and Size constraints to catch hidden 404 pages
+        if 'application/pdf' not in res.headers.get('Content-Type', '').lower():
+            continue
+        if len(res.content) < 5120: # 5KB check
+            continue
 
         try:
             pdf_stream = io.BytesIO(res.content)
             
-            # Context manager ensures PDF binary is always destroyed on crash
             with fitz.open(stream=pdf_stream, filetype="pdf") as doc:
+                if len(doc) == 0: continue
+                
+                # Option 2 Naming Strategy: First-page Regex Extract
+                first_page_text = doc[0].get_text("text")
+                quarter_match = re.search(r'(Q[1-4]\s*FY\d{2,4})', first_page_text, re.IGNORECASE)
+                
+                if quarter_match:
+                    quarter_str = quarter_match.group(1).replace(" ", "_").upper()
+                else:
+                    quarter_str = fallback_date.replace("-", "_")
+
+                safe_title = "".join([c for c in quarter_str if c.isalnum() or c in ['_', '-']])[:100]
+                json_filename = os.path.join(concall_dir, f"{ticker}_{safe_title}_Transcript.json")
+
+                # Double-check cache with final determined name
+                if os.path.exists(json_filename):
+                    success_count += 1
+                    continue
+
                 full_text = ""
                 sample_text = ""
-                
                 for page_num in range(len(doc)):
                     page_text = doc.load_page(page_num).get_text("text")
                     full_text += page_text + "\n"
@@ -472,13 +523,18 @@ def process_concalls(ticker, html_text, ticker_dir):
 
                 signature = get_layout_signature(ticker, sample_text, concall_dir)
                 structured_data = parse_transcript_dynamically(full_text, signature)
-                structured_data['metadata'] = {"ticker": ticker, "document_title": title, "source_url": pdf_url}
+                structured_data['metadata'] = {"ticker": ticker, "document_title": safe_title, "source_url": pdf_url}
 
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(structured_data, f, indent=4)
+                
+                success_count += 1
                     
         except Exception as e:
-            logging.error(f"PDF extraction failed for {ticker} ({safe_title}): {e}")
+            logging.error(f"PDF extraction failed for {ticker} ({pdf_url}): {e}")
+
+    # Pass the extraction ledger back to main thread
+    return {"expected": expected_count, "downloaded": success_count}
 
 # =====================================================================
 # FRAMEWORK DATA EXTRACTION
@@ -498,17 +554,14 @@ def scrape_stock(symbol):
                 return None
             
         soup = BeautifulSoup(response.text, 'html.parser')
-        
-        # Execute the full-page vacuum for historical raw data archiving
         raw_vacuum_data = vacuum_screener_data(soup)
         
-        # Concall Generation Pipeline (Runs for all scraped stocks)
         safe_ticker = "".join([c for c in symbol if c.isalnum() or c in ['_', '-']]).rstrip()
         first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
         ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", first_char, safe_ticker)
         
-        # Process concalls explicitly handing off the raw HTML response string
-        process_concalls(symbol, response.text, ticker_dir)
+        # Concall Generation Pipeline generates manifest stats
+        concall_stats = process_concalls(symbol, response.text, ticker_dir)
         
         def get_metric(possible_ids, name, length=3):
             arr = extract_row_values(soup, possible_ids, name)
@@ -516,7 +569,6 @@ def scrape_stock(symbol):
                 arr.insert(0, 0.0)
             return arr
 
-        # Data Dictionary: Core Framework Using Dynamic Array Fallbacks
         sales_years = get_metric(["profit-loss"], "Sales", 3)
         sales_quarters = get_metric(["quarters", "half-years", "results"], "Sales", 2)
         net_profit_years = get_metric(["profit-loss"], "Net Profit", 2)
@@ -538,7 +590,6 @@ def scrape_stock(symbol):
         fii = get_metric(["shareholding"], "FIIs", 2)
         dii = get_metric(["shareholding"], "DIIs", 2)
 
-        # Extra Salvaged Data
         other_income_years = get_metric(["profit-loss"], "Other Income", 1)
         debtor_days = get_metric(["ratios"], "Debtor Days", 2)
         payable_days = get_metric(["ratios"], "Creditor Days", 2)
@@ -573,7 +624,8 @@ def scrape_stock(symbol):
             "pricing_power_analysis": "",
             "secondary_red_flags": "",
             
-            "raw_vacuum_data": raw_vacuum_data
+            "raw_vacuum_data": raw_vacuum_data,
+            "concall_stats": concall_stats
         }
     except Exception as e:
         logging.warning(f"Error parsing {symbol}: {e}")
@@ -581,35 +633,19 @@ def scrape_stock(symbol):
 
 def evaluate_framework(d):
     """Executes the STRICT Dual-Track Logic with Null Validation and Math Safeguards."""
-    
-    # 1. PHASE 1: THE UNIVERSAL SURVIVAL GATE
     gate_failures = []
     
-    if d["sales_y1"] < 50.0:
-        gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
-        
+    if d["sales_y1"] < 50.0: gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
     if d["interest_y1"] > 0:
-        if d["operating_profit_y1"] <= 0:
-            gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
-        elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0:
-            gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
-
-    if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05):
-        gate_failures.append("The Dilution Trap")
+        if d["operating_profit_y1"] <= 0: gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
+        elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0: gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
+    if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05): gate_failures.append("The Dilution Trap")
+    if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0: gate_failures.append("No Skin in the Game")
+    if d["market_cap"] > 5000: gate_failures.append("Market Cap exceeds 5000Cr")
+    if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]: gate_failures.append("Other Income exceeds Core Profit")
         
-    if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0:
-        gate_failures.append("No Skin in the Game")
+    if len(gate_failures) > 0: return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
         
-    if d["market_cap"] > 5000:
-        gate_failures.append("Market Cap exceeds 5000Cr")
-        
-    if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]:
-        gate_failures.append("Other Income exceeds Core Profit")
-        
-    if len(gate_failures) > 0:
-        return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
-        
-    # 2. PHASE 2 / TRACK A: THE EARLY INFLECTION ENGINE
     ta_triggers = 0
     ta_details = []
     
@@ -640,7 +676,6 @@ def evaluate_framework(d):
         
     track_a_pass = ta_triggers >= 2
 
-    # 3. PHASE 2 / TRACK B: THE PROVEN COMPOUNDER ENGINE
     tb_triggers = 0
     tb_details = []
     
@@ -668,20 +703,13 @@ def evaluate_framework(d):
         tb_triggers += 1
         tb_details.append("Dividend Validation")
 
-    if d["stock_pe"] > 70:
-        track_b_pass = False 
-    else:
-        track_b_pass = tb_triggers >= 3
+    if d["stock_pe"] > 70: track_b_pass = False 
+    else: track_b_pass = tb_triggers >= 3
 
-    # 4. ROUTING CLASSIFICATION
-    if track_a_pass and track_b_pass:
-        return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
-    elif track_a_pass:
-        return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
-    elif track_b_pass:
-        return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
-    else:
-        return "STAGNANT", "Passed survival checks but failed growth thresholds."
+    if track_a_pass and track_b_pass: return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
+    elif track_a_pass: return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
+    elif track_b_pass: return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
+    else: return "STAGNANT", "Passed survival checks but failed growth thresholds."
 
 def generate_qualitative_analysis(d):
     """Executes post-qualification analysis on the salvaged data to provide deep context."""
@@ -689,55 +717,39 @@ def generate_qualitative_analysis(d):
     mc = d["market_cap"]
     mc_tag = f"Large/Mid-Cap (₹{mc}Cr)" if mc > 5000 else f"Micro/Small-Cap (₹{mc}Cr)"
     
-    if pe > 70:
-        d["valuation_context"] = f"{mc_tag} priced for perfection (PE: {pe}). The easy multi-bagger money may have been made."
-    elif 0 < pe <= 20:
-        d["valuation_context"] = f"{mc_tag} trading at deep value (PE: {pe}). High margin of safety."
-    elif pe == 0:
-        d["valuation_context"] = f"{mc_tag} trading with zero/calculable PE."
-    else:
-        d["valuation_context"] = f"{mc_tag} trading at fair/standard multiple (PE: {pe})."
+    if pe > 70: d["valuation_context"] = f"{mc_tag} priced for perfection (PE: {pe}). The easy multi-bagger money may have been made."
+    elif 0 < pe <= 20: d["valuation_context"] = f"{mc_tag} trading at deep value (PE: {pe}). High margin of safety."
+    elif pe == 0: d["valuation_context"] = f"{mc_tag} trading with zero/calculable PE."
+    else: d["valuation_context"] = f"{mc_tag} trading at fair/standard multiple (PE: {pe})."
 
     op = d["operating_profit_y1"]
     other_inc = d["other_income_y1"]
     np = d["net_profit_y1"]
     
-    if other_inc > op and op > 0:
-        d["earnings_quality_analysis"] = f"CRITICAL WARNING: Other Income (₹{other_inc}Cr) exceeds Core Operating Profit (₹{op}Cr). Profits are highly engineered."
-    elif other_inc > (np * 0.3):
-        d["earnings_quality_analysis"] = "CAUTION: >30% of Net Profit stems from Other Income. Verify asset sales."
-    elif d["dividend_yield"] > 0:
-        d["earnings_quality_analysis"] = f"Elite Quality: Earnings are clean and validated by a {d['dividend_yield']}% hard-cash dividend."
-    else:
-        d["earnings_quality_analysis"] = "Standard Quality: Earnings driven by core operations. No dividend paid."
+    if other_inc > op and op > 0: d["earnings_quality_analysis"] = f"CRITICAL WARNING: Other Income (₹{other_inc}Cr) exceeds Core Operating Profit (₹{op}Cr). Profits are highly engineered."
+    elif other_inc > (np * 0.3): d["earnings_quality_analysis"] = "CAUTION: >30% of Net Profit stems from Other Income. Verify asset sales."
+    elif d["dividend_yield"] > 0: d["earnings_quality_analysis"] = f"Elite Quality: Earnings are clean and validated by a {d['dividend_yield']}% hard-cash dividend."
+    else: d["earnings_quality_analysis"] = "Standard Quality: Earnings driven by core operations. No dividend paid."
 
     dp_y1 = d["days_payable_y1"]
     dp_y2 = d["days_payable_y2"]
     dd_y1 = d["debtor_days_y1"]
     dd_y2 = d["debtor_days_y2"]
     
-    if dp_y1 > (dp_y2 * 1.15) and dd_y1 < dd_y2:
-        d["pricing_power_analysis"] = "EXTREME PRICING POWER: Forcing suppliers to wait longer for payment while forcing clients to pay cash faster."
-    elif dd_y1 > (dd_y2 * 1.25):
-        d["pricing_power_analysis"] = "WARNING: Receivables piling up. Company is giving away free credit to drive sales."
-    else:
-        d["pricing_power_analysis"] = "Neutral: Trade working capital is stable."
+    if dp_y1 > (dp_y2 * 1.15) and dd_y1 < dd_y2: d["pricing_power_analysis"] = "EXTREME PRICING POWER: Forcing suppliers to wait longer for payment while forcing clients to pay cash faster."
+    elif dd_y1 > (dd_y2 * 1.25): d["pricing_power_analysis"] = "WARNING: Receivables piling up. Company is giving away free credit to drive sales."
+    else: d["pricing_power_analysis"] = "Neutral: Trade working capital is stable."
 
     flags = []
-    if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0:
-        flags.append("Debt exceeds hard physical assets")
-    if d["promoter_q1"] < 50.0:
-        flags.append(f"Promoter holding is passable but low ({d['promoter_q1']}%)")
-    if d["cfo_y1"] < 0:
-        flags.append("Passed survival, but currently burning operating cash flow")
+    if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0: flags.append("Debt exceeds hard physical assets")
+    if d["promoter_q1"] < 50.0: flags.append(f"Promoter holding is passable but low ({d['promoter_q1']}%)")
+    if d["cfo_y1"] < 0: flags.append("Passed survival, but currently burning operating cash flow")
         
     d["secondary_red_flags"] = " | ".join(flags) if flags else "No glaring secondary red flags detected."
     return d
 
 def save_to_db(d):
-    """Saves ALL extracted data (core + context) to the persistent SQLite database safely in the main thread."""
-    db_payload = {k: v for k, v in d.items() if k != "raw_vacuum_data"}
-    
+    db_payload = {k: v for k, v in d.items() if k not in ["raw_vacuum_data", "concall_stats"]}
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     columns = ', '.join(db_payload.keys())
@@ -748,11 +760,9 @@ def save_to_db(d):
     conn.close()
 
 def save_ticker_csv(d):
-    """Saves the individual stock's RAW vacuumed data into an alphabetical directory with a Fundamental Delta Check."""
     ticker = d["ticker"]
     new_raw_data_rows = d.get("raw_vacuum_data", [])
-    if not new_raw_data_rows:
-        return 
+    if not new_raw_data_rows: return 
     
     safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
     first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
@@ -771,10 +781,8 @@ def save_ticker_csv(d):
             old_core_fundamentals = filter_volatile_data(old_raw_data_rows)
             new_core_fundamentals = filter_volatile_data(new_raw_data_rows)
             
-            if old_core_fundamentals == new_core_fundamentals:
-                return 
-        except Exception as e:
-            logging.warning(f"Delta Check failed for {safe_ticker}: {e}. Proceeding to save new file.")
+            if old_core_fundamentals == new_core_fundamentals: return 
+        except Exception as e: pass
 
     ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
     with open(ticker_file, mode='w', newline='', encoding='utf-8') as f:
@@ -782,10 +790,8 @@ def save_ticker_csv(d):
         writer.writerows(new_raw_data_rows)
 
 def process_worker(symbol):
-    """The multithreaded worker function."""
     data = scrape_stock(symbol)
-    if not data:
-        return None
+    if not data: return None
         
     classification, reason = evaluate_framework(data)
     data["classification"] = classification
@@ -797,42 +803,28 @@ def process_worker(symbol):
     return data
 
 def send_telegram_alert(new_stocks, df_out):
-    """Handles Telegram chunking and seamlessly logs the history for future AI review."""
-    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID:
-        logging.warning("Telegram credentials not found. Skipping alert.")
-        return
+    if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: return
 
     msg = f"📊 *Microcap Screener Weekly Update ({RUN_DATE})*\n\n"
-    if not new_stocks:
-        msg += "No new candidates passed the framework this week."
+    if not new_stocks: msg += "No new candidates passed the framework this week."
     else:
         msg += f"🚨 *{len(new_stocks)} NEW CANDIDATES DETECTED* 🚨\n\n"
         for stock in new_stocks:
-            ticker = stock['ticker']
-            classif = stock['classification']
-            reason = stock['qualification_reason']
-            msg += f"🔥 *{ticker}* ({classif})\n_Reason:_ {reason}\n\n"
+            msg += f"🔥 *{stock['ticker']}* ({stock['classification']})\n_Reason:_ {stock['qualification_reason']}\n\n"
 
     try:
         with open(TELEGRAM_LOG_FILE, "a", encoding="utf-8") as f:
             f.write(f"\n--- Analysis Log Generated at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
             f.write(msg + "\n")
-    except Exception as e:
-        logging.warning(f"Could not save telegram log to local directory: {e}")
+    except Exception: pass
 
     max_msg_length = 4000
     msg_chunks = [msg[i:i + max_msg_length] for i in range(0, len(msg), max_msg_length)]
     
     send_msg_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     for chunk in msg_chunks:
-        try:
-            response = requests.post(
-                send_msg_url,
-                data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "Markdown"}
-            )
-            response.raise_for_status()
-        except Exception as e:
-            logging.error(f"Failed to send Telegram message chunk: {e}")
+        try: requests.post(send_msg_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "Markdown"})
+        except Exception as e: logging.error(f"Failed to send Telegram msg: {e}")
 
     send_doc_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
     csv_buffer = io.BytesIO()
@@ -841,88 +833,90 @@ def send_telegram_alert(new_stocks, df_out):
     csv_buffer.seek(0)
 
     try:
-        response = requests.post(
-            send_doc_url, 
-            data={"chat_id": TELEGRAM_CHAT_ID, "caption": f"📄 *Attached: Weekly Qualified List ({RUN_DATE})*", "parse_mode": "Markdown"}, 
-            files={"document": csv_buffer}
-        )
-        response.raise_for_status()
-        logging.info("Telegram alert and CSV payload sent successfully.")
-    except Exception as e:
-        logging.error(f"Failed to send Telegram document: {e}")
+        requests.post(send_doc_url, data={"chat_id": TELEGRAM_CHAT_ID, "caption": f"📄 *Attached: Weekly Qualified List ({RUN_DATE})*", "parse_mode": "Markdown"}, files={"document": csv_buffer})
+    except Exception as e: logging.error(f"Failed to send Telegram document: {e}")
 
 def main():
     init_db()
     symbols = fetch_nse_symbols()
     
-    if not symbols:
-        logging.error("No valid symbols found. Exiting.")
-        return
+    if not symbols: return
 
+    # 1. Load Local Tracking Ledgers
     previous_tickers = set()
     existing_csvs = glob.glob(os.path.join(SCREENER_DATA_DIR, "qualified_stocks_analysis_*.csv"))
     existing_csvs = [f for f in existing_csvs if not f.endswith(f"_{RUN_DATE}.csv")]
-    
     if existing_csvs:
         latest_csv = max(existing_csvs, key=os.path.getmtime)
         try:
             prev_df = pd.read_csv(latest_csv)
             previous_tickers = set(prev_df['ticker'].tolist())
-            logging.info(f"Loaded {len(previous_tickers)} previous candidates from {os.path.basename(latest_csv)} for historical comparison.")
-        except Exception as e:
-            logging.warning(f"Failed to load previous CSV ({latest_csv}): {e}")
+        except Exception: pass
+
+    # Load 5-Year Transcript Manifest
+    concall_manifest = {}
+    if os.path.exists(MANIFEST_FILE):
+        try:
+            with open(MANIFEST_FILE, 'r') as f:
+                concall_manifest = json.load(f)
+        except Exception: pass
 
     qualified_records = []
     new_candidates = []
 
-    # STRICT NETWORK THROTTLING
     MAX_CONCURRENT_THREADS = 3
     logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers...")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
         future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
         
-        # Because we extract the data sequentially in the main thread here, 
-        # SQLite db locking and RAM overflow from the workers is entirely mitigated.
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_symbol)):
             symbol = future_to_symbol[future]
             try:
                 data = future.result()
                 if data:
-                    # Write to DB and CSV synchronously in main thread
                     save_to_db(data)
                     save_ticker_csv(data)
                     
+                    # Update Concall Tracking Manifest 
+                    if "concall_stats" in data:
+                        stats = data["concall_stats"]
+                        concall_manifest[symbol] = stats
+                        if stats["downloaded"] >= stats["expected"]:
+                            concall_manifest[symbol]["status"] = "COMPLETED"
+                        else:
+                            concall_manifest[symbol]["status"] = "FAILED_RETRY_NEXT_RUN"
+
                     classif = data["classification"]
                     if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-                        export_data = {k: v for k, v in data.items() if k != "raw_vacuum_data"}
+                        export_data = {k: v for k, v in data.items() if k not in ["raw_vacuum_data", "concall_stats"]}
                         qualified_records.append(export_data)
                         logging.info(f">>> MATCH: {symbol} classified as {classif}")
                         
                         if symbol not in previous_tickers:
                             new_candidates.append(export_data)
                             
-            except Exception as exc:
-                logging.warning(f"{symbol} generated an exception: {exc}")
+            except Exception as exc: logging.warning(f"{symbol} generated an exception: {exc}")
                 
-            if idx % 100 == 0 and idx > 0:
-                logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
+            if idx % 100 == 0 and idx > 0: logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
+
+    # Write the Final Master Manifest File
+    try:
+        with open(MANIFEST_FILE, 'w', encoding='utf-8') as f:
+            json.dump(concall_manifest, f, indent=4)
+    except Exception as e:
+        logging.error(f"Failed to save manifest file: {e}")
 
     if qualified_records:
         df_out = pd.DataFrame(qualified_records)
-        front_cols = [
-            'ticker', 'classification', 'market_cap', 'valuation_context',
-            'earnings_quality_analysis', 'pricing_power_analysis',
-            'secondary_red_flags', 'qualification_reason'
-        ]
+        front_cols = ['ticker', 'classification', 'market_cap', 'valuation_context', 'earnings_quality_analysis', 'pricing_power_analysis', 'secondary_red_flags', 'qualification_reason']
         back_cols = [c for c in df_out.columns if c not in front_cols]
         df_out = df_out[front_cols + back_cols]
         
         df_out.to_csv(CSV_FILE, index=False)
         logging.info(f"Analysis complete. {len(qualified_records)} candidate(s) saved to '{CSV_FILE}'.")
         send_telegram_alert(new_candidates, df_out)
-    else:
-        logging.info("Process completed. No listings matching the metrics were discovered.")
+    else: logging.info("Process completed. No listings matching the metrics were discovered.")
 
 if __name__ == "__main__":
     main()
