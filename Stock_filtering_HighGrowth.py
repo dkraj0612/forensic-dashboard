@@ -16,6 +16,12 @@ from bs4 import BeautifulSoup
 import fitz  # PyMuPDF for in-memory PDF extraction
 import google.generativeai as genai # AI Structural Compiler
 
+# ---------------------------------------------------------
+# GLOBAL TTL CLOCK: Start the stopwatch at script boot
+# ---------------------------------------------------------
+SCRIPT_START_TIME = time.time()
+MAX_RUNTIME_SEC = 5.45 * 3600  # Graceful abort at 5.45 hours
+
 # Setup logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -27,6 +33,7 @@ DB_FILE = os.path.join(SCREENER_DATA_DIR, "screener_data.db")
 CSV_FILE = os.path.join(SCREENER_DATA_DIR, f"qualified_stocks_analysis_{RUN_DATE}.csv")
 TELEGRAM_LOG_FILE = os.path.join(SCREENER_DATA_DIR, f"telegram_analysis_log_{RUN_DATE}.txt")
 MANIFEST_FILE = os.path.join(SCREENER_DATA_DIR, "manifest.json")
+RUN_CACHE_FILE = os.path.join(SCREENER_DATA_DIR, f"run_cache_{RUN_DATE}.json") # Daily Checkpoint
 
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
@@ -223,6 +230,7 @@ def vacuum_screener_data(soup):
                 val_span = li.find('span', class_='value') 
                 if name_span and val_span:
                     info_row_names.append(name_span.get_text(strip=True))
+                    # Keeps the " / " for High/Low but safely strips out currency symbols
                     val_text = val_span.get_text(separator=' ', strip=True).replace('₹', '').replace('Cr.', '').replace('%', '').strip()
                     info_row_vals.append(val_text)
                     
@@ -330,7 +338,28 @@ def get_layout_signature(ticker, sample_text, concall_dir):
     
     try:
         model = genai.GenerativeModel('gemini-2.5-flash-lite')
-        response = model.generate_content(prompt)
+        
+        # --- NEW API RATE LIMIT DEFENSE ---
+        response = None
+        max_retries = 4
+        for attempt in range(max_retries):
+            try:
+                response = model.generate_content(prompt)
+                break  # Success! Break out of the retry loop.
+            except Exception as api_err:
+                err_str = str(api_err).lower()
+                if "429" in err_str or "quota" in err_str or "exhausted" in err_str:
+                    # The free tier is locked to 15 RPM. A 60-second sleep guarantees the window resets.
+                    sleep_time = 60 + (attempt * 10) 
+                    logging.warning(f"Gemini API Free Tier Limit Hit for {ticker}. Pausing AI for {sleep_time}s... (Attempt {attempt+1}/{max_retries})")
+                    time.sleep(sleep_time)
+                else:
+                    raise api_err # If it's a different error, raise it normally
+                    
+        if not response:
+            logging.error(f"Failed to get AI response for {ticker} after {max_retries} rate limit retries.")
+            return None
+        # ----------------------------------
         
         match = re.search(r'\{.*\}', response.text, re.DOTALL)
         if match:
@@ -749,7 +778,7 @@ def generate_qualitative_analysis(d):
     return d
 
 def save_to_db(d):
-    db_payload = {k: v for k, v in d.items() if k not in ["raw_vacuum_data", "concall_stats"]}
+    db_payload = {k: v for k, v in d.items() if k not in ["raw_vacuum_data", "concall_stats", "status"]}
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     columns = ', '.join(db_payload.keys())
@@ -790,6 +819,12 @@ def save_ticker_csv(d):
         writer.writerows(new_raw_data_rows)
 
 def process_worker(symbol):
+    """The multithreaded worker function. Now features a TTL Time-Bomb Switch."""
+    
+    # 1. TIME BOMB CHECK
+    if (time.time() - SCRIPT_START_TIME) > MAX_RUNTIME_SEC:
+        return {"ticker": symbol, "status": "TIMEOUT"}
+        
     data = scrape_stock(symbol)
     if not data: return None
         
@@ -800,6 +835,7 @@ def process_worker(symbol):
     if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
         data = generate_qualitative_analysis(data)
         
+    data["status"] = "SUCCESS"
     return data
 
 def send_telegram_alert(new_stocks, df_out):
@@ -853,6 +889,17 @@ def main():
             previous_tickers = set(prev_df['ticker'].tolist())
         except Exception: pass
 
+    # 2. Daily Run Cache: Slice off everything we already processed today
+    processed_today = set()
+    if os.path.exists(RUN_CACHE_FILE):
+        try:
+            with open(RUN_CACHE_FILE, 'r') as f:
+                processed_today = set(json.load(f))
+        except Exception: pass
+
+    symbols = [s for s in symbols if s not in processed_today]
+    logging.info(f"Loaded {len(processed_today)} already processed symbols from today's cache. {len(symbols)} left to process.")
+
     # Load 5-Year Transcript Manifest
     concall_manifest = {}
     if os.path.exists(MANIFEST_FILE):
@@ -865,7 +912,7 @@ def main():
     new_candidates = []
 
     MAX_CONCURRENT_THREADS = 3
-    logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers...")
+    logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers. Clock is ticking...")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
         future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
@@ -874,6 +921,17 @@ def main():
             symbol = future_to_symbol[future]
             try:
                 data = future.result()
+                
+                # Check if the worker was aborted by the Time Bomb
+                if data and data.get("status") == "TIMEOUT":
+                    logging.warning(f"[{symbol}] Skipped due to 5.45-hour time limit. Checkpointing for next run.")
+                    continue # Do NOT add to processed_today cache! Let it run next time.
+                    
+                # The stock successfully processed. Immediately write to Daily Ledger.
+                processed_today.add(symbol)
+                with open(RUN_CACHE_FILE, 'w') as f:
+                    json.dump(list(processed_today), f)
+
                 if data:
                     save_to_db(data)
                     save_ticker_csv(data)
@@ -889,7 +947,7 @@ def main():
 
                     classif = data["classification"]
                     if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-                        export_data = {k: v for k, v in data.items() if k not in ["raw_vacuum_data", "concall_stats"]}
+                        export_data = {k: v for k, v in data.items() if k not in ["raw_vacuum_data", "concall_stats", "status"]}
                         qualified_records.append(export_data)
                         logging.info(f">>> MATCH: {symbol} classified as {classif}")
                         
@@ -898,7 +956,7 @@ def main():
                             
             except Exception as exc: logging.warning(f"{symbol} generated an exception: {exc}")
                 
-            if idx % 100 == 0 and idx > 0: logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
+            if idx % 100 == 0 and idx > 0: logging.info(f"Progress: Processed {idx}/{len(symbols)} pending tickers...")
 
     # Write the Final Master Manifest File
     try:
