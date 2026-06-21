@@ -23,7 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         # Added pymupdf (fitz) and google-generativeai for the AI concall parser
-        pip install requests beautifulsoup4 pandas pymupdf google-generativeai
+        pip install requests beautifulsoup4 pandas pymupdf google-generativeai textstat
 
     - name: Run Processing Engine Pipeline
       env:
