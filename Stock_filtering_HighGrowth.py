@@ -163,6 +163,11 @@ quant_engine = TranscriptIntelligence()
 # ---------------------------------------------------------
 # INFRASTRUCTURE FUNCTIONS
 # ---------------------------------------------------------
+def clean_value(val_str):
+    if not val_str or val_str.strip() == "" or val_str == "–" or val_str == "-": return 0.0
+    val_str = val_str.replace(",", "").replace("%", "").replace("₹", "").replace("Cr.", "").strip()
+    try: return float(val_str)
+    except ValueError: return 0.0
 
 def safe_request(url, retries=3):
     for attempt in range(retries):
@@ -320,7 +325,6 @@ def process_concalls(ticker, html_text, ticker_dir):
     transcript_links = {}
     target_date_boundary = datetime.now() - timedelta(days=5*365)
     
-    # Check existing Markdown files
     existing_files = set([os.path.basename(f) for f in glob.glob(os.path.join(concall_dir, "*.md"))])
 
     json_match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html_text, re.DOTALL)
@@ -455,6 +459,7 @@ def evaluate_framework(d):
     if d["market_cap"] > 5000: gate_failures.append("Market Cap exceeds 5000Cr")
     if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]: gate_failures.append("Other Income exceeds Core Profit")
     if len(gate_failures) > 0: return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
+        
     ta_triggers = 0; ta_details = []
     if d["fixed_assets_y2"] > 0 and d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10):
         if d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]: ta_triggers += 1; ta_details.append("Factory Go-Live")
@@ -467,6 +472,7 @@ def evaluate_framework(d):
     if sm_q2 > 0 and sm_q1 > sm_q2: ta_triggers += 1; ta_details.append("Smart Money Creep")
     if d["days_payable_y2"] > 0 and d["days_payable_y1"] > (d["days_payable_y2"] * 1.15) and d["debtor_days_y1"] < d["debtor_days_y2"]: ta_triggers += 1; ta_details.append("Supplier Squeeze")
     track_a_pass = ta_triggers >= 2
+
     tb_triggers = 0; tb_details = []
     if d["roce_y1"] > 20.0 and d["roce_y2"] > 20.0: tb_triggers += 1; tb_details.append("Elite ROCE")
     if d["sales_y3"] > 0 and d["sales_y2"] > 0:
@@ -477,8 +483,10 @@ def evaluate_framework(d):
         if profit_growth > sales_growth: tb_triggers += 1; tb_details.append("Operating Leverage")
     if d["net_profit_y1"] > 0 and d["cfo_y1"] > (d["net_profit_y1"] * 0.70): tb_triggers += 1; tb_details.append("Immaculate Cash Conversion")
     if d["dividend_yield"] > 0.0: tb_triggers += 1; tb_details.append("Dividend Validation")
+
     if d["stock_pe"] > 70: track_b_pass = False 
     else: track_b_pass = tb_triggers >= 3
+
     if track_a_pass and track_b_pass: return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
     elif track_a_pass: return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
     elif track_b_pass: return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
@@ -611,6 +619,7 @@ def main():
     qualified_records = []
     new_candidates = []
     MAX_CONCURRENT_THREADS = 3
+    
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
         future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_symbol)):
