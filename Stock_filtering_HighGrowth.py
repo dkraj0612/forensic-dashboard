@@ -108,22 +108,10 @@ def init_db():
     conn.close()
 
 def fetch_nse_symbols():
-    """Fetches NSE symbols and filters out illiquid/suspended listings to save scraping time."""
-    logging.info("Fetching dynamic stock list from NSE...")
-    try:
-        response = safe_request(NSE_URL)
-        if not response:
-            return []
-        df = pd.read_csv(io.StringIO(response.text))
-        
-        # Filter for standard EQ series (ignores most ETFs, NCDs, and suspended stocks)
-        df = df[df[' SERIES'] == 'EQ']
-        symbols = df['SYMBOL'].dropna().unique().tolist()
-        logging.info(f"Retrieved {len(symbols)} active EQ symbols from NSE.")
-        return symbols
-    except Exception as e:
-        logging.error(f"Failed to fetch NSE symbols: {e}")
-        return []
+    """HARDCODED TEST MODE: Overrides NSE list to specifically target the 2 requested stocks."""
+    symbols = ["AETHER", "ATHERENERG"]
+    logging.info(f"Test Mode Initiated. Targeting explicit symbols: {symbols}")
+    return symbols
 
 def clean_value(val_str):
     """Normalizes raw text string metrics into pure floats."""
@@ -135,9 +123,17 @@ def clean_value(val_str):
     except ValueError:
         return 0.0
 
-def extract_row_values(soup, table_id, row_label):
+def get_dynamic_table(soup, possible_ids):
+    """Finds a table by trying multiple possible IDs (Fallbacks for SME/IPO stocks)."""
+    for table_id in possible_ids:
+        section = soup.find('section', id=table_id)
+        if section and section.find('table'):
+            return section.find('table')
+    return None
+
+def extract_row_values(soup, possible_ids, row_label):
     """Finds specific table rows and strictly aligns time periods by stripping 'TTM'."""
-    table = soup.find(id=table_id)
+    table = get_dynamic_table(soup, possible_ids)
     if not table:
         return []
     
@@ -181,6 +177,7 @@ def vacuum_screener_data(soup):
     """
     Sweeps the entire Screener page and formats it vertically.
     UPDATED: Bypasses strict tbody HTML formatting to catch all tables (High/Low, Peers, CAGR).
+    UPDATED: Uses ID-aware fallbacks for missing/renamed tables on new listings.
     """
     rows = []
     
@@ -230,28 +227,26 @@ def vacuum_screener_data(soup):
                 rows.append(info_row_vals)
                 rows.append([])
                 
-        # 3. CORE FINANCIAL TABLES & PEERS
+        # 3. CORE FINANCIAL TABLES & PEERS (Dynamic Fallbacks Included)
         sections = [
-            ("PEER COMPARISON", "peers"),
-            ("QUARTERLY RESULTS", "quarters"),
-            ("ANNUAL RESULTS", "profit-loss"),
-            ("BALANCE SHEET", "balance-sheet"),
-            ("CASH FLOW", "cash-flow"),
-            ("RATIOS", "ratios"),
-            ("SHAREHOLDING PATTERN", "shareholding")
+            ("PEER COMPARISON", ["peers"]),
+            ("QUARTERLY RESULTS", ["quarters", "half-years", "results"]),
+            ("ANNUAL RESULTS", ["profit-loss"]),
+            ("BALANCE SHEET", ["balance-sheet"]),
+            ("CASH FLOW", ["cash-flow"]),
+            ("RATIOS", ["ratios"]),
+            ("SHAREHOLDING PATTERN", ["shareholding"])
         ]
         
-        for title, section_id in sections:
-            section = soup.find('section', id=section_id)
-            if section:
-                table = section.find('table')
-                if table:
-                    rows.append([f"--- {title} ---"])
-                    # Natively iterates over all rows, ignoring strict HTML tbody/thead rules
-                    for tr in table.find_all('tr'):
-                        td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
-                        rows.append(td_row)
-                    rows.append([])
+        for title, possible_ids in sections:
+            table = get_dynamic_table(soup, possible_ids)
+            if table:
+                rows.append([f"--- {title} ---"])
+                # Natively iterates over all rows, ignoring strict HTML tbody/thead rules
+                for tr in table.find_all('tr'):
+                    td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
+                    rows.append(td_row)
+                rows.append([])
                     
         # 4. FOUR CAGR BOXES
         pl_section = soup.find('section', id='profit-loss')
@@ -398,26 +393,62 @@ def parse_transcript_dynamically(full_text, signature):
 
     return {"transcript": parsed_dialogue}
 
-def process_concalls(ticker, soup, ticker_dir):
-    """Finds, downloads, and processes concall PDFs directly in memory."""
+def process_concalls(ticker, html_text, ticker_dir):
+    """Finds and downloads concall PDFs using pure Regex/JSON extraction to bypass AI UI blockades."""
     concall_dir = os.path.join(ticker_dir, "concalls")
     os.makedirs(concall_dir, exist_ok=True)
 
-    documents_section = soup.find('div', id='documents')
-    if not documents_section: return
+    transcript_links = {}
 
-    links = documents_section.find_all('a', href=True)
-    transcript_links = [a for a in links if "transcript" in a.text.lower()]
+    # Option 4 Phase A: The Backend JSON Pluck (Bypasses the UI entirely)
+    json_match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html_text, re.DOTALL)
+    if json_match:
+        try:
+            data = json.loads(json_match.group(1))
+            
+            # Recursive JSON hunter looking specifically for the underlying "Transcript" URL
+            def search_json_for_transcripts(obj, current_date="Quarter"):
+                if isinstance(obj, dict):
+                    # Cache the most recent date heading found in the tree
+                    if 'date' in obj:
+                        current_date = str(obj['date']).replace(" ", "_")
+                        
+                    if obj.get('name', '').lower() == 'transcript' and 'url' in obj:
+                        transcript_links[f"{current_date}_Transcript"] = obj['url']
+                        
+                    for v in obj.values():
+                        search_json_for_transcripts(v, current_date)
+                elif isinstance(obj, list):
+                    for item in obj:
+                        search_json_for_transcripts(item, current_date)
+                        
+            search_json_for_transcripts(data)
+        except Exception as e:
+            logging.warning(f"JSON Parsing failed for {ticker}: {e}. Falling back to source regex.")
 
-    for link in transcript_links:
-        title = link.text.strip().replace(" ", "_").replace("/", "-")
-        # Strict OS file path length truncation
+    # Option 4 Phase B: Raw Source Regex Fallback
+    if not transcript_links:
+        doc_match = re.search(r'id="documents"(.*?)</section>', html_text, re.IGNORECASE | re.DOTALL)
+        if doc_match:
+            doc_html = doc_match.group(1)
+            # Break the massive string into rough visual blocks
+            blocks = re.split(r'<li|<div class="flex', doc_html)
+            for idx, block in enumerate(blocks):
+                if 'transcript' in block.lower():
+                    # Pluck all actual URLs inside the block that contains the word "transcript"
+                    urls = re.findall(r'href="([^"]+)"', block)
+                    for link in urls:
+                        if '.pdf' in link.lower() or 'concall' in link.lower() or 'transcript' in link.lower():
+                            transcript_links[f"Fallback_Transcript_{idx}"] = link
+                            break 
+
+    for title, pdf_url in transcript_links.items():
+        # Clean title for OS save limits
         safe_title = "".join([c for c in title if c.isalnum() or c in ['_', '-']])[:100]
         json_filename = os.path.join(concall_dir, f"{safe_title}.json")
 
         if os.path.exists(json_filename): continue
 
-        pdf_url = link['href']
         if pdf_url.startswith("/"):
             pdf_url = "https://www.screener.in" + pdf_url
 
@@ -441,7 +472,7 @@ def process_concalls(ticker, soup, ticker_dir):
 
                 signature = get_layout_signature(ticker, sample_text, concall_dir)
                 structured_data = parse_transcript_dynamically(full_text, signature)
-                structured_data['metadata'] = {"ticker": ticker, "document_title": title}
+                structured_data['metadata'] = {"ticker": ticker, "document_title": title, "source_url": pdf_url}
 
                 with open(json_filename, 'w', encoding='utf-8') as f:
                     json.dump(structured_data, f, indent=4)
@@ -476,40 +507,41 @@ def scrape_stock(symbol):
         first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
         ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", first_char, safe_ticker)
         
-        process_concalls(symbol, soup, ticker_dir)
+        # Process concalls explicitly handing off the raw HTML response string
+        process_concalls(symbol, response.text, ticker_dir)
         
-        def get_metric(table, name, length=3):
-            arr = extract_row_values(soup, table, name)
+        def get_metric(possible_ids, name, length=3):
+            arr = extract_row_values(soup, possible_ids, name)
             while len(arr) < length:
                 arr.insert(0, 0.0)
             return arr
 
-        # Data Dictionary: Core Framework
-        sales_years = get_metric("profit-loss", "Sales", 3)
-        sales_quarters = get_metric("quarters", "Sales", 2)
-        net_profit_years = get_metric("profit-loss", "Net Profit", 2)
-        opm_years = get_metric("profit-loss", "OPM", 2)
-        op_years = get_metric("profit-loss", "Operating Profit", 1)
-        interest_years = get_metric("profit-loss", "Interest", 1)
+        # Data Dictionary: Core Framework Using Dynamic Array Fallbacks
+        sales_years = get_metric(["profit-loss"], "Sales", 3)
+        sales_quarters = get_metric(["quarters", "half-years", "results"], "Sales", 2)
+        net_profit_years = get_metric(["profit-loss"], "Net Profit", 2)
+        opm_years = get_metric(["profit-loss"], "OPM", 2)
+        op_years = get_metric(["profit-loss"], "Operating Profit", 1)
+        interest_years = get_metric(["profit-loss"], "Interest", 1)
         
-        share_cap = get_metric("balance-sheet", "Equity Capital", 2)
-        borrowings = get_metric("balance-sheet", "Borrowings", 2)
-        fixed_assets = get_metric("balance-sheet", "Fixed Assets", 2)
-        cwip = get_metric("balance-sheet", "CWIP", 2)
+        share_cap = get_metric(["balance-sheet"], "Equity Capital", 2)
+        borrowings = get_metric(["balance-sheet"], "Borrowings", 2)
+        fixed_assets = get_metric(["balance-sheet"], "Fixed Assets", 2)
+        cwip = get_metric(["balance-sheet"], "CWIP", 2)
         
-        cfo = get_metric("cash-flow", "Cash from Operating Activity", 1)
+        cfo = get_metric(["cash-flow"], "Cash from Operating Activity", 1)
         
-        roce = get_metric("ratios", "ROCE", 2)
-        ccc = get_metric("ratios", "Cash Conversion Cycle", 2)
+        roce = get_metric(["ratios"], "ROCE", 2)
+        ccc = get_metric(["ratios"], "Cash Conversion Cycle", 2)
         
-        promoter = get_metric("shareholding", "Promoters", 2)
-        fii = get_metric("shareholding", "FIIs", 2)
-        dii = get_metric("shareholding", "DIIs", 2)
+        promoter = get_metric(["shareholding"], "Promoters", 2)
+        fii = get_metric(["shareholding"], "FIIs", 2)
+        dii = get_metric(["shareholding"], "DIIs", 2)
 
         # Extra Salvaged Data
-        other_income_years = get_metric("profit-loss", "Other Income", 1)
-        debtor_days = get_metric("ratios", "Debtor Days", 2)
-        payable_days = get_metric("ratios", "Creditor Days", 2)
+        other_income_years = get_metric(["profit-loss"], "Other Income", 1)
+        debtor_days = get_metric(["ratios"], "Debtor Days", 2)
+        payable_days = get_metric(["ratios"], "Creditor Days", 2)
 
         return {
             "ticker": symbol,
