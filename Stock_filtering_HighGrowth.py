@@ -150,6 +150,105 @@ def extract_top_ratio(soup, metric_name):
         pass
     return 0.0
 
+def vacuum_screener_data(soup):
+    """
+    NEW FUNCTION: Sweeps the entire Screener page and formats it vertically 
+    for the RAW individual ticker CSV file without truncating any columns or rows.
+    """
+    rows = []
+    
+    # 1. ABOUT & KEY POINTS
+    profile_div = soup.find('div', class_='company-profile')
+    if profile_div:
+        about_div = profile_div.find('div', class_='about')
+        if about_div:
+            rows.append(["--- ABOUT ---"])
+            rows.append([about_div.get_text(separator=' ', strip=True)])
+            rows.append([])
+        
+        key_points_div = profile_div.find('div', class_='key-points')
+        if key_points_div:
+            rows.append(["--- KEY POINTS ---"])
+            rows.append([key_points_div.get_text(separator=' ', strip=True)])
+            rows.append([])
+
+    # 2. STOCK INFO (Top Card Ratios)
+    top_ratios = soup.find('ul', id='top-ratios')
+    if top_ratios:
+        rows.append(["--- STOCK INFO ---"])
+        info_row_names = []
+        info_row_vals = []
+        for li in top_ratios.find_all('li'):
+            name_span = li.find('span', class_='name')
+            val_span = li.find('span', class_='number') or li.find('span', class_='value')
+            if name_span and val_span:
+                info_row_names.append(name_span.get_text(strip=True))
+                info_row_vals.append(val_span.get_text(strip=True))
+                
+            # Chunk into clean grids of 4 items per line for nice Excel viewing
+            if len(info_row_names) == 4:
+                rows.append(info_row_names)
+                rows.append(info_row_vals)
+                rows.append([])
+                info_row_names = []
+                info_row_vals = []
+        
+        # Catch any remaining items
+        if info_row_names:
+            rows.append(info_row_names)
+            rows.append(info_row_vals)
+            rows.append([])
+            
+    # 3. CORE FINANCIAL TABLES
+    sections = [
+        ("PEER COMPARISON", "peers"),
+        ("QUARTERLY RESULTS", "quarters"),
+        ("ANNUAL RESULTS", "profit-loss"),
+        ("BALANCE SHEET", "balance-sheet"),
+        ("CASH FLOW", "cash-flow"),
+        ("RATIOS", "ratios"),
+        ("SHAREHOLDING PATTERN", "shareholding")
+    ]
+    
+    for title, section_id in sections:
+        section = soup.find('section', id=section_id)
+        if section:
+            table = section.find('table')
+            if table:
+                rows.append([f"--- {title} ---"])
+                
+                # Extract Table Headers
+                thead = table.find('thead')
+                if thead:
+                    th_row = [th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])]
+                    rows.append(th_row)
+                
+                # Extract Table Rows
+                tbody = table.find('tbody')
+                if tbody:
+                    for tr in tbody.find_all('tr'):
+                        td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
+                        rows.append(td_row)
+                rows.append([])
+                
+    # 4. FOUR CAGR BOXES
+    pl_section = soup.find('section', id='profit-loss')
+    if pl_section:
+        cagr_tables = pl_section.find_all('table', class_='ranges-table')
+        if cagr_tables:
+            rows.append(["--- CAGR BOXES ---"])
+            for tbl in cagr_tables:
+                thead = tbl.find('thead')
+                if thead:
+                    rows.append([th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])])
+                tbody = tbl.find('tbody')
+                if tbody:
+                    for tr in tbody.find_all('tr'):
+                        rows.append([td.get_text(separator=' ', strip=True) for td in tr.find_all(['th', 'td'])])
+                rows.append([])
+
+    return rows
+
 def scrape_stock(symbol):
     """Parses both the framework data and the extra contextual data from Screener."""
     url = SCREENER_BASE_URL.format(symbol)
@@ -164,6 +263,9 @@ def scrape_stock(symbol):
             return None
             
         soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Vacuum the entire page directly into vertical CSV layout array
+        raw_vacuum_data = vacuum_screener_data(soup)
         
         def get_metric(table, name, length=3):
             arr = extract_row_values(soup, table, name)
@@ -229,7 +331,10 @@ def scrape_stock(symbol):
             "valuation_context": "",
             "earnings_quality_analysis": "",
             "pricing_power_analysis": "",
-            "secondary_red_flags": ""
+            "secondary_red_flags": "",
+            
+            # Attaching the raw vacuumed list of lists directly to the payload
+            "raw_vacuum_data": raw_vacuum_data
         }
     except Exception as e:
         logging.warning(f"Error parsing {symbol}: {e}")
@@ -412,29 +517,42 @@ def generate_qualitative_analysis(d):
 
 def save_to_db(d):
     """Saves ALL extracted data (core + context) to the persistent SQLite database."""
+    # Temporarily remove the raw_vacuum_data from the dictionary before pushing to DB 
+    # to avoid sqlite schema mismatches, since the raw grid isn't a column.
+    db_payload = {k: v for k, v in d.items() if k != "raw_vacuum_data"}
+    
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
     # Constructing a dynamic SQL insert based on dict keys
-    columns = ', '.join(d.keys())
-    placeholders = ':' + ', :'.join(d.keys())
+    columns = ', '.join(db_payload.keys())
+    placeholders = ':' + ', :'.join(db_payload.keys())
     query = f"INSERT OR REPLACE INTO scraped_metrics ({columns}) VALUES ({placeholders})"
-    cursor.execute(query, d)
+    cursor.execute(query, db_payload)
     conn.commit()
     conn.close()
 
 def save_ticker_csv(d):
-    """Saves the individual stock's scraped data into its dedicated directory with a timestamp."""
+    """Saves the individual stock's RAW vacuumed data into its dedicated directory with a timestamp."""
     ticker = d["ticker"]
+    
     # Safely strip out special characters so we don't crash the OS folder creation
     safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
-    ticker_dir = os.path.join(SCREENER_DATA_DIR, safe_ticker)
     
-    # Automatically creates ScreenerData/TICKER/ if it doesn't exist
+    # Updated: Placed securely inside the "stocks" hierarchy
+    ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", safe_ticker)
+    
+    # Automatically creates ScreenerData/stocks/TICKER/ if it doesn't exist
     os.makedirs(ticker_dir, exist_ok=True)
     
     ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
-    df = pd.DataFrame([d])
-    df.to_csv(ticker_file, index=False)
+    
+    # Pull out the massive vacuum grid we attached during scrape_stock
+    raw_data_rows = d.get("raw_vacuum_data", [])
+    
+    # Write the formatted vertical grid cleanly to the CSV
+    with open(ticker_file, mode='w', newline='', encoding='utf-8') as f:
+        writer = csv.writer(f)
+        writer.writerows(raw_data_rows)
 
 def send_telegram_alert(new_stocks, df_out):
     """Handles Telegram chunking and seamlessly logs the history for future AI review."""
@@ -566,12 +684,17 @@ def main():
                     
                     classif = data["classification"]
                     if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-                        qualified_records.append(data)
+                        
+                        # IMPORTANT: Pop out the giant raw array before appending to the final Pandas DataFrame
+                        # This ensures the global output CSV remains a clean, single-row-per-stock table
+                        export_data = {k: v for k, v in data.items() if k != "raw_vacuum_data"}
+                        
+                        qualified_records.append(export_data)
                         logging.info(f">>> MATCH: {symbol} classified as {classif}")
                         
                         # Check if it's a net-new addition this week
                         if symbol not in previous_tickers:
-                            new_candidates.append(data)
+                            new_candidates.append(export_data)
                             
             except Exception as exc:
                 logging.warning(f"{symbol} generated an exception: {exc}")
