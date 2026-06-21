@@ -329,7 +329,7 @@ def get_layout_signature(ticker, sample_text, concall_dir):
     """
     
     try:
-        model = genai.GenerativeModel('gemini-2.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash-lite')
         response = model.generate_content(prompt)
         
         match = re.search(r'\{.*\}', response.text, re.DOTALL)
