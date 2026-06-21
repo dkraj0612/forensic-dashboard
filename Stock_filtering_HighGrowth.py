@@ -5,12 +5,15 @@ import time
 import random
 import sqlite3
 import csv
+import json
 import logging
 import requests
 import concurrent.futures
 import glob
-from bs4 import BeautifulSoup
 import pandas as pd
+from bs4 import BeautifulSoup
+import fitz  # PyMuPDF for in-memory PDF extraction
+import google.generativeai as genai # AI Structural Compiler
 
 # Setup logging configuration
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -29,9 +32,32 @@ HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
 
-# Telegram Credentials (passed securely via GitHub Secrets/Environment)
+# API Credentials
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+
+def safe_request(url, retries=3):
+    """Executes network requests with random jitter and exponential backoff to evade bot detection."""
+    for attempt in range(retries):
+        time.sleep(random.uniform(1.2, 2.5))
+        try:
+            response = requests.get(url, headers=HEADERS, timeout=15)
+            if response.status_code == 200:
+                return response
+            elif response.status_code == 429:
+                sleep_time = (attempt + 1) * 10
+                logging.warning(f"Rate limited (429) on {url}. Sleeping for {sleep_time}s...")
+                time.sleep(sleep_time)
+            elif response.status_code == 404:
+                return response
+        except requests.exceptions.RequestException as e:
+            logging.warning(f"Request failed for {url}: {e}. Retrying...")
+            time.sleep(2)
+    return None
 
 def init_db():
     """Initializes the master directory and SQLite database schema including the salvaged top-card data."""
@@ -85,8 +111,9 @@ def fetch_nse_symbols():
     """Fetches NSE symbols and filters out illiquid/suspended listings to save scraping time."""
     logging.info("Fetching dynamic stock list from NSE...")
     try:
-        response = requests.get(NSE_URL, headers=HEADERS, timeout=15)
-        response.raise_for_status()
+        response = safe_request(NSE_URL)
+        if not response:
+            return []
         df = pd.read_csv(io.StringIO(response.text))
         
         # Filter for standard EQ series (ignores most ETFs, NCDs, and suspended stocks)
@@ -152,8 +179,8 @@ def extract_top_ratio(soup, metric_name):
 
 def vacuum_screener_data(soup):
     """
-    Sweeps the entire Screener page and formats it vertically 
-    for the RAW individual ticker CSV file without truncating any columns or rows.
+    Sweeps the entire Screener page and formats it vertically.
+    UPDATED: Bypasses strict tbody HTML formatting to catch all tables (High/Low, Peers, CAGR).
     """
     rows = []
     
@@ -167,8 +194,8 @@ def vacuum_screener_data(soup):
                 rows.append([about_div.get_text(separator=' ', strip=True)])
                 rows.append([])
             
-            key_points_div = profile_div.find('div', class_='company-profile-notes') # Key points class check
-            if not key_points_div: # Fallback if class structure differs
+            key_points_div = profile_div.find('div', class_='company-profile-notes') 
+            if not key_points_div: 
                 key_points_div = profile_div.find('div', class_='key-points')
                 
             if key_points_div:
@@ -184,12 +211,13 @@ def vacuum_screener_data(soup):
             info_row_vals = []
             for li in top_ratios.find_all('li'):
                 name_span = li.find('span', class_='name')
-                val_span = li.find('span', class_='number') or li.find('span', class_='value')
+                val_span = li.find('span', class_='value') # Captures the whole block for High/Low slashes
                 if name_span and val_span:
                     info_row_names.append(name_span.get_text(strip=True))
-                    info_row_vals.append(val_span.get_text(strip=True))
+                    # Keeps the " / " for High/Low but safely strips out currency symbols
+                    val_text = val_span.get_text(separator=' ', strip=True).replace('₹', '').replace('Cr.', '').replace('%', '').strip()
+                    info_row_vals.append(val_text)
                     
-                # Chunk into clean grids of 4 items per line for nice Excel viewing
                 if len(info_row_names) == 4:
                     rows.append(info_row_names)
                     rows.append(info_row_vals)
@@ -197,7 +225,6 @@ def vacuum_screener_data(soup):
                     info_row_names = []
                     info_row_vals = []
             
-            # Catch any remaining items
             if info_row_names:
                 rows.append(info_row_names)
                 rows.append(info_row_vals)
@@ -220,19 +247,10 @@ def vacuum_screener_data(soup):
                 table = section.find('table')
                 if table:
                     rows.append([f"--- {title} ---"])
-                    
-                    # Extract Table Headers
-                    thead = table.find('thead')
-                    if thead:
-                        th_row = [th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])]
-                        rows.append(th_row)
-                    
-                    # Extract Table Rows
-                    tbody = table.find('tbody')
-                    if tbody:
-                        for tr in tbody.find_all('tr'):
-                            td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
-                            rows.append(td_row)
+                    # Natively iterates over all rows, ignoring strict HTML tbody/thead rules
+                    for tr in table.find_all('tr'):
+                        td_row = [td.get_text(separator=' ', strip=True) for td in tr.find_all(['td', 'th'])]
+                        rows.append(td_row)
                     rows.append([])
                     
         # 4. FOUR CAGR BOXES
@@ -242,13 +260,8 @@ def vacuum_screener_data(soup):
             if cagr_tables:
                 rows.append(["--- CAGR BOXES ---"])
                 for tbl in cagr_tables:
-                    thead = tbl.find('thead')
-                    if thead:
-                        rows.append([th.get_text(separator=' ', strip=True) for th in thead.find_all(['th', 'td'])])
-                    tbody = tbl.find('tbody')
-                    if tbody:
-                        for tr in tbody.find_all('tr'):
-                            rows.append([td.get_text(separator=' ', strip=True) for td in tr.find_all(['th', 'td'])])
+                    for tr in tbl.find_all('tr'):
+                        rows.append([td.get_text(separator=' ', strip=True) for td in tr.find_all(['th', 'td'])])
                     rows.append([])
 
     except Exception as e:
@@ -257,47 +270,213 @@ def vacuum_screener_data(soup):
     return rows
 
 def filter_volatile_data(csv_rows):
-    """Strips the volatile 'STOCK INFO' block from a CSV representation to allow pure fundamental comparison."""
+    """Strips the volatile 'STOCK INFO', 'PEER', and 'CAGR' blocks from CSV representation."""
     filtered = []
     skip = False
     for row in csv_rows:
-        # Ignore empty rows for comparison
-        if not row or (len(row) == 1 and row[0].strip() == ""):
+        if not row or (len(row) == 1 and str(row[0]).strip() == ""):
             continue
             
         first_col = str(row[0]).strip()
         
-        # If we hit a section header, determine if we should skip
         if first_col.startswith("--- ") and first_col.endswith(" ---"):
-            if first_col == "--- STOCK INFO ---":
+            # Mask Stock Info, Peers, and CAGR as they contain daily price-linked metrics
+            if first_col in ["--- STOCK INFO ---", "--- PEER COMPARISON ---", "--- CAGR BOXES ---"]:
                 skip = True
                 continue
             else:
                 skip = False
                 
         if not skip:
-            # Join the row into a continuous string for strict structural comparison
             filtered.append("|".join([str(item).strip() for item in row]))
             
     return filtered
+
+# =====================================================================
+# THE 3-TIER INTELLIGENT CONCALL PARSER
+# =====================================================================
+
+def get_layout_signature(ticker, sample_text, concall_dir):
+    """Tier 1 & 3: Retrieves cached signature or queries AI for structural layout."""
+    signature_file = os.path.join(concall_dir, "layout_signature.json")
+    
+    if os.path.exists(signature_file):
+        try:
+            with open(signature_file, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            pass
+
+    if not GEMINI_API_KEY:
+        logging.warning("No AI API Key found. Skipping intelligent parsing generation.")
+        return None
+
+    logging.info(f"Generating new AI Layout Signature for {ticker}...")
+    prompt = f"""
+    You are a data architect. Analyze this excerpt from an earnings call transcript and determine its layout physics.
+    Return ONLY a JSON object (no markdown, no explanations) with this exact schema:
+    {{
+        "delimiter_type": "inline_metadata" | "standalone_line",
+        "speaker_split_character": "character used to split speaker from dialogue, or null",
+        "line_length_threshold_for_speaker": integer (max length of a line to be considered a speaker name),
+        "roster_hints": ["List", "Of", "Names", "Found"]
+    }}
+    
+    Transcript Sample:
+    {sample_text[:4000]}
+    """
+    
+    try:
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        response = model.generate_content(prompt)
+        
+        # Regex defense against LLM conversational hallucination
+        match = re.search(r'\{.*\}', response.text, re.DOTALL)
+        if match:
+            clean_json = match.group(0)
+            signature = json.loads(clean_json)
+            with open(signature_file, 'w', encoding='utf-8') as f:
+                json.dump(signature, f, indent=4)
+            return signature
+        else:
+            logging.error(f"Failed to find valid JSON structure in AI response for {ticker}.")
+            return None
+            
+    except Exception as e:
+        logging.error(f"Failed to generate layout signature for {ticker}: {e}")
+        return None
+
+def parse_transcript_dynamically(full_text, signature):
+    """Tier 2: The Adaptive Python Engine utilizing the AI's blueprint."""
+    if not signature:
+        return {"raw_text": full_text[:1000] + "... [UNPARSED]"}
+
+    lines = full_text.split('\n')
+    parsed_dialogue = []
+    current_speaker = "Unknown"
+    current_dialogue = []
+
+    delim_type = signature.get("delimiter_type", "inline_metadata")
+    split_char = signature.get("speaker_split_character")
+    threshold = signature.get("line_length_threshold_for_speaker", 50)
+    roster = signature.get("roster_hints", [])
+
+    def is_roster_match(text):
+        if not roster: return False
+        text_clean = text.lower().strip()
+        return any(hint.lower() in text_clean for hint in roster)
+
+    for line in lines:
+        line_str = line.strip()
+        if not line_str: continue
+        if "Page" in line_str and len(line_str) < 15: continue
+
+        state_changed = False
+
+        if delim_type == "standalone_line":
+            if len(line_str) <= threshold and (line_str.isupper() or is_roster_match(line_str)):
+                if current_dialogue:
+                    parsed_dialogue.append({"speaker": current_speaker, "dialogue": " ".join(current_dialogue)})
+                current_speaker = line_str
+                current_dialogue = []
+                state_changed = True
+                
+        elif delim_type == "inline_metadata" and split_char:
+            if split_char in line_str and len(line_str.split(split_char)[0]) <= threshold:
+                parts = line_str.split(split_char, 1)
+                if current_dialogue:
+                    parsed_dialogue.append({"speaker": current_speaker, "dialogue": " ".join(current_dialogue)})
+                current_speaker = parts[0].strip()
+                current_dialogue = [parts[1].strip()]
+                state_changed = True
+
+        if not state_changed:
+            current_dialogue.append(line_str)
+
+    if current_dialogue:
+        parsed_dialogue.append({"speaker": current_speaker, "dialogue": " ".join(current_dialogue)})
+
+    return {"transcript": parsed_dialogue}
+
+def process_concalls(ticker, soup, ticker_dir):
+    """Finds, downloads, and processes concall PDFs directly in memory."""
+    concall_dir = os.path.join(ticker_dir, "concalls")
+    os.makedirs(concall_dir, exist_ok=True)
+
+    documents_section = soup.find('div', id='documents')
+    if not documents_section: return
+
+    links = documents_section.find_all('a', href=True)
+    transcript_links = [a for a in links if "transcript" in a.text.lower()]
+
+    for link in transcript_links:
+        title = link.text.strip().replace(" ", "_").replace("/", "-")
+        # Strict OS file path length truncation
+        safe_title = "".join([c for c in title if c.isalnum() or c in ['_', '-']])[:100]
+        json_filename = os.path.join(concall_dir, f"{safe_title}.json")
+
+        if os.path.exists(json_filename): continue
+
+        pdf_url = link['href']
+        if pdf_url.startswith("/"):
+            pdf_url = "https://www.screener.in" + pdf_url
+
+        logging.info(f"Downloading in-memory transcript for {ticker}: {safe_title}")
+        res = safe_request(pdf_url)
+        if not res or res.status_code != 200: continue
+
+        try:
+            pdf_stream = io.BytesIO(res.content)
+            
+            # Context manager ensures PDF binary is always destroyed on crash
+            with fitz.open(stream=pdf_stream, filetype="pdf") as doc:
+                full_text = ""
+                sample_text = ""
+                
+                for page_num in range(len(doc)):
+                    page_text = doc.load_page(page_num).get_text("text")
+                    full_text += page_text + "\n"
+                    if page_num < 2:  
+                        sample_text += page_text + "\n"
+
+                signature = get_layout_signature(ticker, sample_text, concall_dir)
+                structured_data = parse_transcript_dynamically(full_text, signature)
+                structured_data['metadata'] = {"ticker": ticker, "document_title": title}
+
+                with open(json_filename, 'w', encoding='utf-8') as f:
+                    json.dump(structured_data, f, indent=4)
+                    
+        except Exception as e:
+            logging.error(f"PDF extraction failed for {ticker} ({safe_title}): {e}")
+
+# =====================================================================
+# FRAMEWORK DATA EXTRACTION
+# =====================================================================
 
 def scrape_stock(symbol):
     """Parses both the framework data and the extra contextual data from Screener."""
     url = SCREENER_BASE_URL.format(symbol)
     try:
-        response = requests.get(url, headers=HEADERS, timeout=10)
+        response = safe_request(url)
+        if not response:
+            return None
         if response.status_code == 404:
             url = f"https://www.screener.in/company/{symbol}/"
-            response = requests.get(url, headers=HEADERS, timeout=10)
-            if response.status_code != 200:
+            response = safe_request(url)
+            if not response or response.status_code != 200:
                 return None
-        elif response.status_code != 200:
-            return None
             
         soup = BeautifulSoup(response.text, 'html.parser')
         
         # Execute the full-page vacuum for historical raw data archiving
         raw_vacuum_data = vacuum_screener_data(soup)
+        
+        # Concall Generation Pipeline (Runs for all scraped stocks)
+        safe_ticker = "".join([c for c in symbol if c.isalnum() or c in ['_', '-']]).rstrip()
+        first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
+        ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", first_char, safe_ticker)
+        
+        process_concalls(symbol, soup, ticker_dir)
         
         def get_metric(table, name, length=3):
             arr = extract_row_values(soup, table, name)
@@ -313,7 +492,6 @@ def scrape_stock(symbol):
         op_years = get_metric("profit-loss", "Operating Profit", 1)
         interest_years = get_metric("profit-loss", "Interest", 1)
         
-        # Corrected Data Dictionary mappings to match Screener exact labels
         share_cap = get_metric("balance-sheet", "Equity Capital", 2)
         borrowings = get_metric("balance-sheet", "Borrowings", 2)
         fixed_assets = get_metric("balance-sheet", "Fixed Assets", 2)
@@ -351,7 +529,6 @@ def scrape_stock(symbol):
             "fii_q1": fii[-1], "fii_q2": fii[-2],
             "dii_q1": dii[-1], "dii_q2": dii[-2],
             
-            # Additional Context Attributes
             "market_cap": extract_top_ratio(soup, "Market Cap"),
             "stock_pe": extract_top_ratio(soup, "Stock P/E"),
             "dividend_yield": extract_top_ratio(soup, "Dividend Yield"),
@@ -359,13 +536,11 @@ def scrape_stock(symbol):
             "debtor_days_y1": debtor_days[-1], "debtor_days_y2": debtor_days[-2],
             "days_payable_y1": payable_days[-1], "days_payable_y2": payable_days[-2],
             
-            # Placeholders for generated text
             "valuation_context": "",
             "earnings_quality_analysis": "",
             "pricing_power_analysis": "",
             "secondary_red_flags": "",
             
-            # Attaching the raw vacuumed list of lists directly to the payload
             "raw_vacuum_data": raw_vacuum_data
         }
     except Exception as e:
@@ -378,30 +553,24 @@ def evaluate_framework(d):
     # 1. PHASE 1: THE UNIVERSAL SURVIVAL GATE
     gate_failures = []
     
-    # SAFEGUARD: The Penny Stock / Nano-Cap Trap
     if d["sales_y1"] < 50.0:
         gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
         
-    # SAFEGUARD: Bankruptcy Risk (Requires operating profit to be positive)
     if d["interest_y1"] > 0:
         if d["operating_profit_y1"] <= 0:
             gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
         elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0:
             gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
 
-    # SAFEGUARD: The Dilution Trap (Strict Null Check)
     if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05):
         gate_failures.append("The Dilution Trap")
         
-    # SAFEGUARD: Skin in the game (Strict Null Check)
     if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0:
         gate_failures.append("No Skin in the Game")
         
-    # SAFEGUARD: Market Cap Ceiling
     if d["market_cap"] > 5000:
         gate_failures.append("Market Cap exceeds 5000Cr")
         
-    # SAFEGUARD: Fake Profits 
     if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]:
         gate_failures.append("Other Income exceeds Core Profit")
         
@@ -412,32 +581,27 @@ def evaluate_framework(d):
     ta_triggers = 0
     ta_details = []
     
-    # SAFEGUARD: Factory Go-Live (Prevents zero-division)
     if d["fixed_assets_y2"] > 0 and d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10):
         if d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]:
             ta_triggers += 1
             ta_details.append("Factory Go-Live")
             
-    # SAFEGUARD: Working Capital Squeeze (Correctly handles FMCG negative cash cycles)
     if d["ccc_y2"] != 0:
         if (d["ccc_y2"] > 0 and d["ccc_y1"] < (d["ccc_y2"] * 0.80)) or (d["ccc_y2"] < 0 and d["ccc_y1"] < (d["ccc_y2"] * 1.20)):
             ta_triggers += 1
             ta_details.append("Working Capital Squeeze")
             
-    # SAFEGUARD: Margin Turnaround (Requires historical reporting)
     if d["opm_y2"] > 0 and d["sales_y2"] > 0:
         if d["opm_y1"] > (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95):
             ta_triggers += 1
             ta_details.append("Margin Turnaround")
             
-    # SAFEGUARD: Smart Money Creep (Requires history to calculate a "creep")
     sm_q1 = d["promoter_q1"] + d["fii_q1"] + d["dii_q1"]
     sm_q2 = d["promoter_q2"] + d["fii_q2"] + d["dii_q2"]
     if sm_q2 > 0 and sm_q1 > sm_q2:
         ta_triggers += 1
         ta_details.append("Smart Money Creep")
         
-    # SAFEGUARD: Supplier Squeeze (Pricing Power check)
     if d["days_payable_y2"] > 0 and d["days_payable_y1"] > (d["days_payable_y2"] * 1.15) and d["debtor_days_y1"] < d["debtor_days_y2"]:
         ta_triggers += 1
         ta_details.append("Supplier Squeeze")
@@ -452,13 +616,11 @@ def evaluate_framework(d):
         tb_triggers += 1
         tb_details.append("Elite ROCE")
         
-    # SAFEGUARD: Sustained Top-Line Growth (Strict Null Check)
     if d["sales_y3"] > 0 and d["sales_y2"] > 0:
         if d["sales_y1"] > (d["sales_y2"] * 1.15) and d["sales_y2"] > (d["sales_y3"] * 1.15):
             tb_triggers += 1
             tb_details.append("Top-Line Growth")
             
-    # SAFEGUARD: Operating Leverage (Ensures Net Profit was actually positive last year to avoid negative math anomalies)
     sales_growth = (d["sales_y1"] / d["sales_y2"]) if d["sales_y2"] > 0 else 0
     profit_growth = (d["net_profit_y1"] / d["net_profit_y2"]) if d["net_profit_y2"] > 0 else 0
     if sales_growth > 0 and d["net_profit_y2"] > 0 and d["net_profit_y1"] > 0:
@@ -466,7 +628,6 @@ def evaluate_framework(d):
             tb_triggers += 1
             tb_details.append("Operating Leverage")
             
-    # SAFEGUARD: Immaculate Cash Conversion (Ensures Net Profit is positive to avoid false flags on negative CFO)
     if d["net_profit_y1"] > 0 and d["cfo_y1"] > (d["net_profit_y1"] * 0.70):
         tb_triggers += 1
         tb_details.append("Immaculate Cash Conversion")
@@ -475,7 +636,6 @@ def evaluate_framework(d):
         tb_triggers += 1
         tb_details.append("Dividend Validation")
 
-    # SAFEGUARD: Valuation Check (Downgrades if too expensive)
     if d["stock_pe"] > 70:
         track_b_pass = False 
     else:
@@ -493,8 +653,6 @@ def evaluate_framework(d):
 
 def generate_qualitative_analysis(d):
     """Executes post-qualification analysis on the salvaged data to provide deep context."""
-    
-    # 1. Valuation Context
     pe = d["stock_pe"]
     mc = d["market_cap"]
     mc_tag = f"Large/Mid-Cap (₹{mc}Cr)" if mc > 5000 else f"Micro/Small-Cap (₹{mc}Cr)"
@@ -508,7 +666,6 @@ def generate_qualitative_analysis(d):
     else:
         d["valuation_context"] = f"{mc_tag} trading at fair/standard multiple (PE: {pe})."
 
-    # 2. Quality of Earnings (Other Income Check)
     op = d["operating_profit_y1"]
     other_inc = d["other_income_y1"]
     np = d["net_profit_y1"]
@@ -522,7 +679,6 @@ def generate_qualitative_analysis(d):
     else:
         d["earnings_quality_analysis"] = "Standard Quality: Earnings driven by core operations. No dividend paid."
 
-    # 3. Pricing Power (Supplier Squeeze Check)
     dp_y1 = d["days_payable_y1"]
     dp_y2 = d["days_payable_y2"]
     dd_y1 = d["debtor_days_y1"]
@@ -535,7 +691,6 @@ def generate_qualitative_analysis(d):
     else:
         d["pricing_power_analysis"] = "Neutral: Trade working capital is stable."
 
-    # 4. Secondary Red Flags
     flags = []
     if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0:
         flags.append("Debt exceeds hard physical assets")
@@ -548,14 +703,11 @@ def generate_qualitative_analysis(d):
     return d
 
 def save_to_db(d):
-    """Saves ALL extracted data (core + context) to the persistent SQLite database."""
-    # Temporarily remove the raw_vacuum_data from the dictionary before pushing to DB 
-    # to avoid sqlite schema mismatches, since the raw grid isn't a database column.
+    """Saves ALL extracted data (core + context) to the persistent SQLite database safely in the main thread."""
     db_payload = {k: v for k, v in d.items() if k != "raw_vacuum_data"}
     
     conn = sqlite3.connect(DB_FILE)
     cursor = conn.cursor()
-    # Constructing a dynamic SQL insert based on dict keys
     columns = ', '.join(db_payload.keys())
     placeholders = ':' + ', :'.join(db_payload.keys())
     query = f"INSERT OR REPLACE INTO scraped_metrics ({columns}) VALUES ({placeholders})"
@@ -566,24 +718,16 @@ def save_to_db(d):
 def save_ticker_csv(d):
     """Saves the individual stock's RAW vacuumed data into an alphabetical directory with a Fundamental Delta Check."""
     ticker = d["ticker"]
-    
-    # Extract the massive vacuum grid we attached during scrape_stock
     new_raw_data_rows = d.get("raw_vacuum_data", [])
     if not new_raw_data_rows:
-        return # Skip if scraping completely failed
+        return 
     
-    # Safely strip out special characters
     safe_ticker = "".join([c for c in ticker if c.isalnum() or c in ['_', '-']]).rstrip()
-    
-    # Determine alphabetical grouping folder (A, B, C... or 0-9)
     first_char = safe_ticker[0].upper() if safe_ticker and safe_ticker[0].isalpha() else "0-9"
     ticker_dir = os.path.join(SCREENER_DATA_DIR, "stocks", first_char, safe_ticker)
     
-    # Automatically creates ScreenerData/stocks/A/TICKER/ if it doesn't exist
     os.makedirs(ticker_dir, exist_ok=True)
     
-    # --- FUNDAMENTAL DELTA CHECK LOGIC ---
-    # Look for the most recent historical CSV in this exact ticker's folder
     existing_files = glob.glob(os.path.join(ticker_dir, f"{safe_ticker}_*.csv"))
     if existing_files:
         latest_file = max(existing_files, key=os.path.getmtime)
@@ -592,23 +736,33 @@ def save_ticker_csv(d):
                 reader = csv.reader(f)
                 old_raw_data_rows = list(reader)
             
-            # Mask the volatile stock info sections to compare pure core fundamentals
             old_core_fundamentals = filter_volatile_data(old_raw_data_rows)
             new_core_fundamentals = filter_volatile_data(new_raw_data_rows)
             
-            # If the filtered core fundamentals match exactly, skip saving to prevent repo bloat
             if old_core_fundamentals == new_core_fundamentals:
                 return 
         except Exception as e:
             logging.warning(f"Delta Check failed for {safe_ticker}: {e}. Proceeding to save new file.")
 
-    # --- SAVE NEW FILE ---
-    # If no file exists, or if the Delta Check proved the fundamentals changed, save the new CSV
     ticker_file = os.path.join(ticker_dir, f"{safe_ticker}_{RUN_DATE}.csv")
-    
     with open(ticker_file, mode='w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerows(new_raw_data_rows)
+
+def process_worker(symbol):
+    """The multithreaded worker function."""
+    data = scrape_stock(symbol)
+    if not data:
+        return None
+        
+    classification, reason = evaluate_framework(data)
+    data["classification"] = classification
+    data["qualification_reason"] = reason
+    
+    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
+        data = generate_qualitative_analysis(data)
+        
+    return data
 
 def send_telegram_alert(new_stocks, df_out):
     """Handles Telegram chunking and seamlessly logs the history for future AI review."""
@@ -616,7 +770,6 @@ def send_telegram_alert(new_stocks, df_out):
         logging.warning("Telegram credentials not found. Skipping alert.")
         return
 
-    # Build the core message text
     msg = f"📊 *Microcap Screener Weekly Update ({RUN_DATE})*\n\n"
     if not new_stocks:
         msg += "No new candidates passed the framework this week."
@@ -628,7 +781,6 @@ def send_telegram_alert(new_stocks, df_out):
             reason = stock['qualification_reason']
             msg += f"🔥 *{ticker}* ({classif})\n_Reason:_ {reason}\n\n"
 
-    # Save the generated telegram analysis output directly into the Git repository context
     try:
         with open(TELEGRAM_LOG_FILE, "a", encoding="utf-8") as f:
             f.write(f"\n--- Analysis Log Generated at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
@@ -636,8 +788,6 @@ def send_telegram_alert(new_stocks, df_out):
     except Exception as e:
         logging.warning(f"Could not save telegram log to local directory: {e}")
 
-    # Telegram Chunking Logic: Max character limit for sendMessage is 4096. 
-    # We chunk at 4000 to be perfectly safe.
     max_msg_length = 4000
     msg_chunks = [msg[i:i + max_msg_length] for i in range(0, len(msg), max_msg_length)]
     
@@ -652,9 +802,7 @@ def send_telegram_alert(new_stocks, df_out):
         except Exception as e:
             logging.error(f"Failed to send Telegram message chunk: {e}")
 
-    # Send Document endpoint (Captions are limited to 1024 characters)
     send_doc_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
-    
     csv_buffer = io.BytesIO()
     df_out.to_csv(csv_buffer, index=False)
     csv_buffer.name = f"Qualified_Microcaps_{RUN_DATE}.csv"
@@ -671,26 +819,6 @@ def send_telegram_alert(new_stocks, df_out):
     except Exception as e:
         logging.error(f"Failed to send Telegram document: {e}")
 
-def process_worker(symbol):
-    """The multithreaded worker function. Keeps the sleep inside the thread for desynchronized jitter."""
-    # Desynchronized Human Jitter (1.5 to 3.5 seconds)
-    # Because each thread sleeps independently, requests are safely staggered.
-    time.sleep(random.uniform(1.5, 3.5)) 
-    
-    data = scrape_stock(symbol)
-    if not data:
-        return None
-        
-    classification, reason = evaluate_framework(data)
-    data["classification"] = classification
-    data["qualification_reason"] = reason
-    
-    # Run the deep-dive textual analysis if it passes
-    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-        data = generate_qualitative_analysis(data)
-        
-    return data
-
 def main():
     init_db()
     symbols = fetch_nse_symbols()
@@ -699,12 +827,8 @@ def main():
         logging.error("No valid symbols found. Exiting.")
         return
 
-    # Dynamic Historical Audit Checking
-    # Use glob to scan the folder and automatically locate the most recent past CSV run
     previous_tickers = set()
     existing_csvs = glob.glob(os.path.join(SCREENER_DATA_DIR, "qualified_stocks_analysis_*.csv"))
-    
-    # Exclude today's file to prevent a self-matching collision if re-run on the same day
     existing_csvs = [f for f in existing_csvs if not f.endswith(f"_{RUN_DATE}.csv")]
     
     if existing_csvs:
@@ -719,36 +843,30 @@ def main():
     qualified_records = []
     new_candidates = []
 
-    # Configure the Thread Pool (Throttled carefully at 4 workers)
-    MAX_CONCURRENT_THREADS = 4
+    # STRICT NETWORK THROTTLING
+    MAX_CONCURRENT_THREADS = 3
     logging.info(f"Initiating throttled multithreading with {MAX_CONCURRENT_THREADS} workers...")
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
-        # Submit all tasks to the thread pool
         future_to_symbol = {executor.submit(process_worker, sym): sym for sym in symbols}
         
-        # Process results as they complete
+        # Because we extract the data sequentially in the main thread here, 
+        # SQLite db locking and RAM overflow from the workers is entirely mitigated.
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_symbol)):
             symbol = future_to_symbol[future]
             try:
                 data = future.result()
                 if data:
-                    # Write to database and file system sequentially in the main thread 
-                    # to prevent SQLite locking errors and racing folder creation
+                    # Write to DB and CSV synchronously in main thread
                     save_to_db(data)
                     save_ticker_csv(data)
                     
                     classif = data["classification"]
                     if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
-                        
-                        # IMPORTANT: Pop out the giant raw array before appending to the final Pandas DataFrame
-                        # This ensures the global output CSV remains a clean, single-row-per-stock table
                         export_data = {k: v for k, v in data.items() if k != "raw_vacuum_data"}
-                        
                         qualified_records.append(export_data)
                         logging.info(f">>> MATCH: {symbol} classified as {classif}")
                         
-                        # Check if it's a net-new addition this week
                         if symbol not in previous_tickers:
                             new_candidates.append(export_data)
                             
@@ -758,11 +876,8 @@ def main():
             if idx % 100 == 0 and idx > 0:
                 logging.info(f"Progress: Processed {idx}/{len(symbols)} tickers...")
 
-    # Output ONLY verified candidate records to the global tracking CSV file
     if qualified_records:
         df_out = pd.DataFrame(qualified_records)
-        
-        # Organize the CSV layout so textual context columns are front-and-center
         front_cols = [
             'ticker', 'classification', 'market_cap', 'valuation_context',
             'earnings_quality_analysis', 'pricing_power_analysis',
@@ -773,8 +888,6 @@ def main():
         
         df_out.to_csv(CSV_FILE, index=False)
         logging.info(f"Analysis complete. {len(qualified_records)} candidate(s) saved to '{CSV_FILE}'.")
-        
-        # Trigger the Telegram Push
         send_telegram_alert(new_candidates, df_out)
     else:
         logging.info("Process completed. No listings matching the metrics were discovered.")
