@@ -1,0 +1,517 @@
+
+--- Analysis Log Generated at 2026-06-21 08:37:04 ---
+📊 *Microcap Screener Weekly Update (2026-06-21)*
+
+🚨 *170 NEW CANDIDATES DETECTED* 🚨
+
+🔥 *3BBLACKBIO* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *20MICRONS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *AARTIDRUGS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *AARVI* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *ACCELYA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ADOR* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ADSL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ADVENZYMES* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *AEPL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *AFSL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *AGI* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *AGIIL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *AGROPHOS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *ALICON* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *ALLDIGI* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ALMONDZ* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *AMRUTANJAN* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Working Capital Squeeze
+
+🔥 *AMNPLST* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *APOLSINHOT* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Margin Turnaround, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ASAHISONG* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ASIANENE* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ATULAUTO* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *AYMSYNTEX* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *BANSWRAS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *BCLIND* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Working Capital Squeeze, Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *BEPL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *BFUTILITIE* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion
+
+🔥 *BIRLAMONEY* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *BLACKROSE* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *BLBLIMITED* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround, Smart Money Creep
+
+🔥 *BLSE* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *CARRARO* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *CNL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *COMSYN* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *CONFIPET* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *COSMOFIRST* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Working Capital Squeeze
+
+🔥 *CRIZAC* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *DALMIASUG* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *DECCANCE* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Working Capital Squeeze, Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DEEPINDS* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Working Capital Squeeze, Smart Money Creep, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DHAMPURSUG* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DHANUKA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DIAMONDYD* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *DICIND* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DIFFNKG* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *DOLLAR* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *DPABHUSHAN* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Operating Leverage
+
+🔥 *EIEL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *EKC* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ELDEHSG* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ELITECON* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Working Capital Squeeze, Margin Turnaround, Smart Money Creep
+
+🔥 *EMUDHRA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *EUROPRATIK* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Dividend Validation
+
+🔥 *EXPLEOSOL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *FISCHER* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround, Smart Money Creep
+
+🔥 *FLAIR* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GANDHAR* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GIPCL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GLOBAL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *GLOBUSSPR* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GLOSTERLTD* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *GNA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GOODLUCK* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GPTINFRA* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *GRAUWEIL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *GREAVESCOT* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *GVPTECH* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *HARSHA* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep
+
+🔥 *HESTERBIO* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Margin Turnaround, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *HLEGLAS* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *HPAL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *INA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Dividend Validation
+
+🔥 *INDNIPPON* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *INDOAMIN* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *INDORAMA* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *IPL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *ISFT* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Working Capital Squeeze
+
+🔥 *JAGRAN* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Margin Turnaround, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *JARO* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *JAYBARMARU* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *JINDRILL* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *JTEKTINDIA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *KCP* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *KDDL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *KKCL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *KOTHARIPET* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *KPEL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Dividend Validation
+
+🔥 *KSOLVES* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *LANDMARK* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *LUMAXIND* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *MAFATIND* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *MAHEPC* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround, Smart Money Creep
+
+🔥 *MALLCOM* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *MARSONS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *MAYURUNIQ* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *MEGASTAR* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Immaculate Cash Conversion
+
+🔥 *MINDTECK* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *MMP* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *MODIS* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *MONARCH* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *MPSLTD* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *MSTCLTD* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *MUFTI* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *NDRAUTO* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *NELCAST* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *NILAINFRA* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *NILASPACES* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Elite ROCE, Top-Line Growth, Operating Leverage
+
+🔥 *NITTAGELA* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *NRBBEARING* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ONWARDTEC* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Margin Turnaround, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ORIENTCER* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Working Capital Squeeze, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *ORIENTHOT* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *OSWALSEEDS* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *PDSL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *PIXTRANS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *PRADPME* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *PRECOT* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *PRECAM* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *PRIMESECU* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *RANEHOLDIN* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *RAYMONDLSL* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *REFEX* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *RELIABLE* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *REPRO* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *RICOAUTO* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *RKSWAMY* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *ROHLTD* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *ROSSTECH* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *RRIL* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *RSYSTEMS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SAKSOFT* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SANATHAN* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Working Capital Squeeze, Smart Money Creep
+
+🔥 *SANGAMIND* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Factory Go-Live, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SANGHVIMOV* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SASKEN* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Margin Turnaround
+
+🔥 *SCHAND* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SERVOTECH* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *SHINDL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *SHREDIGCEM* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Smart Money Creep
+
+🔥 *SIKA* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Elite ROCE, Top-Line Growth, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SIRCA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *SOLEX* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Top-Line Growth, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SOTL* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *SOUTHWEST* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Factory Go-Live, Margin Turnaround, Smart Money Creep
+
+🔥 *SPECTRUM* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Top-Line Growth, Operating Leverage, Immaculate Cash Conversion
+
+🔥 *SRM* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Smart Money Creep, Elite ROCE, Top-Line Growth, Operating Leverage, Immaculate Cash Conversion
+
+🔥 *SUMMITSEC* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Top-Line Growth, Operating Leverage, Immaculate Cash Conversion
+
+🔥 *SUNTECK* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Margin Turnaround, Smart Money Creep, Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *SURAKSHA* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *SURYALA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *TAALTECH* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Dividend Validation
+
+🔥 *TAMBOLIIN* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *TALBROAUTO* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *TATVA* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *TBZ* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Margin Turnaround, Smart Money Creep
+
+🔥 *TERASOFT* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Working Capital Squeeze, Margin Turnaround, Top-Line Growth, Operating Leverage, Dividend Validation
+
+🔥 *TPLPLASTEH* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *TVSSRICHAK* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *UFLEX* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *UNIPARTS* (HYPER-COMPOUNDER)
+_Reason:_ Both Tracks. Fired: Margin Turnaround, Smart Money Creep, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *UTTAMSUGAR* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Smart Money Creep
+
+🔥 *VAIBHAVGBL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *VAKRANGEE* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+🔥 *VEEDOL* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *VELJAN* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *VISHNU* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *WEALTH* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Elite ROCE, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *WHEELS* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *WORTHPERI* (PROVEN COMPOUNDER)
+_Reason:_ Track B. Fired: Operating Leverage, Immaculate Cash Conversion, Dividend Validation
+
+🔥 *YATRA* (EARLY INFLECTION)
+_Reason:_ Track A. Fired: Working Capital Squeeze, Margin Turnaround
+
+
