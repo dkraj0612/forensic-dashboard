@@ -1,0 +1,11 @@
+{
+    "delimiter_type": "standalone_line",
+    "speaker_split_character": null,
+    "line_length_threshold_for_speaker": 100,
+    "roster_hints": [
+        "Puja Aggarwal",
+        "Tarun Mehta",
+        "Sohil Parekh",
+        "Murali Sashidharan"
+    ]
+}

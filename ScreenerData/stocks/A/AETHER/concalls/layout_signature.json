@@ -1,0 +1,13 @@
+{
+    "delimiter_type": "inline_metadata",
+    "speaker_split_character": "\u2013",
+    "line_length_threshold_for_speaker": null,
+    "roster_hints": [
+        "DR. AMAN DESAI",
+        "MR. ROHAN DESAI",
+        "MR. FAIZ NAGARIYA",
+        "MR. KUSHAL DOSHI",
+        "MS. SHUBHANGI DESAI",
+        "MR. NILESH GHUGE"
+    ]
+}
