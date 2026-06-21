@@ -3,7 +3,7 @@
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"15,425","1,162","1,275",68.2
+"15,425","1,162","1,275 / 723",68.2
 
 Book Value,Dividend Yield,ROCE,ROE
 185,0.00,11.9,9.66
@@ -39,7 +39,7 @@ Profit before tax,146,174,110,213,291
 Tax %,26%,25%,25%,26%,25%
 Net Profit +,109,130,82,158,219
 EPS in Rs,9.67,10.47,6.22,11.95,16.54
-Dividend Payout %,-0%,-0%,-0%,-0%,-0%
+Dividend Payout %,0%,0%,0%,0%,0%
 
 --- BALANCE SHEET ---
 ,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
@@ -81,7 +81,27 @@ Public +,2.67%,2.76%,4.44%,4.16%,3.74%,3.40%,3.41%,3.47%,6.55%,7.39%,6.96%,6.10%
 No. of Shareholders,"55,208","60,466","84,000","78,655","71,683","67,251","66,677","64,034","72,628","73,806","67,806","65,562"
 
 --- CAGR BOXES ---
+Compounded Sales Growth
+10 Years:,%
+5 Years:,%
+3 Years:,21%
+TTM:,38%
 
+Compounded Profit Growth
+10 Years:,%
+5 Years:,%
+3 Years:,20%
+TTM:,35%
 
+Stock Price CAGR
+10 Years:,%
+5 Years:,%
+3 Years:,0%
+1 Year:,50%
 
+Return on Equity
+10 Years:,%
+5 Years:,10%
+3 Years:,8%
+Last Year:,10%
 
