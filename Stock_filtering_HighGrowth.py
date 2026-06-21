@@ -322,7 +322,7 @@ def get_layout_signature(ticker, sample_text, concall_dir):
     """
     
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')
+        model = genai.GenerativeModel('gemini-2.5-flash')
         response = model.generate_content(prompt)
         
         # Regex defense against LLM conversational hallucination
