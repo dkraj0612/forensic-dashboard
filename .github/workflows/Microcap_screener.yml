@@ -22,29 +22,38 @@ jobs:
     - name: Install Runtime Library Dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install requests beautifulsoup4 pandas
+        # Added pymupdf (fitz) and google-generativeai for the AI concall parser
+        pip install requests beautifulsoup4 pandas pymupdf google-generativeai
 
     - name: Run Processing Engine Pipeline
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        # Added the Gemini API Key secret for the Tier-1 structural parser
+        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       run: |
         python Stock_filtering_HighGrowth.py
+
+    - name: Enforce Data Lake Repository Rules
+      run: |
+        # Actively prevents the binary database from bloating the GitHub repository
+        echo "*.db" >> .gitignore
+        git rm --cached ScreenerData/screener_data.db || true
+        git rm --cached screener_data.db || true
 
     - name: Commit and Push Output Artifacts
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
         
-        # Safely add each legacy file individually. If it doesn't exist today, it skips without crashing.
+        # Safely add each legacy file individually. 
         git add qualified_stocks_analysis.csv || true
-        git add screener_data.db || true
         git add previous_qualified_stocks.csv || true
         
         # Safely track our existing fundamental analysis folders 
         git add market_pulse_data/ || true
         
-        # Safely track the NEW master directory (contains the dynamic CSVs, DB, Ticker folders, and Telegram Logs)
+        # Safely track the NEW master directory (contains the dynamic CSVs, JSON transcripts, and Telegram Logs)
         git add ScreenerData/ || true
         
         if git diff --staged --quiet; then
