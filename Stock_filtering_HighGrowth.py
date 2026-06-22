@@ -36,7 +36,9 @@ RUN_CACHE_FILE = os.path.join(SCREENER_DATA_DIR, f"run_cache_{RUN_DATE}.json")
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
-
+# API Credentials
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 # ---------------------------------------------------------
 # DETERMINISTIC TRANSCRIPT ENGINE
 # ---------------------------------------------------------
