@@ -118,7 +118,7 @@ class Config:
         self.max_problem_acknowledgment = 0.8
         self.concentration_risk_threshold = 0.5
         # Sector leaders (can be expanded)
-        self.sector_leaders = { 'NVIDIA', 'NVDA', 'TSMC', 'ASML', 'AAPL', 'APPLE', 'MSFT', 'MICROSOFT', 'GOOGL', 'GOOGLE', 'AMZN', 'AMAZON', 'META', 'TESLA', 'TSLA', 'AMD', 'INTC', 'INTEL', 'QUALCOMM', 'QCOM', 'BROADCOM', 'AVGO' }
+        self.sector_leaders = ['NVIDIA', 'NVDA', 'TSMC', 'ASML', 'AAPL', 'APPLE', 'MSFT', 'MICROSOFT', 'GOOGL', 'GOOGLE', 'AMZN', 'AMAZON', 'META', 'TESLA', 'TSLA', 'AMD', 'INTC', 'INTEL', 'QUALCOMM', 'QCOM', 'BROADCOM', 'AVGO']
         if config_path and os.path.exists(config_path):
             self.load_config(config_path)
 
@@ -591,7 +591,7 @@ class EntityExtractor:
         self.supplier_indicators = {'supplier', 'vendor', 'provider', 'source'}
         self.competitor_indicators = {'competitor', 'rival', 'competing against'}
 
-    def extract_company_entities_and_relationships(self, text: str, sector_leaders: Set[str]) -> List[CompanyRelationship]:
+    def extract_company_entities_and_relationships(self, text: str, sector_leaders: List[str]) -> List[CompanyRelationship]:
         """Extract company entities and relationships"""
         relationships = []
         
