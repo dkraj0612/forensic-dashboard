@@ -32,13 +32,18 @@ CSV_FILE = os.path.join(SCREENER_DATA_DIR, f"qualified_stocks_analysis_{RUN_DATE
 TELEGRAM_LOG_FILE = os.path.join(SCREENER_DATA_DIR, f"telegram_analysis_log_{RUN_DATE}.txt")
 MANIFEST_FILE = os.path.join(SCREENER_DATA_DIR, "manifest.json")
 RUN_CACHE_FILE = os.path.join(SCREENER_DATA_DIR, f"run_cache_{RUN_DATE}.json")
+STATE_FILE = os.path.join(SCREENER_DATA_DIR, "crucible_state.json")
 
 NSE_URL = "https://archives.nseindia.com/content/equities/EQUITY_L.csv"
 SCREENER_BASE_URL = "https://www.screener.in/company/{}/consolidated/"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"}
+
 # API Credentials
 TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
 TELEGRAM_CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
+
+ACTIVE_TAILWIND_SECTORS = set()
+
 # ---------------------------------------------------------
 # DETERMINISTIC TRANSCRIPT ENGINE
 # ---------------------------------------------------------
@@ -211,8 +216,44 @@ def init_db():
             pricing_power_analysis TEXT, secondary_red_flags TEXT
         )
     """)
+    # Schema Failsafe: Gracefully add new Elite Compounder & Crucible metrics to existing DBs
+    new_cols = {
+        "industry": "TEXT",
+        "tax_pct_y1": "REAL",
+        "promoter_pledged": "REAL",
+        "free_float": "REAL"
+    }
+    for col, dtype in new_cols.items():
+        try:
+            cursor.execute(f"ALTER TABLE scraped_metrics ADD COLUMN {col} {dtype}")
+        except sqlite3.OperationalError:
+            pass  # Column already exists
     conn.commit()
     conn.close()
+
+def build_macro_sector_tailwinds():
+    """Reads historical DB records to build bottom-up Sector Momentum matrix."""
+    global ACTIVE_TAILWIND_SECTORS
+    try:
+        conn = sqlite3.connect(DB_FILE)
+        df = pd.read_sql("SELECT industry, sales_y1, sales_y2, opm_y1, opm_y2 FROM scraped_metrics WHERE sales_y2 > 0", conn)
+        conn.close()
+        
+        if not df.empty and 'industry' in df.columns:
+            df['sales_growth'] = ((df['sales_y1'] - df['sales_y2']) / df['sales_y2']) * 100
+            df['margin_exp'] = df['opm_y1'] >= df['opm_y2']
+            
+            grouped = df.groupby('industry').agg(
+                median_growth=('sales_growth', 'median'),
+                margin_hit_rate=('margin_exp', 'mean'),
+                count=('industry', 'count')
+            )
+            # Crucible Rule: >= 15% Median Growth AND >= 60% companies expanding margins
+            valid = grouped[(grouped['median_growth'] >= 15.0) & (grouped['margin_hit_rate'] >= 0.6) & (grouped['count'] >= 3)]
+            ACTIVE_TAILWIND_SECTORS = set(valid.index.tolist())
+            logging.info(f"Macro Engine Detected {len(ACTIVE_TAILWIND_SECTORS)} Active Tailwind Sectors.")
+    except Exception as e:
+        logging.warning(f"Macro Sector Engine skipped/error: {e}")
 
 def fetch_nse_symbols():
     try:
@@ -322,13 +363,11 @@ def filter_volatile_data(csv_rows):
     return filtered
 
 def process_concalls(ticker, html_text, ticker_dir):
-    """Downloads PDF into memory, parses deterministically, saves to .md file. Never saves PDF to disk."""
     concall_dir = os.path.join(ticker_dir, "concalls")
     os.makedirs(concall_dir, exist_ok=True)
     transcript_links = {}
     target_date_boundary = datetime.now() - timedelta(days=5*365)
     
-    # RESTORED CACHE TRACKING: Scans existing MD files for source URLs to prevent re-downloading
     existing_urls = set()
     for md_file in glob.glob(os.path.join(concall_dir, "*.md")):
         try:
@@ -374,22 +413,15 @@ def process_concalls(ticker, html_text, ticker_dir):
 
     for fallback_date, pdf_url in transcript_links.items():
         if pdf_url.startswith("/"): pdf_url = "https://www.screener.in" + pdf_url
-        
-        # Check Cache to bypass network entirely
         if pdf_url in existing_urls:
             success_count += 1; continue
 
         res = safe_request(pdf_url)
-        
-        # Restored Headers & Size checks
         if not res or res.status_code != 200 or 'application/pdf' not in res.headers.get('Content-Type', '').lower(): continue
         if len(res.content) < 5120: continue
         
         try:
-            # Restored BytesIO Wrapper
             pdf_stream = io.BytesIO(res.content)
-            
-            # Restored First-Page Regex Naming Extraction
             with fitz.open(stream=pdf_stream, filetype="pdf") as doc:
                 if len(doc) == 0: continue
                 first_page_text = doc[0].get_text("text")
@@ -398,17 +430,15 @@ def process_concalls(ticker, html_text, ticker_dir):
                 safe_title = "".join([c for c in quarter_str if c.isalnum() or c in ['_', '-']])[:100]
                 md_filename = os.path.join(concall_dir, f"{ticker}_{safe_title}_Transcript.md")
                 
-                # Fallback cache check by exact filename
                 if os.path.exists(md_filename):
                     success_count += 1; continue
 
-            # Extract & Parse in-memory using quant_engine
             prep, qa, p_count = quant_engine.extract_and_structure_transcript(res.content)
             metrics = quant_engine.calculate_metrics(prep + qa)
             signals = quant_engine.calculate_behavioral_signals(metrics)
             
             with open(md_filename, 'w', encoding='utf-8') as f:
-                f.write(f"\n") # Hidden URL Tracker for Cache Bypassing
+                f.write(f"\n") 
                 f.write(f"# {ticker} - {safe_title}\n\n")
                 f.write("## Behavioral Analysis\n" + "\n".join(signals) + "\n\n")
                 f.write("## Preparation\n" + prep + "\n\n")
@@ -417,7 +447,6 @@ def process_concalls(ticker, html_text, ticker_dir):
         except Exception as e: logging.error(f"Error parsing for {ticker}: {e}")
 
     return {"expected": expected_count, "downloaded": success_count}
-
 
 def scrape_stock(symbol):
     url = SCREENER_BASE_URL.format(symbol)
@@ -429,6 +458,11 @@ def scrape_stock(symbol):
             response = safe_request(url)
             if not response or response.status_code != 200: return None
         soup = BeautifulSoup(response.text, 'html.parser')
+        
+        # Scrape Industry directly from HTML Breadcrumbs/Peers
+        industry_tag = soup.find('a', href=lambda href: href and '/explore/industry/' in href)
+        industry = industry_tag.text.strip() if industry_tag else "Unknown"
+
         raw_vacuum_data = vacuum_screener_data(soup)
         
         safe_ticker = "".join([c for c in symbol if c.isalnum() or c in ['_', '-']]).rstrip()
@@ -448,6 +482,8 @@ def scrape_stock(symbol):
         opm_years = get_metric(["profit-loss"], "OPM", 2)
         op_years = get_metric(["profit-loss"], "Operating Profit", 1)
         interest_years = get_metric(["profit-loss"], "Interest", 1)
+        tax_years = get_metric(["profit-loss"], "Tax %", 1) # Added for Tax Flag
+        
         share_cap = get_metric(["balance-sheet"], "Equity Capital", 2)
         borrowings = get_metric(["balance-sheet"], "Borrowings", 2)
         fixed_assets = get_metric(["balance-sheet"], "Fixed Assets", 2)
@@ -462,13 +498,20 @@ def scrape_stock(symbol):
         debtor_days = get_metric(["ratios"], "Debtor Days", 2)
         payable_days = get_metric(["ratios"], "Creditor Days", 2)
 
+        # Microcap Extracted Fields
+        pledged = extract_top_ratio(soup, "Pledged percentage")
+        public_holdings = promoter[-1] + fii[-1] + dii[-1]
+        free_float = (100.0 - public_holdings) if public_holdings > 0 else 100.0
+
         return {
             "ticker": symbol,
+            "industry": industry,
             "sales_y1": sales_years[-1], "sales_y2": sales_years[-2], "sales_y3": sales_years[-3],
             "sales_q1": sales_quarters[-1], "sales_q2": sales_quarters[-2],
             "net_profit_y1": net_profit_years[-1], "net_profit_y2": net_profit_years[-2],
             "opm_y1": opm_years[-1], "opm_y2": opm_years[-2],
             "operating_profit_y1": op_years[-1], "interest_y1": interest_years[-1],
+            "tax_pct_y1": tax_years[-1],
             "share_capital_y1": share_cap[-1], "share_capital_y2": share_cap[-2],
             "borrowings_y1": borrowings[-1], "borrowings_y2": borrowings[-2],
             "fixed_assets_y1": fixed_assets[-1], "fixed_assets_y2": fixed_assets[-2],
@@ -477,6 +520,8 @@ def scrape_stock(symbol):
             "ccc_y1": ccc[-1], "ccc_y2": ccc[-2],
             "promoter_q1": promoter[-1], "promoter_q2": promoter[-2],
             "fii_q1": fii[-1], "fii_q2": fii[-2], "dii_q1": dii[-1], "dii_q2": dii[-2],
+            "promoter_pledged": pledged,
+            "free_float": free_float,
             "market_cap": extract_top_ratio(soup, "Market Cap"),
             "stock_pe": extract_top_ratio(soup, "Stock P/E"),
             "dividend_yield": extract_top_ratio(soup, "Dividend Yield"),
@@ -493,68 +538,136 @@ def scrape_stock(symbol):
         return None
 
 def evaluate_framework(d):
+    """The fully upgraded Crucible Engine evaluation logic."""
     gate_failures = []
+    
+    # 1. PHASE 1: SURVIVAL GATES
     if d["sales_y1"] < 50.0: gate_failures.append(f"Nano-Cap Risk (Sales ₹{d['sales_y1']}Cr < ₹50Cr)")
+    if d["market_cap"] > 100000: gate_failures.append(f"Market Cap exceeds ₹1 Lakh Cr limit") # Upgraded Gate
+    
     if d["interest_y1"] > 0:
         if d["operating_profit_y1"] <= 0: gate_failures.append("Bankruptcy Risk (Negative Operating Profit with Debt)")
         elif (d["operating_profit_y1"] / d["interest_y1"]) < 2.0: gate_failures.append("Bankruptcy Risk (Interest Coverage < 2.0)")
     if d["share_capital_y2"] > 0 and d["share_capital_y1"] > (d["share_capital_y2"] * 1.05): gate_failures.append("The Dilution Trap")
     if d["promoter_q1"] > 0 and d["promoter_q1"] < 40.0: gate_failures.append("No Skin in the Game")
-    if d["market_cap"] > 5000: gate_failures.append("Market Cap exceeds 5000Cr")
     if d["operating_profit_y1"] > 0 and d["other_income_y1"] > d["operating_profit_y1"]: gate_failures.append("Other Income exceeds Core Profit")
+    
     if len(gate_failures) > 0: return "REJECTED", f"Failed Survival Gate: {'; '.join(gate_failures)}"
         
+    # --- PHASE 2: TRACK A (9-Point Early Inflection Matrix) ---
     ta_triggers = 0; ta_details = []
+    
     if d["fixed_assets_y2"] > 0 and d["cwip_y2"] > (d["fixed_assets_y2"] * 0.10):
         if d["cwip_y1"] < (d["cwip_y2"] * 0.50) and d["fixed_assets_y1"] > d["fixed_assets_y2"]: ta_triggers += 1; ta_details.append("Factory Go-Live")
     if d["ccc_y2"] != 0:
         if (d["ccc_y2"] > 0 and d["ccc_y1"] < (d["ccc_y2"] * 0.80)) or (d["ccc_y2"] < 0 and d["ccc_y1"] < (d["ccc_y2"] * 1.20)): ta_triggers += 1; ta_details.append("Working Capital Squeeze")
     if d["opm_y2"] > 0 and d["sales_y2"] > 0:
-        if d["opm_y1"] > (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95): ta_triggers += 1; ta_details.append("Margin Turnaround")
+        if d["opm_y1"] >= (d["opm_y2"] * 1.20) and d["sales_y1"] >= (d["sales_y2"] * 0.95): ta_triggers += 1; ta_details.append("Margin Turnaround")
+    
     sm_q1 = d["promoter_q1"] + d["fii_q1"] + d["dii_q1"]
     sm_q2 = d["promoter_q2"] + d["fii_q2"] + d["dii_q2"]
     if sm_q2 > 0 and sm_q1 > sm_q2: ta_triggers += 1; ta_details.append("Smart Money Creep")
-    if d["days_payable_y2"] > 0 and d["days_payable_y1"] > (d["days_payable_y2"] * 1.15) and d["debtor_days_y1"] < d["debtor_days_y2"]: ta_triggers += 1; ta_details.append("Supplier Squeeze")
-    track_a_pass = ta_triggers >= 2
+    
+    # 5. Pricing Power Flex (Replaced Supplier Squeeze)
+    if d["opm_y1"] >= d["opm_y2"] and d["opm_y2"] > 0:
+        if (d["debtor_days_y1"] < d["debtor_days_y2"]) or (d["days_payable_y2"] > 0 and d["days_payable_y1"] >= (d["days_payable_y2"] * 1.15)):
+            ta_triggers += 1; ta_details.append("Pricing Power Flex")
+            
+    # 6. De-Leveraging Multiplier
+    if d["borrowings_y1"] < d["borrowings_y2"] and d["interest_y1"] < d["interest_y2"] and d["cfo_y1"] > 0: ta_triggers += 1; ta_details.append("De-Leveraging Multiplier")
+    
+    # 7. Sweating the Assets
+    if d["fixed_assets_y1"] > 0 and d["fixed_assets_y2"] > 0:
+        fat_y1 = d["sales_y1"] / d["fixed_assets_y1"]; fat_y2 = d["sales_y2"] / d["fixed_assets_y2"]
+        if fat_y1 > fat_y2 and d["sales_y1"] > d["sales_y2"]: ta_triggers += 1; ta_details.append("Sweating the Assets")
+        
+    # 8. Ultimate Conviction
+    if d["promoter_q1"] > d["promoter_q2"] and d["promoter_q2"] > 0: ta_triggers += 1; ta_details.append("Insider Conviction")
+    
+    # 9. Sector Tailwind Macro Filter
+    if d.get("industry") in ACTIVE_TAILWIND_SECTORS: ta_triggers += 1; ta_details.append("Active Sector Tailwind")
 
+    track_a_pass = ta_triggers >= 3 # Locked 3/9 requirement
+
+    # --- PHASE 3: TRACK B & DYNAMIC VALUATION CRUCIBLE ---
     tb_triggers = 0; tb_details = []
-    if d["roce_y1"] > 20.0 and d["roce_y2"] > 20.0: tb_triggers += 1; tb_details.append("Elite ROCE")
+    
+    if d["roce_y1"] >= 20.0 and d["roce_y2"] >= 20.0: tb_triggers += 1; tb_details.append("Elite ROCE")
     if d["sales_y3"] > 0 and d["sales_y2"] > 0:
         if d["sales_y1"] > (d["sales_y2"] * 1.15) and d["sales_y2"] > (d["sales_y3"] * 1.15): tb_triggers += 1; tb_details.append("Top-Line Growth")
-    sales_growth = (d["sales_y1"] / d["sales_y2"]) if d["sales_y2"] > 0 else 0
-    profit_growth = (d["net_profit_y1"] / d["net_profit_y2"]) if d["net_profit_y2"] > 0 else 0
-    if sales_growth > 0 and d["net_profit_y2"] > 0 and d["net_profit_y1"] > 0:
-        if profit_growth > sales_growth: tb_triggers += 1; tb_details.append("Operating Leverage")
-    if d["net_profit_y1"] > 0 and d["cfo_y1"] > (d["net_profit_y1"] * 0.70): tb_triggers += 1; tb_details.append("Immaculate Cash Conversion")
+        
+    sales_growth_pct = ((d["sales_y1"] - d["sales_y2"]) / d["sales_y2"]) if d["sales_y2"] > 0 else 0.0
+    profit_growth_pct = ((d["net_profit_y1"] - d["net_profit_y2"]) / d["net_profit_y2"]) if d["net_profit_y2"] > 0 else 0.0
+    
+    if sales_growth_pct > 0 and d["net_profit_y2"] > 0 and d["net_profit_y1"] > 0:
+        if profit_growth_pct > sales_growth_pct: tb_triggers += 1; tb_details.append("Operating Leverage")
+    if d["net_profit_y1"] > 0 and d["cfo_y1"] >= (d["net_profit_y1"] * 0.70): tb_triggers += 1; tb_details.append("Immaculate Cash Conversion")
     if d["dividend_yield"] > 0.0: tb_triggers += 1; tb_details.append("Dividend Validation")
 
-    if d["stock_pe"] > 70: track_b_pass = False 
-    else: track_b_pass = tb_triggers >= 3
+    # The Dynamic Crucible (Evaluates P/E relativity)
+    crucible_score = 0
+    if profit_growth_pct > 0:
+        peg_ratio = d["stock_pe"] / (profit_growth_pct * 100.0)
+        if peg_ratio <= 1.5: crucible_score += 1
+    if sales_growth_pct > 0.20 and d["sales_y2"] > d["sales_y3"]: crucible_score += 1
+    if d["cfo_y1"] > 0 and d["net_profit_y1"] > 0 and d["cfo_y1"] >= (d["net_profit_y1"] * 0.70): crucible_score += 1
+    if d["roce_y1"] >= 20.0 and d["roce_y1"] >= d["roce_y2"]: crucible_score += 1
+    if profit_growth_pct > sales_growth_pct and d["opm_y1"] >= d["opm_y2"]: crucible_score += 1
 
-    if track_a_pass and track_b_pass: return "HYPER-COMPOUNDER", f"Both Tracks. Fired: {', '.join(ta_details + tb_details)}"
-    elif track_a_pass: return "EARLY INFLECTION", f"Track A. Fired: {', '.join(ta_details)}"
-    elif track_b_pass: return "PROVEN COMPOUNDER", f"Track B. Fired: {', '.join(tb_details)}"
-    else: return "STAGNANT", "Passed survival checks but failed growth thresholds."
+    # Base track B rule:
+    has_standard_b = tb_triggers >= 3
+    # Valuation check replaces hard PE limit
+    passes_valuation = True if d["stock_pe"] <= 70 else (crucible_score >= 3)
+    track_b_pass = has_standard_b and passes_valuation
+
+    # --- PHASE 4: THE ELITE PRICING POWER SHIELD ---
+    elite_pass = False
+    if d["opm_y1"] >= d["opm_y2"] and d["opm_y2"] > 0:
+        if (d["debtor_days_y1"] < d["debtor_days_y2"]) or (d["days_payable_y2"] > 0 and d["days_payable_y1"] >= (d["days_payable_y2"] * 1.15)):
+            elite_pass = True
+
+    # FINAL CLASSIFICATION HIERARCHY
+    if track_a_pass and track_b_pass:
+        if elite_pass: return "ELITE COMPOUNDER", f"Perfect Setup. Track A ({ta_triggers}), Track B ({tb_triggers}), Pricing Power Confirmed."
+        else: return "HYPER-COMPOUNDER", f"Track A ({ta_triggers}) & Track B ({tb_triggers}). Passed Valuation Crucible ({crucible_score}/5)."
+    elif track_b_pass: return "PROVEN COMPOUNDER", f"Track B Passed. Standard ({tb_triggers}), Crucible ({crucible_score}/5)."
+    elif track_a_pass: return "EARLY INFLECTION", f"Track A ({ta_triggers}/9). Inflection in progress."
+    else: return "STAGNANT", "Passed survival gates but failed growth/inflection thresholds."
 
 def generate_qualitative_analysis(d):
     pe = d["stock_pe"]; mc = d["market_cap"]
-    mc_tag = f"Large/Mid-Cap (₹{mc}Cr)" if mc > 5000 else f"Micro/Small-Cap (₹{mc}Cr)"
-    if pe > 70: d["valuation_context"] = f"{mc_tag} priced for perfection (PE: {pe})."
+    
+    # 4-Tier Market Cap Tagging
+    if mc >= 50000: mc_tag = f"Large-Cap (₹{mc}Cr)"
+    elif mc >= 20000: mc_tag = f"Mid-Cap (₹{mc}Cr)"
+    elif mc >= 5000: mc_tag = f"Small-Cap (₹{mc}Cr)"
+    else: mc_tag = f"Micro-Cap (₹{mc}Cr)"
+
+    if pe > 70: d["valuation_context"] = f"{mc_tag} trading at premium (PE: {pe}), but valuation mathematically justified by growth crucible."
     elif 0 < pe <= 20: d["valuation_context"] = f"{mc_tag} trading at deep value (PE: {pe})."
     else: d["valuation_context"] = f"{mc_tag} trading at fair/standard multiple (PE: {pe})."
+    
     op = d["operating_profit_y1"]; other_inc = d["other_income_y1"]; np = d["net_profit_y1"]
     if other_inc > op and op > 0: d["earnings_quality_analysis"] = "CRITICAL WARNING: Other Income exceeds Core Operating Profit."
     elif other_inc > (np * 0.3): d["earnings_quality_analysis"] = "CAUTION: >30% of Net Profit stems from Other Income."
     elif d["dividend_yield"] > 0: d["earnings_quality_analysis"] = f"Elite Quality: Earnings are clean and validated by a {d['dividend_yield']}% hard-cash dividend."
     else: d["earnings_quality_analysis"] = "Standard Quality: Earnings driven by core operations."
+    
     dp_y1 = d["days_payable_y1"]; dp_y2 = d["days_payable_y2"]; dd_y1 = d["debtor_days_y1"]; dd_y2 = d["debtor_days_y2"]
     if dp_y1 > (dp_y2 * 1.15) and dd_y1 < dd_y2: d["pricing_power_analysis"] = "EXTREME PRICING POWER: Forcing suppliers to wait, forcing clients to pay cash faster."
     elif dd_y1 > (dd_y2 * 1.25): d["pricing_power_analysis"] = "WARNING: Receivables piling up. Free credit to drive sales."
     else: d["pricing_power_analysis"] = "Neutral: Trade working capital is stable."
+    
+    # --- PHASE 5: SECONDARY RED FLAGS ---
     flags = []
-    if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0: flags.append("Debt exceeds hard physical assets")
-    if d["promoter_q1"] < 50.0: flags.append(f"Promoter holding is passable but low ({d['promoter_q1']}%)")
-    if d["cfo_y1"] < 0: flags.append("Passed survival, but currently burning operating cash flow")
+    if d["borrowings_y1"] > d["fixed_assets_y1"] and d["fixed_assets_y1"] > 0: flags.append("Debt exceeds physical assets")
+    if d["promoter_q1"] < 50.0: flags.append(f"Promoter holding low ({d['promoter_q1']}%)")
+    if d["cfo_y1"] < 0: flags.append("Currently burning operating cash flow")
+    
+    if d.get("tax_pct_y1", 20) < 15.0: flags.append("🚨 TAX WARNING: ETR < 15% (Verify fake profits vs CaPex shield)")
+    if d.get("promoter_pledged", 0) > 0: flags.append("⚠️ PLEDGE DANGER: Stock vulnerable to margin-call cascades")
+    if d.get("free_float", 100) < 25.0: flags.append("⚡ EXTREME VOLATILITY: Float starved (< 25%)")
+    
     d["secondary_red_flags"] = " | ".join(flags) if flags else "No glaring secondary red flags detected."
     return d
 
@@ -600,34 +713,41 @@ def process_worker(symbol):
     classification, reason = evaluate_framework(data)
     data["classification"] = classification
     data["qualification_reason"] = reason
-    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
+    if classification in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER", "ELITE COMPOUNDER"]:
         data = generate_qualitative_analysis(data)
     data["status"] = "SUCCESS"
     return data
 
-def send_telegram_alert(new_stocks, df_out):
+def send_telegram_alert(new_stocks, dropped_msg, df_out):
     if not TELEGRAM_BOT_TOKEN or not TELEGRAM_CHAT_ID: return
-    msg = f"📊 *Microcap Screener Weekly Update ({RUN_DATE})*\n\n"
+    msg = f"📊 *Microcap Crucible Weekly Update ({RUN_DATE})*\n\n"
+    
+    if dropped_msg:
+        msg += f"🚨 *STATE TRACKING DIAGNOSTIC: DROPPED TICKERS* 🚨\n{dropped_msg}\n"
+        
     if not new_stocks: msg += "No new candidates passed the framework this week."
     else:
-        msg += f"🚨 *{len(new_stocks)} NEW CANDIDATES DETECTED* 🚨\n\n"
+        msg += f"🔥 *{len(new_stocks)} NEW ELITE/HYPER CANDIDATES DETECTED* 🔥\n\n"
         for stock in new_stocks:
-            msg += f"🔥 *{stock['ticker']}* ({stock['classification']})\n_Reason:_ {stock['qualification_reason']}\n\n"
+            msg += f"🚀 *{stock['ticker']}* ({stock['classification']})\n_Reason:_ {stock['qualification_reason']}\n\n"
+            
     try:
         with open(TELEGRAM_LOG_FILE, "a", encoding="utf-8") as f:
             f.write(f"\n--- Analysis Log Generated at {time.strftime('%Y-%m-%d %H:%M:%S')} ---\n")
             f.write(msg + "\n")
     except Exception: pass
+    
     max_msg_length = 4000
     msg_chunks = [msg[i:i + max_msg_length] for i in range(0, len(msg), max_msg_length)]
     send_msg_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage"
     for chunk in msg_chunks:
         try: requests.post(send_msg_url, data={"chat_id": TELEGRAM_CHAT_ID, "text": chunk, "parse_mode": "Markdown"})
         except Exception as e: logging.error(f"Failed to send Telegram msg: {e}")
+        
     send_doc_url = f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendDocument"
     csv_buffer = io.BytesIO()
     df_out.to_csv(csv_buffer, index=False)
-    csv_buffer.name = f"Qualified_Microcaps_{RUN_DATE}.csv"
+    csv_buffer.name = f"Crucible_Qualified_{RUN_DATE}.csv"
     csv_buffer.seek(0)
     try:
         requests.post(send_doc_url, data={"chat_id": TELEGRAM_CHAT_ID, "caption": f"📄 *Attached: Weekly Qualified List ({RUN_DATE})*", "parse_mode": "Markdown"}, files={"document": csv_buffer})
@@ -635,8 +755,11 @@ def send_telegram_alert(new_stocks, df_out):
 
 def main():
     init_db()
+    build_macro_sector_tailwinds()  # Boot Macro Engine Phase 1
+    
     symbols = fetch_nse_symbols()
     if not symbols: return
+    
     previous_tickers = set()
     existing_csvs = glob.glob(os.path.join(SCREENER_DATA_DIR, "qualified_stocks_analysis_*.csv"))
     existing_csvs = [f for f in existing_csvs if not f.endswith(f"_{RUN_DATE}.csv")]
@@ -646,6 +769,7 @@ def main():
             prev_df = pd.read_csv(latest_csv)
             previous_tickers = set(prev_df['ticker'].tolist())
         except Exception: pass
+        
     processed_today = set()
     if os.path.exists(RUN_CACHE_FILE):
         try:
@@ -654,14 +778,25 @@ def main():
         except Exception: pass
     symbols = [s for s in symbols if s not in processed_today]
     logging.info(f"Loaded {len(processed_today)} already processed symbols from today's cache. {len(symbols)} left to process.")
+    
     concall_manifest = {}
     if os.path.exists(MANIFEST_FILE):
         try:
             with open(MANIFEST_FILE, 'r') as f:
                 concall_manifest = json.load(f)
         except Exception: pass
+        
+    # Crucible Diagnostic Tracking State
+    crucible_state = {}
+    if os.path.exists(STATE_FILE):
+        try:
+            with open(STATE_FILE, "r") as f:
+                crucible_state = json.load(f).get("approved_portfolio", {})
+        except Exception: pass
+
     qualified_records = []
     new_candidates = []
+    dropped_diagnostics = ""
     MAX_CONCURRENT_THREADS = 3
     
     with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_CONCURRENT_THREADS) as executor:
@@ -671,10 +806,12 @@ def main():
             try:
                 data = future.result()
                 if data and data.get("status") == "TIMEOUT":
-                    logging.warning(f"[{symbol}] Skipped due to 5.45-hour time limit.")
+                    logging.warning(f"[{symbol}] Skipped due to time limit.")
                     continue 
+                    
                 processed_today.add(symbol)
                 with open(RUN_CACHE_FILE, 'w') as f: json.dump(list(processed_today), f)
+                
                 if data:
                     save_to_db(data)
                     save_ticker_csv(data)
@@ -682,23 +819,42 @@ def main():
                         stats = data["concall_stats"]
                         concall_manifest[symbol] = stats
                         concall_manifest[symbol]["status"] = "COMPLETED" if stats["downloaded"] >= stats["expected"] else "FAILED_RETRY_NEXT_RUN"
+                    
                     classif = data["classification"]
-                    if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER"]:
+                    
+                    # Process State Diagnostic (Identifying Drops)
+                    if symbol in crucible_state:
+                        if classif in ["STAGNANT", "REJECTED"]:
+                            dropped_diagnostics += f"🔻 *{symbol}* dropped from {crucible_state[symbol]}.\n_Reason:_ {data['qualification_reason']}\n\n"
+                            del crucible_state[symbol]
+                        else:
+                            crucible_state[symbol] = classif
+                    elif classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER", "ELITE COMPOUNDER"]:
+                        crucible_state[symbol] = classif
+                        
+                    # Build Output
+                    if classif in ["EARLY INFLECTION", "PROVEN COMPOUNDER", "HYPER-COMPOUNDER", "ELITE COMPOUNDER"]:
                         export_data = {k: v for k, v in data.items() if k not in ["raw_vacuum_data", "concall_stats", "status"]}
                         qualified_records.append(export_data)
                         if symbol not in previous_tickers: new_candidates.append(export_data)
             except Exception as exc: logging.warning(f"{symbol} error: {exc}")
             if idx % 100 == 0 and idx > 0: logging.info(f"Progress: Processed {idx}/{len(symbols)} pending tickers...")
+            
+    # Save State diagnostics
     try:
+        with open(STATE_FILE, "w", encoding='utf-8') as f:
+            json.dump({"last_run_date": RUN_DATE, "approved_portfolio": crucible_state}, f, indent=4)
         with open(MANIFEST_FILE, 'w', encoding='utf-8') as f: json.dump(concall_manifest, f, indent=4)
-    except Exception as e: logging.error(f"Failed to save manifest file: {e}")
-    if qualified_records:
-        df_out = pd.DataFrame(qualified_records)
-        front_cols = ['ticker', 'classification', 'market_cap', 'valuation_context', 'earnings_quality_analysis', 'pricing_power_analysis', 'secondary_red_flags', 'qualification_reason']
-        back_cols = [c for c in df_out.columns if c not in front_cols]
-        df_out = df_out[front_cols + back_cols]
-        df_out.to_csv(CSV_FILE, index=False)
-        send_telegram_alert(new_candidates, df_out)
+    except Exception as e: logging.error(f"Failed to save state files: {e}")
+    
+    if qualified_records or dropped_diagnostics:
+        df_out = pd.DataFrame(qualified_records) if qualified_records else pd.DataFrame()
+        if not df_out.empty:
+            front_cols = ['ticker', 'classification', 'market_cap', 'valuation_context', 'earnings_quality_analysis', 'pricing_power_analysis', 'secondary_red_flags', 'qualification_reason']
+            back_cols = [c for c in df_out.columns if c not in front_cols]
+            df_out = df_out[front_cols + back_cols]
+            df_out.to_csv(CSV_FILE, index=False)
+        send_telegram_alert(new_candidates, dropped_diagnostics, df_out)
 
 if __name__ == "__main__":
     main()
