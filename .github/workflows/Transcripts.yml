@@ -32,7 +32,7 @@ jobs:
           # Make the script executable
           chmod +x Transcripts_analyzer.py
           # Run it, pointing it at the current repo directory
-          python transcript_analyzer.py --repo-root . --output-dir analysis_output
+          python Transcripts_analyzer.py --repo-root . --output-dir analysis_output
 
       - name: Upload Results (Artifacts)
         uses: actions/upload-artifact@v4
