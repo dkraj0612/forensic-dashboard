@@ -322,12 +322,21 @@ def filter_volatile_data(csv_rows):
     return filtered
 
 def process_concalls(ticker, html_text, ticker_dir):
+    """Downloads PDF into memory, parses deterministically, saves to .md file. Never saves PDF to disk."""
     concall_dir = os.path.join(ticker_dir, "concalls")
     os.makedirs(concall_dir, exist_ok=True)
     transcript_links = {}
     target_date_boundary = datetime.now() - timedelta(days=5*365)
     
-    existing_files = set([os.path.basename(f) for f in glob.glob(os.path.join(concall_dir, "*.md"))])
+    # RESTORED CACHE TRACKING: Scans existing MD files for source URLs to prevent re-downloading
+    existing_urls = set()
+    for md_file in glob.glob(os.path.join(concall_dir, "*.md")):
+        try:
+            with open(md_file, 'r', encoding='utf-8') as f:
+                first_line = f.readline()
+                if "source_url:" in first_line:
+                    existing_urls.add(first_line.split("source_url:")[1].strip().strip("-->").strip())
+        except Exception: pass
 
     json_match = re.search(r'<script id="__NEXT_DATA__" type="application/json">(.*?)</script>', html_text, re.DOTALL)
     if json_match:
@@ -347,27 +356,59 @@ def process_concalls(ticker, html_text, ticker_dir):
             search_json(data)
         except Exception: pass
 
+    if not transcript_links:
+        doc_match = re.search(r'id="documents"(.*?)</section>', html_text, re.IGNORECASE | re.DOTALL)
+        if doc_match:
+            doc_html = doc_match.group(1)
+            blocks = re.split(r'<li|<div class="flex', doc_html)
+            for idx, block in enumerate(blocks):
+                if 'transcript' in block.lower():
+                    urls = re.findall(r'href="([^"]+)"', block)
+                    for link in urls:
+                        if '.pdf' in link.lower() or 'concall' in link.lower() or 'transcript' in link.lower():
+                            transcript_links[f"Fallback_Transcript_{idx}"] = link
+                            break
+
     expected_count = len(transcript_links)
     success_count = 0
 
     for fallback_date, pdf_url in transcript_links.items():
         if pdf_url.startswith("/"): pdf_url = "https://www.screener.in" + pdf_url
-        quarter_match = re.search(r'(Q[1-4]\s*FY\d{2,4})', fallback_date, re.IGNORECASE)
-        quarter_str = quarter_match.group(1).replace(" ", "_").upper() if quarter_match else fallback_date.replace("-", "_")
-        safe_title = "".join([c for c in quarter_str if c.isalnum() or c in ['_', '-']])[:100]
-        md_filename = os.path.join(concall_dir, f"{ticker}_{safe_title}_Transcript.md")
         
-        if os.path.basename(md_filename) in existing_files:
+        # Check Cache to bypass network entirely
+        if pdf_url in existing_urls:
             success_count += 1; continue
 
         res = safe_request(pdf_url)
+        
+        # Restored Headers & Size checks
         if not res or res.status_code != 200 or 'application/pdf' not in res.headers.get('Content-Type', '').lower(): continue
+        if len(res.content) < 5120: continue
         
         try:
+            # Restored BytesIO Wrapper
+            pdf_stream = io.BytesIO(res.content)
+            
+            # Restored First-Page Regex Naming Extraction
+            with fitz.open(stream=pdf_stream, filetype="pdf") as doc:
+                if len(doc) == 0: continue
+                first_page_text = doc[0].get_text("text")
+                quarter_match = re.search(r'(Q[1-4]\s*FY\d{2,4})', first_page_text, re.IGNORECASE)
+                quarter_str = quarter_match.group(1).replace(" ", "_").upper() if quarter_match else fallback_date.replace("-", "_")
+                safe_title = "".join([c for c in quarter_str if c.isalnum() or c in ['_', '-']])[:100]
+                md_filename = os.path.join(concall_dir, f"{ticker}_{safe_title}_Transcript.md")
+                
+                # Fallback cache check by exact filename
+                if os.path.exists(md_filename):
+                    success_count += 1; continue
+
+            # Extract & Parse in-memory using quant_engine
             prep, qa, p_count = quant_engine.extract_and_structure_transcript(res.content)
             metrics = quant_engine.calculate_metrics(prep + qa)
             signals = quant_engine.calculate_behavioral_signals(metrics)
+            
             with open(md_filename, 'w', encoding='utf-8') as f:
+                f.write(f"\n") # Hidden URL Tracker for Cache Bypassing
                 f.write(f"# {ticker} - {safe_title}\n\n")
                 f.write("## Behavioral Analysis\n" + "\n".join(signals) + "\n\n")
                 f.write("## Preparation\n" + prep + "\n\n")
@@ -376,6 +417,7 @@ def process_concalls(ticker, html_text, ticker_dir):
         except Exception as e: logging.error(f"Error parsing for {ticker}: {e}")
 
     return {"expected": expected_count, "downloaded": success_count}
+
 
 def scrape_stock(symbol):
     url = SCREENER_BASE_URL.format(symbol)
