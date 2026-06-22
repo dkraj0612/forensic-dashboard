@@ -30,7 +30,7 @@ jobs:
       - name: Run Transcript Analyzer
         run: |
           # Make the script executable
-          chmod +x transcript_analyzer.py
+          chmod +x Transcripts_analyzer.py
           # Run it, pointing it at the current repo directory
           python transcript_analyzer.py --repo-root . --output-dir analysis_output
 
