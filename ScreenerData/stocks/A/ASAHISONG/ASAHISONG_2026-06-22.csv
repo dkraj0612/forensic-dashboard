@@ -3,10 +3,10 @@
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-305,259,463 / 179,16.3
+309,262,463 / 179,16.4
 
 Book Value,Dividend Yield,ROCE,ROE
-230,0.58,8.49,7.13
+230,0.56,8.49,7.13
 
 Face Value
 10.0
@@ -49,7 +49,7 @@ Borrowings +,62,22,50,87,180,197,167,143
 Other Liabilities +,54,55,112,138,147,138,162,188
 Total Liabilities,309,278,389,468,545,570,584,603
 Fixed Assets +,150,129,213,235,275,306,305,287
-CWIP,1,11,9,0,25,11,0,-0
+CWIP,1,11,9,0,25,11,0,0
 Investments,14,13,2,1,1,1,0,2
 Other Assets +,143,125,166,231,244,253,278,314
 Total Assets,309,278,389,468,545,570,584,603
@@ -59,7 +59,7 @@ Total Assets,309,278,389,468,545,570,584,603
 Cash from Operating Activity +,27,57,8,-0,30,9,58,43
 Cash from Investing Activity +,-3,-16,-60,-28,-77,-13,-5,-7
 Cash from Financing Activity +,-24,-39,50,28,47,4,-49,-38
-Net Cash Flow,-0,2,-2,-0,0,-0,3,-2
+Net Cash Flow,0,2,-2,-0,0,-0,3,-2
 Free Cash Flow,23,45,-61,-27,1,2,53,38
 CFO/OP,85%,174%,35%,28%,637%,43%,118%,105%
 

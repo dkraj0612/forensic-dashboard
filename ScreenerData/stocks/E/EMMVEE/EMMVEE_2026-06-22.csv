@@ -3,7 +3,7 @@
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"22,993",332,354 / 172,21.3
+"22,612",327,354 / 172,20.9
 
 Book Value,Dividend Yield,ROCE,ROE
 53.4,0.00,44.8,51.1
@@ -39,7 +39,7 @@ Profit before tax,9,1,25,12,48,483,"1,338"
 Tax %,-44%,"-1,064%",49%,23%,39%,24%,19%
 Net Profit +,14,9,13,9,29,369,"1,082"
 EPS in Rs,12.61,8.63,12.62,8.28,26.78,68.39,15.62
-Dividend Payout %,-0%,-0%,-0%,-0%,-0%,-0%,6%
+Dividend Payout %,0%,0%,0%,0%,0%,0%,6%
 
 --- BALANCE SHEET ---
 ,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
@@ -50,7 +50,7 @@ Other Liabilities +,134,93,178,173,558,"1,312","1,717"
 Total Liabilities,873,874,842,838,"2,173","3,914","5,772"
 Fixed Assets +,593,562,493,323,291,"2,046","2,634"
 CWIP,1,6,14,93,646,13,10
-Investments,1,1,1,-0,-0,257,57
+Investments,1,1,1,0,0,257,57
 Other Assets +,279,305,334,421,"1,237","1,598","3,072"
 Total Assets,873,874,842,838,"2,173","3,914","5,772"
 

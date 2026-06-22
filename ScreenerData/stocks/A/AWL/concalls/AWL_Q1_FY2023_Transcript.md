@@ -1,0 +1,190 @@
+
+# AWL - Q1_FY2023
+
+## Behavioral Analysis
+✅ **[STABILITY]** No severe behavioral manipulation thresholds breached.
+
+## Preparation
+### 👤 MR. ANIKET SETHI – ICICI SECURITIES LIMITED
+l
+
+### 👤 MANAGEMENT
+MR. ANGSHU MALLICK - CHIEF EXECUTIVE OFFICER &
+
+### 👤 Moderator
+lines will be in the listen only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the conference call, please signal an operator by pressing ‘*’ then ‘0’ on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Mr. Aniket Sethi. Thank you and over to you Sir!
+
+### 👤 Aniket Sethi
+Thanks Aman. Good evening everyone. Thank you so much for joining. As ISEC, it is our absolute pleasure to host the senior management of Adani Wilmar for the Q1 FY2023 earnings call. We have with us Mr. Angshu Mallick, Chief Executive Officer and Managing Director and Mr. Shrikant Kanhere, Chief Financial Officer. We will start with the opening
+
+## Q&A
+### 👤 Aniket Sethi
+comments post which we can open the floor for questions. Please note the opening comments will comprise the presentation which you can also follow on the webcast link. With that I will hand it over to Mr. Shrikant. Thank you and over to you Sir!
+
+### 👤 Shrikant Kanhere
+Thank you Aniket and on behalf of Adani Wilmar I welcome all the participants to this quarterly earning call. I am taking this privilege to present this earning presentation on behalf of Mr. Mallick. Mr. Mallick has joined with me on the call. We will take you through the important developments with business during the quarter and then of course after the presentation ends. We can open the lines for question and answer. For the macro context, the quarter was full of events starting with Indonesia’s ban on import of palm oil, only to open it on May 23, 2022 and now infact they are incentivizing the export of palm oil out of the country .Government of India announced tariff rate quota for all the edible oil importers in the country, wherein Adani Wilmar got 10% of the quota which is 200,000 tons of soya bean oil and 200,000 tons of sunflower oil, which we can import during the entire FY2023. While this is all happening, the quarter also saw huge amount of volatility across edible oil prices, prices going up to the levels of $2000 a ton, finally crashing down in the month of July, starting June to settle at less than $1000 a ton as far as the palm is concerned. This is indeed an eventful quarter. As far as staples are concerned, we saw multiple headwinds - we saw Ukraine war effect in Q4 FY2022-23 continuing till today and this has certainly led to alot of geopolitical equations. Consumption, in particular the rural areas got affected due to the high prices and inflation. I think most of the FMCG companies have seen that the rural demand was not that great. On wheat exports, the Government of India’s estimates on the production of wheat turned out slightly lower from their earlier expectation and therefore Government of India
+
+### 👤 Page 3 of 14
+had to ban the wheat export and that has resulted into wheat prices going up, all time high today as we speak it is Rs.24,000 per ton or Rs.24 per kilogram. As far as the macro context is concerned, the consumption trends in edible oil as per the Nielsen, the ROCP - which is “refined oil consumer pack” data, which the Nielsen tracks has shown that the category itself has degrown by little over 5.5% from Q1 of FY2022 to Q1 of FY2023 and that is also because of high prices and also the uptick of rural demand which is not seen in most of the food FMCG segments. There are certain signs of relief which we saw in Q1FY2022-23, tariff rate quota announced by the government has somehow helped control the prices of edible oil which were at an all time high sometime in month of April and May. Normal monsoon is something which is a good news for India and that has also eased the inflationary pressure to some extent and IMRB second stage forecast also suggests that finally it is going to be a normal monsoon for India and the big relief which came to most of the food FMCG and branded players in the market is the recent notification and clarification issued by the GST where, now GST of 5% will be charged on all the prepackaged and labeled products which was earlier not there, earlier only the branded or of listed branded products used to attract 5% GST. Most of the private label or prepackaged labeled product used to skip the GST and therefore it was a disadvantage for branded players. Now this move by the government actually has given a huge amount of benefit to the companies like it has put a single level playing field in all the branded segment. As far as the business updates are concerned, we acquired Kohinoor in the month of May. Kohinoor one of the India’s strongest basmati brands has got a very huge recall in terms of it is a very old brand since 1976. We have launched the brand in the month of June with HORECA segment. The consumer pack, consumer brand Kohinoor would be launched sometime by end of July and early August. This will give us a very good boost to our rice business in particular basmati rice business which is growing consistently year after year at rate of more than 35%, 40%. As far as the market share is concerned, we kept the story of consolidation of market share year after year. Our market share on edible oil standalone AWL grew from 18.1% closed to 18.7% now. As far as the consolidated market share along with our joint venture partner KTV its grew from 19.0% to 19.6%, so we are slowly consolidating the market share and is also somehow reflecting in our volume growth and revenue growth. Wheat flour, we continued our market consolidation, 3.8% going up to 4.9% we are number two players now in the country number two, but we are slowly progressing to a level of achieving double digit market share. Basmati rice, we had consolidated share from 5.7% to 8.4% and
+
+### 👤 Page 4 of 14
+now we should start looking our market share combined along with Kohinoor which has got a market share currently at 2.2% so therefore we are close to 10.6% market share as far as the rice is concerned now and we can say that we are strong number three player in the country now. As far as the distribution is concerned, we understand this fact very well that company like us who have got pan India operation spread across all the states, distribution is key for our success and our all efforts besides building a brand, we are also paying huge amount of resource on building distribution network. The total distributor now stands at 7874 which includes the sub-distributor also. The direct distributor in fact 5732, so overall we have been able to showcase the growth in the distribution across India. The towns under coverage has increased by 34% from 4994 to 6685 towns now, so total coverage stands at 6685, new towns added close to 1700 towns in this quarter. Fortune mart which is one of the initiatives which we have taken to sell our product through franchise old stores is growing good, now we are covering 25 cities, 34 franchise outlets and the sales growth is 1.3x when we compared to subsequently last quarter of Q4 FY2022. 75% of average conversion and 28% increase in average footfalls, so these are all baby steps which we are taking, but we feel that this will go long way, this is a new initiative or very unique initiative for any food FMCG to have its own franchise stores. It is not only acts as a brand building site, but also helps us as a fulfillment center to our D2C fortune online app. Similar story for our fortune online app, now we are presenting 25 cities more or less same cities where our fortune store is located, 3.6 lakh plus apps already downloaded, 11300 orders during the quarter and average order value of 1000 plus. These are some encouraging numbers though it is still a smaller initiative for us, but we have plans to grow it a bit. The growth in average order value from 859 to 1000 and growth in orders from 10000 to little over 11000 is something very encouraging. Update on the commissioning of some of the capacities we did in this quarter. Rice bran refinery commissioned in Mantralayam of 100 metric tons per day, this will certainly add volumes to our rice bran portfolio where we are number one player in the country today. We have also added continuous hydrogenation plant of 300 tons per day which is Oleochemical, our industry essential business at Mundra and this has also resulted into the better volumes we will label to clock as far as the Oleo business is concerned. On the IPO proceeds a bit, we are going as per the utilization schedule which we have submitted at the time of IPO, prepayment of loans we have already paid off all the long term loans which we are standing on the balance sheet on the date of listing. From a
+
+### 👤 Page 5 of 14
+strategy acquisition point of view, we have done four acquisition of Kohinoor, the rest two follow has been move forward in Q2 and Q3. On the capex of Rs.1900 Crores which is allocated from IPO right now Rs.23 Crores has been spent. Most of the projects have already been initiated and most of projects have got implementation time of 24 to 30 months and as we progress further from here, the utilization of IPO proceeds still go up. Now, I will talk about the financial performance before at the end of the day, whatever you do in terms of volumes, whatever you do in terms of revenues, I finally has to react the reflected right in terms of financial performance of the company. Consolidated revenue for the quarter up by 30% from 11369 to 14784, EBITDA up by 14% which is in line with volume growth, PBT and PAT up by 16% and 10% in spite of a very hectic volatile uncertain Q1, we have been able to showcase the growth trajectory for Adani Wilmar, thanks to our brand and thanks to the distribution and integrated network that company has been able to build in last 20 years. On the segment performance, overall revenue growth of 30% and 15%, edible oil volumes grew by 6% and this is despite of the fact that as per the meals and the branded, ROPP market degrew by little close to 6% we have been able to showcase a growth of overall 6% in fact our branded segment grew by 8%. On food and FMCG, a very, very strong growth, strong numbers coming up whether it is a wheat, whether it is a rice, pulses, besan, overall portfolio grew by 53% on volume and now the food basket is Rs.860 Crores little lover $100 million for the quarter and we suggest that we are on the track of what we have planned for ourselves in the next three years. Industry essential good growth of 22% and this is also supported by the new capacity of Oleo which we added in the Q1 at Mundra. Overall, the things are falling in place, the way we have planned for. On the performance trends, 8% overall volume CAGR for last four quarters, 40% overall revenue CAGR, 31% contribution from the rural sales and our rural sales earlier used to be in the range of 35% which is now at 31% and that is also one of the fact that which we are talking that rural demand uptick is not seen in this quarter and we are quite hopeful that with the stocking of edible oil prices and softening of otherwise food prices and a good monsoon should help us and should see a good uptick not only from urban areas, but also from the rural areas. 111% volume growth in new products, new products are basically, all the new products which we have launched in terms of Fortune Poha, khichdi, chunkies, total balance oil and also soap. Soap is now good Rs.100 Crores brand as far as the Adani Wilmar is concerned. We have seen a very encouraging number coming in from the e-commerce volumes up by 23% in the modern trade where we are present almost in all the platforms, the volumes have
+
+### 👤 Page 6 of 14
+grown by 21%. On the short term of priorities of course we will continue to work towards distribution on the GTM strategy to the expansion of rural distribution because we believe that the next level of demand part is going to come only from the rural India. Inorganic growth opportunities, we will continue to look at and our whole focus will be on the core business where we want to improve the portion of food business in the overall e-market and we will continue to launch new products and health and wellness category. On the long term of course the package food will remain focus for the company. Integrated business model which is also part of our IPO capex where we would be building more and more integrated facilities across India and build export network for our branded foods particularly for the rice business and a big push that we want to give a going forward is on the institutional and HORECA business which has got a huge potential in India. This is with from our side as far as the presentation is concerned. Now I request operator to open the line for management questions. CEO and MD, Mr. Angshu Mallick is here to answer the questions. Thank you.
+
+### 👤 Moderator
+Thank you very much. We will now begin the question and answer session. The first question is from the line of Aniket Sethi. Please go ahead.
+
+### 👤 Aniket Sethi
+On the Kohinoor brand, can you share some more details likely the current scale margin so far given the bran particularly has not grown a lot in the last two years and secondly, how is the distribution stand out for that brand and how do you plan to stay back?
+
+### 👤 Angshu Mallick
+The McCormick has actually slowed down the operation since last five, six months. We took over the brand and did agreement in May, after May we have started work on the normal marketing and aftermarket and packing and all that so by June end, we could start supplies, there HORECA brand is very strong which is Trophy Royale if you aware of and it is one of the most premium basmati rice used by restaurants and on A class hotels, so that we have started and June and July we could add some more products under Trophy Royale then we have started the Charminar brand which is the major brand in the consumer, but the original Kohinoor packs have started going to the market now and in next another five, seven days I feel most of the around major 80% of the SKUs will be ready. They had around 140 odd SKUs which more or less will be through, they had distributors so we had connected their distributors and all of the distributors have agreed to work with us and we are putting team is now ready and team has started working, so by and large Kohinoor what it was two years back, we will take into time to come, but slowly they had reduced their volumes so market shares is going down. I am confident that by Diwali, you will see Kohinoor brand getting revived and visible across modern trade, across e-commerce and across general trade.
+
+### 👤 Aniket Sethi
+Thank you Sir. That is very helpful. Just a followup on that how is the current distribution of it and are the geographies different from what you had for the Fortune Food portfolio?
+
+### 👤 Angshu Mallick
+Fortune team is separate and distributors are separate and Kohinoor distributors are separate that is one. Second, Kohinoor distribution is much more stronger in south and west which was their original forte so there we have ensured that we continue with the same focus not they were weak, so I am planning some other support with Fortune to grow in the north and east where they have been weak, so we will use their strength wherever they were strong, we will go ahead with the distribution, wherever they were weak we will add to Fortune distribution and go ahead, so we will have to go market by market and do by that is one. As far as pricing is concerned, you have asked for how it is, it is always a premium brand and the margins are higher than Fortune basmati rice.
+
+### 👤 Aniket Sethi
+Thank you for this. The second question, Mr. Shrikant, you mentioned that HORECA will be a big focus going forward, so what would be the contribution currently, what are your plans here and the change to this particular channel, is this more of a branded or for an unbranded salience which you are planning?
+
+### 👤 Shrikant Kanhere
+Out of home consumption is what impacted during COVID, but now it is opening up, honestly speaking for food business, out of home consumption is going to be almost equal to our in-home consumption. Other countries given out of home consumption is higher, but I feel going forward India will consume more out of home and we have basket of staples say from frying oil to margarine to specialty fats to edible oil which is regular cooking oil to non-basmati rice, basmati rice, wheat flour, maida, sooji, rava, besan, dal, sugar and all the other products associated so that means we have the basket with us with basket, we are going ahead and going now. We have started working on the model which is HoReCa model and this we will have put in an app, B2B app, it will have a team which will go, it will be backed by Seth and everything is branded because the GST law which has now come, it is a great boon to people like us. Earlier, when I used to go with the Fortune Basmati Rice or Kohinoor Basmati Rice and other man will go with any other brand, he will get and benefit of 5% GST on a Rs.100 rice, 5% is Rs.5 a kilo which is quite big for hotel, so now that is over, we are all at task. Second, our wheat flour, people want Fortune wheat flour, they do not want any other brand, so they want Fortune maida, so already I have now finding lot of changes in the order that we are sale, now going forward Fortune as a brand will go to these hotels that will give them lot of comfort and also quality assurance from our side.
+
+### 👤 Aniket Sethi
+Got it Sir. That is really helpful. Thank you so much. Thanks and wish you all the best.
+
+### 👤 Moderator
+Thank you. We have the next question is from the line of Latika Chopra from JP Morgan. Please go ahead.
+
+### 👤 Latika Chopra
+Thank you for the opportunity. Mr. Mallick and Mr. Kanhere, I had some questions on the edible oil segment, really volume growth has been ahead of the market and the market share performance has been quite robust, but I wanted to understand few things. Firstly on realizations, it seems the realization on a sequential basis improved about 17%, we of course heard in media how different edible oil companies have lower the price rate, so I wanted to understand in the last couple of weeks, what kind of realization decline should we build in what is the Q1 average?
+
+### 👤 Shrikant Kanhere
+The price reduction whatever has happened in the last 90 days, we have also gradually passed on to the consumers and that we have been announcing it in the press. Government has also been asking all the players to pass on all the benefits to the consumers, which everybody has done, we have also done. Now, when you look at our prices, when it goes up or when it goes down, we calculate basis at what price we are buying and then our margins and then we do the pricing, so it is a continuous affair that we do it, but let me tell you honestly, as the commodity prices comes down, the realization of the brand improves and ability of the brand to command premium improves as the commodity prices give some falling so that is an advantage to us that is one. Second, these prices what has come down, consumers are now feeling little better in the sense they were buying at Rs.210 mustard oil, today they are buying at Rs.145, Rs.150, so definitely that is quite a cooling off and they are now comfortable and we are seeing that retailers are asking for stocks and doing it.
+
+### 👤 Latika Chopra
+Thanks for that and that kind of what I was trying to understand my second question which was the kind of decline or reduction that you will see realization, do you anticipate that volume growth will make up for it, it is not does the volume growth is going to jump back meaningfully, is not it, that the category level volumes are down 6% while the prices make up by 40% plus, so are we looking at lower overall revenues for the segment going forward and the second part of the question was also on margin, how should one think about that, this quarter margins were little soft, so should we stop thinking in terms of EBITDA per ton, any sense on where do we find that number settling down?
+
+### 👤 Shrikant Kanhere
+As far as the turnover is concerned, we always concentrate on volume. If you asked me what had we done in the quarter, our volume of 6% growth is actually our growth, value growth is not actually in our hand, because if the market goes up we have to pass on, if it comes down we have to reduce, we normally do not look at the rupee value turnover, but we look at the volume turnover, because that volume turnover we reduce my fixed cost, it will reduce my refining cost, it will reduce my freight, it will reduce my warehousing cost,
+
+### 👤 Page 9 of 14
+so volume has great impact on all the cost factors. Second, the more I buy I can get quantity discounts, so those are benefit shipping, I get freight discount if I book bigger vessels, so if the sales are high, obviously I can book a larger vessel instead of 20,000 tonner I can book a 30,000 tonner, I get great discount of $4, $5 so all those things adds to our bottomline. Second, when we come to margin, let me tell you since we have a portfolio of brands, the margin is not same with all the oil. This year, if I tell you why have been done better than others possibly we are number one in mustard oil and you all know that this year our mustard crop has been very good. In fact it has saved the country because when there was crisis in Ukraine that is the time when mustard crop was harvested and the mustard crop was bumper. We are the number one player in mustard oil. Obviously we got all the benefit so anybody shifting from sunflower their either shifted to mustard or they have shifted to soya bean oil where we are number one in both the categories so we got that advantage to us so I think the margins one has to look from the oil portfolio and when we look at total it is very good. It is like groundnut oil. This year we have done well in groundnut oil. The margins in groundnut oil is always high so it helps overall basket of margins so somewhere it is there and somewhere it is not but since you have a portfolio you can manage it better.
+
+### 👤 Latika Chopra
+So that is good to know so I can at any level when you are looking at the profitability of this segment per se is it fair to assume that you are looking at certain EBIT for metric tonne kind of a profitability threshold which you would want to manage given the kind of volatility we are witnessing in the edible oil prices so you had about Rs.3000 per metric tonnes of EBIT in this quarter? That is more or less the kind of range you would like to work with and plus of course there will be scale benefit, etc., which could come in?
+
+### 👤 Shrikant Kanhere
+Latika let me answer your question more from a data point of view see edible oil as we kept saying right from the beginning that we should be looking at the profitability of quarter-on- quarter basis rather than looking at a EBITDA or a bottomline as a percentage of revenue because revenues will certainly get impacted with inflation. Our edible oil business if you look at year-on-year number for Q1 2022 versus Q1 2023 the EBITDA per tonne is more or less flattish. It has little bit gown down by some Rs.200 a tonne and that is also because not only the edible oil prices but I think the inflation was all around whether it is chemicals, whether it is freight, whether it is power and fuel, whether it is labor so while we have been able to pass on everything but some bit of it we could not pass it on and therefore EBITDA per tonne on year-on-year basis has taken a hit of Rs.200 a tonne. Having said that we expect that we should be able to maintain the EBITDA per tonne what we have been able to showcase for last couple of years to go through since now prices have soften the demand uptake will be there and once you do more volume as Mr. Malik said your fixed cost per tonne certainly will go down and therefore margins should improve per tonne.
+
+### 👤 Latika Chopra
+Very clear Sir. Thank you for that and the only last question I have any flavor on industry essential breakup across key segments how do they behave? What drove the strong volumes? Is it Oleo lead or castor oil lead or others and how should we think about again Q1 but think about probably the segment on annualized basis because this seems to be fairly volatile on a quarterly basis given the kind of mix that you operate with? Thank you.
+
+### 👤 Shrikant Kanhere
+Industry essentials certainly will be driven by the two business segments one is caster and of course the Oleo and as we said on the presentation that Oleo we just added one capacity in Mundra and therefore that should hive our business so as far as the industry is concerned year-on-year the volumes grew by 20% and on a sequential quarter which is Q4 of 2022 versus Q1 of 2023 we grew by 30% so it is a phenomenal growth and our expectation is that the double digit growth will certainly continue which we have been able to showcase earlier also. As far as the margin profile is concerned we have been able to deliver an EBITDA margins of close to 9% in FY2023 which is also to some extent because of some inventory gain which we actually had in March 2022 which got passed on to this quarter but overall over on 5% to 6% of EBITDA is something we should be able to maintain as far as this segment is concerned.
+
+### 👤 Latika Chopra
+Alright and a small followup if it is excluding this incremental new capacity that came on board what would have been the like to like revenue growth for industry essential and the second was that if this full now reflected in Q1 or there is an incremental benefit that we will see sequentially following through completely in Q2 on this new capacity?
+
+### 👤 Shrikant Kanhere
+I will first answer your question. Second it is not yet fully reflected in Q1 because when you commission a facility you do not run that facility right from the day one on a full capacity depending upon the kind of demand which market is generating. You slowly pick up the capacity utilization so it will come up as we go forward in the rest of the year and so therefore if we exclude that capacity still we would have grown double digit. Right now it is looking 30% Q-o-Q and in fact Oleo grew by 38% by the way. When you look at separately within the industry essential Oleo actually grew by 38%. If we exclude this new capacity expanded still we would have done double digit somewhere between 15% and 20%.
+
+### 👤 Latika Chopra
+Thank you so much Sir.
+
+### 👤 Moderator
+Thank you. We have the next question from the line of Karan Bhuwania from ICICI Securities Limited. Please go ahead.
+
+### 👤 Karan Bhuwania
+Thank you for the opportunity Sir. I just wanted to check on the trading potential given that the prices of edible oil were increasing which lead to down trading? Are you seeing any up trading in this time that the edible oil prices are corrected?
+
+### 👤 Shrikant Kanhere
+We have seen both things happening. One down trading in terms of brand as well as down trading in terms of PAT size purchase so we saw 500ml and 1 liter packs selling more in rural. I am confident that come October the 5 liter jar which sells quite big and 15 liter tins sells big in rural will pick that is one. Two I am sure with this price reduction and rationalization we consumers would come back to brands like Fortune where this salience is very strong. This is mainly going to happen in a smaller tier two, three and rural. Metro still continues to be very strong for us but for smaller towns however we see some amount of better affinity and purchase for our brand because the prices have come down.
+
+### 👤 Karan Bhuwania
+Secondly a followup on that given that the prices are going down now, when the prices are increasing a lot of unorganized players would have existed the market due to some issues they were facing do you expect them to come back and would that lead to some market share loss given that you have gained a lot of market share in the last couple of years?
+
+### 👤 Shrikant Kanhere
+Edible oil these players were always there. They were on and off so when the market goes up they would exit and then again they come back. That domain is very small. They are limited to certain pockets. That is why in edible oil the big players have more than 65% of the market and 35% is still with the smaller so these people come and go. I think over the period of time these brands are losing their strength and as companies like us increase our rural penetration and when we reach more and more outlets directly in the rural market we will always have an upper hand. Secondly we also have brands with us which has been growing faster so we will use that as a weapon to fight these players.
+
+### 👤 Karan Bhuwania
+One more question regarding the record business that you are targeting how is it different from the consumer business? What are the strengths we need to build to capture that market?
+
+### 👤 Shrikant Kanhere
+Very good. This breakup business is a different strategy than consumer B2C. This business first resolves around ability to service. The most differentiating factor will be how can you service even four tins to a Taj Hotel at a banquet party that is the answer that we have to give so you must have very good service system one. Can you give a portfolio of product? Can you give consistency of quality? Can you give a rate contract of six months or 12 months. Now all these things big players like us can always do it because for me such type of slight fluctuations I can always manage better so if you want sugar and you want wheat flower so now that the wheat prices are going up can I give a commitment of six months
+
+### 👤 Page 12 of 14
+yes. I have done that with good biscuit manufactures. I have done it with good noodles manufactures and I am doing it because we have wheat with us so I can obviously buy wheat in hand and to that so business will require ability to service and consistency in quality. Second you must have a team all that who goes demonstrate what is basmati rice, why should we use my basmati rice, what is the advantage, what is staff rice, and all that. All these things have important so one you have to have a great supply chain. Second team of people who can go so can afford that and for the range of products. All these put together puts us at a formidable player for Orika and we are very confident that this business itself will be very, very big. There are more than 10 lakh outlets or hotels or small restaurants who consume such products.
+
+### 👤 Karan Bhuwania
+Thank you.
+
+### 👤 Moderator
+Thank you. We have the follow-up question from the line of Latika Chopra from JP Morgan. Please go ahead.
+
+### 👤 Latika Chopra
+Thank you once again. Sir I wanted some more information on distribution fees? Could you share with us as of Q1 FY2023 end what is the total reach of edible oil portfolio and what is the direct reach now and also for your food business whether it is wheat flour or rice what is the kind of reach that these products today have?
+
+### 👤 Shrikant Kanhere
+We have roughly around direct reach today around 5.73 lakh outlets direct I am saying. Indirect we have some reports more than 1.6 to 1.7 million outlets so this is the edible oil each however if you ask me how much is Atta. Atta direct reach would be roughly around 1.6 to 1.7 lakh outlets. Indirect may be 2.5 because in indirect it is not so big as oil. Oil is surely very big so food is roughly around one third or less in terms of total reach so that is where we are pushing more and more because going forward we see bigger opportunity in improving our retail outlets for Atta or rice or something.
+
+### 👤 Latika Chopra
+And do you have any targets in mind? I am sure you would have for where you want to be by the end of FY2023 or end of FY2024 any broad target you want to share?
+
+### 👤 Shrikant Kanhere
+We want to reach direct outlets 7 lakh. That is our target for this financial year. We have taken internally with our boys and that would work out to roughly around 1.8 to 2 million outlets indirectly getting covered. That is what and two is that we want to reach more than 10,000 small towns less than 1 lakh population in the rural market so that we are doing roughly around 6000 now but we want to reach up to 10,000. The moment we do that obviously the number of retail outlets also will increase proportionately.
+
+### 👤 Latika Chopra
+Right and I believe that similarly for food business, wheat and rice it will be even more aggressive targets?
+
+### 👤 Shrikant Kanhere
+Yes we have taken aggressive target to reach but their challenges are different in wheat flour because you need to be fresh so shelf life is small so wherever you place the product it must be picked up fast so all those things are actually being looked into and worked out.
+
+### 👤 Latika Chopra
+The second part was what is the ecommerce salience of your portfolio for edible oil and food business today?
+
+### 👤 Shrikant Kanhere
+In ecommerce we are number one today player almost 30% in leading ecommerce chain we have a market share 30% that is one. Our mustard oil stands to be surely a dominant oil in all the ecommerce. That stands number one and that stands the largest in terms of oil so volume wise Fortune is number brand of edible oil in all the ecommerce and most of them it is 30%. As far as modern format is concerned big two margin formats we are surely the leader DMart and Reliance. Others are also there but these are the two big ones where we are the leader by far more than 20% market share so in ecommerce also our market share is more than general trade.
+
+### 👤 Latika Chopra
+Sure Sir and out of your total revenues that you account for edible oil and food business ecommerce share is what like single digit?
+
+### 👤 Shrikant Kanhere
+When you look at volume share of edible oil ecommerce and gives around 10% of the volume. 90% volume comes from general trade, but very close to food say rice, wheat flour, Atta, sugar, and then nuggets. There it is around 26%. It comes from modern trade and ecommerce and where 74% comes from general trade.
+
+### 👤 Latika Chopra
+Got it Sir. Thank you so much and the last question.
+
+### 👤 Shrikant Kanhere
+Latika those consumers are buying grocery more from ecommerce and modern trade that is one. Two good brands will play a bigger role there.
+
+### 👤 Latika Chopra
+Yes Sir I completely agree on that part. I think distribution is one of the biggest drivers for your volume growth and market share gain? The last question I had was on this short term priorities where you talked about MNA and I know you touched that in the past but we saw you acquiring the Kohinoor brand? Looking ahead would you like to do more of such acquisitions in staple or you are open to acquire something in a little more value added space and are you constrained by the size of the acquisition? I know there are certain proceeds from the IPO which are allocated for this but any broad thoughts here?
+
+### 👤 Shrikant Kanhere
+Yes Latika please ask your question again.
+
+### 👤 Latika Chopra
+Sir what I asking you about was the short term, you have called out MNA and we did see you acquiring the Kohinoor brand? What I wanted to check was would you only consider staples as your potential acquisition target in the short term or will you open towards more value added categories also so for example if tomorrow say for example a small biscuit company is available? Would that be in your zone to explore and separately is there a size of the acquisition in your mind? I can see the IPO proceeds which have been allocated for MNA but would you be willing to look at mid size acquisitions as well any thoughts thank you?
+
+### 👤 Shrikant Kanhere
+Okay so let me answer your question both the parts one is what kind of opportunities are we looking at, I think as far as our business goes and our food basket goes are priority of course would be the staple food. Extension of the staple food and to some extent ready to cook may be a small volume but high price products. I am not very sure whether we look into biscuits and other categories because those are too much crowded categories for us to enter but certainly yes staple food extension of staple food and to some extent ready to cook smaller brands but higher value products, we will certainly look into. The second part of your question was what kind of acquisition size you are looking at, see the IPO proceeds allocated for mergers and acquisition is 450 but of course we are not bound by that number. Of course we would be utilizing that fully. Having said that the acquisition opportunities whether it is a big, medium, small we would be looking at all the opportunities depending upon on how relevant that opportunity is for us in terms of topline as well as bottom line so we are not restricting ourselves to that 450. It all depends upon what kind of opportunity comes our way and how relevant it is for us.
+
+### 👤 Latika Chopra
+Thank you so much Sir.
+
+### 👤 Moderator
+Thank you. Ladies and gentlemen, that would be our last question for today. I now hand the conference over to the management for their closing comments. Thank you and over to you.
+
+### 👤 Shrikant Kanhere
+Thank you so much to all and for being attending and listening to us and we have tried hopefully to answer all your questions and anytime anybody would like to know anything we are always open. Thank you.
+
+### 👤 Moderator
+Thank you very much. Ladies and gentlemen, on behalf of ICICI Securities Limited that concludes today’s call. Thank you all for joining us and you may now disconnect your lines.

@@ -1,0 +1,422 @@
+
+# AIIL - Fallback_Transcript_29
+
+## Behavioral Analysis
+✅ **[STABILITY]** No severe behavioral manipulation thresholds breached.
+
+## Preparation
+### 👤 Phiroze Jeejeebhoy Towers,
+Dalal Street, Fort, Mumbai - 400 001.
+
+### 👤 Subject
+Business Update and Corporate Presentation Please find attached the Business Update and Corporate Presentation for Authum Investment & Infrastructure Limited. Kindly take the same on your record. Thanking you,
+
+### 👤 DIN
+06527044
+
+### 👤 Encl
+As above
+
+### 👤 Dangi
+Digitally signed by Amit K Dangi
+
+### 👤 DN
+c=IN, o=Personal, pseudonym=fd4124786c5444e98de6260679ed4143, 2.5.4.20=9dd679580aa2ca9f95a5ceba16c2a5b0448f5cde a6b7343d2c35162b04dc560d, postalCode=400012, st=Maharashtra, serialNumber=35e92ea688309834fedba44b2ab091e12a 2fbae7ae8f82763d0cb19f9a328ca0, cn=Amit K Dangi
+
+### 👤 Date
+2025.07.14 19:47:45 +05'30'
+
+### 👤 Disclaimer
+This presentation does not constitute a prospectus, a statement in lieu of a prospectus, an offering circular, an advertisement, an offer document or an offering memorandum, under the Companies Act, 2013, the Securities and Exchange Board of India (Issue of Capital and Disclosure Requirements) Regulations, 2018, each as amended, or any other applicable law. This presentation is for solely for informational purposes only and do not constitute an offer to sell or, recommendation or solicitation of an offer to subscribe for or purchase any securities and nothing contained herein shall form the basis of any contract or commitment whatsoever. Nothing in this presentation, or any oral information provided in connection with it, shall constitute or deem to constitute an offer or invitation to purchase or subscribe for any securities in any jurisdiction. This presentation does not solicit any action based on the material contained herein. This presentation has not been and will not be reviewed or approved by any statutory or regulatory authority in India or by any stock exchange in India. This presentation should not be considered as a recommendation that any investor should subscribe for or purchase any securities of Authum Investment & Infrastructure Limited (the “Company”) and should not be used as a basis for any investment decision. The Company will not update you in the event the information in the presentation becomes stale. Moreover, no express or implied representation or warranty is made as to, and no reliance should be placed on the accuracy, fairness or completeness of the information presented or contained in this presentation. The securities of the Company have not been and will not be registered under the US Securities Act of 1933 (“U.S. Securities Act”) or any other U.S. state securities laws. The Company has not registered and does not intend to register under the U.S. Investment Company Act of 1940 (the “U.S. Investment Company Act”) in reliance upon section 3(c)7 thereof. No securities of the Company may be offered or sold in the United States absent registration or an applicable exemption from registration requirements under the U.S. Securities Act. By accessing this presentation, each person is deemed to represent that it is and any customer it represents is either (a) a qualified institutional buyer (within the meaning of Rule 144A under the U.S. Securities Act), that are also “qualified purchasers”(as defined under the U.S. Investment Company Act) or (b) are not U.S. persons (as defined in Regulation S under the U.S. Securities Act) outside the United States. Any failure to comply with these restrictions may constitute a violation of the securities laws of the United States or other applicable securities laws. The distribution of this presentation in certain jurisdictions may be restricted by law and persons into whose possession this presentation comes should inform themselves about, and observe, any such restrictions. No public offering is being or will be made in the United States or in any other jurisdiction where such an offering is restricted or prohibited or would be unlawful. None of the Company or any of its affiliates, advisers or representatives accept any liability whatsoever for any loss howsoever arising from any information presented or contained in this presentation. Furthermore, no person is authorized to give any information or make any representation which is not contained in, or is inconsistent with, this presentation. Any such extraneous or inconsistent information or representation, if given or made, should not be relied upon as having been authorized by or on behalf of the Company. This presentation is highly confidential, being given solely for your information and for your use, and may not be taken away, copied, published, distributed or transmitted or reproduced or redistributed or passed on directly or indirectly to any other person, whether within or outside your organization or firm, or published in whole or in part, for any purpose by recipients directly or indirectly to any other person. The distribution of this presentation in certain jurisdictions may be restricted by law. Accordingly, any persons in possession of this presentation should inform themselves about and observe any such restrictions. This presentation contains certain statements of future expectations and other forward-looking statements, including those relating to the Company's general business plans and strategy, its future financial condition and growth prospects, and future developments in its sectors and its competitive and regulatory environment. In addition to statements which are forward looking by reason of context, the words ‘may’, ‘will’, ‘should’, ‘expects’, ‘plans’, ‘intends’, ‘anticipates’, ‘believes’, ‘estimates’, ‘predicts’, ‘potential’ or ‘continue’ and similar expressions identify forward looking statements. All forward-looking statements are subject to risks, uncertainties and assumptions that could cause actual results, performances or events to differ materially from the results contemplated by the relevant forward-looking statement. The factors which may affect the results contemplated by the forward-looking statements could include, among others, future changes or developments in (i) the Company’s business, (ii) the Company’s regulatory and competitive environment, and (iii) political, economic, legal and social conditions in India or the jurisdictions in which our Company operates. Neither the Company nor its affiliates or advisors or representatives nor any of its or their parent or subsidiary undertakings or any such person's officers or employees guarantees that the assumptions underlying such forward-looking statements are free from errors nor does either accept any responsibility for the future accuracy of the forward-looking statements contained in this presentation or the actual occurrence of the forecasted developments. Forward-looking statements speak only as of the date of this presentation and are not guarantees of future performance. As a result, the Company expressly disclaims any obligation or undertaking to release any update or revisions to any forward-looking statements in this presentation as a result of any change in expectations or any change in events, conditions, assumptions or circumstances on which these forward-looking statements are based. This presentation includes certain industry data and projections that have been obtained from industry publications and surveys. Further, certain numbers in these presentations and materials have been subject to routine rounding off and accordingly figures shown as total in tables and diagrams may not be an arithmetic aggregation of the figures that precede them. By attending this presentation and/ or accepting a copy of this document, you agree to be bound by the foregoing limitations and conditions and, in particular, will be taken to have represented, warranted and undertaken that: (i) you have read and agree to comply with the contents of this notice including, without limitation, the obligation to keep this document and its contents confidential; (ii) you will not at any time have any discussion, correspondence or contact concerning the information in this document with any of the directors or employees of the Company nor with any of their customers or suppliers, or any governmental or regulatory body without the prior written consent of the Company; and (iii) you agree not to remove or copy this document, or any materials provided in connection herewith. Any failure to comply with these restrictions may constitute a violation of applicable securities laws.
+
+### 👤 Summary
+Financials
+
+### 👤 FY25
+onwards
+
+### 👤 Change in
+strategy towards mid-large cap
+
+### 👤 (OEDL1 &
+business of
+
+### 👤 RHFL1
+through
+
+### 👤 Authum
+Scaling up
+
+### 👤 Continued
+scale up of
+
+### 👤 Business
+Authum’s Key Milestones - Journey so far Transforming from Pure-play Investment platform to Diversified Credit Business
+
+### 👤 Incorporated in 1982
+• Acquired by Alpana Sanjay Dangi in FY2020 • Authum is a registered NBFC • Promoter shareholding: 74.95% (as on 30sth Jun’25)
+
+### 👤 Background
+• Engaged in long term equity investment across listed, unlisted and strategic investments • Diversifying to a fully integrated Credit Platform • Market Cap. of ~Rs. 44,500 Cr (as on 30th Jun’25) and external rating of A- (Stable) by CRISIL
+
+### 👤 Headquarters
+Mumbai
+
+### 👤 No. of Branches
+25
+
+### 👤 No. of People
+425+ (as on 30th Jun’25)
+
+### 👤 Footprint
+• Promoters with track record of Value Creation • Professional team with domain expertise
+
+### 👤 FY21
+Diversification into Credit
+
+### 👤 Early Days
+Scaling up and Expansion of
+
+### 👤 1
+OEDL - Open Elite Developers Limited (formerly Reliance Commercial Finance Limited); RHFL: Reliance Home Finance Limited
+
+### 👤 2
+Platformisation refers to the Company's strategy of building an integrated credit platform, as detailed in Slide 17 of this presentation
+
+### 👤 Diversification of Revenue Streams
+1 - Flow Investments - investments where Authum’s shareholding in individual entities is less than 20% (includes holdings originating from structured debt conversion - detailed in slide 10) 2 - Strategic investments - control positions / more than 20% shareholding in individual entities. Brief investment details are outlined on slide 13
+
+### 👤 FY2020 - FY2022
+FY2025 onwards Book size: Rs. 3,185.7 Cr Book size: Rs. 1,679.9 Cr (~16%) Book size: Rs. 8,779.0 Cr (~84%) Book size: Rs. 12,357.9 Cr (~72%) Book size: Rs. 1,384.2 Cr (~8%)
+
+### 👤 ~Rs. 313 Cr (~2%)
+(88.37% shareholding)
+
+### 👤 (ISARC)
+As at March 31, 2022 As at March 31, 2024 As at June 30, 2025
+
+### 👤 Authum 1.0
+Fresh credit
+
+### 👤 Acquired
+Portfolio (incl.
+
+### 👤 Investments1
+Book size: Rs. 2,567.4 Cr (~15%) Book size: Rs. 564.5 Cr (~3%) Accretion to Net-Worth over 5 years (FY 2020-21 to FY 2024-25)
+
+### 👤 (Collections)
+Exceptional items
+
+### 👤 Regular, Replicable
+investment Business
+
+### 👤 Acquisition
+Full-fledged credit franchise being built
+
+### 👤 Continued
+value creation through collections
+
+### 👤 the
+delinquent portfolio Strategic acquisition - fully enabled credit platform
+
+### 👤 for
+subsequent growth Driven by fresh credit disbursements > Rs.
+
+### 👤 Cr
+post
+
+### 👤 the
+NBFC acquisitions (~2 years track record)
+
+### 👤 Strategic
+blueprint:
+
+### 👤 Multiple
+diverse platforms activated / scale up in progress
+
+### 👤 Book
+Focused vertical / selective transactions Control position with strong underlying business thesis Expectation of outsized value creation / exit in a medium - long tern horizon
+
+### 👤 Total
+Rs. 2,214 crore
+
+### 👤 Total
+Rs. 626 crore all figures in Rs. crore
+
+### 👤 Total
+Rs. 4,333 crore
+
+### 👤 Vertical
+Accretion to Net Worth (prior to NBFC acquisition) Accretion to Net Worth (post NBFC acquisition)
+
+### 👤 Credit
+Strategic
+
+### 👤 2,192 (16%)
+Summary (figures in Rs. crore: * Capital Reserve / accretion to Net Worth arising primarily from the NBFC Acquisition
+
+### 👤 Investment Business
+Long term Value Creation Framework
+
+### 👤 AUM
+Explore opportunities with turnaround potential and growth prospects
+
+### 👤 Thesis
+Internal review to track investment performance to align with investment objectives Explore investments with appealable fundamentals and valuation attractive opportunities, with potential for value enhancement Favor reasonable holding period to optimize value creation
+
+### 👤 PARAMETERS
+Evaluate governance, leadership, and operational execution capabilities as factors in decision making Focus on large and mid-cap companies with significant presence in their sectors
+
+### 👤 Composition
+✓~7% of the investment portfolio ✓Other investments: Mutual funds, Debt instruments / AIFs etc.
+
+### 👤 Unlisted Equities
+Highly differentiated and focused companies with strategic moat. ✓~52% of the total investment portfolio (at market value) ✓Investment in high quality mid and large cap stocks, with strong underlying fundamentals
+
+### 👤 and
+growth potential
+
+### 👤 /
+thematic tailwinds ✓Global conglomerate engaged in water rehabilitation, transportation, oil & gas and niche technologies ✓Integrated metal-producer focusing on long steel products and ferroalloys ✓Company with integrated operations in iron ore mining and steel production ✓Largest stock exchange in India
+
+### 👤 of
+new age (electromobility) commercial vehicles
+
+### 👤 EPC Company
+✓Manufacturer of military grade tools and small arms
+
+### 👤 ✓Differentiated
+reward points management platform Listed Equities (from structured credit) ✓~24% of the investment portfolio ✓Equity positions (<20% shareholding) in fundamentally sound entities; originating from structured credit solutioning.
+
+### 👤 the
+investment portfolio ✓Listed entities
+
+### 👤 ✓Detailed in Slide 13
+of this presentation ✓Infrastructure company operating across multiple core infrastructure segments and defense ✓Power producer with owned power assets with significant generation capacity ✓Pharma company specializing in complex biologics, biosimilars, and vaccines
+
+### 👤 Note 1
+Top 9 exits by MOIC are ranked 1 to 9. Others are clubbed
+
+### 👤 Note 2
+Investment exits during FY25 Multiple of Invested Capital (MOIC) - Exited Investments (during FY25)
+
+### 👤 Note 1
+Top 9 exits by MOIC are ranked 1 to 9. Others are clubbed
+
+### 👤 Note 2
+Investment exits during Q1FY26
+
+### 👤 Rs. 1,797.0 Cr
+MOIC - Exited Investments (during Q1 FY26)
+
+### 👤 Note 1
+MOIC on notional basis, assuming portfolio is divested on June 30, 2025
+
+### 👤 Note 2
+Top 9 investments (as % of portfolio) are ranked 1 to 9; corresponding MOICs shown alongside. All other investments are clubbed under Other Investments
+
+### 👤 Unrealized
+Profits added
+
+### 👤 Strategic Investments (Overview)
+Control / ability to exert influence basis significant shareholding
+
+### 👤 NITCO Ltd.
+Conversion of Debt into Equity
+
+### 👤 Overview
+✓Authum acquired ~97% of the consortium debt in NITCO (Listed Co.) from an ARC, in April 2024 for a consideration of Rs. 225.1 Cr ✓Under a restructuring scheme, Authum entered into binding agreements to convert part of the unsustainable debt component of approx. Rs. 1,040 Cr into equity at Rs. 93 / share, in October 2024 ✓As part of the restructuring scheme, Authum’s entire invested amount has been fully repaid, and Authum currently holds ~44.6% share capital of NITCO on a fully diluted share capital basis ✓NITCO Ltd. is engaged in the business of manufacturing, processing and trading of marbles and ceramic and other types of floorings and wall tiles. ✓Authum had entered into a share purchase agreement for acquisition of ~42.3% stake in Prataap Snacks on September 26,
+
+### 👤 Sequoia Capital GFIV Mauritius Investments and Peak XV Partners
+Growth Investments II for a cash consideration of ~ Rs. 764.5 Cr ✓Acquisition price of Rs. 746 per share for the above transaction ✓Authum holds a total shareholding of 42.33% in Prataap Snacks Ltd. (as of June 30, 2025) ✓Prataap Snacks is a distributor of snack foods across savories and sweet snacks. Focus on improvement in business performance / operational metrics to generate outsized returns
+
+### 👤 Business
+Strategic imperative for the NBFC acquisitions
+
+### 👤 Acquisition Outcome
+Key capabilities
+
+### 👤 The NBFC Acquisition & Integration
+Agency network: Access to a full-fledged agency network of field agencies for field collections System capabilities: Systems include LOS and LMS, Presence of E-collect mobile Application, About 25 branch operations, and an in bound call center
+
+### 👤 Presence
+Geographic presence with 25 branches, wide reach through agency network, and a centralized call center
+
+### 👤 Expansive Product Suite
+Product suite across secured (asset and property backed products) as well as unsecured products, with prior experience and market knowledge
+
+### 👤 Re-pivot from Equity Led
+Business to a Wide-Ranging Credit Business with relatively stable and predictable cash flows
+
+### 👤 Growth Potential
+Entry into Credit Business Provides for runway
+
+### 👤 Distribution and Scale
+Pan-India distribution network with ~25 Branches and 425+ Member Team with collections capability
+
+### 👤 Customer Segment
+Portfolio acquired cuts through entire spectrum of product suite
+
+### 👤 Internal Integration
+Augmented capabilities & skillsets across people, processes, internal financial controls & governance functions Integration with eco-system: Enhanced engagement with all stakeholders linked to the acquired portfolio
+
+### 👤 Strategic Focus
+Harvesting recoveries from acquired portfolio in first 12 months; subsequent focus on fresh business growth
+
+### 👤 “Double Down” on Growth
+Focused business strategy to grow and scale up to build a professionally led credit business
+
+### 👤 Acquired Portfolio
+PTC assets Fresh business o/s Loan book movement (Rs. Cr) Fresh deployment (Rs. Cr)
+
+### 👤 2,162.9
+*Given the Credit Business has been built on the back of the acquisition of OEDL and business assets of RHFL, i.e., from FY24 onwards, data for prior periods is not relevant and hence not explicitly displayed
+
+### 👤 Roadmap
+Integrated Credit and Alternative Assets Business Fully enabled and active platform; fresh credit disbursements in excess of Rs. 2,250 Cr in FY25 Fully functional platform; free cash ~Rs. 327 Cr available for deployment (expected in next 6 to 9 months)
+
+### 👤 Asset Management Company
+has been set up
+
+### 👤 Capabilities
+Diverse recovery strategies for high returns Collections from the existing debt book Redeployment focus on higher Yield products / segments Minimal leverage
+
+### 👤 Servicing Platform
+Leverage on existing capability & new technology Diversify to Corporates / advisory subsequently
+
+### 👤 Management (AUM) of ~Rs. 1,600 Cr
+for servicing third party retail loans Identified Adjacency to Build Being scaled up
+
+### 👤 Existing Business
+Being scaled up
+
+### 👤 India SME ARC (ISARC)
+Acquisition of a fully enabled ARC
+
+### 👤 Overview
+✓Pursuant to requisite regulatory approval from the Reserve Bank of India, Authum had completed the acquisition of 88.37% shareholding in ISARC on June 17, 2025. ISARC is now a subsidiary of Authum (Authum is the sole sponsor) ✓Authum had invested a total amount of ~Rs. 313 crore, which includes ~Rs. 193 crore against primary issuance of fresh shares. ✓ISARC is now a fully enabled platform with experienced team, minimal legacy book, and well capitalized post equity infusion by Authum
+
+### 👤 Overview
+As on June 30, 2025, ISARC’s key financial indicators: ✓Net worth: Rs. 342 crore (well above the regulatory threshold) ✓Free cash reserves of ~Rs. 327 crore available for deployment in debt buyout ✓Minimal legacy issues: Carrying value of legacy book ~Rs. 2 crore ✓Given a fully enabled platform, fresh business already activated within 2 weeks of acquisition ✓First loan buyout transaction completed in June 2025 with investment of ~Rs. 8 crore. Robust investment pipeline being worked on for further closures. ✓Free cash expected to be deployed in fresh acquisitions over next 2 - 3 quarters
+
+### 👤 Overview
+Well capitalized platform poised for scale up and growth Long-term business strategy / focus areas being crystallized
+
+### 👤 Strategic Way Forward
+Revenue primarily from investments prior to initiation of credit business. Revenue mix diversified basis foray in the Credit Business Diversify revenue streams Capital Allocation to continue to improve towards a judicious mix between Investments (Flow
+
+### 👤 Allocate
+Capital with a favourable risk-reward Create and grow multiple platforms, which are synergistical yet independent to create a long- term growth roadmap Build Management team with alignment to long term value creation
+
+### 👤 Platformize &
+Professionalize for scale Self sustaining platforms to create multiple growth engines and increase overall franchise value. Poised for value creation
+
+### 👤 Summary
+Financials Balance Sheet Highlights (as at June 30, 2025)
+
+### 👤 2,567.4
+- Investment in subsidiaries (ISARC)
+
+### 👤 312.5
+B. Loans / credit substitute
+
+### 👤 361.7
+- PTC assets
+
+### 👤 202.8
+- Fresh business o/s
+
+### 👤 1,384.2
+C. Other assets
+
+### 👤 2,109.6
+- Cash & cash equivalents
+
+### 👤 464.5
+- Receivables & misc.
+
+### 👤 Notes
+1. Investments include stocks held for sale, other tradable securities and Mutual funds. 2. Acquired Portfolio means the credit business portfolio of OEDL and RHFL acquired by Authum 3. Fixed assets include Property, Plant & Equipment (PPE), Investment property. 4. Receivables include balance with Govt authorities (GST / Income Tax), and other assets including interest accruals on investments, Receivables against securitisation, security deposit etc. Balance Sheet Highlights (as at June 30, 2025)
+
+### 👤 2,586.4
+- PTC borrowings
+
+### 👤 335.9
+- Dissenting creditors
+
+### 👤 177.8
+- Third-party credit line
+
+### 👤 1,393.1
+- Redeemable pref. shares
+
+### 👤 30.3
+- Other payables
+
+### 👤 19,296.1
+1. Dissenting creditors (~ 13% of total creditors) includes lenders of OEDL who did not assent to the Resolution Plan; consideration as per plan has been set aside for these. 2. Third Party credit continues to be less than 0.1x of Net-worth 3.
+
+### 👤 Minimal Net Leverage
+considering cash & cash balance
+
+### 👤 Notes
+P&L Statement Highlights (as at June 30, 2025) Revenues Mix Details (Rs. Cr)
+
+### 👤 148.8
+Change in provision / bad debts recovery/ Redemption upside
+
+### 👤 1,206.4
+Expenses split
+
+### 👤 5.7
+- Miscellaneous Expenses (incl. Depreciation, Securities Transaction Tax, CSR expenses and others)
+
+### 👤 62.8
+Assets Breakdown (as at June 30, 2025)
+
+### 👤 ✓Investment in ISARC ~Rs. 312.5 Cr
+Loans & credit substitutes: standard
+
+### 👤 Rs. 1,930.4 Cr
+✓Primarily comprising fresh credit deployed including credit substitutes Loans & credit substitutes:
+
+### 👤 Net NPA – 18.2 Cr
+✓100% provision created for legacy book ✓~ 85% - 90% of this book is mortgage backed
+
+### 👤 Rs. 464.5 Cr
+✓Property Investments at Cost Price ✓Fixed Assets at WDV Other assets
+
+### 👤 Rs. 1,645.1 Cr
+✓Includes cash & cash equivalents & other assets
+
+### 👤 Rs. 6,225.2 Cr
+✓Fully focused to ensure superior recovery outcomes from this portfolio
+
+### 👤 Rs. 2,209.0 Cr
+✓Includes vehicle, CV, other loans where recovery efforts are ongoing
+
+### 👤 Rs. 407.6 Cr
+✓Mortgage-backed book (Steady recoveries from this portfolio)
+
+### 👤 Total
+100% written off corporate loans 100% written off retail other loans 100% written off retail mortgage loans
+
+### 👤 Balance Sheet
+✓First-generation entrepreneurs ✓Track record of value creation in capital market ✓Recently diversified to credit products vide acquisition of OEDL and business assets of RHFL through OEDL ✓Commitment to build an integrated credit platform as the next driver of value creation, which is already underway ✓Board of Directors encompassing various backgrounds and skill sets ✓Diversified representation on the Board through Promoter
+
+### 👤 Directors
+✓Majority of the Board comprises
+
+### 👤 ✓Management
+team with specialization in the areas of build out ✓Young management teams with a focus on creating value ✓Fortress Balance Sheet with ~Rs. 16,669.8 Cr net worth, minimal net leverage and ~Rs. 44,500 Cr market capitalisation (as on 30th
+
+### 👤 Jun’25)
+✓Rating assigned of CRISIL A - / Stable in July 2024.
+
+### 👤 Professional Management
+“People” make all the difference
+
+### 👤 Mr. Sanjay Dangi
+Advisor to the Board
+
+## Q&A

@@ -1,0 +1,77 @@
+
+# CARERATING - Fallback_Transcript_67
+
+## Behavioral Analysis
+✅ **[STABILITY]** No severe behavioral manipulation thresholds breached.
+
+## Preparation
+### 👤 SAFE HARBOR STATEMENT
+THIS PRESENTATION AND THE ACCOMPANYING SLIDES (THE “PRESENTATION”), WHICH HAVE BEEN PREPARED BY CREDIT RATINGS (THE “COMPANY”), HAVE BEEN PREPARED SOLELY FOR INFORMATION PURPOSES AND DO NOT CONSTITUTE ANY OFFER, RECOMMENDATION OR INVITATION TO PURCHASE OR SUBSCRIBE FOR ANY SECURITIES, AND SHALL NOT FORM THE BASIS OR BE RELIED ON IN CONNECTION WITH ANY CONTRACT OR BINDING COMMITMENT WHATSOEVER. NO OFFERING OF SECURITIES OF THE COMPANY WILL BE MADE EXCEPT BY MEANS OF A STATUTORY OFFERING DOCUMENT CONTAINING DETAILED INFORMATION ABOUT THE COMPANY. THIS PRESENTATION HAS BEEN PREPARED BY THE COMPANY BASED ON INFORMATION AND DATA WHICH THE COMPANY CONSIDERS RELIABLE, BUT THE COMPANY MAKES NO REPRESENTATION OR WARRANTY, EXPRESS OR IMPLIED, WHATSOEVER, AND NO RELIANCE SHALL BE PLACED ON, THE TRUTH, ACCURACY, COMPLETENESS, FAIRNESS AND REASONABLENESS OF THE CONTENTS OF THIS PRESENTATION. THIS PRESENTATION MAY NOT BE ALL INCLUSIVE AND MAY NOT CONTAIN ALL OF THE INFORMATION THAT YOU MAY CONSIDER MATERIAL. ANY LIABILITY IN RESPECT OF THE CONTENTS OF, OR ANY OMISSION FROM, THIS PRESENTATION IS EXPRESSLY EXCLUDED. CERTAIN MATTERS DISCUSSED IN THIS PRESENTATION MAY CONTAIN STATEMENTS REGARDING THE COMPANY’S MARKET OPPORTUNITY AND BUSINESS PROSPECTS THAT ARE INDIVIDUALLY AND COLLECTIVELY FORWARD‐LOOKING STATEMENTS. SUCH FORWARD‐LOOKING STATEMENTS ARE NOT GUARANTEES OF FUTURE PERFORMANCE AND ARE SUBJECT TO KNOWN AND UNKNOWN RISKS, UNCERTAINTIES AND ASSUMPTIONS THAT ARE DIFFICULT TO PREDICT. THESE RISKS AND UNCERTAINTIES INCLUDE, BUT ARE NOT LIMITED TO, THE PERFORMANCE OF THE INDIAN ECONOMY AND OF THE ECONOMIES OF VARIOUS INTERNATIONAL MARKETS, THE PERFORMANCE OF THE RATING INDUSTRY IN INDIA AND WORLD‐WIDE, COMPETITION, THE COMPANY’S ABILITY TO SUCCESSFULLY IMPLEMENT ITS STRATEGY, THE COMPANY’S FUTURE LEVELS OF GROWTH AND EXPANSION, TECHNOLOGICAL IMPLEMENTATION, CHANGES AND ADVANCEMENTS, CHANGES IN REVENUE, INCOME OR CASH FLOWS, THE COMPANY’S MARKET PREFERENCES AND ITS EXPOSURE TO MARKET RISKS, AS WELL AS OTHER RISKS. THE COMPANY’S ACTUAL RESULTS, LEVELS OF ACTIVITY, PERFORMANCE OR ACHIEVEMENTS COULD DIFFER MATERIALLY AND ADVERSELY FROM RESULTS EXPRESSED IN OR IMPLIED BY THIS PRESENTATION. THE COMPANY ASSUMES NO OBLIGATION TO UPDATE ANY FORWARD‐LOOKING INFORMATION CONTAINED IN THIS PRESENTATION. ANY FORWARD‐LOOKING STATEMENTS AND PROJECTIONS MADE BY THIRD PARTIES INCLUDED IN THIS PRESENTATION ARE NOT ADOPTED BY THE COMPANY AND THE COMPANY IS NOT RESPONSIBLE FOR SUCH THIRD PARTY STATEMENTS AND PROJECTIONS.
+
+### 👤 Highlights
+FY18
+
+### 👤 Growth in Consolidated Financial Indicators
+Revenue fromoperationincreasesby15.7% TotalIncomeincreasedby11.5% Operatingprofitincreasedby16.1%
+
+### 👤 Growth in Financial Indicators
+GrowthinRatingrevenueof14.5%overFY17 Growthintotalincomeof10.3%overFY17 Growthinoperatingincomeof12.8%inFY18overFY17 Growthinexpenditureof18.1%(includingESOPcharges)(excludingESOPchargesitis9.2%) EBITDAmarginsat67.7%andPATmarginsat46.1%inFY18 4,079newclientsaddedduringFY18
+
+### 👤 Business Profile
+TotalvolumeofdebtratedstoodatRs 16.48lakhcroreinFY18asagainstRs 13.19 lakhcrorein
+
+### 👤 FY17
+Totalnumberofinstrumentsratedwere10,243
+
+### 👤 Growth
+RevenuefromOperations
+
+### 👤 10.0%
+ProfitBeforeTaxmargin(%)
+
+### 👤 66.17%
+NetProfitmargin(%)
+
+### 👤 45.97%
+BasicEPS(Rs.pershare)
+
+### 👤 Financial Performance
+FY18(Rscr)
+
+### 👤 FY18
+FY18 Operating profit margin stood at 64.20% Mainly due to increase in rating revenue & ESOP charge in FY18 FY18 PAT margin stood at 46.07% mainly due to ESOP charges which was not there in FY17 and decrease in other income
+
+### 👤 18.00
+Short&Mediumterm Longterm
+
+### 👤 Total
+VolumeofDebtRated(Rslkcr)
+
+### 👤 Short & Medium
+term Longterm
+
+### 👤 Rating Movement
+TheMCRforFY18was1.08times,andindicatesstabilityincreditquality.
+
+### 👤 CARE Ratings Debt Quality Index (CDQI)
+CDQI largely followed an improving trend in the first half of FY18. It has been improving since the last 5 months i.e., December 2017‐April 2018. The rise in index in April’18 can be essentially attributed to large borrowing programmes (PSUS) rated for various Public Sector Undertakings, against which these PSUs would be borrowing in FY19 (refers to period April 1 to March 31) for implementing infrastructure projects in roads, power, rural electrification, etc.
+
+### 👤 FY18
+GDPgrowth(%)
+
+### 👤 IIP
+ForFY18,CSOhasestimatedGDPgrowthat6.6%
+
+### 👤 FY18
+CPIssuances(Rslakhcr)
+
+### 👤 Total
+CorporateDebtRaised(Rscr)
+
+### 👤 Economic Outlook for FY19
+GDPgrowthisexpectedtobearound6.7%inFY18and~7.5%in
+
+### 👤 FY19
+Inflationexpectedintherangeof4.5‐5%inFY19 RupeetobeintherangeofRs.67‐67.5/$ WedonotexpectanychangeinpolicyratesbytheRBIinthenext month. Incase,theinflationtouchesthe5%mark,itcouldprovokearate changefromtheRBI.
+
+## Q&A

@@ -3,10 +3,10 @@ ESAB India Ltd is a leading supplier of welding and cutting products in India. I
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"8,973","5,829","7,325 / 4,710",167
+"8,874","5,765","7,325 / 4,710",165
 
 Book Value,Dividend Yield,ROCE,ROE
-67.6,1.29,90.8,59.3
+67.6,1.27,90.8,59.3
 
 Face Value
 10.0
@@ -39,18 +39,18 @@ Profit before tax,58,65,81
 Tax %,32%,34%,34%
 Net Profit +,40,43,54
 EPS in Rs,25.78,27.71,34.84
-Dividend Payout %,101%,-0%,44%
+Dividend Payout %,101%,0%,44%
 
 --- BALANCE SHEET ---
 ,Dec 2005,Dec 2006,Dec 2007
 Equity Capital,15,15,15
 Reserves,19,61,89
-Borrowings +,11,-0,-0
+Borrowings +,11,0,0
 Other Liabilities +,89,53,58
 Total Liabilities,135,130,162
 Fixed Assets +,35,49,61
 CWIP,6,7,6
-Investments,-0,8,17
+Investments,0,8,17
 Other Assets +,93,67,78
 Total Assets,135,130,162
 

@@ -3,10 +3,10 @@
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"4,499","2,246","2,955 / 1,410",40.3
+"4,737","2,365","2,955 / 1,410",42.5
 
 Book Value,Dividend Yield,ROCE,ROE
-345,0.76,20.7,17.1
+345,0.71,20.7,17.1
 
 Face Value
 10.0
@@ -45,12 +45,12 @@ Dividend Payout %,17%,13%,13%,29%,29%,22%
 ,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2025,Mar 2026
 Equity Capital,10,10,10,10,20,20
 Reserves,313,327,384,428,592,671
-Borrowings +,-0,-0,-0,34,32,110
+Borrowings +,0,0,0,34,32,110
 Other Liabilities +,99,94,132,171,282,170
 Total Liabilities,422,431,525,643,926,971
 Fixed Assets +,171,212,203,217,363,398
 CWIP,12,2,31,87,10,2
-Investments,44,-0,-0,-0,11,-0
+Investments,44,0,0,0,11,0
 Other Assets +,194,217,292,338,543,571
 Total Assets,422,431,525,643,926,971
 

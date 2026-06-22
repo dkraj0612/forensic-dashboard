@@ -1,0 +1,220 @@
+
+# BOSCHLTD - Fallback_Transcript_44
+
+## Behavioral Analysis
+⚠️ **[EVASION] High Evasion Density:** Management used unusually high deflection terminology.
+
+## Preparation
+### 👤 Tel +91 80 6752-3878
+www.bosch.in
+
+### 👤 Sub
+Regulation 30 and 46(2)(oa) of SEBI (Listing Obligations and Disclosure Requirements)
+
+### 👤 Regulations 2015 – Disclosure of Transcript of the Investors’ Concall
+Pursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, Please find attached herewith the transcript of the investors' call with Investors/Analysts held on May 11,2023 on the financial results for the quarter and year ended March 31, 2023. The same has been uploaded on the Company's website at the below link: https://www.bosch.in/media/our_company/shareholder_information/2023/q4_fy2022-23_earning_call_transcript.pdf This is for your information and records. Thanking you,
+
+### 👤 BSE Limited
+1st Floor, New Trading Ring
+
+### 👤 Mumbai – 400 001
+Scrip code:500530
+
+### 👤 Mumbai – 400 051
+Scrip code: BOSCHLTD
+
+### 👤 N SRINIVASAN
+Digitally signed by
+
+### 👤 Date
+2023.05.16 15:55:22
+
+### 👤 MANAGEMENT
+MR. SOUMITRA BHATTACHARYA - MANAGING
+
+### 👤 Annamalai Jayaraj
+Ladies and gentlemen, Good Day and Welcome to Bosch Limited 4Q FY23 Post Result Conference Call hosted by B&K Securities. I also take this opportunity to welcome the Senior Management Team of Bosch Limited. We have with us today Mr. Soumitra Bhattacharya - Managing Director; Mr. Guruprasad Mudlapur - Joint Managing Director and Ms. Karin Gilges - Chief Financial Officer. At this point, all participants' lines will be in the listen-only mode, and there will be an opportunity for you to ask questions after the “Management's Presentation and Opening Remarks”. Over to you, Sir!
+
+### 👤 Soumitra Bhattacharya
+Thank you very much. And good afternoon to all of you and thank you for taking part in the call today. Today I would like to brief you on the macroeconomic policy, followed by the automotive market update and then of course, we'll walk you through our financials and finally we'll end with the highlights for the quarter, which affects our business.
+
+### 👤 Macroeconomic Policy
+The global economy continues to have a slowdown and while the Central Banks continue to raise their interest rates to tame the inflation, IMF is now forecasting a global economy growth at about 2.8% for the Year 2023 from a 3.4% in 2022 and the advanced economies will grow only by about 1.3% in 2023 and if you compare this to 2022, that was 2.7%. In this background, the Indian Economy is in a relatively sweet spot and is doing well and is expected to grow anywhere between 5.9% to 6.5%. Of course, this is anyone’s guess, we will see how the year unfolds. More importantly, till now, inflation relatively is under control and this is one of the main focus areas that the RBI has been doing and to keep also the Financial Sector resilient. India has moved to become the world's 3rd Largest Automotive Producer. Of course, we must remember this number of 3rd largest is also linked with mix, which we cannot compare with others.
+
+### 👤 Automotive Market Update
+Overall, the automotive industry has seen an increase of 22%. This is without Two-Wheelers and in the automotive production during the Fiscal Year ‘22-23 as compared to the Fiscal Year ‘21-22 and an additional growth of 14% year-on-year in the current quarter without Two- Wheeler as compared to the Quarter 4 of Fiscal Year 2022.
+
+### 👤 Page 3 of 15
+In Quarter 4 Fiscal Year ‘23, the Commercial Vehicles market grew by 6% year-on-year with Medium and Heavy Commercial Vehicles outperforming, they grew by (+16%) year-on-year and this has been led by a strong end-user industry demand and pre-buying to beat the price hike ahead of the emission norm change. Now Tractors have done very well colleagues. The tractor industry grew by (+35%) year-on- year in 4th Quarter ending the Fiscal Year ‘23 with the all-time high by the way greater than 1 million. Passenger Car segment saw double-digit growth in 4th Quarter. It was led by then SUV Segment that means the mix is very important. OEMs continue to hold a strong order book in SUV segment which should help in cushioning the segment for some time to come. Two-Wheeler unfortunately was story, which had 2 different sides of the coin with domestic demand has witnessed sequential recovery and exports has seen a pretty declining trend, unfortunately. Three-Wheelers continued to recover in the domestic markets while they are nowhere near the peaks of ’18-19 and exports still remain weak. Let's look at how the Company has performed in the automotive market: As you can refer from this slide, Bosch’s domestic automotive sales and OE sales have been better than the automotive market production. On Tractors Bosch’s growth is driven by higher pre-buy in inverting by OEMs for the CPCB-IV plus application on Pass Cars and Commercial Vehicles, Bosch growth is primarily driven by market share gains in case of some key customers where Bosch has a higher content per vehicle. Additionally, there has been an increase in content due to EGT or Exhaust Gas Treatment components for onboard diagnostic applications in Pass Cars and light Commercial Vehicles.
+
+### 👤 Financial Highlights for the Quarter 4
+Let's look at how the Company has performed in January-March ‘23 Quarter compared to the January-March ‘22 Quarter amidst all the above-mentioned factors: Mobility Solutions business have grown by approximately 24% in Quarter 4 FY23 as compared to Quarter 4 FY22. There's been a growth of approximately 28% in products and sales of Powertrain, which is driven mainly by the automotive sector and an increase in share of content per vehicle mainly in EGT.
+
+### 👤 Page 4 of 15
+The automotive aftermarket has grown by approximately 15% quarter-on-quarter mainly due to increased market demand and of course I had mentioned to you our “Zing Plus” strategy where our aftermarket continues to do well on that strategy. Our Two-Wheeler business sales have also increased by approximately 18% quarter-on-quarter due to good improvement on the semiconductor supplies, which as you know was not doing too well earlier. Beyond mobility, business sales: This has grown by approximately 8% in Quarter 4 FY23 as compared to Quarter 4 FY22. Consumer Goods business comprising of power tools has increased by approximately 2%. Building Technologies grew on a low base by more than 40% on account of higher project allocation. The overall revenue from operations from January to March ‘20-23 stood at 40,634 million, which is an increase of approximately 23% as compared to the corresponding period of the previous year, mainly driven by growth of product sales of approximately 21%. Mobility Solution sales grew by approximately 24%, while sales from business beyond Mobility Solutions increased by approximately 8%. Income from services, mainly comprising of R&D services provided to our OEMs as well as our parent, Bosch and Germany, while the billing for R&D services are at a healthy rate, income recognized in the books based on customer SOP dates was at 1308 million. Other operating income which includes mainly income from lease rentals, miscellaneous income, export incentives in the current quarter increases mainly on account of rental income owing to the additional income for the leasing of our smart campus, which is Spark.NXT Campus as compared to the January-March Quarter ‘22. And the receipt of incentive from the Mega Project Scheme of the Government of Maharashtra pertaining to our Nashik plant. Our material cost as a percentage of total revenue from operations stood at 64% in January- March ‘23 as compared to 64.6% in January-March ‘22. However, the material cost at the percentage of net sales that is excluding the income from services and other operating income is at 67.3% in January-March ‘23 as compared to 67% in January-March ‘22. The marginal increase in the material cost percentage is mainly on account of increase in raw material prices, including prices of electronic components. Our employee cost for January-March 2023 was 3281 million as compared to 2505 million in January-March ‘22. As a percentage of revenue from operations, the employee costs stood at 8% approximately in January-March ‘23 as compared to 7.6% in January-March ‘22. The January-
+
+### 👤 Page 5 of 15
+March ‘22 had a credit on account of reversal of provisions on actual valuation and employee retiral benefits. So, this actually means that we had an additional benefit in that period. Other expenses stood at 6134 million, this is about 15% of the total revenue in January-March ‘23 as compared to 4803 million this is about 14.5% of total revenue in January-March ‘22. The current quarter has seen certain one-time impacts. These are due to the exchange rate due to depreciation of INR, increased in spending related to our new business areas, higher spending on professional and other charges related to service income. Depreciation for the quarter is at 1206 million, 3% of the total revenue as compared to 892 million which is 2.7% of the total revenue in January-March ‘22. The increase in depreciation and current quarter is majorly on account of additions to plant and machinery and buildings. With this operating profits stood at 4018 million in January-March ‘23 as compared to 3516 million in January-March ‘22, which is an increase of 14.3%. Other income primarily comprises of interest on fixed deposits and the change in market value of mutual funds debt based, the other income has increased from INR 872 million in January-March ‘22 to INR 1359 million in January-March 23, mainly on account of higher mark-to-market gains on mutual funds as well as higher FD interest and therefore income. Now coming to PBT and PAT, for the quarter ended January-March 2023, your Company posted a profit before tax or PBT of INR 5331 million as compared to INR 4315 million in January- March ’22. As a percentage of total revenue from operations before tax stood at 13.1% of total revenue in the current quarter. Profit after tax for the quarter ended March ‘23 stood at 3990 which is 9.8% of the total revenue from operations. Profit after tax or PAT in January-March 2022 was INR 3506 million which is 10.6% of the total revenues from operations. The BS-VI Stage-2 Norms have been implemented across India on 1st April 2023 with an aim to make on-road vehicles cleaner and contributed towards the improved Urban Air quality. The key highlights of the BS-VI Stage-2 Norms were the introduction of: 1. Real driving emissions for Passenger Cars 2. In-service conformity for Commercial Vehicles. 3. Stringent onboard diagnostic (OBD) requirements. Bosch has worked very closely with OEMs and legislative authorities over the past years and contributed immensely in the smooth launch of the BS-VI Stage-2 compliant vehicles. Our system solution approach during the release of BS-VI Stage-1 has already ensured emission and performance robustness in not only standard test cycles, but also in real driving conditions, thereby paving the way for a quick and efficient adaption for Stage-2. Bosch Limited also introduced new cutting-edge testing solutions like the Mobile Chassis Dynamometer and the Cold Chamber Testing to validate the vehicle performance in extended environment conditions and ensure system robustness. Our OBD Solutions and calibration services have also played a crucial role in enabling the OEMs to meet legislative requirements.
+
+### 👤 Page 6 of 15
+Bosch has successfully delivered approximately 80 programs across different vehicle segments and we will continue to work closely with stakeholders to improve the system performance and prepare for future legislation. Moving on to our ESG performance: It gives me immense pleasure and satisfaction to report that Bosch Limited has been rated the #1 amongst all auto components companies by “Sustained Analytics Bracket Global ESG Ratings Agency”. Our risk score is only 8.3, As you know, the lower the better. At Bosch, we pursued sustainability long before it was made into talk of the social agenda. As a result, in 2020 we became the “First Global Industrial Enterprise” to make our own operations carbon neutral. Last year, as a part of the Annual Report, we summarized the focus areas of our sustainability management with the vision that describes 6 dimensions. Now I would like to thank each and every one of you for your contribution and patient listening. And before we address your queries, that is me and my colleagues, I would like to also make a last personal statement to all of you. So, as you know, I retired from the services of the Company on 30th 2023. My successor already announced Guruprasad Mudlapur will be addressing the next meeting. Of course, he along with our CFO will continue to address these meetings. The team at Bosch and the transition at Bosch has been done in a very well-planned manner. The team is an excellent team and they will not only keep the Company as it has remained relevant not just for our customers, but for the Government, the society, the stakeholders at large with the Bosch ethics and values, but I'm sure that they will take it to the next level, including not only strengthening our core and rewired the core, but also addressing the very important part of the future core or the new business areas where our parent has all the strengths and they will utilize to regionalize to have our strong umbilical cord functioning and you will get the same transparency and of course, at an even higher level. So, with that, I bring my colleagues into a play for all the question-answers that you have. And I want to tell you. That has been a pleasure for me to talk to you all these years.
+
+## Q&A
+### 👤 Annamalai Jayaraj
+Thank you. We will now begin the question-and-answer session. Ladies and gentlemen, at present you are all in the listen-only mode for participants who wish to ask your question, I request you to please raise your virtual hand as the moderator, I shall be able to see your raise your virtual hand and I will invite your questions in turn. Alternatively, participants can also type in their questions in the chat box. Please address your question to all the analysts. We will now wait for a moment as the question queue assembles. The first question is from Pramod Kumar. Please unmute your line and ask your question.
+
+### 👤 Pramod Kumar
+Soumitra wish you a great time ahead of you as kind of spend more time with the personal front. And congratulations on a great transition and leadership so far. So, my first question is on the semiconductor situation. Indian companies have been complaining about very volatile supply
+
+### 👤 Page 7 of 15
+chain situation on the semi side for the last few months as well so looking forward, from your vantage point, especially from Germany where you are today, how does the supply situation looking from your perspective Sir for Indian OEMs as you look forward into FY24?
+
+### 👤 Soumitra Bhattacharya
+Thank you, Pramod. This is a very important point and we have been constantly addressing it. Pramod we have to look at it on a worldwide basis and not on an Indian context. The semiconductor situation in FY22-23 had huge challenges across the world and therefore also India. Relatively compared to the past there are a better stability, but we are worldwide, not out of the woods and therefore India is also not out of the woods. Even in the last few months, there have been temporary issues because A) The supply chain is extremely complex, B) The supply chain is across the world, and C) You may have heard that some of them had some quality issues, some of them had some structural issues, and even one particular semiconductor had a fire, which was a coating supplier. So, I'm just giving you some examples. So, in summary - A) The supply situation relative to a very turbulent FY22-23 and FY21-22 is relatively better but individual supplies either fire or supply chain issues or structural issues or quality issues cannot be ruled out, which then affect different parts of the world including India. So, I'm not even talking now about the war that's happening or China Taiwan, those are bigger items, but in summary, more stable semiconductive can never be addressed from the India approach only, it's a worldwide matter and our global task force and Bosh do an excellent professional job and thereby India, like many other countries, also gets its shares and thereby our customers get their share. But we are totally dependent on the situation on the individual semiconductor and those companies have backend and frontend plants all over the world.
+
+### 👤 Pramod Kumar
+The second question is on the revenue outlook or the growth outlook what you shared because if I look at FY23, your underlying customer segments be it Tractors, be it Commercial Vehicle be it Passenger Cars had a phenomenal volume growth and the revenue growth for your key customers were like north of 30% and we had growth rate, which is below them most of our key customers. In that context when everyone is talking about industry segment growth slowing down, be it in Commercial Vehicle, be it in cars and even Three-Wheelers in other categories and Tractors particularly, why are we guiding for a healthy double-digit growth outlook when underlying segments growth may not be more than 5% to 6%. So, what is the disconnect between FY23 performance versus what you're guiding for FY24?
+
+### 👤 Soumitra Bhattacharya
+So, Pramod, first of all for FY24, we don't give guidance. Now let's talk about FY23. Now, for FY23, you have to be very specific. You have to now say Pass Cars. The Pass Cars in FY23 production was 4.576 million. This was against the peak of 4.070 million in ‘18-90. Now within Pass Cars you have to look at the mix, the mix has changed and favorable of SUVs. So, whether you look at Pass Cars, whether you look at Heavy Commercial Vehicles where the peak was 4.80 lakhs and FY22-23 was 3.97 lakh, we have improved on the content per vehicle whether. greatly in Heavy Commercial Vehicles, in Medium Commercial Vehicles and also in Pass Cars. Of course, Tractors played a pretty good role and the Tractors went to 1 million which crossed even the higher peak of 9.70 lakh or the peak of ’18-19 of 9 lakh so. Content per vehicle for Bosch has gone up. Market has grown. You have to always look at it as a mix otherwise it will
+
+### 👤 Page 8 of 15
+be. A generalized question. And lastly for 2024 now, while we will not give guidance for the Company, we can say that we will have healthy growth also for FY23-24. And we expect the market to grow on the already high level of FY23.
+
+### 👤 Pramod Kumar
+Apologies, but in the press release, I think you've made comments that you expect total revenues from sales to grow around 15%. I was referring to that.
+
+### 👤 Soumitra Bhattacharya
+Yes, that is something that last year we also said and we outperformed that. So, I told you a healthy growth of 15% we expect, but I'm not going to say whether it's going to go towards 20% or 22%, whatever. So, if you remember last year also we said that we are expecting to be at (+15%) and let's see how the market performs. At the end of the day all under normal circumstances, suppose there is a circumstance which of COVID happens and the war happens in this side of the world then you never know. These are all under normal circumstances, we expect India to grow well based on normal, so there is a lot of riders to it.
+
+### 👤 Pramod Kumar
+That's what I was trying to understand because the growth for your key customer segments is going to moderate materially and we are talking about significant outperformance that was the context. But I think you explained it well.
+
+### 👤 Annamalai Jayaraj
+The next question is from Dinesh. You can go ahead with the questions.
+
+### 👤 Dinesh
+Congratulations to you, Sir and wish you all the best for the next stage of your life. My question pertains first clarification on the staff cost, we have seen a substantial increase vis-à-vis previous quarters, not just on YoY but also on a QoQ basis. Is there any one-off in this quarter or this is more of a sustainable run rate?
+
+### 👤 Soumitra Bhattacharya
+First of all, Dinesh our employee cost, as you know, if you look at 3 years or 4 years ago where we had even touched 14%, we have made a major sustainable downward change. And this has happened through our “3R Program” and this was over 3 years. So, you have to keep first in mind where we were and that was about 13% to 14% and where we are. So, that context is very important. The second point on this context, there will always be some minor changes. This will be due to year-end increments, annual salary amounts which get paid, which of course get neutralized over the year and things like that. So, I would say our employee cost as a percentage of revenue from operations will always remain now at an optimal and healthy level. We are focusing on the quality of the part, not the percentage in terms of upskilling our people, in terms of taking care of relevant competencies, whether it is blue collar, whether it is our leadership or whether it is our managerial staff. In summary, I would say please Dinesh look at two things. One, where were we as a Company for the past so many years and now, where are we and we are about anywhere between 4% to 6% points lower. Second, there will be some minor changes always. And 3rd, let's look beyond the number, is the Company progressive to look at GPTW where we had scored for the 3rd time in the top quartile, is the Company looking at training, competence and we are doing it. We will continue to be there whether it is accruals, whether it is actual valuations, whether it is these increments and all that, so don't get bothered about it.
+
+### 👤 Dinesh
+Sure. And the second clarification on the traded goods on that are in cost. So, that has also seen an increase materially vis-à-vis 3rd quarter and this is especially in context since we started our localization plan in 3Q so in that context, does this increase, is it something to do with the OBD transition where the sensors and electronical parts would have seen increased sourcing from our sister concerns?
+
+### 👤 Soumitra Bhattacharya
+Traded and manufactured will always have this small changes because as you move up the ladder which I have explained multiple times on both rewired core and new core, Bosch has always followed a policy of first trading and when you have a higher mix as well as content per vehicle then we will always have a chance also for traded a few percentage points becoming higher. As we go along those traded goods then get localized overtime. Yes, you're indirectly right when you look at the mix I told you about whether it is our OBD, I told you about the emission norm changes BS-VI Stage-2 like earlier when we changed from BS-IV to BS-VI, the same thing happened. So, I would say please look at traded goods as two parts 1) Mix changes will have an impact on traded goods for some time. 2) Then we kick in localization based on volume and then again some other traded goods will come in based on again legislation and this will be an ongoing process. So, we will continue to localize, we will continue to have traded goods depending on emission norm changes and depending on our localization program. But one thing I can assure you, Bosch India as a Group and Bosch Limited as a Company will continue to focus very clearly on localization at the right optimal times.
+
+### 👤 Dinesh
+And lastly, in the press release we have talked about content increase driven by Exhaust Gas Treatment is this also driven by the OBD to change? Logically, it should not be the case and is this over and above content of SCR, can you clarify on that as well?
+
+### 👤 Soumitra Bhattacharya
+I've told you about the BS-VI Stage-2. Also told you about the OBT and also this is linked to the EGT components and if look at the total mix and mainly coming from the power train yes, our content per vehicle has significantly moved up. The first set of content that moved up was from BS-IV to BS-VI Stage-1, then from BS-VI Stage-1 to BS-VI Stage-2 and later content per vehicle will also have a change when we have the TREM-4 to TREM-5.
+
+### 👤 Dinesh
+And this EGT would be made in house unlike SCR which is sourced from 3rd party vendors. Is that correct understanding?
+
+### 👤 Soumitra Bhattacharya
+No, Dinesh, we take from the best party and from the best source and we decide what we do in- house and what we do from 3rd party or our partners. So, we don't get into overall, scheme of just trying to localize for localization and you will continue. And this policy is applicable for EGT, where EGT has multiple components and there are different levels of expertise, whether it's coating, whether it is different other components that where Bosch primarily would not go to but continue to work with partners.
+
+### 👤 Annamalai Jayaraj
+Thanks, Dinesh. Next question is from Hitesh Goel. Please unmute your line and ask your question.
+
+### 👤 Hitesh Goel
+Sir, my question is on this, we can understand your content per vehicle will increase basically in FY24 because of these new norms which are coming through right? Post that do you see any major change which can increase in terms of emissions which can lead to an increase in content per vehicle, except for the Tractor which chain that you have highlighted.
+
+### 👤 Soumitra Bhattacharya
+Hitesh this is a very generic question do not get me wrong. Content per vehicle increases based on what is happening on the mix and the mix is then linked to a change in the road map legislation road map. So, you have to be a little specific, for example, there was a change in Two-Wheeler from carburetor to injection or there is a change in FI TREM-IV to TREM-V or there was a change in our mix from BS-IV to BS-VI, BS-VI to Stage-1 to Stage-2. So, we used those changes and in the emission and legislation road map there are some 8 lines finally running, the 8 lines can also become 10 or 12. So, you have to really look at each line whether it is CPCB 4 plus whether it is TREM-IV to TREM-V whether it is BS-VI to Stage-1 to Stage-2 and whether it is for the Two-Wheeler and so on and so forth and there Bosch works at each stage because for us our parent has already gone through this. In summary, India was 17 years behind Europe about 8 years ago. Today, we are approximately 5 years behind Europe. So, luckily our parent has gone through most of it and we use our parents expertise then we regionalize the approach and we start working well before the launch. So, that is how and in summary yes content per vehicle has gone up, but not suddenly it has happened over a very clear unfolding game plan. This is for PS. What you had not seen is many of our sister plants who support Bosch limited take our ECU manufacturing unit where my colleague Guruprasad Mudlapur who is going to succeed me was the MD. There are changes for the entire ECU and those new ECUs come and fit into different vehicles, different applications. So, Bosh in India is Bosch Limited plus supported by many of our sister legal entities. So, it has to be a little more specific, but overall, yes content per vehicle has gone up and the focus on this route not just when you see it, but well before, but Guru would you like to add.
+
+### 👤 Guruprasad Mudlapur
+Maybe just as a general rule I think you covered it all. As we move towards more advanced technologies and regulations be it in the form of emissions safety or connectivity or other forms content per vehicle or the complexity of technology goes up substantially and the electronics content has also gone up substantially over the last few years and it has always been our endeavour to have the most latest technology on offer for these technologies and regulations and we have done that globally we are doing that also in India. So, sometimes you see this with a lag while we may have been talking to the OEMs on to the government and offering technologies maybe 3 years, 4 years in advance and what you see as results come maybe 3 years later. So, in that sense it is a constant endeavour of Bosch to keep on increasing our content per vehicle to a substantial level as we move forward and electronics is one good example from cars which had just one ECU or Two-Wheelers which had no electronics at all. Today, we are at levels where we have multiple use and multiple electronic units for different functions in different vehicle categories.
+
+### 👤 Annamalai Jayaraj
+Next caller is Viraj.
+
+### 👤 Viraj
+Just couple of queries I had on the business first is I get the sense that you have a content is increasing with each regulation, but if one were to just understand our volume performance and especially our market share in different end segments say CV, M&HCV, tractors, PV and where I am coming from is if I look in the past there was a phase where we had lost business say with some of the customers in CV or there was a change in the fuel mix and this also impacting us. So, if one were to just understand the market share positioning across different segments and our different fuel mixes say N23 versus what it was say in ‘18 or ‘19, what would that be that will probably give a sense in terms of how our acquisition strategy has played out in terms of market share so that is first question?
+
+### 👤 Soumitra Bhattacharya
+So, ,Viraj I will give you a very clear answer. We do not discuss market shares that is the guidance question. You know that we were very relevant players in tractors in M&HCV, HCV and then pass cars and we continue to remain we have got good acquisitions in Two-Wheelers not only in the fuel injection system, but we have also in the brakes which is a separate legal entity but works very closely. We have also in the connectivity and so on and so forth. So, I will just give you an example we had the highest ever acquisition last year so that should tell you something. Now, if you ask me segment wise directly or indirectly market share we are not going to give that neither for tractors nor for others, but yes the highest ever acquisition for year ‘22- 23 can give you an indication including for Bosch Limited including for Powertrain that we are on a good way. I trust you are okay with that.
+
+### 👤 Viraj
+Second question is largely in terms of the value addition and if I look at our sales performance especially in the mobility we have the highest ever sales and what we are seeing that next year this is further grown, but if I look into the value addition especially at the gross level, we have one of the lowest ever gross margin performance in decades now. So, I understand there is a change in terms of regulation and hence we shift to trade it, but if I look at a unit level in each of the end markets which we cater to each of these markets are either across the last week or we are pretty much close to the last week in some cases. So, in that sense with the major regulation changes now over especially when it comes to say CV or PV that behind us, how should one understand the value added or the contribution margin for us and this is little perplexing because when I look at the shareholder approvals also we have also asked for a further increase in sourcing from parent from other group entities in India. So, in that sense how should one really understand the value addition we will make at Bosch Limited and in that sense the gross margin in this business falls?
+
+### 👤 Soumitra Bhattacharya
+So, I will make a couple of opening sentences and maybe hand over to our CFO, but I will just give you some very important overall statements which you may want to connect the dots. Number one, when you look at margins you should look at it at two levels. 1) Are we playing the game to ensure that we have a long-term acquisition plan in relation to the changing legislative environment. I think there you can clearly see that based on a very high acquisition, based on content per vehicle and based on our growth we are and will continue to remain a very strong and relevant player including with the changing times. So, that is one I would like to leave behind as a thought for connecting the dots without giving guidance. 2) Your result of your
+
+### 👤 Page 12 of 15
+margins on EBIT or EBITDA you know our EBITDA is better than our EBIT because we have a pretty increasing depreciation because we are continuing to invest for the future. Now, EBITDA when you look at a double-digit EBITDA I would say it is not a bad performance. Now you are comparing this number with a number which was predominantly diesel for the last 30 years and I am sure you are comparing some of the numbers with 5 years, 8 years ago. So, let us put it in this way it is apples and oranges. The third part is based on the transition where diesel as you know about 6 years ago diesel was at 48% of market share today diesel has a 20% of market share. So, we continue to do a double digit in spite of the change which has happened. The third part is we nurture also new businesses. So, if we put in money for new businesses we are putting in money to ensure that we are nurturing the future. We have put in money for our project house electrification and hydrogen. You will not see the results right now, but what all of you are concerned is, are we preparing for the future answers yes we are preparing for the future. You remember many of you asked me a question how long will we have the CR Program and how long are you going to put in big tickets on the P&L and we had put aside 1,500 crores and you can see the result today. So, you have to trust this management for doing the right steps at the right time not looking at quarterly results only, but looking at staying relevant and staying profitable, but over and above this my colleague.
+
+### 👤 Karin Gilges
+First of all, thank you very much for the question and yes Soumitra gave you already a couple or most of the perspectives I would like to add and also what was said beforehand which is very, very important this when is a good time for localization. So, it is a changing content in the vehicle and of course as Soumitra also explained already we start it is a traded goods to come then into a localization and we are also driving forward of course and this is also perhaps an additional perspective to this was what Soumitra already told you.
+
+### 👤 Viraj
+Just last question parent in the recent press release annual shareholding meeting they talked about revamping the mobility related and they are looking at 7 different segments including our dedicated software segment and then also an electrical drive unit, so in that sense for our Bosch Limited if you can provide some perspective how does it impact us and what additional opportunities or not may come by in the listed entity?
+
+### 👤 Soumitra Bhattacharya
+So, I will give a sentence or two and then hand it over to my colleague and he is most suitable to answer in details because he has actually worked in these areas. So, let me tell you one thing Viraj that Bosch Limited has an advantage of also having these big ticket sister companies around us in India including this very big ticket company not just from turnover and people, but also from importance and strategic importance located out of India which is called the Bosch Global Software Private Limited Company and this company caters 93% of its turnover for catering to Bosch Worldwide, but also India. We have a very strong umbilical cord between Bosch Limited and what we call in short form BGSW and where we do a lot of work together which helps India and of course they do R&D and work for the Bosch Global World end-to-end also. So, with that on matter of software which is going to be very relevant and prevalent for mobility in the future as a tech stack I handover for Guru to give a brief on that,
+
+### 👤 Guruprasad Mudlapur
+I think the context for your question is basically we need to understand from what is happening in the mobility world today and what is happening with some of our OEMs especially the more advanced OEMs how are they looking at technical architectures or E architectures in vehicles moving forward. So, what is evolving now very strongly is a very clear domain focus be it domain as an energy or mobility domain, as in electrification or ADAS or connectivity or infotainment. So, these are becoming more standardized and we start to get requests from OEMs purely based on domain architectures and this also increases quite a lot the complexity on electronics and so electronics as a horizontal cuts across multiple domains and the domain controllers manage many of these domains and on top so it is quite a huge layer of software. So, many people have called cars, mobile phones on wheels for a good reason because the mobility world starts to emulate many of the things that the mobile phone world did some years ago. So, when the mobility architectures are evolving in that direction it is also important for us to internally reorganize ourselves and not necessarily in the context of companies and entities, but in terms of how we do business towards the external world and how we face the external world much better because now there is a request to provide an L3 ADAS solution and that cuts across, for example, steering systems. there are cuts across electronics control units, it cuts across breaking. So, many of these things get together and the Tier-1 ability to put together solutions like this makes a lot of difference and this is the evolution that our parent talked about in the previous press conference and within India we are also now starting to look at how relevant is this for the Indian market and when is it appropriate to reorient ourselves in this direction and we are working on restructuring ourselves in line with what the Indian OEMs may require as we move forward, some of whom we have very closely talking to on these concepts and of course the global OEMs who talked to us at global level are simply transplanting their structures also in India. So, this is the background for you and the work is in progress and as we move forward in the coming year we will keep you updated on that.
+
+### 👤 Annamalai Jayaraj
+Next is from Iftikhar
+
+### 👤 Iftikhar
+Just couple of question one is on the GDI which I think is one of the area where probably the growth can be potentially higher as we move towards the new emission norm and compact engine etcetera, so how do we see our opportunity size in that and second is on the future emission norm I think the OBD2B will also be coming probably in 2025 April of FY20. So, our acquisition will be much, much higher in OBD2B for the passenger car and the trucks in the OBD2 and RD2 etcetera?
+
+### 👤 Guruprasad Mudlapur
+You sort of gave the answer within the question itself. So, I would only concur with what you said. Yes, GDI is an important technology already pretty standard in the advanced world coming over the last couple of years in some segments in India in passenger cards and we will see more GDI coming in multiple other segments of pass cars as we move forward. So, we certainly see this and also with the dominance of diesel coming down there will be much more GDI happening in India. OBD2 of course you answered it yourself. It is certainly something that we are very very active on where we are closely watching is the constant shift of goalpost. Soumitra already talked about it and that is not really so conducive for investments right now and Yes connecting
+
+### 👤 Page 14 of 15
+back to some of the earlier questions on why the fluctuation happens in our the way traded goods comes in and localization happens. I think the answer is like this. The way goalposts keep shifting does not really help quick investments and this is something we are very closely watching on how to manage and work with the OEMs to get this going.
+
+### 👤 Iftikhar
+One more question on the dividend policy now this year you have probably given 100%, so is it the new norm which we are expecting in future or I mean any thoughts on the dividend policy?
+
+### 👤 Soumitra Bhattacharya
+Look it is a very good question. We have shared very clearly why we have done it. This is an exception. We have had 100 years which is also an exception and we have had also a very good year and it is not going to be the norm, but it is going to be an exception while ensuring that we give always a healthy payout meeting also expectations of minority shareholders and our parents, but one time.
+
+### 👤 Iftikhar
+And just now you have called out certain one offs in the other expenditure etcetera, so if you can just help me understand what is the kind of nature of those one-offs as well as the quantum if for the last quarter?
+
+### 👤 Karin Gilges
+In the last quarter in the other expenses we had a certain onetime expenses like depreciation in the INR where we have an exchange rate impact then as mentioned before very important spending in the new business areas which is all the time the investment in the future of us where we have to start decides our core business and then also some spending in professional and other charges related to the service income. So, you see the impact and the other expenses, but you see as a counterpart then also in the other income. So, these are the main three one-time impacts we saw in this quarter.
+
+### 👤 Iftikhar
+So, any call out for the basis point impact or I mean the quantum of impact?
+
+### 👤 Karin Gilges
+No, these are one-time impacts of course if we invest in new business areas then we will see a fluctuation in this other expenses also on a quarterly basis. It depends of course all the time how investments for example in this areas are going onwards.
+
+### 👤 Iftikhar
+And my last questions is on I mean two, three years back we have created a subsidiary under the Bosch Limited for the E Mobility and I think we have not invested enough in that subsidiary, so when can we expect the substantial investment in that subsidy for the plant etcetera so that I mean the business can start generate enough growth etcetera?
+
+### 👤 Soumitra Bhattacharya
+Yes. So, we have done good work on the project house electro mobility and hydrogen as I mentioned and we will link it to that company as and when we need to do things and we are evaluating the options.
+
+### 👤 Annamalai Jayaraj
+The final call is from Aman.
+
+### 👤 Aman
+I have a question on the product side of Bosch, so you guys have an EFI product whereas one of your competitors has an E-Carburetor product. So, I am just trying to understand as to what the OEMs are preferring do they prefer to go with the EFI or do they prefer to go with the E carburetor?
+
+### 👤 Soumitra Bhattacharya
+We have always stated that we strongly believe not on the E-Carburetor we would not talk based on what others would state or do. We are talking completely based on technical situation including what the future is and we have stuck to it and we would not like to make comments for it.
+
+### 👤 Annamalai Jayaraj
+Sir we thank Mr. Soumitra Bhattacharya for participating in all our investors conferences and patiently answering all our questions. Wish him all the best for his future whatever he wants to do and we welcome Mr. Guruprasad Mudlapur for the future calls.
+
+### 👤 Guruprasad Mudlapur
+Thank you.
+
+### 👤 Soumitra Bhattacharya
+Thank you very much.
+
+### 👤 Annamalai Jayaraj
+Thanks. On behalf of B&K Securities, we thank all the participants for joining the call and special thanks to Bosch Management for taking time out for the call and giving us the opportunity to host the call. Have a good day.
+
+### 👤 NOTE
+This transcript may not be 100 percent accurate and may contain misspelling and other inaccuracies. This transcript is provided "as is", without express or implied warranties of any kind.

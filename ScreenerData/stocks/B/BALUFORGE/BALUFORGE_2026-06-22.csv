@@ -3,7 +3,7 @@ Balu Forge Industries Ltd is engaged in the manufacturing of fully finished and 
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"5,447",449,722 / 341,21.0
+"5,477",451,722 / 341,21.2
 
 Book Value,Dividend Yield,ROCE,ROE
 131,0.03,22.7,19.6
@@ -39,7 +39,7 @@ Profit before tax,10,39,51,114,254,306
 Tax %,22%,24%,23%,18%,20%,15%
 Net Profit +,8,30,39,93,204,259
 EPS in Rs,1.11,3.63,4.67,9.11,18.63,21.33
-Dividend Payout %,-0%,3%,-0%,2%,1%,-0%
+Dividend Payout %,0%,3%,0%,2%,1%,0%
 
 --- BALANCE SHEET ---
 ,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
@@ -49,8 +49,8 @@ Borrowings +,26,47,52,49,40,152
 Other Liabilities +,68,78,121,111,159,104
 Total Liabilities,171,284,371,712,"1,252","1,851"
 Fixed Assets +,42,42,48,57,183,547
-CWIP,-0,7,7,130,417,277
-Investments,-0,-0,-0,-0,-0,-0
+CWIP,0,7,7,130,417,277
+Investments,0,0,0,0,0,0
 Other Assets +,129,235,316,525,652,"1,027"
 Total Assets,171,284,371,712,"1,252","1,851"
 

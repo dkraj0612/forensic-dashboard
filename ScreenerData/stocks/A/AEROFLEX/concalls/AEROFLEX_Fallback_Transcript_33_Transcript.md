@@ -1,0 +1,421 @@
+
+# AEROFLEX - Fallback_Transcript_33
+
+## Behavioral Analysis
+✅ **[STABILITY]** No severe behavioral manipulation thresholds breached.
+
+## Preparation
+### 👤 Mumbai – 400001
+Company Code No.:
+
+### 👤 To,
+The Listing Department.
+
+### 👤 Subject
+Transcript of the Investors’ Conference Call held on January 29, 2024 for Q3 &
+
+### 👤 9M FY24 Results
+In continuation to our earlier intimation dated January 29, 2024 regarding audio recording of the Investors’ Conference Call and pursuant to Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, we are enclosing herewith the transcript of Investors’ Conference Call held on Monday, January 29, 2024 at 11:00 a.m. (IST) for Q3 & 9M FY24 Results. The transcript is also available on Company’s website at https://www.aeroflexindia.com/wp-content/uploads/Transcript-of-Q3-and-9M-
+
+### 👤 FY24-Earnings-Conference-Call-held-on-January-29-2024.pdf
+Request you to kindly take the same on record.
+
+### 👤 Thanking You,
+Yours faithfully,
+
+### 👤 DIN
+02491539
+
+### 👤 Encl
+As above
+
+### 👤 DAUD
+Digitally signed by ASAD DAUD
+
+### 👤 Date
+2024.02.03
+
+### 👤 11
+22:56 +05'30'
+
+### 👤 Disclaimer
+E&OE - This transcript is edited for factual errors. In case of discrepancy, the audio recordings uploaded on the stock exchange on 29th January 2024 will prevail.
+
+### 👤 MANAGEMENT
+MR. ASAD DAUD - MANAGING DIRECTOR, AEROFLEX
+
+### 👤 Moderator
+As a reminder, all participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the call, please signal an operator by pressing ‘* and then ‘0’ on your touchtone phone. Please note that this conference is being recorded. This conference call may contain forward-looking statements about the company, which are based on the beliefs, opinions and expectations of the company as on the date of this call. These statements are not the guarantees of future performance and involve risks and uncertainties that are difficult to predict. I now hand the conference over to Mr. Asad Daud - Managing Director from Aeroflex Industries Limited. Thank you and over to you, sir.
+
+### 👤 Asad Daud
+Thank you so much. Good morning, everyone. On behalf of Aeroflex Industries Limited, I extend a very warm welcome to everyone joining us on our call today to discuss the “Operational and Financial Performance” for Q3 and Nine Months FY'23-24. On this call, I'm joined by the Management Team at Aeroflex and SGA, our investor relations advisor. I hope everyone has had an opportunity to go through the “Financial Results” and the “Investor Presentation” which have been uploaded on the stock exchanges and on our company's website. In the midst of the prevailing geopolitical attention that is ongoing in the Middle East and in Russia and Ukraine, we're pleased to highlight that despite all of this, we have had a sustained robust demand for our products stemming from both the traditional and emerging end user industries. Our production volume has surged to 2.98 million meters, marking an impressive 65% YoY growth compared to 1.8 mn. mtrs. in Q3 FY23, while maintaining a 95% capacity utilization. Withstanding the challenges which have been posed by the Middle East conflict and the recent crisis of the Red Sea, our exports for the quarter exhibited robust YoY growth of 26% with noteworthy contributions from key segments such as fire fighting and other innovative industries. We are confident that under more difficult circumstances, our exports would have had much greater expansion. As part of our strategic planning, we are delighted to announce that we have reduced our dependency on imports. This not only contributes to a reduction in our working capital, but also helps in a decrease in raw materials inventory. These positive developments underscore our
+
+### 👤 Page 3 of 17
+resilience in navigating challenges and reinforce our commitment to adopting and thriving in the dynamic market conditions. Coming to our “Business Segment”: Stainless Steel Flexible Hoses with or without the breading: it contributed almost 62% of our revenue for the first nine months of the current fiscal. Assemblies and Fittings contributed 31% of our revenue for the first nine months and assemblies will be the focus point of the company in the near future. We intend to emphasize value added products and aim to increase their share in our overall portfolio. And other business segments include Breading Interlock Hoses and Composite Hoses, which altogether have contributed approximately 7% to our nine months revenue. Now, talking about our “CAPEX Plans”:As emphasized in the previous quarter, we are progressing as planned to finalize the remaining Phase-I capacity of 1 million meters, thereby taking our overall capacity to 13.5 million meters per annum and this is expected to be completed by March 2024. Now, talking about the “Metal Bellows”:During the quarter, we have announced that we have the plan to set up a separate project on Metal Bellows and expansion joints with the capacity of 3,00,000 pieces per year, which will be completed in two phases. As part of Phase-I, we are setting up a manufacturing facility to manufacture 1,20,000 units of Metal Bellows per year, ranging from diameter of 25MM to 600MM. And we are currently in the process of leasing building space to set up the plant for metal bellows and the same, and the first phase of the Metal Bellows project is expected to be completed by December 2024. Now, talking about “Composite Hoses”:At present we have three operational lines for producing composite hoses and we can produce composite hoses of maximum diameter of 14 inches and by June 2024, we expect to add three more lines of composite hoses to our manufacturing capacity, and we hope to manufacture composite hoses of maximum diameter of 20 inches. We also are aiming to automate and to implement robotic assembly lines at our manufacturing plant. Now, talking about the “Financial Performance”: First, I'll talk about the “Q3 Results”:
+
+### 👤 Page 4 of 17
+If you see in terms of the total income. it stood at Rs.74 crores with a growth of 13% on a YoY basis. EBITDA came in at Rs.15 crores with a growth of 63% on YoY basis. EBITDA margins stood at 20.2% and profit after tax came in at Rs.9 crores with a growth of 76% on a YoY basis. Now, talking about our “Nine Months Performance”: The total income stood at Rs.242 crores with a growth of almost 19%, EBITDA for the nine months stood at Rs.50 crores with a growth of 46% and EBITDA margins stood at 20.6%, and profit after tax for the nine months stood at Rs.32 crores with a growth of 49% on a YoY basis. Exports again continue to contribute significantly to our revenues; exports accounted for almost 85% of our overall revenue and it is mainly driven by the United States and the European region. We believe that with our strong balance sheet and with our zero debt, it will help us to expand and capitalize on new opportunities arising from both the traditional and new age industry and it will help us to give financial leverage to consistently deliver high growth margin and profitability to create the value for all our stakeholders.
+
+## Q&A
+### 👤 Page 4 of 17
+With this, I would like to conclude my Presentation and open the floor for questions-and- answers. Thank you so much, everyone.
+
+### 👤 Moderator
+We will now begin the question-and-answer session. The first question is from the line of Lokesh Maru from Nippon India Mutual Fund. Please go ahead.
+
+### 👤 Lokesh Maru
+So, there're two questions. On the Red Sea issue, #1, can you please quantify how much of our sales would have been deferred to Q4 due to this issue? And #2, how much have our cost actually gone up on logistics front as and when it will be realized in Q4?
+
+### 👤 Asad Daud
+So, in terms of the sales, we have seen the impact of the Red Sea start from 15th of December when the issue came up. So, the last 15 days of December were severely impacted by the Red Sea crisis. We also saw a lot of cancellations of bookings from the shipping lines and also our customers because of the significant increase in freight costs, which the shipping lines implemented, our customers were deferred their dispatches. So, the real impact happened in the last 15 days. So, if you do like proportionate, approximately 15% of our revenue got impacted because of the Red Sea crisis. And unfortunately, this continued till mid of January, but surely now we are seeing that the crisis is slowly beginning to wave off and hopefully I think from the month of February, everything will be a smooth line again and we'll be back to normalcy very soon. And in terms of the cost, in the 3rd Quarter, the cost has not yet been reflected. The reason
+
+### 👤 Page 5 of 17
+being because the cost has increased for the shipments happening from December-end and from January. So, there will be some impact on increase in logistics of us especially on account of higher freight and that will be seen in the Q4, but we are discussing with our logistics team and with our logistics partner and also with our customers to help us to overcome this crisis and we are positive with that in the next few months everything will be smooth lined again.
+
+### 👤 Moderator
+The next question is from the line of Mahesh Bendre from LIC Mutual Fund. Please go ahead.
+
+### 👤 Mahesh Bendre
+Sir, on export side, we supply based on CIF basis or on FOB basis?
+
+### 👤 Asad Daud
+So, we have a mixture of both CIF and FOB basis, with some of our customers we work on CIF basis and with a lot of our customers we work on FOB. So, we have a good mixture of both CIF and also FOB basis.
+
+### 👤 Mahesh Bendre
+Since the freight has gone up, that will impact CIF basis shipments, right?
+
+### 👤 Asad Daud
+It actually affects both CIF and FOB. In the case of CIF basis, the impact that we have is in terms of the direct increase in logistics cost, but in case of FOB basis also what happens is because the customer's getting the very high freight, he delays the shipment. So, in case he delays the shipment, that shipment actually becomes and inventory at our place. So, we in turn save the cost of increased inventory cost. So, in both cases, there is a cost which is borne by the company. So, we actually prefer CIF basis because in that we have more control of the goods that we have and we can negotiate better with our vendors especially the logistics companies. But a lot of our customers have their own terms which they buy on.
+
+### 👤 Mahesh Bendre
+Sir, just wanted to understand the outlook for the next 12 to 18-months on domestic side, international side, what kind of growth you anticipate on both the markets?
+
+### 👤 Asad Daud
+So, we have a lot of projects ongoing as you would have heard from my speech that we have a project into composite hoses which is ongoing, we have a very big project in terms of some metal bellows which is ongoing and also we are increasing the capacity at our existing factory to increase the production of seamlessly flexible solutions. And most of these capacity expansions would be completed by the end of this calendar year or maximum by the end of the next financial year year. So, the real impact of all our ongoing projects would be seen in FY'25- 26. We have a lot of projects in the pipeline and the growth that we have seen in the past four years, we expect the same growth percentage to happen over the next four years as well, and for that, we have already started with all the planning for CAPEX.
+
+### 👤 Mahesh Bendre
+What is the current capacity utilisation?
+
+### 👤 Asad Daud
+Currently, we are utilizing almost 96%. Now, 96% is the reason because we determine our capacity in case of meters. Now, what happens is say, for example, if we manufacture hoses
+
+### 👤 Page 6 of 17
+ranging from a quarter inch in diameter all the way up to 14 inches in diameter, and we have different machines to manufacture different diameter of hoses. So, generally what happens is a capacity is in terms of the meters, but if we may manufacture the smaller size hoses, our capacity in meters would be higher, but the production in Kg would be subtle low because of the diameter of the hose. And similarly, if we manufacture the bigger diameter hoses, the production in meter would be low, but the production in Kg would be higher. So, we have a typical scenario of where we need to monitor our production in meters also and in Kgs also, ultimately in value also. Because then we sell our assembly products, those come with the fittings and with coupling, which currently we are procuring from our contract manufacturers from outside.
+
+### 👤 Moderator
+The next question is from the line of Pritesh Chheda from Lucky Investments. Please go ahead.
+
+### 👤 Pritesh Chheda
+Sir, I just have one question and it's a follow up to what you answered in the previous question. There is this interplay of meters and tonnages when we look at your capacity. My guess is when you would have put up these capacities, you would have taken optimum mix of certain dia hose pipe, however, there can be a situation where in a particular quarter you might make a low dia, in a particular quarter, you might make a large dia or a mix of. So, optimally, based on this 11.5 million metres capacity that you had, that particular capacity, which was your original capacity, what kind of revenues on optimal mix is possible considering the current stainless steel prices obviously from that 11.5 million meters, that would be a better way to understand your business because of these mix or interplay of meters and tons?
+
+### 👤 Asad Daud
+So, you're right. In some quarters, so I'll give you an example, like in the last quarter, which is Q3, we manufactured more smaller diameter hoses. Now, in that case, our production in meters would go up. But you see that in terms of the value it will go down because the price per meter is lower obviously because for a smaller diameter hose. And in terms of the capacity utilization also, it goes up because of the number of meters produced is much higher. In terms of the optimum revenue or in terms of the optimum value that say for example the 11 million meters capacity can make, actually I will not be able to give that answer. The reason being if I'm selling the 11 million meters only as hoses and not as assemblies, our sales would be capped. Now, if I convert the entire 11 million meters from hoses to an assembly, my sales could almost be 1.5 times more because of the additional components -
+
+### 👤 Pritesh Chheda
+If you could give at the 11-million-meter hoses level when you would have put up this CAPEX you would have optimum dia mix in your calculation, right, I will sell 30% or half inch, there will be some optimum. If you would have sold hoses, then what can be your Revenue?
+
+### 👤 Asad Daud
+I'll have to get back to you with the exact figure, but generally what happens is, when demand is coming from and then accordingly we predict that in this capacity or in this particular size we have shortage of capacity and we need to increase our capacity. Like for example, currently, we are increasing our capacity in the smaller diameter hoses, because over there we have the
+
+### 👤 Page 7 of 17
+capacity constraints where some of our machines are running almost at 100% capacity. So, that is the reason why right now our expansion is happening on the smaller diameter. So, this is where our capacity constraint is happening.
+
+### 👤 Pritesh Chheda
+And my second question is sir, on the fittings side of the business, what is now the percentage of your revenue in Q3 and nine months? And what was it as a percentage of revenue same quarter last year and nine months last year for us to understand? On the fitting side, what has been the growth phase?
+
+### 👤 Asad Daud
+So, in terms of the fittings and the assemblies, the entire business for the nine months period from April to December, and especially for the last quarter, which is Q3, that is about 38%. And in terms of the nine months of the previous year, that was about same 31% to 32% itself. So, the reason is that now we have been focusing on increasing the assembly business, the assembly business actually takes slightly more longer time to build because the customers also have to change the procurement from buying hose to buying an assembly. Hence, it is flowing in steady process, and the real impact of the change in the line we'll be seeing in the next couple of years, especially when we also introduce the metal bellows, because in metal bellows it's mostly goes as assemblies only.
+
+### 👤 Pritesh Chheda
+So, as of now, you've reached from 31% to 38%, right?
+
+### 👤 Asad Daud
+Yes. The last quarter average was 38%. We are focusing on increasing the same business of assemblies because that is where the real higher value addition also is there.
+
+### 👤 Pritesh Chheda
+And lastly, what is the pricing decline that you would have seen on account of stainless steel prices in this year?
+
+### 👤 Asad Daud
+The decrease in prices has been about 20% to 25%.
+
+### 👤 Pritesh Chheda
+So, stainless steel prices are down 20% to 25%, so our product prices would be down 12% to 15%, right by virtue of RM?
+
+### 👤 Asad Daud
+Yes, approximately.
+
+### 👤 Moderator
+The next question is from the line of Manav Vijay from Deep Financial Consultants Private Limited. Please go ahead.
+
+### 👤 Manav Vijay
+First question is regarding the impact on sales that we had due to the prices. So, you mentioned that we lost around 15-days of sales that would be around 10, 12 crores, correct?
+
+### 👤 Asad Daud
+Yes, approximately.
+
+### 👤 Manav Vijay
+Second, production was going on in the factory and you could not ship it, so inventory should have moved up for you. If I'm correct, working capital generally is at 100-days, so this quarter end, it had slightly moved up, would that be a correct assumption?
+
+### 👤 Asad Daud
+The inventory picked up only slightly. I'll tell you the reason why. The finished goods inventory moved up a lot because obviously the last 15 days were really impacted, but the raw material inventory has gone down in the last quarter. The reason being that we have reduced our dependency on imports. So, now in the current year only 50% or slightly less than 50% of our coil is imported, whereas the same thing last year, almost 95% of our coil was imported. So, we have reduced our dependency on import. Our overall inventory, yes, has gone up slightly, but it has not being impacted severely because our finished goods inventory has gone up significantly, our raw material inventory has gone down.
+
+### 👤 Manav Vijay
+My next question is, so whatever sales loss that happened on let's say sales that got deferred in Q3 and you mentioned the problem has continued even in the month of January, so now since you have confirmed orders, all the sales will come whether in Q4 partly or in Q1, you will have a bunch of sales it will happen?
+
+### 👤 Asad Daud
+You're right. So, the impact of the Q3 sales would go into Q4 and the impact of the Q4 sales would be carried forward to Q1. So, if this entire crisis fades away, then by Q1, all the impacts of the Red Sea crisis, you will see in the results and then after that it will be more or less stable. Because what happens is, if a customer has delayed some shipments, then he will also delay his future shipment. So, it actually becomes a cascading effect. But I think the real impact of this entire crisis I think we expect hopefully by February everything to be smoothened down and by Q1 everything should be back to normal.
+
+### 👤 Manav Vijay
+Sir, considering all this, you believe that the margin that we had last year of 20% we should be in a position to do margins better that because like the way I think you mentioned to the previous callers question is that compared to 22% to 25% fall in the prices? You have reduced price only by 10% to 15%, you have been able to retain some part of the reduction, so your margins will move up?
+
+### 👤 Asad Daud
+In the past couple of quarters, our focus has been extensively on improving our margins, and that is there even in the near future the focus of the company will be on maintaining and growing its margins. Now, if this Red Sea crisis had not happened, our margins would have been even better than what they are right now. But yes, our aim would be to increase our margins on a QoQ basis.
+
+### 👤 Manav Vijay
+You are processing and increasing your capacity from 12.5 to 13.5, even the metal bellows project is also coming up. So, if you can help us to understand, what efforts you are doing to increase the geographies that you have that you already cover, to also increase the number of
+
+### 👤 Page 9 of 17
+customers because you do need capacity, so you do need new names and geographies to sell the new capacities?
+
+### 👤 Asad Daud
+In terms of the plan for sales, one is that we are ramping up our sales team, in terms of specifically a geography and a region wise. I would say two to three years back, we had about four to five people in sales especially in export sales, now we have about 15 people in export sales and by the end of the next financial year we would be having approximately 30 to 40 people in export sales. So, one is building up the sales team and the sales team would be built on geography wise, some would be handling the European region, some would be handling the USA and North America, some would be handling South America and so on. One is that. Second is in terms of our share of business from our existing customers. So, the reason that we have gone into composite hoses and metal bellows is that a lot of our customers, especially in the export market, they are buying these products. So, it helps us to increase our share of business from our existing customers also plus also it helps us to get the new customers when we offer an entire basket of products. It helps us in also getting more customers especially in the international market where they always look for suppliers from whom they can buy an entire basket of products. So, it will help us to grow both at existing customers also and help us to tap new customers as well.
+
+### 👤 Moderator
+The next question is from the line of Rusmik Oza from 9 Rays EquiResearch. Please go ahead.
+
+### 👤 Rusmik Oza
+I have three questions. First is on the margin, sir. As you mentioned, assemblies account for around 38% of the revenue, assuming you have a blended margin of 20% EBITDA, is it safe to assume that we make around 25% EBITDA margin in the assembly and fitting business and maybe around 15% to 16% in the hoses business?
+
+### 👤 Asad Daud
+On average in terms of industrial flexible hoses, we make about anywhere between 16% to 18% of margin in terms of EBITDA and for assemblies and fittings it ranges from 22% to 24% on an average.
+
+### 👤 Rusmik Oza
+Could you give me some understanding on this metal bellows business, like what kind of realization will it be better in our existing business or how does realization or margins look like in this business going forward?
+
+### 👤 Asad Daud
+So, in metal bellows, the average margin range is between 25% to 30%. And metal bellows are used in many industries where we are already supplying our products. So, this will be a value- added item which will have a positive effect on both the top line and even more on the bottom line.
+
+### 👤 Rusmik Oza
+Out of the 3 lakhs capacity for metal bellows, we will commission 1.2 million next year?
+
+### 👤 Asad Daud
+So, in metal bellows, it is not calculated in terms of meters, this is calculated in terms of pieces.
+
+### 👤 Rusmik Oza
+If you have 1.2 lakh pieces of capacity next year, what kind of revenue you can generate in FY'26 roughly?
+
+### 👤 Asad Daud
+Approximately, with 1.2 lakh pieces we will be able to generate close to 50 crores of sales.
+
+### 👤 Rusmik Oza
+If you can share some figures on the CAPEX because this year our capacity is going up from 11 to 13 million and then next year it is going up from 13.5 to 16.5. So, both the years we're seeing around 22% jump in capacity. So, what kind of CAPEX are we spending this year and next year on this?
+
+### 👤 Asad Daud
+In terms of the capacity to increase from 13.5 to 16.5, the plan for the next financial year, we would be approximately doing a CAPEX of between 35 to 40 crores. For the metal bellows project, we have estimated about 43 to 44 crores for the overall CAPEX for the. And obviously there will be some working capital also required to grow the business, so that would be additional.
+
+### 👤 Rusmik Oza
+This CAPEX, which is like 11 million going to 13.5 million, how much are we spending this year, sir?
+
+### 👤 Asad Daud
+From 11 to 12.5 we have already commissioned, and it's already started the production. From 12.5 to 13.5 we will be completing in this quarter by March. So, that overall would be an approximate CAPEX of about 30 crores.
+
+### 👤 Rusmik Oza
+In your presentation, you have mentioned that you want to enter into new segments like Aerospace, Semiconductor, EV, Robotics, Defense, etc., So, what's the timeline, by when do you feel you'll be able to have some breakthrough in these industries and what kind of share of revenues you aim to have from these new businesses or new segments?
+
+### 👤 Asad Daud
+So, for in terms of EV, we have already started developing a project with one of our customers to develop a specific product which will be used in the EV industry. So, the development of the product has already started. With regards to the aerospace industry, we have started the discussions with a few companies who are in this sector who are ultimately the tier-1 suppliers to the likes of ISRO and all the aerospace companies, so, we have already started our talks with them. I think we are aiming that in the next financial year, we'll definitely starting off some business both in the aerospace and in the EV space.
+
+### 👤 Rusmik Oza
+You mentioned also some inorganic acquisitions also to expand the business. What kind of acquisition targets are you looking at -- will it be in the same business or some related business or what kind of amount you want to spend on this kind of acquisitions, if you can just give us some understanding?
+
+### 👤 Asad Daud
+In terms of our philosophy for inorganic acquisition, is basically three-fold. One is we are looking at something which is forward, therein to have some acquisition in either in the US or in the Europe countries where it will be a forward acquisition. We are also in a discussion for a backward acquisition which will help us to manufacture our raw material, especially in terms of the fitting that we procure. And then there is a third strategy where we look for the companies who are selling to the same customers, but slightly different products wherein we increase our overall basket of offerings to our customers. So, these are the three philosophy that we are currently working on. We are still in discussions with a few companies regarding the same. So, when something is finalized, we'll surely update.
+
+### 👤 Rusmik Oza
+To summarize, because I think this year, next year, capacities are going up by around 22%, 23% and you have also the metal bellows capacity is coming up for the next three to four years. Is it safe to assume that you should grow your top line at least at around 20% 25% in that range?
+
+### 👤 Asad Daud
+Our aim is that like the previous four years, we have grown at about 25% and in the next four to five years, we are hoping to do the same. Obviously, I will not be able to give a specific number to that, but yes, we have a lot of projects which are ongoing, and a lot of new projects are also still under the discussion phase. So, we are aiming for strong growth, but along with growing the pipeline, we also have a strong focus on growing the bottom line as well. That's why you see the bellows project, although it will contribute a lot to the top line, it will contribute even more significantly to the bottom line also. So, hence we are looking for profitable growth and especially into those products which will generate us higher profit than our existing products.
+
+### 👤 Moderator
+We take the next question from the line of Hiten Boricha from Sequent Investments. Please go ahead.
+
+### 👤 Hiten Boricha
+Can you share the volume number for Q2 and Q1 as well as for FY'23?
+
+### 👤 Asad Daud
+Volume in terms of meters or volume in -
+
+### 👤 Hiten Boricha
+Million meters. You have given for Q3 FY'24 last year and last year. So, if you can share the numbers for Q2, Q1 and FY'23?
+
+### 👤 Asad Daud
+I'll probably share with you the details in terms of Kgs, I think that will help. So, if you see in terms of the nine months, we have grown about 18% from about 3,200 MT to about 3,800 MT, this is a ballpark figure.
+
+### 👤 Hiten Boricha
+If you can share this number in million meters that would be helpful, sir, because in our presentation we have shared the numbers in million meters?
+
+### 👤 Asad Daud
+Actually, there is some background noise from your end. So, I'm not able to hear you. Can you just -?
+
+### 👤 Hiten Boricha
+So, in our presentation, you have given the numbers in million meters. If you can share the number in that?
+
+### 👤 Asad Daud
+In terms of million meters in Q1 of current Financial Year, it was 3.1 million, in Q2, it was about 2.87 million, and in Q3 it's about 2.98 million.
+
+### 👤 Hiten Boricha
+What was FY'23?
+
+### 👤 Asad Daud
+FY23 Q1 was 2.6.
+
+### 👤 Hiten Boricha
+Whole FY'23?
+
+### 👤 Asad Daud
+I will give you the number.
+
+### 👤 Hiten Boricha
+Till then, sir, I have a question on employee expense. So, as we mentioned, we are looking to add employees in the export sales from currently 10 to 15 members to roughly around 40 members. So, what kind of increase we can see in this particular line item because as of now it is stable around 6 to 6.5 crores?
+
+### 👤 Asad Daud
+If you see our employee cost also, the reason that we'll have to onboard new sales people because we want to grow our business, obviously that will have an increase in our employee benefit expenses, but simultaneously that will also result in increase in higher sales. So, ultimately, our margins will not be affected just because of the increase in the sales people.
+
+### 👤 Hiten Boricha
+So, it will grow in line with our sales, right?
+
+### 👤 Asad Daud
+Yes, it will grow in line with our sales for some projects like specifically metal bellows, there might be slightly higher employee cost to start with, reason being because when you start a new project, obviously, you'll have to get onboard the people first and then you'll be able to see the results. Only for the bellows project we will see slightly higher employee cost to start with, but obviously once the project is streamlined and is into full-fledged production, obviously, the cost in the project also would come down.
+
+### 👤 Hiten Boricha
+I will take that number offline, sir. No problem.
+
+### 👤 Asad Daud
+I just give you a ballpark figure. So, the total volume last time, which is FY'22-23 was approximately 9.15 million.
+
+### 👤 Moderator
+The next question is from the line of Dhruv Bhatia from Bank of India Investment Managers. Please go ahead.
+
+### 👤 Dhruv Bhatia
+The first question is you know you just mentioned the production volume numbers of 2.98 for Q3. Just to share the sales volume number because the impact of exports trade issue, what would be the sales volume number for the quarter?
+
+### 👤 Asad Daud
+I don't have the data for the sales in meters with me handy. I have the data for sales in Kgs. So, an approximate figure, that's about 1,140 MT for the last quarter basically.
+
+### 👤 Dhruv Bhatia
+And this would be what in the last year same quarter then then?
+
+### 👤 Asad Daud
+Last year the same quarter was 9.76, about 17% growth.
+
+### 👤 Dhruv Bhatia
+The second question was to understand that, I mean, in the presentation, you've mentioned that exports have grown by about 26%. If I do the reverse calculation, seems like domestic sales has degrown by about 30% on YoY basis.
+
+### 👤 Asad Daud
+It's more on the value terms because in domestic what happens is last year the same quarter there was a very big project of JSW which obviously had a higher impact on the domestic sales and it was a one-time project and that is why last year the domestic sales for this quarter of last year was higher. But if you see overall for the nine months, our domestic sales has also grown. Obviously I don't have the data right away with me but probably in the next investor call I'll share the details of domestic and export sales.
+
+### 👤 Dhruv Bhatia
+Going by the logistics challenge that you're facing and it was just 15-days in December and probably I think the entire January was that issue, what you had envisaged for the entire year in terms of growth outlook versus what you will probably achieve there will be a gap, right, because I'm assuming Q4 will be even worse than Q3 going by the impact that you see because of logistics?
+
+### 👤 Asad Daud
+January is not completely gone because of the logistics issue. In some areas where especially say for example a business in Southeast Asia, business in South America, those have not been impacted and also the business in the domestic market, right, those have not been impacted by the Red Sea. So, even in Q3, we were definitely hoping to do much better than what happened. Also, in Q4, we will be definitely hoping to do much better than Q3. Obviously, we are working with our logistics team, with our shipping partners and along also with some more importantly our customers to ensure that whatever the pendency in December, those get fulfilled in January itself and then definitely that we expect Q4 to be better than Q3. Obviously, our overall target would be impacted because of this issue. But if you see in terms of our target for profitability, I'm sure we will exceed our target of profitability for the financial year because as a team we also focus a lot on profitability as a core for our business metric.
+
+### 👤 Dhruv Bhatia
+Railways, for your freight cost, when I see last year's number, it seems like they're somewhere between 11% to 12% of sales and because of this impact of logistics, how are you looking to
+
+### 👤 Page 14 of 17
+still maintain margins going ahead, I mean, how are you going to counter this -- is it just purely through the sales mix where assembly mix will be increasing and that will drive better profitability or is there anything else to counter the impact of logistics cost?
+
+### 👤 Asad Daud
+Obviously, there will be some impact of increase in logistics cost due to this crisis. But as a team we are working to share this cost with our customers. Obviously, as you know, some may agree, some may don't agree. Plus also we are planning to reduce our material consumption to have a much better mix of products which will ultimately overcome our increase in the logistics cost. And plus as a company also we are looking at other areas, so say for example if the logistics cost is increasing, we are looking at other cost items that we feel that we can reduce this cost so that ultimately our profitability is not impacted.
+
+### 👤 Dhruv Bhatia
+Just to understand, I know you don't share order book number, but from customers providing you growth visibility, I mean, do you have the next six to nine months of growth visibility from customers, if you could just provide some color on that?
+
+### 👤 Asad Daud
+We have a rough estimate of how much quantity they will require in this calendar year. Especially these are our largest customers to whom we sell our product. So, from that angle we get a visibility of the entire year. In case of any some external shocks in terms of any external crises or anything, these the numbers could change in the middle of the year, but generally we have seen that unless and until some impact like a COVID or some really big geopolitical events, such numbers generally don't change during the year. So, some of our large customers, they do give us a tentative guideline in terms of the quantity that they'll be buying from us in this current calendar year.
+
+### 👤 Moderator
+The next question is from the line of Pritesh Chheda from Lucky Investments. Please go ahead.
+
+### 👤 Pritesh Chheda
+So, just on the metal bellows projects, you mentioned 50 crores for 1,20,000 units, right?
+
+### 👤 Asad Daud
+Yes, yes.
+
+### 👤 Pritesh Chheda
+What is the tonnage that we might see from such type of quantity of metal bellows? And from a realization or a value addition perspective if hose pipe is, let's say, 1.4x of the stainless steel price because you're RM-to-sales is 60%, in case of metal bellows, what is the value addition over steel?
+
+### 👤 Asad Daud
+So, metal bellows approximately, about 50% is the material cost compared to the sale price. But in turn there's a slight increase in employee cost because the process to make metal bellows is slightly slower as compared to metal hose. So, there is a slight increase in employee cost. Sometimes there is a slight reduction in the raw metal consumption. In terms of tonnage, so obviously metal bellows there is no tonnage per se, it ultimately then at the time of when we are producing the bellows in terms of raw material consumed, that time it will give you an idea about
+
+### 👤 Page 15 of 17
+the tonnage, but right now I will not be able to share the data exactly on tonnage that it will give, because generally metal bellows are not sold on per ton basis, they are actually sold on per piece basis.
+
+### 👤 Pritesh Chheda
+And sir, just one clarification. You mentioned the nine months volume in tonnage at 3,800 MT which is very good that we've 18% volume growth. But in your commentary you mentioned that you have sold a lot of lower dia hose pipe. But when I look at the million-meter number then ideally the million meter number growth should have been more than the volume growth, right, in the Kg?.
+
+### 👤 Asad Daud
+So, this is the average of the nine months. So, when I said that we have produced higher million millimeters that was for the last Q3 and for the numbers that you said , those are for the nine months from April to December.
+
+### 👤 Pritesh Chheda
+But a similar observation you had in Q2 also, right, where you had a higher capacity utilization because of the million-meter lower dia sold?
+
+### 👤 Asad Daud
+Yes, but at that time, our consumption was lower.
+
+### 👤 Moderator
+We take the last question from the line of Suruji Permar from NX Wealth Management. Please go ahead.
+
+### 👤 Suruji Permar
+Just a few questions from my side. In this metal bellows in the last concall you had said that you will be doing the CAPEX in your existing plant only, but this time you have given that separate plant setup will be there of 80,000 square feet around and you'll be taking it on lease. So, can you guide why this is happening?
+
+### 👤 Asad Daud
+One is that metal bellows project we planned it to have it at a new setup only. The land that we acquire, which is right next to our facility that will be utilized to increase our production capacity of assembly. Hopefully, in the next quarter, we'll start the construction on the new land and that will be specifically to increase the capacity for stainless steel assemblies. Because the bellows project also required lots of bigger space in terms of infrastructure and hence we decided to have it at a separate factory.
+
+### 👤 Suruji Permar
+For metal bellows, like you are eyeing the customers which are presently with you or you will be like going to different geographies for this?
+
+### 👤 Asad Daud
+Geographies will remain more or less the same. We'll be selling metal bellows both to our existing customers both in the domestic market as well as in the export market, but simultaneously also with metal bellows, we'll be able to get more new customers in the international market and in the domestic market who want specifically only the metal bellows,
+
+### 👤 Page 16 of 17
+and second, who buy metal bellows and along with that, they also buy stainless steel hoses. So, that will give us an opportunity to create a new market for our existing products also.
+
+### 👤 Suruji Permar
+Going forward, which segment of yours do you think will contribute to the revenue more in the next one to two years?
+
+### 👤 Asad Daud
+Stainless steel hoses and assemblies is our core business, and it will contribute the most to our business over the next four to five years without a doubt. The metal bellows project itself will be completed by the end of this calendar year… I'm talking about the first phase that will be completed by December of this calendar year. In terms of the production, in terms of the sales of the first phase, the real impact you will see in FY'25-26, and then obviously the second phase will start and then that will be completed. So, at least in the next four to five years stainless steel hoses and assemblies will be our core business and would continue to be our core business.
+
+### 👤 Suruji Permar
+Like you're expanding your business in the Middle East also, so, any like positive news regarding this area?
+
+### 👤 Asad Daud
+Our focus is in the next financial year or in this calendar year that we want to get a lot of our business from Middle East also because we feel that Middle East has a huge potential which we have not yet had because our focus mostly was into the European and the USA region. But in the next financial year which is FY'24-25 we'll be having a strong focus on the Middle East market and the North Africa market, and we hope that to do significant amount of our business from there. So, we have already planned, we are building up a team specifically for the Middle East region also.
+
+### 👤 Suruji Permar
+The margins there also like is comparable to America and Europe or there's like difference in margin?
+
+### 👤 Asad Daud
+Almost the same.
+
+### 👤 Suruji Permar
+You have mentioned in your presentation that you have got more business doing fire sprinklers. So, I just want to get to know that the fire sprinklers like you have mentioned new innovative products which are coming that are also in some fire sprinklers for EV buses and some other fire sprinklers. So, what kind of fire sprinklers right now you are doing?
+
+### 👤 Asad Daud
+We are doing fire sprinklers, which is mostly used in buildings basically mostly into real estate like in commercial buildings and residential buildings.
+
+### 👤 Moderator
+I would now like to hand the conference back to the management team for closing comments.
+
+### 👤 Asad Daud
+Thank you so much everyone for joining. If I was not able to answer any questions or anything, you can get in touch with SGA with your queries and we'll answer them at the earliest possible.
+
+### 👤 Page 17 of 17
+I appreciate your time and showing interest in our company, and we look forward to meeting all of you over the next call. Thank you so much and have a good week.
+
+### 👤 Moderator
+On behalf of Aeroflex Industries Limited, that concludes this conference. Thank you for joining us. Ladies and gentlemen, you may now disconnect your lines.

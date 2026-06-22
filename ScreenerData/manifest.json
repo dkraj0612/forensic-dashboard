@@ -1,8 +1,8 @@
 {
     "360ONE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 30,
+        "downloaded": 24,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "21STCENMGM": {
         "expected": 0,
@@ -10,24 +10,24 @@
         "status": "COMPLETED"
     },
     "20MICRONS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 16,
+        "downloaded": 15,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "3BBLACKBIO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "3IINFOLTD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "3MINDIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 12,
+        "downloaded": 10,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "3PLAND": {
         "expected": 0,
@@ -40,13 +40,13 @@
         "status": "COMPLETED"
     },
     "5PAISA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 26,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AAATECH": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "A2ZINFRA": {
@@ -55,9 +55,9 @@
         "status": "COMPLETED"
     },
     "AADHARHFC": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 10,
+        "downloaded": 9,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AAKASH": {
         "expected": 0,
@@ -65,9 +65,9 @@
         "status": "COMPLETED"
     },
     "AARON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 4,
+        "downloaded": 3,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AARNAV": {
         "expected": 0,
@@ -75,54 +75,54 @@
         "status": "COMPLETED"
     },
     "AARTECH": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "AARTIIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 57,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AARTIDRUGS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 34,
+        "downloaded": 34,
         "status": "COMPLETED"
     },
     "AARTIPHARM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "AARTISURF": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "AARVI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 46,
+        "downloaded": 46,
         "status": "COMPLETED"
     },
     "ABB": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 34,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABBOTINDIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 2,
+        "downloaded": 1,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AAVAS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABCAPITAL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABCOTS": {
         "expected": 0,
@@ -130,14 +130,14 @@
         "status": "COMPLETED"
     },
     "ABDL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 12,
+        "downloaded": 10,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABFRL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 45,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABINFRA": {
         "expected": 0,
@@ -145,8 +145,8 @@
         "status": "COMPLETED"
     },
     "ABLBL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ABMINTLLTD": {
@@ -160,33 +160,33 @@
         "status": "COMPLETED"
     },
     "ABREL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ACC": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ABSLAMC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "ACCELYA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "ACE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 39,
+        "downloaded": 39,
         "status": "COMPLETED"
     },
     "ACCURACY": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 22,
+        "downloaded": 22,
         "status": "COMPLETED"
     },
     "ACEINTEG": {
@@ -200,13 +200,13 @@
         "status": "COMPLETED"
     },
     "ACI": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 17,
+        "downloaded": 15,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ACMESOLAR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "ACSTECH": {
@@ -215,44 +215,44 @@
         "status": "COMPLETED"
     },
     "ACUTAAS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 24,
+        "downloaded": 24,
         "status": "COMPLETED"
     },
     "ADANIENSOL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 35,
+        "downloaded": 26,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADANIENT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 26,
+        "downloaded": 26,
         "status": "COMPLETED"
     },
     "ADANIGREEN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 49,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADANIPORTS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 49,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADANIPOWER": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADFFOODS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 29,
+        "downloaded": 25,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADOR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 25,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADL": {
         "expected": 0,
@@ -260,13 +260,13 @@
         "status": "COMPLETED"
     },
     "ADSL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 21,
+        "downloaded": 21,
         "status": "COMPLETED"
     },
     "ADVAIT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 14,
+        "downloaded": 14,
         "status": "COMPLETED"
     },
     "ADROITINFO": {
@@ -280,8 +280,8 @@
         "status": "COMPLETED"
     },
     "ADVANCE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "ADVENTHTL": {
@@ -290,18 +290,18 @@
         "status": "COMPLETED"
     },
     "AEGISLOG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 54,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ADVENZYMES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 57,
+        "downloaded": 56,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AEGISVOPAK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "AEPL": {
@@ -310,59 +310,59 @@
         "status": "COMPLETED"
     },
     "AEROENTER": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "AEQUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "AEROFLEX": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "AERONEU": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "AETHER": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "AFCONS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "AFFLE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AFSL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "AGARIND": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "AGARWALEYE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "AGI": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AGROPHOS": {
         "expected": 0,
@@ -370,8 +370,8 @@
         "status": "COMPLETED"
     },
     "AGIIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "AHLADA": {
@@ -380,8 +380,8 @@
         "status": "COMPLETED"
     },
     "AHCL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "AHLEAST": {
@@ -390,13 +390,13 @@
         "status": "COMPLETED"
     },
     "AHLUCONT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 18,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AIAENG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 41,
+        "downloaded": 41,
         "status": "COMPLETED"
     },
     "AIRAN": {
@@ -410,23 +410,23 @@
         "status": "COMPLETED"
     },
     "AJANTPHARM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AJAXENGG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "AJMERA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 24,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AJOONI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "AKASH": {
@@ -445,8 +445,8 @@
         "status": "COMPLETED"
     },
     "AIIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "AKI": {
@@ -460,18 +460,18 @@
         "status": "COMPLETED"
     },
     "AKSHARCHEM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 13,
+        "downloaded": 9,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ALANKIT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "AKUMS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "ALBERTDAVD": {
@@ -485,38 +485,38 @@
         "status": "COMPLETED"
     },
     "ALICON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ALIVUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "ALKEM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 51,
+        "downloaded": 51,
         "status": "COMPLETED"
     },
     "ALLCARGO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 58,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ALKYLAMINE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "ALLDIGI": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 29,
+        "downloaded": 23,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ALLTIME": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ALOKINDS": {
@@ -530,19 +530,19 @@
         "status": "COMPLETED"
     },
     "ALGOQUANT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "AMAGI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "ALPHAGEO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 9,
+        "downloaded": 8,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ALPA": {
         "expected": 0,
@@ -555,9 +555,9 @@
         "status": "COMPLETED"
     },
     "AMBER": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 51,
+        "downloaded": 43,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AMBICAAGAR": {
         "expected": 0,
@@ -575,18 +575,18 @@
         "status": "COMPLETED"
     },
     "AMBUJACEM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AMIRCHAND": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "AMNPLST": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "AMJLAND": {
@@ -595,18 +595,18 @@
         "status": "COMPLETED"
     },
     "ANANTRAJ": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "ANANDRATHI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "ANDHRAPAP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "ANDHRSUGAR": {
@@ -615,19 +615,19 @@
         "status": "COMPLETED"
     },
     "ANGELONE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ANMOL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "ANTELOPUS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 21,
+        "downloaded": 19,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ANTGRAPHIC": {
         "expected": 0,
@@ -635,28 +635,28 @@
         "status": "COMPLETED"
     },
     "AMRUTANJAN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 31,
+        "downloaded": 31,
         "status": "COMPLETED"
     },
     "ANTHEM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ANUHPHR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 28,
+        "downloaded": 28,
         "status": "COMPLETED"
     },
     "ANUP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 29,
+        "downloaded": 29,
         "status": "COMPLETED"
     },
     "ANURAS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 25,
+        "downloaded": 25,
         "status": "COMPLETED"
     },
     "APCL": {
@@ -665,53 +665,53 @@
         "status": "COMPLETED"
     },
     "APARINDS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 63,
+        "downloaded": 60,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APEX": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 43,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APCOTEXIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 57,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APLAPOLLO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 49,
+        "downloaded": 46,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APLLTD": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APOLLO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 15,
+        "downloaded": 14,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APOLLOPIPE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 48,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APOLLOTYRE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 48,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APOLSINHOT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "APTUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "AQYLON": {
@@ -730,14 +730,14 @@
         "status": "COMPLETED"
     },
     "ARE&M": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 22,
+        "downloaded": 21,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "APOLLOHOSP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 12,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ARENTERP": {
         "expected": 0,
@@ -745,58 +745,58 @@
         "status": "COMPLETED"
     },
     "ARFIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "ARIES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 6,
+        "downloaded": 5,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ARIHANT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "ARIHANTCAP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "ARIHANTSUP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 69,
+        "downloaded": 58,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ARIS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "ARKADE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "ARMANFIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 43,
+        "downloaded": 43,
         "status": "COMPLETED"
     },
     "AROGRANITE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "ARSSBL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "ARTEMISMED": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "ARTNIRMAN": {
@@ -810,14 +810,14 @@
         "status": "COMPLETED"
     },
     "ARVIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 10,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ARVSMART": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASAHIINDIA": {
         "expected": 0,
@@ -825,9 +825,9 @@
         "status": "COMPLETED"
     },
     "ASAHISONG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 15,
+        "downloaded": 14,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASAL": {
         "expected": 0,
@@ -835,39 +835,39 @@
         "status": "COMPLETED"
     },
     "ASALCBR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASHAPURMIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ASHIANA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 61,
+        "downloaded": 46,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASHIKA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "ASHIMASYN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "ARVINDFASN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 30,
+        "downloaded": 30,
         "status": "COMPLETED"
     },
     "ASHOKA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 63,
+        "downloaded": 54,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASHOKAMET": {
         "expected": 0,
@@ -875,14 +875,14 @@
         "status": "COMPLETED"
     },
     "ASHOKLEY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 15,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASIANENE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 22,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASIANHOTNR": {
         "expected": 0,
@@ -890,18 +890,18 @@
         "status": "COMPLETED"
     },
     "ASIANPAINT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASIANTILES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 49,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASKAUTOLTD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "ASTAR": {
@@ -910,28 +910,28 @@
         "status": "COMPLETED"
     },
     "ASTEC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "ASTERDM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 53,
+        "downloaded": 30,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASTRAL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 14,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASTRAMICRO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ASTRAZEN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "ATALREAL": {
@@ -940,8 +940,8 @@
         "status": "COMPLETED"
     },
     "ATAM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "ASPINWALL": {
@@ -950,28 +950,28 @@
         "status": "COMPLETED"
     },
     "ATGL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 21,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ATHERENERG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ATL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 14,
+        "downloaded": 14,
         "status": "COMPLETED"
     },
     "ATLANTAA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "ATLANTAELE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "ATLASCYCLE": {
@@ -980,24 +980,24 @@
         "status": "COMPLETED"
     },
     "ATUL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 10,
+        "downloaded": 1,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ATULAUTO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 8,
+        "downloaded": 7,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AUBANK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 55,
+        "downloaded": 49,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AURIONPRO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 46,
+        "downloaded": 42,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AURIGROW": {
         "expected": 0,
@@ -1005,38 +1005,38 @@
         "status": "COMPLETED"
     },
     "AURUM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 24,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AUTOAXLES": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 34,
+        "downloaded": 34,
         "status": "COMPLETED"
     },
     "AVALON": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "AVANTEL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "AVANTIFEED": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 47,
+        "downloaded": 47,
         "status": "COMPLETED"
     },
     "AVG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "AVL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "AVONMORE": {
@@ -1045,8 +1045,8 @@
         "status": "COMPLETED"
     },
     "AVROIND": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "AVTNPL": {
@@ -1055,53 +1055,53 @@
         "status": "COMPLETED"
     },
     "AUROPHARMA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 76,
+        "downloaded": 59,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AWFIS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "AWL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 25,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AWHCL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 25,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AXISBANK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 83,
+        "downloaded": 81,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AXISCADES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 45,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "AXITA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "AYMSYNTEX": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "AYE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "AZAD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "BAGFILMS": {
@@ -1110,33 +1110,33 @@
         "status": "COMPLETED"
     },
     "BAIDFIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "BAJAJ-AUTO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "BAJAJCON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 60,
+        "downloaded": 46,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJAJFINSV": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 53,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJAJELEC": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 52,
+        "downloaded": 44,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJAJHCARE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "BAJAJHIND": {
@@ -1155,19 +1155,19 @@
         "status": "COMPLETED"
     },
     "BAJAJST": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 7,
+        "downloaded": 6,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJEL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 7,
+        "downloaded": 6,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJFINANCE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 51,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BALAJEE": {
         "expected": 0,
@@ -1175,18 +1175,18 @@
         "status": "COMPLETED"
     },
     "BALAJITELE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 11,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BALAMINES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BAJAJHFL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "BALKRISHNA": {
@@ -1195,9 +1195,9 @@
         "status": "COMPLETED"
     },
     "BALKRISIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BALMLAWRIE": {
         "expected": 0,
@@ -1205,19 +1205,19 @@
         "status": "COMPLETED"
     },
     "BALPHARMA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "BALUFORGE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "BALRAMCHIN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 30,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANCOINDIA": {
         "expected": 0,
@@ -1235,29 +1235,29 @@
         "status": "COMPLETED"
     },
     "BANDHANBNK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 31,
+        "downloaded": 30,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANKBARODA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANKINDIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 40,
+        "downloaded": 32,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANSALWIRE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 8,
+        "downloaded": 7,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANSWRAS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 42,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BASML": {
         "expected": 0,
@@ -1265,29 +1265,29 @@
         "status": "COMPLETED"
     },
     "BASF": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 16,
+        "downloaded": 13,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BANARBEADS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "BATAINDIA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 21,
+        "downloaded": 21,
         "status": "COMPLETED"
     },
     "BATLIBOI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "BAYERCROP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 16,
+        "downloaded": 14,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BBL": {
         "expected": 0,
@@ -1295,54 +1295,54 @@
         "status": "COMPLETED"
     },
     "BBTC": {
-        "expected": 0,
+        "expected": 3,
         "downloaded": 0,
-        "status": "COMPLETED"
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BBOX": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 22,
+        "downloaded": 22,
         "status": "COMPLETED"
     },
     "BBTCL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "BCG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "BCLIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 48,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BCONCEPTS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 23,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BCPL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 6,
+        "downloaded": 5,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BDL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "BECTORFOOD": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 24,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BEARDSELL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 6,
+        "downloaded": 5,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BEDMUTHA": {
         "expected": 0,
@@ -1355,18 +1355,18 @@
         "status": "COMPLETED"
     },
     "BELLACASA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "BELRISE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "BEML": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 21,
+        "downloaded": 21,
         "status": "COMPLETED"
     },
     "BENGALASM": {
@@ -1375,23 +1375,23 @@
         "status": "COMPLETED"
     },
     "BEPL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "BERGEPAINT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 47,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BESTAGRO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 18,
+        "downloaded": 18,
         "status": "COMPLETED"
     },
     "BETA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "BFINVEST": {
@@ -1400,9 +1400,9 @@
         "status": "COMPLETED"
     },
     "BEL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BFUTILITIE": {
         "expected": 0,
@@ -1410,19 +1410,19 @@
         "status": "COMPLETED"
     },
     "BHAGCHEM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "BHARATCOAL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "BHARATFORG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 59,
+        "downloaded": 56,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BHARATGEAR": {
         "expected": 0,
@@ -1435,23 +1435,23 @@
         "status": "COMPLETED"
     },
     "BHARATWIRE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "BHARTIARTL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 34,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BHARTIHEXA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "BHEL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "BI": {
@@ -1460,18 +1460,18 @@
         "status": "COMPLETED"
     },
     "BIGBLOC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 41,
+        "downloaded": 41,
         "status": "COMPLETED"
     },
     "BIKAJI": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 17,
+        "downloaded": 16,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "BIMETAL": {
@@ -1485,13 +1485,13 @@
         "status": "COMPLETED"
     },
     "BIOCON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 75,
+        "downloaded": 74,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BIRLACORPN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "BIOFILCHEM": {
@@ -1505,18 +1505,18 @@
         "status": "COMPLETED"
     },
     "BIRLANU": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BLACKBUCK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "BLACKROSE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 14,
+        "downloaded": 14,
         "status": "COMPLETED"
     },
     "BLAL": {
@@ -1535,53 +1535,53 @@
         "status": "COMPLETED"
     },
     "BLISSGVS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "BLKASHYAP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "BLS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 31,
+        "downloaded": 26,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BLSE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "BIRLAPREC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "BLUEDART": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BLUEJET": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "BLUESTARCO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 54,
+        "downloaded": 54,
         "status": "COMPLETED"
     },
     "BLUESTONE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "BLUSPRING": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "BMWVENTLTD": {
@@ -1605,23 +1605,23 @@
         "status": "COMPLETED"
     },
     "BORANA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "BOROLTD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 32,
+        "downloaded": 32,
         "status": "COMPLETED"
     },
     "BORORENEW": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 46,
+        "downloaded": 46,
         "status": "COMPLETED"
     },
     "BOROSCI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "BOSCH-HCIL": {
@@ -1630,14 +1630,14 @@
         "status": "COMPLETED"
     },
     "BOSCHLTD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 48,
+        "downloaded": 48,
         "status": "COMPLETED"
     },
     "BPCL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 47,
+        "downloaded": 1,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BPL": {
         "expected": 0,
@@ -1645,9 +1645,9 @@
         "status": "COMPLETED"
     },
     "BRIGADE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 53,
+        "downloaded": 50,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BONLON": {
         "expected": 0,
@@ -1655,29 +1655,29 @@
         "status": "COMPLETED"
     },
     "BRIGHOTEL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "BRITANNIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 19,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BRNL": {
-        "expected": 0,
+        "expected": 3,
         "downloaded": 0,
-        "status": "COMPLETED"
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BSL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "BSE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BTTL": {
         "expected": 0,
@@ -1685,18 +1685,18 @@
         "status": "COMPLETED"
     },
     "BSOFT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "BUTTERFLY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 25,
+        "downloaded": 19,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BUILDPRO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "BVCL": {
@@ -1705,93 +1705,93 @@
         "status": "COMPLETED"
     },
     "CAMLINFINE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CAMPUS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 19,
+        "downloaded": 18,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CAMS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 32,
+        "downloaded": 32,
         "status": "COMPLETED"
     },
     "CANBK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 35,
+        "downloaded": 26,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "BTML": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "CANFINHOME": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 48,
+        "downloaded": 31,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CANHLIFE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 3,
+        "downloaded": 2,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CANTABIL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CAPACITE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 32,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CAPILLARY": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "CAPITALSFB": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "CAPLIPOINT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 4,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CARERATING": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 54,
+        "downloaded": 54,
         "status": "COMPLETED"
     },
     "CARBORUNIV": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 38,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CARRARO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "CARTRADE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "CASTROLIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 31,
+        "downloaded": 29,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CCAVENUE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 43,
+        "downloaded": 43,
         "status": "COMPLETED"
     },
     "CCCL": {
@@ -1805,33 +1805,33 @@
         "status": "COMPLETED"
     },
     "CCL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 36,
+        "downloaded": 30,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CDSL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 37,
+        "downloaded": 37,
         "status": "COMPLETED"
     },
     "CEATLTD": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 93,
+        "downloaded": 88,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CEIGALL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "CARYSIL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 58,
+        "downloaded": 46,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CEINSYS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "CELEBRITY": {
@@ -1840,19 +1840,19 @@
         "status": "COMPLETED"
     },
     "CELLO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 14,
+        "downloaded": 14,
         "status": "COMPLETED"
     },
     "CENTENKA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 25,
+        "downloaded": 25,
         "status": "COMPLETED"
     },
     "CEMPRO": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CENTEXT": {
         "expected": 0,
@@ -1860,9 +1860,9 @@
         "status": "COMPLETED"
     },
     "CENTRALBK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CENTRUM": {
         "expected": 0,
@@ -1870,63 +1870,63 @@
         "status": "COMPLETED"
     },
     "CENTUM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 46,
+        "downloaded": 46,
         "status": "COMPLETED"
     },
     "CENTURYPLY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 47,
+        "downloaded": 35,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CERA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 35,
+        "downloaded": 31,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CESC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 32,
+        "downloaded": 32,
         "status": "COMPLETED"
     },
     "CEWATER": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "CGCL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 60,
+        "downloaded": 58,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CGPOWER": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 31,
+        "downloaded": 16,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CHALET": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 46,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CHAMBLFERT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 31,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CHEMPLASTS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "CHENNPETRO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "CHOICEIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 21,
+        "downloaded": 21,
         "status": "COMPLETED"
     },
     "CHEVIOT": {
@@ -1935,33 +1935,33 @@
         "status": "COMPLETED"
     },
     "CHOLAHLDNG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 30,
+        "downloaded": 17,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CHOLAFIN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 23,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CIEINDIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 63,
+        "downloaded": 42,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CIFL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "CHEMCON": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "CINELINE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "CINEVISTA": {
@@ -1970,33 +1970,33 @@
         "status": "COMPLETED"
     },
     "CIPLA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 65,
+        "downloaded": 61,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CLEAN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 21,
+        "downloaded": 21,
         "status": "COMPLETED"
     },
     "CLSEL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 20,
+        "downloaded": 19,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CLEANMAX": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "CMPDI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "CMSINFO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "CMRGREEN": {
@@ -2005,43 +2005,43 @@
         "status": "COMPLETED"
     },
     "COASTCORP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "COALINDIA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 44,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "COCKERILL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "COCHINSHIP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "COFORGE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 32,
+        "downloaded": 6,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "COHANCE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 37,
+        "downloaded": 37,
         "status": "COMPLETED"
     },
     "COMFINTE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "COLPAL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 22,
+        "downloaded": 22,
         "status": "COMPLETED"
     },
     "COMPUSOFT": {
@@ -2050,29 +2050,29 @@
         "status": "COMPLETED"
     },
     "COMSYN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 23,
+        "downloaded": 21,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CNL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 29,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CONCORDBIO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "CONFIPET": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 14,
+        "downloaded": 13,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CONCOR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 31,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CONSOFINVT": {
         "expected": 0,
@@ -2080,8 +2080,8 @@
         "status": "COMPLETED"
     },
     "CONTROLPR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 31,
+        "downloaded": 31,
         "status": "COMPLETED"
     },
     "CORALFINAC": {
@@ -2090,19 +2090,19 @@
         "status": "COMPLETED"
     },
     "COROMANDEL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CORONA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "COSMOFIRST": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 34,
+        "downloaded": 23,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "COUNCODOS": {
         "expected": 0,
@@ -2110,18 +2110,18 @@
         "status": "COMPLETED"
     },
     "CPPLUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "CRAFTSMAN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 24,
+        "downloaded": 24,
         "status": "COMPLETED"
     },
     "CRAMC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "CREATIVEYE": {
@@ -2130,59 +2130,59 @@
         "status": "COMPLETED"
     },
     "CREDITACC": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CREST": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "CRISIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "CRIZAC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "CROMPTON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 70,
+        "downloaded": 54,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CPEDU": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "CSBBANK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 26,
+        "downloaded": 26,
         "status": "COMPLETED"
     },
     "CROWN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 4,
+        "downloaded": 3,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CTE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "CSLFINANCE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 35,
+        "downloaded": 32,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CUB": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CUBEXTUB": {
         "expected": 0,
@@ -2190,19 +2190,19 @@
         "status": "COMPLETED"
     },
     "CUPID": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 34,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CUMMINSIND": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 43,
+        "downloaded": 43,
         "status": "COMPLETED"
     },
     "CYBERTECH": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 38,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CURAA": {
         "expected": 0,
@@ -2210,33 +2210,33 @@
         "status": "COMPLETED"
     },
     "CYIENTDLM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 14,
+        "downloaded": 14,
         "status": "COMPLETED"
     },
     "DABUR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 66,
+        "downloaded": 64,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DAICHI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "DALBHARAT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 36,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DALMIASUG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "DAMCAPITAL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 7,
+        "downloaded": 7,
         "status": "COMPLETED"
     },
     "DAMODARIND": {
@@ -2250,49 +2250,49 @@
         "status": "COMPLETED"
     },
     "DATAMATICS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 38,
+        "downloaded": 34,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "CYIENT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 42,
+        "downloaded": 42,
         "status": "COMPLETED"
     },
     "DATAPATTNS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 26,
+        "downloaded": 26,
         "status": "COMPLETED"
     },
     "DAVANGERE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "DBCORP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 39,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DBL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 52,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DCAL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 40,
+        "downloaded": 38,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DCBBANK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 47,
+        "downloaded": 47,
         "status": "COMPLETED"
     },
     "DCMSHRIRAM": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 49,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DCMSRIND": {
         "expected": 0,
@@ -2300,18 +2300,18 @@
         "status": "COMPLETED"
     },
     "DCW": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 27,
+        "downloaded": 27,
         "status": "COMPLETED"
     },
     "DDEVPLSTIK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 29,
+        "downloaded": 29,
         "status": "COMPLETED"
     },
     "DCXINDIA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "DECCANCE": {
@@ -2320,8 +2320,8 @@
         "status": "COMPLETED"
     },
     "DECNGOLD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "DBSTOCKBRO": {
@@ -2330,34 +2330,34 @@
         "status": "COMPLETED"
     },
     "DEEPAKFERT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 37,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DEEPAKNTR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 40,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DEEPINDS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 25,
+        "downloaded": 25,
         "status": "COMPLETED"
     },
     "DELHIVERY": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 28,
+        "downloaded": 28,
         "status": "COMPLETED"
     },
     "DELPHIFX": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 7,
+        "downloaded": 5,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DELTACORP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 17,
+        "downloaded": 8,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DELTAMAGNT": {
         "expected": 0,
@@ -2365,9 +2365,9 @@
         "status": "COMPLETED"
     },
     "DEN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 48,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DENORA": {
         "expected": 0,
@@ -2375,18 +2375,18 @@
         "status": "COMPLETED"
     },
     "DENTA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "DEVIT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "DEVX": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "DGCONTENT": {
@@ -2395,8 +2395,8 @@
         "status": "COMPLETED"
     },
     "DHAMPURSUG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 45,
+        "downloaded": 45,
         "status": "COMPLETED"
     },
     "DHANBANK": {
@@ -2405,13 +2405,13 @@
         "status": "COMPLETED"
     },
     "DHANUKA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 37,
+        "downloaded": 37,
         "status": "COMPLETED"
     },
     "DHARMAJ": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 17,
+        "downloaded": 17,
         "status": "COMPLETED"
     },
     "DHUNINV": {
@@ -2420,8 +2420,8 @@
         "status": "COMPLETED"
     },
     "DIACABS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "DIAMINESQ": {
@@ -2430,13 +2430,13 @@
         "status": "COMPLETED"
     },
     "DIAMONDYD": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 33,
+        "downloaded": 32,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DEVYANI": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "DICIND": {
@@ -2445,8 +2445,8 @@
         "status": "COMPLETED"
     },
     "DIFFNKG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "DIGIDRIVE": {
@@ -2455,8 +2455,8 @@
         "status": "COMPLETED"
     },
     "DIGITIDE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "DIGJAMLMTD": {
@@ -2470,24 +2470,24 @@
         "status": "COMPLETED"
     },
     "DIVISLAB": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 25,
+        "downloaded": 18,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DIVGIITTS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "DIXON": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 37,
+        "downloaded": 19,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DLF": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 40,
+        "downloaded": 38,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DLINKINDIA": {
         "expected": 0,
@@ -2495,14 +2495,14 @@
         "status": "COMPLETED"
     },
     "DMART": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 23,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DMCC": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DNAMEDIA": {
         "expected": 0,
@@ -2510,23 +2510,23 @@
         "status": "COMPLETED"
     },
     "DODLA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 22,
+        "downloaded": 21,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DOLATALGO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "DOLLAR": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 27,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DJML": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "DOLPHIN": {
@@ -2540,43 +2540,43 @@
         "status": "COMPLETED"
     },
     "DOMS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "DPABHUSHAN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 18,
+        "downloaded": 18,
         "status": "COMPLETED"
     },
     "DPWIRES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 9,
+        "downloaded": 4,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DRAGARWQ": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "DRCSYSTEMS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "DREAMFOLKS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 21,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DRREDDY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 32,
+        "downloaded": 23,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DSSL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "DTIL": {
@@ -2590,28 +2590,28 @@
         "status": "COMPLETED"
     },
     "DWARKESH": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 41,
+        "downloaded": 15,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DYCL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "DYNAMATECH": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 21,
+        "downloaded": 16,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "DYNPRO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "E2E": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 39,
+        "downloaded": 39,
         "status": "COMPLETED"
     },
     "DREDGECORP": {
@@ -2620,38 +2620,38 @@
         "status": "COMPLETED"
     },
     "EASEMYTRIP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 30,
+        "downloaded": 30,
         "status": "COMPLETED"
     },
     "EBGNG": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "ECLERX": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 46,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EDELWEISS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 123,
+        "downloaded": 91,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EFCIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "EICHERMOT": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EIEL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "EIFFL": {
@@ -2660,23 +2660,23 @@
         "status": "COMPLETED"
     },
     "EIHAHOTELS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 10,
+        "downloaded": 10,
         "status": "COMPLETED"
     },
     "EIHOTEL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 36,
+        "downloaded": 36,
         "status": "COMPLETED"
     },
     "EIMCOELECO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "EKC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 29,
+        "downloaded": 29,
         "status": "COMPLETED"
     },
     "ELANTAS": {
@@ -2690,18 +2690,18 @@
         "status": "COMPLETED"
     },
     "EIDPARRY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 39,
+        "downloaded": 22,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ELDEHSG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 34,
+        "downloaded": 32,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ELECON": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 30,
+        "downloaded": 30,
         "status": "COMPLETED"
     },
     "ELECTHERM": {
@@ -2710,18 +2710,18 @@
         "status": "COMPLETED"
     },
     "ELECTCAST": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 21,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ELGIEQUIP": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 35,
+        "downloaded": 35,
         "status": "COMPLETED"
     },
     "ELIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "ELGIRUBCO": {
@@ -2730,18 +2730,18 @@
         "status": "COMPLETED"
     },
     "ELITECON": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "ELLEN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "ELPROINTL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 1,
+        "downloaded": 1,
         "status": "COMPLETED"
     },
     "EMAMIPAP": {
@@ -2750,54 +2750,54 @@
         "status": "COMPLETED"
     },
     "EMBDL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 20,
+        "downloaded": 18,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EMCURE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "EMIL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 18,
+        "downloaded": 18,
         "status": "COMPLETED"
     },
     "EMKAY": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "EMMBI": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 18,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EMMVEE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 4,
+        "downloaded": 3,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EMSLIMITED": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 9,
+        "downloaded": 8,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EMUDHRA": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 22,
+        "downloaded": 22,
         "status": "COMPLETED"
     },
     "ENDURANCE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 38,
+        "downloaded": 38,
         "status": "COMPLETED"
     },
     "EMAMILTD": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ENERGYDEV": {
         "expected": 0,
@@ -2805,49 +2805,49 @@
         "status": "COMPLETED"
     },
     "ENIL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 45,
+        "downloaded": 44,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ENGINERSIN": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 36,
+        "downloaded": 28,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ENRIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 3,
+        "downloaded": 3,
         "status": "COMPLETED"
     },
     "EPACK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 16,
+        "downloaded": 16,
         "status": "COMPLETED"
     },
     "ENTERO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "EPACKPEB": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "EPL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 41,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EQUITASBNK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 26,
+        "downloaded": 25,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ERIS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 43,
+        "downloaded": 26,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ESABINDIA": {
         "expected": 0,
@@ -2855,14 +2855,14 @@
         "status": "COMPLETED"
     },
     "ESAFSFB": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "ESCORTS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 54,
+        "downloaded": 28,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ESSARSHPNG": {
         "expected": 0,
@@ -2870,28 +2870,28 @@
         "status": "COMPLETED"
     },
     "ETERNAL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 23,
+        "downloaded": 23,
         "status": "COMPLETED"
     },
     "ESTER": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 44,
+        "downloaded": 20,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EPIGRAL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 34,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "ETHOSLTD": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 18,
+        "downloaded": 18,
         "status": "COMPLETED"
     },
     "EUREKAFORB": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 20,
+        "downloaded": 20,
         "status": "COMPLETED"
     },
     "EUROBOND": {
@@ -2900,53 +2900,53 @@
         "status": "COMPLETED"
     },
     "EUROPRATIK": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "EVEREADY": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 17,
+        "downloaded": 16,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EVERESTIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 19,
+        "downloaded": 6,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "EXCELINDUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "EXCELSOFT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 5,
+        "downloaded": 5,
         "status": "COMPLETED"
     },
     "EXICOM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "EXIDEIND": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "EXXARO": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 8,
+        "downloaded": 8,
         "status": "COMPLETED"
     },
     "FABTECH": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 4,
+        "downloaded": 4,
         "status": "COMPLETED"
     },
     "FAIRCHEMOR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 29,
+        "downloaded": 29,
         "status": "COMPLETED"
     },
     "FACT": {
@@ -2955,18 +2955,18 @@
         "status": "COMPLETED"
     },
     "FAZE3Q": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "FCL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 86,
+        "downloaded": 82,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FDC": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 11,
+        "downloaded": 11,
         "status": "COMPLETED"
     },
     "FEDDERSHOL": {
@@ -2975,139 +2975,139 @@
         "status": "COMPLETED"
     },
     "EXPLEOSOL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 49,
+        "downloaded": 48,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FEDERALBNK": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 49,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FEDFINA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 14,
+        "downloaded": 13,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FERMENTA": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 55,
+        "downloaded": 52,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FIBERWEB": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 28,
+        "downloaded": 23,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FIEMIND": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 50,
+        "downloaded": 47,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FILATEX": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 46,
+        "downloaded": 40,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FINCABLES": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 25,
+        "downloaded": 16,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FINEORG": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 35,
+        "downloaded": 33,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FINPIPE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 48,
+        "downloaded": 48,
         "status": "COMPLETED"
     },
     "FINOPB": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 22,
+        "downloaded": 22,
         "status": "COMPLETED"
     },
     "FISCHER": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "FIRSTCRY": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 9,
+        "downloaded": 9,
         "status": "COMPLETED"
     },
     "FIVESTAR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 15,
+        "downloaded": 15,
         "status": "COMPLETED"
     },
     "FLAIR": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 12,
+        "downloaded": 12,
         "status": "COMPLETED"
     },
     "FLUOROCHEM": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 28,
+        "downloaded": 28,
         "status": "COMPLETED"
     },
     "FMGOETZE": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 8,
+        "downloaded": 1,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FOCUS": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 13,
+        "downloaded": 13,
         "status": "COMPLETED"
     },
     "FINKURVE": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 6,
+        "downloaded": 6,
         "status": "COMPLETED"
     },
     "FOODSIN": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 19,
+        "downloaded": 19,
         "status": "COMPLETED"
     },
     "FORTIS": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 42,
+        "downloaded": 39,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FORCEMOT": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "FOSECOIND": {
-        "expected": 0,
+        "expected": 1,
         "downloaded": 0,
-        "status": "COMPLETED"
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FRONTSP": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 18,
+        "downloaded": 17,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "FRACTAL": {
-        "expected": 0,
-        "downloaded": 0,
+        "expected": 2,
+        "downloaded": 2,
         "status": "COMPLETED"
     },
     "FUSION": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 18,
+        "downloaded": 11,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "GABRIEL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 36,
+        "downloaded": 34,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "GAIL": {
         "expected": 0,
@@ -3140,9 +3140,9 @@
         "status": "COMPLETED"
     },
     "FSL": {
-        "expected": 0,
-        "downloaded": 0,
-        "status": "COMPLETED"
+        "expected": 74,
+        "downloaded": 53,
+        "status": "FAILED_RETRY_NEXT_RUN"
     },
     "GANDHITUBE": {
         "expected": 0,

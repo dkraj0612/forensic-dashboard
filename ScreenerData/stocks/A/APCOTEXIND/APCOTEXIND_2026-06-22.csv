@@ -3,10 +3,10 @@
 
 --- STOCK INFO ---
 Market Cap,Current Price,High / Low,Stock P/E
-"2,834",547,579 / 310,75.6
+"2,909",561,579 / 310,77.6
 
 Book Value,Dividend Yield,ROCE,ROE
-38.2,1.46,19.8,24.4
+38.2,1.45,19.8,24.4
 
 Face Value
 2.00
@@ -49,7 +49,7 @@ Borrowings +,31,25,32
 Other Liabilities +,50,75,59
 Total Liabilities,181,288,289
 Fixed Assets +,63,90,94
-CWIP,2,5,-0
+CWIP,2,5,0
 Investments,31,18,20
 Other Assets +,85,176,174
 Total Assets,181,288,289

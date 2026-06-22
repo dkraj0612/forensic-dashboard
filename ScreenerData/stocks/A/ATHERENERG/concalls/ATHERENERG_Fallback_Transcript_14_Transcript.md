@@ -1,0 +1,214 @@
+
+# ATHERENERG - Fallback_Transcript_14
+
+## Behavioral Analysis
+⚠️ **[EVASION] High Evasion Density:** Management used unusually high deflection terminology.
+
+## Preparation
+### 👤 National Stock Exchange of India Ltd
+Exchange Plaza, 5th Floor, C-1, Block G,
+
+### 👤 BSE Limited
+1st Floor, Phiroze Jeejeebhoy Towers
+
+### 👤 Sub
+Transcript of earnings call pertaining to the Unaudited Financial Results of the Company for the quarter ended June 30, 2025 Pursuant to Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015 and in furtherance to our earlier letter dated August 04, 2025 on the audio recording of earnings call of the Company pertaining to the Unaudited Financial Results for the quarter ended June 30, 2025, please find enclosed herewith the transcript of the said earnings call held on August 04, 2025. The said transcript is also available on the website of the Company at: https://www.atherenergy.com/investor- relations/financials Kindly take the above information on record. Thank you
+
+### 👤 Puja Aggarwal
+Company Secretary and Compliance officer Membership no: A49310
+
+### 👤 AGGARWAL
+Digitally signed by
+
+### 👤 Date
+2025.08.08
+
+### 👤 15
+46:58 +05'30'
+
+### 👤 Moderator
+Conference Call. As a reminder, all participants' lines will be in listen-only mode, and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during this conference call, please signal an operator by pressing “*” then “0” on your touchtone phone. Please note that this conference is being recorded. I now hand over the conference to Mr. Murali Sashidharan from Ather Energy Limited. Thank you and over to you, sir.
+
+### 👤 Chief Executive Officer (CEO) of Ather Energy and Mr. Sohil Parekh, Chief Financial Officer
+(CFO) of Ather Energy. Before we begin, I would like to add that anything that the management might say on this call, which might be seen as forward-looking statements, may involve risks and uncertainties. Such statements or comments are not guaranteed by Ather Energy Limited, and the actual results may differ from those statements. So, we will begin with a brief overview by Mr. Tarun Mehta. So on to you, Tarun.
+
+### 👤 Tarun Mehta
+Hey, thanks, Murali. Welcome, everybody. So, we are reasonably young in our life as a listed company, and this is only our second earnings call. So firstly, I want to thank everybody who's joined in today. And given that many of you might be following us only recently or might be still new to our story, I just want to take a couple of minutes and just explain what we're building at Ather. We started Ather about 12 years back, and there are two big bets that we have taken in this business that have come to really represent Ather over the last decade. The first bet has been on the premiumization of our industry and the bet on the upgrading Indian buyer. We believe that the two-wheeler industry, particularly the scooter industry, is going through a fantastic phase of premiumization and will continue to do so as per capita incomes go up. Majority of households already have a scooter or a bike and are buying one increasingly that is of an upgrade to them and their families. And that's the trend that Ather wants to ride. We built a brand over the years, particularly focusing on this. The second bet has been on R&D and technology. Ather has been well-known in the industry and to the consumers for a strong investment and a strong focus there. Over the years, this has led to a very strong patent portfolio. In fact, we finished Q1FY26 with 417 patents filed, almost 60-70 new patents in the quarter with half of our workforce in R&D. We believe the best EV businesses will be those who will be able to navigate the future of EV. You will have to have a very strong R&D base and that's what Ather continues to invest behind.
+
+### 👤 Page 3 of 12
+With that, let me just zoom in a little bit on how Q1 was. Q1 for us was a very strong quarter. Typically coming from Q4 to Q1 in our industry. In Q4, there is a little bit of a volume run-up because of the March exit numbers, specifically with subsidies coming down. And Q1 often showcases a little bit of dip in volume. Despite that, we saw very strong performance. Our units sold were at 46,000 units, which were up almost 100% over the same quarter last year. Total income was at INR672 crores, which was up 83% over the same quarter last year. Adjusted gross margins were up even better. They were at INR154 crores, which are 117% up year-on- year. And on a percentage basis, hit a high of 23%. Even if you were to see our margins without any government incentives, they come to about 20%, which is a 700 bps improvement over the same quarter last year. Very strong performance over Q1 FY '25 on top line, margins, and also EBITDA. We finished Q1 with a minus 16% EBITDA, which was also 1700 bps over the same quarter last year. This jump in volume was also matched with a growth in market share for us. Obviously, compared to Q1 FY '25, we were almost doubled from 7.6% to 14.3%. But even compared to Q4, we grew our market share by about 70 bps from 13.6% to 14.3%. To better understand this growth, I think it's important to focus on our strategy, which has been distinct basis the geography. For example, in South India, Ather has generally been a strong player. And there, our strategy has been in building up our dominance. Q1 FY '26 was the first quarter when for the entirety of the quarter, Ather became the number one player by volume, ending with a 22.8% market share. This is down to the increasing popularity of Rizta in the Southern markets in the recent months and quarters. While Rizta launched last year, we started focusing on Rizta in the Southern markets only recently and that's leading to a strong performance in volumes. Moving up, in Middle India and North India, most of the growth is driven by distribution expansion. So for us, in Q4 earnings call, I had called out that we are on a big network expansion. We added 86 stores to our total network in Q4 FY '25. Q1 was even better, we added 95 stores, averaging more than one store a day and expanding pretty rapidly across the country. We are now up at 446 stores. Obviously, as you can imagine, there's still a fair bit of headroom available here. And we believe there's an opportunity to add many more stores in the coming quarters. These stores particularly played out in a big way in Middle India. For us, Middle India are the five states of Gujarat, Maharashtra, MP, Chhattisgarh and Odisha. Over the last few quarters, we've been focused on adding more and more distribution and more and more stores in this zone. And that's led to a strong market share performance. In Q1, we ended with 10.7% market share, up almost 2.5x over the same quarter last year and expanding pretty rapidly. I believe that these stores that we've added and continue to add in this zone will continue paying a very strong dividend as store throughput continues to shoot up every month over the next few months.
+
+### 👤 Page 4 of 12
+So, this year, a fair bit of growth will continue coming from the Middle India geography. Rest of India, particularly North India, we have added stores and we have expanded our network, but really our focus is shifting our network expansion into this zone as we speak. This is a very large zone, states like Rajasthan, Uttar Pradesh, Bihar, really giant geographies, all of Northeast. We're excited about them and we believe an expansion of distribution here can drive and pay dividends for us over all of next year and put us in a really good position as we get ready with new products, specifically our EL platform and our low-cost products in the coming year. So, South India is all about consolidation and building up our market leadership. Middle India, we've already begun a strong work on network expansion that is starting to already pay off results and I believe over the coming quarters will continue to pay more results. And rest of India, where we are now moving our attention and in the ensuing quarters, you will see specifically next year, you should hopefully see strong results from this cohort also. If I move my focus to adjusted gross margins, they have obviously seen a strong improvement as I called out, up from an average 19% last FY to 23% in Q1. A lot of this is also driven by our non-vehicle revenues, which have now hit 12% revenue contribution. This is a mix of our accessories, our warranty programs and our software. Software is trending very, very favorably for us and has been actually holding up really well despite an expansion into all parts of the country today with very high attach rates. So, our accessories, Ather helmet, our Halo sales have also commenced and they are also adding to this. Charging infrastructure is also up. We added almost 400 charging points last quarter, hitting 4,000 charging points everywhere. All of this is obviously matched by COGS reduction. COGS came down in Q1 almost 7% compared to the average of FY '25. EBITDA improvement. In Q1, given that we had the IPO pretty much in the middle of the quarter, early May, some of our investments could commence only a little later. So, there is probably some amount of deferment, I would say maybe INR20-INR30 odd crores in this quarter. But even after factoring that, Q1 was a terrific improvement over Q1 last year. EBITDA losses have narrowed down from -33% to -16%. Even on an absolute basis, EBITDA has come down and operating leverage is starting to show results here. What's ahead for us? Just zooming out from numbers a little bit. Obviously on the watchouts, we continue navigating and continue focusing on the rare earth magnets crisis in our industry. Our teams have done hard work at multiple approaches here. In the medium term, I foresee fairly strong options which should hold up really well. And I am pretty positive about volumes and performance there. In the short term, which is this quarter, there could be an impact of about a week-odd in terms of potential business impact. We will try and contain that with our channel inventory as much as possible. As of now, I am optimistic that any impact of rare earth magnets would be restricted to Q2. What's exciting for the future is looking ahead. First, in the next few weeks, we have our annual launch day, Ather Community Day celebrations end of this month, 30th August. We will be unveiling our new generation software, Ather Stack 7 there. We will also be unveiling critically
+
+### 👤 Page 5 of 12
+our new platform, the EL platform, which is a new scooter platform designed for cost and scalability in this event on 30th August. For us, LFP battery packs have already gone live, so very happy to announce that. And you will hopefully see the impact of that in our financials in Q2 and Q3 as the percentage contribution to sales starts becoming more and more visible. And finally, our Factory 3.0, which is our expansion for next year, is on a good track. And we'll have more updates to share on that in the coming quarters. With that, let me just take a pause. I think the summary for the quarter is done, and we can move to Q&A now. Thank you.
+
+## Q&A
+### 👤 Moderator
+Thank you very much, sir. We will now begin the question-and-answer session. The first question is from the line of Nishit Jalan from Axis Capital.
+
+### 👤 Nishit Jalan
+Congrats on a good set of numbers. Tarun, I have two questions. One, on the cost reduction side, we have seen gross profit per vehicle improving by about INR3,000-odd Q3, INR3,500. And this is despite that incentive came down by around INR5,000 in this quarter. So, I just wanted to understand how much of it is driven by cell prices and how much of it is driven by vis a vis basically company-specific and industry-specific factors, number one. Number two, how do you see this going ahead? Are entire benefits from cell price reduction and all have come through, right, or more we will see coming ahead? So, some indications, some thoughts around how should we look at BOM costs going ahead. Second question, you did talk about 7 days of impact because of rare earth issues in this quarter. You mean 7 days of production impact and retail impact will be much lower because of inventory, because we are getting into the festive months also now, so probably your production run rate needs to pick up? So, will we be able to do that or not? And thirdly, you are unveiling this EL platform on 30th of August, right? When do we see products under EL platform are getting launched and which will be the key states or anything that you will be targeting this platform primarily, right, or will it be more pan-India across states or something? Thank you.
+
+### 👤 Tarun Mehta
+Thanks for the visions, Nishit. So, I'll take a quick stab at them. So yes, we saw a gross margin improvement, and I think what you will see as you dive into the numbers is that our average selling prices have actually held up quite favorably despite subsidies coming down by INR5,000. So, it's actually a combination of our value engineering work, favourable commodities, also the strength of the brand. We've been able to calibrate prices upwards and ensure good attach rates of software. Our product SKU has been very heartening, even with Rizta, not just 450. So, product SKU has been very favourable. Software attach rates have been very favourable. All of them have contributed to very steady ASP despite subsidies coming down and very steady revenue realization despite subsidies coming down.
+
+### 👤 Page 6 of 12
+It's a mix of, on the cost reduction front, I would say it's a mix of cost reduction and commodities, particularly cells in our case, that has played out this quarter. On rare earth, very quickly, it's a blended thing. Obviously, we are factoring higher production and higher throughput for this quarter over the previous quarter, particularly with the new stores and the festival that's ahead of us. So, when I say 7 days of impact, that's factoring all of that in. So, the right way to see this would be not like production stopped for 7 days, but a possible gap in our ability to supply our dealers demand for up to about a week for this entire quarter. Obviously, teams continue working hard on minimizing this also. This was a larger gap a few months ago, but a lot of strong R&D work has helped minimize this. At this point, this will have some impact on retail. I would be amiss if I said this will have no impact on retail because our channel stocks are not that high. But there is channel stock and that's the advantage of having a channel. So, the impact on retail would be lesser than that of wholesale. So net, I think it will be a small impact in Q2, hopefully. Obviously, if anything changes, we'll keep our eyes on it. But otherwise, it seems fine. And EL platform, when? So, we'll be unveiling the platform this month and later this month. Pardon me, I will not be able to share timelines on the product today. But I think next year we should see some good action. But I will not be able to give you more specific timeline than that. EL, traditionally, I've been always clear will help us expand the market because it's a cheaper platform for us to manufacture. It'll also be manufactured largely out of our new facility, which is more integrated, so has better assembly costs. So overall, EL opens up the gate for more accessible priced products in the coming year.
+
+### 👤 Nishit Jalan
+Thanks, Tarun. Just one clarification here. What I meant on EL was that, obviously, it will be a cost-effective product. So, will you look to launch more in middle India, North India and all or will you do it Pan India, even in the Southern markets and all in terms of the strategy because you may not want to cannibalize your high-priced products in Southern states. So, do you think that both these will coexist and you will launch it parallelly across all your states or all your dealers?
+
+### 👤 Tarun Mehta
+As of now, we don't have a deep view on this. We're excited about EL as not just a product that can expand time, but also a product that can potentially expand the margins. So, given the potential for expansion on both, I see no strong reason today to guide EL on only one specific geo, but obviously, as the product shapes up more and we get closer to the launch, you will see our actions call this out.
+
+### 👤 Nishit Jalan
+One small thing related to numbers. Typically, OEMs come up with their monthly numbers on first of the month. So, will you be also doing that? And secondly, in your presentation, I can see that Q1 FY’26 volume since 46078. But when we look at the SIAM numbers, those are on the higher side. So, just wanted to understand, maybe we can take it offline also, but there's a gap between the numbers which we see in SIAM and which we see in your presentation?
+
+### 👤 Tarun Mehta
+Can you repeat the -- so your first question was, would we announce numbers on the first of the month?
+
+### 👤 Nishit Jalan
+Yes, typically, if you see, for example, all the companies, auto companies, for example, on 1st of August they reported numbers for the July month, all the listed companies. So, just wanted to understand if you guys will also be doing that now that you're a listed company. And secondly, the numbers is also very consistent?
+
+### 👤 Tarun Mehta
+Yes, very quickly on that. Right now, we have no plans of announcing monthly numbers beyond what you see in Vahan. Honestly, I think our industry has an overload of numbers. There are already Vahan numbers. There are other retail announcements. If on top of it, we also start announcing monthly wholesale numbers, I think it will be confusing. So right now, I don't see a very strong reason to announce monthly dispatches, but happy to revisit it at a later point if there's a compelling reason. Your second question was what is the difference between what and what?
+
+### 👤 Nishit Jalan
+So, basically we get these Ather sales numbers from SIAM data also and there is this vehicle sold number in the presentation. The numbers don't add up. It's about 1,000, 2,000 units difference every quarter?
+
+### 👤 Tarun Mehta
+The financial numbers that you see are wholesale numbers. So, that is what has been dispatched to dealers and received by them. I think there could be a difference because of transit in case of SIAM. Again, please pardon in case I'm wrong. I'm just reading this off the top of my head. SIAM numbers might be dispatched data. So, there could be a transit gap depending on the quarter. We don't count vehicles which are under transit and not received by the dealers as our wholesale in our P&L.
+
+### 👤 Nishit Jalan
+Okay, got it. Thank you so much and all the best.
+
+### 👤 Moderator
+The next question is from the line of Kapil Singh from Nomura. Please go ahead.
+
+### 👤 Kapil Singh
+My first question is on the rare earth issue. Could you help us understand how you have handled this situation? What kind of solutions have been worked out? Are these short-term or long-term? And is there any cost involved that we should keep in mind?
+
+### 👤 Tarun Mehta
+For the rare earth, the key challenge boils down to the fact that China has banned the export of heavy rare earth magnets, which leaves a few possible options for anybody. Either you partly assemble your motors in China and don't import magnets, or you move production to heavy rare earth free magnets, which are rare earth magnets, or you move away from rare earth of any category and move to ferrite. Now, in our case, we are exploring all. I will not be able to share at this point. I'll likely be able to give more color by the end of Q2 once we finish the transition. But at this point, honestly, we are exploring all options. I'm more optimistic about moving to rare earth magnets out from heavy rare earth magnets because rare earth magnets don't have an export ban and have a little bit of more supply available globally,
+
+### 👤 Page 8 of 12
+with China not being the only one. So, I'm more optimistic about going heavy rare earth free to rare earth magnets. Cost impact. At this point, there is a small impact of additional logistics because we've obviously had to scramble our supply chains. But we expect it to be a small number at this point and also temporary.
+
+### 👤 Kapil Singh
+Okay. And will there be any performance impact also with this?
+
+### 👤 Tarun Mehta
+The reason we are taking time in engineering is spending a lot of time in R&D is because we are working hard to ensure that there is no impact on the product performance at all.
+
+### 👤 Kapil Singh
+Great. Second question is on demand. Just your general understanding of how I know your numbers are obviously ramping up very nicely. But what is the general feeling at this point about electric vehicle demand? The consumers who are not converting to electric right now, what is the key hurdle in your view? And then lastly, I have a question on we've seen some improvement in non-vehicle revenue also. So, some of the products, I think accessories have started rolling in the market. So, any color you can give in terms of how the customer experiences?
+
+### 👤 Tarun Mehta
+So overall, I believe the key focus for us as an industry has to now move towards converting the more mainstream customers. I believe that now that EV penetration is starting to get in the 20% range in scooters, we've gone beyond early adopters and even maybe early majority, sorry innovations and early adopters. I think we are now getting into the early majority crowd, which is the 20% to 50%, 20% to 60% kind of market opportunity. And for these customers, I believe the key focus has to now move on to really giving them assurance, really giving them comfort that electric is a very good, safe choice. I believe that for most scooter buyers, electric already looks like an upgrade. Electric already looks fancy. Electric already looks premium. I think what they need is comfort that the battery is going to be good, the safety is going to be good, that service is going to be good, that resale price is going to be good. And I believe that we will all have to focus our communication more towards those topics, something that we are already doing as part of our Ather Advantage campaign in marketing, which is live right now. You will notice we've pivoted our communication very heavily towards these topics. Kapil, your second question was?
+
+### 👤 Kapil Singh
+On the non-vehicle revenue.
+
+### 👤 Tarun Mehta
+Non-vehicle revenue. Yes, so non-vehicle revenue, honestly, definitely will hopefully trend higher and higher because service revenues will keep increasing with a higher base of installed vehicles in the field. That's a very strong upside. Also, we've been very focused on two things. First is accessories. So, accessories, Halo is trying to now contribute meaningfully.
+
+### 👤 Page 9 of 12
+Accessory - sale of accessories per vehicle was stronger, quite materially stronger in Q1 over previous quarter. Software has been trending again very favorably as I've called out and the numbers are there. 89% attach rate in Q1 also. Finally, even charging infrastructure had a fairly strong quarter with very strong monetization this time around. I don't want to oversell charging infrastructure, but in terms of contribution to the expansion, it did have a very strong contribution this quarter.
+
+### 👤 Moderator
+The next question is from the line of Vishal Goel from HSBC.
+
+### 👤 Vishal Goel
+Thanks for taking my question and congrats on your good sales of results. So, my question is more on expansion. In more mature states and cities as well, the EV penetration has sort of stagnated now, for example, in Bangalore or Kerala. So, what is your view on the same and what has been your experience with the new showrooms? Does the company have to invest significantly in that local brand building activity there? I just want to take your view on this part.
+
+### 👤 Tarun Mehta
+So, first on stores, ours is almost completely a dealership model, which means our partners spend the capex to get the stores and the service centers up and the opex is on them. So, at a company level, there is no additional cost increase or capex because of distribution or service infrastructure expansion. I see a significant opportunity for our brand in Middle India and North India. Even in South India, there are pockets which we continue to see opportunities in, particularly in Tamil Nadu, where there were several cities, I think like 12, almost 15-20 cities, where Ather did not have a store until a few months ago. So, there is a distribution expansion opportunity for us here also. I think at an industry level, as I called out, I think the focus has to now move towards giving people more comfort, giving people more assurance and I do believe that we will continue to see strong traction, strong results. ASPs are holding up really well, customer interest is coming in really well and a lot of this growth, at least at the industry level, will not be very linear. You will see spurts. Every time you crack a new cohort of customers, you will certainly see growth spiraling very rapidly and then maybe a couple of more muted quarters. But at this point, the factors are really loaded in favor of electric. The unit economics is strong and brands have very credible products. I am very optimistic.
+
+### 👤 Vishal Goel
+So, basically you are saying that for a local brand building, your dealership is coming in and the company is not taking much of the cost there.
+
+### 👤 Tarun Mehta
+So, our brand building spend happens at a more central level, where whether it is state-wise campaigns or national campaigns, Ather does invest meaningfully in marketing and I am a believer that a young brand like us is ought to spend in marketing and brand building. But we do not have to spend for getting the infrastructure. So, the store is not on us and the service infrastructure is not on us. But the marketing spends are largely by Ather.
+
+### 👤 Vishal Goel
+Thanks, and just a follow up question.
+
+### 👤 Tarun Mehta
+I just want to make one more point. One more factor that I am optimistic about for driving industry growth is that two of the largest scooter manufacturers from Iceberg now have their EV portfolio live, which are our two Japanese counterparts. And I believe that their entry on the electric side is going to drive a significant awareness about electric for the mainstream customer. Because, put another way, 70% of people who buy a scooter today and those two brands would not even see an electric if they went to their showrooms in the past. Now they will, which will drive further awareness and further consideration for pure-play EV brands like ourselves and for the industry. So, I think one of the strongest things that has happened in the last few months is these brands also getting into electric.
+
+### 👤 Vishal Goel
+Right, thanks. And that's very clear. So, my follow-up question was that what could be the blended impact of this mandatory ABS thing on your portfolio?
+
+### 👤 Tarun Mehta
+It's a little early for us to be sure. But one factor that really helps us is that I think the entirety of our portfolio has a disc brake in the front. The entirety of our portfolio has a disc brake in the front. So, a very large chunk of our portfolio has a disc brake in both the front and the rear. So, we don't have to take that cost on. We have to take a lower element of the disc cost on compared to many other players out there. In general, I am and we at Ather are pretty bullish about safety being a big theme for the Indian two-wheeler buyers. I believe just like what we saw in cars, safety features and focus on safety will become an important selection criterion or an important filtration criterion for the customer of the future. So, directionally, we don't have a dissonance with this path. Obviously, we would prefer for this to be not mandated and to be more optional at a brand level. But if it is mandated, I think, we might be in a slightly better place than some other brands. Also, given that our ASPs are slightly higher, the contribution of ASP, contribution of ABS to our COGS would be a little lower than many other brands out there.
+
+### 👤 Moderator
+The next question is from the line of Rahul Kumar from Vaikarya.
+
+### 👤 Rahul Kumar
+Yes. Hi. First question I have is, what's your strategy on the vendor diversification for products like traction motors, notwithstanding this rare earth crisis, but in general for the future?
+
+### 👤 Tarun Mehta
+I think this is a little bit of a high-level response. I believe we are now in an era where the number one priority for the supply chain has got to be derisking and hedging. And it's not just us or not just our industry, but across industries. We are going to be no different. We are going to be focusing on that in a big way. We want to now ensure that our supply chains have alternates at a country level, alternates definitely at a supplier level. And I'm saying Tier 1, Tier 2 of suppliers also. So, we focus on that in a big way even in the past. In our prospectus, we had called out how expanding the number of suppliers has been a very big strategic imperative at Ather in the past, with the vast majority of our bill of material being dual or even triple sourced. And that, if anything, becomes an even higher selection criteria for us and a focus for our engineering and supply chain teams.
+
+### 👤 Page 11 of 12
+I think with the entire crisis that we had on magnets in the last few months, this is opening up new and new innovative ideas about how to derisk on that front, how to derisk on the lithium- ion cell front. And the rest of the raw material anyways had a very strong India supply chain, which itself was also fairly diversified. So, this will be, to summarize, a fairly large, in fact, the highest priority for our supply chains in the coming time.
+
+### 👤 Rahul Kumar
+Okay. And just for the new plant which you have in Aurangabad, what's the ramp up plan over there?
+
+### 👤 Tarun Mehta
+So, IPO proceeds have only come to us last quarter and we are just wrapping up some compliance work at the site. Work will be commencing very shortly. In fact, probably this quarter itself, we will have a few announcements hopefully to make. We will keep you updated as those, as we move on those steps. Right now, we are targeting sometime next year for go-live of this plant.
+
+### 👤 Rahul Kumar
+Okay. And last question, are you planning for a motorcycle launch, EV motorcycle launch?
+
+### 👤 Tarun Mehta
+We continue to work on a platform. We've called it the Zenith platform, with our focus being on mid-performance bikes, around the 150cc, 180cc mark roughly. Having said that, we are right now only working deeply on the platform. This will take a little bit of time. And our current short-term priority is on the EL platform and the scooter products that it will yield in the near- term. So expect the motorcycle announcement to be definitely not this year. It's still some time away. For us, motorcycles are still a priority two after scooters.
+
+### 👤 Moderator
+The next question is from the line of Kapil Singh from Nomura.
+
+### 👤 Kapil Singh
+So, Tarun, one question was on the incentives which you will be getting for the plant. Can you give some indication of that as well?
+
+### 👤 Tarun Mehta
+I'll just request Sohil to answer this so that he gets the facts right.
+
+### 👤 Sohil Parekh
+So, Kapil, we have a significant capital subsidy chunk which will be received against the total capex investment. And from an opex point of view, we have a 2.5% GST uptake that we will receive from the state share, which is all the vehicles which are being sold out of the state. And the capital subsidy is over a period of seven years and the GST subsidy is over a period of 15 years. And this is over and above the standard SOPs that are already part of the going live where there is an exemption on discounting and exemption on electric duty, stamp duty, land price, all of that.
+
+### 👤 Kapil Singh
+Okay. And am I correct in understanding that the current plant does not have these kind of incentives or we currently have these kind of incentives also?
+
+### 👤 Sohil Parekh
+So, there are similar, not exactly apple-to-apple, but there are incentives that we have in the current plant as well, and we continue to accrue as and when the milestone is reached. So, that is also duly accounted in the books, even in fact last year as well. But the scale is different because the size of investment is different.
+
+### 👤 Kapil Singh
+Okay. And one question was on the employee cost. I think you did allude a little bit to it, but, like, if you could give some indication whether it's at a reasonably normalized level or you expect this to step up further through the year?
+
+### 👤 Tarun Mehta
+So, Kapil, I expect the operational teams, the wage bill to continue increasing for some time on the operational team front, which is our manufacturing and our sales and service, HO teams. I believe that there, I expect their cost to continue increasing for the next actually few years. On the R&D front and the corporate teams, I think, we are very close to achieving a steady state headcount. There will be some more expansion, but I don't expect them to be very noticeable. That plus obviously annual pay revisions. But the big expansion will continue happening for a while on the operating teams.
+
+### 👤 Kapil Singh
+Okay. And similarly, the other expenses, these are at normalized levels because last quarter was quite high and this quarter is quite low. So just checking if this is the normalized run rate and then it will go online.
+
+### 👤 Tarun Mehta
+So, the right way to see EBITDA would be, we believe that EBITDA loss is better by about INR20 crores to INR30 crores because the presence of the IPO right in the middle of the quarter, some of the expenses did not start on time. So maybe to that extent, you could normalize. But, yes.
+
+### 👤 Kapil Singh
+Okay. And just finally, the capex number for the full year, how much do you expect to spend? And do you have any indication what could be the cash burn for the year?
+
+### 👤 Tarun Mehta
+So, it will be difficult for me to share forecasts on that at this point. The big capex outlay for us compared to last year would obviously be Factor 3.0 in Aurangabad, Chhatrapati Sambhajinagar. Outside of that, I expect our capex would be quite similar to our capex last year, given that last year we had some pending payments coming from Rizta and capacity expansion continually happening for Rizta. While this year, there is some capacity expansion and a fair bit of R&D. So, I think that part of capex might be quite comparable, plus whatever will come due for Factory 3.0.
+
+### 👤 Moderator
+Ladies and gentlemen, that was the last question for today. I now hand the conference over to Mr. Murali Sashidharan for the closing comments.
+
+### 👤 Murali Sashidharan
+Thank you for taking the time to join us today and for the questions and perspectives you have shared. We value continued dialogue and look forward to keeping you updated on our progress in the quarters ahead. Until then, thank you once again and have a good week ahead.
+
+### 👤 Moderator
+On behalf of Ather Energy Limited, we conclude this conference. Thank you for joining us and now you may disconnect your lines.

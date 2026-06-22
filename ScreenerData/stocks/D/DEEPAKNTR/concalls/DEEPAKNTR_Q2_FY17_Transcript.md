@@ -1,0 +1,62 @@
+
+# DEEPAKNTR - Q2_FY17
+
+## Behavioral Analysis
+✅ **[STABILITY]** No severe behavioral manipulation thresholds breached.
+
+## Preparation
+### 👤 Q2& H1 FY2018-INV
+Deepak Nitrite registers strong growth in profitability in Q2 Total Revenue at Rs. 356.3 crore Vs. Rs. 307.1 crore in Q2 FY17, up by 16% EBITDA at Rs. 53.76 crore Vs. Rs. 37.51 crore in Q2 FY17, growth of 43% PAT at Rs. 22.69 crore Vs. Rs. 14.8 crore in Q2 FY17, higher by 53%
+
+### 👤 Vadodara, November 10, 2017
+Deepak Nitrite Limited (BSE: 506401, NSE: DEEPAKNTR,
+
+### 👤 ISIN ID
+INE288B01029), one of the leading manufacturer of chemical intermediates, having a wide product portfolio of Basic Chemicals (BC), Fine & Speciality Chemicals (FSC) & Performance Products (PP), has announced its financial results for the quarter and half-year ended September 30, 2017. Strong growth by segments of Basic Chemicals and Fine & Speciality Chemicals supported by improved performance of the PP segment have enabled the Company to deliver a sharp rise in Q2FY18 PAT both on a year-on-year basis as well as in comparison to the previous quarter (excluding insurance claim). Financial Highlights
+
+### 👤 Q2 FY2018
+Revenues stood at Rs. 356.31 crore in Q2 FY18 compared to Rs. 307.11 crore in Q2 FY17, representing growth of 16%. Revenue growth was driven by the Fine & Speciality Chemicals segment and supported by healthy traction in the Performance Products segment, which reported topline growth of 25% and 23% respectively. Improved demand trend, especially in exports has enabled the Company to report double digit revenue growth. EBITDA was higher by 43% to Rs. 53.76 crore in Q2 FY18, compared to Rs. 37.51 crore in Q2 FY17. The EBITDA margin was 15% in Q2 compared to 12.5% in the same period last year, representing margin expansion of 250 basis points. EBITDA growth is attributable to the combination of higher realisations, improved product mix, cost management initiatives as well as improved EBITDA of PP segment. PBT stood at Rs. 29.76 crore in Q2 FY18, higher by 43% compared to Rs. 20.88 crore in the same period last year. Improved business performance resulted in strong growth in PBT. PAT grew by 53.3% to Rs. 22.69 crore in Q2 FY18 as compared to Rs 14.80 crore in Q2 FY17. EPS for Q2 FY18 stood at Rs. 1.74 per share (of face value of Rs. 2 each) on an enlarged capital base compared to Rs. 1.24 per share in Q2 FY17. (QIP: Issuance of 1,44,23,076 shares of Rs. 2 each at a price of Rs. 104 per share in March, 2017).
+
+### 👤 H1 FY2018
+Revenues were Rs. 695.64 crore (net of excise duty upto June 30) in H1 FY18, an increase of 11% compared to Rs. 627.48 crore in H1 FY17. Higher volumes as well as improved realisation for select products helped to drive revenue growth. The various measures implemented in the PP segment have delivered initial results resulting in revenue growth and improved contribution margin. EBITDA increased by 33% to Rs. 106.6 crore in H1 FY18, compared to Rs. 79.9 crore in H1 FY17. The EBITDA margin stood at 15.3% against 12.7% in the same period last year, an improvement of 260 basis points. PBT stood at Rs. 60.5 crore in H1 FY18, higher by 42% compared to Rs. 42.6 crore (pre- exceptional items) in the same period last year. PAT grew by 42% to Rs. 42.8 crore in H1 FY18 as compared to Rs. 30.0 crore (excluding exceptional items) in H1 FY17. EPS for H1 FY18 stood at Rs. 3.25 per share (of face value of Rs. 2 each) on an enlarged capital base compared to Rs. 2.53 per share (pre-exceptional items) in H1 FY17. (QIP: Issuance of 1,44,23,076 shares of Rs. 2 each at a price of Rs. 104 per share in March, 2017). The above numbers for H1FY18 include Rs. 18.33 crore (net of loss on account of fire) being insurance claim booked for Loss of profit in FSC segment due to fire. CMD’s Message Commenting on the performance, Mr. Deepak C. Mehta, Chairman & Managing Director, said, “We are pleased to report strong growth in Q2 with a sharp improvement in profitability. This has been enabled by healthy demand especially in export markets in the Fine & Specialty Chemicals segment, improved realisations in the Basic Chemicals Segment and the initial results of steps implemented in the performance products segment. The resumption of all units at Roha enabled us to deliver balanced growth with contribution from all our segments. We have comprehensively recovered from the one-off events that occurred last year. There has been significant volatility in global prices of major chemicals during the quarter. While the prices of inputs have also increased, we have been able to successfully transmit the same. For a number of products, it has become more difficult to source from China opening up opportunities for our customer base in India which depend upon us to supply basic building blocks. The performance of the Basic Chemicals segment reflects these trends. Coming to our Phenol project, I am happy to share that we have achieved significant progress and remain well on track to commission this mega-greenfield facility towards last quarter of the current financial year. Once commissioned, this project will allow us to scale up operations while opening up new avenues for growth and diversification.”
+
+### 👤 Domestic & International
+Domestic revenues stood at Rs. 208.84 crore in Q2 FY18 from Rs. 191.36 crore in the same period last year, representing growth of 9% Y-o-Y. Higher realisation in products in the Basic Chemicals segment combined with increase in volumes for products catering to agrochemicals and colourants end user industries contributed to top line growth in the domestic market. Revenues from exports came in at Rs. 141.6 crore in Q2 FY18 compared to Rs. 111.07 crore in Q2 FY17 higher by 27%. This was driven by improved demand trends in export markets in FSC Segment and higher product realisation and improved performance of PP segment.
+
+### 👤 Segmental Performance
+Overall Volume growth across all business segments was higher by 13% yoy in Q2. Revenues from the BC segment stood at Rs. 166.33 crore in Q2 FY18 compared to Rs. 169.98 crore in Q2 FY17. Higher realisation and better product mix drove an increase in EBIT Margin, which improved 325 bps to 15.75%. Revenues from FSC segment were higher by 24.9% at Rs. 112.9 crore in Q2 FY18 compared to Rs. 90.34 crore in Q2 FY17. Improved volume offtake in key products has helped to drive topline. Restoration of Roha facility which was fully available for the entire quarter has contributed to improved performance momentum. EBIT grew by 18.2% on a yoy basis. The PP segment reported revenues of Rs. 84.2 crore in Q2 FY18 compared to Rs. 68.5 crore in Q2 FY17. Initial benefits of measures undertaken in the PP segment have resulted in increased volumes and improved contribution margin enabling the segment to report EBIT breakeven in the quarter. Update on Phenol & Acetone Project
+
+### 👤 Introduction
+DNL is implementing a mega project, aligned with Make in India, to manufacture 200,000 MTPA of Phenol and 120,000 MTPA of the co-product Acetone. This will be supported by capacity to manufacture 260,000 MT of Cumene, which is a feedstock for manufacturing Phenol and Acetone. This project is being implemented in a 100% subsidiary, i.e. Deepak Phenolics Limited. The proposed Phenol Plant will be located at Dahej in the State of Gujarat, with a capital expenditure of Rs. 1,400 crore being funded by debt and equity in the ratio 60: 40. DPL will address the opportunity in the domestic market which is currently met by imports. In addition, its plant is being based on cutting-edge technology and will be highly resource and energy efficient. Local availability of Phenol and Acetone is expected to boost the production of derivatives and downstream intermediates, which will expand the overall market in the country.
+
+### 👤 Progress
+The Phenol mega-project is progressing on schedule and remains on track to be commissioned in the last quarter of the current financial year. The commissioning and operational teams have been recruited as preparations are underway for the operational phase. Till date, the Company has invested an amount of Rs. 865 crore. Overall, more than Rs. 1,075 crore has been committed for implementation of this project. Seed marketing initiatives have resulted in initial volumes being supplied to various customers across the country. Key objectives of the seed marketing initiative such as developing working relationships with major customers, understanding of demand patterns and the overall logistics, have been met and is being strengthened further. Outlook The increased volatility in global prices of major chemicals is expected to sustain in the near future. Due to difficulties in sourcing from China, suppliers in competing markets like India are witnessing improved demand traction, which is in turn resulting into stronger demand for basic building blocks. Should the constraints to sourcing from China sustain it will have long term benefits. These trends are reflecting in the Basic Chemicals segment and is expected to also positively impact the Fine & Speciality Chemicals segment in the coming years as international customers would be seeking stable and reliable suppliers. The measures undertaken in the Performance products segment have delivered initial results and the Company will strive to elevate the performance further. DNL will also continue to implement its strategy of rebalancing product mix in favour of products which enjoy favourable demand and pricing trends. Financial Year 2018 will also be a defining year for the company as it expects to commission India’s largest Phenol and Acetone facility at Dahej in Gujarat in quarter IV. This global standard plant will reduce India’s dependence on phenol imports, enable the company to save foreign exchange while providing Deepak Nitrite a market leadership position and new avenues of growth and forward integration. About Deepak Nitrite Limited Deepak Nitrite Limited [NSE - DEEPAKNITR, BSE - 506401] Headquartered at Vadodara, Gujarat, DNL is a multi-division and multi-product, chemical intermediate with manufacturing facilities at Nandesari & Dahej in Gujarat, Roha and Taloja in Maharashtra, and at Hyderabad; having product portfolio of Basic Chemicals (BC), Fine & Speciality Chemicals (FSC) & Performance Products (PP). Further, it is also setting up a project for manufacture of Phenol and Acetone through its wholly owned subsidiary Deepak Phenolics. As a partner of choice for Domestic and Global Chemical majors, DNL is emerging as one of the fastest growing Company, adhering to Responsible Care.
+
+### 👤 Tel
+026 52765200
+
+### 👤 Email
+snanda@deepaknitrite.com
+
+### 👤 Email
+mayank@cdr-india.com nishid@cdr-india.com Safe Harbour Some of the statements in this document that are not historical facts are forward-looking statements. These forward-looking statements include our financial and growth projections as well as statements concerning our plans, strategies, intentions and beliefs concerning our business and the markets in which we operate. These statements are based on information currently available to us, and we assume no obligation to update these statements as circumstances change. There are risks and uncertainties that could cause actual events to differ materially from these forward-looking statements. These risks include, but are not limited to, the level of market demand for our services, the highly-competitive market for the types of services that we offer, market conditions that could cause our customers to reduce their spending for our services, our ability to create, acquire and build new businesses and to grow our established businesses, our ability to attract and retain qualified personnel, currency fluctuations and market conditions in India and elsewhere around the world, and other risks not specifically mentioned herein but those that are common to industry.
+
+### 👤 Page | 6 DNL Q2&
+Revenues
+
+### 👤 Note
+Total Revenue from Operations for Q2FY17 and H1FY17 includes excise duty, as per IND AS. H1FY18 numbers include excise duty upto June 30, 2017.
+
+### 👤 Note
+Insurance claim for damages and loss of profit, included in the numbers for H1FY18. Statement of Borr Secured Loan & Net Debt/Equity as on 30th September, 2017
+
+### 👤 Less
+Capital Work in Progress
+
+### 👤 Less
+Market Investments and Investment in Subsidiaries
+
+### 👤 Note
+Investment in Subsidiaries for Q2FY18 includes Advance for Share Application Money in DPL.
+
+## Q&A

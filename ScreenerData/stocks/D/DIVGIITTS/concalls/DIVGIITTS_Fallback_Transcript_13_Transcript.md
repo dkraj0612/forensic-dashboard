@@ -1,0 +1,247 @@
+
+# DIVGIITTS - Fallback_Transcript_13
+
+## Behavioral Analysis
+⚠️ **[EVASION] High Evasion Density:** Management used unusually high deflection terminology.
+
+## Preparation
+### 👤 CIN
+L32201MH1964PLC013085
+
+### 👤 Tel
+(+91-20) 63110110
+
+### 👤 Web
+www.divgi-tts.com Ref.: DTTS/Sec/26-27/17
+
+### 👤 National Stock Exchange of India Limited,
+"Exchange Plaza" 5th Floor,
+
+### 👤 Sub
+Transcript of Earnings Call held on May 27, 2026 Ref.: Regulations 30 of the SEBI LODR Regulations
+
+### 👤 Dear Sir / Madam,
+Further to our letter reference no. DTTS/Sec/26-27/07 dated May 20, 2026, pursuant to Regulation 30 and other applicable provisions of the Securities and Exchange Board of India
+
+### 👤 (Listing Obligations and Disclosure Requirements) Regulations, 2015 (“LODR Regulations”),
+May 27, 2026, in respect of the Audited Financial Results of the Company for the quarter and financial year ended March 31, 2026. The transcript can also be accessed on the Company’s website at the following link: https://divgi-tts.com/earning-call-transcripts/ This is for your information and records. Thanking you,
+
+### 👤 Enclosed
+As above
+
+### 👤 KOKANE
+Digitally signed by
+
+### 👤 Date
+2026.06.02
+
+### 👤 15
+04:06 +05'30'
+
+### 👤 MANAGEMENT
+MR. JITENDRA DIVGI - MANAGING DIRECTOR - DIVGI
+
+### 👤 Moderator
+participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during this conference call, please signal an operator by pressing star then zero on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Mr. Amit Dhameja from Centrum Broking Limited. Thank you, and over to you, sir.
+
+### 👤 Amit Dhameja
+FY26 Post Results Call of Divgi TorqTransfer Systems Limited. From the management side, we have Mr. Jitendra Divgi, Managing Director; Mr. Hirendra Divgi, Whole-Time Director; Mr.
+
+### 👤 Sudhir Mirjankar, CFO; Mr. Satvinder Singh Sabharwal, Chief Growth Officer; and Mr. Dipak
+Vani, COO. I will now hand over the call to Jitendra sir for his opening remarks. Over to you, sir.
+
+### 👤 Jitendra Divgi
+Yes. Thank you very much, and good afternoon, everyone, and welcome to the Q4 and FY '26 earnings call for Divgi TTS. I trust you have had the opportunity to go through the Q4 and FY '26 financial results and the presentation, which were uploaded on the stock exchanges and are also available on the company's website. As was mentioned, joining me on the call today, we have our leadership team that includes Hirendra Divgi, our Whole-time Executive Director; Sudhir Mirjankar, our CFO; Satvinder Singh Sabharwal, our Chief Growth Officer; and our COO, Mr. Dipak Vani. And our Investor Relations advisers, SGA, have also joined us on this call today. So to begin with, FY26 marked, you would agree, an important turning point for Divgi TorqTransfer Systems. Following 2 relatively subdued years, FY '26 emerged as a year of strong recovery of one of execution and accelerated momentum across multiple sort of growth drivers of the company. I'm delighted to share that we delivered the highest ever total revenue in our history, crossing INR375 crores, representing a robust growth of approximately 56% over FY '25 and essentially bringing the trajectory back on track. EBITDA stood at over INR92 crores with margins remaining healthy and resilient at nearly 25%, while PAT grew sharply by over 90% to almost INR47 crores, reflecting strong operating leverage and optimized business mix and sustained operational discipline. What is even more encouraging is the steady improvement witnessed from quarter-to-quarter in FY '26. Our quarterly revenue run rate has nearly doubled over the last few quarters, increasing from the low of around INR55 crores to over INR110 crores in Q4 FY '26. This strong run rate sort of reflects improving product acceptance across customers, higher wallet share with existing customers, expanding export opportunities and growing traction across multiple new programs and platforms.
+
+### 👤 Page 3 of 17
+Importantly, this growth has been achieved while maintaining financial discipline, a debt-free balance sheet and continued investments in a strong debt-free balance sheet, disciplined capital allocation and investments in technology, engineering capabilities, leadership strengthening and future-ready mobility platforms. The year clearly reflects the success of our diversification strategy and reinforces our confidence that we are now entering the next stage of scalable and sustainable growth. What I want to do now is just briefly touch upon each of our important segments. First, our Transfer Case business. This continues to remain one of the company's -- I mean, the strongest and most strategic vertical. The business witnessed a sharp recovery beginning Q4 FY '25 with volumes returning close to FY '23 levels after somewhat of a prolonged slowdown. During FY '26, the segment once again emerged as the company's primary growth driver, supported by increasing adoption of 4-wheel drive system, successful new vehicle launches. Higher offtake across various segments and growing traction across both domestic and export programs. As part of the Indonesia export programs, the company has secured Transfer Case orders for Mahindra's Scorpio pickup and Tata Motors' Yodha pickup platforms, where Divgi has been selected as the exclusive Transfer Case supplier. Execution of these programs remains firmly on track and provide strong medium-term volume visibility, further reinforcing our position as a trusted drivetrain technology partner to leading Indian OEMs in their global expansion journey. A key strategic milestone during the year was the nomination received from a leading Japanese OEM for the development of transfer cases for an iconic global pickup truck platform from this OEM with SOP targeted in FY '28 -- '28-'29. Our engagement with the Japanese OEM ecosystem continues to progress positively and represents an important step in our own globalization journey. We have already successfully completed prototype development and proof-of-concept validation for the program in a record 3 to 4 months of getting the award. So what's next in this area? We continue to strengthen our future-ready Transfer Case portfolio through development of advanced technologies, including what is known as Torque-on-Demand systems, electronically controlled 4-wheel drive systems as also low-cost manual shift Transfer Case solutions that have certain other features that distinguish and differentiate them. In addition, the company achieved a significant technology breakthrough with its anchor customer, that is Mahindra, through the successful development of a next-generation Torque- On-Demand Transfer Case integrated with what is known as M-Lock technology for upcoming vehicle platforms. And we're currently engaged in discussions to figure out the integration of this technology in many of their production modules. Overall, therefore, FY '26 marked a year of meaningful progress for the Transfer Case business with significant advancements in technological capabilities, customer engagements, export opportunities and future platform expansion.
+
+### 👤 Page 4 of 17
+We'll now come to the EV transmission business. This segment remained relatively subdued, but consistent with last year and partly because of lengthened development cycles at our major OEM customer, that is Tata Motors. Volumes remained largely range bound through most of FY '26, and there was some gradual improvement in FY '26. Despite these headwinds, the company itself has made significant strategic progress in expanding its EV portfolio across multiple Tata Motors platforms as well as other OEMs. And Tata Motors, as you know, by volume is the market leader in India. The improvement in volumes during FY '26 was supported by higher volumes. The significant thing was that the Tigor platform has been upgraded with one of our transmission models. And a new design now has been developed for which we have received a production approval from Tata, which will go on models such as the Nexon and the Curvv. Overall, while EV industry growth remained flat during the year. We continue to invest consistently in product development, engineering capability and future- ready technologies. The company has further strengthened its positioning through strong NVH performance, which is very critical for EV transmissions that require high-quality manufacturing standards to be seen as a credible supplier in both domestic and overseas markets. During the year, we successfully developed advanced 120-kilowatt transmission system across multiple platforms that I just mentioned and further deepened our integration with our key customer that is Tata Motors. Although commercialization has progressed gradually, we expect volumes to improve progressively alongside upcoming EV launches, platform expansion and increasing localization initiatives across the industry. The point I want to emphasize as a takeaway is that our entire EV transmission portfolio is our proprietary asset, proprietary design. And therefore, that enables us to leverage this successful development to expand into other market segments and other customers. So one of the ideas that we are actively working on is to take our EV transmission portfolio and go overseas into markets like the United States, Europe and also China. So what's next? We are actively evaluating opportunities in the fast-growing 3-wheeler electrification segment, and we're working closely with OEMs for -- to export some of these products. There, we are working essentially with a host of start-ups. Some of you may recall that we were at one time actively working on the 3-wheeler assignment at Mahindra, but Mahindra chose to keep the 3-wheeler production in-house. And so that opportunity did not realize for us. But the important benefit that we derived from that assignment was that we developed our own designs, and we are now in the midst of prototyping with these designs with a couple of start-up customers. We believe that the EV transmission business in this segment represents a significant long-term growth opportunity for the company. So our focus remains firmly on building a scalable, diversified and technology-led EV mobility portfolio that can become a meaningful contributor to the company's future trajectory. Just a quick sentence on what I mean by technology-led EV mobility portfolio. I want to clarify that
+
+### 👤 Page 5 of 17
+we are going to restrict our scope to the mechanical portion, but we expect some level of sophistication to come into EV transmissions through either 2-speed or 3-speed transmissions. And this is where our experience in automated shifting will come handy and become an asset as we develop these products that are multispeed EV transmissions. In conclusion, I wish to state that we have the world's widest portfolio of production-ready transmission models all the way from 10 kilowatt to 150 kilowatt. And we continue to remain India's largest EV transmission manufacturer, at least in terms of the capacity that we currently have. So let me now shift to Components and Exports, where as you -- if you have studied, the data that we have put out, we saw some exceptional performance in this last 1 year. So this business emerged as one of the strongest growth drivers in the year just gone by. Revenue from the Components segment nearly doubled during the year, while exports increased sharply from around 6% of revenue to a meaningful double-digit contribution of nearly 18%. The business delivered exceptional growth driven by, of course, increased volume, a deeper engagement with global Tier 1 customers such as BorgWarner and Magna, expanding customer relationships across many of their plants and rising acceptance of not just our products, but the solutions that are embedded in the parts that we supply. Export revenue scaled up significantly during the year and are steadily becoming an important contributor to the company's overall revenue mix and diversification strategy. Importantly, the business has moved meaningfully up the value chain. We are increasingly delivering integrated engineering, manufacturing and supply chain solutions rather than operating merely as a piece- part supplier. This evolution is strengthening customer stickiness, improving wallet share and enhancing long- term scalability of the business. So what's next in this area? What is particularly encouraging is that this growth is no longer driven solely by cost competitiveness. Increasingly, our growth is driven by the ability to give engineering solutions, overall product quality, also getting it right first time through program management. Overall execution reliability, consistency, transparency in communication, advanced manufacturing process knowledge and our ability to cater to specialized niche applications, whether it's metallurgy, heat treatment, specialty coating processes and such. During the year, we further expanded our international footprint across North America, Europe, Asia Pacific, the Asia Pacific markets and reinforcing our globalization strategy. Our Board has approved the incorporation of a wholly owned subsidiary in the United States to strengthen customer proximity and deepen our engagement in the strategically important North American market. And I'd be happy to answer any additional questions that you have during the Q&A session. In addition, the newly secured component programs are expected to contribute annual revenues nearing INR100 crores with volumes exceeding 1 million parts annually. Reflecting the strong
+
+### 👤 Page 6 of 17
+momentum in the business, our monthly revenue run rate has already increased from approximately INR7 crores to nearly INR10 crores to INR12 crores. Export business has now become a major strategic focus area across Transfer Cases, Components and other transmission products that we have, including EVs. Export contribution increased significantly, crossing 20% in Q2 FY '26, while the company continues to maintain a medium-term target of 20% to 25% export contribution to overall revenues. And going by the recent depreciation in the rupee, one can see the wisdom of such a business mix and having such a business model. We are also seeing encouraging opportunities emerging from global supply chain diversification initiatives and potential India-U.S. and India-EU trade agreements, which would further strengthen our positioning as a preferred manufacturing and engineering hub. The Component business is steadily emerging as another major growth engine for the company, supported by specialized capabilities that we have, strong supply chain integration, and as I mentioned before, acceptance to the type of solutions that we bring. And so this is an indication of rising brand perception of the company. We believe the opportunity landscape remains extremely large in Components in both domestic and international markets, and the company is well positioned to scale this business meaningfully over the coming years. We'll now shift to ICE -- the general area of ICE transmissions, and we'll first take up manual transmissions and synchronizers. Our Manual Transmission and Synchronizer business has been a small yet strong pillar of our business. Revenue from this vertical nearly doubled during the year on a modest pace. During the year '26, we executed increased sales through additional synchronizer opportunities from existing customers, new business wins on key components on Manual Transmissions. So what's next? We continue to leverage our strong application engineering capabilities, our execution capacity, high localization, in-house manufacturing capacity and proven track record on quality and delivery to position the Divgi TTS as a reliable partner for OEMs for their needs of Manual Transmissions. So we have the ability to give high-tech components, transmissions, build-to-print or transmissions with our proprietary designs. We are engaged on a business opportunity with a leading Indian OEM for supply of a full manual transmission for one of their trucks, light medium trucks. This current opportunity is under negotiation right now, and we are uniquely positioned to address some of the critical concerns that they have in terms of quality and delivery on this particular model. So we have been brought in to fix a problem of quality and delivery. We are also strongly positioned to win another high-volume manual transmission. And this is a significant larger going up to 100,000 a year and a decision on the overall outsourcing strategy is awaited from this OEM. We continue to assess opportunities to license our new generation 6-speed manual transmission to OEMs, offering them a unique opportunity
+
+### 👤 Page 7 of 17
+to have a fully designed and validated latest general manual transmission for SUV pickup truck applications. Giving them the right to industrialize and utilize the capacities they have invested in. And we believe that this initiative can deliver a win-win situation for us and the OEM. In short, we are working towards our goal of full system supply of manual transmission solutions, ensuring our readiness on product development, design, validation, in-house capacity and flexibility in the way we approach the business model to industrialize transmission products. And now finally, on to, I think, the most -- one of the most important cornerstones of our business, which is the whole question of the automatic transmission. Now this market in India is growing rapidly with key drivers, including growing SUV demand, a continued preference for ICE powertrains in SUVs, LCVs in the context of pretty crazy traffic conditions that we have in Indian metropolitan areas. And therefore, end customer convenience without sacrificing reliability in the automatic transmission solution. The India market continues to be served with automatics coming mainly from Japan and some from Korea and Europe, and there is negligible local content. Indian OEMs continue to demand local solutions to mitigate risk of rupee depreciation, supply chain disruptions, geopolitical risks and such kinds of problems. In a world marked by almost, you could say, global disorder. Unfortunately, Indian OEMs have not been successful in persuading their overseas suppliers to figure out local solutions. And therefore, that represents a considerable opportunity for Divgi TTS. So our team is in advanced discussions for a technology transfer agreement with a leading global OEM. And as you can imagine, these negotiations do take time. But the idea is to bring a proven automatic transmission to India, not just for manufacturing, but to enable eventually deep localization of the key subsystems of an automatic transmission. So we have had many visits to our partner, and we're in the process of completing due diligence, which includes manufacturability and most important of all, overall supply chain integrity. So the idea is that we are looking at this as a long-term strategic mission for the Indian ecosystem such that the next generation of transmissions with additional features can be designed and developed in India. So I think in that sense, our approach is highly differentiated from the one being followed by Japanese and German and Korean multinationals. So what can we expect here? So the idea is we want to conclude the due diligence for high localization or significant localization right from the start of production. Over the next quarter or so, we are trying to conclude proof-of-concept demonstration of the proposed technology on one of the latest successful vehicle platforms of our Indian OEM and work is underway in right earnest with that OEM. We are committed to partner with global and local Tier 1 -- Tier 2s to us to build an ecosystem in India where a significant proportion of the value chain is localized. So the mission really is - - our vision on this is over the next 3 to 5 years, that's our experience, that's how long it takes for the first generation to get assimilated.
+
+### 👤 Page 8 of 17
+But I can assure our investors with the many years of experience that we have of having worked with global OEMs, global multinationals. Remember that we were also for 21 long years, a JV partner of BorgWarner. So we know that it takes some extraordinary drive and initiative within India by an Indian company to break the stranglehold of what I would call the technology barrier such that the routes for the development and design of such products in India are properly struck. So -- and that is the mission that we are on, and that is the point I wish to emphasize. So to that extent, our approach is very different, and it is distinguished by this -- the points that I just made. So as we make progress over the next few quarters, our long-term objective is clear. It is to evolve through these 4 verticals into an integrated global drivetrain and mobility solution provider with strong in-house engineering, localization and advanced manufacturing capabilities. And as those of you who have stayed with us these last few years, you know that our vision is to build a very strong, vibrant global brand for this line out of India. Importantly, while pursuing these growth investments, we remain firmly committed to financial discipline. This is a very key foundational element of our strategy and prudent capital allocation. And even after factoring in future expansion plans and increased working capital requirements associated with growth, the company expects to maintain a healthy net cash position. So then overall, as I conclude, what is to be expected as we look to '27 and beyond. And we firmly believe that we are now entering the next orbit of growth. Our business fundamentals have strengthened significantly through the scale-up in Transfer Case volumes, rapid expansion in exports, continuing maturity in our EV business and technologies, increasing engagement with global customers and OEMs. We have completed 5 years of the association with Toyota Tsusho, with whose help, we are reaching out into the universe of Japanese OEMs. And finally, the overall strengthening of our technology-led product portfolio. And we continue to pursue opportunities across automatic transmissions, hybrid transmission technologies, global transfer case and manual transmission solutions and overall export-oriented solutions that we bring to customers overseas. Most importantly, our approach remains unchanged, building capacities and capabilities ahead of the curve, maintaining strong financial discipline and creating a globally competitive mobility systems company supported by diversified products, customers, technologies and geographies. So -- but reconciling all of this diversification with an inherent sense of cohesion so that the aspect of synergy across our verticals is not lost. So with that, let me conclude my opening remarks. I will now hand over the proceedings to my colleague and our CFO, Sudhir Mirjankar. Thank you very much.
+
+### 👤 Sudhir Mirjankar
+Thank you, sir. Good afternoon to everyone on the call. Before presenting the financial numbers for the Q4 and FY '26, I would like to highlight a few key points. I'm pleased to share that FY '26 has been a landmark year for the company as we surpassed our historical performance and delivered the highest ever revenue in our history.
+
+### 👤 Page 9 of 17
+This strong performance was driven by sustained volume momentum across both our key segments, Transfer Cases and Components, each continuing to demonstrate robust traction throughout the year. The Transfer Case business benefited from healthy uptake from key OEM customers, supported by strong demand momentum and improved operational execution. Meanwhile, our predominantly export-driven components segment continued its strong growth trajectory, demonstrating resilience despite ongoing global uncertainties with demand for our high-precision components remaining healthy. Alongside growth, we remained sharply focused on operational discipline across the organization. During the year, we continued to drive cost optimization initiatives, improved productivity levels, strengthen inventory management practices and maintain prudent capital allocation, all of which supported healthy and sustainable profitability. Improved capacity utilization and operating leverage also contributed positively to margins and overall efficiency. Our balance sheet continues to remain strong and debt-free, providing us with significant financial flexibility to support future growth initiatives while maintaining disciplined capital deployment, reflecting the company's strong financial performance and confidence in the business outlook. The Board of Directors has recommended a final dividend of INR3.27 per equity share of INR5 each for FY '26, subject to shareholders' approval. Now speaking of the financial performance of FY '26. As I mentioned earlier, we delivered our highest ever revenue of INR375 crores, registering a strong 56% year-on-year growth from INR240 crores in FY '25. This growth was led by sustained momentum in Transfer Cases volumes and continued robust performance in Component business. So on revenue mix, the Transfer Case segment delivered strong growth of 66% year-on-year compared to FY '25. We have continued to witness healthy volume traction throughout the financial year, primarily driven by a higher uptake from our key OEM customer. And we remain confident that this momentum will sustain in the coming quarters. The EV transmission segment increased by 10% in FY '26 compared to FY '25. The segment has remained largely range bound due to subdued EV volumes in the market. However, we expect a ramp-up in the coming quarters, supported by strong customer uptake and deeper integration across newer EV platforms. The Components segment continued its robust performance, growing 124% in FY '26 compared to FY '25. This exceptional growth was largely export-led despite global market uncertainties. We expect this momentum to sustain in coming quarters as well. Exports continue to steadily increase its share in the overall revenue mix. In FY '26, Exports contributed around 18% of our total revenue, and we are progressing well towards our medium-term target of 20% to 25%. Gross margins for FY '26 stood at 63.5%, mainly in line with FY '25. EBITDA for FY '26 came in at INR92 crores, registering a healthy 58% year-on-year growth from INR58 crores in FY '25. The improvement was largely supported by a better product mix and operating leverage benefits
+
+### 👤 Page 10 of 17
+arising from higher volumes, which resulted in improved absorption of fixed costs. EBITDA margin for the period stood at 24.6%. Profit after tax for FY '26 stood at INR46.9 crores, reflecting a strong 92% year-on-year growth from INR24.4 crores in FY '25, driven by enhanced operating efficiency and larger volumes in major segments, leading to further strengthening of overall profitability. PAT margin stood at 12.5%. So coming to the quarterly numbers. In Q4 of FY '26, we have surpassed our previous best performance, which we achieved in Q3 of FY '26, which itself was a record quarter for the company. We delivered our highest ever quarterly revenue of INR113.8 crores, registering a strong 78% year-on-year growth from INR64.1 crores in Q4 of FY '25 and a strong 18% sequential growth over Q3 of FY '26. EBITDA for the quarter stood at INR27.8 crores, reflecting a 92% increase from INR14.5 crores in Q4 of FY '25 and a strong 19% sequential growth over Q3 of FY '26. EBITDA margin for the quarter was healthy at 24.5%. Profit after tax for Q4 FY '26 came in at INR15.5 crores, marking a 189% year-on-year increase from INR5.4 crores in Q4 of FY '25 and a strong 32% sequential rise from INR11.8 crores in Q3 of FY '26. PAT margin for the quarter stood at 13.6%. So this consistency in performance reflects the strength of our product portfolio, the resilience of our customer relationships and the disciplined execution by our teams across functions. With the visibility we currently have and the opportunities in the pipeline, we expect this positive momentum to continue in the coming
+
+## Q&A
+### 👤 Page 10 of 17
+quarters as well. So that's it from my side. Now I would like to open the floor for questions and answer. Thank you.
+
+### 👤 Moderator
+We will now begin the question and answer session. Our first question comes from the line of Karan Gupta with ACMIIL. Please go ahead.
+
+### 👤 Karan Gupta
+Yes. Hi. So my question is on the volume side. If you can share the volume numbers?
+
+### 👤 Moderator
+Sorry to interrupt. Karan, you're not quite audible. Could you please use your phone on the handset mode in case if it's on hands-free.
+
+### 👤 Karan Gupta
+Now it's audible?
+
+### 👤 Moderator
+Yes, much better. Please go ahead.
+
+### 👤 Karan Gupta
+Yes. So my question is regarding the volume side. So if you can share the volume numbers of Transfer Case or other segments, your E-gear drive or Components volumes, if you can share that and what's the realization growth?
+
+### 👤 Jitendra Divgi
+Yes. So I think -- and here, I'm kind of speaking from memory. This year we have accomplished about 50,000, 52,000?
+
+### 👤 Sudhir Mirjankar
+52,000.
+
+### 👤 Jitendra Divgi
+Which was up from low 30s that we did in FY '25. So you can see it's almost like 70%, 80% increase in volumes of Transfer Cases. Okay? And on EVs, it was much more modest, but that happened because one of our new products that was supposed to launch last year, it got delayed because of delayed customer vehicle testing. The production system approval we have already received from the customer. But the vehicle testing, I think, took longer than we had thought it would. So next month or definitely by July, this new model will be going into production, and we are expecting almost a doubling of the EV volumes. So that is the immediate -- as far as Components are concerned, I think you can see that the Export business increased from -- almost 10x. So the volumes again have gone up commensurately, okay? So that is the sort of short answer to your question.
+
+### 👤 Karan Gupta
+Okay. Okay. But just want to clarify the numbers again. So 52,000 you said for the Transfer Case?
+
+### 👤 Jitendra Divgi
+Yes.
+
+### 👤 Karan Gupta
+Yes. Okay. And for the E-gear drive number, you've not...
+
+### 👤 Jitendra Divgi
+I think it was about 24,000.
+
+### 👤 Karan Gupta
+Okay, 24,000. And for Component volume is something?
+
+### 👤 Jitendra Divgi
+Over 1 million.
+
+### 👤 Karan Gupta
+5 lakhs-something?
+
+### 👤 Sudhir Mirjankar
+3.3 million.
+
+### 👤 Jitendra Divgi
+Yes. 7 lakhs? Over 7 lakhs.
+
+### 👤 Sudhir Mirjankar
+Over 13 lakhs.
+
+### 👤 Karan Gupta
+Over 13 lakhs. Okay. And what's the capacity utilization for now for the E-gear drive segment?
+
+### 👤 Jitendra Divgi
+We are still.
+
+### 👤 Karan Gupta
+I think you said 30%-something.
+
+### 👤 Jitendra Divgi
+Yes, we are just -- we're still around 25% capacity utilization.
+
+### 👤 Karan Gupta
+35%?
+
+### 👤 Jitendra Divgi
+25% to 30%.
+
+### 👤 Karan Gupta
+25% to 30%, okay.
+
+### 👤 Jitendra Divgi
+So as you can see, when the utilization improves, given the current financials, you can expect certainly much better financial efficiency.
+
+### 👤 Karan Gupta
+Okay. And the time line for the DCT, the same FY '28?
+
+### 👤 Jitendra Divgi
+Yes. There are at least 3 projects we are working on, 2 at 1 customer and 1 with the second customer. In low modest volumes, if our program management is successful, we could see the first revenue trickle happening maybe middle to second half of next year, calendar year and the big volume coming a year after that.
+
+### 👤 Moderator
+The next question comes from the line of Mihir Vora with Equirus Securities.
+
+### 👤 Mihir Vora
+Sir, my question was basically on to the Indonesia orders, which we have got. So that would roughly be around 70,000 kind of a volume. I think previously, we had mentioned that this was supposed to be completed in FY '27. So due to current situation, are we seeing some kind of delays here? Or this is on track for an FY '27 completion?
+
+### 👤 Jitendra Divgi
+No, it is on track for FY '27.
+
+### 👤 Mihir Vora
+Okay. So basically, here -- in the next year, we may see a very big jump in terms of revenues. But post that, how do we expect to continue that kind of a revenue number as such going ahead in FY '28 as well? So what other segments basically are we foreseeing which can offset that?
+
+### 👤 Jitendra Divgi
+Yes. Excellent question, and I'm sure others in the audience will also appreciate this. Very relevant. So we are quite conscious of this phenomenon. And what I want to tell you is there are 3 or 4 developments, which are sort of powering the underlying foundation of our business. Over and above this, you could say, windfall, an opportunity that has come by way of Indonesia. First is we have won a new 4-wheel drive contract on the Tata Sierra at Tata. The second one is there is an uplift on the volumes coming from the U.S. on a particular Ford application at one of our Tier 1 customers there. Third, the global pickup truck at Mahindra is going into production, and we have been requested by Mahindra to support their overseas facility in South Africa for this purpose. So we are expecting some amount of buoyancy in full Transfer Case exports to come about. And the current EV business that we have, we expect better utilization because we will now have 4 different designs in production. We also continue to push the envelope in the 3-wheeler segment, where prototypes have been submitted and we are working with at least 2 customers there. And finally, I alluded to a manual transmission opportunity on a truck program. That will also start, and it will lead -- it will -- the initial volumes are quite modest. But once established, the line is being designed in a flexible way to handle 2 models. One is a low-volume model and the other one is high volume, and the high volume could be anywhere from 60,000 to 100,000. So these are the opportunities that we are working on. And let me just point out that the winning of this award in Indonesia, while it may, at first glance, appear like a flash in the pan, we must not forget the -- what effect it is going to have in the ASEAN region because this is being backed by the Indonesian government. It has been won fair and square in a competitive tender that included at least 3 or 4 major Japanese OEMs, and I might add, 2 very large Chinese companies.
+
+### 👤 Page 13 of 17
+So our customers from India have comprehensively and decisively beaten this competition to win this contract. And my sense and our sense is that they are not going to rest on their laurels after this. Both customers have actually a pretty sophisticated offering in pickup trucks at prices that are quite unimaginably more competitive than what the Japanese can offer. So I think it is reasonable, if not in the immediate wake of the following year, that in time to come, in the next 3 to 5 years, we will definitely see an expansion of Tata and Mahindra in the 10 countries that constitute the ASEAN region. This will also be not lost sight of in other markets like Central Asia, North Africa, Sub-Saharan Africa and Latin America because they have socioeconomic conditions that sort of correspond to what we have in ASEAN. So this may very well turn out to be the proverbial tip of the iceberg, right? So this is how we are looking at this development. But to come back to the nub of your question, what is the strategy for FY '28? It is to convert these other 3 or 4 opportunities that we are working on into revenue streams. And fortunately, the customers want us to do that. There is tremendous pressure on our product development and project management teams to deliver. So that is how we look at it.
+
+### 👤 Mihir Vora
+Got it. Got it, sir. Sir, finally, the last question is on -- we have indicated the U.S. investments of around, say, INR3 crores. So basically, would this be only on to the Component end of business or will it also include the Transfer Cases and other proprietary products which we are doing?
+
+### 👤 Jitendra Divgi
+Another very good question, and thank you so much for asking it because I think in the heat of the moment, I perhaps did not adequately amplify when I alluded to this in my opening remarks. See, the U.S. presence is like the beachhead, if I can use an Americanism. It's our initial beachhead. And 2 of our most experienced people will go on the ground by July, August in the U.S. They have 2 or 3 objectives they are working on, a better understanding of the market on the ground, a better way to figure out what manufacturing systems and how to go about putting that and also a deeper engagement to facilitate program management of awards that we have won and which are development -- under development right now. So that is the purpose of this. This INR3 crores is just an initial setting up of offices, infrastructure, maybe a small warehouse to keep exhibits and things. And in the first year, we will be participating in expos and sort of deepening our engagement with customers. And I think through the platform of these earnings calls, hopefully, we'll be able to keep our investors updated on the progress we make in the U.S. Our initial analysis has shown that the U.S. still is not a very competitive place. If we have to get on the ground and succeed, we have to look at it in an integrated way. So the market, the type of products, the manufacturing facility and the supply chain from within the U.S. and from without, that means with support from India. And we need to look at this holistically and comprehensively to find the right value for that business model in the U.S. And that is what this team will be doing on the ground.
+
+### 👤 Mihir Vora
+All right. Sir, just one follow-up on this that within this period of developing the U.S. business, if we get anything in some sort of an inorganic opportunity, would we be keen on that or we would organically grow this business?
+
+### 👤 Jitendra Divgi
+Right now, our preference is to grow. Given the size of the business and the way we work, our preference is to sort of do this organically. And because I think the cultural -- small, medium- sized Indian companies can underestimate the energy that needs to go into cultural adaptation. And we don't want to fritter our energy into those sorts of things. Our energy is finite, and we need to prioritize it to deliver maximum business impact for the company and for our shareholders.
+
+### 👤 Moderator
+The next question comes from the line of Jai Prakash with Korman Capital.
+
+### 👤 Jai Prakash
+Sir, my question is regarding this Indonesian orders, right, which Tata Motors and Mahindra received last quarter. But I think there was a news that the Indonesian government is keeping them on hold. But I think -- and just in the previous question, you talked about Indonesia. So if you can give a bit of color on that, that will be helpful.
+
+### 👤 Jitendra Divgi
+Yes, yes, yes. So there was a certain amount of media narrative that was being pushed. But I think it was, how should I say, a little frivolous and somebody thought that they could create this narrative and create some impediments for the Indian OEMs. But I think what has been overlooked in all of this is that our companies have been -- it has been a very above-the-Board kind of process. There was a tender put up by the Indonesian government. We bid fair and square, and we beat them comprehensively. The other factor which was critical in this, which I think all this media hype overlooked was the speed of execution. The Indonesian government wanted this executed before March 31, 2027. And the reality is that the Japanese and the Chinese were not ready for it. It's only the Indian companies that have come up and walked up to the line and said they could do it. The reason this order has been split equally between the 2 Indian companies is because no one company had the capacity to deliver 70,000. So it has been split between Tata and Mahindra. And as luck would have it, I think we are the Transfer Case supplier in both cases. So it's like a little bit of how they say in Americanism, it's a double whammy for us, right, but a positive double whammy. But to come back to your question, no, this is serious stuff. Remember that the Japanese propaganda against India in this regard because the Japanese are invested in Indonesia is not fair because the Japanese influenced the signing of the Indo-ASEAN free trade agreement. They have taken advantage of it to expand their markets into India. And now India is just making use of the same bridge as it were to go into ASEAN. So now you really can't complain that India is landing its products competitively. You see my point, what I'm trying to say?
+
+### 👤 Jai Prakash
+I totally understand that. So basically, you're saying it was just a frivolous comments and our companies have still got the order and you are supplying to them?
+
+### 👤 Jitendra Divgi
+Absolutely. I've just given a little bit of the background and context to substantiate my remarks.
+
+### 👤 Moderator
+The next question comes from the line of Amit Dhameja with Centrum Broking.
+
+### 👤 Amit Dhameja
+Sir, my question is on the EVD side. So as per my understanding, we were supposed to be onboarded across all platforms from H2 FY '26 onwards. So even right now, we are currently at 25% utilization. So are there any challenges that we are facing on the EVD side? And what would be our target utilization for FY '27?
+
+### 👤 Jitendra Divgi
+Yes. So as I said, we are currently on -- up to now, we have worked on the Tiago, Tigor and the lower trim level of the Punch. The higher trim level of the Punch had this new transmission, this 90 to 120 kilowatt, which was going on the higher trim level of Punch, on the Nexon and the Curvv and also on the front axle of the Harrier, okay? Now it is this design, 90 to 120 kilowatt, which goes across these 4 platforms that was in vehicle testing at Tata, which took longer than expected. But we have successfully finished all our testing. We've got production part approval. So it's reasonable to say that in the -- in FY '27, we will see the volumes coming from these applications. So this was the original intent of the LOI that was given to us back in '21, and it's now coming to fruition. But I must say that the EV market is extremely competitive. We have to remember that there is Mahindra also in this. And the Mahindra strategy is different because there's a multinational Tier 1 who is the premier supplier there. There's also MG Motors with the Windsor model. So there are competitive forces out there that we have to contend with. Our effort is to also see how much more of this new market we can gain. And I can just say that we are engaged. In some cases, we seem to have a rather decisive advantage given our track record. In some cases, the competition is tougher. But to further derisk the EV business, we are now going overseas. We are looking at -- especially in the U.S., we are looking at opportunities. We have also appointed a representative in China. And you might wonder how is it that an Indian company can compete in China. But our intelligence suggests it is to be -- it's a hypothesis right now that the Chinese EV market is so big that there are interstices and pockets in the Chinese market where the motor and electronics is available, but the supply chain is looking for a more competitive and higher quality supplier of the mechanical system, especially in low to medium volumes. Of course, in China, a volume of 40,000, 50,000 is also low volume because they are already at 1.25 million EVs per month, that's 15 million electric cars China makes, which is bigger than the U.S. automotive industry. But in this huge flux, there are pockets where there are opportunities. So we have appointed a sort of initial sales representative to try and investigate opportunities. We continue to do that in Europe. And our U.S. office, our intelligence suggests that the pricing and, therefore, the margins coming from the U.S. could potentially be the best. So that is our strategy with respect to EV.
+
+### 👤 Moderator
+The next question comes from the line of Kashish Shah with Sushil Finance.
+
+### 👤 Kashish Shah
+So firstly, congratulations for the great set of numbers. Sir, my question is from a point of potential annual revenue. So last quarter, we saw something around INR1,500-plus crores of revenue we were saying. And now we've revised it to, say, INR2,000-plus crores. So I just wanted to know a couple of things from this angle that which segment do we see an additional INR500 crores of revenue and by when are we expecting this kind of revenues?
+
+### 👤 Jitendra Divgi
+So I think no surprises for guessing that the cornerstone of this strategy and business plan is really the automatic transmission. But we don't want to deflect attention on the attractiveness of the other segments. For example, if we were to win a global 4-wheel drive business at, let's say, 200,000, which is about 16,000 units a month, which we have. It's realistic. We can easily scale up to that level. That would represent an opportunity of almost INR800 crores if we were to win 200,000. And that is not, let me tell you, outside the realm of the possible, okay? There are some impediments right now. And so we are not -- in the guidance sort of we are giving, we are not putting that number of INR800 crores. We are a little more conservative because there is a certain brand perception about India and Indian companies right now, which we have to gradually overcome. And so in the presentation we put up, it's also there on our website. I think we have called out a potential of around INR300 crores on the 4-wheel drive. But any one of these segments, especially Transfer Cases and EV, EV transmissions, if we were to get a breakthrough, the numbers could be more than double of what we have put there, okay? The automatic transmission number is extremely conservative. That is about -- the number we put up there is for about 80,000 to 100,000 per year. Our sense is that given the engagement we have with our companies is that the ambition of Tata and Mahindra far exceeds this. And today, they don't have a local Tier 1 supplying them automatics. Our belief is that if our Indian companies have to become global, they have to be taken serious globally. You cannot build a business model that is globally strong by continuously importing. If you look around the world, the big OEMs have their own indigenous, deeply aligned Tier 1s, which is what Tata and Mahindra do not have today on transmissions. We are not the only ones. I'm sure there will be a clutch of them eventually. But we certainly plan to be one of the significant deeply aligned Tier 1s to these OEMs. And let me just draw your attention to the fact that Tata Motors has now -- they own JLR. They -- it's in the public domain that they are actively working with Stellantis that owns the Jeep model, okay? So imagine Tata now has influence on the 2 of the world's biggest brands, Land Rover and Jeep through the cooperation they have with Stellantis. And as you may be aware, Tata has acquired Iveco, one of the largest truck makers of Europe. And through Iveco that has a very, very strong presence in South America, Tata Motors will be going truly global, truly global on their truck business.
+
+### 👤 Page 17 of 17
+Iveco has a very, very strong light commercial from the 3-ton to the 8-ton GVW, which is where our transfer cases play an important role. And I can assure you that at the highest levels in Tata Motors, and by highest, I mean, really the highest. We are quite -- engaged quite earnestly to develop the line of sight and to give Tata the vision that we are there with them as they go to these global markets. So the -- in summary, our estimate of INR1,000 crores, actually, we could be accused of being too conservative by some of you. But I would rather remain like that. I hope I gave a flavor for how our thinking goes.
+
+### 👤 Moderator
+Ladies and gentlemen, due to time constraints, we would take that as the last question for today. I would now like to hand the conference over to the management for their closing remarks.
+
+### 👤 Jitendra Divgi
+So I'm particularly pleased and gratified that we have been, to some extent, been able to live up to the promise that was given to our investors when we did the IPO. I want to assure you that not a week goes by or not a month goes by without us thinking about where we are, what we are doing and doing everything we can to live up to the promise we gave you and for all the trust and confidence you have put in the company, in the management team and in me. So I'm very thankful for that. And I hope this year has given you some confidence that this team will, now going forward, deliver to your expectations. Thank you very much.
+
+### 👤 Moderator
+Thank you, sir. Ladies and gentlemen, on behalf of Centrum Broking Limited, that concludes this conference call. Thank you for joining us, and you may now disconnect your lines.
