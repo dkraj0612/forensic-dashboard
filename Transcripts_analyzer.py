@@ -282,7 +282,7 @@ class RepositoryScanner:
             logger.error(f"Error reading {file_path}: {e}")
             return ""
 
-    def compute_file_hash(self, file_path: str) -> str:
+    def compute_file_hash(self, content: str) -> str:
         """Compute MD5 hash of file"""
         return hashlib.md5(content.encode('utf-8')).hexdigest()
 
@@ -395,7 +395,7 @@ class DateExtractor:
             year = int(y_str) if len(y_str) == 4 else int(f"20{y_str}")
         return quarter, year
 
-# ========================================== SENTIMENT ANALYSIS MODULE ==========================================
+# ========================================== NLP ANALYSIS MODULES ==========================================
 
 class SentimentAnalyzer:
     """Analyzes sentiment and tone in transcripts"""
@@ -403,3 +403,548 @@ class SentimentAnalyzer:
         # Financial sentiment lexicons
         self.positive_words = {'strong', 'growth', 'increase', 'improved', 'positive', 'excellent', 'outstanding', 'robust', 'accelerating', 'momentum', 'confident', 'optimistic', 'expansion', 'opportunity', 'success', 'winning', 'exceeded', 'beating', 'outperforming', 'solid', 'healthy'}
         self.negative_words = {'decline', 'decrease', 'weak', 'challenging', 'difficult', 'headwind', 'pressure', 'concern', 'issue', 'problem', 'disappointing', 'below', 'miss', 'underperforming', 'slowdown', 'deteriorating', 'uncertain', 'risk', 'threat', 'competitive', 'losing'}
+        self.uncertainty_words = {'may', 'might', 'could', 'possibly', 'potentially', 'perhaps', 'uncertain', 'unclear', 'depends', 'subject to', 'assuming', 'if', 'hope', 'try', 'attempt'}
+        self.certainty_words = {'will', 'expect', 'confident', 'committed', 'definitely', 'certain', 'clearly', 'absolutely', 'guaranteed', 'assured', 'determined'}
+
+    def analyze_sentiment(self, text: str) -> Dict[str, float]:
+        """Analyze overall sentiment of text"""
+        text_lower = text.lower()
+        words = re.findall(r'\b\w+\b', text_lower)
+        if not words:
+            return {'polarity': 0.0, 'subjectivity': 0.0, 'positive_ratio': 0.0, 'negative_ratio': 0.0}
+            
+        # Count sentiment words
+        positive_count = sum(1 for word in words if word in self.positive_words)
+        negative_count = sum(1 for word in words if word in self.negative_words)
+        total_sentiment_words = positive_count + negative_count
+        
+        # Calculate ratios
+        positive_ratio = positive_count / len(words) if words else 0
+        negative_ratio = negative_count / len(words) if words else 0
+        
+        # Calculate polarity (-1 to 1)
+        if total_sentiment_words > 0:
+            polarity = (positive_count - negative_count) / total_sentiment_words
+        else:
+            polarity = 0.0
+            
+        # Use TextBlob for additional sentiment analysis
+        try:
+            blob = TextBlob(text[:5000]) # Analyze first 5000 chars for performance
+            textblob_sentiment = blob.sentiment.polarity
+            textblob_subjectivity = blob.sentiment.subjectivity
+            # Combine custom and TextBlob sentiment
+            combined_polarity = (polarity + textblob_sentiment) / 2
+            return {'polarity': combined_polarity, 'subjectivity': textblob_subjectivity, 'positive_ratio': positive_ratio, 'negative_ratio': negative_ratio}
+        except:
+            return {'polarity': polarity, 'subjectivity': 0.5, 'positive_ratio': positive_ratio, 'negative_ratio': negative_ratio}
+
+class ConfidenceAnalyzer:
+    """Analyzes management confidence from linguistic patterns"""
+    def __init__(self):
+        self.sentiment_analyzer = SentimentAnalyzer()
+        # Specificity indicators
+        self.specific_patterns = [
+            r'\b\d+(?:\.\d+)?(?:%| percent)\b', # Percentages
+            r'\$\d+(?:\.\d+)?[mbk]?\b', # Dollar amounts
+            r'\b\d+ (?:customers|clients|users)\b', # Specific counts
+            r'\b[qQ][1-4](?: |\/|-)\d{2,4}\b', # Specific quarters
+            r'\b(?:by|in)\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)\b', # Specific months
+            r'\b(?:guidance|projection)\s+(?:is|of)\s+\d+\b' # Numeric guidance
+        ]
+
+    def analyze_comprehensive_confidence(self, text: str) -> ManagementConfidence:
+        """Comprehensive confidence analysis"""
+        # Overall sentiment
+        sentiment = self.sentiment_analyzer.analyze_sentiment(text)
+        
+        # Certainty analysis
+        certainty_score = self._analyze_certainty(text)
+        
+        # Specificity score
+        specificity_score = self._calculate_specificity(text)
+        
+        # Enthusiasm score (based on positive sentiment and assertiveness)
+        enthusiasm_score = max(0, min(1, (sentiment['positive_ratio'] * 5) + (certainty_score * 0.5)))
+        
+        # Problem acknowledgment (balanced is good)
+        problem_score = self._analyze_problem_acknowledgment(text)
+        
+        # Guidance confidence
+        guidance_score = self._analyze_guidance_confidence(text)
+        
+        # Overall confidence score (weighted combination)
+        overall_score = (certainty_score * 0.25) + (specificity_score * 0.25) + (enthusiasm_score * 0.15) + (problem_score * 0.15) + (guidance_score * 0.20)
+        
+        return ManagementConfidence(
+            ticker="", # Will be filled by caller
+            date=datetime.now(), # Will be filled by caller
+            overall_score=overall_score,
+            certainty_score=certainty_score,
+            specificity_score=specificity_score,
+            enthusiasm_score=enthusiasm_score,
+            problem_acknowledgment_score=problem_score,
+            guidance_confidence_score=guidance_score
+        )
+
+    def _analyze_certainty(self, text: str) -> float:
+        """Analyze certainty level in language"""
+        text_lower = text.lower()
+        words = re.findall(r'\b\w+\b', text_lower)
+        if not words: return 0.5
+        certainty_count = sum(1 for word in words if word in self.sentiment_analyzer.certainty_words)
+        uncertainty_count = sum(1 for word in words if word in self.sentiment_analyzer.uncertainty_words)
+        total = certainty_count + uncertainty_count
+        if total == 0: return 0.5
+        certainty_score = certainty_count / total
+        return certainty_score
+
+    def _calculate_specificity(self, text: str) -> float:
+        """Calculate how specific the language is"""
+        specific_count = 0
+        for pattern in self.specific_patterns:
+            specific_count += len(re.findall(pattern, text, re.IGNORECASE))
+        
+        # Normalize by text length (per 1000 words)
+        words = len(re.findall(r'\b\w+\b', text))
+        if words < 100: return 0.5
+        
+        specificity_density = (specific_count / words) * 1000
+        # Score between 0 and 1 (more than 50 specific items per 1000 words is very high score)
+        score = min(1.0, specificity_density / 50)
+        return score
+
+    def _analyze_problem_acknowledgment(self, text: str) -> float:
+        """Analyze how management addresses challenges"""
+        problem_words = {'challenge', 'issue', 'problem', 'difficulty', 'headwind', 'obstacle'}
+        solution_words = {'address', 'solve', 'mitigate', 'overcome', 'improve', 'fix', 'plan'}
+        
+        text_lower = text.lower()
+        problem_count = sum(text_lower.count(word) for word in problem_words)
+        solution_count = sum(text_lower.count(word) for word in solution_words)
+        
+        if problem_count == 0:
+            # No problems mentioned might indicate avoidance
+            return 0.6
+        
+        # Good ratio is about 1:1 to 1:2 (problems to solutions)
+        if solution_count == 0:
+            return 0.3 # Problems mentioned but no solutions
+        
+        ratio = solution_count / problem_count
+        # Optimal score (1.0) around 1-2 solutions per problem
+        if 1.0 <= ratio <= 2.0: return 1.0
+        elif 0.5 <= ratio < 1.0: return 0.7
+        elif ratio > 2.0: return 0.8 # Might be over-explaining
+        else: return 0.4
+
+    def _analyze_guidance_confidence(self, text: str) -> float:
+        """Analyze confidence in forward guidance"""
+        guidance_patterns = [
+            r'(?i)expect\s+(?:to|that)',
+            r'(?i)anticipate',
+            r'(?i)forecast',
+            r'(?i)project',
+            r'(?i)guide',
+            r'(?i)guidance',
+            r'(?i)outlook'
+        ]
+        
+        guidance_count = sum(len(re.findall(pattern, text)) for pattern in guidance_patterns)
+        if guidance_count == 0: return 0.5 # No guidance provided
+        
+        # Check for hedging in guidance
+        hedging_patterns = [
+            r'(?i)subject to',
+            r'(?i)assuming',
+            r'(?i)depending on',
+            r'(?i)if',
+            r'(?i)hope'
+        ]
+        
+        hedging_count = sum(len(re.findall(pattern, text)) for pattern in hedging_patterns)
+        # More guidance with less hedging is higher confidence
+        if guidance_count == 0: return 0.5
+        hedging_ratio = hedging_count / guidance_count
+        
+        score = max(0.0, min(1.0, 1 - (hedging_ratio / 2)))
+        return score
+
+class EntityExtractor:
+    """Extracts named entities and relationships from text"""
+    def __init__(self):
+        try:
+            self.nlp = spacy.load("en_core_web_sm")
+        except:
+            logger.warning("spaCy model not found. Install with: python -m spacy download en_core_web_sm")
+            self.nlp = None
+        
+        # Common company name patterns
+        self.company_patterns = [
+            r'\b([A-Z][a-zA-Z\s]+?)(?:Inc\.|Corp\.|Corporation|Ltd\.|Limited|LLC|LP)\b',
+            r'\b([A-Z]{2,5})\b' # Tickers and abbreviations
+        ]
+        
+        # Relationship indicators
+        self.customer_indicators = {'customer', 'client', 'buyer', 'purchaser', 'consumer'}
+        self.partner_indicators = {'partner', 'collaboration', 'joint venture', 'alliance', 'relationship'}
+        self.supplier_indicators = {'supplier', 'vendor', 'provider', 'source'}
+        self.competitor_indicators = {'competitor', 'rival', 'competing against'}
+
+    def extract_company_entities_and_relationships(self, text: str, sector_leaders: Set[str]) -> List[CompanyRelationship]:
+        """Extract company entities and relationships"""
+        relationships = []
+        
+        # Use spaCy if available
+        if self.nlp:
+            doc = self.nlp(text[:100000]) # Limit for performance
+            entities = [ent.text for ent in doc.ents if ent.label_ == 'ORG']
+        else:
+            # Fallback pattern-based extraction
+            entities = []
+            for pattern in self.company_patterns:
+                entities.extend(re.findall(pattern, text))
+        
+        # Analyze context for each entity found
+        for entity in set(entities):
+            # Check if it's a sector leader
+            company_name = entity.strip()
+            is_sector_leader = any(leader in company_name.upper() for leader in sector_leaders)
+            
+            if is_sector_leader:
+                # Find mentions in text and extract context window
+                for match in re.finditer(re.escape(company_name), text, re.IGNORECASE):
+                    start = max(0, match.start() - 200)
+                    end = min(len(text), match.end() + 200)
+                    context = text[start:end]
+                    
+                    # Classify relationship type and strength from context
+                    rel_type, strength = self._classify_relationship(context)
+                    
+                    relationships.append(CompanyRelationship(
+                        ticker="", # Will be filled by caller
+                        date=datetime.now(), # Will be filled by caller
+                        related_company=company_name,
+                        relationship_type=rel_type,
+                        strength_score=strength,
+                        context=context.strip()
+                    ))
+        return relationships
+
+    def _classify_relationship(self, context: str) -> Tuple[str, float]:
+        """Classify relationship type and strength from context"""
+        context_lower = context.lower()
+        
+        # Score each relationship type based on indicators
+        customer_score = sum(1 for ind in self.customer_indicators if ind in context_lower)
+        partner_score = sum(1 for ind in self.partner_indicators if ind in context_lower)
+        supplier_score = sum(1 for ind in self.supplier_indicators if ind in context_lower)
+        competitor_score = sum(1 for ind in self.competitor_indicators if ind in context_lower)
+        
+        scores = {
+            'customer': customer_score,
+            'partner': partner_score,
+            'supplier': supplier_score,
+            'competitor': competitor_score
+        }
+        
+        max_score_type = max(scores.items(), key=lambda x: x[1])
+        
+        if max_score_type[1] == 0:
+            # Mentioned without clear relationship indicator
+            return 'mention', 0.3
+        
+        rel_type = max_score_type[0]
+        base_strength = min(1.0, 0.5 + (max_score_type[1] * 0.1))
+        
+        # Look for growth/expansion language
+        if any(word in context_lower for word in ['grow', 'expand', 'increase', 'ramp']):
+            base_strength = min(1.0, base_strength + 0.2)
+        
+        # Look for specific product/project mentions
+        if re.search(r'\b(?:project|product|platform|design win)\b', context_lower):
+            base_strength = min(1.0, base_strength + 0.2)
+        
+        return rel_type, base_strength
+
+class MetricsExtractor:
+    """Extracts financial and operational metrics from text"""
+    def __init__(self):
+        # Metric patterns
+        self.growth_patterns = [
+            r'(?:revenue|sales)\s+(?:grew|increased|up)\s+(?:by\s+)?(\d+(?:\.\d+)?)\s*%',
+            r'(?:y/y|yoy|year-over-year)\s+(?:growth|increase)\s+(?:of\s+)?(\d+(?:\.\d+)?)\s*%',
+            r'(?:growth|increase)\s+(?:of\s+)?(\d+(?:\.\d+)?)\s*%\s+(?:year-over-year|y/y|yoy)'
+        ]
+        self.margin_patterns = [
+            r'(?:gross margin)\s+(?:was|is|at|of)\s+(\d+(?:\.\d+)?)\s*%',
+            r'margin\s+(?:expanded|improved)\s+(?:to\s+)?(\d+(?:\.\d+)?)\s*%'
+        ]
+        self.customer_patterns = [
+            r'(\d+)\s+(?:customers|clients|users)',
+            r'(?:customer base)\s+(?:of\s+)?(\d+)'
+        ]
+        self.cash_patterns = [
+            r'(?:cash and cash equivalents|cash position)\s+(?:was|of|at)\s+\$?(\d+(?:\.\d+)?)\s*(m|b|million|billion)'
+        ]
+
+    def extract_metrics(self, text: str) -> CompanyMetrics:
+        """Extract all available metrics from text"""
+        revenue_growth = self._extract_max_value(text, self.growth_patterns)
+        gross_margin = self._extract_max_value(text, self.margin_patterns)
+        customer_count = self._extract_customer_count(text)
+        cash_position = self._extract_cash(text)
+        
+        # Calculate YoY and QoQ if possible (simplified logic)
+        revenue_growth_yoy = revenue_growth
+        revenue_growth_qoq = revenue_growth / 4 if revenue_growth else None # Heuristic fallback
+        
+        return CompanyMetrics(
+            ticker="", # Will be filled by caller
+            date=datetime.now(), # Will be filled by caller
+            revenue_growth_yoy=revenue_growth_yoy,
+            revenue_growth_qoq=revenue_growth_qoq,
+            gross_margin=gross_margin,
+            operating_margin=gross_margin * 0.5 if gross_margin else None, # Heuristic
+            customer_count=customer_count,
+            employee_count=None,
+            cash_position=cash_position,
+            debt_level=None
+        )
+
+    def _extract_max_value(self, text: str, patterns: List[str]) -> Optional[float]:
+        """Extract max value from a set of regex patterns"""
+        values = []
+        for pattern in patterns:
+            for match in re.finditer(pattern, text, re.IGNORECASE):
+                try:
+                    val = float(match.group(1))
+                    if val < 1000: # Sanity check for percentages
+                        values.append(val)
+                except:
+                    pass
+        return max(values) if values else None
+
+    def _extract_customer_count(self, text: str) -> Optional[int]:
+        """Extract customer count from text"""
+        values = []
+        for pattern in self.customer_patterns:
+            for match in re.finditer(pattern, text, re.IGNORECASE):
+                try:
+                    val_str = match.group(1).replace(',', '')
+                    val = int(val_str)
+                    if val < 1000000000: # Sanity check
+                        values.append(val)
+                except:
+                    pass
+        return max(values) if values else None
+
+    def _extract_cash(self, text: str) -> Optional[float]:
+        """Extract cash position from text"""
+        for pattern in self.cash_patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                try:
+                    amount = float(match.group(1))
+                    multiplier = match.group(2).lower()
+                    if multiplier in ['m', 'million']:
+                        return amount * 1_000_000
+                    elif multiplier in ['b', 'billion']:
+                        return amount * 1_000_000_000
+                except:
+                    pass
+        return None
+
+# ========================================== SCORING AND RANKING MODULE ==========================================
+
+class Scorer:
+    """Calculates overall multibagger score for a company"""
+    def __init__(self, config: Config, db: DatabaseManager):
+        self.config = config
+        self.db = db
+        
+    def score_company(self, ticker: str) -> Optional[CompanyScores]:
+        """Calculate comprehensive scores for a company"""
+        # Get all company data
+        data = self.db.get_company_data(ticker)
+        if not data['transcripts']:
+            return None
+            
+        # Calculate component scores
+        growth_score = self._calculate_growth_score(data['metrics'])
+        confidence_score = self._calculate_confidence_score(data['confidence'])
+        relationship_score = self._calculate_relationship_score(data['relationships'])
+        financial_health_score = self._calculate_financial_health_score(data['metrics'])
+        momentum_score = self._calculate_momentum_score(data['confidence'], data['metrics'])
+        
+        # Identify red and green flags
+        red_flags = self._identify_red_flags(data)
+        green_flags = self._identify_green_flags(data)
+        
+        # Calculate overall score (weighted combination)
+        multibagger_score = (
+            growth_score * 0.30 +
+            confidence_score * 0.20 +
+            relationship_score * 0.20 +
+            financial_health_score * 0.15 +
+            momentum_score * 0.15
+        )
+        
+        # Get latest date
+        latest_date = datetime.fromisoformat(data['transcripts'][-1][0]) if data['transcripts'] else datetime.now()
+        
+        return CompanyScores(
+            ticker=ticker,
+            latest_date=latest_date,
+            multibagger_score=multibagger_score,
+            growth_score=growth_score,
+            confidence_score=confidence_score,
+            relationship_score=relationship_score,
+            financial_health_score=financial_health_score,
+            momentum_score=momentum_score,
+            red_flags=red_flags,
+            green_flags=green_flags
+        )
+
+    def _calculate_growth_score(self, metrics: List[Tuple]) -> float:
+        """Score based on revenue growth"""
+        if not metrics: return 0.0
+        recent_metrics = metrics[-4:] # Look at up to 4 quarters
+        
+        growth_rates = [m[2] for m in recent_metrics if m[2] is not None] # revenue_growth_yoy
+        if not growth_rates: return 0.0
+        
+        avg_growth = sum(growth_rates) / len(growth_rates)
+        
+        # Score based on thresholds
+        if avg_growth < self.config.min_growth_rate: return 0.0
+        elif avg_growth >= self.config.high_growth_threshold: return 1.0
+        else:
+            # Linear interpolation between min and high threshold
+            range_size = self.config.high_growth_threshold - self.config.min_growth_rate
+            score = (avg_growth - self.config.min_growth_rate) / range_size
+            
+            # Bonus for accelerating growth
+            if len(growth_rates) >= 2 and growth_rates[-1] > growth_rates[-2]:
+                score += 0.1
+            
+            return min(1.0, max(0.0, score))
+
+    def _calculate_confidence_score(self, confidence: List[Tuple]) -> float:
+        """Score based on management confidence trends"""
+        if not confidence: return 0.5
+        recent_scores = confidence[-2:] # Look at last 2 transcripts
+        
+        avg_confidence = sum(c[1] for c in recent_scores) / len(recent_scores) # overall_score
+        
+        # Check for trend
+        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]:
+            avg_confidence += 0.1 # Bonus for improving confidence
+            
+        return min(1.0, max(0.0, avg_confidence))
+
+    def _calculate_relationship_score(self, relationships: List[Tuple]) -> float:
+        """Score based on strategic partnerships and customers"""
+        if not relationships: return 0.0
+        
+        score = 0.0
+        # Give points for high quality customer/partner relationships
+        for rel in relationships:
+            rel_type = rel[3]
+            strength = rel[4]
+            
+            if rel_type == 'customer':
+                score += 0.2 * strength
+            elif rel_type == 'partner':
+                score += 0.15 * strength
+            elif rel_type == 'supplier':
+                score += 0.1 * strength
+                
+        # Bonus if multiple strong relationships exist
+        if len(relationships) >= 3:
+            score += 0.2
+            
+        return min(1.0, score)
+
+    def _calculate_financial_health_score(self, metrics: List[Tuple]) -> float:
+        """Score based on margins and cash"""
+        if not metrics: return 0.5
+        
+        score = 0.5 # Neutral start
+        recent_metric = metrics[-1]
+        
+        gross_margin = recent_metric[4]
+        operating_margin = recent_metric[5]
+        
+        if gross_margin and gross_margin > 50:
+            score += 0.2
+        if operating_margin and operating_margin > 10:
+            score += 0.2
+        elif operating_margin and operating_margin < 0:
+            score -= 0.2
+            
+        return min(1.0, max(0.0, score))
+
+    def _calculate_momentum_score(self, confidence: List[Tuple], metrics: List[Tuple]) -> float:
+        """Score based on improving metrics across multiple dimensions"""
+        score = 0.5
+        
+        # Check metric momentum
+        if len(metrics) >= 2:
+            if metrics[-1][2] and metrics[-2][2] and metrics[-1][2] > metrics[-2][2]: # Growth accelerating
+                score += 0.15
+            if metrics[-1][4] and metrics[-2][4] and metrics[-1][4] > metrics[-2][4]: # Gross margin expanding
+                score += 0.15
+                
+        # Check confidence momentum
+        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]:
+            score += 0.2
+            
+        return min(1.0, max(0.0, score))
+
+    def _identify_red_flags(self, data: Dict) -> List[str]:
+        """Identify potential warning signs"""
+        flags = []
+        metrics = data['metrics']
+        confidence = data['confidence']
+        
+        if not metrics:
+            flags.append("Insufficient financial metrics found")
+            return flags
+            
+        # Check growth
+        recent_growth = [m[2] for m in metrics[-2:] if m[2] is not None]
+        if recent_growth and recent_growth[-1] < 10.0:
+            flags.append("Low recent growth rate (<10%)")
+        if len(recent_growth) >= 2 and recent_growth[-1] < recent_growth[-2]:
+            flags.append("Decelerating growth trend")
+            
+        # Check confidence
+        if confidence and confidence[-1][1] < 0.4:
+            flags.append("Low management confidence score")
+        if len(confidence) >= 2 and confidence[-1][1] < confidence[-2][1]:
+            flags.append("Declining management confidence")
+            
+        return flags
+
+    def _identify_green_flags(self, data: Dict) -> List[str]:
+        """Identify positive signals"""
+        flags = []
+        metrics = data['metrics']
+        relationships = data['relationships']
+        
+        # Check relationships
+        customers = [r for r in relationships if r[3] == 'customer' and r[4] > 0.6]
+        if customers:
+            flags.append("Strong relationships with sector leaders")
+            
+        # Check margins
+        if metrics and metrics[-1][4] and metrics[-1][4] > 60.0:
+            flags.append("High gross margin profile (>60%)")
+            
+        # Check growth acceleration
+        recent_growth = [m[2] for m in metrics[-3:] if m[2] is not None]
+        if len(recent_growth) >= 2 and recent_growth[-1] > recent_growth[-2]:
+            flags.append("Accelerating growth trajectory")
+            
+        return flags
