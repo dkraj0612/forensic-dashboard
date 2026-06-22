@@ -914,37 +914,301 @@ class Scorer:
             
         # Check growth
         recent_growth = [m[2] for m in metrics[-2:] if m[2] is not None]
-        if recent_growth and recent_growth[-1] < 10.0:
-            flags.append("Low recent growth rate (<10%)")
-        if len(recent_growth) >= 2 and recent_growth[-1] < recent_growth[-2]:
-            flags.append("Decelerating growth trend")
-            
+        if recent_growth and recent_growth[-1] < 10.0: flags.append("Low recent growth rate (<10%)")
+        if len(recent_growth) >= 2 and recent_growth[-1] < recent_growth[-2]: flags.append("Decelerating growth trend")
+        
         # Check confidence
-        if confidence and confidence[-1][1] < 0.4:
-            flags.append("Low management confidence score")
-        if len(confidence) >= 2 and confidence[-1][1] < confidence[-2][1]:
-            flags.append("Declining management confidence")
-            
+        avg_confidence = sum([c[1] for c in data['confidence'][-2:]]) / min(2, len(data['confidence'])) if len(data['confidence']) > 0 else 0.5
+        if avg_confidence < 0.4: flags.append("Low management confidence")
+        
+        # Check for customer concentration risk
+        customer_rels = [r for r in data['relationships'] if r[3] == 'customer']
+        if len(customer_rels) >= 2: flags.append("High customer concentration risk")
+        
+        # Check for missing transcripts (gaps in reporting)
+        if len(data['transcripts']) < 4: flags.append("Insufficient transcript history")
+        
         return flags
 
     def _identify_green_flags(self, data: Dict) -> List[str]:
-        """Identify positive signals"""
         flags = []
         metrics = data['metrics']
         relationships = data['relationships']
         
-        # Check relationships
-        customers = [r for r in relationships if r[3] == 'customer' and r[4] > 0.6]
-        if customers:
-            flags.append("Strong relationships with sector leaders")
-            
-        # Check margins
-        if metrics and metrics[-1][4] and metrics[-1][4] > 60.0:
-            flags.append("High gross margin profile (>60%)")
-            
-        # Check growth acceleration
+        # Check for accelerating growth
         recent_growth = [m[2] for m in metrics[-3:] if m[2] is not None]
-        if len(recent_growth) >= 2 and recent_growth[-1] > recent_growth[-2]:
-            flags.append("Accelerating growth trajectory")
-            
+        if len(recent_growth) >= 2 and recent_growth[-1] > recent_growth[-2]: flags.append("Accelerating growth trajectory")
+        
+        # Check for high growth rate
+        if recent_growth and recent_growth[-1] > self.config.high_growth_threshold: flags.append(f"High growth rate (>{self.config.high_growth_threshold}%)")
+        
+        # Check for high confidence
+        recent_confidence = [c[1] for c in data['confidence'][-2:]]
+        if recent_confidence and sum(recent_confidence)/len(recent_confidence) > 0.8: flags.append("High management confidence")
+        
+        # Check for multiple sector leader relationships
+        strong_customers = [r for r in data['relationships'] if r[3] == 'customer' and r[4] > 0.7]
+        unique_customers = set([r[2] for r in strong_customers])
+        if len(unique_customers) >= 2: flags.append(f"Multiple sector leader customers ({len(unique_customers)})")
+        
+        # Check for improving margins
+        if len(metrics) >= 2 and metrics[-1][4] and metrics[-2][4] and metrics[-1][4] > metrics[-2][4]: flags.append("Expanding gross margins")
+        
         return flags
+
+# ========================================== REPORT GENERATION ==========================================
+class ReportGenerator:
+    def __init__(self, config: Config, db: DatabaseManager):
+        self.config = config
+        self.db = db
+        self.output_dir = Path(config.output_dir)
+        self.output_dir.mkdir(exist_ok=True)
+        
+    def generate_master_report(self, scores: List[CompanyScores]):
+        """Generate master analysis report"""
+        logger.info("Generating master report...")
+        # Sort by multibagger score
+        sorted_scores = sorted(scores, key=lambda x: x.multibagger_score, reverse=True)
+        report_path = self.output_dir / "master_analysis_report.md"
+        with open(report_path, 'w') as f:
+            f.write("# Microcap Multibagger Analysis Report\n\n")
+            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
+            f.write(f"Total Companies Analyzed: {len(scores)}\n\n")
+            f.write("## Executive Summary\n\n")
+            top_10 = sorted_scores[:10]
+            f.write("### Top 10 Multibagger Candidates:\n\n")
+            f.write("| Rank | Ticker | Score | Growth | Confidence | Relationship | Flags |\n")
+            f.write("|------|--------|-------|--------|------------|--------------|-------|\n")
+            for i, score in enumerate(top_10, 1):
+                green_count = len(score.green_flags)
+                red_count = len(score.red_flags)
+                f.write(f"| {i} | {score.ticker} | {score.multibagger_score:.2f} | {score.growth_score:.2f} | {score.confidence_score:.2f} | {score.relationship_score:.2f} | 🟢 {green_count} / 🔴 {red_count} |\n")
+            f.write("\n## Detailed Company Analysis\n\n")
+            # Detailed sections for top candidates
+            for score in top_10:
+                f.write(f"### {score.ticker}\n")
+                f.write(f"**Multibagger Score:** {score.multibagger_score:.2f}\n")
+                f.write(f"- Growth Score: {score.growth_score:.2f}\n")
+                f.write(f"- Management Confidence: {score.confidence_score:.2f}\n")
+                f.write(f"- Sector Leader Relationships: {score.relationship_score:.2f}\n")
+                f.write(f"- Financial Health: {score.financial_health_score:.2f}\n")
+                f.write(f"- Momentum: {score.momentum_score:.2f}\n")
+                if score.green_flags:
+                    f.write("**Green Flags:**\n")
+                    for flag in score.green_flags:
+                        f.write(f"- 🟢 {flag}\n")
+                if score.red_flags:
+                    f.write("**Red Flags:**\n")
+                    for flag in score.red_flags:
+                        f.write(f"- 🔴 {flag}\n")
+                f.write("\n")
+                # Get company data for additional context
+                data = self.db.get_company_data(score.ticker)
+                if data['relationships']:
+                    f.write("**Key Relationships:**\n")
+                    customer_rels = [r for r in data['relationships'] if r[3] == 'customer']
+                    for rel in customer_rels[:3]:
+                        f.write(f"- {rel[2]} (Strength: {rel[4]:.2f})\n")
+                f.write("\n---\n\n")
+        logger.info(f"Master report saved to {report_path}")
+        # Generate CSV export
+        self._generate_csv_export(sorted_scores)
+        # Generate visualizations if matplotlib is available
+        try:
+            self._generate_visualizations(sorted_scores)
+        except Exception as e:
+            logger.warning(f"Could not generate visualizations: {e}")
+
+    def _generate_csv_export(self, scores: List[CompanyScores]):
+        """Generate CSV export of scores"""
+        csv_path = self.output_dir / "company_scores.csv"
+        try:
+            import csv
+            with open(csv_path, 'w', newline='') as f:
+                writer = csv.writer(f)
+                writer.writerow(['Ticker', 'Multibagger Score', 'Growth Score', 'Confidence Score', 'Relationship Score', 'Financial Health Score', 'Momentum Score', 'Green Flags', 'Red Flags', 'Latest Date'])
+                for score in scores:
+                    writer.writerow([score.ticker, score.multibagger_score, score.growth_score, score.confidence_score, score.relationship_score, score.financial_health_score, score.momentum_score, len(score.green_flags), len(score.red_flags), score.latest_date.strftime('%Y-%m-%d')])
+            logger.info(f"CSV export saved to {csv_path}")
+        except Exception as e:
+            logger.error(f"Error generating CSV: {e}")
+
+    def _generate_visualizations(self, scores: List[CompanyScores]):
+        """Generate visualization charts"""
+        if not scores: return
+        # Top 20 companies by multibagger score
+        top_20 = sorted(scores, key=lambda x: x.multibagger_score, reverse=True)[:20]
+        # Create figure with subplots
+        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
+        fig.suptitle('Multibagger Analysis Dashboard', fontsize=16, fontweight='bold')
+        # 1. Main Multibagger Scores
+        tickers = [s.ticker for s in top_20]
+        scores_data = [s.multibagger_score for s in top_20]
+        axes[0, 0].barh(tickers, scores_data, color='steelblue')
+        axes[0, 0].set_xlabel('Multibagger Score')
+        axes[0, 0].set_title('Top 20 Companies by Multibagger Score')
+        axes[0, 0].invert_yaxis()
+        # 2. Score Components for Top 10
+        top_10 = top_20[:10]
+        component_data = { 'Growth': [s.growth_score for s in top_10], 'Confidence': [s.confidence_score for s in top_10], 'Relationship': [s.relationship_score for s in top_10], 'Financial': [s.financial_health_score for s in top_10] }
+        tickers_10 = [s.ticker for s in top_10]
+        x = np.arange(len(tickers_10))
+        width = 0.15
+        for i, (component, values) in enumerate(component_data.items()):
+            axes[0, 1].bar(x + (i*width), values, width, label=component)
+        axes[0, 1].set_xticks(x + width * 1.5)
+        axes[0, 1].set_xticklabels(tickers_10, rotation=45)
+        axes[0, 1].set_title('Score Components (Top 10)')
+        axes[0, 1].legend()
+        # 3. Scatter: Growth vs Confidence
+        growth_scores = [s.growth_score for s in scores]
+        confidence_scores = [s.confidence_score for s in scores]
+        axes[1, 0].scatter(growth_scores, confidence_scores, alpha=0.6, color='mediumseagreen')
+        axes[1, 0].set_xlabel('Growth Score')
+        axes[1, 0].set_ylabel('Confidence Score')
+        axes[1, 0].set_title('Growth vs Management Confidence')
+        # Annotate top performers
+        for score in top_10:
+            axes[1, 0].annotate(score.ticker, (score.growth_score, score.confidence_score), fontsize=8, alpha=0.7)
+        # 4. Distribution of Multibagger Scores
+        all_scores = [s.multibagger_score for s in scores]
+        axes[1, 1].hist(all_scores, bins=20, color='steelblue', alpha=0.7, edgecolor='black')
+        axes[1, 1].set_xlabel('Multibagger Score')
+        axes[1, 1].set_ylabel('Frequency')
+        axes[1, 1].set_title('Distribution of Multibagger Scores')
+        axes[1, 1].axvline(np.mean(all_scores), color='red', linestyle='dashed', linewidth=1, label=f'Mean: {np.mean(all_scores):.2f}')
+        axes[1, 1].legend()
+        plt.tight_layout()
+        # Save figure
+        viz_path = self.output_dir / 'analysis_dashboard.png'
+        plt.savefig(viz_path, dpi=300, bbox_inches='tight')
+        logger.info(f"Visualizations saved to {viz_path}")
+        plt.close()
+
+# ========================================== MAIN ANALYZER ==========================================
+class TranscriptAnalyzer:
+    """Main analyzer orchestrating all components"""
+    def __init__(self, config: Config):
+        self.config = config
+        self.db = DatabaseManager(config.db_path)
+        self.scanner = RepositoryScanner(config)
+        self.date_extractor = DateExtractor()
+        self.sentiment_analyzer = SentimentAnalyzer()
+        self.confidence_analyzer = ConfidenceAnalyzer()
+        self.entity_extractor = EntityExtractor()
+        self.metrics_extractor = MetricsExtractor()
+        self.scorer = Scorer(config, self.db)
+        self.report_generator = ReportGenerator(config, self.db)
+
+    def run_analysis_pipeline(self):
+        """Run complete analysis pipeline"""
+        logger.info("=" * 80)
+        logger.info("Starting Transcript Analysis for Multibagger Discovery")
+        logger.info("=" * 80)
+        # Step 1: Scan repository
+        companies = self.scanner.scan()
+        if not companies:
+            logger.error("No transcript files found!")
+            return
+        # Step 2: Process transcripts
+        logger.info(f"\nProcessing transcripts for {len(companies)} companies...")
+        processed_files = self.db.get_processed_files()
+        for company, file_paths in companies.items():
+            logger.info(f"\nAnalyzing company: {company}")
+            for file_path in file_paths:
+                try:
+                    content = self.scanner.read_file_content(file_path)
+                    if len(content) < self.config.min_transcript_length:
+                        logger.warning(f"  Skipping {file_path} - too short")
+                        continue
+                    file_hash = self.scanner.compute_file_hash(content)
+                    # Skip if already processed
+                    if file_hash in processed_files:
+                        logger.debug(f"  Skipping {file_path} - already processed")
+                        continue
+                    # Process this transcript
+                    self._process_transcript(company, file_path, content, file_hash)
+                except Exception as e:
+                    logger.error(f"  Error processing {file_path}: {e}")
+        # Step 3: Calculate company scores
+        logger.info("\nCalculating company scores...")
+        tickers = self.db.get_all_tickers()
+        scores = []
+        for ticker in tickers:
+            score = self.scorer.score_company(ticker)
+            if score:
+                self.db.save_company_scores(score)
+                scores.append(score)
+        # Step 4: Generate reports
+        if scores:
+            logger.info("\nGenerating reports...")
+            self.report_generator.generate_master_report(scores)
+        logger.info("\nAnalysis Complete!")
+        logger.info(f"Results saved to: {self.config.output_dir}")
+
+    def _process_transcript(self, ticker: str, file_path: str, content: str, file_hash: str):
+        """Process a single transcript"""
+        logger.info(f"  Processing: {os.path.basename(file_path)}")
+        # Extract date
+        file_mtime = datetime.fromtimestamp(os.path.getmtime(file_path))
+        date, date_confidence, fiscal_quarter, fiscal_year = self.date_extractor.extract_date(content, file_mtime)
+        if not date:
+            logger.warning("    Skipping analysis - no valid date")
+            return
+        # Save transcript metadata
+        metadata = TranscriptMetadata(file_path=file_path, company_dir=ticker, ticker=ticker, date=date, date_confidence=date_confidence, fiscal_quarter=fiscal_quarter, fiscal_year=fiscal_year, file_hash=file_hash, content_length=len(content), processed_date=datetime.now())
+        self.db.save_transcript(metadata)
+        # Extract metrics
+        metrics = self.metrics_extractor.extract_metrics(content)
+        metrics.ticker = ticker
+        metrics.date = date
+        self.db.save_metrics(metrics)
+        # Analyze confidence
+        confidence = self.confidence_analyzer.analyze_comprehensive_confidence(content)
+        confidence.ticker = ticker
+        confidence.date = date
+        self.db.save_confidence_score(confidence)
+        # Extract relationships
+        relationships = self.entity_extractor.extract_company_entities_and_relationships(content, self.config.sector_leaders)
+        for rel in relationships:
+            rel.ticker = ticker
+            rel.date = date
+            self.db.save_relationship(rel)
+        logger.info(f"    Found {len(relationships)} sector leader relationships")
+
+    def close(self):
+        """Cleanup resources"""
+        self.db.close()
+
+# ========================================== COMMAND LINE INTERFACE ==========================================
+def main():
+    """Main entry point"""
+    parser = argparse.ArgumentParser(description="Earnings Call Transcript Analyzer for Multibagger Discovery")
+    parser.add_argument("--repo-root", type=str, default=os.getcwd(), help="Root directory of transcript repository")
+    parser.add_argument("--config", type=str, help="Path to configuration JSON file")
+    parser.add_argument("--min-growth", type=float, default=15.0, help="Minimum growth rate threshold (%)")
+    parser.add_argument("--workers", type=int, default=4, help="Number of parallel workers")
+    parser.add_argument("--output-dir", type=str, default="analysis_output", help="Output directory for reports")
+    
+    args = parser.parse_args()
+    
+    # Create configuration
+    config = Config(args.config)
+    config.repo_root = args.repo_root
+    config.output_dir = args.output_dir
+    config.min_growth_rate = args.min_growth
+    config.parallel_workers = args.workers
+    
+    # Run analyzer
+    analyzer = TranscriptAnalyzer(config)
+    try:
+        analyzer.run_analysis_pipeline()
+    except KeyboardInterrupt:
+        logger.info("\nAnalysis interrupted by user")
+    except Exception as e:
+        logger.error(f"Analysis failed: {e}")
+    finally:
+        analyzer.close()
+
+if __name__ == "__main__":
+    main()
