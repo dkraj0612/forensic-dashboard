@@ -11,5 +11,8 @@
             "year": 2026
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/telegram_analysis_log_2026-06-21.txt",
+        "./ScreenerData/telegram_analysis_log_2026-06-22.txt"
+    ]
 }
