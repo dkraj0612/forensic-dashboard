@@ -23,8 +23,7 @@ logging.basicConfig(
 logger = logging.getLogger("ConcallPipeline")
 
 # --- Thresholds & Settings ---
-# Time-Aware Kill Switch (4 Hours and 45 Minutes)
-MAX_RUNTIME_SECONDS = (4 * 3600) + (45 * 60)  
+MAX_RUNTIME_SECONDS = (4 * 3600) + (45 * 60)  # 4 Hours 45 Minutes
 RATE_LIMIT_DELAY = 6.0       
 FLASH_TOKEN_LIMIT = 150000   
 LITE_TOKEN_LIMIT = 200000    
@@ -118,9 +117,8 @@ def safe_api_call(controller: DualModelController, prompt: str, max_retries: int
             controller.track_and_validate(response.usage_metadata)
             return response
             
-        except ResourceExhausted as e:
+        except ResourceExhausted:
             logger.error(f"🛑 Rate Limit Hit (ResourceExhausted).")
-            # If Google blocks us, gracefully exit so GitHub saves state.
             controller.trigger_serverless_exit()
             
         except Exception as e:
@@ -262,7 +260,7 @@ def process_stock_folder(folder_path: str, controller: DualModelController, glob
 # 5. MASTER ORCHESTRATOR
 # ==========================================
 def process_all_stocks(root_directory: str):
-    """Iterates alphabetically through all stock folders inside ScreenerData."""
+    """Recursively finds all folders containing transcript files and processes them."""
     global_start_time = time.time()
     api_key = os.getenv("GEMINI_API_KEY")
     
@@ -271,18 +269,26 @@ def process_all_stocks(root_directory: str):
     except SystemExit:
         return
         
-    # Find all immediate subdirectories within ScreenerData and sort them alphabetically
     if not os.path.exists(root_directory):
         logger.error(f"Root directory '{root_directory}' does not exist.")
         return
         
-    stock_folders = sorted([f.path for f in os.scandir(root_directory) if f.is_dir()])
+    # Recursively find all directories that actually contain .md or .txt files
+    # (ignoring files that end with _Summary.md to ensure we only target raw transcripts)
+    stock_folders = set()
+    for root, dirs, files in os.walk(root_directory):
+        for file in files:
+            if (file.endswith(".md") or file.endswith(".txt")) and not file.endswith("_Summary.md"):
+                stock_folders.add(root)
+
+    # Sort alphabetically to maintain predictable order (e.g., ABB, RELIANCE, ZOMATO)
+    stock_folders = sorted(list(stock_folders))
     
     if not stock_folders:
-        logger.warning(f"No stock folders found inside {root_directory}")
+        logger.warning(f"No valid transcript files found inside {root_directory}")
         return
 
-    logger.info(f"🔍 Discovered {len(stock_folders)} stock directories. Beginning master run.")
+    logger.info(f"🔍 Discovered {len(stock_folders)} unique stock directories containing transcripts. Beginning master run.")
 
     for folder in stock_folders:
         process_stock_folder(folder, model_controller, global_start_time)
