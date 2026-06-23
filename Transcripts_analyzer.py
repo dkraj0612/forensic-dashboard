@@ -105,7 +105,8 @@ class CompanyScores:
 class Config:
     """Configuration for the analyzer"""
     def __init__(self, config_path: Optional[str] = None):
-        self.repo_root = os.getcwd()
+        # Automatically target the ScreenerData folder
+        self.repo_root = os.path.join(os.getcwd(), "ScreenerData")
         self.db_path = "transcript_analysis.db"
         self.output_dir = "analysis_output"
         self.parallel_workers = 4
@@ -811,7 +812,7 @@ class Scorer:
         if not metrics: return 0.0
         recent_metrics = metrics[-4:] # Look at up to 4 quarters
         
-        growth_rates = [m[2] for m in recent_metrics if m[2] is not None] # revenue_growth_yoy
+        growth_rates = [m[1] for m in recent_metrics if m[1] is not None] # index 1 is revenue_growth_yoy
         if not growth_rates: return 0.0
         
         avg_growth = sum(growth_rates) / len(growth_rates)
@@ -835,7 +836,7 @@ class Scorer:
         if not confidence: return 0.5
         recent_scores = confidence[-2:] # Look at last 2 transcripts
         
-        avg_confidence = sum(c[1] for c in recent_scores) / len(recent_scores) # overall_score
+        avg_confidence = sum(c[1] for c in recent_scores) / len(recent_scores) # index 1 is overall_score
         
         # Check for trend
         if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]:
@@ -850,8 +851,8 @@ class Scorer:
         score = 0.0
         # Give points for high quality customer/partner relationships
         for rel in relationships:
-            rel_type = rel[3]
-            strength = rel[4]
+            rel_type = rel[2] # index 2 is relationship_type
+            strength = rel[3] # index 3 is strength_score
             
             if rel_type == 'customer':
                 score += 0.2 * strength
@@ -873,8 +874,8 @@ class Scorer:
         score = 0.5 # Neutral start
         recent_metric = metrics[-1]
         
-        gross_margin = recent_metric[4]
-        operating_margin = recent_metric[5]
+        gross_margin = recent_metric[3] # index 3 is gross_margin
+        operating_margin = recent_metric[4] # index 4 is operating_margin
         
         if gross_margin and gross_margin > 50:
             score += 0.2
@@ -891,13 +892,13 @@ class Scorer:
         
         # Check metric momentum
         if len(metrics) >= 2:
-            if metrics[-1][2] and metrics[-2][2] and metrics[-1][2] > metrics[-2][2]: # Growth accelerating
+            if metrics[-1][1] and metrics[-2][1] and metrics[-1][1] > metrics[-2][1]: # Growth accelerating (index 1 is yoy)
                 score += 0.15
-            if metrics[-1][4] and metrics[-2][4] and metrics[-1][4] > metrics[-2][4]: # Gross margin expanding
+            if metrics[-1][3] and metrics[-2][3] and metrics[-1][3] > metrics[-2][3]: # Gross margin expanding (index 3 is gross_margin)
                 score += 0.15
                 
         # Check confidence momentum
-        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]:
+        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]: # index 1 is overall_score
             score += 0.2
             
         return min(1.0, max(0.0, score))
@@ -913,7 +914,7 @@ class Scorer:
             return flags
             
         # Check growth
-        recent_growth = [m[2] for m in metrics[-2:] if m[2] is not None]
+        recent_growth = [m[1] for m in metrics[-2:] if m[1] is not None] # index 1 is yoy
         if recent_growth and recent_growth[-1] < 10.0: flags.append("Low recent growth rate (<10%)")
         if len(recent_growth) >= 2 and recent_growth[-1] < recent_growth[-2]: flags.append("Decelerating growth trend")
         
@@ -922,7 +923,7 @@ class Scorer:
         if avg_confidence < 0.4: flags.append("Low management confidence")
         
         # Check for customer concentration risk
-        customer_rels = [r for r in data['relationships'] if r[3] == 'customer']
+        customer_rels = [r for r in data['relationships'] if r[2] == 'customer'] # index 2 is relationship_type
         if len(customer_rels) >= 2: flags.append("High customer concentration risk")
         
         # Check for missing transcripts (gaps in reporting)
@@ -936,7 +937,7 @@ class Scorer:
         relationships = data['relationships']
         
         # Check for accelerating growth
-        recent_growth = [m[2] for m in metrics[-3:] if m[2] is not None]
+        recent_growth = [m[1] for m in metrics[-3:] if m[1] is not None] # index 1 is yoy
         if len(recent_growth) >= 2 and recent_growth[-1] > recent_growth[-2]: flags.append("Accelerating growth trajectory")
         
         # Check for high growth rate
@@ -947,12 +948,12 @@ class Scorer:
         if recent_confidence and sum(recent_confidence)/len(recent_confidence) > 0.8: flags.append("High management confidence")
         
         # Check for multiple sector leader relationships
-        strong_customers = [r for r in data['relationships'] if r[3] == 'customer' and r[4] > 0.7]
-        unique_customers = set([r[2] for r in strong_customers])
+        strong_customers = [r for r in data['relationships'] if r[2] == 'customer' and r[3] > 0.7] # index 2 is type, index 3 is strength
+        unique_customers = set([r[1] for r in strong_customers]) # index 1 is related_company
         if len(unique_customers) >= 2: flags.append(f"Multiple sector leader customers ({len(unique_customers)})")
         
         # Check for improving margins
-        if len(metrics) >= 2 and metrics[-1][4] and metrics[-2][4] and metrics[-1][4] > metrics[-2][4]: flags.append("Expanding gross margins")
+        if len(metrics) >= 2 and metrics[-1][3] and metrics[-2][3] and metrics[-1][3] > metrics[-2][3]: flags.append("Expanding gross margins")
         
         return flags
 
@@ -1006,9 +1007,9 @@ class ReportGenerator:
                 data = self.db.get_company_data(score.ticker)
                 if data['relationships']:
                     f.write("**Key Relationships:**\n")
-                    customer_rels = [r for r in data['relationships'] if r[3] == 'customer']
+                    customer_rels = [r for r in data['relationships'] if r[2] == 'customer'] # index 2 is type
                     for rel in customer_rels[:3]:
-                        f.write(f"- {rel[2]} (Strength: {rel[4]:.2f})\n")
+                        f.write(f"- {rel[1]} (Strength: {rel[3]:.2f})\n") # index 1 is company, index 3 is strength
                 f.write("\n---\n\n")
         logger.info(f"Master report saved to {report_path}")
         # Generate CSV export
