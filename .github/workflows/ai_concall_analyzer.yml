@@ -32,7 +32,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
           # Replace 'run_pipeline.py' with the actual name of your script
-          python run_pipeline.py 
+          python ai_transcript_analyzer.py 
 
       - name: Commit and Push Generated Summaries
         run: |
