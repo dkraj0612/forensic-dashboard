@@ -1,0 +1,15 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/telegram_analysis_log_2026-06-21.txt",
+            "quarter": "Q2",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/telegram_analysis_log_2026-06-22.txt",
+            "quarter": "Q2",
+            "year": 2026
+        }
+    ],
+    "completed_files": []
+}

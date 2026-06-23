@@ -1,0 +1,14 @@
+2026-06-23 12:20:51,297 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-06-23 12:20:51,330 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-06-23 12:20:51,331 [INFO] 
+==================================================
+2026-06-23 12:20:51,331 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-06-23 12:20:51,331 [INFO] ==================================================
+2026-06-23 12:20:51,331 [INFO] Indexing metadata for 2 raw documents in ScreenerData...
+2026-06-23 12:20:56,290 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1753 | Total: 1753/200000
+2026-06-23 12:21:06,104 [INFO] [gemini-2.5-flash-lite] Tokens Used: 179 | Total: 1932/200000
+2026-06-23 12:21:12,105 [INFO] Commencing generation for 2 pending files...
+2026-06-23 12:21:12,105 [INFO] Analyzing [ Q2_2026 ]
+2026-06-23 12:21:19,387 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted).
+2026-06-23 12:21:19,387 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-06-23 12:21:19,387 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
