@@ -1,4 +1,3 @@
-
 import os
 import re
 import sys
@@ -936,6 +935,9 @@ def main():
     import gc    # Added for mandatory memory clearing
     import html  # Added for safe Telegram escaping
     
+    start_time = time.time()
+    max_runtime = 5.5 * 3600  # 5 hours 30 minutes limit check
+    
     os.makedirs(STOCKS_DIR, exist_ok=True)
     os.makedirs(LOG_DIR, exist_ok=True)
     
@@ -964,6 +966,9 @@ def main():
         future_to_ticker = {executor.submit(extract_stock_data, ticker): ticker for ticker in remaining_tickers}
         
         for idx, future in enumerate(concurrent.futures.as_completed(future_to_ticker), 1):
+            if time.time() - start_time > max_runtime:
+                print("\n[!] 5.30 hours limit reached during Phase 1. Halting loop to commit processed data safely...")
+                break
             ticker = future_to_ticker[future]
             try:
                 # Capture the downloaded assets from the thread result
@@ -984,6 +989,9 @@ def main():
         
         # Process AI one-by-one so you never hit the 5/min Gemini limit
         for item in files_to_process:
+            if time.time() - start_time > max_runtime:
+                print("\n[!] 5.30 hours limit reached during Phase 2. Halting loop to commit processed data safely...")
+                break
             ticker = item['ticker']
             matched_category = item['category']
             is_audio = item['is_audio']
