@@ -29,10 +29,9 @@ jobs:
 
       - name: Run Transcript Analyzer
         run: |
-          # Make the script executable
           chmod +x Transcripts_analyzer.py
-          # Run it, pointing it at the current repo directory
-          python Transcripts_analyzer.py --repo-root . --output-dir analysis_output
+          # Change --repo-root from . to ./ScreenerData
+          python Transcripts_analyzer.py --repo-root ./ScreenerData --output-dir analysis_output
 
       - name: Upload Results (Artifacts)
         uses: actions/upload-artifact@v4
