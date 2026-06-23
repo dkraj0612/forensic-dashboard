@@ -40,3 +40,26 @@
 2026-06-23 12:34:10,296 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-06-23 12:34:10,296 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-06-23 12:34:10,296 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-06-23 12:40:56,357 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-06-23 12:40:56,410 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-06-23 12:40:56,411 [INFO] 
+==================================================
+2026-06-23 12:40:56,411 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-06-23 12:40:56,411 [INFO] ==================================================
+2026-06-23 12:40:56,411 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-06-23 12:40:56,411 [INFO] 
+==================================================
+2026-06-23 12:40:56,411 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-23 12:40:56,411 [INFO] ==================================================
+2026-06-23 12:40:56,412 [INFO] Indexing metadata for 12 raw documents in concalls...
+2026-06-23 12:41:00,060 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1950 | Total: 1950/200000
+2026-06-23 12:41:06,178 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-06-23 12:41:06,178 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-06-23 12:41:06,178 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-06-23 12:41:12,160 [INFO] [gemini-2.5-flash] Tokens Used: 2231 | Total: 2231/150000
+2026-06-23 12:41:21,074 [INFO] [gemini-2.5-flash] Tokens Used: 1712 | Total: 3943/150000
+2026-06-23 12:41:29,113 [INFO] [gemini-2.5-flash] Tokens Used: 2328 | Total: 6271/150000
+2026-06-23 12:41:35,225 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-06-23 12:41:35,225 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-06-23 12:41:35,226 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-06-23 12:41:35,226 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
