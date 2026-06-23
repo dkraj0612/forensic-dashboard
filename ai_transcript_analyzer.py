@@ -58,7 +58,22 @@ class DualModelController:
         logger.info("Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.")
         sys.exit(0)
 
+    def force_model_switch(self) -> bool:
+        """Forces a shift to the next model due to an API-level block (e.g., 429 ResourceExhausted)."""
+        logger.warning(f"⚠️ API-level block detected for {self.active_model_name}.")
+        self.current_model_index += 1
+        
+        if self.current_model_index < len(self.model_order):
+            self.active_model_name = self.model_order[self.current_model_index]
+            self.active_model = genai.GenerativeModel(self.active_model_name)
+            logger.info(f"🔄 Dynamic Shift: Switched to fallback model -> {self.active_model_name}")
+            return True
+        else:
+            self.trigger_serverless_exit()
+            return False
+
     def track_and_validate(self, usage_metadata) -> bool:
+        """Tracks token expenditure and shifts to fallback models if manual limits are breached."""
         if not usage_metadata:
             return True
             
@@ -71,7 +86,7 @@ class DualModelController:
         logger.info(f"[{self.active_model_name}] Tokens Used: {total_tokens} | Total: {current_used}/{limit}")
         
         if current_used >= limit:
-            logger.warning(f"⚠️ Limit breached for {self.active_model_name}.")
+            logger.warning(f"⚠️ Manual limit breached for {self.active_model_name}.")
             self.current_model_index += 1
             
             if self.current_model_index < len(self.model_order):
@@ -118,9 +133,15 @@ def safe_api_call(controller: DualModelController, prompt: str, max_retries: int
             return response
             
         except ResourceExhausted:
-            logger.error(f"🛑 Rate Limit Hit (ResourceExhausted).")
-            controller.trigger_serverless_exit()
-            
+            logger.error(f"🛑 Rate Limit Hit (ResourceExhausted) on {controller.active_model_name}.")
+            # Instead of exiting immediately, force a model switch.
+            # If it switches successfully, loop back and try again.
+            if controller.force_model_switch():
+                continue 
+            else:
+                # If false, the serverless exit was already triggered.
+                break
+                
         except Exception as e:
             logger.error(f"API Error: {e}")
             attempt += 1
@@ -166,6 +187,8 @@ def process_stock_folder(folder_path: str, controller: DualModelController, glob
             
             try:
                 response = safe_api_call(controller, prompt)
+                if not response:
+                    continue
                 clean_json = re.sub(r'```json|```', '', response.text).strip()
                 meta_data = json.loads(clean_json)
                 
@@ -242,6 +265,8 @@ def process_stock_folder(folder_path: str, controller: DualModelController, glob
 
         try:
             response = safe_api_call(controller, prompt)
+            if not response:
+                continue
             
             with open(output_summary_path, 'w', encoding='utf-8') as out_f:
                 out_f.write(response.text)
