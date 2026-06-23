@@ -1,0 +1,8 @@
+{
+    "ticker": "STYRENIX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71e9cc91-885a-45b3-a2ad-b7b7b11c4097.pdf",
+    "file_type": "pdf"
+}

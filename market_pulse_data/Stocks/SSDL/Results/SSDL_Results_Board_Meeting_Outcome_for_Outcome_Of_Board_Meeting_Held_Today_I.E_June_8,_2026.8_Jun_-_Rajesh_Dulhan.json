@@ -1,0 +1,8 @@
+{
+    "ticker": "SSDL",
+    "category": "Results",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=51e15627-fd4d-41a3-806a-0d2160c0532d.pdf",
+    "file_type": "pdf"
+}

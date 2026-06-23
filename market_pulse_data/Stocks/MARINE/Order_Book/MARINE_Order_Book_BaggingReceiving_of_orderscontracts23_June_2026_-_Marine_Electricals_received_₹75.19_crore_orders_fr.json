@@ -1,0 +1,8 @@
+{
+    "ticker": "MARINE",
+    "category": "Order_Book",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MARINE_23062026121148_Regulation_30_Stock_Exchange_Intimation_of_STT_and_PDG.pdf",
+    "file_type": "pdf"
+}

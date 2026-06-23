@@ -1,0 +1,8 @@
+{
+    "ticker": "ELECON",
+    "category": "Results",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=934b3231-c82e-4100-8f8c-34cfd0216cb4.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KDDL",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=36ee1e80-1ecd-48bb-a738-83017a3b0f3d.pdf",
+    "file_type": "pdf"
+}

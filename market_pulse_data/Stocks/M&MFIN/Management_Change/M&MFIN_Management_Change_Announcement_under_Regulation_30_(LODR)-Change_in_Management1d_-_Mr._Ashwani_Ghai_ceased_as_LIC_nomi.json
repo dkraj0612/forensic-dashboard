@@ -1,0 +1,8 @@
+{
+    "ticker": "M&MFIN",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=79c0c16c-3f4d-4c0e-9860-e97ce4172677.pdf",
+    "file_type": "pdf"
+}

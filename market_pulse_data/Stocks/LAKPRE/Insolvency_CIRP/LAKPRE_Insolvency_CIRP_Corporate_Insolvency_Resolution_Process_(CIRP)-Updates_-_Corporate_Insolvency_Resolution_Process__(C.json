@@ -1,0 +1,8 @@
+{
+    "ticker": "LAKPRE",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b6e264e3-a478-47a8-bd0c-ae7554a5ca3c.pdf",
+    "file_type": "pdf"
+}

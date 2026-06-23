@@ -1,0 +1,8 @@
+{
+    "ticker": "TRENT",
+    "category": "Dividend",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=932e34a3-dfb1-451a-a6ad-c2ca8d794e80.pdf",
+    "file_type": "pdf"
+}

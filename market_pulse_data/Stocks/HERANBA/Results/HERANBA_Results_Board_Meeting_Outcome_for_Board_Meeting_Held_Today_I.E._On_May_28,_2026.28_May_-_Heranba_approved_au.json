@@ -1,0 +1,8 @@
+{
+    "ticker": "HERANBA",
+    "category": "Results",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c9af094c-aaf8-4413-be4a-8f8383c1ec3a.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "TARACHAND",
+    "category": "Dividend",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/TARACHAND_22062026175512_Notice_of_Annual_General_Meeting_.pdf",
+    "file_type": "pdf"
+}

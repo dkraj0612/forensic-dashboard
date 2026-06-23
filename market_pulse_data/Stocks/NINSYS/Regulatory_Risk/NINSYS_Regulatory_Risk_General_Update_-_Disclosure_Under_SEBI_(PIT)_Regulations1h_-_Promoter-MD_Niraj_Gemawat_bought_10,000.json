@@ -1,0 +1,8 @@
+{
+    "ticker": "NINSYS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1e4cd04d-c0dd-4439-82a9-470c49575933.pdf",
+    "file_type": "pdf"
+}

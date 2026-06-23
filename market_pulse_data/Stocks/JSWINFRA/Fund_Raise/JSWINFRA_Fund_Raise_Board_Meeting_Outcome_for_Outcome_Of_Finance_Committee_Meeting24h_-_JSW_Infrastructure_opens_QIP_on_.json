@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWINFRA",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a817a5d3-a3e7-4dc9-b08a-b3d84eb83272.pdf",
+    "file_type": "pdf"
+}

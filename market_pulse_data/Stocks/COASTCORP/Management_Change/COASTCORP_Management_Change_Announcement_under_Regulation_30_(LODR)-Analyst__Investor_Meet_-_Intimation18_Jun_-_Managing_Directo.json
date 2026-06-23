@@ -1,0 +1,8 @@
+{
+    "ticker": "COASTCORP",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8e65e490-6f21-40dd-871f-42de34740257.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KERNEX",
+    "category": "SAST",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc1924d3-8a02-4419-82aa-ddefc44edf6a.pdf",
+    "file_type": "pdf"
+}

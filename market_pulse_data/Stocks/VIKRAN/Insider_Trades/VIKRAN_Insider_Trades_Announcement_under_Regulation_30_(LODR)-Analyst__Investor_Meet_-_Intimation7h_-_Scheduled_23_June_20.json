@@ -1,0 +1,8 @@
+{
+    "ticker": "VIKRAN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71630f1b-053d-44a1-a92f-5596e04b8277.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AWFIS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee21feb9-18bb-4347-af56-b67a7c1eb06a.pdf",
+    "file_type": "pdf"
+}

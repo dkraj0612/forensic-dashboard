@@ -1,0 +1,8 @@
+{
+    "ticker": "CSLFINANCE",
+    "category": "Results",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=621fe4d3-768c-4cd2-a03a-68cece4627e2.pdf",
+    "file_type": "pdf"
+}

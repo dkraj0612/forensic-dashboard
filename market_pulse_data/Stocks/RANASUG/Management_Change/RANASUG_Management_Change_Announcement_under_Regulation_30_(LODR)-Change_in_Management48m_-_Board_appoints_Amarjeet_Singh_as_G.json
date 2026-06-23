@@ -1,0 +1,8 @@
+{
+    "ticker": "RANASUG",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=280463ac-691d-42b5-b4f8-2f412c484b68.pdf",
+    "file_type": "pdf"
+}

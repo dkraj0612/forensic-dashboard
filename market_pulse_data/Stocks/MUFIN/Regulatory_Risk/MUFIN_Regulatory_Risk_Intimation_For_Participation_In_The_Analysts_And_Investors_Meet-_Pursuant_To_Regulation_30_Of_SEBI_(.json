@@ -1,0 +1,8 @@
+{
+    "ticker": "MUFIN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2944d73f-27a9-48cc-9c32-314d1bbd8547.pdf",
+    "file_type": "pdf"
+}

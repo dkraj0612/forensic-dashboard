@@ -1,0 +1,8 @@
+{
+    "ticker": "MTARTECH",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7ee73025-866c-47e4-b072-143839ef2dde.pdf",
+    "file_type": "pdf"
+}

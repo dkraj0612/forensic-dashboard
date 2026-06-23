@@ -1,0 +1,8 @@
+{
+    "ticker": "SHEKHAWATI",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=58fe92cc-a539-4d03-8970-b8d038d09a4c.pdf",
+    "file_type": "pdf"
+}

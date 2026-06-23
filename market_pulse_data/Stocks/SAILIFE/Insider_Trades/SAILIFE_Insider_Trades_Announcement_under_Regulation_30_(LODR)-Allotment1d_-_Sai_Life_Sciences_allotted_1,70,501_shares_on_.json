@@ -1,0 +1,8 @@
+{
+    "ticker": "SAILIFE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a39e829a-e1d3-48d9-9c47-d0c0eef4aec1.pdf",
+    "file_type": "pdf"
+}
