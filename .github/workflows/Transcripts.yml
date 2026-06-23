@@ -31,7 +31,7 @@ jobs:
         run: |
           chmod +x Transcripts_analyzer.py
           # Change --repo-root from . to ./ScreenerData
-          python Transcripts_analyzer.py --repo-root ./ScreenerData/ABB/concalls --output-dir analysis_output
+          python Transcripts_analyzer.py --repo-root ./ScreenerData/ACC/concalls --output-dir analysis_output
 
       - name: Upload Results (Artifacts)
         uses: actions/upload-artifact@v4
