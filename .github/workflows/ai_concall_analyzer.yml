@@ -40,14 +40,13 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Stage the newly created summaries and the JSON state file
-          git add concalls/*_Summary.md
-          git add concalls/pipeline_progress_state.json
-          git add pipeline_execution.log
+          # Recursively stage all changes inside the ScreenerData folder
+          git add ScreenerData/
+          git add pipeline_execution.log || true
           
           # Check if there are actually changes to commit
           if ! git diff-index --quiet HEAD; then
-            # The [skip ci] tag ensures pushing this commit doesn't accidentally trigger another workflow run
+            # The [skip ci] tag ensures pushing this commit doesn't trigger an infinite loop
             git commit -m "chore: auto-generate new transcript summaries and update state [skip ci]"
             git push
           else
