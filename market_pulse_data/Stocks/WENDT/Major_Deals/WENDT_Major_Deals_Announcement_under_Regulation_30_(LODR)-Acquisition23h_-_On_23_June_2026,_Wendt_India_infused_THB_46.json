@@ -1,0 +1,8 @@
+{
+    "ticker": "WENDT",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9823f58-77fd-4bbe-b079-34f7112f73e3.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "TIMETECHNO",
+    "category": "SAST",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=365A2D5A_C5C9_41E5_8A3D_8BC3DE1C3287_130834.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "STEELCITY",
+    "category": "Dividend",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/STEELCITY_24062026133003_AGM_proceedings.pdf",
+    "file_type": "pdf"
+}

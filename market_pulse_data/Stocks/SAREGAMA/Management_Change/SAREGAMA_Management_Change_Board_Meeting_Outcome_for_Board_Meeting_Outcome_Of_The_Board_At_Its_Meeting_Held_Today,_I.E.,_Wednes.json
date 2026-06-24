@@ -1,0 +1,8 @@
+{
+    "ticker": "SAREGAMA",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=604d1a0b-1c4d-4145-bd42-63cb254fc641.pdf",
+    "file_type": "pdf"
+}

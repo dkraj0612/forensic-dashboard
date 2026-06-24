@@ -1,0 +1,8 @@
+{
+    "ticker": "SEAMECLTD",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d95ad03b-9cb2-4a6d-805f-0762442622c6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJ-AUTO",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=37636f5f-3f82-4da8-9c30-b13cee7c1b49.pdf",
+    "file_type": "pdf"
+}
