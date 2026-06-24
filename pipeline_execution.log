@@ -63,3 +63,24 @@
 2026-06-23 12:41:35,225 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-06-23 12:41:35,226 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-06-23 12:41:35,226 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-06-24 03:35:52,448 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-06-24 03:35:52,500 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-06-24 03:35:52,500 [INFO] 
+==================================================
+2026-06-24 03:35:52,500 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-06-24 03:35:52,500 [INFO] ==================================================
+2026-06-24 03:35:52,500 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-06-24 03:35:52,501 [INFO] 
+==================================================
+2026-06-24 03:35:52,501 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-24 03:35:52,501 [INFO] ==================================================
+2026-06-24 03:35:52,501 [INFO] Indexing metadata for 8 raw documents in concalls...
+2026-06-24 03:35:53,168 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1852 | Total: 1852/200000
+2026-06-24 03:35:59,310 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-06-24 03:35:59,310 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-06-24 03:35:59,310 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-06-24 03:36:01,902 [INFO] [gemini-2.5-flash] Tokens Used: 1731 | Total: 1731/150000
+2026-06-24 03:36:08,043 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-06-24 03:36:08,043 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-06-24 03:36:08,043 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-06-24 03:36:08,043 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.

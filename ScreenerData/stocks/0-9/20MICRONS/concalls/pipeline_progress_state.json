@@ -34,6 +34,16 @@
             "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Q4_FY19_Transcript.md",
             "quarter": "Q4",
             "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_42_Transcript.md",
+            "quarter": "Q2",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
         }
     ],
     "completed_files": []
