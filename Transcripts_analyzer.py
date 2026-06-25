@@ -276,14 +276,11 @@ class TranscriptExtractor:
                 themes.append(theme)
         return themes[:7]
 
-    def extract_wins(self, text: str) -> List[str]:
+        def extract_wins(self, text: str) -> List[str]:
         patterns = [
-            r'(?:excited to|proud to|pleased to).*?(?:announce|report|share).*?(?:\.|
-)',
-            r'(?:record|best ever|highest|strongest|unprecedented).*?(?:\.|
-)',
-            r'(?:exceeded|surpassed|beat|outperformed).*?(?:\.|
-)'
+            r'(?:excited to|proud to|pleased to).*?(?:announce|report|share).*?(?:\.|\n)',
+            r'(?:record|best ever|highest|strongest|unprecedented).*?(?:\.|\n)',
+            r'(?:exceeded|surpassed|beat|outperformed).*?(?:\.|\n)'
         ]
         wins = []
         for pattern in patterns:
@@ -294,12 +291,11 @@ class TranscriptExtractor:
                     wins.append(cleaned)
         return wins[:5]
 
-    def extract_challenges(self, text: str) -> List[str]:
+
+        def extract_challenges(self, text: str) -> List[str]:
         patterns = [
-            r'(?:challenge|headwind|difficulty|pressure).*?(?:faced|facing|addressing|dealing with|due to).*?(?:\.|
-)',
-            r'(?:impacted by|offset by|partially offset by).*?(?:\.|
-)'
+            r'(?:challenge|headwind|difficulty|pressure).*?(?:faced|facing|addressing|dealing with|due to).*?(?:\.|\n)',
+            r'(?:impacted by|offset by|partially offset by).*?(?:\.|\n)'
         ]
         challenges = []
         for pattern in patterns:
@@ -309,6 +305,7 @@ class TranscriptExtractor:
                 if len(cleaned) > 20 and any(word in cleaned.lower() for word in ['cost', 'supply', 'demand', 'economic']):
                     challenges.append(cleaned)
         return challenges[:5]
+
 
     def extract_product_updates(self, text: str) -> List[str]:
         updates = []
