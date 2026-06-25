@@ -39,11 +39,10 @@ logger = logging.getLogger(__name__)
 @dataclass
 class QuarterData:
     """Complete data for a single quarter"""
-    version: int = 1
-    ticker: str = ""
+    ticker: str
     file_path: str
+    date: datetime
     quarter: str = ""
-    date: datetime = field(default_factory=datetime.now)
     revenue_growth: Optional[float] = None
     margin: Optional[float] = None
     customer_count: Optional[int] = None
@@ -88,10 +87,10 @@ class Prediction:
 @dataclass
 class CompanyDNA:
     """The evolving intelligence about a company"""
-    version: int = 1
     ticker: str = ""
-    baseline_quarter: str
-    latest_quarter: str
+    version: int = 1
+    baseline_quarter: str = ""
+    latest_quarter: str = ""
     timeline: List[QuarterData] = field(default_factory=list)
     open_promises: List[Dict] = field(default_factory=list)
     promises_tracking: Dict[str, Dict] = field(default_factory=dict)
@@ -791,7 +790,7 @@ class DeviationDetector:
                             'type': 'customer_silence',
                             'severity': 'major',
                             'description': f"{customer} not mentioned (was in {len(data['mentions'])} consecutive quarters)",
-                            'icon': 'ð´'
+                            'icon': '🔴'
                         })
         return deviations
 
@@ -804,7 +803,7 @@ class DeviationDetector:
                         'type': 'theme_disappeared',
                         'severity': 'moderate',
                         'description': f"Theme '{theme}' absent (was in {len(data['mentions'])} quarters)",
-                        'icon': 'ð '
+                        'icon': '🟠'
                     })
                     
         existing_themes = set(dna.theme_lifecycle.keys())
@@ -814,7 +813,7 @@ class DeviationDetector:
                 'type': 'new_theme',
                 'severity': 'minor',
                 'description': f"NEW theme appeared: '{theme}'",
-                'icon': 'ð¡'
+                'icon': '🟡'
             })
         return deviations
 
@@ -833,7 +832,7 @@ class DeviationDetector:
                     'type': 'tone_shift',
                     'severity': severity,
                     'description': f"Tone shifted: {prev_tone.upper()} -> {new_data.tone.upper()}",
-                    'icon': 'ð´' if severity == 'major' else 'ð '
+                    'icon': '🔴' if severity == 'major' else '🟠'
                 })
         return deviations
 
@@ -1049,50 +1048,50 @@ class AuditManager:
         
         # Initialize file
         with open(self.audit_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð¡ï¸ {ticker} - DNA Evolution Audit Trail\n\n")
+            f.write(f"# 🛡️ {ticker} - DNA Evolution Audit Trail\n\n")
             f.write("This document tracks exactly how the AI's understanding of the company evolves quarter over quarter.\n\n")
             
 
     def audit_file_system(self, file_stats: dict):
         with open(self.audit_path, 'a', encoding='utf-8') as f:
-            f.write("## ð File System Audit\n\n")
+            f.write("## 📁 File System Audit\n\n")
             if file_stats['renames']:
-                f.write(f"- ð **Renamed {len(file_stats['renames'])} raw files** to standard format.\n")
+                f.write(f"- 🔄 **Renamed {len(file_stats['renames'])} raw files** to standard format.\n")
                 for old, new in file_stats['renames']:
                     f.write(f"  - `{old}` -> `{new}`\n")
             if file_stats['duplicates']:
-                f.write(f"- ðï¸ **Removed {len(file_stats['duplicates'])} duplicate/inferior files.**\n")
+                f.write(f"- 🗑️ **Removed {len(file_stats['duplicates'])} duplicate/inferior files.**\n")
                 for dup in file_stats['duplicates']:
                     f.write(f"  - `{dup}`\n")
             if not file_stats['renames'] and not file_stats['duplicates']:
-                f.write("- â No file system changes needed. All files correctly formatted.\n")
+                f.write("- ✅ No file system changes needed. All files correctly formatted.\n")
             f.write("\n---\n\n")
             
     def audit(self, quarter: str, prev_dna_state: dict, new_dna: CompanyDNA, deviations: List[Dict]):
         with open(self.audit_path, 'a', encoding='utf-8') as f:
-            f.write(f"## ð Quarter Processed: {quarter}\n")
+            f.write(f"## 📅 Quarter Processed: {quarter}\n")
             
             # 1. Pattern Changes
             new_patterns = len(new_dna.patterns) - prev_dna_state['pattern_count']
             if new_patterns > 0:
-                f.write(f"- ð§  **Learned {new_patterns} new pattern(s)**\n")
+                f.write(f"- 🧠 **Learned {new_patterns} new pattern(s)**\n")
                 
             # 2. Deviations
             if deviations:
-                f.write(f"- ð¨ **Detected {len(deviations)} deviation(s)** from historical behavior\n")
+                f.write(f"- 🚨 **Detected {len(deviations)} deviation(s)** from historical behavior\n")
                 for dev in deviations:
                     f.write(f"  - {dev.get('icon', '-')} {dev['description']}\n")
             else:
-                f.write("- â Maintained consistent historical patterns (0 deviations)\n")
+                f.write("- ✅ Maintained consistent historical patterns (0 deviations)\n")
                 
             # 3. Promises Tracking
             new_fulfilled = len(new_dna.fulfilled_promises) - prev_dna_state['fulfilled_count']
             new_broken = len(new_dna.broken_promises) - prev_dna_state['broken_count']
             
             if new_fulfilled > 0:
-                f.write(f"- ð¤ Management fulfilled {new_fulfilled} previous commitment(s)\n")
+                f.write(f"- 🤝 Management fulfilled {new_fulfilled} previous commitment(s)\n")
             if new_broken > 0:
-                f.write(f"- ð Management broke {new_broken} previous commitment(s)\n")
+                f.write(f"- 💔 Management broke {new_broken} previous commitment(s)\n")
                 
             f.write("\n---\n\n")
 
@@ -1128,7 +1127,7 @@ class ReportGenerator:
             if quarter_idx > 0:
                 prev_predictions = [p for p in dna.predictions if p.target_quarter == quarter_data.quarter]
                 if prev_predictions:
-                    f.write("## ð¯ Prediction Validation\n\n")
+                    f.write("## 🎯 Prediction Validation\n\n")
                     for pred in prev_predictions:
                         if getattr(pred, 'validated', False):
                             f.write(f"**Prediction made in {pred.made_on_quarter}:**\n\n")
@@ -1136,39 +1135,39 @@ class ReportGenerator:
                             if 'revenue_growth' in pred.predictions:
                                 pred_range = pred.predictions['revenue_growth'].get('range', 'N/A')
                                 actual = getattr(pred, 'actual_results', {}).get('revenue_growth', 'N/A')
-                                icon = "â" if getattr(pred, 'accuracy', 0) >= 0.8 else "â ï¸" if getattr(pred, 'accuracy', 0) >= 0.5 else "â"
+                                icon = "✅" if getattr(pred, 'accuracy', 0) >= 0.8 else "⚠️" if getattr(pred, 'accuracy', 0) >= 0.5 else "❌"
                                 f.write(f"{icon} **Growth Prediction:** {pred_range} | **Actual:** {actual}\n")
                                 
                             if 'tone' in pred.predictions:
                                 pred_tone = pred.predictions['tone']
                                 actual_tone = getattr(pred, 'actual_results', {}).get('tone', 'N/A')
-                                icon = "â" if pred_tone == actual_tone else "â"
+                                icon = "✅" if pred_tone == actual_tone else "❌"
                                 f.write(f"{icon} **Tone Prediction:** {pred_tone.upper()} | **Actual:** {str(actual_tone).upper()}\n")
                                 
                             f.write(f"\n**Overall Accuracy:** {getattr(pred, 'accuracy', 0)*100:.0f}%\n\n")
                     f.write("---\n\n")
                     
-            f.write("## ð Key Metrics\n\n")
+            f.write("## 📊 Key Metrics\n\n")
             if quarter_data.revenue_growth is not None:
                 f.write(f"**Revenue Growth:** {quarter_data.revenue_growth:.1f}%\n")
                 if not is_baseline and quarter_idx > 0:
                     prev_growth = dna.timeline[quarter_idx-1].revenue_growth
                     if prev_growth:
                         delta = quarter_data.revenue_growth - prev_growth
-                        icon = "ð¢" if delta > 0 else "ð´" if delta < 0 else "âª"
+                        icon = "🟢" if delta > 0 else "🔴" if delta < 0 else "⚪"
                         f.write(f"  - vs Previous Quarter: {icon} {delta:+.1f}pp\n")
                         
                     baseline_growth = dna.timeline[0].revenue_growth
                     if baseline_growth:
                         delta = quarter_data.revenue_growth - baseline_growth
-                        icon = "ð¢" if delta > 0 else "ð´"
+                        icon = "🟢" if delta > 0 else "🔴"
                         f.write(f"  - vs Baseline ({dna.timeline[0].quarter}): {icon} {delta:+.1f}pp\n")
                         
                     all_growth = [q.revenue_growth for q in dna.timeline[:quarter_idx] if q.revenue_growth]
                     if all_growth:
                         avg = sum(all_growth) / len(all_growth)
                         delta = quarter_data.revenue_growth - avg
-                        icon = "ð¢" if delta > 2 else "ð´" if delta < -2 else "âª"
+                        icon = "🟢" if delta > 2 else "🔴" if delta < -2 else "⚪"
                         f.write(f"  - vs Historical Average: {icon} {delta:+.1f}pp (avg: {avg:.1f}%)\n")
             f.write("\n")
             
@@ -1176,7 +1175,7 @@ class ReportGenerator:
                 f.write(f"**Gross Margin:** {quarter_data.margin:.1f}%\n\n")
                 
             if deviations:
-                f.write("## ð¨ Pattern Deviations Detected\n\n")
+                f.write("## 🚨 Pattern Deviations Detected\n\n")
                 critical = [d for d in deviations if d['severity'] == 'critical']
                 major = [d for d in deviations if d['severity'] == 'major']
                 moderate = [d for d in deviations if d['severity'] == 'moderate']
@@ -1190,27 +1189,27 @@ class ReportGenerator:
                         f.write("\n")
                 f.write("---\n\n")
                 
-            f.write("## ð Business Narrative\n\n")
+            f.write("## 📝 Business Narrative\n\n")
             if quarter_data.key_themes:
                 f.write("**Key Themes:**\n")
                 for theme in quarter_data.key_themes:
                     if theme in dna.theme_lifecycle:
                         status = dna.theme_lifecycle[theme]['status']
                         mentions = len(dna.theme_lifecycle[theme]['mentions'])
-                        if status == 'new': f.write(f"- ð {theme}\n")
-                        else: f.write(f"- ð {theme} ({mentions} quarters)\n")
+                        if status == 'new': f.write(f"- 🆕 {theme}\n")
+                        else: f.write(f"- 🔄 {theme} ({mentions} quarters)\n")
                     else:
                         f.write(f"- {theme}\n")
                 f.write("\n")
                 
             if quarter_data.wins:
                 f.write("**Wins & Achievements:**\n")
-                for win in quarter_data.wins: f.write(f"- â {win}\n")
+                for win in quarter_data.wins: f.write(f"- ✅ {win}\n")
                 f.write("\n")
                 
             if quarter_data.challenges:
                 f.write("**Challenges Discussed:**\n")
-                for challenge in quarter_data.challenges: f.write(f"- â ï¸ {challenge}\n")
+                for challenge in quarter_data.challenges: f.write(f"- ⚠️ {challenge}\n")
                 f.write("\n")
                 
             if quarter_data.customer_mentions:
@@ -1219,18 +1218,18 @@ class ReportGenerator:
                     if customer in dna.customer_evolution:
                         mentions = len(dna.customer_evolution[customer].get('mentions', []))
                         if dna.customer_evolution[customer].get('first_mentioned') == quarter_data.quarter:
-                            f.write(f"- ð **{customer}**: {context[:150]}...\n")
+                            f.write(f"- 🆕 **{customer}**: {context[:150]}...\n")
                         else:
-                            f.write(f"- ð **{customer}** ({mentions} mentions): {context[:150]}...\n")
+                            f.write(f"- 🔄 **{customer}** ({mentions} mentions): {context[:150]}...\n")
                 f.write("\n")
                 
             if quarter_data.product_updates:
                 f.write("**Product Updates:**\n")
-                for update in quarter_data.product_updates: f.write(f"- ð {update}\n")
+                for update in quarter_data.product_updates: f.write(f"- 🚀 {update}\n")
                 f.write("\n")
                 
             if quarter_data.forward_looking_guidance or quarter_data.promises:
-                f.write("## ð® Forward-Looking Statements\n\n")
+                f.write("## 🔮 Forward-Looking Statements\n\n")
                 if quarter_data.forward_looking_guidance:
                     f.write("**Guidance:**\n")
                     for guidance in quarter_data.forward_looking_guidance: f.write(f"- {guidance}\n")
@@ -1243,13 +1242,13 @@ class ReportGenerator:
                     f.write("\n")
                     
             if quarter_data.evidence_key_quotes:
-                f.write("## ð£ï¸ Key Quotes\n\n")
+                f.write("## 🗣️ Key Quotes\n\n")
                 for speaker, quote in quarter_data.evidence_key_quotes:
                     f.write(f"> **{speaker}:** \"{quote}\"\n\n")
                     
             if prediction and not is_baseline:
                 f.write("---\n\n")
-                f.write("## ð® Prediction for Next Quarter\n")
+                f.write("## 🔮 Prediction for Next Quarter\n")
                 f.write(f"**Target:** {prediction.target_quarter}\n")
                 f.write(f"**Overall Confidence:** {prediction.confidence*100:.0f}%\n\n")
                 
@@ -1272,7 +1271,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '00_MASTER_TIMELINE.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð§¬ {getattr(dna, 'ticker', 'UNKNOWN')} - Master Timeline\n\n")
+            f.write(f"# 🧬 {getattr(dna, 'ticker', 'UNKNOWN')} - Master Timeline\n\n")
             f.write(f"**DNA Version:** v{getattr(dna, 'version', 1)}\n")
             f.write(f"**Period:** {dna.baseline_quarter} -> {dna.latest_quarter}\n")
             f.write(f"**Total Quarters:** {len(dna.timeline)}\n\n")
@@ -1297,7 +1296,7 @@ class ReportGenerator:
                 for q in dna.timeline:
                     if q.revenue_growth:
                         bar_length = int((q.revenue_growth / max_growth) * 40) if max_growth > 0 else 0
-                        bar = "â" * bar_length
+                        bar = "█" * bar_length
                         f.write(f"{q.quarter:12s} | {bar} {q.revenue_growth:.1f}%\n")
             f.write("\n")
             
@@ -1315,7 +1314,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '02_PREDICTION_TRACKER.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð¯ {getattr(dna, 'ticker', 'UNKNOWN')} - Prediction Accuracy Tracker\n\n")
+            f.write(f"# 🎯 {getattr(dna, 'ticker', 'UNKNOWN')} - Prediction Accuracy Tracker\n\n")
             
             if not dna.predictions:
                 f.write("No predictions made yet.\n")
@@ -1342,7 +1341,7 @@ class ReportGenerator:
                         actual_str = "N/A"
                         
                     accuracy = getattr(pred, 'accuracy', 0)
-                    icon = "â" if accuracy >= 0.8 else "â ï¸" if accuracy >= 0.5 else "â"
+                    icon = "✅" if accuracy >= 0.8 else "⚠️" if accuracy >= 0.5 else "❌"
                     f.write(f"| {pred.made_on_quarter} | {pred.target_quarter} | {pred_str} | {actual_str} | {icon} {accuracy*100:.0f}% |\n")
                     
         logger.info(f"Prediction tracker generated: {report_path}")
@@ -1352,7 +1351,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '05_INVESTMENT_BRIEF.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð¼ {getattr(dna, 'ticker', 'UNKNOWN')} - Investment Brief\n\n")
+            f.write(f"# 💼 {getattr(dna, 'ticker', 'UNKNOWN')} - Investment Brief\n\n")
             f.write(f"**As of:** {dna.latest_quarter}\n")
             f.write(f"**Last Updated:** {datetime.now().strftime('%Y-%m-%d')}\n\n")
             f.write("---\n\n")
@@ -1365,13 +1364,13 @@ class ReportGenerator:
                 traj = getattr(dna.patterns['growth_trajectory'], 'rule', '')
                 if 'accelerating' in traj:
                     score += 3
-                    reasoning.append("â Growth accelerating (most important factor)")
+                    reasoning.append("✅ Growth accelerating (most important factor)")
                 elif 'steady' in traj:
                     score += 1
-                    reasoning.append("â Growth steady")
+                    reasoning.append("✅ Growth steady")
                 elif 'decelerating' in traj:
                     score -= 2
-                    reasoning.append("ð´ Growth decelerating")
+                    reasoning.append("🔴 Growth decelerating")
                     
             # Promise delivery
             if 'promise_delivery' in dna.patterns:
@@ -1379,39 +1378,39 @@ class ReportGenerator:
                 conf = getattr(pattern, 'confidence', 0)
                 if conf > 0.75:
                     score += 2
-                    reasoning.append(f"â High management credibility ({conf*100:.0f}%)")
+                    reasoning.append(f"✅ High management credibility ({conf*100:.0f}%)")
                 elif conf < 0.50:
                     score -= 2
-                    reasoning.append(f"ð´ Low management credibility ({conf*100:.0f}%)")
+                    reasoning.append(f"🔴 Low management credibility ({conf*100:.0f}%)")
                     
             # Customer momentum
             active_customers = len([c for c, d in dna.customer_evolution.items() if len(d.get('mentions', [])) >= 3])
             if active_customers >= 3:
                 score += 2
-                reasoning.append(f"â Multiple sector leader relationships ({active_customers})")
+                reasoning.append(f"✅ Multiple sector leader relationships ({active_customers})")
                 
             # Tone
             latest = dna.timeline[-1] if dna.timeline else None
             if latest:
                 if latest.tone == 'defensive':
                     score -= 2
-                    reasoning.append("ð´ Management tone defensive")
+                    reasoning.append("🔴 Management tone defensive")
                 elif latest.tone == 'positive':
                     score += 1
-                    reasoning.append("â Positive management tone")
+                    reasoning.append("✅ Positive management tone")
                     
             # Generate recommendation
             if score >= 4:
-                verdict = "ð¢ **STRONG BUY**"
+                verdict = "🟢 **STRONG BUY**"
                 summary = "Multiple positive factors align. High conviction opportunity."
             elif score >= 2:
-                verdict = "ð¢ **BUY**"
+                verdict = "🟢 **BUY**"
                 summary = "More positives than negatives. Good risk/reward."
             elif score >= 0:
-                verdict = "ð¡ **HOLD**"
+                verdict = "🟡 **HOLD**"
                 summary = "Mixed signals. Watch closely before adding."
             else:
-                verdict = "ð´ **AVOID/SELL**"
+                verdict = "🔴 **AVOID/SELL**"
                 summary = "Too many red flags. Risk outweighs potential."
                 
             f.write(f"## {verdict}\n\n")
