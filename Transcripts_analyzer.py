@@ -1,1215 +1,1476 @@
 #!/usr/bin/env python3
-""" Earnings Call Transcript Analyzer for Multibagger Discovery """
-""" A comprehensive system for analyzing earnings call transcripts from microcap and small-cap companies to identify early-stage multibagger opportunities, particularly those serving as suppliers or partners to large-cap sector leaders. 
-Author: Investment Research System Date: 2024 """
+""" 
+DNA Evolution Transcript Analyzer - World Class Edition 
+Sequential learning system that builds evolving intelligence from earnings transcripts. 
+Each transcript teaches the system about the company, enabling pattern recognition, deviation 
+detection, and predictive modeling.
+"""
 
 import os
 import re
 import json
-import hashlib
 import sqlite3
+import hashlib
 from pathlib import Path
 from datetime import datetime, timedelta
 from typing import Dict, List, Tuple, Optional, Any, Set
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass, field, asdict
 from collections import defaultdict, Counter
 import logging
-import concurrent.futures
-from concurrent.futures import ProcessPoolExecutor, as_completed
 import argparse
 
-# NLP and ML imports
 try:
     import pandas as pd
     import numpy as np
     from textblob import TextBlob
-    import spacy
-    from sklearn.feature_extraction.text import TfidfVectorizer, CountVectorizer
-    from sklearn.decomposition import LatentDirichletAllocation
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    from wordcloud import WordCloud
-except ImportError as e:
-    print(f"Warning: Some optional dependencies not available: {e}")
-    print("Install with: pip install pandas numpy textblob spacy scikit-learn matplotlib seaborn wordcloud")
+except ImportError:
+    print("Installing required packages: pip install pandas numpy textblob")
 
-# Configure logging
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', handlers=[logging.FileHandler("transcript_analyzer.log"), logging.StreamHandler()])
+# ====== LOGGING SETUP ======
+logging.basicConfig(
+    level=logging.INFO, 
+    format='%(asctime)s - %(levelname)s - %(message)s', 
+    handlers=[logging.FileHandler("dna_analyzer.log"), logging.StreamHandler()]
+)
 logger = logging.getLogger(__name__)
 
-# ========================================== CONFIGURATION AND DATA CLASSES ==========================================
+# ====== DATA STRUCTURES ======
 
 @dataclass
-class TranscriptMetadata:
+class QuarterData:
+    """Complete data for a single quarter"""
+    version: int = 1
+    ticker: str = ""
     file_path: str
-    company_dir: str
-    ticker: str
-    date: Optional[datetime]
-    date_confidence: float
-    fiscal_quarter: Optional[str]
-    fiscal_year: Optional[int]
-    file_hash: str
-    content_length: int
-    processed_date: datetime
+    quarter: str = ""
+    date: datetime = field(default_factory=datetime.now)
+    revenue_growth: Optional[float] = None
+    margin: Optional[float] = None
+    customer_count: Optional[int] = None
+    customer_mentions: Dict = field(default_factory=dict)
+    key_themes: List[str] = field(default_factory=list)
+    narrative_key_themes: List[str] = field(default_factory=list)
+    wins: List[str] = field(default_factory=list)
+    challenges: List[str] = field(default_factory=list)
+    product_updates: List[str] = field(default_factory=list)
+    forward_looking_guidance: List[str] = field(default_factory=list)
+    promises: List[Dict[str, str]] = field(default_factory=list)
+    tone: str = "neutral"
+    specificity: str = "medium"
+    evidence_key_quotes: List[Tuple[str, str]] = field(default_factory=list)
+    last_updated: str = ""
 
 @dataclass
-class CompanyMetrics:
-    """Key metrics extracted from a transcript"""
-    ticker: str
-    date: datetime
-    revenue_growth_yoy: Optional[float]
-    revenue_growth_qoq: Optional[float]
-    gross_margin: Optional[float]
-    operating_margin: Optional[float]
-    customer_count: Optional[int]
-    employee_count: Optional[int]
-    cash_position: Optional[float]
-    debt_level: Optional[float]
+class Pattern:
+    """A learned pattern"""
+    pattern_id: str
+    type: str
+    rule: str = ""
+    observations: int = 0
+    accurate: int = 0
+    confidence: float = 0.0
+    examples: List[str] = field(default_factory=list)
+    last_updated: str = ""
 
 @dataclass
-class ManagementConfidence:
-    """Management confidence scoring"""
-    ticker: str
-    date: datetime
-    overall_score: float
-    certainty_score: float
-    specificity_score: float
-    enthusiasm_score: float
-    problem_acknowledgment_score: float
-    guidance_confidence_score: float
+class Prediction:
+    """A prediction made for future quarter"""
+    prediction_id: str
+    made_on_quarter: str
+    target_quarter: str
+    predictions: Dict[str, Any]
+    confidence: float
+    validation_date: Optional[datetime] = None
+    actual_results: Optional[Dict[str, Any]] = None
+    accuracy: Optional[float] = None
+    validated: bool = False
 
 @dataclass
-class CompanyRelationship:
-    """Relationship with other companies (customers, partners)"""
-    ticker: str
-    date: datetime
-    related_company: str
-    relationship_type: str # customer, partner, supplier, competitor
-    strength_score: float
-    context: str
+class CompanyDNA:
+    """The evolving intelligence about a company"""
+    version: int = 1
+    ticker: str = ""
+    baseline_quarter: str
+    latest_quarter: str
+    timeline: List[QuarterData] = field(default_factory=list)
+    open_promises: List[Dict] = field(default_factory=list)
+    promises_tracking: Dict[str, Dict] = field(default_factory=dict)
+    fulfilled_promises: List[Dict] = field(default_factory=list)
+    broken_promises: List[Dict] = field(default_factory=list)
+    failed_promises: List[Dict] = field(default_factory=list)
+    patterns: Dict[str, Any] = field(default_factory=dict)
+    predictions: List[Prediction] = field(default_factory=list)
+    customer_evolution: Dict = field(default_factory=dict)
+    theme_lifecycle: Dict = field(default_factory=dict)
+    model_accuracy_prediction_accuracy: float = 0.0
+    metadata_created_date: datetime = field(default_factory=datetime.now)
+    last_updated: Optional[datetime] = None
 
-@dataclass
-class CompanyScores:
-    """Overall company scoring for multibagger potential"""
-    ticker: str
-    latest_date: datetime
-    multibagger_score: float
-    growth_score: float
-    confidence_score: float
-    relationship_score: float
-    financial_health_score: float
-    momentum_score: float
-    red_flags: List[str]
-    green_flags: List[str]
+# ====== FILE SCANNER ======
+class FileScanner:
+    """Scans folders and sorts transcripts chronologically"""
+    def __init__(self):
+        self.transcript_extensions = {'.txt', '.md'}
 
-class Config:
-    """Configuration for the analyzer"""
-    def __init__(self, config_path: Optional[str] = None):
-        # Automatically target the ScreenerData folder
-        self.repo_root = os.path.join(os.getcwd(), "ScreenerData")
-        self.db_path = "transcript_analysis.db"
-        self.output_dir = "analysis_output"
-        self.parallel_workers = 4
-        self.min_transcript_length = 1000
-        self.date_confidence_threshold = 0.6
-        # Analysis parameters
-        self.min_growth_rate = 15.0 # Minimum YoY growth for microcaps
-        self.high_growth_threshold = 50.0 # High growth threshold
-        self.min_confidence_score = 0.5
-        self.max_problem_acknowledgment = 0.8
-        self.concentration_risk_threshold = 0.5
-        # Sector leaders (can be expanded)
-        self.sector_leaders = ['NVIDIA', 'NVDA', 'TSMC', 'ASML', 'AAPL', 'APPLE', 'MSFT', 'MICROSOFT', 'GOOGL', 'GOOGLE', 'AMZN', 'AMAZON', 'META', 'TESLA', 'TSLA', 'AMD', 'INTC', 'INTEL', 'QUALCOMM', 'QCOM', 'BROADCOM', 'AVGO']
-        if config_path and os.path.exists(config_path):
-            self.load_config(config_path)
-
-    def load_config(self, path: str):
-        """Load configuration from JSON file"""
-        try:
-            with open(path, 'r') as f:
-                config_data = json.load(f)
-                for key, value in config_data.items():
-                    if hasattr(self, key):
-                        setattr(self, key, value)
-            logger.info(f"Loaded configuration from {path}")
-        except Exception as e:
-            logger.error(f"Error loading config: {e}")
-
-# ========================================== DATABASE MANAGER ==========================================
-
-class DatabaseManager:
-    """Manages SQLite database for storing analysis results"""
-    def __init__(self, db_path: str):
-        self.db_path = db_path
-        self.conn = None
-        self.init_database()
-
-    def init_database(self):
-        """Initialize database schema"""
-        self.conn = sqlite3.connect(self.db_path, check_same_thread=False)
-        cursor = self.conn.cursor()
-        # Transcripts table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS transcripts ( id INTEGER PRIMARY KEY AUTOINCREMENT, file_path TEXT UNIQUE, ticker TEXT, date TEXT, date_confidence REAL, fiscal_quarter TEXT, fiscal_year INTEGER, file_hash TEXT, content_length INTEGER, processed_date TEXT ) ''')
-        # Metrics table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS metrics ( id INTEGER PRIMARY KEY AUTOINCREMENT, ticker TEXT, date TEXT, revenue_growth_yoy REAL, revenue_growth_qoq REAL, gross_margin REAL, operating_margin REAL, customer_count INTEGER, employee_count INTEGER, cash_position REAL, debt_level REAL, UNIQUE(ticker, date) ) ''')
-        # Confidence scores table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS confidence_scores ( id INTEGER PRIMARY KEY AUTOINCREMENT, ticker TEXT, date TEXT, overall_score REAL, certainty_score REAL, specificity_score REAL, enthusiasm_score REAL, problem_acknowledgment_score REAL, guidance_confidence_score REAL, UNIQUE(ticker, date) ) ''')
-        # Relationships table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS relationships ( id INTEGER PRIMARY KEY AUTOINCREMENT, ticker TEXT, date TEXT, related_company TEXT, relationship_type TEXT, strength_score REAL, context TEXT ) ''')
-        # Company scores table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS company_scores ( id INTEGER PRIMARY KEY AUTOINCREMENT, ticker TEXT, latest_date TEXT, multibagger_score REAL, growth_score REAL, confidence_score REAL, relationship_score REAL, financial_health_score REAL, momentum_score REAL, red_flags TEXT, green_flags TEXT ) ''')
-        # Analysis cache table
-        cursor.execute(''' CREATE TABLE IF NOT EXISTS analysis_cache ( file_hash TEXT PRIMARY KEY, analysis_type TEXT, result TEXT, created_date TEXT ) ''')
-        self.conn.commit()
-        logger.info("Database initialized")
-
-    def save_transcript(self, metadata: TranscriptMetadata):
-        """Save transcript metadata"""
-        cursor = self.conn.cursor()
-        cursor.execute(''' INSERT OR REPLACE INTO transcripts (file_path, ticker, date, date_confidence, fiscal_quarter, fiscal_year, file_hash, content_length, processed_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?) ''', (metadata.file_path, metadata.ticker, metadata.date.isoformat() if metadata.date else None, metadata.date_confidence, metadata.fiscal_quarter, metadata.fiscal_year, metadata.file_hash, metadata.content_length, metadata.processed_date.isoformat()))
-        self.conn.commit()
-
-    def save_metrics(self, metrics: CompanyMetrics):
-        """Save company metrics"""
-        cursor = self.conn.cursor()
-        cursor.execute(''' INSERT OR REPLACE INTO metrics (ticker, date, revenue_growth_yoy, revenue_growth_qoq, gross_margin, operating_margin, customer_count, employee_count, cash_position, debt_level) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ''', (metrics.ticker, metrics.date.isoformat(), metrics.revenue_growth_yoy, metrics.revenue_growth_qoq, metrics.gross_margin, metrics.operating_margin, metrics.customer_count, metrics.employee_count, metrics.cash_position, metrics.debt_level))
-        self.conn.commit()
-
-    def save_confidence_score(self, confidence: ManagementConfidence):
-        """Save management confidence scores"""
-        cursor = self.conn.cursor()
-        cursor.execute(''' INSERT OR REPLACE INTO confidence_scores (ticker, date, overall_score, certainty_score, specificity_score, enthusiasm_score, problem_acknowledgment_score, guidance_confidence_score) VALUES (?, ?, ?, ?, ?, ?, ?, ?) ''', (confidence.ticker, confidence.date.isoformat(), confidence.overall_score, confidence.certainty_score, confidence.specificity_score, confidence.enthusiasm_score, confidence.problem_acknowledgment_score, confidence.guidance_confidence_score))
-        self.conn.commit()
-
-    def save_relationship(self, relationship: CompanyRelationship):
-        """Save relationship context"""
-        cursor = self.conn.cursor()
-        cursor.execute(''' INSERT INTO relationships (ticker, date, related_company, relationship_type, strength_score, context) VALUES (?, ?, ?, ?, ?, ?) ''', (relationship.ticker, relationship.date.isoformat(), relationship.related_company, relationship.relationship_type, relationship.strength_score, relationship.context))
-        self.conn.commit()
-
-    def save_company_scores(self, scores: CompanyScores):
-        """Save overall company scores"""
-        cursor = self.conn.cursor()
-        cursor.execute(''' INSERT OR REPLACE INTO company_scores (ticker, latest_date, multibagger_score, growth_score, confidence_score, relationship_score, financial_health_score, momentum_score, red_flags, green_flags) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ''', (scores.ticker, scores.latest_date.isoformat(), scores.multibagger_score, scores.growth_score, scores.confidence_score, scores.relationship_score, scores.financial_health_score, scores.momentum_score, json.dumps(scores.red_flags), json.dumps(scores.green_flags)))
-        self.conn.commit()
-
-    def get_processed_files(self) -> Set[str]:
-        """Get set of already processed file hashes"""
-        cursor = self.conn.cursor()
-        cursor.execute('SELECT file_hash FROM transcripts')
-        return {row[0] for row in cursor.fetchall()}
-
-    def get_company_data(self, ticker: str) -> Dict[str, Any]:
-        """Get all data for a company"""
-        cursor = self.conn.cursor()
-        # Get transcripts
-        cursor.execute(''' SELECT date, fiscal_quarter, fiscal_year FROM transcripts WHERE ticker = ? ORDER BY date ''', (ticker,))
-        transcripts = cursor.fetchall()
-        # Get metrics
-        cursor.execute(''' SELECT date, revenue_growth_yoy, revenue_growth_qoq, gross_margin, operating_margin FROM metrics WHERE ticker = ? ORDER BY date ''', (ticker,))
-        metrics = cursor.fetchall()
-        # Get confidence scores
-        cursor.execute(''' SELECT date, overall_score, certainty_score, specificity_score FROM confidence_scores WHERE ticker = ? ORDER BY date ''', (ticker,))
-        confidence = cursor.fetchall()
-        # Get relationships
-        cursor.execute(''' SELECT date, related_company, relationship_type, strength_score FROM relationships WHERE ticker = ? ORDER BY date DESC ''', (ticker,))
-        relationships = cursor.fetchall()
-        return {'transcripts': transcripts, 'metrics': metrics, 'confidence': confidence, 'relationships': relationships}
-
-    def get_all_tickers(self) -> List[str]:
-        """Get list of all analyzed tickers"""
-        cursor = self.conn.cursor()
-        cursor.execute('SELECT DISTINCT ticker FROM transcripts ORDER BY ticker')
-        return [row[0] for row in cursor.fetchall()]
-
-    def close(self):
-        """Close database connection"""
-        if self.conn:
-            self.conn.close()
-
-# ========================================== FILE DISCOVERY AND PARSING ==========================================
-
-class RepositoryScanner:
-    """Scans GitHub repository structure for transcript files"""
-    def __init__(self, config: Config):
-        self.config = config
-        self.transcript_extensions = ['.txt', '.md', '.json']
-
-    def scan(self) -> Dict[str, List[str]]:
-        """Scan repository and organize files by company"""
-        logger.info(f"Scanning repository: {self.config.repo_root}")
-        companies = defaultdict(list)
-        total_files = 0
-        for root, dirs, files in os.walk(self.config.repo_root):
-            # Skip hidden and common non-data directories
-            dirs[:] = [d for d in dirs if not d.startswith('.') and d not in ('node_modules', 'venv', '__pycache__')]
+    def scan_and_sort(self, folder_path: str) -> List[Tuple[str, datetime, str]]:
+        """Scan folder and return chronologically sorted transcripts"""
+        logger.info(f"Scanning folder: {folder_path}")
+        transcripts = []
+        
+        for root, dirs, files in os.walk(folder_path):
+            dirs[:] = [d for d in dirs if not d.startswith('.')]
             for file in files:
                 if any(file.endswith(ext) for ext in self.transcript_extensions):
                     file_path = os.path.join(root, file)
-                    # Determine company from directory structure
-                    rel_path = os.path.relpath(root, self.config.repo_root)
-                    company = self._extract_company_identifier(rel_path, file)
-                    if company:
-                        companies[company].append(file_path)
-                        total_files += 1
-        logger.info(f"Found {total_files} transcript files across {len(companies)} companies")
-        return dict(companies)
+                    date, quarter = self._extract_date_from_file(file_path)
+                    if date:
+                        transcripts.append((file_path, date, quarter))
+                        
+        if not transcripts:
+            return []
+            
+        transcripts.sort(key=lambda x: x[1])
+        logger.info(f"Total transcripts found: {len(transcripts)}")
+        logger.info(f"Date range: {transcripts[0][2] if transcripts else 'N/A'} -> {transcripts[-1][2] if transcripts else 'N/A'}")
+        return transcripts
 
-    def _extract_company_identifier(self, rel_path: str, filename: str) -> Optional[str]:
-        """Extract company identifier from directory or filename"""
-        # Try to get ticker from directory name (first segment)
-        parts = rel_path.split(os.sep)
-        for part in parts:
-            if 1 <= len(part) <= 5 and part.isupper():
-                # Looks like a ticker (1-5 uppercase letters)
-                if re.match(r'^[A-Z]{1,5}$', part):
-                    return part
-        # Check if it's a recognizable company name pattern
-        if '-' in part and not part in ('.', '..'):
-            return part.split('-')[0].upper()
-        # Fallback to filename-based extraction
-        ticker_match = re.search(r'^([A-Z]{1,5})[_\-]', filename)
-        if ticker_match:
-            return ticker_match.group(1)
-        return None
+    def _extract_date_from_file(self, file_path: str) -> Tuple[Optional[datetime], Optional[str]]:
+        """Extract date and quarter from file content"""
+        try:
+            with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
+                content = f.read(5000) 
+                
+            patterns = [
+                (r'(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+(\d{4})', 'mdy'),
+                (r'(\d{4})-(\d{2})-(\d{2})', 'ymd'),
+                (r'(\d{1,2})/(\d{1,2})/(\d{4})', 'mdy_slash'),
+            ]
+            
+            months = {
+                'january': 1, 'february': 2, 'march': 3, 'april': 4,
+                'may': 5, 'june': 6, 'july': 7, 'august': 8,
+                'september': 9, 'october': 10, 'november': 11, 'december': 12
+            }
+            
+            for pattern, date_type in patterns:
+                match = re.search(pattern, content, re.IGNORECASE)
+                if match:
+                    try:
+                        if date_type == 'mdy':
+                            month_str, day, year = match.groups()
+                            month = months[month_str.lower()]
+                            date = datetime(int(year), month, int(day))
+                        elif date_type == 'ymd':
+                            year, month, day = match.groups()
+                            date = datetime(int(year), int(month), int(day))
+                        elif date_type == 'mdy_slash':
+                            month, day, year = match.groups()
+                            date = datetime(int(year), int(month), int(day))
+                            
+                        quarter = f"Q{(date.month-1)//3+1} {date.year}"
+                        
+                        if datetime(2015, 1, 1) <= date <= datetime.now() + timedelta(days=90):
+                            return date, quarter
+                    except:
+                        continue
+                        
+            mtime = os.path.getmtime(file_path)
+            date = datetime.fromtimestamp(mtime)
+            quarter = f"Q{(date.month-1)//3+1} {date.year}"
+            return date, quarter
+            
+        except Exception as e:
+            logger.error(f"Error reading {file_path}: {e}")
+            return None, None
 
-    def read_file_content(self, file_path: str) -> str:
-        """Read and return file content"""
+# ====== TRANSCRIPT EXTRACTOR ======
+class TranscriptExtractor:
+    """EXTRACTS ALL DATA FROM TRANSCRIPT"""
+    def __init__(self):
+        self.sector_leaders = {
+            'NVIDIA', 'NVDA', 'TSMC', 'ASML', 'APPLE', 'AAPL', 'MICROSOFT', 'MSFT', 
+            'GOOGLE', 'GOOGL', 'AMAZON', 'AMZN', 'META', 'TESLA', 'TSLA', 'AMD', 
+            'INTEL', 'INTC', 'QUALCOMM', 'QCOM', 'BROADCOM', 'AVGO', 'ORACLE', 
+            'ORCL', 'SALESFORCE', 'CRM', 'ADOBE', 'ADBE'
+        }
+
+    def extract(self, file_path: str, quarter: str, date: datetime) -> QuarterData:
+        """Extract all data from transcript"""
         try:
             with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                 content = f.read()
-            return content
+                
+            data = QuarterData(ticker="UNKNOWN", file_path=file_path, quarter=quarter, date=date)
+            data.revenue_growth = self.extract_revenue_growth(content)
+            data.margin = self.extract_margin(content)
+            data.customer_count = self.extract_customer_count(content)
+            data.key_themes = self.extract_themes(content)
+            data.wins = self.extract_wins(content)
+            data.challenges = self.extract_challenges(content)
+            data.product_updates = self.extract_product_updates(content)
+            data.forward_looking_guidance = self.extract_guidance(content)
+            data.promises = self.extract_promises(content, quarter)
+            data.tone = self.assess_tone(content)
+            data.specificity = self.assess_specificity(content)
+            data.evidence_key_quotes = self.extract_quotes(content)
+            return data
+            
         except Exception as e:
-            logger.error(f"Error reading {file_path}: {e}")
-            return ""
+            logger.error(f"Error extracting data: {e}")
+            return QuarterData(ticker="UNKNOWN", file_path=file_path, quarter=quarter, date=date)
 
-    def compute_file_hash(self, content: str) -> str:
-        """Compute MD5 hash of file"""
-        return hashlib.md5(content.encode('utf-8')).hexdigest()
-
-# ========================================== DATE EXTRACTION ==========================================
-
-class DateExtractor:
-    """Extracts dates from transcript content"""
-    def __init__(self):
-        # Comprehensive list of date patterns
-        self.date_patterns = [
-            r'(?i)(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?,\s+\d{4}', # Month DD, YYYY
-            r'(?i)\b(?:Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\.?\s+\d{1,2}(?:st|nd|rd|th)?,\s+\d{4}', # Mon DD, YYYY
-            r'\b\d{1,2}[\/\-]\d{1,2}[\/\-]\d{4}\b', # DD/MM/YYYY or MM/DD/YYYY
-            r'\b\d{4}[\/\-]\d{1,2}[\/\-]\d{1,2}\b', # YYYY-MM-DD
+    def extract_revenue_growth(self, text: str) -> Optional[float]:
+        patterns = [
+            r'revenue.*?grew.*?(\d+(?:\.\d+)?)',
+            r'revenue.*?increased.*?(\d+(?:\.\d+)?)',
+            r'sales.*?up.*?(\d+(?:\.\d+)?)'
         ]
-        self.months = {'january': 1, 'february': 2, 'march': 3, 'april': 4, 'may': 5, 'june': 6, 'july': 7, 'august': 8, 'september': 9, 'october': 10, 'november': 11, 'december': 12, 'jan': 1, 'feb': 2, 'mar': 3, 'apr': 4, 'jun': 6, 'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12}
-        self.fiscal_quarters = {'q1': 'Q1', 'first quarter': 'Q1', 'q2': 'Q2', 'second quarter': 'Q2', 'q3': 'Q3', 'third quarter': 'Q3', 'q4': 'Q4', 'fourth quarter': 'Q4'}
-
-    def extract_date(self, content: str, file_modified_date: Optional[datetime] = None) -> Tuple[Optional[datetime], float, Optional[str], Optional[int]]:
-        """ Extract date from transcript content Returns: (date, confidence, fiscal_quarter, fiscal_year) """
-        if not content:
-            return None, 0.0, None, None
-
-        search_content = content[:min(len(content), 1000)] # Search only first 1000 chars
-        dates_found = []
-        for pattern in self.date_patterns:
-            for match in re.finditer(pattern, search_content):
-                date_str = match.group(0)
-                try:
-                    date_obj = self._parse_date_match(match, date_str)
-                    if date_obj:
-                        # Check if date is reasonable (not in future, not too old)
-                        if datetime(2010, 1, 1) <= date_obj <= datetime.now():
-                            dates_found.append({'date': date_obj, 'position': match.start(), 'date_str': date_str})
-                except Exception as e:
-                    logger.debug(f"Date parsing error: {e}")
-                    continue
-
-        if not dates_found:
-            # Fallback to file modified date if available
-            if file_modified_date:
-                return file_modified_date, 0.5, None, None
-            return None, 0.0, None, None
-
-        # Score dates by position (earlier is better) and frequency
-        date_scores = {}
-        for d in dates_found:
-            date_obj = d['date']
-            if date_obj not in date_scores:
-                date_scores[date_obj] = {'count': 0, 'min_pos': float('inf')}
-            date_scores[date_obj]['count'] += 1
-            date_scores[date_obj]['min_pos'] = min(date_scores[date_obj]['min_pos'], d['position'])
-
-        best_date = None
-        best_score = -1.0
-        for date_obj, stats in date_scores.items():
-            # Calculate combined score
-            frequency_score = min(stats['count'] / 3.0, 1.0) # Cap at 3 mentions
-            position_score = max(0.0, 1.0 - (stats['min_pos'] / 1000.0))
-            score = (frequency_score * 0.3) + (position_score * 0.7)
-            if score > best_score:
-                best_score = score
-                best_date = date_obj
-
-        # Extract fiscal quarter and year
-        fiscal_quarter, fiscal_year = self._extract_fiscal_period(content)
-        confidence = best_score
-        return best_date, confidence, fiscal_quarter, fiscal_year
-
-    def _parse_date_match(self, match: re.Match, date_str: str) -> Optional[datetime]:
-        """Parse regex match into datetime object"""
-        try:
-            if date_str.count('/') == 2 or date_str.count('-') == 2:
-                parts = date_str.replace('-', '/').split('/')
-                if len(parts[0]) == 4:
-                    # YYYY/MM/DD
-                    return datetime(int(parts[0]), int(parts[1]), int(parts[2]))
-                else:
-                    # Assume MM/DD/YYYY or DD/MM/YYYY based on values
-                    p1, p2, p3 = int(parts[0]), int(parts[1]), int(parts[2])
-                    if p1 > 12:
-                        return datetime(p3, p2, p1)
-                    else:
-                        return datetime(p3, p1, p2) # Default to MM/DD
-            else:
-                # Text date format
-                for month_str, month_num in self.months.items():
-                    if month_str in date_str.lower():
-                        year = int(re.search(r'\d{4}', date_str).group())
-                        day = int(re.search(r'\d{1,2}(?!\d{2})', date_str).group())
-                        return datetime(year, month_num, day)
-        except Exception as e:
-            logger.debug(f"Parse error for {date_str}: {e}")
-            return None
-
-    def _extract_fiscal_period(self, content: str) -> Tuple[Optional[str], Optional[int]]:
-        """Extract fiscal quarter and year from content"""
-        search_content = content[:5000].lower()
-        # Quarter
-        quarter = None
-        for q_str, q_val in self.fiscal_quarters.items():
-            if q_str in search_content:
-                quarter = q_val
-                break
-        # Year
-        year = None
-        year_match = re.search(r'(?:fiscal|fy)\s*(?:year)?\s*(\d{2,4})', search_content)
-        if year_match:
-            y_str = year_match.group(1)
-            year = int(y_str) if len(y_str) == 4 else int(f"20{y_str}")
-        return quarter, year
-
-# ========================================== NLP ANALYSIS MODULES ==========================================
-
-class SentimentAnalyzer:
-    """Analyzes sentiment and tone in transcripts"""
-    def __init__(self):
-        # Financial sentiment lexicons
-        self.positive_words = {'strong', 'growth', 'increase', 'improved', 'positive', 'excellent', 'outstanding', 'robust', 'accelerating', 'momentum', 'confident', 'optimistic', 'expansion', 'opportunity', 'success', 'winning', 'exceeded', 'beating', 'outperforming', 'solid', 'healthy'}
-        self.negative_words = {'decline', 'decrease', 'weak', 'challenging', 'difficult', 'headwind', 'pressure', 'concern', 'issue', 'problem', 'disappointing', 'below', 'miss', 'underperforming', 'slowdown', 'deteriorating', 'uncertain', 'risk', 'threat', 'competitive', 'losing'}
-        self.uncertainty_words = {'may', 'might', 'could', 'possibly', 'potentially', 'perhaps', 'uncertain', 'unclear', 'depends', 'subject to', 'assuming', 'if', 'hope', 'try', 'attempt'}
-        self.certainty_words = {'will', 'expect', 'confident', 'committed', 'definitely', 'certain', 'clearly', 'absolutely', 'guaranteed', 'assured', 'determined'}
-
-    def analyze_sentiment(self, text: str) -> Dict[str, float]:
-        """Analyze overall sentiment of text"""
-        text_lower = text.lower()
-        words = re.findall(r'\b\w+\b', text_lower)
-        if not words:
-            return {'polarity': 0.0, 'subjectivity': 0.0, 'positive_ratio': 0.0, 'negative_ratio': 0.0}
-            
-        # Count sentiment words
-        positive_count = sum(1 for word in words if word in self.positive_words)
-        negative_count = sum(1 for word in words if word in self.negative_words)
-        total_sentiment_words = positive_count + negative_count
-        
-        # Calculate ratios
-        positive_ratio = positive_count / len(words) if words else 0
-        negative_ratio = negative_count / len(words) if words else 0
-        
-        # Calculate polarity (-1 to 1)
-        if total_sentiment_words > 0:
-            polarity = (positive_count - negative_count) / total_sentiment_words
-        else:
-            polarity = 0.0
-            
-        # Use TextBlob for additional sentiment analysis
-        try:
-            blob = TextBlob(text[:5000]) # Analyze first 5000 chars for performance
-            textblob_sentiment = blob.sentiment.polarity
-            textblob_subjectivity = blob.sentiment.subjectivity
-            # Combine custom and TextBlob sentiment
-            combined_polarity = (polarity + textblob_sentiment) / 2
-            return {'polarity': combined_polarity, 'subjectivity': textblob_subjectivity, 'positive_ratio': positive_ratio, 'negative_ratio': negative_ratio}
-        except:
-            return {'polarity': polarity, 'subjectivity': 0.5, 'positive_ratio': positive_ratio, 'negative_ratio': negative_ratio}
-
-class ConfidenceAnalyzer:
-    """Analyzes management confidence from linguistic patterns"""
-    def __init__(self):
-        self.sentiment_analyzer = SentimentAnalyzer()
-        # Specificity indicators
-        self.specific_patterns = [
-            r'\b\d+(?:\.\d+)?(?:%| percent)\b', # Percentages
-            r'\$\d+(?:\.\d+)?[mbk]?\b', # Dollar amounts
-            r'\b\d+ (?:customers|clients|users)\b', # Specific counts
-            r'\b[qQ][1-4](?: |\/|-)\d{2,4}\b', # Specific quarters
-            r'\b(?:by|in)\s+(?:january|february|march|april|may|june|july|august|september|october|november|december)\b', # Specific months
-            r'\b(?:guidance|projection)\s+(?:is|of)\s+\d+\b' # Numeric guidance
-        ]
-
-    def analyze_comprehensive_confidence(self, text: str) -> ManagementConfidence:
-        """Comprehensive confidence analysis"""
-        # Overall sentiment
-        sentiment = self.sentiment_analyzer.analyze_sentiment(text)
-        
-        # Certainty analysis
-        certainty_score = self._analyze_certainty(text)
-        
-        # Specificity score
-        specificity_score = self._calculate_specificity(text)
-        
-        # Enthusiasm score (based on positive sentiment and assertiveness)
-        enthusiasm_score = max(0, min(1, (sentiment['positive_ratio'] * 5) + (certainty_score * 0.5)))
-        
-        # Problem acknowledgment (balanced is good)
-        problem_score = self._analyze_problem_acknowledgment(text)
-        
-        # Guidance confidence
-        guidance_score = self._analyze_guidance_confidence(text)
-        
-        # Overall confidence score (weighted combination)
-        overall_score = (certainty_score * 0.25) + (specificity_score * 0.25) + (enthusiasm_score * 0.15) + (problem_score * 0.15) + (guidance_score * 0.20)
-        
-        return ManagementConfidence(
-            ticker="", # Will be filled by caller
-            date=datetime.now(), # Will be filled by caller
-            overall_score=overall_score,
-            certainty_score=certainty_score,
-            specificity_score=specificity_score,
-            enthusiasm_score=enthusiasm_score,
-            problem_acknowledgment_score=problem_score,
-            guidance_confidence_score=guidance_score
-        )
-
-    def _analyze_certainty(self, text: str) -> float:
-        """Analyze certainty level in language"""
-        text_lower = text.lower()
-        words = re.findall(r'\b\w+\b', text_lower)
-        if not words: return 0.5
-        certainty_count = sum(1 for word in words if word in self.sentiment_analyzer.certainty_words)
-        uncertainty_count = sum(1 for word in words if word in self.sentiment_analyzer.uncertainty_words)
-        total = certainty_count + uncertainty_count
-        if total == 0: return 0.5
-        certainty_score = certainty_count / total
-        return certainty_score
-
-    def _calculate_specificity(self, text: str) -> float:
-        """Calculate how specific the language is"""
-        specific_count = 0
-        for pattern in self.specific_patterns:
-            specific_count += len(re.findall(pattern, text, re.IGNORECASE))
-        
-        # Normalize by text length (per 1000 words)
-        words = len(re.findall(r'\b\w+\b', text))
-        if words < 100: return 0.5
-        
-        specificity_density = (specific_count / words) * 1000
-        # Score between 0 and 1 (more than 50 specific items per 1000 words is very high score)
-        score = min(1.0, specificity_density / 50)
-        return score
-
-    def _analyze_problem_acknowledgment(self, text: str) -> float:
-        """Analyze how management addresses challenges"""
-        problem_words = {'challenge', 'issue', 'problem', 'difficulty', 'headwind', 'obstacle'}
-        solution_words = {'address', 'solve', 'mitigate', 'overcome', 'improve', 'fix', 'plan'}
-        
-        text_lower = text.lower()
-        problem_count = sum(text_lower.count(word) for word in problem_words)
-        solution_count = sum(text_lower.count(word) for word in solution_words)
-        
-        if problem_count == 0:
-            # No problems mentioned might indicate avoidance
-            return 0.6
-        
-        # Good ratio is about 1:1 to 1:2 (problems to solutions)
-        if solution_count == 0:
-            return 0.3 # Problems mentioned but no solutions
-        
-        ratio = solution_count / problem_count
-        # Optimal score (1.0) around 1-2 solutions per problem
-        if 1.0 <= ratio <= 2.0: return 1.0
-        elif 0.5 <= ratio < 1.0: return 0.7
-        elif ratio > 2.0: return 0.8 # Might be over-explaining
-        else: return 0.4
-
-    def _analyze_guidance_confidence(self, text: str) -> float:
-        """Analyze confidence in forward guidance"""
-        guidance_patterns = [
-            r'(?i)expect\s+(?:to|that)',
-            r'(?i)anticipate',
-            r'(?i)forecast',
-            r'(?i)project',
-            r'(?i)guide',
-            r'(?i)guidance',
-            r'(?i)outlook'
-        ]
-        
-        guidance_count = sum(len(re.findall(pattern, text)) for pattern in guidance_patterns)
-        if guidance_count == 0: return 0.5 # No guidance provided
-        
-        # Check for hedging in guidance
-        hedging_patterns = [
-            r'(?i)subject to',
-            r'(?i)assuming',
-            r'(?i)depending on',
-            r'(?i)if',
-            r'(?i)hope'
-        ]
-        
-        hedging_count = sum(len(re.findall(pattern, text)) for pattern in hedging_patterns)
-        # More guidance with less hedging is higher confidence
-        if guidance_count == 0: return 0.5
-        hedging_ratio = hedging_count / guidance_count
-        
-        score = max(0.0, min(1.0, 1 - (hedging_ratio / 2)))
-        return score
-
-class EntityExtractor:
-    """Extracts named entities and relationships from text"""
-    def __init__(self):
-        try:
-            self.nlp = spacy.load("en_core_web_sm")
-        except:
-            logger.warning("spaCy model not found. Install with: python -m spacy download en_core_web_sm")
-            self.nlp = None
-        
-        # Common company name patterns
-        self.company_patterns = [
-            r'\b([A-Z][a-zA-Z\s]+?)(?:Inc\.|Corp\.|Corporation|Ltd\.|Limited|LLC|LP)\b',
-            r'\b([A-Z]{2,5})\b' # Tickers and abbreviations
-        ]
-        
-        # Relationship indicators
-        self.customer_indicators = {'customer', 'client', 'buyer', 'purchaser', 'consumer'}
-        self.partner_indicators = {'partner', 'collaboration', 'joint venture', 'alliance', 'relationship'}
-        self.supplier_indicators = {'supplier', 'vendor', 'provider', 'source'}
-        self.competitor_indicators = {'competitor', 'rival', 'competing against'}
-
-    def extract_company_entities_and_relationships(self, text: str, sector_leaders: List[str]) -> List[CompanyRelationship]:
-        """Extract company entities and relationships"""
-        relationships = []
-        
-        # Use spaCy if available
-        if self.nlp:
-            doc = self.nlp(text[:100000]) # Limit for performance
-            entities = [ent.text for ent in doc.ents if ent.label_ == 'ORG']
-        else:
-            # Fallback pattern-based extraction
-            entities = []
-            for pattern in self.company_patterns:
-                entities.extend(re.findall(pattern, text))
-        
-        # Analyze context for each entity found
-        for entity in set(entities):
-            # Check if it's a sector leader
-            company_name = entity.strip()
-            is_sector_leader = any(leader in company_name.upper() for leader in sector_leaders)
-            
-            if is_sector_leader:
-                # Find mentions in text and extract context window
-                for match in re.finditer(re.escape(company_name), text, re.IGNORECASE):
-                    start = max(0, match.start() - 200)
-                    end = min(len(text), match.end() + 200)
-                    context = text[start:end]
-                    
-                    # Classify relationship type and strength from context
-                    rel_type, strength = self._classify_relationship(context)
-                    
-                    relationships.append(CompanyRelationship(
-                        ticker="", # Will be filled by caller
-                        date=datetime.now(), # Will be filled by caller
-                        related_company=company_name,
-                        relationship_type=rel_type,
-                        strength_score=strength,
-                        context=context.strip()
-                    ))
-        return relationships
-
-    def _classify_relationship(self, context: str) -> Tuple[str, float]:
-        """Classify relationship type and strength from context"""
-        context_lower = context.lower()
-        
-        # Score each relationship type based on indicators
-        customer_score = sum(1 for ind in self.customer_indicators if ind in context_lower)
-        partner_score = sum(1 for ind in self.partner_indicators if ind in context_lower)
-        supplier_score = sum(1 for ind in self.supplier_indicators if ind in context_lower)
-        competitor_score = sum(1 for ind in self.competitor_indicators if ind in context_lower)
-        
-        scores = {
-            'customer': customer_score,
-            'partner': partner_score,
-            'supplier': supplier_score,
-            'competitor': competitor_score
-        }
-        
-        max_score_type = max(scores.items(), key=lambda x: x[1])
-        
-        if max_score_type[1] == 0:
-            # Mentioned without clear relationship indicator
-            return 'mention', 0.3
-        
-        rel_type = max_score_type[0]
-        base_strength = min(1.0, 0.5 + (max_score_type[1] * 0.1))
-        
-        # Look for growth/expansion language
-        if any(word in context_lower for word in ['grow', 'expand', 'increase', 'ramp']):
-            base_strength = min(1.0, base_strength + 0.2)
-        
-        # Look for specific product/project mentions
-        if re.search(r'\b(?:project|product|platform|design win)\b', context_lower):
-            base_strength = min(1.0, base_strength + 0.2)
-        
-        return rel_type, base_strength
-
-class MetricsExtractor:
-    """Extracts financial and operational metrics from text"""
-    def __init__(self):
-        # Metric patterns
-        self.growth_patterns = [
-            r'(?:revenue|sales)\s+(?:grew|increased|up)\s+(?:by\s+)?(\d+(?:\.\d+)?)\s*%',
-            r'(?:y/y|yoy|year-over-year)\s+(?:growth|increase)\s+(?:of\s+)?(\d+(?:\.\d+)?)\s*%',
-            r'(?:growth|increase)\s+(?:of\s+)?(\d+(?:\.\d+)?)\s*%\s+(?:year-over-year|y/y|yoy)'
-        ]
-        self.margin_patterns = [
-            r'(?:gross margin)\s+(?:was|is|at|of)\s+(\d+(?:\.\d+)?)\s*%',
-            r'margin\s+(?:expanded|improved)\s+(?:to\s+)?(\d+(?:\.\d+)?)\s*%'
-        ]
-        self.customer_patterns = [
-            r'(\d+)\s+(?:customers|clients|users)',
-            r'(?:customer base)\s+(?:of\s+)?(\d+)'
-        ]
-        self.cash_patterns = [
-            r'(?:cash and cash equivalents|cash position)\s+(?:was|of|at)\s+\$?(\d+(?:\.\d+)?)\s*(m|b|million|billion)'
-        ]
-
-    def extract_metrics(self, text: str) -> CompanyMetrics:
-        """Extract all available metrics from text"""
-        revenue_growth = self._extract_max_value(text, self.growth_patterns)
-        gross_margin = self._extract_max_value(text, self.margin_patterns)
-        customer_count = self._extract_customer_count(text)
-        cash_position = self._extract_cash(text)
-        
-        # Calculate YoY and QoQ if possible (simplified logic)
-        revenue_growth_yoy = revenue_growth
-        revenue_growth_qoq = revenue_growth / 4 if revenue_growth else None # Heuristic fallback
-        
-        return CompanyMetrics(
-            ticker="", # Will be filled by caller
-            date=datetime.now(), # Will be filled by caller
-            revenue_growth_yoy=revenue_growth_yoy,
-            revenue_growth_qoq=revenue_growth_qoq,
-            gross_margin=gross_margin,
-            operating_margin=gross_margin * 0.5 if gross_margin else None, # Heuristic
-            customer_count=customer_count,
-            employee_count=None,
-            cash_position=cash_position,
-            debt_level=None
-        )
-
-    def _extract_max_value(self, text: str, patterns: List[str]) -> Optional[float]:
-        """Extract max value from a set of regex patterns"""
-        values = []
         for pattern in patterns:
-            for match in re.finditer(pattern, text, re.IGNORECASE):
-                try:
-                    val = float(match.group(1))
-                    if val < 1000: # Sanity check for percentages
-                        values.append(val)
-                except:
-                    pass
-        return max(values) if values else None
-
-    def _extract_customer_count(self, text: str) -> Optional[int]:
-        """Extract customer count from text"""
-        values = []
-        for pattern in self.customer_patterns:
-            for match in re.finditer(pattern, text, re.IGNORECASE):
-                try:
-                    val_str = match.group(1).replace(',', '')
-                    val = int(val_str)
-                    if val < 1000000000: # Sanity check
-                        values.append(val)
-                except:
-                    pass
-        return max(values) if values else None
-
-    def _extract_cash(self, text: str) -> Optional[float]:
-        """Extract cash position from text"""
-        for pattern in self.cash_patterns:
             match = re.search(pattern, text, re.IGNORECASE)
             if match:
                 try:
-                    amount = float(match.group(1))
-                    multiplier = match.group(2).lower()
-                    if multiplier in ['m', 'million']:
-                        return amount * 1_000_000
-                    elif multiplier in ['b', 'billion']:
-                        return amount * 1_000_000_000
-                except:
-                    pass
+                    growth = float(match.group(1))
+                    if growth < 500: return growth
+                except: continue
         return None
 
-# ========================================== SCORING AND RANKING MODULE ==========================================
+    def extract_margin(self, text: str) -> Optional[float]:
+        patterns = [r'gross margin.*?(\d+(?:\.\d+)?)\%', r'margin.*?(\d+(?:\.\d+)?)\%']
+        for pattern in patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                try:
+                    margin = float(match.group(1))
+                    if margin < 100: return margin
+                except: pass
+        return None
 
-class Scorer:
-    """Calculates overall multibagger score for a company"""
-    def __init__(self, config: Config, db: DatabaseManager):
-        self.config = config
-        self.db = db
+    def extract_customer_count(self, text: str) -> Optional[int]:
+        patterns = [r'customers.*?(\d+)', r'customer base.*?(\d+)']
+        for pattern in patterns:
+            match = re.search(pattern, text, re.IGNORECASE)
+            if match:
+                try:
+                    count = int(match.group(1))
+                    if count < 1000000000: return count
+                except: continue
+        return None
+
+    def extract_themes(self, text: str) -> List[str]:
+        theme_patterns = {
+            'AI/ML': r' (?:AI|artificial intelligence|machine learning|generative AI) ',
+            'International Expansion': r' (?:international|global|overseas|expansion|geographic) ',
+            'New Products': r' (?:new product|launch|release|introduce|unveil|shipping) ',
+            'Customer Acquisition': r' (?:customer acquisition|new customer|growth) ',
+            'Market Share': r' (?:market share|competitive position|market leadership) ',
+            'Profitability': r' (?:profitability|profitable|margins|operating leverage) ',
+            'R&D': r' (?:research|development|innovation|engineering) ',
+            'Partnerships': r' (?:partnership|collaboration|strategic alliance|joint venture) ',
+            'M&A': r' (?:acquisition|merger|M&A|acquiring|acquire) ',
+            'Cost Control': r' (?:cost control|efficiency|optimization|streamline) '
+        }
+        themes = []
+        for theme, pattern in theme_patterns.items():
+            count = len(re.findall(pattern, text, re.IGNORECASE))
+            if count >= 3: 
+                themes.append(theme)
+        return themes[:7]
+
+    def extract_wins(self, text: str) -> List[str]:
+        patterns = [
+            r'(?:excited to|proud to|pleased to).*?(?:announce|report|share).*?(?:\.|
+)',
+            r'(?:record|best ever|highest|strongest|unprecedented).*?(?:\.|
+)',
+            r'(?:exceeded|surpassed|beat|outperformed).*?(?:\.|
+)'
+        ]
+        wins = []
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches:
+                cleaned = match.strip()
+                if len(cleaned) > 20 and any(word in cleaned.lower() for word in ['customer', 'client', 'partner', 'contract', 'design win', 'collaboration', 'award', 'leader']):
+                    wins.append(cleaned)
+        return wins[:5]
+
+    def extract_challenges(self, text: str) -> List[str]:
+        patterns = [
+            r'(?:challenge|headwind|difficulty|pressure).*?(?:faced|facing|addressing|dealing with|due to).*?(?:\.|
+)',
+            r'(?:impacted by|offset by|partially offset by).*?(?:\.|
+)'
+        ]
+        challenges = []
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches:
+                cleaned = match.strip()
+                if len(cleaned) > 20 and any(word in cleaned.lower() for word in ['cost', 'supply', 'demand', 'economic']):
+                    challenges.append(cleaned)
+        return challenges[:5]
+
+    def extract_product_updates(self, text: str) -> List[str]:
+        updates = []
+        patterns = [
+            r'(?:launched|released|introduced|unveiled|shipping) ([^.!?]{20,200}[.!?])',
+            r'(?:new product|new service|new offering|new solution) ([^.!?]{20,200}[.!?])',
+        ]
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches[:3]:
+                updates.append(match.strip())
+        return updates[:5]
+
+    def extract_guidance(self, text: str) -> List[str]:
+        guidance = []
+        patterns = [
+            r'(?:expect|anticipate|forecast|project|guide|guidance) ([^.!?]{30,250}[.!?])',
+            r'(?:Q[1-4]|next quarter|fiscal year|FY) ([^.!?]{30,250}[.!?])',
+        ]
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches[:4]:
+                if any(word in match.lower() for word in ['revenue', 'growth', 'margin', 'earnings', 'profit']):
+                    guidance.append(match.strip())
+        return guidance[:7]
+
+    def extract_promises(self, text: str, quarter: str) -> List[Dict[str, str]]:
+        promises = []
+        patterns = [
+            r'(?:by (?:Q[1-4]|end of|the end of))([^.!?]{20,200}[.!?])',
+            r'(?:will|plan to|committed to|committing to) ([^.!?]{20,200}[.!?])',
+            r'(?:targeting|aiming for|goal is) ([^.!?]{20,200}[.!?])',
+        ]
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for match in matches[:3]:
+                promise_text = match.strip()
+                if len(promise_text) > 20:
+                    promises.append({
+                        'text': promise_text,
+                        'made_in': quarter,
+                        'category': self._categorize_promise(promise_text)
+                    })
+        return promises[:5]
+
+    def _categorize_promise(self, text: str) -> str:
+        text_lower = text.lower()
+        if any(word in text_lower for word in ['product', 'launch', 'release']):
+            return 'product'
+        elif any(word in text_lower for word in ['margin', 'profitability', 'profit']):
+            return 'financial'
+        elif any(word in text_lower for word in ['customer', 'client', 'user']):
+            return 'customer'
+        elif any(word in text_lower for word in ['hire', 'team', 'headcount']):
+            return 'hiring'
+        elif any(word in text_lower for word in ['facility', 'expansion', 'capacity']):
+            return 'infrastructure'
+        else:
+            return 'other'
+
+    def assess_tone(self, text: str) -> str:
+        try:
+            blob = TextBlob(text[:10000])
+            polarity = blob.sentiment.polarity
+            
+            defensive_words = ['uncertain', 'challenging', 'difficult', 'cautious', 'headwind', 'pressure']
+            defensive_count = sum(text.lower().count(word) for word in defensive_words)
+            
+            if polarity > 0.15 and defensive_count < 5:
+                return "positive"
+            elif polarity < -0.05 or defensive_count > 10:
+                return "cautious"
+            elif defensive_count > 15:
+                return "defensive"
+            else:
+                return "neutral"
+        except:
+            return "neutral"
+
+    def assess_specificity(self, text: str) -> str:
+        specific_patterns = [
+            r'
+\d+\% ',
+            r'\$\d+[MBK]? ',
+            r' Q[1-4]\s+\d{4} ',
+            r'\d+\s+(?:customers|clients|engineers|employees)',
+        ]
+        specific_count = sum(len(re.findall(p, text)) for p in specific_patterns)
+        words = len(text.split())
         
-    def score_company(self, ticker: str) -> Optional[CompanyScores]:
-        """Calculate comprehensive scores for a company"""
-        # Get all company data
-        data = self.db.get_company_data(ticker)
-        if not data['transcripts']:
+        if words == 0: return "low"
+        ratio = (specific_count / words) * 1000
+        
+        if ratio > 30: return "high"
+        elif ratio > 15: return "medium"
+        else: return "low"
+
+    def extract_quotes(self, text: str) -> List[Tuple[str, str]]:
+        quotes = []
+        patterns = [
+            r'(CEO|Chief Executive|Founder|CFO|Chief Financial).*?(?:\:-|:)\s*([^\.!?]{50,350}[\.!?])',
+        ]
+        for pattern in patterns:
+            matches = re.findall(pattern, text, re.IGNORECASE)
+            for speaker, quote in matches[:5]:
+                quotes.append((speaker.strip(), quote.strip()))
+        return quotes[:5]
+
+# ====== DNA BUILDER ======
+class DNABuilder:
+    """BUILDS AND EVOLVES COMPANY DNA"""
+    def build_baseline(self, version: int = 1
+    ticker: str = "", first_quarter_data: QuarterData) -> CompanyDNA:
+        logger.info(f"Building baseline DNA for {ticker} from {first_quarter_data.quarter}")
+        dna = CompanyDNA(
+            ticker=ticker,
+            baseline_quarter=first_quarter_data.quarter,
+            latest_quarter=first_quarter_data.quarter,
+            timeline=[first_quarter_data]
+        )
+        
+        # Initialize customer tracking
+        for customer, context in first_quarter_data.customer_mentions.items():
+            dna.customer_evolution[customer] = {
+                'first_mentioned': first_quarter_data.quarter,
+                'mentions': [first_quarter_data.quarter],
+                'evolution': ['prospect'],
+                'contexts': [context]
+            }
+        return dna
+
+    def evolve_dna(self, dna: CompanyDNA, new_quarter_data: QuarterData) -> CompanyDNA:
+        dna.latest_quarter = new_quarter_data.quarter
+        dna.timeline.append(new_quarter_data)
+        
+        self._update_customer_tracking(dna, new_quarter_data)
+        self._update_theme_tracking(dna, new_quarter_data)
+        self._check_promises(dna, new_quarter_data)
+        
+        for promise in new_quarter_data.promises:
+            dna.open_promises.append({
+                **promise,
+                'promised_in': new_quarter_data.quarter,
+                'due_quarter': self._estimate_due_quarter(new_quarter_data.quarter, promise.get('text', ''))
+            })
+            
+        dna.last_updated = datetime.now()
+        return dna
+
+    def _update_customer_tracking(self, dna: CompanyDNA, new_quarter_data: QuarterData):
+        mentioned_this_quarter = set(new_quarter_data.customer_mentions.keys())
+        
+        for customer in list(dna.customer_evolution.keys()):
+            if customer in mentioned_this_quarter:
+                dna.customer_evolution[customer]['mentions'].append(new_quarter_data.quarter)
+                context = new_quarter_data.customer_mentions[customer].lower()
+                
+                if 'production' in context or 'shipping' in context: stage = 'production'
+                elif 'design win' in context or 'select' in context: stage = 'design_win'
+                elif 'expand' in context or 'ramp' in context: stage = 'expansion'
+                else: stage = 'active'
+                    
+                if isinstance(dna.customer_evolution[customer]['evolution'], list):
+                    dna.customer_evolution[customer]['evolution'].append(stage)
+                
+            else:
+                dna.customer_evolution[customer]['status'] = 'fading'
+                
+        for customer in mentioned_this_quarter:
+            if customer not in dna.customer_evolution:
+                dna.customer_evolution[customer] = {
+                    'first_mentioned': new_quarter_data.quarter,
+                    'mentions': [new_quarter_data.quarter],
+                    'evolution': ['new'],
+                    'contexts': [new_quarter_data.customer_mentions[customer]]
+                }
+
+    def _update_theme_tracking(self, dna: CompanyDNA, new_quarter_data: QuarterData):
+        mentioned_this_quarter = set(new_quarter_data.key_themes)
+        
+        for theme in list(dna.theme_lifecycle.keys()):
+            if theme in mentioned_this_quarter:
+                dna.theme_lifecycle[theme]['mentions'].append(new_quarter_data.quarter)
+                dna.theme_lifecycle[theme]['status'] = 'active'
+            else:
+                if len(dna.theme_lifecycle[theme]['mentions']) > 3 and new_quarter_data.quarter not in dna.theme_lifecycle[theme]['mentions']:
+                    dna.theme_lifecycle[theme]['status'] = 'fading'
+                    
+        for theme in mentioned_this_quarter:
+            if theme not in dna.theme_lifecycle:
+                dna.theme_lifecycle[theme] = {
+                    'first_appeared': new_quarter_data.quarter,
+                    'mentions': [new_quarter_data.quarter],
+                    'status': 'new'
+                }
+
+    def _check_promises(self, dna: CompanyDNA, new_data: QuarterData):
+        current_text = ' '.join([
+            str(new_data.revenue_growth or ''),
+            str(new_data.margin or ''),
+            ' '.join(new_data.wins),
+            ' '.join(getattr(new_data, 'product_updates', []))
+        ]).lower()
+        
+        still_open = []
+        
+        for promise in dna.open_promises:
+            promise_keywords = self._extract_keywords(promise.get('text', ''))
+            delivered = False
+            evidence = ""
+            
+            if any(kw in current_text for kw in promise_keywords):
+                delivered = True
+                evidence = f"Keywords found in {new_data.quarter} data"
+                
+            if promise.get('category') == 'financial' and new_data.margin:
+                if 'margin' in promise.get('text', '').lower():
+                    target = self._extract_number(promise.get('text', ''))
+                    if target and new_data.margin >= target * 0.95:
+                        delivered = True
+                        evidence = f"Margin {new_data.margin}% vs target {target}%"
+                        
+            if delivered:
+                dna.fulfilled_promises.append({
+                    **promise,
+                    'fulfilled_in': new_data.quarter,
+                    'evidence': evidence
+                })
+            else:
+                quarters_since = self._quarters_between(promise.get('promised_in', ''), new_data.quarter)
+                if quarters_since > 4: 
+                    dna.broken_promises.append({
+                        **promise,
+                        'broken_in': new_data.quarter,
+                        'quarters_overdue': quarters_since
+                    })
+                else:
+                    still_open.append(promise)
+                    
+        dna.open_promises = still_open
+
+    def _extract_keywords(self, text: str) -> List[str]:
+        common = {'will', 'plan', 'to', 'the', 'a', 'an', 'by', 'in', 'on', 'of', 'and', 'or'}
+        words = re.findall(r' \w+ ', text.lower())
+        return [w for w in words if w not in common and len(w) > 3][:5]
+
+    def _extract_number(self, text: str) -> Optional[float]:
+        match = re.search(r'(\d+(?:\.\d+)?)', text)
+        if match:
+            try: return float(match.group(1))
+            except: return None
+        return None
+
+    def _estimate_due_quarter(self, current_quarter: str, promise_text: str) -> str:
+        quarter_match = re.search(r'Q([1-4])', promise_text)
+        year_match = re.search(r'20\d{2}', promise_text)
+        if quarter_match and year_match:
+            return f"Q{quarter_match.group(1)} {year_match.group(0)}"
+        return "estimated +2Q"
+
+    def _quarters_between(self, q1: str, q2: str) -> int:
+        try:
+            q1_parts = q1.split()
+            q2_parts = q2.split()
+            q1_num = int(q1_parts[0][1])
+            q1_year = int(q1_parts[1])
+            q2_num = int(q2_parts[0][1])
+            q2_year = int(q2_parts[1])
+            return (q2_year - q1_year) * 4 + (q2_num - q1_num)
+        except: return 0
+
+# ====== PATTERN LEARNER ======
+class PatternLearner:
+    """Learns patterns from DNA timeline"""
+    def learn_patterns(self, dna: CompanyDNA) -> CompanyDNA:
+        if len(dna.timeline) < 2: return dna
+        self._learn_tone_patterns(dna)
+        self._learn_promise_patterns(dna)
+        self._learn_customer_patterns(dna)
+        self._learn_growth_patterns(dna)
+        self._learn_seasonal_patterns(dna)
+        return dna
+
+    def _learn_tone_patterns(self, dna: CompanyDNA):
+        tone_transitions = defaultdict(lambda: {'next_growth': [], 'next_tone': []})
+        for i in range(len(dna.timeline)-1):
+            current = dna.timeline[i]
+            next_q = dna.timeline[i+1]
+            tone_transitions[current.tone]['next_growth'].append(next_q.revenue_growth)
+            tone_transitions[current.tone]['next_tone'].append(next_q.tone)
+            
+        for tone, outcomes in tone_transitions.items():
+            if outcomes['next_growth']:
+                valid_growths = [g for g in outcomes['next_growth'] if g is not None]
+                if valid_growths:
+                    avg_growth = sum(valid_growths) / len(valid_growths)
+                    pattern = Pattern(
+                        pattern_id=f"tone_{tone}_predicts_growth",
+                        type="tone_growth",
+                        rule=f"When tone is {tone}, next quarter growth is {avg_growth}",
+                        observations=len(valid_growths),
+                        accurate=len([g for g in valid_growths if g > 0]),
+                        confidence=min(0.95, len(valid_growths) / 10),
+                        last_updated=datetime.now().isoformat()
+                    )
+                    dna.patterns[f"tone_{tone}_predicts_growth"] = pattern
+
+    def _learn_promise_patterns(self, dna: CompanyDNA):
+        total = len(dna.fulfilled_promises) + len(dna.broken_promises)
+        if total < 3: return
+        recent_fulfilled = len([p for p in dna.fulfilled_promises[-3:]])
+        recent_total = len(dna.fulfilled_promises[-3:]) + len(dna.broken_promises[-3:])
+        recent_rate = recent_fulfilled / recent_total if recent_total > 0 else 0
+        
+        pattern = Pattern(
+            pattern_id="promise_delivery",
+            type="promise_delivery",
+            rule=f"Management delivers {recent_rate*100:.0f}% of promises",
+            observations=total,
+            accurate=recent_fulfilled,
+            confidence=min(0.95, total / 10),
+            last_updated=datetime.now().isoformat()
+        )
+        dna.patterns['promise_delivery'] = pattern
+
+    def _learn_customer_patterns(self, dna: CompanyDNA):
+        for customer, data in dna.customer_evolution.items():
+            if len(data['mentions']) >= 3:
+                consecutive = len(data['mentions'])
+                pattern = Pattern(
+                    pattern_id=f"customer_{customer}",
+                    type="customer",
+                    rule=f"{customer} mentioned in {consecutive} consecutive quarters",
+                    observations=consecutive,
+                    accurate=consecutive,
+                    confidence=min(0.95, consecutive / 8),
+                    examples=data.get('contexts', [])[:2],
+                    last_updated=datetime.now().isoformat()
+                )
+                dna.patterns[f"customer_{customer}"] = pattern
+
+    def _learn_growth_patterns(self, dna: CompanyDNA):
+        growth_rates = [q.revenue_growth for q in dna.timeline if q.revenue_growth is not None]
+        if len(growth_rates) >= 3:
+            recent = growth_rates[-3:]
+            if all(recent[i] > recent[i-1] for i in range(1, len(recent))): trajectory = "accelerating"
+            elif all(recent[i] < recent[i-1] for i in range(1, len(recent))): trajectory = "decelerating"
+            elif max(recent) - min(recent) > 10: trajectory = "volatile"
+            else: trajectory = "steady"
+                
+            pattern = Pattern(
+                pattern_id="growth_trajectory",
+                type="growth",
+                rule=f"Growth trajectory: {trajectory} ({' -> '.join([f'{g:.0f}%' for g in recent])})",
+                observations=len(recent),
+                accurate=len(recent),
+                confidence=min(0.90, len(growth_rates) / 8),
+                last_updated=datetime.now().isoformat()
+            )
+            dna.patterns['growth_trajectory'] = pattern
+
+    def _learn_seasonal_patterns(self, dna: CompanyDNA):
+        quarterly_growth = defaultdict(list)
+        for q in dna.timeline:
+            if q.revenue_growth is not None:
+                quarter_num = q.quarter.split()[0]
+                quarterly_growth[quarter_num].append(q.revenue_growth)
+                
+        for quarter, growths in quarterly_growth.items():
+            if len(growths) >= 2:
+                avg = sum(growths) / len(growths)
+                pattern = Pattern(
+                    pattern_id=f"seasonal_{quarter}",
+                    type="seasonal",
+                    rule=f"{quarter} typically shows {avg:.1f}% growth (n={len(growths)})",
+                    observations=len(growths),
+                    accurate=len(growths),
+                    confidence=min(0.80, len(growths) / 4),
+                    last_updated=datetime.now().isoformat()
+                )
+                dna.patterns[f"seasonal_{quarter}"] = pattern
+
+# ====== DEVIATION DETECTOR ======
+class DeviationDetector:
+    """Detects deviations from learned patterns"""
+    def detect_deviations(self, dna: CompanyDNA, new_data: QuarterData) -> List[Dict[str, Any]]:
+        deviations = []
+        if len(dna.timeline) < 2: return deviations
+        deviations.extend(self._check_growth_deviations(dna, new_data))
+        deviations.extend(self._check_customer_deviations(dna, new_data))
+        deviations.extend(self._check_theme_deviations(dna, new_data))
+        deviations.extend(self._check_tone_deviations(dna, new_data))
+        return deviations
+
+    def _check_growth_deviations(self, dna: CompanyDNA, new_data: QuarterData) -> List[Dict]:
+        deviations = []
+        if new_data.revenue_growth is None: return deviations
+        historical_growth = [q.revenue_growth for q in dna.timeline[:-1] if q.revenue_growth is not None]
+        if not historical_growth: return deviations
+            
+        avg = sum(historical_growth) / len(historical_growth)
+        diff = new_data.revenue_growth - avg
+        
+        if abs(diff) > 10: severity = 'major'
+        elif abs(diff) > 5: severity = 'moderate'
+        else: return deviations
+            
+        deviations.append({
+            'type': 'growth_vs_average',
+            'severity': severity,
+            'description': f"Growth ({new_data.revenue_growth}%) vs historical avg ({avg:.1f}%) diff: {diff:+.1f}pp"
+        })
+        return deviations
+
+    def _check_customer_deviations(self, dna: CompanyDNA, new_data: QuarterData) -> List[Dict]:
+        deviations = []
+        for customer, data in dna.customer_evolution.items():
+            if len(data['mentions']) >= 3:
+                if customer not in new_data.customer_mentions:
+                    last_mentions = data['mentions'][-3:]
+                    if all(customer in getattr(q, 'customer_mentions', {}) for q in dna.timeline if q.quarter in last_mentions):
+                        deviations.append({
+                            'type': 'customer_silence',
+                            'severity': 'major',
+                            'description': f"{customer} not mentioned (was in {len(data['mentions'])} consecutive quarters)",
+                            'icon': 'ð´'
+                        })
+        return deviations
+
+    def _check_theme_deviations(self, dna: CompanyDNA, new_data: QuarterData) -> List[Dict]:
+        deviations = []
+        for theme, data in dna.theme_lifecycle.items():
+            if data['status'] == 'active' and len(data['mentions']) >= 4:
+                if theme not in new_data.key_themes:
+                    deviations.append({
+                        'type': 'theme_disappeared',
+                        'severity': 'moderate',
+                        'description': f"Theme '{theme}' absent (was in {len(data['mentions'])} quarters)",
+                        'icon': 'ð '
+                    })
+                    
+        existing_themes = set(dna.theme_lifecycle.keys())
+        new_themes = set(new_data.key_themes) - existing_themes
+        for theme in new_themes:
+            deviations.append({
+                'type': 'new_theme',
+                'severity': 'minor',
+                'description': f"NEW theme appeared: '{theme}'",
+                'icon': 'ð¡'
+            })
+        return deviations
+
+    def _check_tone_deviations(self, dna: CompanyDNA, new_data: QuarterData) -> List[Dict]:
+        deviations = []
+        if len(dna.timeline) >= 2:
+            prev_tone = dna.timeline[-1].tone
+            tone_progression = {'positive': 1, 'neutral': 0, 'cautious': -1, 'defensive': -2}
+            
+            prev_score = tone_progression.get(prev_tone, 0)
+            new_score = tone_progression.get(new_data.tone, 0)
+            
+            if new_score < prev_score:
+                severity = "major" if new_score <= -1 else "moderate"
+                deviations.append({
+                    'type': 'tone_shift',
+                    'severity': severity,
+                    'description': f"Tone shifted: {prev_tone.upper()} -> {new_data.tone.upper()}",
+                    'icon': 'ð´' if severity == 'major' else 'ð '
+                })
+        return deviations
+
+# ====== PREDICTION ENGINE ======
+class PredictionEngine:
+    """Makes predictions and validates them"""
+    def make_predictions(self, dna: CompanyDNA) -> Optional[Prediction]:
+        if len(dna.timeline) < 3: return None
+            
+        current_quarter = dna.timeline[-1]
+        target_quarter = self._get_next_quarter(current_quarter.quarter)
+        
+        predictions = {}
+        confidence_scores = []
+        
+        pred_growth, conf = self._predict_growth(dna)
+        if pred_growth is not None:
+            predictions['revenue_growth'] = pred_growth
+            confidence_scores.append(conf)
+            
+        pred_tone, tone_conf = self._predict_tone(dna)
+        if pred_tone:
+            predictions['tone'] = pred_tone
+            confidence_scores.append(tone_conf)
+            
+        pred_customers, cust_conf = self._predict_customers(dna)
+        if pred_customers:
+            predictions['customers'] = pred_customers
+            confidence_scores.append(cust_conf)
+            
+        overall_confidence = sum(confidence_scores) / len(confidence_scores) if confidence_scores else 0.0
+        
+        prediction = Prediction(
+            prediction_id=f"{dna.ticker}_{target_quarter}",
+            made_on_quarter=current_quarter.quarter,
+            target_quarter=target_quarter,
+            predictions=predictions,
+            confidence=overall_confidence
+        )
+        return prediction
+
+    def _predict_growth(self, dna: CompanyDNA) -> Tuple[Optional[Dict], float]:
+        """Predict next quarter growth"""
+        growth_history = [q.revenue_growth for q in dna.timeline if q.revenue_growth]
+        
+        if len(growth_history) < 3:
+            return None, 0.0
+            
+        recent = growth_history[-3:]
+        
+        # Simple trend-based prediction
+        if len(recent) >= 3:
+            # Check if accelerating/decelerating
+            if all(recent[i] > recent[i-1] for i in range(1, len(recent))):
+                # Accelerating - predict continuation
+                avg_increase = (recent[-1] - recent[0]) / 2
+                predicted = recent[-1] + avg_increase
+                confidence = 0.70
+            elif all(recent[i] < recent[i-1] for i in range(1, len(recent))):
+                # Decelerating - predict continuation
+                avg_decrease = (recent[0] - recent[-1]) / 2
+                predicted = recent[-1] - avg_decrease
+                confidence = 0.70
+            else:
+                # Use average
+                predicted = sum(recent) / len(recent)
+                confidence = 0.60
+                
+            # Create range
+            range_low = predicted - 3
+            range_high = predicted + 3
+            
+            return {
+                'range': f"{range_low:.0f}-{range_high:.0f}%",
+                'midpoint': predicted,
+                'basis': 'trend_analysis'
+            }, confidence
+            
+        return None, 0.0
+        
+    def _predict_tone(self, dna: CompanyDNA) -> Tuple[Optional[str], float]:
+        """Predict next quarter tone"""
+        if len(dna.timeline) < 2:
+            return None, 0.0
+            
+        current_tone = dna.timeline[-1].tone
+        
+        # Check pattern
+        if f"tone_{current_tone}" in dna.patterns:
+            pattern = dna.patterns[f"tone_{current_tone}"]
+            return current_tone, pattern.confidence
+            
+        # Default: assume continuation
+        return current_tone, 0.50
+        
+    def _predict_customers(self, dna: CompanyDNA) -> Tuple[Optional[List[str]], float]:
+        """Predict which customers will be mentioned"""
+        # Find customers mentioned in last 3 quarters
+        recent_quarters = dna.timeline[-3:]
+        customer_frequency = defaultdict(int)
+        
+        for q in recent_quarters:
+            for customer in getattr(q, 'customer_mentions', {}).keys():
+                customer_frequency[customer] += 1
+                
+        # Predict customers mentioned 2+ times in last 3 quarters
+        likely_customers = [c for c, freq in customer_frequency.items() if freq >= 2]
+        
+        if likely_customers:
+            confidence = 0.75 if len(recent_quarters) >= 3 else 0.60
+            return likely_customers, confidence
+            
+        return None, 0.0
+
+    def validate_prediction(self, prediction: Prediction, actual_data: QuarterData) -> Prediction:
+        """Validate prediction against actual data"""
+        prediction.actual_results = {}
+        correct = 0
+        total = 0
+        
+        # Validate growth
+        if 'revenue_growth' in prediction.predictions and actual_data.revenue_growth:
+            pred_range = prediction.predictions['revenue_growth']['range']
+            low, high = map(float, pred_range.replace('%', '').split('-'))
+            
+            actual = actual_data.revenue_growth
+            prediction.actual_results['revenue_growth'] = actual
+            
+            total += 1
+            if low <= actual <= high:
+                correct += 1
+                
+        # Validate tone
+        if 'tone' in prediction.predictions:
+            pred_tone = prediction.predictions['tone']
+            actual_tone = actual_data.tone
+            prediction.actual_results['tone'] = actual_tone
+            
+            total += 1
+            if pred_tone == actual_tone:
+                correct += 1
+                
+        # Validate customers
+        if 'customers' in prediction.predictions:
+            pred_customers = set(prediction.predictions['customers'])
+            actual_customers = set(actual_data.customer_mentions.keys())
+            
+            prediction.actual_results['customers'] = list(actual_customers)
+            
+            total += 1
+            overlap = len(pred_customers.intersection(actual_customers))
+            if overlap >= len(pred_customers) * 0.7:  # 70% match correct
+                correct += 1
+                
+        # Calculate accuracy
+        if total > 0:
+            prediction.accuracy = correct / total
+            prediction.validated = True
+            
+        return prediction
+
+    def _get_next_quarter(self, current_quarter: str) -> str:
+        try:
+            parts = current_quarter.split(' ')
+            q_num = int(parts[0][1])
+            year = int(parts[1])
+            if q_num == 4: return f"Q1 {year + 1}"
+            else: return f"Q{q_num + 1} {year}"
+        except: return "Q? ????"
+
+# ====== DATABASE MANAGER ======
+class DatabaseManager:
+    """Manages dual storage: JSON files and SQLite database"""
+    def __init__(self, output_dir: str, version: int = 1
+    ticker: str = ""):
+        self.output_dir = Path(output_dir) / ticker
+        self.dna_dir = self.output_dir / 'dna'
+        self.db_path = self.output_dir / 'transcripts.db'
+        self._init_database()
+
+    def _init_database(self):
+        self.dna_dir.mkdir(parents=True, exist_ok=True)
+        self.conn = sqlite3.connect(str(self.db_path), check_same_thread=False)
+        cursor = self.conn.cursor()
+        cursor.execute('''CREATE TABLE IF NOT EXISTS quarters (
+            id INTEGER PRIMARY KEY AUTOINCREMENT, quarter TEXT UNIQUE, 
+            date TEXT, revenue_growth REAL, margin REAL, tone TEXT, 
+            specificity TEXT, data_json TEXT)''')
+        self.conn.commit()
+
+    def save_dna(self, dna: CompanyDNA):
+        dna_dict = asdict(dna)
+        json_path = self.dna_dir / f"DNA_{dna.latest_quarter.replace(' ', '_')}.json"
+        
+        with open(json_path, "w", encoding='utf-8') as f:
+            json.dump(dna_dict, f, indent=2, default=str)
+            
+        latest_path = self.dna_dir / "DNA_LATEST.json"
+        with open(latest_path, "w", encoding='utf-8') as f:
+            json.dump(dna_dict, f, indent=2, default=str)
+            
+        logger.info(f"DNA v{dna.latest_quarter} saved to {json_path}")
+        
+    def close(self):
+        if self.conn: self.conn.close()
+
+# ====== REPORT GENERATOR ======
+class ReportGenerator:
+    """Generates all markdown reports"""
+    def __init__(self, output_dir: str, version: int = 1
+    ticker: str = ""):
+        self.output_dir = Path(output_dir) / ticker
+        self.reports_dir = self.output_dir / 'reports'
+        self.reports_dir.mkdir(parents=True, exist_ok=True)
+
+    def generate_quarter_report(self, dna: CompanyDNA, quarter_idx: int, deviations: List[Dict], prediction: Optional[Prediction] = None):
+        """Generate comprehensive quarter report"""
+        quarter_data = dna.timeline[quarter_idx]
+        is_baseline = (quarter_idx == 0)
+        
+        report_path = self.reports_dir / f"{quarter_data.quarter.replace(' ', '_')}_{'baseline' if is_baseline else 'analysis'}.md"
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            f.write(f"# {quarter_data.quarter} - {'Baseline Analysis' if is_baseline else 'Comprehensive Analysis'}\n\n")
+            f.write(f"**DNA Version:** v{getattr(dna, 'version', 1)}\n")
+            f.write(f"**Tone:** {quarter_data.tone.upper()} | **Specificity:** {quarter_data.specificity.upper()}\n\n")
+            f.write("---\n\n")
+            
+            # Validate previous prediction if exists
+            if quarter_idx > 0:
+                prev_predictions = [p for p in dna.predictions if p.target_quarter == quarter_data.quarter]
+                if prev_predictions:
+                    f.write("## ð¯ Prediction Validation\n\n")
+                    for pred in prev_predictions:
+                        if getattr(pred, 'validated', False):
+                            f.write(f"**Prediction made in {pred.made_on_quarter}:**\n\n")
+                            
+                            if 'revenue_growth' in pred.predictions:
+                                pred_range = pred.predictions['revenue_growth'].get('range', 'N/A')
+                                actual = getattr(pred, 'actual_results', {}).get('revenue_growth', 'N/A')
+                                icon = "â" if getattr(pred, 'accuracy', 0) >= 0.8 else "â ï¸" if getattr(pred, 'accuracy', 0) >= 0.5 else "â"
+                                f.write(f"{icon} **Growth Prediction:** {pred_range} | **Actual:** {actual}\n")
+                                
+                            if 'tone' in pred.predictions:
+                                pred_tone = pred.predictions['tone']
+                                actual_tone = getattr(pred, 'actual_results', {}).get('tone', 'N/A')
+                                icon = "â" if pred_tone == actual_tone else "â"
+                                f.write(f"{icon} **Tone Prediction:** {pred_tone.upper()} | **Actual:** {str(actual_tone).upper()}\n")
+                                
+                            f.write(f"\n**Overall Accuracy:** {getattr(pred, 'accuracy', 0)*100:.0f}%\n\n")
+                    f.write("---\n\n")
+                    
+            f.write("## ð Key Metrics\n\n")
+            if quarter_data.revenue_growth is not None:
+                f.write(f"**Revenue Growth:** {quarter_data.revenue_growth:.1f}%\n")
+                if not is_baseline and quarter_idx > 0:
+                    prev_growth = dna.timeline[quarter_idx-1].revenue_growth
+                    if prev_growth:
+                        delta = quarter_data.revenue_growth - prev_growth
+                        icon = "ð¢" if delta > 0 else "ð´" if delta < 0 else "âª"
+                        f.write(f"  - vs Previous Quarter: {icon} {delta:+.1f}pp\n")
+                        
+                    baseline_growth = dna.timeline[0].revenue_growth
+                    if baseline_growth:
+                        delta = quarter_data.revenue_growth - baseline_growth
+                        icon = "ð¢" if delta > 0 else "ð´"
+                        f.write(f"  - vs Baseline ({dna.timeline[0].quarter}): {icon} {delta:+.1f}pp\n")
+                        
+                    all_growth = [q.revenue_growth for q in dna.timeline[:quarter_idx] if q.revenue_growth]
+                    if all_growth:
+                        avg = sum(all_growth) / len(all_growth)
+                        delta = quarter_data.revenue_growth - avg
+                        icon = "ð¢" if delta > 2 else "ð´" if delta < -2 else "âª"
+                        f.write(f"  - vs Historical Average: {icon} {delta:+.1f}pp (avg: {avg:.1f}%)\n")
+            f.write("\n")
+            
+            if quarter_data.margin is not None:
+                f.write(f"**Gross Margin:** {quarter_data.margin:.1f}%\n\n")
+                
+            if deviations:
+                f.write("## ð¨ Pattern Deviations Detected\n\n")
+                critical = [d for d in deviations if d['severity'] == 'critical']
+                major = [d for d in deviations if d['severity'] == 'major']
+                moderate = [d for d in deviations if d['severity'] == 'moderate']
+                minor = [d for d in deviations if d['severity'] == 'minor']
+                
+                for group, label in [(critical, 'CRITICAL'), (major, 'MAJOR'), (moderate, 'MODERATE'), (minor, 'MINOR')]:
+                    if group:
+                        f.write(f"### {label}\n\n")
+                        for dev in group:
+                            f.write(f"{dev.get('icon', '')} **{dev['type']}**: {dev['description']}\n")
+                        f.write("\n")
+                f.write("---\n\n")
+                
+            f.write("## ð Business Narrative\n\n")
+            if quarter_data.key_themes:
+                f.write("**Key Themes:**\n")
+                for theme in quarter_data.key_themes:
+                    if theme in dna.theme_lifecycle:
+                        status = dna.theme_lifecycle[theme]['status']
+                        mentions = len(dna.theme_lifecycle[theme]['mentions'])
+                        if status == 'new': f.write(f"- ð {theme}\n")
+                        else: f.write(f"- ð {theme} ({mentions} quarters)\n")
+                    else:
+                        f.write(f"- {theme}\n")
+                f.write("\n")
+                
+            if quarter_data.wins:
+                f.write("**Wins & Achievements:**\n")
+                for win in quarter_data.wins: f.write(f"- â {win}\n")
+                f.write("\n")
+                
+            if quarter_data.challenges:
+                f.write("**Challenges Discussed:**\n")
+                for challenge in quarter_data.challenges: f.write(f"- â ï¸ {challenge}\n")
+                f.write("\n")
+                
+            if quarter_data.customer_mentions:
+                f.write("**Customer Mentions:**\n")
+                for customer, context in quarter_data.customer_mentions.items():
+                    if customer in dna.customer_evolution:
+                        mentions = len(dna.customer_evolution[customer].get('mentions', []))
+                        if dna.customer_evolution[customer].get('first_mentioned') == quarter_data.quarter:
+                            f.write(f"- ð **{customer}**: {context[:150]}...\n")
+                        else:
+                            f.write(f"- ð **{customer}** ({mentions} mentions): {context[:150]}...\n")
+                f.write("\n")
+                
+            if quarter_data.product_updates:
+                f.write("**Product Updates:**\n")
+                for update in quarter_data.product_updates: f.write(f"- ð {update}\n")
+                f.write("\n")
+                
+            if quarter_data.forward_looking_guidance or quarter_data.promises:
+                f.write("## ð® Forward-Looking Statements\n\n")
+                if quarter_data.forward_looking_guidance:
+                    f.write("**Guidance:**\n")
+                    for guidance in quarter_data.forward_looking_guidance: f.write(f"- {guidance}\n")
+                    f.write("\n")
+                    
+                if quarter_data.promises:
+                    f.write("**Commitments Made:**\n")
+                    for promise in quarter_data.promises:
+                        f.write(f"- [{promise.get('category', 'OTHER').upper()}] {promise.get('text', '')}\n")
+                    f.write("\n")
+                    
+            if quarter_data.evidence_key_quotes:
+                f.write("## ð£ï¸ Key Quotes\n\n")
+                for speaker, quote in quarter_data.evidence_key_quotes:
+                    f.write(f"> **{speaker}:** \"{quote}\"\n\n")
+                    
+            if prediction and not is_baseline:
+                f.write("---\n\n")
+                f.write("## ð® Prediction for Next Quarter\n")
+                f.write(f"**Target:** {prediction.target_quarter}\n")
+                f.write(f"**Overall Confidence:** {prediction.confidence*100:.0f}%\n\n")
+                
+                if 'revenue_growth' in prediction.predictions:
+                    pred_data = prediction.predictions['revenue_growth']
+                    if isinstance(pred_data, dict):
+                        f.write(f"**Growth Prediction:** {pred_data.get('range', 'N/A')}\n")
+                        f.write(f"- Basis: {pred_data.get('basis', 'N/A')}\n\n")
+                    
+                if 'tone' in prediction.predictions:
+                    f.write(f"**Tone Prediction:** {prediction.predictions['tone'].upper()}\n\n")
+                    
+                if 'customers' in prediction.predictions:
+                    f.write(f"**Expected Customer Mentions:** {', '.join(prediction.predictions['customers'])}\n\n")
+                    
+        logger.info(f"Quarter report generated: {report_path}")
+
+    def generate_master_timeline(self, dna: CompanyDNA):
+        """Generate master timeline report"""
+        report_path = self.reports_dir / '00_MASTER_TIMELINE.md'
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            f.write(f"# ð§¬ {getattr(dna, 'ticker', 'UNKNOWN')} - Master Timeline\n\n")
+            f.write(f"**DNA Version:** v{getattr(dna, 'version', 1)}\n")
+            f.write(f"**Period:** {dna.baseline_quarter} -> {dna.latest_quarter}\n")
+            f.write(f"**Total Quarters:** {len(dna.timeline)}\n\n")
+            f.write("---\n\n")
+            
+            f.write("## Timeline table\n\n")
+            f.write("| Quarter | Growth | Margin | Tone | Themes | Customers |\n")
+            f.write("|---------|--------|--------|------|--------|-----------|\n")
+            
+            for q in dna.timeline:
+                growth_str = f"{q.revenue_growth:.1f}%" if q.revenue_growth else "N/A"
+                margin_str = f"{q.margin:.1f}%" if q.margin else "N/A"
+                themes_str = f"{len(q.key_themes)}"
+                customers_str = f"{len(q.customer_mentions)}"
+                f.write(f"| {q.quarter} | {growth_str} | {margin_str} | {q.tone} | {themes_str} | {customers_str} |\n")
+            f.write("\n")
+            
+            f.write("## Growth trajectory chart (text-based)\n\n")
+            growth_values = [q.revenue_growth for q in dna.timeline if q.revenue_growth]
+            if growth_values:
+                max_growth = max(growth_values)
+                for q in dna.timeline:
+                    if q.revenue_growth:
+                        bar_length = int((q.revenue_growth / max_growth) * 40) if max_growth > 0 else 0
+                        bar = "â" * bar_length
+                        f.write(f"{q.quarter:12s} | {bar} {q.revenue_growth:.1f}%\n")
+            f.write("\n")
+            
+            if dna.patterns:
+                f.write("## Learned Patterns Summary\n\n")
+                for name, pattern in dna.patterns.items():
+                    f.write(f"### {getattr(pattern, 'name', name)}\n")
+                    f.write(f"- Rule: {getattr(pattern, 'rule', 'N/A')}\n")
+                    f.write(f"- Confidence: {getattr(pattern, 'confidence', 0)*100:.0f}% ({getattr(pattern, 'accurate', 0)}/{getattr(pattern, 'observations', 0)})\n\n")
+                    
+        logger.info(f"Master timeline generated: {report_path}")
+
+    def generate_prediction_tracker(self, dna: CompanyDNA):
+        """Generate prediction accuracy tracker"""
+        report_path = self.reports_dir / '02_PREDICTION_TRACKER.md'
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            f.write(f"# ð¯ {getattr(dna, 'ticker', 'UNKNOWN')} - Prediction Accuracy Tracker\n\n")
+            
+            if not dna.predictions:
+                f.write("No predictions made yet.\n")
+                return
+                
+            validated = [p for p in dna.predictions if getattr(p, 'validated', False)]
+            
+            if validated:
+                total_accuracy = sum(getattr(p, 'accuracy', 0) for p in validated) / len(validated)
+                f.write(f"**Overall Model Accuracy:** {total_accuracy*100:.0f}%\n")
+                f.write(f"**Validated Predictions:** {len(validated)}/{len(dna.predictions)}\n\n")
+                f.write("---\n\n")
+                
+                f.write("## Prediction History\n\n")
+                f.write("| Made In | Target | Prediction | Actual | Accuracy |\n")
+                f.write("|---------|--------|------------|--------|----------|\n")
+                
+                for pred in validated:
+                    if 'revenue_growth' in pred.predictions:
+                        pred_str = pred.predictions['revenue_growth'].get('range', 'N/A') if isinstance(pred.predictions['revenue_growth'], dict) else str(pred.predictions['revenue_growth'])
+                        actual_str = f"{getattr(pred, 'actual_results', {}).get('revenue_growth', 'N/A')}"
+                    else:
+                        pred_str = "N/A"
+                        actual_str = "N/A"
+                        
+                    accuracy = getattr(pred, 'accuracy', 0)
+                    icon = "â" if accuracy >= 0.8 else "â ï¸" if accuracy >= 0.5 else "â"
+                    f.write(f"| {pred.made_on_quarter} | {pred.target_quarter} | {pred_str} | {actual_str} | {icon} {accuracy*100:.0f}% |\n")
+                    
+        logger.info(f"Prediction tracker generated: {report_path}")
+
+    def generate_investment_brief(self, dna: CompanyDNA):
+        """Generate current investment recommendation"""
+        report_path = self.reports_dir / '05_INVESTMENT_BRIEF.md'
+        
+        with open(report_path, 'w', encoding='utf-8') as f:
+            f.write(f"# ð¼ {getattr(dna, 'ticker', 'UNKNOWN')} - Investment Brief\n\n")
+            f.write(f"**As of:** {dna.latest_quarter}\n")
+            f.write(f"**Last Updated:** {datetime.now().strftime('%Y-%m-%d')}\n\n")
+            f.write("---\n\n")
+            
+            score = 0
+            reasoning = []
+            
+            # Growth trajectory
+            if 'growth_trajectory' in dna.patterns:
+                traj = getattr(dna.patterns['growth_trajectory'], 'rule', '')
+                if 'accelerating' in traj:
+                    score += 3
+                    reasoning.append("â Growth accelerating (most important factor)")
+                elif 'steady' in traj:
+                    score += 1
+                    reasoning.append("â Growth steady")
+                elif 'decelerating' in traj:
+                    score -= 2
+                    reasoning.append("ð´ Growth decelerating")
+                    
+            # Promise delivery
+            if 'promise_delivery' in dna.patterns:
+                pattern = dna.patterns['promise_delivery']
+                conf = getattr(pattern, 'confidence', 0)
+                if conf > 0.75:
+                    score += 2
+                    reasoning.append(f"â High management credibility ({conf*100:.0f}%)")
+                elif conf < 0.50:
+                    score -= 2
+                    reasoning.append(f"ð´ Low management credibility ({conf*100:.0f}%)")
+                    
+            # Customer momentum
+            active_customers = len([c for c, d in dna.customer_evolution.items() if len(d.get('mentions', [])) >= 3])
+            if active_customers >= 3:
+                score += 2
+                reasoning.append(f"â Multiple sector leader relationships ({active_customers})")
+                
+            # Tone
+            latest = dna.timeline[-1] if dna.timeline else None
+            if latest:
+                if latest.tone == 'defensive':
+                    score -= 2
+                    reasoning.append("ð´ Management tone defensive")
+                elif latest.tone == 'positive':
+                    score += 1
+                    reasoning.append("â Positive management tone")
+                    
+            # Generate recommendation
+            if score >= 4:
+                verdict = "ð¢ **STRONG BUY**"
+                summary = "Multiple positive factors align. High conviction opportunity."
+            elif score >= 2:
+                verdict = "ð¢ **BUY**"
+                summary = "More positives than negatives. Good risk/reward."
+            elif score >= 0:
+                verdict = "ð¡ **HOLD**"
+                summary = "Mixed signals. Watch closely before adding."
+            else:
+                verdict = "ð´ **AVOID/SELL**"
+                summary = "Too many red flags. Risk outweighs potential."
+                
+            f.write(f"## {verdict}\n\n")
+            f.write(f"**Score:** {score}\n\n")
+            f.write(f"{summary}\n\n")
+            
+            f.write("### Reasoning:\n\n")
+            for reason in reasoning:
+                f.write(f"- {reason}\n")
+            f.write("\n---\n\n")
+            
+            f.write("### Latest Quarter Summary\n\n")
+            if latest:
+                f.write(f"**Quarter:** {latest.quarter}\n")
+                if latest.revenue_growth is not None:
+                    f.write(f"**Growth:** {latest.revenue_growth:.1f}%\n")
+                f.write(f"**Tone:** {latest.tone.upper()}\n")
+                f.write(f"**Themes:** {', '.join(latest.key_themes[:5])}\n\n")
+                
+                if latest.wins:
+                    f.write("**Key Wins:**\n")
+                    for win in latest.wins[:3]: f.write(f"- {win}\n")
+                    f.write("\n")
+                    
+                if latest.challenges:
+                    f.write("**Challenges:**\n")
+                    for challenge in latest.challenges[:3]: f.write(f"- {challenge}\n")
+                    f.write("\n")
+                    
+        logger.info(f"Investment brief generated: {report_path}")
+
+# ====== MAIN ORCHESTRATOR ======
+class DNAEvolutionAnalyzer:
+    """MAIN ORCHESTRATOR - runs the complete DNA evolution analysis"""
+    def __init__(self, folder_path: str, version: int = 1
+    ticker: str = "", output_dir: str = "analysis_output"):
+        self.folder_path = folder_path
+        self.ticker = ticker
+        self.output_dir = output_dir
+        
+        logger.info("Initializing components...")
+        self.scanner = FileScanner()
+        self.extractor = TranscriptExtractor()
+        self.dna_builder = DNABuilder()
+        self.pattern_learner = PatternLearner()
+        self.db_manager = DatabaseManager(output_dir, ticker)
+        self.report_gen = ReportGenerator(output_dir, ticker)
+        self.prediction_engine = PredictionEngine()
+        self.deviation_detector = DeviationDetector()
+
+
+    def run(self):
+        """Execute the complete DNA evolution analysis"""
+        logger.info(f"{'='*80}")
+        logger.info(f"DNA EVOLUTION ANALYZER - Started for {self.ticker}")
+        logger.info(f"{'='*80}")
+        
+        logger.info("[STEP 1] Scanning and sorting transcripts chronologically...")
+        sorted_transcripts = self.scanner.scan_and_sort(self.folder_path)
+        if not sorted_transcripts:
+            logger.error("No transcripts found!")
             return None
             
-        # Calculate component scores
-        growth_score = self._calculate_growth_score(data['metrics'])
-        confidence_score = self._calculate_confidence_score(data['confidence'])
-        relationship_score = self._calculate_relationship_score(data['relationships'])
-        financial_health_score = self._calculate_financial_health_score(data['metrics'])
-        momentum_score = self._calculate_momentum_score(data['confidence'], data['metrics'])
+        logger.info("[STEP 2] Building baseline DNA from oldest transcript...")
+        file_path, date, quarter = sorted_transcripts[0]
+        first_data = self.extractor.extract(file_path, quarter, date)
         
-        # Identify red and green flags
-        red_flags = self._identify_red_flags(data)
-        green_flags = self._identify_green_flags(data)
+        # Save baseline data
+        self.dna_builder = self.builder # Alias fix from image
+        dna = self.dna_builder.build_baseline(self.ticker, first_data)
+        self.db_manager.save_dna(dna)
         
-        # Calculate overall score (weighted combination)
-        multibagger_score = (
-            growth_score * 0.30 +
-            confidence_score * 0.20 +
-            relationship_score * 0.20 +
-            financial_health_score * 0.15 +
-            momentum_score * 0.15
-        )
+        # Generate baseline report
+        self.report_gen.generate_quarter_report(dna, 0, [])
         
-        # Get latest date
-        latest_date = datetime.fromisoformat(data['transcripts'][-1][0]) if data['transcripts'] else datetime.now()
+        logger.info(f"Processing baseline: {quarter} ({file_path})")
+        logger.info(f"Baseline DNA v1 created from {quarter}")
         
-        return CompanyScores(
-            ticker=ticker,
-            latest_date=latest_date,
-            multibagger_score=multibagger_score,
-            growth_score=growth_score,
-            confidence_score=confidence_score,
-            relationship_score=relationship_score,
-            financial_health_score=financial_health_score,
-            momentum_score=momentum_score,
-            red_flags=red_flags,
-            green_flags=green_flags
-        )
-
-    def _calculate_growth_score(self, metrics: List[Tuple]) -> float:
-        """Score based on revenue growth"""
-        if not metrics: return 0.0
-        recent_metrics = metrics[-4:] # Look at up to 4 quarters
-        
-        growth_rates = [m[1] for m in recent_metrics if m[1] is not None] # index 1 is revenue_growth_yoy
-        if not growth_rates: return 0.0
-        
-        avg_growth = sum(growth_rates) / len(growth_rates)
-        
-        # Score based on thresholds
-        if avg_growth < self.config.min_growth_rate: return 0.0
-        elif avg_growth >= self.config.high_growth_threshold: return 1.0
-        else:
-            # Linear interpolation between min and high threshold
-            range_size = self.config.high_growth_threshold - self.config.min_growth_rate
-            score = (avg_growth - self.config.min_growth_rate) / range_size
+        logger.info("[STEP 3] Evolving DNA with each subsequent transcript...")
+        for idx, (file_path, date, quarter) in enumerate(sorted_transcripts[1:], start=1):
+            logger.info(f"--- Processing Quarter {idx+1}/{len(sorted_transcripts)}: {quarter} ---")
+            quarter_data = self.extractor.extract(file_path, quarter, date)
             
-            # Bonus for accelerating growth
-            if len(growth_rates) >= 2 and growth_rates[-1] > growth_rates[-2]:
-                score += 0.1
+            # Validate previous prediction if exists
+            if dna.predictions:
+                last_prediction = dna.predictions[-1]
+                if last_prediction.target_quarter == quarter:
+                    validated_pred = self.prediction_engine.validate_prediction(last_prediction, quarter_data)
+                    logger.info(f"Prediction accuracy: {validated_pred.accuracy*100:.0f}%")
+                    
+                    # Update overall accuracy
+                    validated_count = len([p for p in dna.predictions if p.validated])
+                    if validated_count > 0:
+                        dna.model_accuracy_prediction_accuracy = sum(p.accuracy for p in dna.predictions if p.validated) / validated_count
             
-            return min(1.0, max(0.0, score))
-
-    def _calculate_confidence_score(self, confidence: List[Tuple]) -> float:
-        """Score based on management confidence trends"""
-        if not confidence: return 0.5
-        recent_scores = confidence[-2:] # Look at last 2 transcripts
-        
-        avg_confidence = sum(c[1] for c in recent_scores) / len(recent_scores) # index 1 is overall_score
-        
-        # Check for trend
-        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]:
-            avg_confidence += 0.1 # Bonus for improving confidence
+            # Evolve DNA
+            dna = self.dna_builder.evolve_dna(dna, quarter_data)
             
-        return min(1.0, max(0.0, avg_confidence))
-
-    def _calculate_relationship_score(self, relationships: List[Tuple]) -> float:
-        """Score based on strategic partnerships and customers"""
-        if not relationships: return 0.0
-        
-        score = 0.0
-        # Give points for high quality customer/partner relationships
-        for rel in relationships:
-            rel_type = rel[2] # index 2 is relationship_type
-            strength = rel[3] # index 3 is strength_score
+            # Learn patterns
+            dna = self.pattern_learner.learn_patterns(dna)
             
-            if rel_type == 'customer':
-                score += 0.2 * strength
-            elif rel_type == 'partner':
-                score += 0.15 * strength
-            elif rel_type == 'supplier':
-                score += 0.1 * strength
+            # Detect deviations
+            deviations = self.deviation_detector.detect_deviations(dna, quarter_data)
+            if deviations:
+                logger.info(f"  -> Detected {len(deviations)} pattern deviations")
                 
-        # Bonus if multiple strong relationships exist
-        if len(relationships) >= 3:
-            score += 0.2
+            # Save evolved DNA
+            self.db_manager.save_dna(dna)
             
-        return min(1.0, score)
-
-    def _calculate_financial_health_score(self, metrics: List[Tuple]) -> float:
-        """Score based on margins and cash"""
-        if not metrics: return 0.5
-        
-        score = 0.5 # Neutral start
-        recent_metric = metrics[-1]
-        
-        gross_margin = recent_metric[3] # index 3 is gross_margin
-        operating_margin = recent_metric[4] # index 4 is operating_margin
-        
-        if gross_margin and gross_margin > 50:
-            score += 0.2
-        if operating_margin and operating_margin > 10:
-            score += 0.2
-        elif operating_margin and operating_margin < 0:
-            score -= 0.2
+            # Generate quarter report
+            self.report_gen.generate_quarter_report(dna, idx, deviations)
             
-        return min(1.0, max(0.0, score))
-
-    def _calculate_momentum_score(self, confidence: List[Tuple], metrics: List[Tuple]) -> float:
-        """Score based on improving metrics across multiple dimensions"""
-        score = 0.5
-        
-        # Check metric momentum
-        if len(metrics) >= 2:
-            if metrics[-1][1] and metrics[-2][1] and metrics[-1][1] > metrics[-2][1]: # Growth accelerating (index 1 is yoy)
-                score += 0.15
-            if metrics[-1][3] and metrics[-2][3] and metrics[-1][3] > metrics[-2][3]: # Gross margin expanding (index 3 is gross_margin)
-                score += 0.15
+            # Make prediction for next quarter
+            prediction = self.prediction_engine.make_predictions(dna)
+            if prediction:
+                dna.predictions.append(prediction)
+                logger.info(f"  -> Made prediction for {prediction.target_quarter}")
                 
-        # Check confidence momentum
-        if len(confidence) >= 2 and confidence[-1][1] > confidence[-2][1]: # index 1 is overall_score
-            score += 0.2
+            # Log progress
+            if quarter_data.metrics_revenue_growth:
+                logger.info(f"Growth: {quarter_data.metrics_revenue_growth:.1f}%")
+            logger.info(f"Tone: {quarter_data.tone.upper()}")
             
-        return min(1.0, max(0.0, score))
-
-    def _identify_red_flags(self, data: Dict) -> List[str]:
-        """Identify potential warning signs"""
-        flags = []
-        metrics = data['metrics']
-        confidence = data['confidence']
+        logger.info("[STEP 4] Generating master reports...")
+        self.report_gen.generate_master_timeline(dna)
+        self.report_gen.generate_prediction_tracker(dna)
+        self.report_gen.generate_investment_brief(dna)
         
-        if not metrics:
-            flags.append("Insufficient financial metrics found")
-            return flags
+        logger.info(f"DNA v{dna.version} generated:")
+        logger.info(f"Patterns Learned: {len(dna.patterns)}")
+        logger.info(f"Predictions Made: {len(dna.predictions)}")
+        if dna.model_accuracy_prediction_accuracy > 0:
+            logger.info(f"Prediction Accuracy: {dna.model_accuracy_prediction_accuracy*100:.0f}%")
             
-        # Check growth
-        recent_growth = [m[1] for m in metrics[-2:] if m[1] is not None] # index 1 is yoy
-        if recent_growth and recent_growth[-1] < 10.0: flags.append("Low recent growth rate (<10%)")
-        if len(recent_growth) >= 2 and recent_growth[-1] < recent_growth[-2]: flags.append("Decelerating growth trend")
+        logger.info(f"{'='*80}")
+        logger.info("[ANALYSIS COMPLETE]")
+        logger.info(f"Output Directory: {self.output_dir}/{self.ticker}/")
+        logger.info(f"DNA Files: {self.output_dir}/{self.ticker}/dna/")
+        logger.info(f"Reports: {self.output_dir}/{self.ticker}/reports/")
+        logger.info(f"Database: {self.db_manager.db_path}")
+        logger.info(f"{'='*80}")
         
-        # Check confidence
-        avg_confidence = sum([c[1] for c in data['confidence'][-2:]]) / min(2, len(data['confidence'])) if len(data['confidence']) > 0 else 0.5
-        if avg_confidence < 0.4: flags.append("Low management confidence")
-        
-        # Check for customer concentration risk
-        customer_rels = [r for r in data['relationships'] if r[2] == 'customer'] # index 2 is relationship_type
-        if len(customer_rels) >= 2: flags.append("High customer concentration risk")
-        
-        # Check for missing transcripts (gaps in reporting)
-        if len(data['transcripts']) < 4: flags.append("Insufficient transcript history")
-        
-        return flags
+        self.db_manager.close()
+        return dna
 
-    def _identify_green_flags(self, data: Dict) -> List[str]:
-        flags = []
-        metrics = data['metrics']
-        relationships = data['relationships']
-        
-        # Check for accelerating growth
-        recent_growth = [m[1] for m in metrics[-3:] if m[1] is not None] # index 1 is yoy
-        if len(recent_growth) >= 2 and recent_growth[-1] > recent_growth[-2]: flags.append("Accelerating growth trajectory")
-        
-        # Check for high growth rate
-        if recent_growth and recent_growth[-1] > self.config.high_growth_threshold: flags.append(f"High growth rate (>{self.config.high_growth_threshold}%)")
-        
-        # Check for high confidence
-        recent_confidence = [c[1] for c in data['confidence'][-2:]]
-        if recent_confidence and sum(recent_confidence)/len(recent_confidence) > 0.8: flags.append("High management confidence")
-        
-        # Check for multiple sector leader relationships
-        strong_customers = [r for r in data['relationships'] if r[2] == 'customer' and r[3] > 0.7] # index 2 is type, index 3 is strength
-        unique_customers = set([r[1] for r in strong_customers]) # index 1 is related_company
-        if len(unique_customers) >= 2: flags.append(f"Multiple sector leader customers ({len(unique_customers)})")
-        
-        # Check for improving margins
-        if len(metrics) >= 2 and metrics[-1][3] and metrics[-2][3] and metrics[-1][3] > metrics[-2][3]: flags.append("Expanding gross margins")
-        
-        return flags
-
-# ========================================== REPORT GENERATION ==========================================
-class ReportGenerator:
-    def __init__(self, config: Config, db: DatabaseManager):
-        self.config = config
-        self.db = db
-        self.output_dir = Path(config.output_dir)
-        self.output_dir.mkdir(exist_ok=True)
-        
-    def generate_master_report(self, scores: List[CompanyScores]):
-        """Generate master analysis report"""
-        logger.info("Generating master report...")
-        # Sort by multibagger score
-        sorted_scores = sorted(scores, key=lambda x: x.multibagger_score, reverse=True)
-        report_path = self.output_dir / "master_analysis_report.md"
-        with open(report_path, 'w') as f:
-            f.write("# Microcap Multibagger Analysis Report\n\n")
-            f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M')}\n")
-            f.write(f"Total Companies Analyzed: {len(scores)}\n\n")
-            f.write("## Executive Summary\n\n")
-            top_10 = sorted_scores[:10]
-            f.write("### Top 10 Multibagger Candidates:\n\n")
-            f.write("| Rank | Ticker | Score | Growth | Confidence | Relationship | Flags |\n")
-            f.write("|------|--------|-------|--------|------------|--------------|-------|\n")
-            for i, score in enumerate(top_10, 1):
-                green_count = len(score.green_flags)
-                red_count = len(score.red_flags)
-                f.write(f"| {i} | {score.ticker} | {score.multibagger_score:.2f} | {score.growth_score:.2f} | {score.confidence_score:.2f} | {score.relationship_score:.2f} | 🟢 {green_count} / 🔴 {red_count} |\n")
-            f.write("\n## Detailed Company Analysis\n\n")
-            # Detailed sections for top candidates
-            for score in top_10:
-                f.write(f"### {score.ticker}\n")
-                f.write(f"**Multibagger Score:** {score.multibagger_score:.2f}\n")
-                f.write(f"- Growth Score: {score.growth_score:.2f}\n")
-                f.write(f"- Management Confidence: {score.confidence_score:.2f}\n")
-                f.write(f"- Sector Leader Relationships: {score.relationship_score:.2f}\n")
-                f.write(f"- Financial Health: {score.financial_health_score:.2f}\n")
-                f.write(f"- Momentum: {score.momentum_score:.2f}\n")
-                if score.green_flags:
-                    f.write("**Green Flags:**\n")
-                    for flag in score.green_flags:
-                        f.write(f"- 🟢 {flag}\n")
-                if score.red_flags:
-                    f.write("**Red Flags:**\n")
-                    for flag in score.red_flags:
-                        f.write(f"- 🔴 {flag}\n")
-                f.write("\n")
-                # Get company data for additional context
-                data = self.db.get_company_data(score.ticker)
-                if data['relationships']:
-                    f.write("**Key Relationships:**\n")
-                    customer_rels = [r for r in data['relationships'] if r[2] == 'customer'] # index 2 is type
-                    for rel in customer_rels[:3]:
-                        f.write(f"- {rel[1]} (Strength: {rel[3]:.2f})\n") # index 1 is company, index 3 is strength
-                f.write("\n---\n\n")
-        logger.info(f"Master report saved to {report_path}")
-        # Generate CSV export
-        self._generate_csv_export(sorted_scores)
-        # Generate visualizations if matplotlib is available
-        try:
-            self._generate_visualizations(sorted_scores)
-        except Exception as e:
-            logger.warning(f"Could not generate visualizations: {e}")
-
-    def _generate_csv_export(self, scores: List[CompanyScores]):
-        """Generate CSV export of scores"""
-        csv_path = self.output_dir / "company_scores.csv"
-        try:
-            import csv
-            with open(csv_path, 'w', newline='') as f:
-                writer = csv.writer(f)
-                writer.writerow(['Ticker', 'Multibagger Score', 'Growth Score', 'Confidence Score', 'Relationship Score', 'Financial Health Score', 'Momentum Score', 'Green Flags', 'Red Flags', 'Latest Date'])
-                for score in scores:
-                    writer.writerow([score.ticker, score.multibagger_score, score.growth_score, score.confidence_score, score.relationship_score, score.financial_health_score, score.momentum_score, len(score.green_flags), len(score.red_flags), score.latest_date.strftime('%Y-%m-%d')])
-            logger.info(f"CSV export saved to {csv_path}")
-        except Exception as e:
-            logger.error(f"Error generating CSV: {e}")
-
-    def _generate_visualizations(self, scores: List[CompanyScores]):
-        """Generate visualization charts"""
-        if not scores: return
-        # Top 20 companies by multibagger score
-        top_20 = sorted(scores, key=lambda x: x.multibagger_score, reverse=True)[:20]
-        # Create figure with subplots
-        fig, axes = plt.subplots(2, 2, figsize=(16, 12))
-        fig.suptitle('Multibagger Analysis Dashboard', fontsize=16, fontweight='bold')
-        # 1. Main Multibagger Scores
-        tickers = [s.ticker for s in top_20]
-        scores_data = [s.multibagger_score for s in top_20]
-        axes[0, 0].barh(tickers, scores_data, color='steelblue')
-        axes[0, 0].set_xlabel('Multibagger Score')
-        axes[0, 0].set_title('Top 20 Companies by Multibagger Score')
-        axes[0, 0].invert_yaxis()
-        # 2. Score Components for Top 10
-        top_10 = top_20[:10]
-        component_data = { 'Growth': [s.growth_score for s in top_10], 'Confidence': [s.confidence_score for s in top_10], 'Relationship': [s.relationship_score for s in top_10], 'Financial': [s.financial_health_score for s in top_10] }
-        tickers_10 = [s.ticker for s in top_10]
-        x = np.arange(len(tickers_10))
-        width = 0.15
-        for i, (component, values) in enumerate(component_data.items()):
-            axes[0, 1].bar(x + (i*width), values, width, label=component)
-        axes[0, 1].set_xticks(x + width * 1.5)
-        axes[0, 1].set_xticklabels(tickers_10, rotation=45)
-        axes[0, 1].set_title('Score Components (Top 10)')
-        axes[0, 1].legend()
-        # 3. Scatter: Growth vs Confidence
-        growth_scores = [s.growth_score for s in scores]
-        confidence_scores = [s.confidence_score for s in scores]
-        axes[1, 0].scatter(growth_scores, confidence_scores, alpha=0.6, color='mediumseagreen')
-        axes[1, 0].set_xlabel('Growth Score')
-        axes[1, 0].set_ylabel('Confidence Score')
-        axes[1, 0].set_title('Growth vs Management Confidence')
-        # Annotate top performers
-        for score in top_10:
-            axes[1, 0].annotate(score.ticker, (score.growth_score, score.confidence_score), fontsize=8, alpha=0.7)
-        # 4. Distribution of Multibagger Scores
-        all_scores = [s.multibagger_score for s in scores]
-        axes[1, 1].hist(all_scores, bins=20, color='steelblue', alpha=0.7, edgecolor='black')
-        axes[1, 1].set_xlabel('Multibagger Score')
-        axes[1, 1].set_ylabel('Frequency')
-        axes[1, 1].set_title('Distribution of Multibagger Scores')
-        axes[1, 1].axvline(np.mean(all_scores), color='red', linestyle='dashed', linewidth=1, label=f'Mean: {np.mean(all_scores):.2f}')
-        axes[1, 1].legend()
-        plt.tight_layout()
-        # Save figure
-        viz_path = self.output_dir / 'analysis_dashboard.png'
-        plt.savefig(viz_path, dpi=300, bbox_inches='tight')
-        logger.info(f"Visualizations saved to {viz_path}")
-        plt.close()
-
-# ========================================== MAIN ANALYZER ==========================================
-class TranscriptAnalyzer:
-    """Main analyzer orchestrating all components"""
-    def __init__(self, config: Config):
-        self.config = config
-        self.db = DatabaseManager(config.db_path)
-        self.scanner = RepositoryScanner(config)
-        self.date_extractor = DateExtractor()
-        self.sentiment_analyzer = SentimentAnalyzer()
-        self.confidence_analyzer = ConfidenceAnalyzer()
-        self.entity_extractor = EntityExtractor()
-        self.metrics_extractor = MetricsExtractor()
-        self.scorer = Scorer(config, self.db)
-        self.report_generator = ReportGenerator(config, self.db)
-
-    def run_analysis_pipeline(self):
-        """Run complete analysis pipeline"""
-        logger.info("=" * 80)
-        logger.info("Starting Transcript Analysis for Multibagger Discovery")
-        logger.info("=" * 80)
-        # Step 1: Scan repository
-        companies = self.scanner.scan()
-        if not companies:
-            logger.error("No transcript files found!")
-            return
-        # Step 2: Process transcripts
-        logger.info(f"\nProcessing transcripts for {len(companies)} companies...")
-        processed_files = self.db.get_processed_files()
-        for company, file_paths in companies.items():
-            logger.info(f"\nAnalyzing company: {company}")
-            for file_path in file_paths:
-                try:
-                    content = self.scanner.read_file_content(file_path)
-                    if len(content) < self.config.min_transcript_length:
-                        logger.warning(f"  Skipping {file_path} - too short")
-                        continue
-                    file_hash = self.scanner.compute_file_hash(content)
-                    # Skip if already processed
-                    if file_hash in processed_files:
-                        logger.debug(f"  Skipping {file_path} - already processed")
-                        continue
-                    # Process this transcript
-                    self._process_transcript(company, file_path, content, file_hash)
-                except Exception as e:
-                    logger.error(f"  Error processing {file_path}: {e}")
-        # Step 3: Calculate company scores
-        logger.info("\nCalculating company scores...")
-        tickers = self.db.get_all_tickers()
-        scores = []
-        for ticker in tickers:
-            score = self.scorer.score_company(ticker)
-            if score:
-                self.db.save_company_scores(score)
-                scores.append(score)
-        # Step 4: Generate reports
-        if scores:
-            logger.info("\nGenerating reports...")
-            self.report_generator.generate_master_report(scores)
-        logger.info("\nAnalysis Complete!")
-        logger.info(f"Results saved to: {self.config.output_dir}")
-
-    def _process_transcript(self, ticker: str, file_path: str, content: str, file_hash: str):
-        """Process a single transcript"""
-        logger.info(f"  Processing: {os.path.basename(file_path)}")
-        # Extract date
-        file_mtime = datetime.fromtimestamp(os.path.getmtime(file_path))
-        date, date_confidence, fiscal_quarter, fiscal_year = self.date_extractor.extract_date(content, file_mtime)
-        if not date:
-            logger.warning("    Skipping analysis - no valid date")
-            return
-        # Save transcript metadata
-        metadata = TranscriptMetadata(file_path=file_path, company_dir=ticker, ticker=ticker, date=date, date_confidence=date_confidence, fiscal_quarter=fiscal_quarter, fiscal_year=fiscal_year, file_hash=file_hash, content_length=len(content), processed_date=datetime.now())
-        self.db.save_transcript(metadata)
-        # Extract metrics
-        metrics = self.metrics_extractor.extract_metrics(content)
-        metrics.ticker = ticker
-        metrics.date = date
-        self.db.save_metrics(metrics)
-        # Analyze confidence
-        confidence = self.confidence_analyzer.analyze_comprehensive_confidence(content)
-        confidence.ticker = ticker
-        confidence.date = date
-        self.db.save_confidence_score(confidence)
-        # Extract relationships
-        relationships = self.entity_extractor.extract_company_entities_and_relationships(content, self.config.sector_leaders)
-        for rel in relationships:
-            rel.ticker = ticker
-            rel.date = date
-            self.db.save_relationship(rel)
-        logger.info(f"    Found {len(relationships)} sector leader relationships")
-
-    def close(self):
-        """Cleanup resources"""
-        self.db.close()
-
-# ========================================== COMMAND LINE INTERFACE ==========================================
+# ====== COMMAND LINE INTERFACE ======
 def main():
-    """Main entry point"""
-    parser = argparse.ArgumentParser(description="Earnings Call Transcript Analyzer for Multibagger Discovery")
-    parser.add_argument("--repo-root", type=str, default=os.getcwd(), help="Root directory of transcript repository")
-    parser.add_argument("--config", type=str, help="Path to configuration JSON file")
-    parser.add_argument("--min-growth", type=float, default=15.0, help="Minimum growth rate threshold (%)")
-    parser.add_argument("--workers", type=int, default=4, help="Number of parallel workers")
-    parser.add_argument("--output-dir", type=str, default="analysis_output", help="Output directory for reports")
+    parser = argparse.ArgumentParser(
+        description="DNA Evolution Transcript Analyzer - World Class Edition",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog='''Examples:
+  Analyze a folder of transcripts for ACME
+  python dna_analyzer.py --folder /path/to/ACME/transcripts --ticker ACME'''
+    )
+    
+    parser.add_argument('--folder', type=str, required=True, help='Folder containing transcript files (.txt or .md)')
+    parser.add_argument('--ticker', type=str, required=True, help='Company ticker symbol')
+    parser.add_argument('--out', type=str, default='analysis_output', dest='output_dir', help='Output directory (default: analysis_output)')
     
     args = parser.parse_args()
     
-    # Create configuration
-    config = Config(args.config)
-    config.repo_root = args.repo_root
-    config.output_dir = args.output_dir
-    config.min_growth_rate = args.min_growth
-    config.parallel_workers = args.workers
-    
-    # Run analyzer
-    analyzer = TranscriptAnalyzer(config)
+    if not os.path.exists(args.folder):
+        logger.error(f"Folder not found: {args.folder}")
+        return
+        
+    analyzer = DNAEvolutionAnalyzer(args.folder, args.ticker, args.output_dir)
     try:
-        analyzer.run_analysis_pipeline()
+        dna = analyzer.run()
+        if dna:
+            logger.info(f"\n{'*'*80}")
+            logger.info(f"INVESTMENT VERDICT")
+            logger.info(f"{'*'*80}")
+            logger.info(f"See 03_INVESTMENT_BRIEF.md for detailed recommendation")
+            logger.info(f"{'*'*80}\n")
     except KeyboardInterrupt:
         logger.info("\nAnalysis interrupted by user")
     except Exception as e:
-        logger.error(f"Analysis failed: {e}")
-    finally:
-        analyzer.close()
+        logger.error(f"\nAnalysis failed: {e}", exc_info=True)
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
