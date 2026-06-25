@@ -110,7 +110,7 @@ class CompanyDNA:
 class FileScanner:
     """Scans folders and sorts transcripts chronologically"""
     def __init__(self):
-        self.transcript_extensions = {'.txt', '.md'}
+        self.transcript_extensions = {'.txt', '.md', '.csv'}
 
     def scan_and_sort(self, folder_path: str) -> List[Tuple[str, datetime, str]]:
         """Scan folder and return chronologically sorted transcripts"""
@@ -201,25 +201,25 @@ class TranscriptExtractor:
                 content = f.read()
                 
             data = QuarterData(ticker="UNKNOWN", file_path=file_path, quarter=quarter, date=date)
-            data.revenue_growth = self.extract_revenue_growth(content)
-            data.margin = self.extract_margin(content)
-            data.customer_count = self.extract_customer_count(content)
-            data.key_themes = self.extract_themes(content)
-            data.wins = self.extract_wins(content)
-            data.challenges = self.extract_challenges(content)
-            data.product_updates = self.extract_product_updates(content)
-            data.forward_looking_guidance = self.extract_guidance(content)
-            data.promises = self.extract_promises(content, quarter)
-            data.tone = self.assess_tone(content)
-            data.specificity = self.assess_specificity(content)
-            data.evidence_key_quotes = self.extract_quotes(content)
+            data.revenue_growth = self._extract_revenue_growth(content)
+            data.margin = self._extract_margin(content)
+            data.customer_count = self._extract_customer_count(content)
+            data.key_themes = self._extract_themes(content)
+            data.wins = self._extract_wins(content)
+            data.challenges = self._extract_challenges(content)
+            data.product_updates = self._extract_product_updates(content)
+            data.forward_looking_guidance = self._extract_guidance(content)
+            data.promises = self._extract_promises(content, quarter)
+            data.tone = self._assess_tone(content)
+            data.specificity = self._assess_specificity(content)
+            data.evidence_key_quotes = self._extract_quotes(content)
             return data
             
         except Exception as e:
             logger.error(f"Error extracting data: {e}")
             return QuarterData(ticker="UNKNOWN", file_path=file_path, quarter=quarter, date=date)
 
-    def extract_revenue_growth(self, text: str) -> Optional[float]:
+    def _extract_revenue_growth(self, text: str) -> Optional[float]:
         patterns = [
             r'revenue.*?grew.*?(\d+(?:\.\d+)?)',
             r'revenue.*?increased.*?(\d+(?:\.\d+)?)',
@@ -234,7 +234,7 @@ class TranscriptExtractor:
                 except: continue
         return None
 
-    def extract_margin(self, text: str) -> Optional[float]:
+    def _extract_margin(self, text: str) -> Optional[float]:
         patterns = [r'gross margin.*?(\d+(?:\.\d+)?)\%', r'margin.*?(\d+(?:\.\d+)?)\%']
         for pattern in patterns:
             match = re.search(pattern, text, re.IGNORECASE)
@@ -245,7 +245,7 @@ class TranscriptExtractor:
                 except: pass
         return None
 
-    def extract_customer_count(self, text: str) -> Optional[int]:
+    def _extract_customer_count(self, text: str) -> Optional[int]:
         patterns = [r'customers.*?(\d+)', r'customer base.*?(\d+)']
         for pattern in patterns:
             match = re.search(pattern, text, re.IGNORECASE)
@@ -256,7 +256,7 @@ class TranscriptExtractor:
                 except: continue
         return None
 
-    def extract_themes(self, text: str) -> List[str]:
+    def _extract_themes(self, text: str) -> List[str]:
         theme_patterns = {
             'AI/ML': r' (?:AI|artificial intelligence|machine learning|generative AI) ',
             'International Expansion': r' (?:international|global|overseas|expansion|geographic) ',
@@ -276,7 +276,7 @@ class TranscriptExtractor:
                 themes.append(theme)
         return themes[:7]
 
-        def extract_wins(self, text: str) -> List[str]:
+    def _extract_wins(self, text: str) -> List[str]:
         patterns = [
             r'(?:excited to|proud to|pleased to).*?(?:announce|report|share).*?(?:\.|\n)',
             r'(?:record|best ever|highest|strongest|unprecedented).*?(?:\.|\n)',
@@ -291,8 +291,7 @@ class TranscriptExtractor:
                     wins.append(cleaned)
         return wins[:5]
 
-
-        def extract_challenges(self, text: str) -> List[str]:
+    def _extract_challenges(self, text: str) -> List[str]:
         patterns = [
             r'(?:challenge|headwind|difficulty|pressure).*?(?:faced|facing|addressing|dealing with|due to).*?(?:\.|\n)',
             r'(?:impacted by|offset by|partially offset by).*?(?:\.|\n)'
@@ -306,8 +305,7 @@ class TranscriptExtractor:
                     challenges.append(cleaned)
         return challenges[:5]
 
-
-    def extract_product_updates(self, text: str) -> List[str]:
+    def _extract_product_updates(self, text: str) -> List[str]:
         updates = []
         patterns = [
             r'(?:launched|released|introduced|unveiled|shipping) ([^.!?]{20,200}[.!?])',
@@ -319,7 +317,7 @@ class TranscriptExtractor:
                 updates.append(match.strip())
         return updates[:5]
 
-    def extract_guidance(self, text: str) -> List[str]:
+    def _extract_guidance(self, text: str) -> List[str]:
         guidance = []
         patterns = [
             r'(?:expect|anticipate|forecast|project|guide|guidance) ([^.!?]{30,250}[.!?])',
@@ -332,7 +330,7 @@ class TranscriptExtractor:
                     guidance.append(match.strip())
         return guidance[:7]
 
-    def extract_promises(self, text: str, quarter: str) -> List[Dict[str, str]]:
+    def _extract_promises(self, text: str, quarter: str) -> List[Dict[str, str]]:
         promises = []
         patterns = [
             r'(?:by (?:Q[1-4]|end of|the end of))([^.!?]{20,200}[.!?])',
@@ -366,7 +364,7 @@ class TranscriptExtractor:
         else:
             return 'other'
 
-    def assess_tone(self, text: str) -> str:
+    def _assess_tone(self, text: str) -> str:
         try:
             blob = TextBlob(text[:10000])
             polarity = blob.sentiment.polarity
@@ -385,11 +383,12 @@ class TranscriptExtractor:
         except:
             return "neutral"
 
-        def assess_specificity(self, text: str) -> str:
+    def _assess_specificity(self, text: str) -> str:
         specific_patterns = [
-            r'\n\d+\%\b',
-            r'\$\d+[MBK]?\b',
-            r'\bQ[1-4]\s+\d{4}\b',
+            r'
+\d+\% ',
+            r'\$\d+[MBK]? ',
+            r' Q[1-4]\s+\d{4} ',
             r'\d+\s+(?:customers|clients|engineers|employees)',
         ]
         specific_count = sum(len(re.findall(p, text)) for p in specific_patterns)
@@ -402,8 +401,7 @@ class TranscriptExtractor:
         elif ratio > 15: return "medium"
         else: return "low"
 
-
-    def extract_quotes(self, text: str) -> List[Tuple[str, str]]:
+    def _extract_quotes(self, text: str) -> List[Tuple[str, str]]:
         quotes = []
         patterns = [
             r'(CEO|Chief Executive|Founder|CFO|Chief Financial).*?(?:\:-|:)\s*([^\.!?]{50,350}[\.!?])',
@@ -1333,16 +1331,14 @@ class DNAEvolutionAnalyzer:
         logger.info("Initializing components...")
         self.scanner = FileScanner()
         self.extractor = TranscriptExtractor()
-        self.dna_builder = DNABuilder()
-        self.pattern_learner = PatternLearner()
+        self.builder = DNABuilder()
+        self.learner = PatternLearner()
         self.db_manager = DatabaseManager(output_dir, ticker)
         self.report_gen = ReportGenerator(output_dir, ticker)
         self.prediction_engine = PredictionEngine()
         self.deviation_detector = DeviationDetector()
 
-
     def run(self):
-        """Execute the complete DNA evolution analysis"""
         logger.info(f"{'='*80}")
         logger.info(f"DNA EVOLUTION ANALYZER - Started for {self.ticker}")
         logger.info(f"{'='*80}")
@@ -1356,61 +1352,35 @@ class DNAEvolutionAnalyzer:
         logger.info("[STEP 2] Building baseline DNA from oldest transcript...")
         file_path, date, quarter = sorted_transcripts[0]
         first_data = self.extractor.extract(file_path, quarter, date)
-        
-        # Save baseline data
-        self.dna_builder = self.builder # Alias fix from image
-        dna = self.dna_builder.build_baseline(self.ticker, first_data)
+        dna = self.builder.build_baseline(self.ticker, first_data)
         self.db_manager.save_dna(dna)
-        
-        # Generate baseline report
-        self.report_gen.generate_quarter_report(dna, 0, [])
-        
-        logger.info(f"Processing baseline: {quarter} ({file_path})")
-        logger.info(f"Baseline DNA v1 created from {quarter}")
         
         logger.info("[STEP 3] Evolving DNA with each subsequent transcript...")
         for idx, (file_path, date, quarter) in enumerate(sorted_transcripts[1:], start=1):
             logger.info(f"--- Processing Quarter {idx+1}/{len(sorted_transcripts)}: {quarter} ---")
             quarter_data = self.extractor.extract(file_path, quarter, date)
             
-            # Validate previous prediction if exists
             if dna.predictions:
-                last_prediction = dna.predictions[-1]
-                if last_prediction.target_quarter == quarter:
-                    validated_pred = self.prediction_engine.validate_prediction(last_prediction, quarter_data)
-                    logger.info(f"Prediction accuracy: {validated_pred.accuracy*100:.0f}%")
-                    
-                    # Update overall accuracy
-                    validated_count = len([p for p in dna.predictions if p.validated])
-                    if validated_count > 0:
-                        dna.model_accuracy_prediction_accuracy = sum(p.accuracy for p in dna.predictions if p.validated) / validated_count
-            
-            # Evolve DNA
-            dna = self.dna_builder.evolve_dna(dna, quarter_data)
-            
-            # Learn patterns
-            dna = self.pattern_learner.learn_patterns(dna)
-            
-            # Detect deviations
+                self.prediction_engine.validate_prediction(dna.predictions[-1], quarter_data)
+                
+            dna = self.builder.evolve_dna(dna, quarter_data)
+            dna = self.learner.learn_patterns(dna)
             deviations = self.deviation_detector.detect_deviations(dna, quarter_data)
+            
             if deviations:
                 logger.info(f"  -> Detected {len(deviations)} pattern deviations")
                 
-            # Save evolved DNA
-            self.db_manager.save_dna(dna)
-            
-            # Generate quarter report
-            self.report_gen.generate_quarter_report(dna, idx, deviations)
-            
-            # Make prediction for next quarter
             prediction = self.prediction_engine.make_predictions(dna)
             if prediction:
                 dna.predictions.append(prediction)
                 logger.info(f"  -> Made prediction for {prediction.target_quarter}")
                 
+            self.db_manager.save_dna(dna)
+            self.report_gen.generate_quarter_report(dna, idx, deviations, prediction)
+            
             # Log progress
-            if quarter_data.metrics_revenue_growth:
-                logger.info(f"Growth: {quarter_data.metrics_revenue_growth:.1f}%")
+            if quarter_data.revenue_growth:
+                logger.info(f"Growth: {quarter_data.revenue_growth:.1f}%")
             logger.info(f"Tone: {quarter_data.tone.upper()}")
             
         logger.info("[STEP 4] Generating master reports...")
@@ -1418,18 +1388,10 @@ class DNAEvolutionAnalyzer:
         self.report_gen.generate_prediction_tracker(dna)
         self.report_gen.generate_investment_brief(dna)
         
-        logger.info(f"DNA v{dna.version} generated:")
-        logger.info(f"Patterns Learned: {len(dna.patterns)}")
-        logger.info(f"Predictions Made: {len(dna.predictions)}")
-        if dna.model_accuracy_prediction_accuracy > 0:
-            logger.info(f"Prediction Accuracy: {dna.model_accuracy_prediction_accuracy*100:.0f}%")
-            
         logger.info(f"{'='*80}")
         logger.info("[ANALYSIS COMPLETE]")
-        logger.info(f"Output Directory: {self.output_dir}/{self.ticker}/")
         logger.info(f"DNA Files: {self.output_dir}/{self.ticker}/dna/")
         logger.info(f"Reports: {self.output_dir}/{self.ticker}/reports/")
-        logger.info(f"Database: {self.db_manager.db_path}")
         logger.info(f"{'='*80}")
         
         self.db_manager.close()
@@ -1458,16 +1420,28 @@ def main():
     analyzer = DNAEvolutionAnalyzer(args.folder, args.ticker, args.output_dir)
     try:
         dna = analyzer.run()
+        
+        # Print final investment verdict
         if dna:
-            logger.info(f"\n{'*'*80}")
-            logger.info(f"INVESTMENT VERDICT")
-            logger.info(f"{'*'*80}")
-            logger.info(f"See 03_INVESTMENT_BRIEF.md for detailed recommendation")
-            logger.info(f"{'*'*80}\n")
+            logger.info("\n" + "="*80)
+            logger.info("INVESTMENT VERDICT")
+            logger.info("="*80)
+            latest = dna.timeline[-1] if dna.timeline else None
+            if latest:
+                logger.info(f"Latest Quarter: {latest.quarter}")
+                if latest.revenue_growth:
+                    logger.info(f"Growth: {latest.revenue_growth:.1f}%")
+                logger.info(f"Tone: {latest.tone.upper()}")
+            if 'growth_trajectory' in dna.patterns:
+                logger.info(f"Trajectory: {dna.patterns['growth_trajectory'].rule}")
+            
+            logger.info("\nSee 05_INVESTMENT_BRIEF.md for detailed recommendation")
+            logger.info("="*80)
+            
     except KeyboardInterrupt:
-        logger.info("\nAnalysis interrupted by user")
+        logger.info("\n\nAnalysis interrupted by user")
     except Exception as e:
-        logger.error(f"\nAnalysis failed: {e}", exc_info=True)
+        logger.error(f"\n\nAnalysis failed: {e}", exc_info=True)
 
 if __name__ == '__main__':
     main()
