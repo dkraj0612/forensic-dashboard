@@ -385,12 +385,11 @@ class TranscriptExtractor:
         except:
             return "neutral"
 
-    def assess_specificity(self, text: str) -> str:
+        def assess_specificity(self, text: str) -> str:
         specific_patterns = [
-            r'
-\d+\% ',
-            r'\$\d+[MBK]? ',
-            r' Q[1-4]\s+\d{4} ',
+            r'\n\d+\%\b',
+            r'\$\d+[MBK]?\b',
+            r'\bQ[1-4]\s+\d{4}\b',
             r'\d+\s+(?:customers|clients|engineers|employees)',
         ]
         specific_count = sum(len(re.findall(p, text)) for p in specific_patterns)
@@ -402,6 +401,7 @@ class TranscriptExtractor:
         if ratio > 30: return "high"
         elif ratio > 15: return "medium"
         else: return "low"
+
 
     def extract_quotes(self, text: str) -> List[Tuple[str, str]]:
         quotes = []
