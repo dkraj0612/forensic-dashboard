@@ -414,8 +414,7 @@ class TranscriptExtractor:
 # ====== DNA BUILDER ======
 class DNABuilder:
     """BUILDS AND EVOLVES COMPANY DNA"""
-    def build_baseline(self, version: int = 1
-    ticker: str = "", first_quarter_data: QuarterData) -> CompanyDNA:
+    def build_baseline(self, ticker: str, first_quarter_data: QuarterData) -> CompanyDNA:
         logger.info(f"Building baseline DNA for {ticker} from {first_quarter_data.quarter}")
         dna = CompanyDNA(
             ticker=ticker,
@@ -944,8 +943,7 @@ class PredictionEngine:
 # ====== DATABASE MANAGER ======
 class DatabaseManager:
     """Manages dual storage: JSON files and SQLite database"""
-    def __init__(self, output_dir: str, version: int = 1
-    ticker: str = ""):
+    def __init__(self, output_dir: str, ticker: str):
         self.output_dir = Path(output_dir) / ticker
         self.dna_dir = self.output_dir / 'dna'
         self.db_path = self.output_dir / 'transcripts.db'
@@ -980,8 +978,7 @@ class DatabaseManager:
 # ====== REPORT GENERATOR ======
 class ReportGenerator:
     """Generates all markdown reports"""
-    def __init__(self, output_dir: str, version: int = 1
-    ticker: str = ""):
+    def __init__(self, output_dir: str, ticker: str):
         self.output_dir = Path(output_dir) / ticker
         self.reports_dir = self.output_dir / 'reports'
         self.reports_dir.mkdir(parents=True, exist_ok=True)
@@ -1321,8 +1318,7 @@ class ReportGenerator:
 # ====== MAIN ORCHESTRATOR ======
 class DNAEvolutionAnalyzer:
     """MAIN ORCHESTRATOR - runs the complete DNA evolution analysis"""
-    def __init__(self, folder_path: str, version: int = 1
-    ticker: str = "", output_dir: str = "analysis_output"):
+    def __init__(self, folder_path: str, ticker: str, output_dir: str = "analysis_output"):
         self.folder_path = folder_path
         self.ticker = ticker
         self.output_dir = output_dir
