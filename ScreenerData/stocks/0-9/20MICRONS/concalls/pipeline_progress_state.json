@@ -44,7 +44,48 @@
             "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_34_Transcript.md",
             "quarter": "Q1",
             "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_6_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q1",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_36_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_40_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_41_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_42_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Q4_FY19_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_43_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_40_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_39_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_38_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_36_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_37_Transcript.md",
+        "./ScreenerData/stocks/0-9/20MICRONS/concalls/20MICRONS_Fallback_Transcript_34_Transcript.md"
+    ]
 }
