@@ -39,11 +39,10 @@ logger = logging.getLogger(__name__)
 @dataclass
 class QuarterData:
     """Complete data for a single quarter"""
-    version: int = 1
-    ticker: str = ""
+    ticker: str
     file_path: str
+    date: datetime
     quarter: str = ""
-    date: datetime = field(default_factory=datetime.now)
     revenue_growth: Optional[float] = None
     margin: Optional[float] = None
     customer_count: Optional[int] = None
@@ -90,8 +89,8 @@ class CompanyDNA:
     """The evolving intelligence about a company"""
     version: int = 1
     ticker: str = ""
-    baseline_quarter: str
-    latest_quarter: str
+    baseline_quarter: str = ""
+    latest_quarter: str = ""
     timeline: List[QuarterData] = field(default_factory=list)
     open_promises: List[Dict] = field(default_factory=list)
     promises_tracking: Dict[str, Dict] = field(default_factory=dict)
@@ -258,16 +257,16 @@ class TranscriptExtractor:
 
     def _extract_themes(self, text: str) -> List[str]:
         theme_patterns = {
-            'AI/ML': r' (?:AI|artificial intelligence|machine learning|generative AI) ',
-            'International Expansion': r' (?:international|global|overseas|expansion|geographic) ',
-            'New Products': r' (?:new product|launch|release|introduce|unveil|shipping) ',
-            'Customer Acquisition': r' (?:customer acquisition|new customer|growth) ',
-            'Market Share': r' (?:market share|competitive position|market leadership) ',
-            'Profitability': r' (?:profitability|profitable|margins|operating leverage) ',
-            'R&D': r' (?:research|development|innovation|engineering) ',
-            'Partnerships': r' (?:partnership|collaboration|strategic alliance|joint venture) ',
-            'M&A': r' (?:acquisition|merger|M&A|acquiring|acquire) ',
-            'Cost Control': r' (?:cost control|efficiency|optimization|streamline) '
+            'AI/ML': r'\b(?:AI|artificial intelligence|machine learning|generative AI)\b',
+            'International Expansion': r'\b(?:international|global|overseas|expansion|geographic)\b',
+            'New Products': r'\b(?:new product|launch|release|introduce|unveil|shipping)\b',
+            'Customer Acquisition': r'\b(?:customer acquisition|new customer|growth)\b',
+            'Market Share': r'\b(?:market share|competitive position|market leadership)\b',
+            'Profitability': r'\b(?:profitability|profitable|margins|operating leverage)\b',
+            'R&D': r'\b(?:research|development|innovation|engineering)\b',
+            'Partnerships': r'\b(?:partnership|collaboration|strategic alliance|joint venture)\b',
+            'M&A': r'\b(?:acquisition|merger|M&A|acquiring|acquire)\b',
+            'Cost Control': r'\b(?:cost control|efficiency|optimization|streamline)\b'
         }
         themes = []
         for theme, pattern in theme_patterns.items():
@@ -545,7 +544,7 @@ class DNABuilder:
 
     def _extract_keywords(self, text: str) -> List[str]:
         common = {'will', 'plan', 'to', 'the', 'a', 'an', 'by', 'in', 'on', 'of', 'and', 'or'}
-        words = re.findall(r' \w+ ', text.lower())
+        words = re.findall(r'\b\w+\b', text.lower())
         return [w for w in words if w not in common and len(w) > 3][:5]
 
     def _extract_number(self, text: str) -> Optional[float]:
@@ -727,7 +726,7 @@ class DeviationDetector:
                             'type': 'customer_silence',
                             'severity': 'major',
                             'description': f"{customer} not mentioned (was in {len(data['mentions'])} consecutive quarters)",
-                            'icon': 'ð´'
+                            'icon': '🔴'
                         })
         return deviations
 
@@ -740,7 +739,7 @@ class DeviationDetector:
                         'type': 'theme_disappeared',
                         'severity': 'moderate',
                         'description': f"Theme '{theme}' absent (was in {len(data['mentions'])} quarters)",
-                        'icon': 'ð '
+                        'icon': '🟠'
                     })
                     
         existing_themes = set(dna.theme_lifecycle.keys())
@@ -750,7 +749,7 @@ class DeviationDetector:
                 'type': 'new_theme',
                 'severity': 'minor',
                 'description': f"NEW theme appeared: '{theme}'",
-                'icon': 'ð¡'
+                'icon': '🟡'
             })
         return deviations
 
@@ -769,7 +768,7 @@ class DeviationDetector:
                     'type': 'tone_shift',
                     'severity': severity,
                     'description': f"Tone shifted: {prev_tone.upper()} -> {new_data.tone.upper()}",
-                    'icon': 'ð´' if severity == 'major' else 'ð '
+                    'icon': '🔴' if severity == 'major' else '🟠'
                 })
         return deviations
 
@@ -820,25 +819,19 @@ class PredictionEngine:
             
         recent = growth_history[-3:]
         
-        # Simple trend-based prediction
         if len(recent) >= 3:
-            # Check if accelerating/decelerating
             if all(recent[i] > recent[i-1] for i in range(1, len(recent))):
-                # Accelerating - predict continuation
                 avg_increase = (recent[-1] - recent[0]) / 2
                 predicted = recent[-1] + avg_increase
                 confidence = 0.70
             elif all(recent[i] < recent[i-1] for i in range(1, len(recent))):
-                # Decelerating - predict continuation
                 avg_decrease = (recent[0] - recent[-1]) / 2
                 predicted = recent[-1] - avg_decrease
                 confidence = 0.70
             else:
-                # Use average
                 predicted = sum(recent) / len(recent)
                 confidence = 0.60
                 
-            # Create range
             range_low = predicted - 3
             range_high = predicted + 3
             
@@ -857,17 +850,14 @@ class PredictionEngine:
             
         current_tone = dna.timeline[-1].tone
         
-        # Check pattern
         if f"tone_{current_tone}" in dna.patterns:
             pattern = dna.patterns[f"tone_{current_tone}"]
-            return current_tone, pattern.confidence
+            return current_tone, getattr(pattern, 'confidence', 0.50)
             
-        # Default: assume continuation
         return current_tone, 0.50
         
     def _predict_customers(self, dna: CompanyDNA) -> Tuple[Optional[List[str]], float]:
         """Predict which customers will be mentioned"""
-        # Find customers mentioned in last 3 quarters
         recent_quarters = dna.timeline[-3:]
         customer_frequency = defaultdict(int)
         
@@ -875,7 +865,6 @@ class PredictionEngine:
             for customer in getattr(q, 'customer_mentions', {}).keys():
                 customer_frequency[customer] += 1
                 
-        # Predict customers mentioned 2+ times in last 3 quarters
         likely_customers = [c for c, freq in customer_frequency.items() if freq >= 2]
         
         if likely_customers:
@@ -890,7 +879,6 @@ class PredictionEngine:
         correct = 0
         total = 0
         
-        # Validate growth
         if 'revenue_growth' in prediction.predictions and actual_data.revenue_growth:
             pred_range = prediction.predictions['revenue_growth']['range']
             low, high = map(float, pred_range.replace('%', '').split('-'))
@@ -902,7 +890,6 @@ class PredictionEngine:
             if low <= actual <= high:
                 correct += 1
                 
-        # Validate tone
         if 'tone' in prediction.predictions:
             pred_tone = prediction.predictions['tone']
             actual_tone = actual_data.tone
@@ -912,19 +899,17 @@ class PredictionEngine:
             if pred_tone == actual_tone:
                 correct += 1
                 
-        # Validate customers
         if 'customers' in prediction.predictions:
             pred_customers = set(prediction.predictions['customers'])
-            actual_customers = set(actual_data.customer_mentions.keys())
+            actual_customers = set(getattr(actual_data, 'customer_mentions', {}).keys())
             
             prediction.actual_results['customers'] = list(actual_customers)
             
             total += 1
             overlap = len(pred_customers.intersection(actual_customers))
-            if overlap >= len(pred_customers) * 0.7:  # 70% match correct
+            if overlap >= len(pred_customers) * 0.7:
                 correct += 1
                 
-        # Calculate accuracy
         if total > 0:
             prediction.accuracy = correct / total
             prediction.validated = True
@@ -970,7 +955,7 @@ class DatabaseManager:
         with open(latest_path, "w", encoding='utf-8') as f:
             json.dump(dna_dict, f, indent=2, default=str)
             
-        logger.info(f"DNA v{dna.latest_quarter} saved to {json_path}")
+        logger.info(f"DNA v{dna.version} saved to {json_path}")
         
     def close(self):
         if self.conn: self.conn.close()
@@ -996,11 +981,10 @@ class ReportGenerator:
             f.write(f"**Tone:** {quarter_data.tone.upper()} | **Specificity:** {quarter_data.specificity.upper()}\n\n")
             f.write("---\n\n")
             
-            # Validate previous prediction if exists
             if quarter_idx > 0:
                 prev_predictions = [p for p in dna.predictions if p.target_quarter == quarter_data.quarter]
                 if prev_predictions:
-                    f.write("## ð¯ Prediction Validation\n\n")
+                    f.write("## 🎯 Prediction Validation\n\n")
                     for pred in prev_predictions:
                         if getattr(pred, 'validated', False):
                             f.write(f"**Prediction made in {pred.made_on_quarter}:**\n\n")
@@ -1008,39 +992,39 @@ class ReportGenerator:
                             if 'revenue_growth' in pred.predictions:
                                 pred_range = pred.predictions['revenue_growth'].get('range', 'N/A')
                                 actual = getattr(pred, 'actual_results', {}).get('revenue_growth', 'N/A')
-                                icon = "â" if getattr(pred, 'accuracy', 0) >= 0.8 else "â ï¸" if getattr(pred, 'accuracy', 0) >= 0.5 else "â"
+                                icon = "✅" if getattr(pred, 'accuracy', 0) >= 0.8 else "⚠️" if getattr(pred, 'accuracy', 0) >= 0.5 else "❌"
                                 f.write(f"{icon} **Growth Prediction:** {pred_range} | **Actual:** {actual}\n")
                                 
                             if 'tone' in pred.predictions:
                                 pred_tone = pred.predictions['tone']
                                 actual_tone = getattr(pred, 'actual_results', {}).get('tone', 'N/A')
-                                icon = "â" if pred_tone == actual_tone else "â"
+                                icon = "✅" if pred_tone == actual_tone else "❌"
                                 f.write(f"{icon} **Tone Prediction:** {pred_tone.upper()} | **Actual:** {str(actual_tone).upper()}\n")
                                 
                             f.write(f"\n**Overall Accuracy:** {getattr(pred, 'accuracy', 0)*100:.0f}%\n\n")
                     f.write("---\n\n")
                     
-            f.write("## ð Key Metrics\n\n")
+            f.write("## 📊 Key Metrics\n\n")
             if quarter_data.revenue_growth is not None:
                 f.write(f"**Revenue Growth:** {quarter_data.revenue_growth:.1f}%\n")
                 if not is_baseline and quarter_idx > 0:
                     prev_growth = dna.timeline[quarter_idx-1].revenue_growth
                     if prev_growth:
                         delta = quarter_data.revenue_growth - prev_growth
-                        icon = "ð¢" if delta > 0 else "ð´" if delta < 0 else "âª"
+                        icon = "🟢" if delta > 0 else "🔴" if delta < 0 else "⚪"
                         f.write(f"  - vs Previous Quarter: {icon} {delta:+.1f}pp\n")
                         
                     baseline_growth = dna.timeline[0].revenue_growth
                     if baseline_growth:
                         delta = quarter_data.revenue_growth - baseline_growth
-                        icon = "ð¢" if delta > 0 else "ð´"
+                        icon = "🟢" if delta > 0 else "🔴"
                         f.write(f"  - vs Baseline ({dna.timeline[0].quarter}): {icon} {delta:+.1f}pp\n")
                         
                     all_growth = [q.revenue_growth for q in dna.timeline[:quarter_idx] if q.revenue_growth]
                     if all_growth:
                         avg = sum(all_growth) / len(all_growth)
                         delta = quarter_data.revenue_growth - avg
-                        icon = "ð¢" if delta > 2 else "ð´" if delta < -2 else "âª"
+                        icon = "🟢" if delta > 2 else "🔴" if delta < -2 else "⚪"
                         f.write(f"  - vs Historical Average: {icon} {delta:+.1f}pp (avg: {avg:.1f}%)\n")
             f.write("\n")
             
@@ -1048,7 +1032,7 @@ class ReportGenerator:
                 f.write(f"**Gross Margin:** {quarter_data.margin:.1f}%\n\n")
                 
             if deviations:
-                f.write("## ð¨ Pattern Deviations Detected\n\n")
+                f.write("## 🚨 Pattern Deviations Detected\n\n")
                 critical = [d for d in deviations if d['severity'] == 'critical']
                 major = [d for d in deviations if d['severity'] == 'major']
                 moderate = [d for d in deviations if d['severity'] == 'moderate']
@@ -1062,27 +1046,27 @@ class ReportGenerator:
                         f.write("\n")
                 f.write("---\n\n")
                 
-            f.write("## ð Business Narrative\n\n")
+            f.write("## 📝 Business Narrative\n\n")
             if quarter_data.key_themes:
                 f.write("**Key Themes:**\n")
                 for theme in quarter_data.key_themes:
                     if theme in dna.theme_lifecycle:
                         status = dna.theme_lifecycle[theme]['status']
                         mentions = len(dna.theme_lifecycle[theme]['mentions'])
-                        if status == 'new': f.write(f"- ð {theme}\n")
-                        else: f.write(f"- ð {theme} ({mentions} quarters)\n")
+                        if status == 'new': f.write(f"- 🆕 {theme}\n")
+                        else: f.write(f"- 🔄 {theme} ({mentions} quarters)\n")
                     else:
                         f.write(f"- {theme}\n")
                 f.write("\n")
                 
             if quarter_data.wins:
                 f.write("**Wins & Achievements:**\n")
-                for win in quarter_data.wins: f.write(f"- â {win}\n")
+                for win in quarter_data.wins: f.write(f"- ✅ {win}\n")
                 f.write("\n")
                 
             if quarter_data.challenges:
                 f.write("**Challenges Discussed:**\n")
-                for challenge in quarter_data.challenges: f.write(f"- â ï¸ {challenge}\n")
+                for challenge in quarter_data.challenges: f.write(f"- ⚠️ {challenge}\n")
                 f.write("\n")
                 
             if quarter_data.customer_mentions:
@@ -1091,18 +1075,18 @@ class ReportGenerator:
                     if customer in dna.customer_evolution:
                         mentions = len(dna.customer_evolution[customer].get('mentions', []))
                         if dna.customer_evolution[customer].get('first_mentioned') == quarter_data.quarter:
-                            f.write(f"- ð **{customer}**: {context[:150]}...\n")
+                            f.write(f"- 🆕 **{customer}**: {context[:150]}...\n")
                         else:
-                            f.write(f"- ð **{customer}** ({mentions} mentions): {context[:150]}...\n")
+                            f.write(f"- 🔄 **{customer}** ({mentions} mentions): {context[:150]}...\n")
                 f.write("\n")
                 
             if quarter_data.product_updates:
                 f.write("**Product Updates:**\n")
-                for update in quarter_data.product_updates: f.write(f"- ð {update}\n")
+                for update in quarter_data.product_updates: f.write(f"- 🚀 {update}\n")
                 f.write("\n")
                 
             if quarter_data.forward_looking_guidance or quarter_data.promises:
-                f.write("## ð® Forward-Looking Statements\n\n")
+                f.write("## 🔮 Forward-Looking Statements\n\n")
                 if quarter_data.forward_looking_guidance:
                     f.write("**Guidance:**\n")
                     for guidance in quarter_data.forward_looking_guidance: f.write(f"- {guidance}\n")
@@ -1115,13 +1099,13 @@ class ReportGenerator:
                     f.write("\n")
                     
             if quarter_data.evidence_key_quotes:
-                f.write("## ð£ï¸ Key Quotes\n\n")
+                f.write("## 🗣️ Key Quotes\n\n")
                 for speaker, quote in quarter_data.evidence_key_quotes:
                     f.write(f"> **{speaker}:** \"{quote}\"\n\n")
                     
             if prediction and not is_baseline:
                 f.write("---\n\n")
-                f.write("## ð® Prediction for Next Quarter\n")
+                f.write("## 🔮 Prediction for Next Quarter\n")
                 f.write(f"**Target:** {prediction.target_quarter}\n")
                 f.write(f"**Overall Confidence:** {prediction.confidence*100:.0f}%\n\n")
                 
@@ -1144,7 +1128,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '00_MASTER_TIMELINE.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð§¬ {getattr(dna, 'ticker', 'UNKNOWN')} - Master Timeline\n\n")
+            f.write(f"# 🧬 {getattr(dna, 'ticker', 'UNKNOWN')} - Master Timeline\n\n")
             f.write(f"**DNA Version:** v{getattr(dna, 'version', 1)}\n")
             f.write(f"**Period:** {dna.baseline_quarter} -> {dna.latest_quarter}\n")
             f.write(f"**Total Quarters:** {len(dna.timeline)}\n\n")
@@ -1169,7 +1153,7 @@ class ReportGenerator:
                 for q in dna.timeline:
                     if q.revenue_growth:
                         bar_length = int((q.revenue_growth / max_growth) * 40) if max_growth > 0 else 0
-                        bar = "â" * bar_length
+                        bar = "█" * bar_length
                         f.write(f"{q.quarter:12s} | {bar} {q.revenue_growth:.1f}%\n")
             f.write("\n")
             
@@ -1187,7 +1171,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '02_PREDICTION_TRACKER.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð¯ {getattr(dna, 'ticker', 'UNKNOWN')} - Prediction Accuracy Tracker\n\n")
+            f.write(f"# 🎯 {getattr(dna, 'ticker', 'UNKNOWN')} - Prediction Accuracy Tracker\n\n")
             
             if not dna.predictions:
                 f.write("No predictions made yet.\n")
@@ -1214,7 +1198,7 @@ class ReportGenerator:
                         actual_str = "N/A"
                         
                     accuracy = getattr(pred, 'accuracy', 0)
-                    icon = "â" if accuracy >= 0.8 else "â ï¸" if accuracy >= 0.5 else "â"
+                    icon = "✅" if accuracy >= 0.8 else "⚠️" if accuracy >= 0.5 else "❌"
                     f.write(f"| {pred.made_on_quarter} | {pred.target_quarter} | {pred_str} | {actual_str} | {icon} {accuracy*100:.0f}% |\n")
                     
         logger.info(f"Prediction tracker generated: {report_path}")
@@ -1224,7 +1208,7 @@ class ReportGenerator:
         report_path = self.reports_dir / '05_INVESTMENT_BRIEF.md'
         
         with open(report_path, 'w', encoding='utf-8') as f:
-            f.write(f"# ð¼ {getattr(dna, 'ticker', 'UNKNOWN')} - Investment Brief\n\n")
+            f.write(f"# 💼 {getattr(dna, 'ticker', 'UNKNOWN')} - Investment Brief\n\n")
             f.write(f"**As of:** {dna.latest_quarter}\n")
             f.write(f"**Last Updated:** {datetime.now().strftime('%Y-%m-%d')}\n\n")
             f.write("---\n\n")
@@ -1237,13 +1221,13 @@ class ReportGenerator:
                 traj = getattr(dna.patterns['growth_trajectory'], 'rule', '')
                 if 'accelerating' in traj:
                     score += 3
-                    reasoning.append("â Growth accelerating (most important factor)")
+                    reasoning.append("✅ Growth accelerating (most important factor)")
                 elif 'steady' in traj:
                     score += 1
-                    reasoning.append("â Growth steady")
+                    reasoning.append("✅ Growth steady")
                 elif 'decelerating' in traj:
                     score -= 2
-                    reasoning.append("ð´ Growth decelerating")
+                    reasoning.append("🔴 Growth decelerating")
                     
             # Promise delivery
             if 'promise_delivery' in dna.patterns:
@@ -1251,39 +1235,39 @@ class ReportGenerator:
                 conf = getattr(pattern, 'confidence', 0)
                 if conf > 0.75:
                     score += 2
-                    reasoning.append(f"â High management credibility ({conf*100:.0f}%)")
+                    reasoning.append(f"✅ High management credibility ({conf*100:.0f}%)")
                 elif conf < 0.50:
                     score -= 2
-                    reasoning.append(f"ð´ Low management credibility ({conf*100:.0f}%)")
+                    reasoning.append(f"🔴 Low management credibility ({conf*100:.0f}%)")
                     
             # Customer momentum
             active_customers = len([c for c, d in dna.customer_evolution.items() if len(d.get('mentions', [])) >= 3])
             if active_customers >= 3:
                 score += 2
-                reasoning.append(f"â Multiple sector leader relationships ({active_customers})")
+                reasoning.append(f"✅ Multiple sector leader relationships ({active_customers})")
                 
             # Tone
             latest = dna.timeline[-1] if dna.timeline else None
             if latest:
                 if latest.tone == 'defensive':
                     score -= 2
-                    reasoning.append("ð´ Management tone defensive")
+                    reasoning.append("🔴 Management tone defensive")
                 elif latest.tone == 'positive':
                     score += 1
-                    reasoning.append("â Positive management tone")
+                    reasoning.append("✅ Positive management tone")
                     
             # Generate recommendation
             if score >= 4:
-                verdict = "ð¢ **STRONG BUY**"
+                verdict = "🟢 **STRONG BUY**"
                 summary = "Multiple positive factors align. High conviction opportunity."
             elif score >= 2:
-                verdict = "ð¢ **BUY**"
+                verdict = "🟢 **BUY**"
                 summary = "More positives than negatives. Good risk/reward."
             elif score >= 0:
-                verdict = "ð¡ **HOLD**"
+                verdict = "🟡 **HOLD**"
                 summary = "Mixed signals. Watch closely before adding."
             else:
-                verdict = "ð´ **AVOID/SELL**"
+                verdict = "🔴 **AVOID/SELL**"
                 summary = "Too many red flags. Risk outweighs potential."
                 
             f.write(f"## {verdict}\n\n")
@@ -1326,14 +1310,15 @@ class DNAEvolutionAnalyzer:
         logger.info("Initializing components...")
         self.scanner = FileScanner()
         self.extractor = TranscriptExtractor()
-        self.builder = DNABuilder()
-        self.learner = PatternLearner()
+        self.dna_builder = DNABuilder()
+        self.pattern_learner = PatternLearner()
         self.db_manager = DatabaseManager(output_dir, ticker)
         self.report_gen = ReportGenerator(output_dir, ticker)
         self.prediction_engine = PredictionEngine()
         self.deviation_detector = DeviationDetector()
 
     def run(self):
+        """Execute the complete DNA evolution analysis"""
         logger.info(f"{'='*80}")
         logger.info(f"DNA EVOLUTION ANALYZER - Started for {self.ticker}")
         logger.info(f"{'='*80}")
@@ -1347,30 +1332,55 @@ class DNAEvolutionAnalyzer:
         logger.info("[STEP 2] Building baseline DNA from oldest transcript...")
         file_path, date, quarter = sorted_transcripts[0]
         first_data = self.extractor.extract(file_path, quarter, date)
-        dna = self.builder.build_baseline(self.ticker, first_data)
+        
+        # Save baseline data
+        dna = self.dna_builder.build_baseline(self.ticker, first_data)
         self.db_manager.save_dna(dna)
+        
+        # Generate baseline report
+        self.report_gen.generate_quarter_report(dna, 0, [])
+        
+        logger.info(f"Processing baseline: {quarter} ({file_path})")
+        logger.info(f"Baseline DNA v1 created from {quarter}")
         
         logger.info("[STEP 3] Evolving DNA with each subsequent transcript...")
         for idx, (file_path, date, quarter) in enumerate(sorted_transcripts[1:], start=1):
             logger.info(f"--- Processing Quarter {idx+1}/{len(sorted_transcripts)}: {quarter} ---")
             quarter_data = self.extractor.extract(file_path, quarter, date)
             
+            # Validate previous prediction if exists
             if dna.predictions:
-                self.prediction_engine.validate_prediction(dna.predictions[-1], quarter_data)
-                
-            dna = self.builder.evolve_dna(dna, quarter_data)
-            dna = self.learner.learn_patterns(dna)
-            deviations = self.deviation_detector.detect_deviations(dna, quarter_data)
+                last_prediction = dna.predictions[-1]
+                if last_prediction.target_quarter == quarter:
+                    validated_pred = self.prediction_engine.validate_prediction(last_prediction, quarter_data)
+                    logger.info(f"Prediction accuracy: {validated_pred.accuracy*100:.0f}%")
+                    
+                    # Update overall accuracy
+                    validated_count = len([p for p in dna.predictions if p.validated])
+                    if validated_count > 0:
+                        dna.model_accuracy_prediction_accuracy = sum(p.accuracy for p in dna.predictions if p.validated) / validated_count
             
+            # Evolve DNA
+            dna = self.dna_builder.evolve_dna(dna, quarter_data)
+            
+            # Learn patterns
+            dna = self.pattern_learner.learn_patterns(dna)
+            
+            # Detect deviations
+            deviations = self.deviation_detector.detect_deviations(dna, quarter_data)
             if deviations:
                 logger.info(f"  -> Detected {len(deviations)} pattern deviations")
                 
+            # Save evolved DNA
+            self.db_manager.save_dna(dna)
+            
+            # Make prediction for next quarter
             prediction = self.prediction_engine.make_predictions(dna)
             if prediction:
                 dna.predictions.append(prediction)
                 logger.info(f"  -> Made prediction for {prediction.target_quarter}")
                 
-            self.db_manager.save_dna(dna)
+            # Generate quarter report
             self.report_gen.generate_quarter_report(dna, idx, deviations, prediction)
             
             # Log progress
@@ -1383,10 +1393,18 @@ class DNAEvolutionAnalyzer:
         self.report_gen.generate_prediction_tracker(dna)
         self.report_gen.generate_investment_brief(dna)
         
+        logger.info(f"DNA v{dna.version} generated:")
+        logger.info(f"Patterns Learned: {len(dna.patterns)}")
+        logger.info(f"Predictions Made: {len(dna.predictions)}")
+        if dna.model_accuracy_prediction_accuracy > 0:
+            logger.info(f"Prediction Accuracy: {dna.model_accuracy_prediction_accuracy*100:.0f}%")
+            
         logger.info(f"{'='*80}")
         logger.info("[ANALYSIS COMPLETE]")
+        logger.info(f"Output Directory: {self.output_dir}/{self.ticker}/")
         logger.info(f"DNA Files: {self.output_dir}/{self.ticker}/dna/")
         logger.info(f"Reports: {self.output_dir}/{self.ticker}/reports/")
+        logger.info(f"Database: {self.db_manager.db_path}")
         logger.info(f"{'='*80}")
         
         self.db_manager.close()
