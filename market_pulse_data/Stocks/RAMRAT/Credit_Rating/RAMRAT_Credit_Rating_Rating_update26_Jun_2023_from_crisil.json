@@ -1,0 +1,8 @@
+{
+    "ticker": "RAMRAT",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Ram Ratna Wires Limited-RU-26-06-2023.pdf",
+    "file_type": "pdf"
+}

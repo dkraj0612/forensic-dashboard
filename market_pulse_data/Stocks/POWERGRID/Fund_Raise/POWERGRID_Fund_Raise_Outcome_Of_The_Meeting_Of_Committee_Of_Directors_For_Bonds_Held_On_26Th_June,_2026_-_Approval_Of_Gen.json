@@ -1,0 +1,8 @@
+{
+    "ticker": "POWERGRID",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de636b80-791d-41d8-982b-1a95e421a0c2.pdf",
+    "file_type": "pdf"
+}

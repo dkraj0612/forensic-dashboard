@@ -1,0 +1,8 @@
+{
+    "ticker": "VIMTALABS",
+    "category": "Dividend",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=595c5751-91bc-4683-af6e-fc26017470e7.pdf",
+    "file_type": "pdf"
+}

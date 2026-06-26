@@ -1,0 +1,8 @@
+{
+    "ticker": "SONACOMS",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=deb2f57c-6911-439b-870f-81957e6d22cc.pdf",
+    "file_type": "pdf"
+}

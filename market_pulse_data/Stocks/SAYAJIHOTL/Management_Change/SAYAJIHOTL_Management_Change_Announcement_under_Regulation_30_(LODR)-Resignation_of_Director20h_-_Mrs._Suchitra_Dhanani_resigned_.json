@@ -1,0 +1,8 @@
+{
+    "ticker": "SAYAJIHOTL",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4fc10b2a-7317-4131-a8d7-bfc0d2c6fd09.pdf",
+    "file_type": "pdf"
+}

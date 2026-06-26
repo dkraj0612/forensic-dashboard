@@ -1,0 +1,8 @@
+{
+    "ticker": "ONGC",
+    "category": "Results",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0aa5a6ff-f262-4540-9c6e-4a30036c5f6f.pdf",
+    "file_type": "pdf"
+}

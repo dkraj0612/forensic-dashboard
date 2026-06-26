@@ -1,0 +1,8 @@
+{
+    "ticker": "PFS",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e196f815-3a45-4490-8b10-385fd54c5a5a.pdf",
+    "file_type": "pdf"
+}

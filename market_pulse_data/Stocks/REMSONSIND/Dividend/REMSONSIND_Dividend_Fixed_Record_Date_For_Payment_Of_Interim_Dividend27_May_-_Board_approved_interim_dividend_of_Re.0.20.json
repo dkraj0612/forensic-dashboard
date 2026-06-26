@@ -1,0 +1,8 @@
+{
+    "ticker": "REMSONSIND",
+    "category": "Dividend",
+    "extraction_date": "2026-06-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb1fe0d7-aa14-4c6c-91b9-aa81852438a5.pdf",
+    "file_type": "pdf"
+}
