@@ -12,13 +12,15 @@ from io import StringIO
 import pandas as pd
 from bs4 import BeautifulSoup
 
-# Try tls_requests first, fall back to requests
+# Use curl_cffi for TLS fingerprint impersonation, fall back to requests
 try:
-    import tls_requests
-    SESSION_CLS = tls_requests.Session
+    from curl_cffi import requests as curl_requests
+    SESSION_CLS = curl_requests.Session
+    HAS_IMPERSONATE = True
 except ImportError:
     import requests
     SESSION_CLS = requests.Session
+    HAS_IMPERSONATE = False
 
 TODAY_STR = pd.Timestamp.now().strftime("%Y-%m-%d")
 
@@ -357,14 +359,17 @@ def scrape_screener_fundamentals(ticker: str) -> dict:
     """Scrapes comprehensive tabular data from Screener.in for a given ticker."""
     print(f"\n      [~] Scraping deep fundamentals for {ticker}...")
 
-    session = SESSION_CLS()
-    if hasattr(session, "impersonate"):
-        try:
-            session = SESSION_CLS(impersonate="chrome124")
-        except Exception:
-            pass
+     if HAS_IMPERSONATE:
+        session = curl_requests.Session(impersonate="chrome124")
+    else:
+        session = SESSION_CLS()
     session.headers.update({
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+        "Accept-Language": "en-US,en;q=0.5",
+        "Accept-Encoding": "gzip, deflate, br",
+        "DNT": "1",
+        "Connection": "keep-alive",
     })
 
     url = f"https://www.screener.in/company/{ticker}/consolidated/"
