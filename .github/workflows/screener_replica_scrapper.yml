@@ -1,0 +1,35 @@
+name: Scrape Screener.in Data
+
+on:
+  schedule:
+    - cron: '0 6 * * *'   # Daily 6:00 AM UTC
+  workflow_dispatch:       # Manual trigger button in GitHub UI
+
+permissions:
+  contents: write
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas beautifulsoup4 lxml tls_requests
+
+      - name: Run scraper
+        run: python screener_replica_scraper.py
+
+      - name: Commit & push updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add stock_data.js
+          git diff --cached --quiet || git commit -m "Update stock data [bot] $(date -u +%Y-%m-%d_%H:%M)"
+          git push
