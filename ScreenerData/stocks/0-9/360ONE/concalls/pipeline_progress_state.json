@@ -1,0 +1,35 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_41_Transcript.md",
+            "quarter": "Q2",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q2",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_35_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q3",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/360ONE/concalls/360ONE_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q4",
+            "year": 2021
+        }
+    ],
+    "completed_files": []
+}
