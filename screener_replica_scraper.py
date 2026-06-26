@@ -359,10 +359,12 @@ def scrape_screener_fundamentals(ticker: str) -> dict:
     """Scrapes comprehensive tabular data from Screener.in for a given ticker."""
     print(f"\n      [~] Scraping deep fundamentals for {ticker}...")
 
-     if HAS_IMPERSONATE:
+    # Create session with TLS impersonation if available
+    if HAS_IMPERSONATE:
         session = curl_requests.Session(impersonate="chrome124")
     else:
         session = SESSION_CLS()
+    
     session.headers.update({
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
@@ -386,7 +388,7 @@ def scrape_screener_fundamentals(ticker: str) -> dict:
         return {}
 
     soup = BeautifulSoup(resp.text, "html.parser")
-
+    # ... rest of the function continues ...
     data = {
         "Ticker": ticker,
         "Extraction_Date": TODAY_STR,
