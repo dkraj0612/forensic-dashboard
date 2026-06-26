@@ -21,7 +21,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install pandas beautifulsoup4 lxml tls_requests
+        run: pip install pandas beautifulsoup4 lxml curl_cffi
 
       - name: Run scraper
         run: python screener_replica_scraper.py
