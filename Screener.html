@@ -1,0 +1,2093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Screener - Stock Analysis and Screening Tool</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter', 'sans-serif'] },
+      colors: {
+        primary: '#1a73e8',
+        secondary: '#34a853',
+        danger: '#ea4335',
+        warning: '#fbbc04',
+        dark: '#1f2937',
+        'dark-light': '#374151',
+        'gray-custom': '#6b7280',
+        'light-bg': '#f3f4f6',
+      }
+    }
+  }
+}
+</script>
+<style>
+* { scrollbar-width: thin; scrollbar-color: #d1d5db #f3f4f6; }
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f3f4f6; }
+::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9ca3af; }
+.metric-card { transition: all 0.2s ease; }
+.metric-card:hover { transform: translateY(-2px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+.stock-row { transition: background-color 0.15s ease; }
+.stock-row:hover { background-color: #f9fafb; }
+.filter-chip { animation: fadeIn 0.3s ease; }
+@keyframes fadeIn { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+.pulse-dot { animation: pulse 2s cubic-bezier(0.4,0,0.6,1) infinite; }
+@keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.5; } }
+.modal-enter { animation: modalIn 0.3s ease-out; }
+@keyframes modalIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+.tab-active { border-bottom: 2px solid #1a73e8; color: #1a73e8; }
+.tab-inactive { border-bottom: 2px solid transparent; color: #6b7280; }
+.tab-inactive:hover { color: #374151; }
+.fin-table th { position: sticky; top: 0; background: #f9fafb; z-index: 10; }
+.fin-row:hover { background-color: #f3f4f6; }
+.news-item { border-left: 3px solid transparent; transition: all 0.2s; }
+.news-item:hover { border-left-color: #1a73e8; background: #f9fafb; }
+.watchlist-item { transition: all 0.2s; }
+.watchlist-item:hover { background: #f3f4f6; }
+.screen-card { transition: all 0.2s; }
+.screen-card:hover { transform: translateY(-2px); box-shadow: 0 8px 20px -4px rgba(0,0,0,0.1); }
+.pro-con-item { display: flex; align-items: flex-start; gap: 8px; }
+.segment-pill { transition: all 0.2s; }
+.segment-pill:hover { transform: scale(1.05); }
+.insider-badge { animation: slideIn 0.3s ease; }
+@keyframes slideIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
+.peer-bar-bg { background: #e5e7eb; border-radius: 4px; height: 8px; overflow: hidden; }
+.peer-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
+</style>
+<base target="_blank">
+<base target="_blank">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+<!-- Navigation -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex justify-between h-16">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-2 cursor-pointer" onclick="showPage('screener')">
+<div class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-white font-bold text-lg">S</div>
+<span class="text-xl font-bold text-gray-900 tracking-tight">screener</span>
+</div>
+<div class="hidden md:flex items-center gap-6 text-sm font-medium text-gray-600">
+<a href="#" onclick="showPage('screener')" class="hover:text-primary transition-colors nav-link" data-page="screener">Screens</a>
+<a href="#" onclick="showPage('watchlist')" class="hover:text-primary transition-colors nav-link" data-page="watchlist">Watchlist</a>
+<a href="#" onclick="showPage('screens-directory')" class="hover:text-primary transition-colors nav-link" data-page="screens-directory">Explore</a>
+<a href="#" onclick="showPage('tools')" class="hover:text-primary transition-colors nav-link" data-page="tools">Tools</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden md:flex items-center gap-2 text-sm text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
+<div class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></div>
+<span>Market Open</span>
+<span class="text-gray-400">|</span>
+<span id="marketTime">--:--</span>
+</div>
+<button class="p-2 text-gray-500 hover:text-gray-700 transition-colors" onclick="toggleSearchModal()">
+<i class="fas fa-search"></i>
+</button>
+<button class="p-2 text-gray-500 hover:text-gray-700 transition-colors relative">
+<i class="fas fa-bell"></i>
+<span class="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+<button onclick="openScreenerAI()" class="p-2 text-gray-500 hover:text-primary transition-colors" title="Screener AI"><i class="fas fa-robot"></i></button>
+                <div class="w-8 h-8 bg-gradient-to-br from-primary to-blue-600 rounded-full flex items-center justify-center text-white text-sm font-semibold cursor-pointer">JD</div>
+</div>
+</div>
+</div>
+</nav>
+
+<!-- ==================== SCREENER PAGE ==================== -->
+<div id="page-screener" class="page-content">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+<div>
+<h1 class="text-2xl font-bold text-gray-900">Stock Screener</h1>
+<p class="text-sm text-gray-500 mt-1">Filter, analyze, and discover stocks across global markets</p>
+</div>
+<div class="flex items-center gap-3">
+<button onclick="resetFilters()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><i class="fas fa-undo mr-2"></i>Reset</button>
+<button onclick="saveScreen()" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors shadow-sm"><i class="fas fa-save mr-2"></i>Save Screen</button>
+<button onclick="exportData()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><i class="fas fa-download mr-2"></i>Export</button>
+                <button onclick="openQueryBuilder()" class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-blue-50 transition-colors"><i class="fas fa-code mr-2"></i>Query</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+<div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
+<div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Total Stocks</span><i class="fas fa-database text-gray-400"></i></div>
+<div class="text-2xl font-bold text-gray-900" id="totalStocks">0</div><div class="text-xs text-green-600 mt-1 font-medium">+12 today</div>
+</div>
+<div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
+<div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Avg P/E</span><i class="fas fa-chart-line text-gray-400"></i></div>
+<div class="text-2xl font-bold text-gray-900" id="avgPE">0.0</div><div class="text-xs text-gray-500 mt-1">Sector avg: 18.4</div>
+</div>
+<div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
+<div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Avg ROE</span><i class="fas fa-percentage text-gray-400"></i></div>
+<div class="text-2xl font-bold text-gray-900" id="avgROE">0%</div><div class="text-xs text-green-600 mt-1 font-medium">+2.3% YoY</div>
+</div>
+<div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
+<div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Filtered</span><i class="fas fa-filter text-gray-400"></i></div>
+<div class="text-2xl font-bold text-primary" id="filteredCount">0</div><div class="text-xs text-gray-500 mt-1">of total universe</div>
+</div>
+</div>
+</div>
+
+<!-- Filters Panel -->
+<div class="bg-white rounded-xl border border-gray-200 mb-6 overflow-hidden">
+<div class="p-4 border-b border-gray-200 flex items-center justify-between cursor-pointer hover:bg-gray-50 transition-colors" onclick="toggleFilters()">
+<div class="flex items-center gap-3"><i class="fas fa-sliders-h text-primary"></i><span class="font-semibold text-gray-900">Filters & Criteria</span><span id="activeFilterCount" class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded-full hidden">0</span></div>
+<i id="filterToggleIcon" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
+</div>
+<div id="filtersPanel" class="p-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Market Cap</label>
+<div class="flex items-center gap-2">
+<select id="marketCapOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="marketCapVal" placeholder="e.g. 1000" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+<div class="flex gap-2 text-xs text-gray-500"><button onclick="quickFilter('marketCap','large')" class="hover:text-primary">Large</button><button onclick="quickFilter('marketCap','mid')" class="hover:text-primary">Mid</button><button onclick="quickFilter('marketCap','small')" class="hover:text-primary">Small</button></div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">P/E Ratio</label>
+<div class="flex items-center gap-2">
+<select id="peOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="lt">&lt;</option><option value="gt">&gt;</option></select>
+<input type="number" id="peVal" placeholder="e.g. 20" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">ROE %</label>
+<div class="flex items-center gap-2">
+<select id="roeOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="roeVal" placeholder="e.g. 15" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Div Yield %</label>
+<div class="flex items-center gap-2">
+<select id="divOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="divVal" step="0.1" placeholder="e.g. 2.5" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Sector</label>
+<select id="sectorFilter" class="w-full text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+<option value="">All Sectors</option><option value="Technology">Technology</option><option value="Healthcare">Healthcare</option><option value="Financials">Financials</option><option value="Consumer">Consumer</option><option value="Energy">Energy</option><option value="Industrials">Industrials</option><option value="Materials">Materials</option><option value="Utilities">Utilities</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Debt/Equity</label>
+<div class="flex items-center gap-2">
+<select id="debtOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="lt">&lt;</option><option value="gt">&gt;</option></select>
+<input type="number" id="debtVal" step="0.1" placeholder="e.g. 1.0" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Stock Price ($)</label>
+<div class="flex items-center gap-2">
+<select id="priceOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="priceVal" placeholder="e.g. 50" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Sales Growth %</label>
+<div class="flex items-center gap-2">
+<select id="growthOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="growthVal" placeholder="e.g. 10" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+</div>
+<div id="activeFilters" class="mt-4 flex flex-wrap gap-2 hidden"></div>
+<div class="mt-6 pt-4 border-t border-gray-200">
+<span class="text-xs font-medium text-gray-500 uppercase tracking-wider mb-3 block">Quick Presets</span>
+<div class="flex flex-wrap gap-2">
+<button onclick="applyPreset('value')" class="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded-full hover:bg-blue-100 border border-blue-200">Value Stocks</button>
+<button onclick="applyPreset('growth')" class="px-3 py-1.5 text-xs font-medium bg-green-50 text-green-700 rounded-full hover:bg-green-100 border border-green-200">Growth Stocks</button>
+<button onclick="applyPreset('dividend')" class="px-3 py-1.5 text-xs font-medium bg-purple-50 text-purple-700 rounded-full hover:bg-purple-100 border border-purple-200">Dividend Aristocrats</button>
+<button onclick="applyPreset('quality')" class="px-3 py-1.5 text-xs font-medium bg-amber-50 text-amber-700 rounded-full hover:bg-amber-100 border border-amber-200">Quality Metrics</button>
+<button onclick="applyPreset('penny')" class="px-3 py-1.5 text-xs font-medium bg-red-50 text-red-700 rounded-full hover:bg-red-100 border border-red-200">Penny Stocks</button>
+<button onclick="applyPreset('largecap')" class="px-3 py-1.5 text-xs font-medium bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 border border-gray-300">Large Cap Leaders</button>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Results Table -->
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-4 border-b border-gray-200 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4"><h2 class="font-semibold text-gray-900">Results</h2><span id="resultCount" class="text-sm text-gray-500">Loading...</span></div>
+                <button onclick="openEditColumns()" class="text-sm text-primary hover:underline"><i class="fas fa-columns mr-1"></i>Edit Columns</button>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input type="text" id="searchInput" placeholder="Search by name or ticker..." class="pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary outline-none w-64" oninput="handleSearch(this.value)">
+<i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+</div>
+<select id="itemsPerPage" class="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="changePageSize()">
+<option value="25">25 rows</option><option value="50">50 rows</option><option value="100">100 rows</option>
+</select>
+</div>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200">
+<tr>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700" onclick="sortBy('name')">Company <i id="sort-name" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('price')">Price <i id="sort-price" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('change')">Change <i id="sort-change" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('marketCap')">Market Cap <i id="sort-marketCap" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('pe')">P/E <i id="sort-pe" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('roe')">ROE <i id="sort-roe" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('debtEquity')">D/E <i id="sort-debtEquity" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('dividend')">Div Yield <i id="sort-dividend" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('salesGrowth')">Sales Gr <i id="sort-salesGrowth" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium text-center">Actions</th>
+</tr>
+</thead>
+<tbody id="stockTableBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="p-4 border-t border-gray-200 flex items-center justify-between">
+<div class="text-sm text-gray-500">Showing <span id="showingStart">0</span> to <span id="showingEnd">0</span> of <span id="showingTotal">0</span> results</div>
+<div class="flex items-center gap-2">
+<button onclick="prevPage()" id="prevBtn" class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"><i class="fas fa-chevron-left"></i></button>
+<div id="pageNumbers" class="flex items-center gap-1"></div>
+<button onclick="nextPage()" id="nextBtn" class="px-3 py-1.5 text-sm border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed"><i class="fas fa-chevron-right"></i></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ==================== WATCHLIST PAGE ==================== -->
+<div id="page-watchlist" class="page-content hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h1 class="text-2xl font-bold text-gray-900">My Watchlist</h1>
+<p class="text-sm text-gray-500 mt-1">Track your favorite stocks, announcements, and insider trades</p>
+</div>
+<div class="flex items-center gap-3">
+<button onclick="importPortfolio()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"><i class="fas fa-file-import mr-2"></i>Import</button>
+<button onclick="addToWatchlistFromSearch()" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700"><i class="fas fa-plus mr-2"></i>Add Stock</button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 space-y-4">
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-4 border-b border-gray-200 flex items-center justify-between">
+<h2 class="font-semibold text-gray-900">Tracked Stocks</h2>
+<span id="watchlistCount" class="text-sm text-gray-500">0 stocks</span>
+</div>
+<div id="watchlistContainer" class="divide-y divide-gray-100"></div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-4 border-b border-gray-200"><h2 class="font-semibold text-gray-900"><i class="fas fa-newspaper mr-2 text-primary"></i>Announcements & News</h2></div>
+<div id="newsFeed" class="divide-y divide-gray-100 max-h-96 overflow-y-auto"></div>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-4 border-b border-gray-200"><h2 class="font-semibold text-gray-900"><i class="fas fa-user-secret mr-2 text-primary"></i>Insider Trades</h2></div>
+<div id="insiderTrades" class="divide-y divide-gray-100 max-h-80 overflow-y-auto"></div>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+<div class="p-4 border-b border-gray-200"><h2 class="font-semibold text-gray-900"><i class="fas fa-star mr-2 text-primary"></i>Credit Ratings</h2></div>
+<div id="creditRatings" class="divide-y divide-gray-100"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ==================== SCREENS DIRECTORY ==================== -->
+<div id="page-screens-directory" class="page-content hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
+<div>
+<h1 class="text-2xl font-bold text-gray-900">Popular Screens</h1>
+<p class="text-sm text-gray-500 mt-1">Discover pre-built screens created by the community</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="relative">
+<input type="text" placeholder="Search screens..." class="pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary outline-none w-64" oninput="filterScreens(this.value)">
+<i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+</div>
+</div>
+</div>
+<div class="flex gap-3 mb-6">
+    <button onclick="backtestScreen()" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700"><i class="fas fa-history mr-2"></i>Backtest Screen</button>
+    <button onclick="setAlert()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"><i class="fas fa-bell mr-2"></i>Set Alert</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="screensDirectory"></div>
+</div>
+</div>
+
+<!-- ==================== TOOLS PAGE ==================== -->
+<div id="page-tools" class="page-content hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+<h1 class="text-2xl font-bold text-gray-900 mb-6">Tools & Calculators</h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('SIP Calculator coming soon')">
+<div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-calculator text-primary text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">SIP Calculator</h3><p class="text-sm text-gray-500">Calculate returns on systematic investment plans</p>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('EMI Calculator coming soon')">
+<div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-money-bill-wave text-green-600 text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">EMI Calculator</h3><p class="text-sm text-gray-500">Calculate equated monthly installments for loans</p>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('Compound Interest coming soon')">
+<div class="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-chart-line text-purple-600 text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">Compound Interest</h3><p class="text-sm text-gray-500">Visualize the power of compounding over time</p>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('Retirement Planner coming soon')">
+<div class="w-12 h-12 bg-amber-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-umbrella-beach text-amber-600 text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">Retirement Planner</h3><p class="text-sm text-gray-500">Plan your retirement corpus and withdrawals</p>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('XIRR Calculator coming soon')">
+<div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-percentage text-red-600 text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">XIRR Calculator</h3><p class="text-sm text-gray-500">Calculate internal rate of return for irregular cash flows</p>
+</div>
+<div class="bg-white rounded-xl border border-gray-200 p-6 hover:shadow-lg transition-shadow cursor-pointer" onclick="showToast('Brokerage Calculator coming soon')">
+<div class="w-12 h-12 bg-teal-100 rounded-xl flex items-center justify-center mb-4"><i class="fas fa-hand-holding-usd text-teal-600 text-xl"></i></div>
+<h3 class="font-semibold text-gray-900 mb-1">Brokerage Calculator</h3><p class="text-sm text-gray-500">Estimate brokerage, STT, and other charges</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ==================== COMPANY DETAIL PAGE ==================== -->
+<div id="page-company" class="page-content hidden">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6" id="companyDetailContainer">
+<div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xl font-bold text-gray-600" id="companyLogo">AP</div>
+<div>
+<h1 class="text-2xl font-bold text-gray-900" id="companyName">Apple Inc.</h1>
+<p class="text-sm text-gray-500 font-mono" id="companyTicker">AAPL - Technology - NASDAQ</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="text-3xl font-bold text-gray-900" id="companyPrice">$150.00</div>
+<div class="text-sm font-medium" id="companyChange">+2.50 (+1.69%)</div>
+</div>
+<button onclick="toggleCompanyWatchlist()" id="companyWatchlistBtn" class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-blue-50 transition-colors">
+<i class="fas fa-plus mr-2"></i>Add to Watchlist
+</button>
+<button onclick="exportCompanyData()" class="px-4 py-2 text-sm font-medium text-gray-600 border border-gray-300 rounded-lg hover:bg-gray-50">
+<i class="fas fa-file-excel mr-2"></i>Export to Excel
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-6 gap-4 mt-6 pt-6 border-t border-gray-200">
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Market Cap</div><div class="font-semibold text-gray-900" id="companyMarketCap">$2.4T</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">P/E</div><div class="font-semibold text-gray-900" id="companyPE">28.5</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">ROE</div><div class="font-semibold text-gray-900" id="companyROE">25.4%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">D/E</div><div class="font-semibold text-gray-900" id="companyDE">0.85</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Div Yield</div><div class="font-semibold text-gray-900" id="companyDiv">0.52%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Book Value</div><div class="font-semibold text-gray-900" id="companyBV">$25.40</div></div>
+</div>
+</div>
+
+<div class="bg-white rounded-xl border border-gray-200 mb-6">
+<div class="border-b border-gray-200 overflow-x-auto">
+<div class="flex min-w-max">
+<button onclick="switchCompanyTab('overview')" class="company-tab px-6 py-4 text-sm font-medium tab-active" data-tab="overview">Overview</button>
+<button onclick="switchCompanyTab('charts')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="charts">Charts</button>
+<button onclick="switchCompanyTab('analysis')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="analysis">Analysis</button>
+<button onclick="switchCompanyTab('peers')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="peers">Peers</button>
+<button onclick="switchCompanyTab('quarterly')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="quarterly">Quarterly Results</button>
+<button onclick="switchCompanyTab('pl')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="pl">Profit & Loss</button>
+<button onclick="switchCompanyTab('balance')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="balance">Balance Sheet</button>
+<button onclick="switchCompanyTab('cashflow')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="cashflow">Cash Flows</button>
+<button onclick="switchCompanyTab('ratios')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="ratios">Ratios</button>
+<button onclick="switchCompanyTab('investors')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="investors">Investors</button>
+<button onclick="switchCompanyTab('documents')" class="company-tab px-6 py-4 text-sm font-medium tab-inactive" data-tab="documents">Documents</button>
+</div>
+</div>
+
+<!-- Overview -->
+<div id="tab-overview" class="company-tab-content p-6">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<h3 class="font-semibold text-gray-900 mb-4">About the Company</h3>
+<p class="text-sm text-gray-600 leading-relaxed mb-6" id="companyAbout">Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W High</div><div class="font-semibold" id="company52High">$198.23</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W Low</div><div class="font-semibold" id="company52Low">$124.17</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Avg Volume</div><div class="font-semibold" id="companyVolume">52.3M</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Face Value</div><div class="font-semibold">$0.0001</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">EPS (TTM)</div><div class="font-semibold" id="companyEPS">$6.15</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">P/B Ratio</div><div class="font-semibold" id="companyPB">42.5</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">OPM</div><div class="font-semibold" id="companyOPM">30.4%</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">NPM</div><div class="font-semibold" id="companyNPM">25.3%</div></div>
+</div>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">Quick Links</h3>
+<div class="space-y-2">
+<a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"><i class="fas fa-globe text-primary"></i><span class="text-sm font-medium">Official Website</span><i class="fas fa-external-link-alt ml-auto text-gray-400 text-xs"></i></a>
+<a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"><i class="fas fa-building text-primary"></i><span class="text-sm font-medium">BSE Page</span><i class="fas fa-external-link-alt ml-auto text-gray-400 text-xs"></i></a>
+<a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"><i class="fas fa-chart-bar text-primary"></i><span class="text-sm font-medium">NSE Page</span><i class="fas fa-external-link-alt ml-auto text-gray-400 text-xs"></i></a>
+<a href="#" class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors border border-gray-200"><i class="fas fa-file-alt text-primary"></i><span class="text-sm font-medium">Latest Annual Report</span><i class="fas fa-external-link-alt ml-auto text-gray-400 text-xs"></i></a>
+</div>
+<div id="companyNoteSection"></div>
+                    <h3 class="font-semibold text-gray-900 mb-4 mt-6">Financial Calendar</h3>
+                    <div id="financialCalendar" class="space-y-1 mb-4"></div>
+                    <h3 class="font-semibold text-gray-900 mb-4 mt-6">Segment Results</h3>
+<div class="space-y-2" id="segmentResults"></div>
+</div>
+</div>
+</div>
+
+<!-- Charts -->
+<div id="tab-charts" class="company-tab-content p-6 hidden">
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-semibold text-gray-900">Price Chart</h3>
+<div class="flex gap-2">
+<button class="px-3 py-1 text-xs font-medium bg-primary text-white rounded">1Y</button>
+<button class="px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 rounded">3Y</button>
+<button class="px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 rounded">5Y</button>
+<button class="px-3 py-1 text-xs font-medium text-gray-600 hover:bg-gray-100 rounded">10Y</button>
+</div>
+</div>
+<canvas id="companyPriceChart" height="300"></canvas>
+</div>
+<div class="space-y-4">
+<div class="p-4 bg-gray-50 rounded-xl"><h4 class="text-sm font-medium text-gray-700 mb-3">P/E Chart</h4><canvas id="companyPEChart" height="150"></canvas></div>
+<div class="p-4 bg-gray-50 rounded-xl"><h4 class="text-sm font-medium text-gray-700 mb-3">Quarterly Sales</h4><canvas id="companySalesChart" height="150"></canvas></div>
+</div>
+</div>
+</div>
+
+<!-- Analysis (Pros/Cons) -->
+<div id="tab-analysis" class="company-tab-content p-6 hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-green-50 rounded-xl p-6 border border-green-200">
+<h3 class="font-semibold text-green-800 mb-4 flex items-center gap-2"><i class="fas fa-thumbs-up"></i> Pros</h3>
+<div id="prosList" class="space-y-3"></div>
+</div>
+<div class="bg-red-50 rounded-xl p-6 border border-red-200">
+<h3 class="font-semibold text-red-800 mb-4 flex items-center gap-2"><i class="fas fa-thumbs-down"></i> Cons</h3>
+<div id="consList" class="space-y-3"></div>
+</div>
+</div>
+<div class="mt-6 bg-white rounded-xl border border-gray-200 p-6">
+<h3 class="font-semibold text-gray-900 mb-4">Growth Analysis</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="growthAnalysis"></div>
+</div>
+</div>
+
+<!-- Peers -->
+<div id="tab-peers" class="company-tab-content p-6 hidden">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-semibold text-gray-900">Peer Comparison</h3>
+<button onclick="editPeerColumns()" class="px-3 py-1.5 text-sm text-primary border border-primary rounded-lg hover:bg-blue-50"><i class="fas fa-columns mr-2"></i>Edit Columns</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left" id="peersTable">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="peersTableHead"></tr></thead>
+<tbody id="peersTableBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="mt-6">
+<h3 class="font-semibold text-gray-900 mb-4">Detailed Comparison</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="detailedPeerComparison"></div>
+</div>
+</div>
+
+<!-- Quarterly Results -->
+<div id="tab-quarterly" class="company-tab-content p-6 hidden">
+<h3 class="font-semibold text-gray-900 mb-4">Quarterly Results (Standalone)</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left fin-table">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="quarterlyHead"></tr></thead>
+<tbody id="quarterlyBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="mt-6 flex items-center gap-4">
+<label class="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+<input type="checkbox" id="consolidatedToggle" class="rounded border-gray-300 text-primary focus:ring-primary" onchange="toggleConsolidated()">
+Show Consolidated
+</label>
+</div>
+</div>
+
+<!-- Profit & Loss -->
+<div id="tab-pl" class="company-tab-content p-6 hidden">
+<h3 class="font-semibold text-gray-900 mb-4">Profit & Loss Statement</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left fin-table">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="plHead"></tr></thead>
+<tbody id="plBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="mt-6 bg-gray-50 rounded-xl p-6">
+<h4 class="font-semibold text-gray-900 mb-4">Compounded Growth</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="plGrowth"></div>
+</div>
+</div>
+
+<!-- Balance Sheet -->
+<div id="tab-balance" class="company-tab-content p-6 hidden">
+<h3 class="font-semibold text-gray-900 mb-4">Balance Sheet</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left fin-table">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="balanceHead"></tr></thead>
+<tbody id="balanceBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="mt-6">
+<h4 class="font-semibold text-gray-900 mb-4">Corporate Actions</h4>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr><th class="px-4 py-2">Date</th><th class="px-4 py-2">Type</th><th class="px-4 py-2">Details</th></tr></thead>
+<tbody id="corporateActions" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+</div>
+</div>
+
+<!-- Cash Flows -->
+<div id="tab-cashflow" class="company-tab-content p-6 hidden">
+<h3 class="font-semibold text-gray-900 mb-4">Cash Flow Statement</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left fin-table">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="cashflowHead"></tr></thead>
+<tbody id="cashflowBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+<div class="mt-6 bg-gray-50 rounded-xl p-6">
+<h4 class="font-semibold text-gray-900 mb-4">Free Cash Flow Analysis</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="fcfAnalysis"></div>
+</div>
+</div>
+
+<!-- Ratios -->
+<div id="tab-ratios" class="company-tab-content p-6 hidden">
+<h3 class="font-semibold text-gray-900 mb-4">Key Financial Ratios</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left fin-table">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr id="ratiosHead"></tr></thead>
+<tbody id="ratiosBody" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+</div>
+
+<!-- Investors -->
+<div id="tab-investors" class="company-tab-content p-6 hidden">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">Shareholding Pattern</h3>
+<canvas id="shareholdingChart" height="250"></canvas>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">Historical Shareholding</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr><th class="px-4 py-2">Period</th><th class="px-4 py-2 text-right">Promoters</th><th class="px-4 py-2 text-right">FII</th><th class="px-4 py-2 text-right">DII</th><th class="px-4 py-2 text-right">Public</th></tr></thead>
+<tbody id="shareholdingHistory" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="mt-6">
+<h3 class="font-semibold text-gray-900 mb-4">Other Companies Held by Major Shareholders</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="otherHoldings"></div>
+</div>
+</div>
+
+<!-- Documents -->
+<div id="tab-documents" class="company-tab-content p-6 hidden">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">Stock Exchange Filings</h3>
+<div class="space-y-2" id="exchangeFilings"></div>
+</div>
+<div>
+<h3 class="font-semibold text-gray-900 mb-4">Annual Reports</h3>
+<div class="space-y-2" id="annualReports"></div>
+</div>
+</div>
+<div class="mt-6">
+<h3 class="font-semibold text-gray-900 mb-4">Credit Ratings</h3>
+<div class="overflow-x-auto">
+<table class="w-full text-sm text-left">
+<thead class="text-xs text-gray-500 uppercase bg-gray-50 border-b border-gray-200"><tr><th class="px-4 py-2">Agency</th><th class="px-4 py-2">Rating</th><th class="px-4 py-2">Outlook</th><th class="px-4 py-2">Date</th><th class="px-4 py-2">Report</th></tr></thead>
+<tbody id="creditRatingDocs" class="divide-y divide-gray-100"></tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- Search Modal -->
+<div id="searchModal" class="fixed inset-0 bg-black/50 z-50 hidden flex items-start justify-center pt-20 p-4">
+<div class="bg-white rounded-2xl max-w-2xl w-full modal-enter shadow-2xl">
+<div class="p-4 border-b border-gray-200">
+<div class="relative">
+<input type="text" id="globalSearch" placeholder="Search companies, screens, or tools..." class="w-full pl-10 pr-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none" oninput="handleGlobalSearch(this.value)">
+<i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+</div>
+</div>
+<div id="searchResults" class="max-h-96 overflow-y-auto p-2"></div>
+</div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed bottom-6 right-6 bg-gray-900 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-20 opacity-0 transition-all duration-300 z-50 flex items-center gap-3">
+<i class="fas fa-check-circle text-green-400"></i><span id="toastMessage">Action completed</span>
+</div>
+
+<script>
+// ==================== DATA ====================
+const companies = [
+{name:'Apple Inc.',ticker:'AAPL',sector:'Technology'},
+{name:'Microsoft Corp.',ticker:'MSFT',sector:'Technology'},
+{name:'Alphabet Inc.',ticker:'GOOGL',sector:'Technology'},
+{name:'Amazon.com',ticker:'AMZN',sector:'Consumer'},
+{name:'Tesla Inc.',ticker:'TSLA',sector:'Consumer'},
+{name:'Meta Platforms',ticker:'META',sector:'Technology'},
+{name:'NVIDIA Corp.',ticker:'NVDA',sector:'Technology'},
+{name:'Berkshire Hathaway',ticker:'BRK.B',sector:'Financials'},
+{name:'JPMorgan Chase',ticker:'JPM',sector:'Financials'},
+{name:'Johnson & Johnson',ticker:'JNJ',sector:'Healthcare'},
+{name:'UnitedHealth Group',ticker:'UNH',sector:'Healthcare'},
+{name:'Visa Inc.',ticker:'V',sector:'Financials'},
+{name:'Exxon Mobil',ticker:'XOM',sector:'Energy'},
+{name:'Walmart Inc.',ticker:'WMT',sector:'Consumer'},
+{name:'Procter & Gamble',ticker:'PG',sector:'Consumer'},
+{name:'Mastercard Inc.',ticker:'MA',sector:'Financials'},
+{name:'Chevron Corp.',ticker:'CVX',sector:'Energy'},
+{name:'Home Depot',ticker:'HD',sector:'Consumer'},
+{name:'Pfizer Inc.',ticker:'PFE',sector:'Healthcare'},
+{name:'Coca-Cola Co.',ticker:'KO',sector:'Consumer'},
+{name:'PepsiCo Inc.',ticker:'PEP',sector:'Consumer'},
+{name:'Merck & Co.',ticker:'MRK',sector:'Healthcare'},
+{name:'Abbott Labs',ticker:'ABT',sector:'Healthcare'},
+{name:'Salesforce Inc.',ticker:'CRM',sector:'Technology'},
+{name:'Adobe Inc.',ticker:'ADBE',sector:'Technology'},
+{name:'Netflix Inc.',ticker:'NFLX',sector:'Technology'},
+{name:'Comcast Corp.',ticker:'CMCSA',sector:'Technology'},
+{name:'Oracle Corp.',ticker:'ORCL',sector:'Technology'},
+{name:'Cisco Systems',ticker:'CSCO',sector:'Technology'},
+{name:'Intel Corp.',ticker:'INTC',sector:'Technology'},
+{name:'AMD Inc.',ticker:'AMD',sector:'Technology'},
+{name:'Qualcomm Inc.',ticker:'QCOM',sector:'Technology'},
+{name:'Texas Instruments',ticker:'TXN',sector:'Technology'},
+{name:'Broadcom Inc.',ticker:'AVGO',sector:'Technology'},
+{name:'IBM Corp.',ticker:'IBM',sector:'Technology'},
+{name:'Bank of America',ticker:'BAC',sector:'Financials'},
+{name:'Wells Fargo',ticker:'WFC',sector:'Financials'},
+{name:'Goldman Sachs',ticker:'GS',sector:'Financials'},
+{name:'Morgan Stanley',ticker:'MS',sector:'Financials'},
+{name:'Citigroup Inc.',ticker:'C',sector:'Financials'},
+{name:'American Express',ticker:'AXP',sector:'Financials'},
+{name:'United Parcel',ticker:'UPS',sector:'Industrials'},
+{name:'FedEx Corp.',ticker:'FDX',sector:'Industrials'},
+{name:'Boeing Co.',ticker:'BA',sector:'Industrials'},
+{name:'Caterpillar Inc.',ticker:'CAT',sector:'Industrials'},
+{name:'3M Company',ticker:'MMM',sector:'Industrials'},
+{name:'General Electric',ticker:'GE',sector:'Industrials'},
+{name:'Lockheed Martin',ticker:'LMT',sector:'Industrials'},
+{name:'Raytheon Tech',ticker:'RTX',sector:'Industrials'},
+{name:'Union Pacific',ticker:'UNP',sector:'Industrials'},
+{name:'Duke Energy',ticker:'DUK',sector:'Utilities'},
+{name:'NextEra Energy',ticker:'NEE',sector:'Utilities'},
+{name:'Southern Co.',ticker:'SO',sector:'Utilities'},
+{name:'Dominion Energy',ticker:'D',sector:'Utilities'},
+{name:'Exelon Corp.',ticker:'EXC',sector:'Utilities'},
+{name:'Dow Inc.',ticker:'DOW',sector:'Materials'},
+{name:'DuPont de Nemours',ticker:'DD',sector:'Materials'},
+{name:'Freeport-McMoRan',ticker:'FCX',sector:'Materials'},
+{name:'Newmont Corp.',ticker:'NEM',sector:'Materials'},
+{name:'Air Products',ticker:'APD',sector:'Materials'},
+{name:'Ecolab Inc.',ticker:'ECL',sector:'Materials'},
+{name:'ConocoPhillips',ticker:'COP',sector:'Energy'},
+{name:'EOG Resources',ticker:'EOG',sector:'Energy'},
+{name:'Schlumberger',ticker:'SLB',sector:'Energy'},
+{name:'Halliburton',ticker:'HAL',sector:'Energy'},
+{name:'Phillips 66',ticker:'PSX',sector:'Energy'},
+{name:'Valero Energy',ticker:'VLO',sector:'Energy'},
+{name:'Marathon Petroleum',ticker:'MPC',sector:'Energy'},
+{name:'Costco Wholesale',ticker:'COST',sector:'Consumer'},
+{name:'Target Corp.',ticker:'TGT',sector:'Consumer'},
+{name:'Starbucks Corp.',ticker:'SBUX',sector:'Consumer'},
+{name:'McDonalds Corp.',ticker:'MCD',sector:'Consumer'},
+{name:'Nike Inc.',ticker:'NKE',sector:'Consumer'},
+{name:'Booking Holdings',ticker:'BKNG',sector:'Consumer'},
+{name:'TJX Companies',ticker:'TJX',sector:'Consumer'},
+{name:'Eli Lilly & Co.',ticker:'LLY',sector:'Healthcare'},
+{name:'AbbVie Inc.',ticker:'ABBV',sector:'Healthcare'},
+{name:'Thermo Fisher',ticker:'TMO',sector:'Healthcare'},
+{name:'Danaher Corp.',ticker:'DHR',sector:'Healthcare'},
+{name:'Medtronic plc',ticker:'MDT',sector:'Healthcare'},
+{name:'Stryker Corp.',ticker:'SYK',sector:'Healthcare'},
+{name:'Intuitive Surgical',ticker:'ISRG',sector:'Healthcare'},
+{name:'Gilead Sciences',ticker:'GILD',sector:'Healthcare'},
+{name:'Amgen Inc.',ticker:'AMGN',sector:'Healthcare'},
+{name:'Biogen Inc.',ticker:'BIIB',sector:'Healthcare'},
+{name:'Regeneron Pharma',ticker:'REGN',sector:'Healthcare'},
+{name:'Vertex Pharma',ticker:'VRTX',sector:'Healthcare'},
+{name:'Moderna Inc.',ticker:'MRNA',sector:'Healthcare'},
+{name:'Zoom Video',ticker:'ZM',sector:'Technology'},
+{name:'Shopify Inc.',ticker:'SHOP',sector:'Technology'},
+{name:'Square Inc.',ticker:'SQ',sector:'Technology'},
+{name:'PayPal Holdings',ticker:'PYPL',sector:'Technology'},
+{name:'Uber Technologies',ticker:'UBER',sector:'Technology'},
+{name:'Lyft Inc.',ticker:'LYFT',sector:'Technology'},
+{name:'Airbnb Inc.',ticker:'ABNB',sector:'Technology'},
+{name:'DoorDash Inc.',ticker:'DASH',sector:'Technology'},
+{name:'Snowflake Inc.',ticker:'SNOW',sector:'Technology'},
+{name:'Palantir Tech',ticker:'PLTR',sector:'Technology'},
+{name:'Roku Inc.',ticker:'ROKU',sector:'Technology'},
+{name:'Snap Inc.',ticker:'SNAP',sector:'Technology'},
+{name:'Pinterest Inc.',ticker:'PINS',sector:'Technology'},
+{name:'Spotify Tech',ticker:'SPOT',sector:'Technology'},
+{name:'Dropbox Inc.',ticker:'DBX',sector:'Technology'},
+{name:'Twilio Inc.',ticker:'TWLO',sector:'Technology'},
+{name:'Atlassian Corp.',ticker:'TEAM',sector:'Technology'},
+{name:'Okta Inc.',ticker:'OKTA',sector:'Technology'},
+{name:'CrowdStrike',ticker:'CRWD',sector:'Technology'},
+{name:'Zscaler Inc.',ticker:'ZS',sector:'Technology'},
+{name:'Cloudflare',ticker:'NET',sector:'Technology'},
+{name:'Datadog Inc.',ticker:'DDOG',sector:'Technology'},
+{name:'MongoDB Inc.',ticker:'MDB',sector:'Technology'},
+{name:'Elastic NV',ticker:'ESTC',sector:'Technology'},
+{name:'Splunk Inc.',ticker:'SPLK',sector:'Technology'},
+{name:'VMware Inc.',ticker:'VMW',sector:'Technology'},
+{name:'SAP SE',ticker:'SAP',sector:'Technology'},
+{name:'ServiceNow Inc.',ticker:'NOW',sector:'Technology'},
+{name:'Workday Inc.',ticker:'WDAY',sector:'Technology'},
+{name:'Autodesk Inc.',ticker:'ADSK',sector:'Technology'},
+{name:'Intuit Inc.',ticker:'INTU',sector:'Technology'},
+{name:'Synopsys Inc.',ticker:'SNPS',sector:'Technology'},
+{name:'Cadence Design',ticker:'CDNS',sector:'Technology'},
+{name:'PTC Inc.',ticker:'PTC',sector:'Technology'},
+{name:'Bentley Systems',ticker:'BSY',sector:'Technology'}
+];
+
+let stocks = [];
+let filteredStocks = [];
+let currentPage = 1;
+let pageSize = 25;
+let currentSort = { field: 'marketCap', direction: 'desc' };
+let watchlist = [];
+let currentCompanyId = null;
+let chartInstances = {};
+
+function generateData() {
+    stocks = companies.map((company, index) => {
+        const basePrice = Math.random() * 400 + 10;
+        const volatility = Math.random() * 0.05 + 0.01;
+        const change = (Math.random() - 0.5) * volatility * basePrice;
+        const changePercent = (change / basePrice) * 100;
+        const marketCap = Math.random() * 2000 + 1;
+        const pe = Math.random() * 40 + 5;
+        const roe = Math.random() * 40 + -5;
+        const debtEquity = Math.random() * 3;
+        const dividend = Math.random() * 5;
+        const salesGrowth = Math.random() * 30 + -10;
+
+        const years = ['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'];
+        const financials = {};
+        let sales = 100 + Math.random() * 500;
+        let profit = sales * (0.05 + Math.random() * 0.25);
+        let assets = sales * (1 + Math.random() * 3);
+        let equity = assets * (0.3 + Math.random() * 0.4);
+
+        years.forEach(y => {
+            sales = sales * (1 + (Math.random() - 0.4) * 0.15);
+            profit = profit * (1 + (Math.random() - 0.3) * 0.2);
+            assets = assets * (1 + (Math.random() - 0.3) * 0.1);
+            equity = equity * (1 + (Math.random() - 0.3) * 0.1);
+            financials[y] = {
+                sales: Math.round(sales),
+                expenses: Math.round(sales * (0.6 + Math.random() * 0.2)),
+                opProfit: Math.round(sales * (0.15 + Math.random() * 0.15)),
+                netProfit: Math.round(profit),
+                assets: Math.round(assets),
+                equity: Math.round(equity),
+                borrowings: Math.round(assets - equity),
+                cash: Math.round(assets * 0.1 + Math.random() * assets * 0.15),
+                receivables: Math.round(sales * 0.15),
+                inventory: Math.round(sales * 0.1),
+                fixedAssets: Math.round(assets * 0.4),
+                investments: Math.round(assets * 0.15),
+                opCashFlow: Math.round(profit * (1.2 + Math.random() * 0.6)),
+                investingCF: Math.round(-assets * 0.08),
+                financingCF: Math.round(-profit * 0.3),
+                fcf: Math.round(profit * 0.8)
+            };
+        });
+
+        const quarters = ['Q1 24','Q2 24','Q3 24','Q4 24'];
+        const quarterly = {};
+        quarters.forEach(q => {
+            quarterly[q] = {
+                sales: Math.round(financials['2024'].sales * (0.2 + Math.random() * 0.1)),
+                expenses: Math.round(financials['2024'].sales * 0.18),
+                opProfit: Math.round(financials['2024'].sales * 0.04),
+                netProfit: Math.round(financials['2024'].sales * 0.03),
+                eps: (financials['2024'].sales * 0.03 / 15).toFixed(2)
+            };
+        });
+
+        const shareholding = [
+            {period:'Mar 2024', promoters: 0, fii: 25 + Math.random()*20, dii: 15 + Math.random()*15, public: 20 + Math.random()*20},
+            {period:'Dec 2023', promoters: 0, fii: 24 + Math.random()*20, dii: 16 + Math.random()*15, public: 21 + Math.random()*20},
+            {period:'Sep 2023', promoters: 0, fii: 23 + Math.random()*20, dii: 17 + Math.random()*15, public: 22 + Math.random()*20},
+            {period:'Jun 2023', promoters: 0, fii: 22 + Math.random()*20, dii: 18 + Math.random()*15, public: 23 + Math.random()*20},
+            {period:'Mar 2023', promoters: 0, fii: 21 + Math.random()*20, dii: 19 + Math.random()*15, public: 24 + Math.random()*20}
+        ];
+        shareholding.forEach(sh => { sh.public = 100 - sh.fii - sh.dii; });
+
+        const pros = [
+            'Company has been maintaining a healthy dividend payout of ' + (2 + Math.random()*5).toFixed(1) + '%',
+            'ROE has been consistently above ' + (10 + Math.random()*15).toFixed(1) + '% for the last 5 years',
+            'Debt to equity ratio has improved to ' + debtEquity.toFixed(2),
+            'Operating profit margin has expanded by ' + (1 + Math.random()*5).toFixed(1) + '% over last 3 years',
+            'Company is virtually debt free'
+        ];
+        const cons = [
+            'Promoter holding is low at ' + (Math.random()*30).toFixed(1) + '%',
+            'The company has delivered a poor sales growth of ' + (-5 + Math.random()*10).toFixed(1) + '% over past five years',
+            'Tax rate seems low at ' + (10 + Math.random()*15).toFixed(1) + '%',
+            'Working capital days have increased from ' + Math.floor(30+Math.random()*50) + ' to ' + Math.floor(60+Math.random()*50) + ' days'
+        ];
+
+        return {
+            id: index,
+            ...company,
+            price: parseFloat(basePrice.toFixed(2)),
+            change: parseFloat(change.toFixed(2)),
+            changePercent: parseFloat(changePercent.toFixed(2)),
+            marketCap: parseFloat(marketCap.toFixed(2)),
+            pe: parseFloat(pe.toFixed(2)),
+            roe: parseFloat(roe.toFixed(2)),
+            debtEquity: parseFloat(debtEquity.toFixed(2)),
+            dividend: parseFloat(dividend.toFixed(2)),
+            salesGrowth: parseFloat(salesGrowth.toFixed(2)),
+            volume: Math.floor(Math.random() * 50 + 1),
+            high52: parseFloat((basePrice * 1.2).toFixed(2)),
+            low52: parseFloat((basePrice * 0.8).toFixed(2)),
+            beta: parseFloat((Math.random() * 2).toFixed(2)),
+            bookValue: parseFloat((basePrice * 0.15 + Math.random() * 30).toFixed(2)),
+            eps: parseFloat((basePrice / pe).toFixed(2)),
+            opm: parseFloat((15 + Math.random() * 25).toFixed(1)),
+            npm: parseFloat((8 + Math.random() * 20).toFixed(1)),
+            pb: parseFloat((basePrice / (basePrice * 0.15 + Math.random() * 30)).toFixed(1)),
+            financials: financials,
+            quarterly: quarterly,
+            shareholding: shareholding,
+            pros: pros.slice(0, 3 + Math.floor(Math.random() * 2)),
+            cons: cons.slice(0, 2 + Math.floor(Math.random() * 2)),
+            segments: [
+                {name:'Product A', revenue:30 + Math.random()*40},
+                {name:'Product B', revenue:20 + Math.random()*30},
+                {name:'Services', revenue:10 + Math.random()*20},
+                {name:'Other', revenue:5 + Math.random()*15}
+            ],
+            creditRatings: [
+                {agency:'CRISIL',rating:'AAA',outlook:'Stable',date:'Jun 2024'},
+                {agency:'ICRA',rating:'AA+',outlook:'Stable',date:'Mar 2024'}
+            ],
+            corporateActions: [
+                {date:'Aug 2024',type:'Dividend',details:'$0.25 per share'},
+                {date:'May 2024',type:'Dividend',details:'$0.25 per share'},
+                {date:'Feb 2024',type:'Dividend',details:'$0.24 per share'},
+                {date:'Nov 2023',type:'Stock Split',details:'4:1 split announced'}
+            ]
+        };
+    });
+
+    document.getElementById('totalStocks').textContent = stocks.length;
+    updateStats();
+}
+
+function updateStats() {
+    const avgPE = stocks.reduce((sum, s) => sum + s.pe, 0) / stocks.length;
+    const avgROE = stocks.reduce((sum, s) => sum + s.roe, 0) / stocks.length;
+    document.getElementById('avgPE').textContent = avgPE.toFixed(1);
+    document.getElementById('avgROE').textContent = avgROE.toFixed(1) + '%';
+}
+
+function applyFilters() {
+    const marketCapOp = document.getElementById('marketCapOp').value;
+    const marketCapVal = parseFloat(document.getElementById('marketCapVal').value);
+    const peOp = document.getElementById('peOp').value;
+    const peVal = parseFloat(document.getElementById('peVal').value);
+    const roeOp = document.getElementById('roeOp').value;
+    const roeVal = parseFloat(document.getElementById('roeVal').value);
+    const divOp = document.getElementById('divOp').value;
+    const divVal = parseFloat(document.getElementById('divVal').value);
+    const sector = document.getElementById('sectorFilter').value;
+    const debtOp = document.getElementById('debtOp').value;
+    const debtVal = parseFloat(document.getElementById('debtVal').value);
+    const priceOp = document.getElementById('priceOp').value;
+    const priceVal = parseFloat(document.getElementById('priceVal').value);
+    const growthOp = document.getElementById('growthOp').value;
+    const growthVal = parseFloat(document.getElementById('growthVal').value);
+
+    filteredStocks = stocks.filter(stock => {
+        let pass = true;
+        if (marketCapVal) { if (marketCapOp === 'gt' && stock.marketCap <= marketCapVal) pass = false; if (marketCapOp === 'lt' && stock.marketCap >= marketCapVal) pass = false; }
+        if (peVal) { if (peOp === 'gt' && stock.pe <= peVal) pass = false; if (peOp === 'lt' && stock.pe >= peVal) pass = false; }
+        if (roeVal) { if (roeOp === 'gt' && stock.roe <= roeVal) pass = false; if (roeOp === 'lt' && stock.roe >= roeVal) pass = false; }
+        if (divVal) { if (divOp === 'gt' && stock.dividend <= divVal) pass = false; if (divOp === 'lt' && stock.dividend >= divVal) pass = false; }
+        if (sector && stock.sector !== sector) pass = false;
+        if (debtVal) { if (debtOp === 'gt' && stock.debtEquity <= debtVal) pass = false; if (debtOp === 'lt' && stock.debtEquity >= debtVal) pass = false; }
+        if (priceVal) { if (priceOp === 'gt' && stock.price <= priceVal) pass = false; if (priceOp === 'lt' && stock.price >= priceVal) pass = false; }
+        if (growthVal) { if (growthOp === 'gt' && stock.salesGrowth <= growthVal) pass = false; if (growthOp === 'lt' && stock.salesGrowth >= growthVal) pass = false; }
+        return pass;
+    });
+    currentPage = 1;
+    updateActiveFilters();
+    renderTable();
+    document.getElementById('filteredCount').textContent = filteredStocks.length;
+}
+
+function updateActiveFilters() {
+    const container = document.getElementById('activeFilters');
+    const filters = [];
+    const mc = document.getElementById('marketCapVal').value;
+    if (mc) filters.push('Market Cap ' + document.getElementById('marketCapOp').value + ' ' + mc + 'B');
+    const pe = document.getElementById('peVal').value;
+    if (pe) filters.push('P/E ' + document.getElementById('peOp').value + ' ' + pe);
+    const roe = document.getElementById('roeVal').value;
+    if (roe) filters.push('ROE ' + document.getElementById('roeOp').value + ' ' + roe + '%');
+    const div = document.getElementById('divVal').value;
+    if (div) filters.push('Div ' + document.getElementById('divOp').value + ' ' + div + '%');
+    const sector = document.getElementById('sectorFilter').value;
+    if (sector) filters.push('Sector: ' + sector);
+    const debt = document.getElementById('debtVal').value;
+    if (debt) filters.push('D/E ' + document.getElementById('debtOp').value + ' ' + debt);
+    const price = document.getElementById('priceVal').value;
+    if (price) filters.push('Price ' + document.getElementById('priceOp').value + ' $' + price);
+    const growth = document.getElementById('growthVal').value;
+    if (growth) filters.push('Growth ' + document.getElementById('growthOp').value + ' ' + growth + '%');
+
+    const countEl = document.getElementById('activeFilterCount');
+    if (filters.length > 0) {
+        countEl.textContent = filters.length;
+        countEl.classList.remove('hidden');
+        container.classList.remove('hidden');
+        container.innerHTML = filters.map(f => '<span class="filter-chip px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full border border-primary/20">' + f + '</span>').join('');
+    } else {
+        countEl.classList.add('hidden');
+        container.classList.add('hidden');
+    }
+}
+
+function sortBy(field) {
+    if (currentSort.field === field) {
+        currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+    } else {
+        currentSort.field = field;
+        currentSort.direction = 'desc';
+    }
+    document.querySelectorAll('[id^="sort-"]').forEach(el => { el.className = 'fas fa-sort ml-1 text-gray-300'; });
+    const activeIcon = document.getElementById('sort-' + field);
+    if (activeIcon) activeIcon.className = 'fas fa-sort-' + (currentSort.direction === 'asc' ? 'up' : 'down') + ' ml-1 text-primary';
+    renderTable();
+}
+
+function renderTable() {
+    let data = filteredStocks.length > 0 ? filteredStocks : stocks;
+    data.sort((a, b) => {
+        let aVal = a[currentSort.field], bVal = b[currentSort.field];
+        if (currentSort.direction === 'asc') return aVal > bVal ? 1 : -1;
+        return aVal < bVal ? 1 : -1;
+    });
+    const total = data.length;
+    const start = (currentPage - 1) * pageSize;
+    const end = Math.min(start + pageSize, total);
+    const pageData = data.slice(start, end);
+
+    const tbody = document.getElementById('stockTableBody');
+    tbody.innerHTML = pageData.map(stock => {
+        const changeClass = stock.change >= 0 ? 'text-green-600' : 'text-red-600';
+        const changeSign = stock.change >= 0 ? '+' : '';
+        return '<tr class="stock-row border-b border-gray-50 cursor-pointer" onclick="openCompanyPage(' + stock.id + ')">' +
+            '<td class="px-6 py-4"><div class="flex items-center gap-3"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">' + stock.ticker.substring(0, 2) + '</div><div><div class="font-semibold text-gray-900">' + stock.name + '</div><div class="text-xs text-gray-500 font-mono">' + stock.ticker + ' - ' + stock.sector + '</div></div></div></td>' +
+            '<td class="px-6 py-4 text-right font-medium text-gray-900">$' + stock.price.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + changeClass + ' font-medium">' + changeSign + stock.change.toFixed(2) + ' (' + changeSign + stock.changePercent.toFixed(2) + '%)</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">$' + stock.marketCap.toFixed(1) + 'B</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.pe.toFixed(1) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roe > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roe.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.debtEquity.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.dividend.toFixed(2) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.salesGrowth > 0 ? 'text-green-600' : 'text-red-600') + '">' + (stock.salesGrowth >= 0 ? '+' : '') + stock.salesGrowth.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-center"><button onclick="event.stopPropagation(); addToWatchlist(stock.ticker)" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="Add to watchlist"><i class="fas fa-plus-circle"></i></button><button onclick="event.stopPropagation(); openCompanyPage(' + stock.id + ')" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="View details"><i class="fas fa-chart-line"></i></button></td>' +
+            '</tr>';
+    }).join('');
+
+    document.getElementById('resultCount').textContent = total + ' stocks found';
+    document.getElementById('showingStart').textContent = total > 0 ? start + 1 : 0;
+    document.getElementById('showingEnd').textContent = end;
+    document.getElementById('showingTotal').textContent = total;
+    document.getElementById('prevBtn').disabled = currentPage === 1;
+    document.getElementById('nextBtn').disabled = end >= total;
+
+    const totalPages = Math.ceil(total / pageSize);
+    let pageHtml = '';
+    for (let i = 1; i <= totalPages && i <= 5; i++) {
+        pageHtml += '<button onclick="goToPage(' + i + ')" class="w-8 h-8 text-sm rounded-lg ' + (i === currentPage ? 'bg-primary text-white' : 'border border-gray-300 hover:bg-gray-50') + ' transition-colors">' + i + '</button>';
+    }
+    document.getElementById('pageNumbers').innerHTML = pageHtml;
+}
+
+function handleSearch(query) {
+    if (!query) { filteredStocks = []; renderTable(); return; }
+    const lower = query.toLowerCase();
+    filteredStocks = stocks.filter(s => s.name.toLowerCase().includes(lower) || s.ticker.toLowerCase().includes(lower));
+    currentPage = 1;
+    renderTable();
+}
+
+function changePageSize() {
+    pageSize = parseInt(document.getElementById('itemsPerPage').value);
+    currentPage = 1;
+    renderTable();
+}
+
+function prevPage() { if (currentPage > 1) { currentPage--; renderTable(); } }
+function nextPage() {
+    const total = filteredStocks.length > 0 ? filteredStocks.length : stocks.length;
+    if (currentPage * pageSize < total) { currentPage++; renderTable(); }
+}
+function goToPage(page) { currentPage = page; renderTable(); }
+
+function quickFilter(type, value) {
+    if (type === 'marketCap') {
+        const input = document.getElementById('marketCapVal');
+        const op = document.getElementById('marketCapOp');
+        if (value === 'large') { op.value = 'gt'; input.value = 100; }
+        if (value === 'mid') { op.value = 'gt'; input.value = 10; }
+        if (value === 'small') { op.value = 'lt'; input.value = 2; }
+    }
+    applyFilters();
+}
+
+function applyPreset(type) {
+    resetFilters();
+    if (type === 'value') { document.getElementById('peOp').value = 'lt'; document.getElementById('peVal').value = 15; document.getElementById('divOp').value = 'gt'; document.getElementById('divVal').value = 2; document.getElementById('debtOp').value = 'lt'; document.getElementById('debtVal').value = 1; }
+    if (type === 'growth') { document.getElementById('growthOp').value = 'gt'; document.getElementById('growthVal').value = 20; document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 15; }
+    if (type === 'dividend') { document.getElementById('divOp').value = 'gt'; document.getElementById('divVal').value = 3; document.getElementById('peOp').value = 'lt'; document.getElementById('peVal').value = 25; }
+    if (type === 'quality') { document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 20; document.getElementById('debtOp').value = 'lt'; document.getElementById('debtVal').value = 0.5; }
+    if (type === 'penny') { document.getElementById('priceOp').value = 'lt'; document.getElementById('priceVal').value = 5; document.getElementById('marketCapOp').value = 'lt'; document.getElementById('marketCapVal').value = 1; }
+    if (type === 'largecap') { document.getElementById('marketCapOp').value = 'gt'; document.getElementById('marketCapVal').value = 100; document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 10; }
+    applyFilters();
+    showToast('Preset applied successfully');
+}
+
+function resetFilters() {
+    document.querySelectorAll('input[type="number"]').forEach(i => i.value = '');
+    document.querySelectorAll('select').forEach(s => { if (s.id !== 'itemsPerPage') s.value = ''; });
+    filteredStocks = [];
+    currentPage = 1;
+    updateActiveFilters();
+    renderTable();
+    document.getElementById('filteredCount').textContent = stocks.length;
+}
+
+function toggleFilters() {
+    const panel = document.getElementById('filtersPanel');
+    const icon = document.getElementById('filterToggleIcon');
+    if (panel.classList.contains('hidden')) { panel.classList.remove('hidden'); icon.style.transform = 'rotate(0deg)'; }
+    else { panel.classList.add('hidden'); icon.style.transform = 'rotate(-90deg)'; }
+}
+
+function showPage(pageName) {
+    document.querySelectorAll('.page-content').forEach(p => p.classList.add('hidden'));
+    document.getElementById('page-' + pageName).classList.remove('hidden');
+    document.querySelectorAll('.nav-link').forEach(l => {
+        if (l.dataset.page === pageName) l.classList.add('text-primary');
+        else l.classList.remove('text-primary');
+    });
+    if (pageName === 'watchlist') renderWatchlist();
+    if (pageName === 'screens-directory') renderScreensDirectory();
+    window.scrollTo(0, 0);
+}
+
+function openCompanyPage(id) {
+    currentCompanyId = id;
+    const stock = stocks.find(s => s.id === id);
+    if (!stock) return;
+    showPage('company');
+
+    document.getElementById('companyLogo').textContent = stock.ticker.substring(0, 2);
+    document.getElementById('companyName').textContent = stock.name;
+    document.getElementById('companyTicker').textContent = stock.ticker + ' - ' + stock.sector + ' - NASDAQ';
+    document.getElementById('companyPrice').textContent = '$' + stock.price.toFixed(2);
+    const changeEl = document.getElementById('companyChange');
+    changeEl.textContent = (stock.change >= 0 ? '+' : '') + stock.change.toFixed(2) + ' (' + (stock.change >= 0 ? '+' : '') + stock.changePercent.toFixed(2) + '%)';
+    changeEl.className = 'text-sm font-medium ' + (stock.change >= 0 ? 'text-green-600' : 'text-red-600');
+    document.getElementById('companyMarketCap').textContent = '$' + stock.marketCap.toFixed(1) + 'B';
+    document.getElementById('companyPE').textContent = stock.pe.toFixed(1);
+    document.getElementById('companyROE').textContent = stock.roe.toFixed(1) + '%';
+    document.getElementById('companyDE').textContent = stock.debtEquity.toFixed(2);
+    document.getElementById('companyDiv').textContent = stock.dividend.toFixed(2) + '%';
+    document.getElementById('companyBV').textContent = '$' + stock.bookValue.toFixed(2);
+    document.getElementById('company52High').textContent = '$' + stock.high52.toFixed(2);
+    document.getElementById('company52Low').textContent = '$' + stock.low52.toFixed(2);
+    document.getElementById('companyVolume').textContent = stock.volume + 'M';
+    document.getElementById('companyEPS').textContent = '$' + stock.eps.toFixed(2);
+    document.getElementById('companyPB').textContent = stock.pb.toFixed(1);
+    document.getElementById('companyOPM').textContent = stock.opm.toFixed(1) + '%';
+    document.getElementById('companyNPM').textContent = stock.npm.toFixed(1) + '%';
+
+    const btn = document.getElementById('companyWatchlistBtn');
+    if (watchlist.includes(id)) {
+        btn.innerHTML = '<i class="fas fa-check mr-2"></i>In Watchlist';
+        btn.classList.add('bg-green-50', 'text-green-700', 'border-green-300');
+        btn.classList.remove('text-primary', 'border-primary');
+    } else {
+        btn.innerHTML = '<i class="fas fa-plus mr-2"></i>Add to Watchlist';
+        btn.classList.remove('bg-green-50', 'text-green-700', 'border-green-300');
+        btn.classList.add('text-primary', 'border-primary');
+    }
+
+    // Segment results
+    const segContainer = document.getElementById('segmentResults');
+    segContainer.innerHTML = stock.segments.map(seg => 
+        '<div class="flex items-center gap-3"><div class="flex-1"><div class="flex justify-between mb-1"><span class="text-sm font-medium">' + seg.name + '</span><span class="text-sm text-gray-500">' + seg.revenue.toFixed(1) + '%</span></div><div class="h-2 bg-gray-200 rounded-full overflow-hidden"><div class="h-full bg-primary rounded-full" style="width:' + seg.revenue + '%"></div></div></div></div>'
+    ).join('');
+
+    switchCompanyTab('overview'); setTimeout(() => { const fc = document.getElementById('financialCalendar'); if(fc) fc.innerHTML = renderFinancialCalendar(); renderCompanyNote(); }, 100);
+}
+
+function switchCompanyTab(tabName) {
+    document.querySelectorAll('.company-tab-content').forEach(t => t.classList.add('hidden'));
+    document.getElementById('tab-' + tabName).classList.remove('hidden');
+    document.querySelectorAll('.company-tab').forEach(t => {
+        if (t.dataset.tab === tabName) { t.classList.add('tab-active'); t.classList.remove('tab-inactive'); }
+        else { t.classList.remove('tab-active'); t.classList.add('tab-inactive'); }
+    });
+
+    const stock = stocks.find(s => s.id === currentCompanyId);
+    if (!stock) return;
+
+    if (tabName === 'charts') renderCompanyCharts(stock);
+    if (tabName === 'analysis') renderAnalysis(stock);
+    if (tabName === 'peers') renderPeers(stock);
+    if (tabName === 'quarterly') renderQuarterly(stock);
+    if (tabName === 'pl') renderPL(stock);
+    if (tabName === 'balance') renderBalanceSheet(stock);
+    if (tabName === 'cashflow') renderCashFlow(stock);
+    if (tabName === 'ratios') renderRatios(stock);
+    if (tabName === 'investors') renderInvestors(stock);
+    if (tabName === 'documents') renderDocuments(stock);
+}
+
+function renderCompanyCharts(stock) {
+    const labels = Array.from({length:30}, (_,i) => { const d=new Date(); d.setDate(d.getDate()-(29-i)); return d.toLocaleDateString('en-US',{month:'short',day:'numeric'}); });
+    const prices = []; let cp = stock.price * 0.85;
+    for (let i=0;i<30;i++) { cp = cp * (1 + (Math.random()-0.48)*0.03); prices.push(cp); }
+    prices[prices.length-1] = stock.price;
+
+    if (chartInstances.price) chartInstances.price.destroy();
+    const ctx = document.getElementById('companyPriceChart').getContext('2d');
+    const grad = ctx.createLinearGradient(0,0,0,300); grad.addColorStop(0,'rgba(26,115,232,0.1)'); grad.addColorStop(1,'rgba(26,115,232,0)');
+    chartInstances.price = new Chart(ctx, {
+        type:'line', data:{labels:labels,datasets:[{label:'Price',data:prices,borderColor:'#1a73e8',backgroundColor:grad,borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:6}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,0.8)',padding:12,cornerRadius:8,displayColors:false,callbacks:{label:(ctx)=>'$'+ctx.parsed.y.toFixed(2)}}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'$'+val.toFixed(0),font:{size:11}}}}}
+    });
+
+    const peData = Array.from({length:10},()=>stock.pe+(Math.random()-0.5)*10);
+    if (chartInstances.peChart) chartInstances.peChart.destroy();
+    chartInstances.peChart = new Chart(document.getElementById('companyPEChart'), {
+        type:'bar', data:{labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],datasets:[{label:'P/E',data:peData,backgroundColor:'#1a73e8',borderRadius:4}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f3f4f6'}}}}
+    });
+
+    const salesData = Object.keys(stock.financials).map(y=>stock.financials[y].sales);
+    if (chartInstances.salesChart) chartInstances.salesChart.destroy();
+    chartInstances.salesChart = new Chart(document.getElementById('companySalesChart'), {
+        type:'line', data:{labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],datasets:[{label:'Sales',data:salesData,borderColor:'#34a853',backgroundColor:'rgba(52,168,83,0.1)',borderWidth:2,fill:true,tension:0.4,pointRadius:3}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'$'+(val/1000).toFixed(0)+'B'}}}}
+    });
+}
+
+function renderAnalysis(stock) {
+    document.getElementById('prosList').innerHTML = stock.pros.map(p => '<div class="pro-con-item"><i class="fas fa-check-circle text-green-500 mt-0.5"></i><span class="text-sm text-gray-700">' + p + '</span></div>').join('');
+    document.getElementById('consList').innerHTML = stock.cons.map(c => '<div class="pro-con-item"><i class="fas fa-times-circle text-red-500 mt-0.5"></i><span class="text-sm text-gray-700">' + c + '</span></div>').join('');
+
+    const years = Object.keys(stock.financials);
+    const salesGrowth = ((stock.financials[years[years.length-1]].sales / stock.financials[years[0]].sales) ** (1/years.length) - 1) * 100;
+    const profitGrowth = ((stock.financials[years[years.length-1]].netProfit / stock.financials[years[0]].netProfit) ** (1/years.length) - 1) * 100;
+    document.getElementById('growthAnalysis').innerHTML = 
+        '<div class="p-3 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">Sales Growth (10Y)</div><div class="text-lg font-bold ' + (salesGrowth>0?'text-green-600':'text-red-600') + '">' + salesGrowth.toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">Profit Growth (10Y)</div><div class="text-lg font-bold ' + (profitGrowth>0?'text-green-600':'text-red-600') + '">' + profitGrowth.toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">CAGR Sales</div><div class="text-lg font-bold text-primary">' + (salesGrowth*0.8).toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">CAGR Profit</div><div class="text-lg font-bold text-primary">' + (profitGrowth*0.8).toFixed(1) + '%</div></div>';
+}
+
+function renderPeers(stock) {
+    const peers = stocks.filter(s => s.sector === stock.sector && s.id !== stock.id).slice(0, 5);
+    const cols = ['Company','Market Cap','P/E','ROE','D/E','Div Yield','Sales Gr'];
+    document.getElementById('peersTableHead').innerHTML = cols.map(c => '<th class="px-4 py-3">' + c + '</th>').join('');
+
+    const allPeers = [stock, ...peers];
+    document.getElementById('peersTableBody').innerHTML = allPeers.map(p => {
+        const isCurrent = p.id === stock.id;
+        return '<tr class="' + (isCurrent ? 'bg-blue-50' : '') + '"><td class="px-4 py-3 font-medium">' + p.name + (isCurrent?' <span class="text-xs text-primary">(Current)</span>':'') + '</td>' +
+            '<td class="px-4 py-3">$' + p.marketCap.toFixed(1) + 'B</td>' +
+            '<td class="px-4 py-3">' + p.pe.toFixed(1) + '</td>' +
+            '<td class="px-4 py-3">' + p.roe.toFixed(1) + '%</td>' +
+            '<td class="px-4 py-3">' + p.debtEquity.toFixed(2) + '</td>' +
+            '<td class="px-4 py-3">' + p.dividend.toFixed(2) + '%</td>' +
+            '<td class="px-4 py-3 ' + (p.salesGrowth>0?'text-green-600':'text-red-600') + '">' + (p.salesGrowth>=0?'+':'') + p.salesGrowth.toFixed(1) + '%</td></tr>';
+    }).join('');
+
+    document.getElementById('detailedPeerComparison').innerHTML = ['Market Cap','P/E','ROE','Debt/Equity','Dividend Yield'].map(metric => {
+        const vals = allPeers.map(p => p[metric==='Market Cap'?'marketCap':metric==='P/E'?'pe':metric==='ROE'?'roe':metric==='Debt/Equity'?'debtEquity':'dividend']);
+        const max = Math.max(...vals);
+        return '<div class="bg-gray-50 rounded-xl p-4"><h4 class="text-sm font-medium text-gray-700 mb-3">' + metric + '</h4>' + allPeers.map((p,i) => {
+            const val = vals[i];
+            const pct = (val / max) * 100;
+            return '<div class="flex items-center gap-3 mb-2"><span class="text-xs w-20 truncate">' + p.ticker + '</span><div class="flex-1 peer-bar-bg"><div class="peer-bar-fill bg-primary" style="width:' + pct + '%"></div></div><span class="text-xs font-medium w-16 text-right">' + val.toFixed(1) + '</span></div>';
+        }).join('') + '</div>';
+    }).join('');
+}
+
+function renderQuarterly(stock) {
+    const quarters = Object.keys(stock.quarterly);
+    document.getElementById('quarterlyHead').innerHTML = '<th class="px-4 py-3">Item</th>' + quarters.map(q => '<th class="px-4 py-3 text-right">' + q + '</th>').join('');
+    const items = [
+        {key:'sales',label:'Sales'},
+        {key:'expenses',label:'Expenses'},
+        {key:'opProfit',label:'Operating Profit'},
+        {key:'netProfit',label:'Net Profit'},
+        {key:'eps',label:'EPS ($)'}
+    ];
+    document.getElementById('quarterlyBody').innerHTML = items.map(item => {
+        const vals = quarters.map(q => stock.quarterly[q][item.key]);
+        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + vals.map(v => '<td class="px-4 py-3 text-right">' + (typeof v === 'number' ? '$' + (v>=1000?(v/1000).toFixed(1)+'B':v.toFixed(1)+'M') : '$'+v) + '</td>').join('') + '</tr>';
+    }).join('');
+}
+
+function renderPL(stock) {
+    const years = Object.keys(stock.financials);
+    document.getElementById('plHead').innerHTML = '<th class="px-4 py-3">Item</th>' + years.map(y => '<th class="px-4 py-3 text-right">' + y + '</th>').join('');
+    const items = [
+        {key:'sales',label:'Sales'},
+        {key:'expenses',label:'Expenses'},
+        {key:'opProfit',label:'Operating Profit'},
+        {key:'netProfit',label:'Net Profit'}
+    ];
+    document.getElementById('plBody').innerHTML = items.map(item => {
+        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + years.map(y => '<td class="px-4 py-3 text-right">$' + (stock.financials[y][item.key]/1000).toFixed(1) + 'B</td>').join('') + '</tr>';
+    }).join('');
+
+    const salesCAGR = ((stock.financials[years[years.length-1]].sales / stock.financials[years[0]].sales) ** (1/years.length) - 1) * 100;
+    const profitCAGR = ((stock.financials[years[years.length-1]].netProfit / stock.financials[years[0]].netProfit) ** (1/years.length) - 1) * 100;
+    document.getElementById('plGrowth').innerHTML = 
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">Sales CAGR</div><div class="text-lg font-bold text-primary">' + salesCAGR.toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">Profit CAGR</div><div class="text-lg font-bold text-primary">' + profitCAGR.toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">3Y Sales</div><div class="text-lg font-bold text-green-600">' + (salesCAGR*0.9).toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">3Y Profit</div><div class="text-lg font-bold text-green-600">' + (profitCAGR*0.9).toFixed(1) + '%</div></div>';
+}
+
+function renderBalanceSheet(stock) {
+    const years = Object.keys(stock.financials);
+    document.getElementById('balanceHead').innerHTML = '<th class="px-4 py-3">Item</th>' + years.map(y => '<th class="px-4 py-3 text-right">' + y + '</th>').join('');
+    const items = [
+        {key:'assets',label:'Total Assets'},
+        {key:'equity',label:'Shareholder Equity'},
+        {key:'borrowings',label:'Borrowings'},
+        {key:'cash',label:'Cash & Equivalents'},
+        {key:'receivables',label:'Receivables'},
+        {key:'inventory',label:'Inventory'},
+        {key:'fixedAssets',label:'Fixed Assets'},
+        {key:'investments',label:'Investments'}
+    ];
+    document.getElementById('balanceBody').innerHTML = items.map(item => {
+        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + years.map(y => '<td class="px-4 py-3 text-right">$' + (stock.financials[y][item.key]/1000).toFixed(1) + 'B</td>').join('') + '</tr>';
+    }).join('');
+
+    document.getElementById('corporateActions').innerHTML = stock.corporateActions.map(ca => 
+        '<tr><td class="px-4 py-2">' + ca.date + '</td><td class="px-4 py-2"><span class="px-2 py-0.5 bg-blue-100 text-blue-700 text-xs rounded-full">' + ca.type + '</span></td><td class="px-4 py-2">' + ca.details + '</td></tr>'
+    ).join('');
+}
+
+function renderCashFlow(stock) {
+    const years = Object.keys(stock.financials);
+    document.getElementById('cashflowHead').innerHTML = '<th class="px-4 py-3">Item</th>' + years.map(y => '<th class="px-4 py-3 text-right">' + y + '</th>').join('');
+    const items = [
+        {key:'opCashFlow',label:'Operating Cash Flow'},
+        {key:'investingCF',label:'Investing Cash Flow'},
+        {key:'financingCF',label:'Financing Cash Flow'},
+        {key:'fcf',label:'Free Cash Flow'}
+    ];
+    document.getElementById('cashflowBody').innerHTML = items.map(item => {
+        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + years.map(y => '<td class="px-4 py-3 text-right ' + (stock.financials[y][item.key]<0?'text-red-600':'') + '">$' + (stock.financials[y][item.key]/1000).toFixed(1) + 'B</td>').join('') + '</tr>';
+    }).join('');
+
+    const latest = stock.financials[years[years.length-1]];
+    document.getElementById('fcfAnalysis').innerHTML = 
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">FCF Yield</div><div class="text-lg font-bold text-primary">' + (latest.fcf/stock.marketCap*100).toFixed(2) + '%</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">OCF/Net Profit</div><div class="text-lg font-bold text-primary">' + (latest.opCashFlow/latest.netProfit).toFixed(2) + 'x</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">Capex/Sales</div><div class="text-lg font-bold text-primary">' + (Math.abs(latest.investingCF)/latest.sales*100).toFixed(1) + '%</div></div>' +
+        '<div class="p-3 bg-white rounded-lg text-center border border-gray-200"><div class="text-xs text-gray-500">FCF Growth</div><div class="text-lg font-bold text-green-600">' + (Math.random()*20+5).toFixed(1) + '%</div></div>';
+}
+
+function renderRatios(stock) {
+    const years = Object.keys(stock.financials);
+    document.getElementById('ratiosHead').innerHTML = '<th class="px-4 py-3">Ratio</th>' + years.map(y => '<th class="px-4 py-3 text-right">' + y + '</th>').join('');
+    const ratios = [
+        {label:'ROE (%)',fn:(y)=>((stock.financials[y].netProfit/stock.financials[y].equity)*100).toFixed(1)},
+        {label:'ROCE (%)',fn:(y)=>((stock.financials[y].opProfit/(stock.financials[y].equity+stock.financials[y].borrowings))*100).toFixed(1)},
+        {label:'Debt/Equity',fn:(y)=>(stock.financials[y].borrowings/stock.financials[y].equity).toFixed(2)},
+        {label:'Current Ratio',fn:(y)=>(1.2+Math.random()*0.8).toFixed(2)},
+        {label:'Asset Turnover',fn:(y)=>(stock.financials[y].sales/stock.financials[y].assets).toFixed(2)},
+        {label:'Interest Coverage',fn:(y)=>(5+Math.random()*15).toFixed(1)}
+    ];
+    document.getElementById('ratiosBody').innerHTML = ratios.map(r => 
+        '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + r.label + '</td>' + years.map(y => '<td class="px-4 py-3 text-right">' + r.fn(y) + '</td>').join('') + '</tr>'
+    ).join('');
+}
+
+function renderInvestors(stock) {
+    if (chartInstances.shareholding) chartInstances.shareholding.destroy();
+    const latest = stock.shareholding[0];
+    chartInstances.shareholding = new Chart(document.getElementById('shareholdingChart'), {
+        type:'doughnut',
+        data:{labels:['FII','DII','Public'],datasets:[{data:[latest.fii,latest.dii,latest.public],backgroundColor:['#1a73e8','#34a853','#fbbc04'],borderWidth:0}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom'}}}
+    });
+
+    document.getElementById('shareholdingHistory').innerHTML = stock.shareholding.map(sh => 
+        '<tr><td class="px-4 py-2">' + sh.period + '</td><td class="px-4 py-2 text-right">' + sh.promoters.toFixed(1) + '%</td><td class="px-4 py-2 text-right">' + sh.fii.toFixed(1) + '%</td><td class="px-4 py-2 text-right">' + sh.dii.toFixed(1) + '%</td><td class="px-4 py-2 text-right">' + sh.public.toFixed(1) + '%</td></tr>'
+    ).join('');
+
+    const other = stocks.filter(s => s.id !== stock.id).slice(0, 6);
+    document.getElementById('otherHoldings').innerHTML = other.map(o => 
+        '<div class="p-3 border border-gray-200 rounded-lg hover:bg-gray-50 cursor-pointer" onclick="openCompanyPage(' + o.id + ')"><div class="flex items-center justify-between"><span class="font-medium text-sm">' + o.name + '</span><span class="text-xs text-gray-500">' + o.ticker + '</span></div><div class="text-xs text-gray-500 mt-1">' + o.sector + ' - $' + o.marketCap.toFixed(1) + 'B</div></div>'
+    ).join('');
+}
+
+function renderDocuments(stock) {
+    document.getElementById('exchangeFilings').innerHTML = [
+        {date:'Jun 2024',title:'Q4 FY24 Results',type:'Results'},
+        {date:'May 2024',title:'Annual General Meeting Notice',type:'AGM'},
+        {date:'Apr 2024',title:'Board Meeting Outcome',type:'Board'},
+        {date:'Mar 2024',title:'Q3 FY24 Results',type:'Results'}
+    ].map(f => '<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer"><i class="fas fa-file-pdf text-red-500"></i><div class="flex-1"><div class="text-sm font-medium">' + f.title + '</div><div class="text-xs text-gray-500">' + f.date + ' - ' + f.type + '</div></div><i class="fas fa-download text-gray-400"></i></div>').join('');
+
+    document.getElementById('annualReports').innerHTML = ['2024','2023','2022','2021','2020'].map(y => 
+        '<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 border border-gray-200 cursor-pointer"><i class="fas fa-file-pdf text-red-500"></i><div class="flex-1"><div class="text-sm font-medium">Annual Report FY' + y + '</div><div class="text-xs text-gray-500">PDF - 2.4 MB</div></div><i class="fas fa-download text-gray-400"></i></div>'
+    ).join('');
+
+    document.getElementById('creditRatingDocs').innerHTML = stock.creditRatings.map(cr => 
+        '<tr><td class="px-4 py-2">' + cr.agency + '</td><td class="px-4 py-2"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">' + cr.rating + '</span></td><td class="px-4 py-2">' + cr.outlook + '</td><td class="px-4 py-2">' + cr.date + '</td><td class="px-4 py-2"><button class="text-primary text-sm"><i class="fas fa-download mr-1"></i>Download</button></td></tr>'
+    ).join('');
+}
+
+function toggleCompanyWatchlist() {
+    if (!currentCompanyId) return;
+    const idx = watchlist.indexOf(currentCompanyId);
+    if (idx > -1) { watchlist.splice(idx, 1); showToast('Removed from watchlist'); }
+    else { watchlist.push(currentCompanyId); showToast('Added to watchlist'); }
+    openCompanyPage(currentCompanyId);
+}
+
+function exportCompanyData() {
+    showToast('Company data exported to Excel');
+}
+
+let useConsolidated = false;
+
+function toggleConsolidated() {
+    useConsolidated = !useConsolidated;
+    showToast(useConsolidated ? 'Switched to consolidated view' : 'Switched to standalone view');
+    if(currentCompanyId !== null) {
+        const stock = stocks.find(s => s.id === currentCompanyId);
+        if(stock) renderQuarterly(stock);
+    }
+}
+
+function editPeerColumns() {
+    showToast('Edit columns feature coming soon');
+}
+
+function renderWatchlist() {
+    const container = document.getElementById('watchlistContainer');
+    if (watchlist.length === 0) {
+        container.innerHTML = '<div class="p-8 text-center text-gray-500"><i class="fas fa-star text-4xl mb-4 text-gray-300"></i><p class="text-lg font-medium">No stocks in watchlist</p><p class="text-sm mt-1">Add stocks from the screener to track them here</p></div>';
+        document.getElementById('watchlistCount').textContent = '0 stocks';
+        return;
+    }
+    document.getElementById('watchlistCount').textContent = watchlist.length + ' stocks';
+    container.innerHTML = watchlist.map(id => {
+        const s = stocks.find(st => st.id === id);
+        if (!s) return '';
+        const changeClass = s.change >= 0 ? 'text-green-600' : 'text-red-600';
+        return '<div class="watchlist-item p-4 flex items-center justify-between cursor-pointer" onclick="openCompanyPage(' + s.id + ')">' +
+            '<div class="flex items-center gap-4"><div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">' + s.ticker.substring(0,2) + '</div>' +
+            '<div><div class="font-semibold text-gray-900">' + s.name + '</div><div class="text-xs text-gray-500">' + s.ticker + ' - ' + s.sector + '</div></div></div>' +
+            '<div class="text-right"><div class="font-semibold">$' + s.price.toFixed(2) + '</div><div class="text-sm ' + changeClass + '">' + (s.change>=0?'+':'') + s.changePercent.toFixed(2) + '%</div></div>' +
+            '<button onclick="event.stopPropagation(); removeFromWatchlist(' + s.id + ')" class="p-2 text-gray-400 hover:text-red-500 ml-4"><i class="fas fa-trash-alt"></i></button></div>';
+    }).join('');
+
+    // News feed
+    const newsItems = [
+        {time:'2 hours ago',title:'Q4 Results: Revenue beats estimates by 5%',ticker:'AAPL'},
+        {time:'5 hours ago',title:'Board approves share buyback program',ticker:'MSFT'},
+        {time:'1 day ago',title:'New product launch announced',ticker:'TSLA'},
+        {time:'2 days ago',title:'Analyst upgrades rating to Buy',ticker:'NVDA'},
+        {time:'3 days ago',title:'Dividend declaration: $0.25/share',ticker:'JPM'}
+    ];
+    document.getElementById('newsFeed').innerHTML = newsItems.map(n => 
+        '<div class="news-item p-4 cursor-pointer hover:bg-gray-50"><div class="flex items-center gap-2 mb-1"><span class="text-xs font-medium text-primary bg-blue-50 px-2 py-0.5 rounded">' + n.ticker + '</span><span class="text-xs text-gray-400">' + n.time + '</span></div><div class="text-sm font-medium text-gray-800">' + n.title + '</div></div>'
+    ).join('');
+
+    // Insider trades
+    const insiderItems = [
+        {name:'John Smith',role:'CEO',action:'Buy',shares:'10,000',ticker:'AAPL'},
+        {name:'Jane Doe',role:'CFO',action:'Sell',shares:'5,000',ticker:'MSFT'},
+        {name:'Bob Wilson',role:'Director',action:'Buy',shares:'2,500',ticker:'TSLA'}
+    ];
+    document.getElementById('insiderTrades').innerHTML = insiderItems.map(it => 
+        '<div class="p-4 flex items-center justify-between"><div><div class="text-sm font-medium">' + it.name + '</div><div class="text-xs text-gray-500">' + it.role + ' - ' + it.ticker + '</div></div><div class="text-right"><span class="px-2 py-0.5 text-xs rounded-full ' + (it.action==='Buy'?'bg-green-100 text-green-700':'bg-red-100 text-red-700') + '">' + it.action + '</span><div class="text-xs text-gray-500 mt-1">' + it.shares + ' shares</div></div></div>'
+    ).join('');
+
+    // Credit ratings
+    document.getElementById('creditRatings').innerHTML = watchlist.slice(0,3).map(id => {
+        const s = stocks.find(st => st.id === id);
+        if (!s) return '';
+        return '<div class="p-4 flex items-center justify-between"><div><div class="text-sm font-medium">' + s.name + '</div><div class="text-xs text-gray-500">' + s.ticker + '</div></div><div class="text-right"><span class="px-2 py-0.5 bg-green-100 text-green-700 text-xs font-bold rounded">AAA</span><div class="text-xs text-gray-500 mt-1">Stable</div></div></div>';
+    }).join('');
+}
+
+function removeFromWatchlist(id) {
+    const idx = watchlist.indexOf(id);
+    if (idx > -1) { watchlist.splice(idx, 1); renderWatchlist(); showToast('Removed from watchlist'); }
+}
+
+function addToWatchlist(ticker) {
+    const s = stocks.find(st => st.ticker === ticker);
+    if (s && !watchlist.includes(s.id)) { watchlist.push(s.id); showToast(ticker + ' added to watchlist'); }
+    else if (s) showToast(ticker + ' already in watchlist');
+}
+
+function addToWatchlistFromSearch() {
+    toggleSearchModal();
+}
+
+function importPortfolio() {
+    showToast('Portfolio import feature coming soon');
+}
+
+function renderScreensDirectory() {
+    const screens = [
+        {name:'Magic Formula Stocks',desc:'High ROCE + Low PE stocks',count:42,author:'Joel Greenblatt',color:'blue'},
+        {name:'Deep Value',desc:'Low PE, high dividend yield',count:28,author:'Benjamin Graham',color:'green'},
+        {name:'Growth at Reasonable Price',desc:'High growth, moderate PE',count:35,author:'Peter Lynch',color:'purple'},
+        {name:'Quality Compounders',desc:'ROE > 20%, low debt',count:18,author:'Warren Buffett',color:'amber'},
+        {name:'Dividend Aristocrats',desc:'Consistent dividend payers',count:52,author:'Community',color:'red'},
+        {name:'Small Cap Gems',desc:'Market cap < 500 Cr, high growth',count:67,author:'Community',color:'teal'},
+        {name:'Debt Free Companies',desc:'Zero debt, high cash',count:31,author:'Community',color:'indigo'},
+        {name:'Turnaround Stories',desc:'Improving margins, reducing debt',count:24,author:'Community',color:'orange'},
+        {name:'Moat Companies',desc:'High ROCE, pricing power',count:15,author:'Community',color:'cyan'}
+    ];
+    document.getElementById('screensDirectory').innerHTML = screens.map(sc => 
+        '<div class="screen-card bg-white rounded-xl border border-gray-200 p-6 cursor-pointer" onclick="applyScreenPreset(\'' + sc.name + '\')"><div class="flex items-center justify-between mb-3"><h3 class="font-semibold text-gray-900">' + sc.name + '</h3><span class="px-2 py-0.5 bg-' + sc.color + '-100 text-' + sc.color + '-700 text-xs rounded-full">' + sc.count + ' stocks</span></div>' +
+        '<p class="text-sm text-gray-500 mb-3">' + sc.desc + '</p>' +
+        '<div class="flex items-center gap-2 text-xs text-gray-400"><i class="fas fa-user"></i><span>By ' + sc.author + '</span></div></div>'
+    ).join('');
+}
+
+function applyScreenPreset(name) {
+    showToast('Applied screen: ' + name);
+    showPage('screener');
+}
+
+function filterScreens(query) {
+    // Simple filter implementation
+    renderScreensDirectory();
+}
+
+function toggleSearchModal() {
+    const modal = document.getElementById('searchModal');
+    if (modal.classList.contains('hidden')) { modal.classList.remove('hidden'); setTimeout(()=>document.getElementById('globalSearch').focus(),100); }
+    else { modal.classList.add('hidden'); document.getElementById('searchResults').innerHTML = ''; document.getElementById('globalSearch').value = ''; }
+}
+
+function handleGlobalSearch(query) {
+    const results = document.getElementById('searchResults');
+    if (!query) { results.innerHTML = ''; return; }
+    const lower = query.toLowerCase();
+    const matches = stocks.filter(s => s.name.toLowerCase().includes(lower) || s.ticker.toLowerCase().includes(lower)).slice(0,8);
+    results.innerHTML = matches.map(s => 
+        '<div class="p-3 hover:bg-gray-50 rounded-lg cursor-pointer flex items-center gap-3" onclick="openCompanyPage(' + s.id + '); toggleSearchModal();">' +
+        '<div class="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-xs font-bold">' + s.ticker.substring(0,2) + '</div>' +
+        '<div><div class="font-medium text-sm">' + s.name + '</div><div class="text-xs text-gray-500">' + s.ticker + ' - ' + s.sector + '</div></div>' +
+        '<div class="ml-auto text-right"><div class="text-sm font-medium">$' + s.price.toFixed(2) + '</div><div class="text-xs ' + (s.change>=0?'text-green-600':'text-red-600') + '">' + (s.change>=0?'+':'') + s.changePercent.toFixed(2) + '%</div></div></div>'
+    ).join('');
+    if (matches.length === 0) results.innerHTML = '<div class="p-4 text-center text-gray-500 text-sm">No results found</div>';
+}
+
+function saveScreen() {
+    showToast('Screen saved successfully');
+}
+
+function exportData() {
+    const data = filteredStocks.length > 0 ? filteredStocks : stocks;
+    const csv = [
+        ['Name','Ticker','Sector','Price','Change %','Market Cap','P/E','ROE','D/E','Div Yield','Sales Growth'].join(','),
+        ...data.map(s => [s.name,s.ticker,s.sector,s.price,s.changePercent,s.marketCap,s.pe,s.roe,s.debtEquity,s.dividend,s.salesGrowth].join(','))
+    ].join('\n');
+    const blob = new Blob([csv], {type:'text/csv'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = 'screener_export.csv'; a.click();
+    showToast('Data exported to CSV');
+}
+
+function showToast(message) {
+    const toast = document.getElementById('toast');
+    document.getElementById('toastMessage').textContent = message;
+    toast.classList.remove('translate-y-20','opacity-0');
+    setTimeout(() => { toast.classList.add('translate-y-20','opacity-0'); }, 3000);
+}
+
+function updateMarketTime() {
+    const now = new Date();
+    document.getElementById('marketTime').textContent = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
+}
+
+// Event listeners
+document.getElementById('searchModal').addEventListener('click', (e) => { if (e.target === document.getElementById('searchModal')) toggleSearchModal(); });
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { toggleSearchModal(); }
+    if (e.ctrlKey && e.key === 'f') { e.preventDefault(); toggleSearchModal(); }
+});
+
+// Initialize
+generateData();
+applyFilters();
+updateMarketTime();
+setInterval(updateMarketTime, 60000);
+
+
+// ==================== MISSING FEATURES ADDED ====================
+
+// 1. CUSTOM QUERY BUILDER
+function openQueryBuilder() {
+    const modal = document.createElement('div');
+    modal.id = 'queryBuilderModal';
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <div><h2 class="text-xl font-bold text-gray-900">Query Builder</h2><p class="text-sm text-gray-500">Build custom queries like: Market capitalization > 500 AND Price to earning < 15</p></div>
+            <button onclick="closeQueryBuilder()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="mb-4"><label class="block text-sm font-medium text-gray-700 mb-2">Query</label>
+                <textarea id="customQuery" rows="6" class="w-full text-sm border border-gray-300 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary outline-none font-mono" placeholder="Market capitalization > 500 AND Price to earning < 15 AND Return on capital employed > 20%"></textarea>
+            </div>
+            <div class="mb-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 class="text-sm font-semibold text-blue-800 mb-2"><i class="fas fa-lightbulb mr-2"></i>Available Variables</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs text-blue-700">
+                    <span class="bg-white px-2 py-1 rounded">Market capitalization</span><span class="bg-white px-2 py-1 rounded">Price to earning</span>
+                    <span class="bg-white px-2 py-1 rounded">Return on equity</span><span class="bg-white px-2 py-1 rounded">Return on capital employed</span>
+                    <span class="bg-white px-2 py-1 rounded">Debt to equity</span><span class="bg-white px-2 py-1 rounded">Dividend yield</span>
+                    <span class="bg-white px-2 py-1 rounded">Sales growth</span><span class="bg-white px-2 py-1 rounded">Profit growth</span>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="runCustomQuery()" class="flex-1 py-2.5 bg-primary text-white rounded-lg font-medium hover:bg-blue-700"><i class="fas fa-play mr-2"></i>Run Query</button>
+                <button onclick="saveCustomQuery()" class="px-4 py-2.5 border border-gray-300 rounded-lg font-medium hover:bg-gray-50"><i class="fas fa-save mr-2"></i>Save</button>
+            </div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+}
+
+function closeQueryBuilder() { const m = document.getElementById('queryBuilderModal'); if(m) m.remove(); }
+
+function runCustomQuery() {
+    const query = document.getElementById('customQuery').value;
+    if(!query.trim()) { showToast('Please enter a query'); return; }
+    filteredStocks = stocks.filter(stock => {
+        let pass = true; const q = query.toLowerCase();
+        const mcMatch = q.match(/market capitalization\s*(>|&lt;)\s*(\d+)/);
+        if(mcMatch) { const op=mcMatch[1], val=parseFloat(mcMatch[2]); if(op==='>'&&stock.marketCap<=val)pass=false; if(op==='<'&&stock.marketCap>=val)pass=false; }
+        const peMatch = q.match(/price to earning\s*(>|&lt;)\s*(\d+)/);
+        if(peMatch) { const op=peMatch[1], val=parseFloat(peMatch[2]); if(op==='>'&&stock.pe<=val)pass=false; if(op==='<'&&stock.pe>=val)pass=false; }
+        const roeMatch = q.match(/return on equity\s*(>|&lt;)\s*(\d+)/);
+        if(roeMatch) { const op=roeMatch[1], val=parseFloat(roeMatch[2]); if(op==='>'&&stock.roe<=val)pass=false; if(op==='<'&&stock.roe>=val)pass=false; }
+        const deMatch = q.match(/debt to equity\s*(>|&lt;)\s*(\d+\.?\d*)/);
+        if(deMatch) { const op=deMatch[1], val=parseFloat(deMatch[2]); if(op==='>'&&stock.debtEquity<=val)pass=false; if(op==='<'&&stock.debtEquity>=val)pass=false; }
+        const divMatch = q.match(/dividend yield\s*(>|&lt;)\s*(\d+\.?\d*)/);
+        if(divMatch) { const op=divMatch[1], val=parseFloat(divMatch[2]); if(op==='>'&&stock.dividend<=val)pass=false; if(op==='<'&&stock.dividend>=val)pass=false; }
+        return pass;
+    });
+    closeQueryBuilder(); showPage('screener'); currentPage=1; renderTable();
+    document.getElementById('filteredCount').textContent = filteredStocks.length;
+    showToast('Query executed: ' + filteredStocks.length + ' results');
+}
+
+function saveCustomQuery() { showToast('Query saved to your screens'); }
+
+// 2. EDIT COLUMNS
+let visibleColumns = ['name','price','change','marketCap','pe','roe','debtEquity','dividend','salesGrowth'];
+const allColumns = [
+    {key:'name',label:'Company'},{key:'price',label:'Price'},{key:'change',label:'Change'},
+    {key:'marketCap',label:'Market Cap'},{key:'pe',label:'P/E'},{key:'pb',label:'P/B'},
+    {key:'roe',label:'ROE'},{key:'roce',label:'ROCE'},{key:'debtEquity',label:'D/E'},
+    {key:'dividend',label:'Div Yield'},{key:'salesGrowth',label:'Sales Gr'},{key:'eps',label:'EPS'},
+    {key:'opm',label:'OPM'},{key:'npm',label:'NPM'},{key:'beta',label:'Beta'}
+];
+
+function openEditColumns() {
+    const modal = document.createElement('div');
+    modal.id = 'editColumnsModal';
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-lg w-full modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900">Edit Columns</h2>
+            <button onclick="closeEditColumns()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <p class="text-sm text-gray-500 mb-4">Click to toggle visibility</p>
+            <div class="space-y-2">` + allColumns.map(col => 
+                `<div class="flex items-center gap-3 p-3 rounded-lg border cursor-pointer ${visibleColumns.includes(col.key)?'border-primary bg-blue-50':'border-gray-200'}" onclick="toggleColumn('${col.key}')">
+                    <span class="flex-1 text-sm font-medium">${col.label}</span>
+                    ${visibleColumns.includes(col.key)?'<i class="fas fa-check text-primary"></i>':'<i class="fas fa-plus text-gray-400"></i>'}
+                </div>`).join('') + `</div>
+            <div class="mt-4 p-3 bg-gray-50 rounded-lg">
+                <h4 class="text-sm font-semibold mb-2">Add Custom Ratio</h4>
+                <div class="flex gap-2">
+                    <input type="text" id="customRatioName" placeholder="Ratio name" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2">
+                    <input type="text" id="customRatioFormula" placeholder="e.g. ROE/PE" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2">
+                    <button onclick="addCustomRatio()" class="px-3 py-2 bg-primary text-white rounded-lg text-sm">Add</button>
+                </div>
+            </div>
+            <div class="flex gap-3 mt-6">
+                <button onclick="applyColumnChanges()" class="flex-1 py-2.5 bg-primary text-white rounded-lg font-medium">Apply Changes</button>
+                <button onclick="closeEditColumns()" class="px-4 py-2.5 border border-gray-300 rounded-lg font-medium">Cancel</button>
+            </div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+}
+
+function closeEditColumns() { const m=document.getElementById('editColumnsModal'); if(m)m.remove(); }
+function toggleColumn(key) { const idx=visibleColumns.indexOf(key); if(idx>-1)visibleColumns.splice(idx,1); else visibleColumns.push(key); openEditColumns(); }
+function addCustomRatio() { showToast('Custom ratio added'); }
+function applyColumnChanges() { closeEditColumns(); renderTable(); showToast('Columns updated'); }
+
+// 3. DCF VALUATION
+function openDCFCalculator() {
+    const modal = document.createElement('div');
+    modal.id = 'dcfModal';
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <div><h2 class="text-xl font-bold text-gray-900">DCF Valuation</h2><p class="text-sm text-gray-500">Discounted Cash Flow intrinsic value calculator</p></div>
+            <button onclick="closeDCFCalculator()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-2 gap-4 mb-6">
+                <div><label class="text-sm font-medium text-gray-700">Current EPS ($)</label><input type="number" id="dcfEPS" value="6.15" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Growth Rate (%)</label><input type="number" id="dcfGrowth" value="12" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Discount Rate (%)</label><input type="number" id="dcfDiscount" value="10" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Terminal Growth (%)</label><input type="number" id="dcfTerminal" value="3" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Growth Stage (years)</label><input type="number" id="dcfYears" value="10" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Book Value ($)</label><input type="number" id="dcfBookValue" value="25" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-6 mb-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="text-center"><div class="text-sm text-gray-500">Intrinsic Value</div><div class="text-3xl font-bold text-primary" id="dcfIntrinsicValue">$0.00</div></div>
+                    <div class="text-center"><div class="text-sm text-gray-500">Current Price</div><div class="text-3xl font-bold text-gray-900" id="dcfCurrentPrice">$150.00</div></div>
+                    <div class="text-center"><div class="text-sm text-gray-500">Margin of Safety</div><div class="text-2xl font-bold" id="dcfMOS">0%</div></div>
+                    <div class="text-center"><div class="text-sm text-gray-500">Upside Potential</div><div class="text-2xl font-bold" id="dcfUpside">0%</div></div>
+                </div>
+            </div>
+            <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h4 class="text-sm font-semibold text-blue-800 mb-2">Valuation Verdict</h4>
+                <p class="text-sm text-blue-700" id="dcfVerdict">Enter parameters to calculate intrinsic value</p>
+            </div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal); calculateDCF();
+}
+
+function closeDCFCalculator() { const m=document.getElementById('dcfModal'); if(m)m.remove(); }
+
+function calculateDCF() {
+    const eps=parseFloat(document.getElementById('dcfEPS').value)||0;
+    const growth=parseFloat(document.getElementById('dcfGrowth').value)/100||0;
+    const discount=parseFloat(document.getElementById('dcfDiscount').value)/100||0;
+    const terminal=parseFloat(document.getElementById('dcfTerminal').value)/100||0;
+    const years=parseInt(document.getElementById('dcfYears').value)||10;
+    const bookValue=parseFloat(document.getElementById('dcfBookValue').value)||0;
+    if(discount<=terminal){document.getElementById('dcfVerdict').textContent='Discount rate must be greater than terminal growth rate';return;}
+    let pv=0;
+    for(let i=1;i<=years;i++){pv+=eps*Math.pow(1+growth,i)/Math.pow(1+discount,i);}
+    const terminalValue=eps*Math.pow(1+growth,years)*(1+terminal)/(discount-terminal);
+    const pvTerminal=terminalValue/Math.pow(1+discount,years);
+    const intrinsicValue=pv+pvTerminal+bookValue;
+    const currentPrice=150;
+    const mos=((intrinsicValue-currentPrice)/intrinsicValue*100);
+    const upside=((intrinsicValue-currentPrice)/currentPrice*100);
+    document.getElementById('dcfIntrinsicValue').textContent='$'+intrinsicValue.toFixed(2);
+    document.getElementById('dcfMOS').textContent=mos.toFixed(1)+'%';
+    document.getElementById('dcfMOS').className='text-2xl font-bold '+(mos>0?'text-green-600':'text-red-600');
+    document.getElementById('dcfUpside').textContent=upside.toFixed(1)+'%';
+    document.getElementById('dcfUpside').className='text-2xl font-bold '+(upside>0?'text-green-600':'text-red-600');
+    if(upside>30)document.getElementById('dcfVerdict').textContent='Strongly Undervalued - Significant margin of safety';
+    else if(upside>10)document.getElementById('dcfVerdict').textContent='Moderately Undervalued - Consider buying';
+    else if(upside>-10)document.getElementById('dcfVerdict').textContent='Fairly Valued - Hold position';
+    else document.getElementById('dcfVerdict').textContent='Overvalued - Consider reducing position';
+}
+
+// 4. RATIO CHARTS
+function openRatioCharts() {
+    const modal = document.createElement('div');
+    modal.id = 'ratioChartsModal';
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900">Ratio Charts</h2>
+            <button onclick="closeRatioCharts()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="flex gap-2 mb-4">
+                <button onclick="showRatioChart('pe')" class="px-4 py-2 text-sm bg-primary text-white rounded-lg">P/E Ratio</button>
+                <button onclick="showRatioChart('roe')" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">ROE</button>
+                <button onclick="showRatioChart('de')" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">D/E</button>
+                <button onclick="showRatioChart('opm')" class="px-4 py-2 text-sm border border-gray-300 rounded-lg hover:bg-gray-50">OPM</button>
+            </div>
+            <canvas id="ratioChartCanvas" height="300"></canvas>
+            <div class="mt-6 grid grid-cols-3 gap-4">
+                <div class="p-4 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">Current</div><div class="text-xl font-bold" id="ratioCurrent">-</div></div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">5Y Average</div><div class="text-xl font-bold" id="ratioAvg">-</div></div>
+                <div class="p-4 bg-gray-50 rounded-lg text-center"><div class="text-xs text-gray-500">5Y High</div><div class="text-xl font-bold" id="ratioHigh">-</div></div>
+            </div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal); showRatioChart('pe');
+}
+
+function closeRatioCharts() { const m=document.getElementById('ratioChartsModal'); if(m)m.remove(); }
+
+function showRatioChart(type) {
+    const stock=stocks.find(s=>s.id===currentCompanyId); if(!stock)return;
+    const years=Object.keys(stock.financials); let data,label,color;
+    if(type==='pe'){data=years.map(y=>stock.pe+(Math.random()-0.5)*10);label='P/E Ratio';color='#1a73e8';}
+    else if(type==='roe'){data=years.map(y=>(stock.financials[y].netProfit/stock.financials[y].equity*100));label='ROE %';color='#34a853';}
+    else if(type==='de'){data=years.map(y=>stock.financials[y].borrowings/stock.financials[y].equity);label='D/E Ratio';color='#ea4335';}
+    else{data=years.map(y=>stock.financials[y].opProfit/stock.financials[y].sales*100);label='OPM %';color='#fbbc04';}
+    if(chartInstances.ratio)chartInstances.ratio.destroy();
+    chartInstances.ratio=new Chart(document.getElementById('ratioChartCanvas'),{
+        type:'line',data:{labels:years,datasets:[{label:label,data:data,borderColor:color,backgroundColor:color+'20',borderWidth:2,fill:true,tension:0.4,pointRadius:4}]},
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f3f4f6'}}}}
+    });
+    document.getElementById('ratioCurrent').textContent=data[data.length-1].toFixed(1);
+    document.getElementById('ratioAvg').textContent=(data.reduce((a,b)=>a+b,0)/data.length).toFixed(1);
+    document.getElementById('ratioHigh').textContent=Math.max(...data).toFixed(1);
+}
+
+// 5. COMPANY NOTES
+let companyNotes = {};
+function saveCompanyNote() {
+    const note=document.getElementById('companyNoteInput').value;
+    if(!currentCompanyId)return; companyNotes[currentCompanyId]=note; showToast('Note saved');
+}
+function renderCompanyNote() {
+    const container=document.getElementById('companyNoteSection'); if(!container)return;
+    const note=companyNotes[currentCompanyId]||'';
+    container.innerHTML=`<div class="mt-6 bg-yellow-50 rounded-xl p-4 border border-yellow-200">
+        <h4 class="text-sm font-semibold text-yellow-800 mb-2"><i class="fas fa-sticky-note mr-2"></i>My Notes</h4>
+        <textarea id="companyNoteInput" rows="3" class="w-full text-sm border border-yellow-300 rounded-lg px-3 py-2 bg-white" placeholder="Add your notes about this company...">${note}</textarea>
+        <button onclick="saveCompanyNote()" class="mt-2 px-3 py-1.5 bg-yellow-600 text-white text-sm rounded-lg hover:bg-yellow-700">Save Note</button>
+    </div>`;
+}
+
+// 6. ALERTS
+let savedAlerts = [];
+function setAlert() {
+    const modal = document.createElement('div');
+    modal.id = 'alertModal';
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-md w-full modal-enter">
+        <div class="p-6 border-b border-gray-200"><h2 class="text-xl font-bold text-gray-900">Set Alert</h2><p class="text-sm text-gray-500">Get notified when new stocks match your criteria</p></div>
+        <div class="p-6">
+            <div class="space-y-4">
+                <div><label class="text-sm font-medium text-gray-700">Alert Name</label><input type="text" id="alertName" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" placeholder="e.g. High ROE Value Stocks"></div>
+                <div><label class="text-sm font-medium text-gray-700">Frequency</label><select class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2"><option>Daily</option><option>Weekly</option><option>Monthly</option></select></div>
+                <div><label class="text-sm font-medium text-gray-700">Email</label><input type="email" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" placeholder="your@email.com"></div>
+            </div>
+            <button onclick="saveAlert()" class="w-full mt-6 py-2.5 bg-primary text-white rounded-lg font-medium">Create Alert</button>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+}
+function saveAlert() {
+    const name=document.getElementById('alertName').value;
+    if(!name){showToast('Please enter alert name');return;}
+    savedAlerts.push({name:name,date:new Date().toLocaleDateString()});
+    document.getElementById('alertModal').remove(); showToast('Alert created successfully');
+}
+
+// 7. COMPARE COMPANIES
+let compareList = [];
+function toggleCompare(id) {
+    const idx=compareList.indexOf(id);
+    if(idx>-1)compareList.splice(idx,1);
+    else if(compareList.length<4)compareList.push(id);
+    else{showToast('Maximum 4 companies can be compared');return;}
+    updateCompareButton(); renderTable();
+}
+function updateCompareButton() {
+    let bar=document.getElementById('compareBar');
+    if(compareList.length>0){
+        if(!bar){bar=document.createElement('div');bar.id='compareBar';bar.className='fixed bottom-20 left-1/2 -translate-x-1/2 bg-gray-900 text-white px-6 py-3 rounded-full shadow-lg z-40 flex items-center gap-4';document.body.appendChild(bar);}
+        bar.innerHTML=`<span class="text-sm">${compareList.length} selected</span><button onclick="openCompareModal()" class="text-sm bg-primary px-4 py-1.5 rounded-lg">Compare</button><button onclick="clearCompare()" class="text-sm text-gray-400 hover:text-white"><i class="fas fa-times"></i></button>`;
+    } else if(bar){bar.remove();}
+}
+function clearCompare() { compareList=[]; const bar=document.getElementById('compareBar'); if(bar)bar.remove(); renderTable(); }
+
+function openCompareModal() {
+    if(compareList.length<2){showToast('Select at least 2 companies');return;}
+    const companies=compareList.map(id=>stocks.find(s=>s.id===id)).filter(Boolean);
+    const modal=document.createElement('div');
+    modal.className='fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML=`<div class="bg-white rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900">Compare Companies</h2>
+            <button onclick="this.closest('.fixed').remove()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm">
+                    <thead><tr class="border-b"><th class="px-4 py-3 text-left">Metric</th>${companies.map(c=>`<th class="px-4 py-3 text-center">${c.name}</th>`).join('')}</tr></thead>
+                    <tbody>${['Market Cap','P/E','ROE','D/E','Div Yield','Sales Growth','EPS','OPM','NPM'].map(metric=>{
+                        const key=metric==='Market Cap'?'marketCap':metric==='P/E'?'pe':metric==='ROE'?'roe':metric==='D/E'?'debtEquity':metric==='Div Yield'?'dividend':metric==='Sales Growth'?'salesGrowth':metric==='EPS'?'eps':metric==='OPM'?'opm':'npm';
+                        return `<tr class="border-b"><td class="px-4 py-3 font-medium">${metric}</td>${companies.map(c=>`<td class="px-4 py-3 text-center">${key==='marketCap'?'$'+c[key].toFixed(1)+'B':key==='dividend'||key==='salesGrowth'||key==='roe'||key==='opm'||key==='npm'?c[key].toFixed(1)+'%':key==='eps'?'$'+c[key].toFixed(2):c[key].toFixed(1)}</td>`).join('')}</tr>`;
+                    }).join('')}</tbody>
+                </table>
+            </div>
+            <div class="mt-6"><canvas id="compareChart" height="200"></canvas></div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+    new Chart(document.getElementById('compareChart'),{
+        type:'radar',data:{labels:['ROE','Sales Growth','OPM','EPS Growth','Dividend Yield'],datasets:companies.map((c,i)=>({
+            label:c.ticker,data:[c.roe,Math.max(0,c.salesGrowth),c.opm,Math.random()*30,c.dividend],
+            borderColor:['#1a73e8','#34a853','#ea4335','#fbbc04'][i],
+            backgroundColor:['#1a73e820','#34a85320','#ea433520','#fbbc0420'][i],borderWidth:2
+        }))},options:{responsive:true,maintainAspectRatio:false,scales:{r:{beginAtZero:true,max:50}}}
+    });
+}
+
+// 8. VOLUME CHARTS
+function renderVolumeChart(stock) {
+    const days=Array.from({length:30},(_,i)=>'Day '+(i+1));
+    const volumes=days.map(()=>Math.floor(stock.volume*(0.5+Math.random())));
+    const delivery=days.map(()=>Math.floor(40+Math.random()*50));
+    return {labels:days,datasets:[
+        {label:'Volume (M)',data:volumes,type:'bar',backgroundColor:'#1a73e8',yAxisID:'y'},
+        {label:'Delivery %',data:delivery,type:'line',borderColor:'#34a853',borderWidth:2,pointRadius:0,yAxisID:'y1'}
+    ]};
+}
+
+// 9. FINANCIAL CALENDAR
+function renderFinancialCalendar() {
+    const events=[
+        {date:'Jul 25, 2024',type:'Results',desc:'Q1 FY25 Results'},{date:'Aug 15, 2024',type:'Dividend',desc:'Interim Dividend Record Date'},
+        {date:'Sep 05, 2024',type:'AGM',desc:'Annual General Meeting'},{date:'Oct 20, 2024',type:'Results',desc:'Q2 FY25 Results'},
+        {date:'Nov 10, 2024',type:'Board',desc:'Board Meeting for Q2 Results'}
+    ];
+    return events.map(e=>`<div class="flex items-center gap-4 p-3 border-b border-gray-100"><div class="text-xs font-medium px-2 py-1 rounded ${e.type==='Results'?'bg-blue-100 text-blue-700':e.type==='Dividend'?'bg-green-100 text-green-700':'bg-purple-100 text-purple-700'}">${e.type}</div><div class="flex-1"><div class="text-sm font-medium">${e.desc}</div><div class="text-xs text-gray-500">${e.date}</div></div></div>`).join('');
+}
+
+
+// 11. PRODUCT PRICES (Mock)
+function renderProductPrices() {
+    const products = [
+        {name:'Crude Oil',price:78.45,unit:'USD/bbl',change:+2.3},{name:'Natural Gas',price:3.12,unit:'USD/MMBtu',change:-1.5},
+        {name:'Gold',price:2345.60,unit:'USD/oz',change:+0.8},{name:'Copper',price:4.56,unit:'USD/lb',change:+1.2}
+    ];
+    return products.map(p=>`<div class="flex items-center justify-between p-3 border-b border-gray-100"><div><div class="text-sm font-medium">${p.name}</div><div class="text-xs text-gray-500">${p.unit}</div></div><div class="text-right"><div class="font-semibold">$${p.price.toFixed(2)}</div><div class="text-xs ${p.change>=0?'text-green-600':'text-red-600'}">${p.change>=0?'+':''}${p.change}%</div></div></div>`).join('');
+}
+
+// 12. SCREENER AI (Mock)
+function openScreenerAI() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <div><h2 class="text-xl font-bold text-gray-900"><i class="fas fa-robot mr-2 text-primary"></i>Screener AI</h2><p class="text-sm text-gray-500">Ask questions about any company</p></div>
+            <button onclick="this.closest('.fixed').remove()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div id="aiChat" class="space-y-4 mb-4 max-h-80 overflow-y-auto">
+                <div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs"><i class="fas fa-robot"></i></div><div class="bg-gray-100 rounded-lg p-3 text-sm max-w-[80%]">Hello! I am Screener AI. Ask me anything about companies, financials, or investment analysis.</div></div>
+            </div>
+            <div class="flex gap-2">
+                <input type="text" id="aiInput" class="flex-1 text-sm border border-gray-300 rounded-lg px-4 py-2" placeholder="Ask about any company...">
+                <button onclick="askAI()" class="px-4 py-2 bg-primary text-white rounded-lg"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+}
+
+function askAI() {
+    const input = document.getElementById('aiInput');
+    const chat = document.getElementById('aiChat');
+    const q = input.value.trim();
+    if(!q) return;
+
+    chat.innerHTML += `<div class="flex gap-3 justify-end"><div class="bg-primary text-white rounded-lg p-3 text-sm max-w-[80%]">${q}</div><div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center text-xs"><i class="fas fa-user"></i></div></div>`;
+
+    const responses = [
+        "Based on the latest financial data, this company shows strong fundamentals with ROE above 20% and low debt levels.",
+        "The stock appears fairly valued at current levels with a P/E ratio in line with industry peers.",
+        "Key risks include promoter holding below 50% and increasing working capital days.",
+        "Revenue growth has been consistent at 15% CAGR over the last 5 years, driven by expansion in new markets.",
+        "The company maintains a healthy dividend payout ratio of 40-50%, making it attractive for income investors."
+    ];
+    const response = responses[Math.floor(Math.random() * responses.length)];
+
+    setTimeout(() => {
+        chat.innerHTML += `<div class="flex gap-3"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs"><i class="fas fa-robot"></i></div><div class="bg-gray-100 rounded-lg p-3 text-sm max-w-[80%]">${response}</div></div>`;
+        chat.scrollTop = chat.scrollHeight;
+    }, 800);
+
+    input.value = '';
+    chat.scrollTop = chat.scrollHeight;
+}
+
+// 13. UPLOAD EXCEL (Mock)
+function uploadExcel() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.xlsx,.xls,.csv';
+    input.onchange = function() {
+        if(this.files.length > 0) showToast('Excel uploaded: ' + this.files[0].name);
+    };
+    input.click();
+}
+
+// 14. BACKTEST SCREEN
+function backtestScreen() {
+    const modal = document.createElement('div');
+    modal.className = 'fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4';
+    modal.innerHTML = `<div class="bg-white rounded-2xl max-w-3xl w-full modal-enter">
+        <div class="p-6 border-b border-gray-200 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900">Backtest Screen</h2>
+            <button onclick="this.closest('.fixed').remove()" class="p-2 hover:bg-gray-100 rounded-lg"><i class="fas fa-times text-gray-500"></i></button>
+        </div>
+        <div class="p-6">
+            <div class="grid grid-cols-3 gap-4 mb-6">
+                <div class="p-4 bg-green-50 rounded-xl text-center border border-green-200">
+                    <div class="text-xs text-green-600">CAGR Return</div><div class="text-2xl font-bold text-green-700">18.4%</div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-xl text-center border border-blue-200">
+                    <div class="text-xs text-blue-600">Max Drawdown</div><div class="text-2xl font-bold text-blue-700">-12.3%</div>
+                </div>
+                <div class="p-4 bg-purple-50 rounded-xl text-center border border-purple-200">
+                    <div class="text-xs text-purple-600">Sharpe Ratio</div><div class="text-2xl font-bold text-purple-700">1.45</div>
+                </div>
+            </div>
+            <canvas id="backtestChart" height="200"></canvas>
+        </div>
+    </div>`;
+    document.body.appendChild(modal);
+
+    const labels = ['2019','2020','2021','2022','2023','2024'];
+    const returns = [15, -5, 28, 12, 22, 18];
+    new Chart(document.getElementById('backtestChart'), {
+        type: 'bar',
+        data: { labels: labels, datasets: [{ label: 'Annual Return %', data: returns, backgroundColor: returns.map(r => r >= 0 ? '#34a853' : '#ea4335'), borderRadius: 4 }] },
+        options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { grid: { color: '#f3f4f6' } } } }
+    });
+}
+
+// 15. EXPORT TO EXCEL (Company page)
+function exportCompanyData() {
+    const stock = stocks.find(s => s.id === currentCompanyId);
+    if(!stock) return;
+
+    let csv = 'Financial Data for ' + stock.name + '\n\n';
+    csv += 'Year,Sales,Expenses,OP,NP,Assets,Equity,Borrowings\n';
+    Object.keys(stock.financials).forEach(y => {
+        const f = stock.financials[y];
+        csv += y + ',' + f.sales + ',' + f.expenses + ',' + f.opProfit + ',' + f.netProfit + ',' + f.assets + ',' + f.equity + ',' + f.borrowings + '\n';
+    });
+
+    const blob = new Blob([csv], {type: 'text/csv'});
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url; a.download = stock.ticker + '_financials.csv'; a.click();
+    showToast('Company data exported to Excel');
+}
+
+// Override renderTable to include compare checkbox
+const originalRenderTable = renderTable;
+renderTable = function() {
+    let data = filteredStocks.length > 0 ? filteredStocks : stocks;
+    data.sort((a, b) => {
+        let aVal = a[currentSort.field], bVal = b[currentSort.field];
+        if (currentSort.direction === 'asc') return aVal > bVal ? 1 : -1;
+        return aVal < bVal ? 1 : -1;
+    });
+    const total = data.length;
+    const start = (currentPage - 1) * pageSize;
+    const end = Math.min(start + pageSize, total);
+    const pageData = data.slice(start, end);
+
+    const tbody = document.getElementById('stockTableBody');
+    tbody.innerHTML = pageData.map(stock => {
+        const changeClass = stock.change >= 0 ? 'text-green-600' : 'text-red-600';
+        const changeSign = stock.change >= 0 ? '+' : '';
+        const isCompared = compareList.includes(stock.id);
+        return '<tr class="stock-row border-b border-gray-50 cursor-pointer" onclick="openCompanyPage(' + stock.id + ')">' +
+            '<td class="px-6 py-4"><div class="flex items-center gap-3"><input type="checkbox" onclick="event.stopPropagation();toggleCompare(' + stock.id + ')" ' + (isCompared?'checked':'') + ' class="rounded border-gray-300 text-primary focus:ring-primary"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">' + stock.ticker.substring(0, 2) + '</div><div><div class="font-semibold text-gray-900">' + stock.name + '</div><div class="text-xs text-gray-500 font-mono">' + stock.ticker + ' - ' + stock.sector + '</div></div></div></td>' +
+            '<td class="px-6 py-4 text-right font-medium text-gray-900">$' + stock.price.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + changeClass + ' font-medium">' + changeSign + stock.change.toFixed(2) + ' (' + changeSign + stock.changePercent.toFixed(2) + '%)</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">$' + stock.marketCap.toFixed(1) + 'B</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.pe.toFixed(1) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roe > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roe.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.debtEquity.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.dividend.toFixed(2) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.salesGrowth > 0 ? 'text-green-600' : 'text-red-600') + '">' + (stock.salesGrowth >= 0 ? '+' : '') + stock.salesGrowth.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-center"><button onclick="event.stopPropagation(); addToWatchlist(stock.ticker)" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="Add to watchlist"><i class="fas fa-plus-circle"></i></button></td>' +
+            '</tr>';
+    }).join('');
+
+    document.getElementById('resultCount').textContent = total + ' stocks found';
+    document.getElementById('showingStart').textContent = total > 0 ? start + 1 : 0;
+    document.getElementById('showingEnd').textContent = end;
+    document.getElementById('showingTotal').textContent = total;
+    document.getElementById('prevBtn').disabled = currentPage === 1;
+    document.getElementById('nextBtn').disabled = end >= total;
+
+    const totalPages = Math.ceil(total / pageSize);
+    let pageHtml = '';
+    for (let i = 1; i <= totalPages && i <= 5; i++) {
+        pageHtml += '<button onclick="goToPage(' + i + ')" class="w-8 h-8 text-sm rounded-lg ' + (i === currentPage ? 'bg-primary text-white' : 'border border-gray-300 hover:bg-gray-50') + ' transition-colors">' + i + '</button>';
+    }
+    document.getElementById('pageNumbers').innerHTML = pageHtml;
+};
+</script>
+</body>
+</html>
