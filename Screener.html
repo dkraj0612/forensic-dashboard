@@ -6,7 +6,11 @@
 <title>Screener - Indian Stock Analysis and Screening Tool</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="stock_data.js"></script>
+<script>
+  window.stockDataLoaded = false;
+  window.stockDataError = null;
+</script>
+<script src="stock_data.js" onerror="window.stockDataError='FAILED TO LOAD stock_data.js'; document.getElementById('debugBox').innerHTML='<div>ERROR: stock_data.js not loaded (404)</div>';" onload="window.stockDataLoaded=true;"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script>
@@ -262,6 +266,11 @@ tailwind.config = {
 </style><base target="_blank">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+<!-- DEBUG PANEL - Always visible -->
+<div id="debugBox" style="position:fixed;bottom:80px;left:10px;right:10px;background:#fee2e2;border:2px solid #ef4444;color:#991b1b;padding:12px;font-size:11px;z-index:9999;border-radius:8px;max-height:150px;overflow-y:auto;">
+  <div>Loading...</div>
+</div>
 
 <!-- Navigation -->
 <nav class="bg-white border-b border-gray-200 sticky top-0 z-50">
@@ -1972,9 +1981,98 @@ document.addEventListener('keydown', (e) => {
     if (e.ctrlKey && e.key === 'f') { e.preventDefault(); toggleSearchModal(); }
 });
 
-// Initialize
-generateData();
-applyFilters();
+// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
+
+function showDebug(msg) {
+    const box = document.getElementById('debugBox');
+    if (box) box.innerHTML += '<div>' + msg + '</div>';
+}
+
+function initializeData() {
+    showDebug('INIT START');
+    showDebug('stock_data.js loaded: ' + window.stockDataLoaded);
+    showDebug('stock_data.js error: ' + (window.stockDataError || 'none'));
+
+    try {
+        showDebug('typeof screenerData: ' + typeof screenerData);
+
+        if (typeof screenerData === 'undefined') {
+            showDebug('ERROR: screenerData UNDEFINED');
+            showDebug('Switching to mock data...');
+            generateData();
+        } else if (!screenerData) {
+            showDebug('ERROR: screenerData is NULL');
+            generateData();
+        } else if (Object.keys(screenerData).length === 0) {
+            showDebug('ERROR: screenerData EMPTY');
+            generateData();
+        } else {
+            showDebug('screenerData has ' + Object.keys(screenerData).length + ' stocks');
+            stocks = convertScreenerData(screenerData);
+            showDebug('Converted ' + stocks.length + ' stocks');
+        }
+    } catch (e) {
+        showDebug('FATAL: ' + e.message);
+        generateData();
+    }
+
+    document.getElementById('totalStocks').textContent = stocks.length;
+    updateStats();
+    applyFilters();
+    showDebug('DONE - ' + stocks.length + ' stocks loaded');
+}
+
+function convertScreenerData(data) {
+    const companies = [];
+    let id = 0;
+    for (const [ticker, stock] of Object.entries(data)) {
+        if (!stock) continue;
+        companies.push({
+            id: id++,
+            name: stock.name || ticker,
+            ticker: ticker,
+            sector: stock.sector || 'Unknown',
+            price: parseFloat(stock.price) || 0,
+            change: parseFloat(stock.change) || 0,
+            changePercent: parseFloat(stock.changePercent) || 0,
+            marketCap: parseFloat(stock.marketCap) || 0,
+            pe: parseFloat(stock.pe) || 0,
+            roe: parseFloat(stock.roe) || 0,
+            debtEquity: parseFloat(stock.debtEquity) || 0,
+            dividend: parseFloat(stock.dividend) || 0,
+            salesGrowth: parseFloat(stock.salesGrowth) || 0,
+            volume: parseFloat(stock.volume) || 0,
+            high52: parseFloat(stock.high52) || 0,
+            low52: parseFloat(stock.low52) || 0,
+            beta: parseFloat(stock.beta) || 1.0,
+            bookValue: parseFloat(stock.bookValue) || 0,
+            eps: parseFloat(stock.eps) || 0,
+            opm: parseFloat(stock.opm) || 0,
+            npm: parseFloat(stock.npm) || 0,
+            pb: parseFloat(stock.pb) || 0,
+            promoterHolding: parseFloat(stock.promoterHolding) || 0,
+            pledge: parseFloat(stock.pledge) || 0,
+            fiiHolding: parseFloat(stock.fiiHolding) || 0,
+            diiHolding: parseFloat(stock.diiHolding) || 0,
+            publicHolding: parseFloat(stock.publicHolding) || 0,
+            roce: parseFloat(stock.roce) || 0,
+            evEbitda: parseFloat(stock.evEbitda) || 0,
+            piotroski: parseInt(stock.piotroski) || 0,
+            altmanZ: parseFloat(stock.altmanZ) || 0,
+            financials: stock.financials || {},
+            quarterly: stock.quarterly || {},
+            shareholding: stock.shareholding || [],
+            pros: stock.pros || [],
+            cons: stock.cons || [],
+            segments: stock.segments || [],
+            creditRatings: stock.creditRatings || [],
+            corporateActions: stock.corporateActions || []
+        });
+    }
+    return companies;
+}
+
+initializeData();
 updateMarketTime();
 setInterval(updateMarketTime, 60000);
 
@@ -2504,66 +2602,29 @@ renderTable = function() {
 // This script loads real data from Screener.in scraper output
 // Falls back to mock data if real data is not available
 
-// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
-
-// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
-
-// DEBUG: Show errors on screen for mobile
-function showDebug(msg) {
-    let box = document.getElementById('debugBox');
-    if (!box) {
-        box = document.createElement('div');
-        box.id = 'debugBox';
-        box.style.cssText = 'position:fixed;bottom:100px;left:10px;right:10px;background:#fee2e2;border:2px solid #ef4444;color:#991b1b;padding:12px;font-size:12px;z-index:9999;border-radius:8px;max-height:200px;overflow-y:auto;';
-        document.body.appendChild(box);
-    }
-    box.innerHTML += '<div style="margin-bottom:4px;">' + msg + '</div>';
-}
-
 function initializeData() {
-    showDebug('INIT START');
-    
-    try {
-        showDebug('screenerData type: ' + typeof screenerData);
-        
-        if (typeof screenerData === 'undefined') {
-            showDebug('ERROR: screenerData is UNDEFINED - stock_data.js not loaded');
-            showDebug('Falling back to mock data...');
-            generateData();
-        } else if (!screenerData) {
-            showDebug('ERROR: screenerData is NULL');
-            generateData();
-        } else if (Object.keys(screenerData).length === 0) {
-            showDebug('ERROR: screenerData is EMPTY object');
-            generateData();
-        } else {
-            showDebug('screenerData has ' + Object.keys(screenerData).length + ' keys');
-            showDebug('First key: ' + Object.keys(screenerData)[0]);
-            try {
-                stocks = convertScreenerData(screenerData);
-                showDebug('Converted ' + stocks.length + ' stocks');
-            } catch (e) {
-                showDebug('CONVERT ERROR: ' + e.message);
-                stocks = [];
-            }
-        }
-    } catch (e) {
-        showDebug('FATAL ERROR: ' + e.message);
-        stocks = [];
+    // Check if screener data is available from the scraper
+    if (typeof screenerData !== 'undefined' && screenerData) {
+        console.log('Loading real data from Screener.in...');
+        stocks = loadScreenerData ? loadScreenerData() : convertScreenerData(screenerData);
+    } else {
+        console.log('Real data not available, using mock data...');
+        generateMockData();
     }
-    
-    showDebug('Final stocks count: ' + stocks.length);
+
+    // Update stats
     document.getElementById('totalStocks').textContent = stocks.length;
     updateStats();
     applyFilters();
-    showDebug('INIT DONE');
 }
 
 function convertScreenerData(data) {
     const companies = [];
     let id = 0;
+
     for (const [ticker, stock] of Object.entries(data)) {
         if (!stock) continue;
+
         companies.push({
             id: id++,
             name: stock.name || ticker,
@@ -2581,7 +2642,7 @@ function convertScreenerData(data) {
             volume: parseFloat(stock.volume) || 0,
             high52: parseFloat(stock.high52) || 0,
             low52: parseFloat(stock.low52) || 0,
-            beta: parseFloat(stock.beta) || 1.0,
+            beta: 1.0,
             bookValue: parseFloat(stock.bookValue) || 0,
             eps: parseFloat(stock.eps) || 0,
             opm: parseFloat(stock.opm) || 0,
@@ -2594,7 +2655,7 @@ function convertScreenerData(data) {
             publicHolding: parseFloat(stock.publicHolding) || 0,
             roce: parseFloat(stock.roce) || 0,
             evEbitda: parseFloat(stock.evEbitda) || 0,
-            piotroski: parseInt(stock.piotroski) || 0,
+            piotroski: parseFloat(stock.piotroski) || 0,
             altmanZ: parseFloat(stock.altmanZ) || 0,
             financials: stock.financials || {},
             quarterly: stock.quarterly || {},
@@ -2603,14 +2664,20 @@ function convertScreenerData(data) {
             cons: stock.cons || [],
             segments: stock.segments || [],
             creditRatings: stock.creditRatings || [],
-            corporateActions: stock.corporateActions || []
+            corporateActions: stock.corporateActions || [],
+            peers: stock.peers || [],
+            about: stock.about || ''
         });
     }
+
     return companies;
 }
 
-// Initialize
-initializeData();
+// The original generateData() becomes generateMockData()
+const generateMockData = generateData;
+// Override generateData to use initializer
+generateData = initializeData;
+
 // ==================== MOBILE OPTIMIZATIONS ====================
 
 let isMobile = window.innerWidth <= 768;
