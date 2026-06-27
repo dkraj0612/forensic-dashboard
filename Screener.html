@@ -2504,17 +2504,16 @@ renderTable = function() {
 // This script loads real data from Screener.in scraper output
 // Falls back to mock data if real data is not available
 
+// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
+
 function initializeData() {
-    // Check if screener data is available from the scraper
-    if (typeof screenerData !== 'undefined' && screenerData) {
+    if (typeof screenerData !== 'undefined' && screenerData && Object.keys(screenerData).length > 0) {
         console.log('Loading real data from Screener.in...');
-        stocks = loadScreenerData ? loadScreenerData() : convertScreenerData(screenerData);
+        stocks = convertScreenerData(screenerData);
     } else {
         console.log('Real data not available, using mock data...');
-        generateMockData();
+        generateData();
     }
-
-    // Update stats
     document.getElementById('totalStocks').textContent = stocks.length;
     updateStats();
     applyFilters();
@@ -2523,10 +2522,8 @@ function initializeData() {
 function convertScreenerData(data) {
     const companies = [];
     let id = 0;
-
     for (const [ticker, stock] of Object.entries(data)) {
         if (!stock) continue;
-
         companies.push({
             id: id++,
             name: stock.name || ticker,
@@ -2544,7 +2541,7 @@ function convertScreenerData(data) {
             volume: parseFloat(stock.volume) || 0,
             high52: parseFloat(stock.high52) || 0,
             low52: parseFloat(stock.low52) || 0,
-            beta: 1.0,
+            beta: parseFloat(stock.beta) || 1.0,
             bookValue: parseFloat(stock.bookValue) || 0,
             eps: parseFloat(stock.eps) || 0,
             opm: parseFloat(stock.opm) || 0,
@@ -2557,7 +2554,7 @@ function convertScreenerData(data) {
             publicHolding: parseFloat(stock.publicHolding) || 0,
             roce: parseFloat(stock.roce) || 0,
             evEbitda: parseFloat(stock.evEbitda) || 0,
-            piotroski: parseFloat(stock.piotroski) || 0,
+            piotroski: parseInt(stock.piotroski) || 0,
             altmanZ: parseFloat(stock.altmanZ) || 0,
             financials: stock.financials || {},
             quarterly: stock.quarterly || {},
@@ -2566,19 +2563,17 @@ function convertScreenerData(data) {
             cons: stock.cons || [],
             segments: stock.segments || [],
             creditRatings: stock.creditRatings || [],
-            corporateActions: stock.corporateActions || [],
-            peers: stock.peers || [],
-            about: stock.about || ''
+            corporateActions: stock.corporateActions || []
         });
     }
-
     return companies;
 }
 
+// DON'T override generateData — just call initializeData directly
 // The original generateData() becomes generateMockData()
-const generateMockData = generateData;
+//const generateMockData = generateData;
 // Override generateData to use initializer
-generateData = initializeData;
+initializeData();
 
 // ==================== MOBILE OPTIMIZATIONS ====================
 
