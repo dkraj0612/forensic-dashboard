@@ -2506,17 +2506,57 @@ renderTable = function() {
 
 // ==================== DATA INTEGRATION WITH SCREENER.IN ====================
 
-function initializeData() {
-    if (typeof screenerData !== 'undefined' && screenerData && Object.keys(screenerData).length > 0) {
-        console.log('Loading real data from Screener.in...');
-        stocks = convertScreenerData(screenerData);
-    } else {
-        console.log('Real data not available, using mock data...');
-        generateData();
+// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
+
+// DEBUG: Show errors on screen for mobile
+function showDebug(msg) {
+    let box = document.getElementById('debugBox');
+    if (!box) {
+        box = document.createElement('div');
+        box.id = 'debugBox';
+        box.style.cssText = 'position:fixed;bottom:100px;left:10px;right:10px;background:#fee2e2;border:2px solid #ef4444;color:#991b1b;padding:12px;font-size:12px;z-index:9999;border-radius:8px;max-height:200px;overflow-y:auto;';
+        document.body.appendChild(box);
     }
+    box.innerHTML += '<div style="margin-bottom:4px;">' + msg + '</div>';
+}
+
+function initializeData() {
+    showDebug('INIT START');
+    
+    try {
+        showDebug('screenerData type: ' + typeof screenerData);
+        
+        if (typeof screenerData === 'undefined') {
+            showDebug('ERROR: screenerData is UNDEFINED - stock_data.js not loaded');
+            showDebug('Falling back to mock data...');
+            generateData();
+        } else if (!screenerData) {
+            showDebug('ERROR: screenerData is NULL');
+            generateData();
+        } else if (Object.keys(screenerData).length === 0) {
+            showDebug('ERROR: screenerData is EMPTY object');
+            generateData();
+        } else {
+            showDebug('screenerData has ' + Object.keys(screenerData).length + ' keys');
+            showDebug('First key: ' + Object.keys(screenerData)[0]);
+            try {
+                stocks = convertScreenerData(screenerData);
+                showDebug('Converted ' + stocks.length + ' stocks');
+            } catch (e) {
+                showDebug('CONVERT ERROR: ' + e.message);
+                stocks = [];
+            }
+        }
+    } catch (e) {
+        showDebug('FATAL ERROR: ' + e.message);
+        stocks = [];
+    }
+    
+    showDebug('Final stocks count: ' + stocks.length);
     document.getElementById('totalStocks').textContent = stocks.length;
     updateStats();
     applyFilters();
+    showDebug('INIT DONE');
 }
 
 function convertScreenerData(data) {
@@ -2569,12 +2609,8 @@ function convertScreenerData(data) {
     return companies;
 }
 
-// DON'T override generateData — just call initializeData directly
-// The original generateData() becomes generateMockData()
-//const generateMockData = generateData;
-// Override generateData to use initializer
+// Initialize
 initializeData();
-
 // ==================== MOBILE OPTIMIZATIONS ====================
 
 let isMobile = window.innerWidth <= 768;
