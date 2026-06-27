@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Screener - Stock Analysis and Screening Tool</title>
+<title>Screener - Indian Stock Analysis and Screening Tool</title>
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="stock_data.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <script>
@@ -63,7 +64,202 @@ tailwind.config = {
 .peer-bar-fill { height: 100%; border-radius: 4px; transition: width 0.5s ease; }
 </style>
 <base target="_blank">
-<base target="_blank">
+<style>
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .mobile-card-view { display: block !important; }
+  .desktop-table-view { display: none !important; }
+
+  .stock-card {
+    background: white;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+
+  .stock-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .stock-card-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .stock-card-metric {
+    text-align: center;
+    padding: 8px;
+    background: #f9fafb;
+    border-radius: 8px;
+  }
+
+  .stock-card-metric-label {
+    font-size: 10px;
+    color: #6b7280;
+    text-transform: uppercase;
+  }
+
+  .stock-card-metric-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #111827;
+  }
+
+  .mobile-filter-drawer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 20px 20px 0 0;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 100;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .mobile-filter-drawer.open {
+    transform: translateY(0);
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px 0;
+    z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .mobile-bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4px 12px;
+    color: #6b7280;
+    font-size: 10px;
+  }
+
+  .mobile-bottom-nav-item.active {
+    color: #1a73e8;
+  }
+
+  .mobile-bottom-nav-item i {
+    font-size: 20px;
+    margin-bottom: 2px;
+  }
+
+  .mobile-search-bar {
+    position: sticky;
+    top: 64px;
+    z-index: 40;
+    background: white;
+    padding: 8px 16px;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .mobile-action-fab {
+    position: fixed;
+    bottom: 80px;
+    right: 16px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #1a73e8;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(26,115,232,0.4);
+    z-index: 50;
+  }
+
+  .page-content {
+    padding-bottom: 80px !important;
+  }
+
+  /* Swipeable tabs */
+  .swipeable-tabs {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .swipeable-tabs::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Touch-friendly buttons */
+  button, .cursor-pointer {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Larger tap targets */
+  .stock-row, .watchlist-item, .news-item {
+    padding: 16px !important;
+  }
+
+  /* Modal improvements */
+  .modal-enter {
+    max-height: 90vh;
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-card-view { display: none !important; }
+  .desktop-table-view { display: block !important; }
+  .mobile-bottom-nav { display: none !important; }
+  .mobile-action-fab { display: none !important; }
+}
+
+/* Pull-to-refresh indicator */
+.ptr-indicator {
+  text-align: center;
+  padding: 16px;
+  color: #6b7280;
+  font-size: 14px;
+  display: none;
+}
+
+.ptr-indicator.visible {
+  display: block;
+}
+
+.ptr-indicator i {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Toast positioning for mobile */
+@media (max-width: 768px) {
+  #toast {
+    left: 16px;
+    right: 16px;
+    bottom: 80px;
+    transform: translateY(100px);
+  }
+}
+</style><base target="_blank">
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
@@ -86,7 +282,7 @@ tailwind.config = {
 <div class="flex items-center gap-4">
 <div class="hidden md:flex items-center gap-2 text-sm text-gray-500 bg-gray-100 px-3 py-1.5 rounded-full">
 <div class="w-2 h-2 bg-green-500 rounded-full pulse-dot"></div>
-<span>Market Open</span>
+<span>Market Open (IST)</span>
 <span class="text-gray-400">|</span>
 <span id="marketTime">--:--</span>
 </div>
@@ -111,13 +307,14 @@ tailwind.config = {
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
 <div>
 <h1 class="text-2xl font-bold text-gray-900">Stock Screener</h1>
-<p class="text-sm text-gray-500 mt-1">Filter, analyze, and discover stocks across global markets</p>
+<p class="text-sm text-gray-500 mt-1">Filter, analyze, and discover stocks across NSE & BSE</p>
 </div>
 <div class="flex items-center gap-3">
 <button onclick="resetFilters()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><i class="fas fa-undo mr-2"></i>Reset</button>
 <button onclick="saveScreen()" class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-lg hover:bg-blue-700 transition-colors shadow-sm"><i class="fas fa-save mr-2"></i>Save Screen</button>
 <button onclick="exportData()" class="px-4 py-2 text-sm font-medium text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"><i class="fas fa-download mr-2"></i>Export</button>
                 <button onclick="openQueryBuilder()" class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-blue-50 transition-colors"><i class="fas fa-code mr-2"></i>Query</button>
+                <button onclick="refreshData()" class="px-4 py-2 text-sm font-medium text-green-600 bg-white border border-green-300 rounded-lg hover:bg-green-50 transition-colors"><i class="fas fa-sync-alt mr-2"></i>Refresh Data</button>
 </div>
 </div>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
@@ -127,7 +324,7 @@ tailwind.config = {
 </div>
 <div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
 <div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Avg P/E</span><i class="fas fa-chart-line text-gray-400"></i></div>
-<div class="text-2xl font-bold text-gray-900" id="avgPE">0.0</div><div class="text-xs text-gray-500 mt-1">Sector avg: 18.4</div>
+<div class="text-2xl font-bold text-gray-900" id="avgPE">0.0</div><div class="text-xs text-gray-500 mt-1">Sector avg: 22.5</div>
 </div>
 <div class="metric-card bg-white rounded-xl p-4 border border-gray-200">
 <div class="flex items-center justify-between mb-2"><span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Avg ROE</span><i class="fas fa-percentage text-gray-400"></i></div>
@@ -152,7 +349,7 @@ tailwind.config = {
 <label class="text-sm font-medium text-gray-700">Market Cap</label>
 <div class="flex items-center gap-2">
 <select id="marketCapOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
-<input type="number" id="marketCapVal" placeholder="e.g. 1000" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+<input type="number" id="marketCapVal" placeholder="e.g. 50000" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
 </div>
 <div class="flex gap-2 text-xs text-gray-500"><button onclick="quickFilter('marketCap','large')" class="hover:text-primary">Large</button><button onclick="quickFilter('marketCap','mid')" class="hover:text-primary">Mid</button><button onclick="quickFilter('marketCap','small')" class="hover:text-primary">Small</button></div>
 </div>
@@ -194,7 +391,7 @@ tailwind.config = {
 <label class="text-sm font-medium text-gray-700">Stock Price ($)</label>
 <div class="flex items-center gap-2">
 <select id="priceOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
-<input type="number" id="priceVal" placeholder="e.g. 50" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+<input type="number" id="priceVal" placeholder="e.g. 500" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
 </div>
 </div>
 <div class="space-y-2">
@@ -202,6 +399,62 @@ tailwind.config = {
 <div class="flex items-center gap-2">
 <select id="growthOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
 <input type="number" id="growthVal" placeholder="e.g. 10" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Promoter Holding %</label>
+<div class="flex items-center gap-2">
+<select id="promoterOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="promoterVal" placeholder="e.g. 50" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Promoter Pledge %</label>
+<div class="flex items-center gap-2">
+<select id="pledgeOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="lt">&lt;</option><option value="gt">&gt;</option></select>
+<input type="number" id="pledgeVal" step="0.1" placeholder="e.g. 5" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">FII Holding %</label>
+<div class="flex items-center gap-2">
+<select id="fiiOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="fiiVal" step="0.1" placeholder="e.g. 20" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">DII Holding %</label>
+<div class="flex items-center gap-2">
+<select id="diiOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="diiVal" step="0.1" placeholder="e.g. 15" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">ROCE %</label>
+<div class="flex items-center gap-2">
+<select id="roceOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="roceVal" placeholder="e.g. 15" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">EV/EBITDA</label>
+<div class="flex items-center gap-2">
+<select id="evebitdaOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="lt">&lt;</option><option value="gt">&gt;</option></select>
+<input type="number" id="evebitdaVal" step="0.1" placeholder="e.g. 10" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Piotroski Score</label>
+<div class="flex items-center gap-2">
+<select id="piotroskiOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="piotroskiVal" placeholder="e.g. 7" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-sm font-medium text-gray-700">Altman Z-Score</label>
+<div class="flex items-center gap-2">
+<select id="altmanOp" class="w-20 text-sm border border-gray-300 rounded-lg px-2 py-2 focus:ring-2 focus:ring-primary outline-none"><option value="gt">&gt;</option><option value="lt">&lt;</option></select>
+<input type="number" id="altmanVal" step="0.1" placeholder="e.g. 3" class="flex-1 text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="applyFilters()">
 </div>
 </div>
 </div>
@@ -215,6 +468,10 @@ tailwind.config = {
 <button onclick="applyPreset('quality')" class="px-3 py-1.5 text-xs font-medium bg-amber-50 text-amber-700 rounded-full hover:bg-amber-100 border border-amber-200">Quality Metrics</button>
 <button onclick="applyPreset('penny')" class="px-3 py-1.5 text-xs font-medium bg-red-50 text-red-700 rounded-full hover:bg-red-100 border border-red-200">Penny Stocks</button>
 <button onclick="applyPreset('largecap')" class="px-3 py-1.5 text-xs font-medium bg-gray-100 text-gray-700 rounded-full hover:bg-gray-200 border border-gray-300">Large Cap Leaders</button>
+<button onclick="applyPreset('highpromoter')" class="px-3 py-1.5 text-xs font-medium bg-indigo-50 text-indigo-700 rounded-full hover:bg-indigo-100 border border-indigo-200">High Promoter Hold</button>
+<button onclick="applyPreset('lowpledge')" class="px-3 py-1.5 text-xs font-medium bg-pink-50 text-pink-700 rounded-full hover:bg-pink-100 border border-pink-200">Low Pledge</button>
+<button onclick="applyPreset('fiifavorite')" class="px-3 py-1.5 text-xs font-medium bg-cyan-50 text-cyan-700 rounded-full hover:bg-cyan-100 border border-cyan-200">FII Favorites</button>
+<button onclick="applyPreset('piotroski')" class="px-3 py-1.5 text-xs font-medium bg-orange-50 text-orange-700 rounded-full hover:bg-orange-100 border border-orange-200">Piotroski &gt; 7</button>
 </div>
 </div>
 </div>
@@ -227,7 +484,7 @@ tailwind.config = {
                 <button onclick="openEditColumns()" class="text-sm text-primary hover:underline"><i class="fas fa-columns mr-1"></i>Edit Columns</button>
 <div class="flex items-center gap-3">
 <div class="relative">
-<input type="text" id="searchInput" placeholder="Search by name or ticker..." class="pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary outline-none w-64" oninput="handleSearch(this.value)">
+<input type="text" id="searchInput" placeholder="Search by name or NSE ticker..." class="pl-9 pr-4 py-2 text-sm border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary outline-none w-64" oninput="handleSearch(this.value)">
 <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
 </div>
 <select id="itemsPerPage" class="text-sm border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-primary outline-none" onchange="changePageSize()">
@@ -248,6 +505,11 @@ tailwind.config = {
 <th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('debtEquity')">D/E <i id="sort-debtEquity" class="fas fa-sort ml-1"></i></th>
 <th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('dividend')">Div Yield <i id="sort-dividend" class="fas fa-sort ml-1"></i></th>
 <th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('salesGrowth')">Sales Gr <i id="sort-salesGrowth" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('promoterHolding')">Promoter <i id="sort-promoterHolding" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('pledge')">Pledge <i id="sort-pledge" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('fiiHolding')">FII <i id="sort-fiiHolding" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('roce')">ROCE <i id="sort-roce" class="fas fa-sort ml-1"></i></th>
+<th class="px-6 py-3 font-medium cursor-pointer hover:text-gray-700 text-right" onclick="sortBy('evEbitda')">EV/EBITDA <i id="sort-evEbitda" class="fas fa-sort ml-1"></i></th>
 <th class="px-6 py-3 font-medium text-center">Actions</th>
 </tr>
 </thead>
@@ -369,16 +631,16 @@ tailwind.config = {
 <div class="bg-white rounded-xl border border-gray-200 p-6 mb-6">
 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
 <div class="flex items-center gap-4">
-<div class="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xl font-bold text-gray-600" id="companyLogo">AP</div>
+<div class="w-16 h-16 rounded-xl bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xl font-bold text-gray-600" id="companyLogo">RE</div>
 <div>
-<h1 class="text-2xl font-bold text-gray-900" id="companyName">Apple Inc.</h1>
-<p class="text-sm text-gray-500 font-mono" id="companyTicker">AAPL - Technology - NASDAQ</p>
+<h1 class="text-2xl font-bold text-gray-900" id="companyName">Reliance Industries</h1>
+<p class="text-sm text-gray-500 font-mono" id="companyTicker">RELIANCE - Energy - NSE</p>
 </div>
 </div>
 <div class="flex items-center gap-4">
 <div class="text-right">
-<div class="text-3xl font-bold text-gray-900" id="companyPrice">$150.00</div>
-<div class="text-sm font-medium" id="companyChange">+2.50 (+1.69%)</div>
+<div class="text-3xl font-bold text-gray-900" id="companyPrice">₹2,850.00</div>
+<div class="text-sm font-medium" id="companyChange">+45.00 (+1.60%)</div>
 </div>
 <button onclick="toggleCompanyWatchlist()" id="companyWatchlistBtn" class="px-4 py-2 text-sm font-medium text-primary border border-primary rounded-lg hover:bg-blue-50 transition-colors">
 <i class="fas fa-plus mr-2"></i>Add to Watchlist
@@ -388,13 +650,20 @@ tailwind.config = {
 </button>
 </div>
 </div>
-<div class="grid grid-cols-2 md:grid-cols-6 gap-4 mt-6 pt-6 border-t border-gray-200">
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">Market Cap</div><div class="font-semibold text-gray-900" id="companyMarketCap">$2.4T</div></div>
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">P/E</div><div class="font-semibold text-gray-900" id="companyPE">28.5</div></div>
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">ROE</div><div class="font-semibold text-gray-900" id="companyROE">25.4%</div></div>
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">D/E</div><div class="font-semibold text-gray-900" id="companyDE">0.85</div></div>
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">Div Yield</div><div class="font-semibold text-gray-900" id="companyDiv">0.52%</div></div>
-<div class="text-center"><div class="text-xs text-gray-500 mb-1">Book Value</div><div class="font-semibold text-gray-900" id="companyBV">$25.40</div></div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4 mt-6 pt-6 border-t border-gray-200">
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Market Cap</div><div class="font-semibold text-gray-900" id="companyMarketCap">₹18,50,000 Cr</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">P/E</div><div class="font-semibold text-gray-900" id="companyPE">24.5</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">ROE</div><div class="font-semibold text-gray-900" id="companyROE">12.8%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">D/E</div><div class="font-semibold text-gray-900" id="companyDE">0.42</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Div Yield</div><div class="font-semibold text-gray-900" id="companyDiv">0.35%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Book Value</div><div class="font-semibold text-gray-900" id="companyBV">₹1,250.00</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Promoter Hold</div><div class="font-semibold text-gray-900" id="companyPromoter">55.2%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Pledge</div><div class="font-semibold text-gray-900" id="companyPledge">0.0%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">FII Hold</div><div class="font-semibold text-gray-900" id="companyFII">18.5%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">DII Hold</div><div class="font-semibold text-gray-900" id="companyDII">12.3%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">ROCE</div><div class="font-semibold text-gray-900" id="companyROCE">15.8%</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">EV/EBITDA</div><div class="font-semibold text-gray-900" id="companyEVEBITDA">12.5</div></div>
+<div class="text-center"><div class="text-xs text-gray-500 mb-1">Piotroski</div><div class="font-semibold text-gray-900" id="companyPiotroski">7</div></div>
 </div>
 </div>
 
@@ -420,16 +689,16 @@ tailwind.config = {
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
 <div class="lg:col-span-2">
 <h3 class="font-semibold text-gray-900 mb-4">About the Company</h3>
-<p class="text-sm text-gray-600 leading-relaxed mb-6" id="companyAbout">Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets, wearables, and accessories worldwide.</p>
+<p class="text-sm text-gray-600 leading-relaxed mb-6" id="companyAbout">Reliance Industries Limited engages in hydrocarbon exploration and production, petroleum refining and marketing, petrochemicals, retail, and telecommunications businesses in India and internationally.</p>
 <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W High</div><div class="font-semibold" id="company52High">$198.23</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W Low</div><div class="font-semibold" id="company52Low">$124.17</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Avg Volume</div><div class="font-semibold" id="companyVolume">52.3M</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Face Value</div><div class="font-semibold">$0.0001</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">EPS (TTM)</div><div class="font-semibold" id="companyEPS">$6.15</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">P/B Ratio</div><div class="font-semibold" id="companyPB">42.5</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">OPM</div><div class="font-semibold" id="companyOPM">30.4%</div></div>
-<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">NPM</div><div class="font-semibold" id="companyNPM">25.3%</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W High</div><div class="font-semibold" id="company52High">₹3,024.00</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">52W Low</div><div class="font-semibold" id="company52Low">₹2,180.00</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Avg Volume</div><div class="font-semibold" id="companyVolume">85.2L</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">Face Value</div><div class="font-semibold">₹1</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">EPS (TTM)</div><div class="font-semibold" id="companyEPS">₹116.50</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">P/B Ratio</div><div class="font-semibold" id="companyPB">2.28</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">OPM</div><div class="font-semibold" id="companyOPM">15.2%</div></div>
+<div class="p-3 bg-gray-50 rounded-lg"><div class="text-xs text-gray-500">NPM</div><div class="font-semibold" id="companyNPM">8.4%</div></div>
 </div>
 </div>
 <div>
@@ -612,7 +881,7 @@ Show Consolidated
 <div id="tab-documents" class="company-tab-content p-6 hidden">
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 <div>
-<h3 class="font-semibold text-gray-900 mb-4">Stock Exchange Filings</h3>
+<h3 class="font-semibold text-gray-900 mb-4">BSE / NSE Filings</h3>
 <div class="space-y-2" id="exchangeFilings"></div>
 </div>
 <div>
@@ -639,7 +908,7 @@ Show Consolidated
 <div class="bg-white rounded-2xl max-w-2xl w-full modal-enter shadow-2xl">
 <div class="p-4 border-b border-gray-200">
 <div class="relative">
-<input type="text" id="globalSearch" placeholder="Search companies, screens, or tools..." class="w-full pl-10 pr-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none" oninput="handleGlobalSearch(this.value)">
+<input type="text" id="globalSearch" placeholder="Search Indian companies, screens, or tools..." class="w-full pl-10 pr-4 py-3 text-lg border border-gray-300 rounded-xl focus:ring-2 focus:ring-primary outline-none" oninput="handleGlobalSearch(this.value)">
 <i class="fas fa-search absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
 </div>
 </div>
@@ -655,129 +924,184 @@ Show Consolidated
 <script>
 // ==================== DATA ====================
 const companies = [
-{name:'Apple Inc.',ticker:'AAPL',sector:'Technology'},
-{name:'Microsoft Corp.',ticker:'MSFT',sector:'Technology'},
-{name:'Alphabet Inc.',ticker:'GOOGL',sector:'Technology'},
-{name:'Amazon.com',ticker:'AMZN',sector:'Consumer'},
-{name:'Tesla Inc.',ticker:'TSLA',sector:'Consumer'},
-{name:'Meta Platforms',ticker:'META',sector:'Technology'},
-{name:'NVIDIA Corp.',ticker:'NVDA',sector:'Technology'},
-{name:'Berkshire Hathaway',ticker:'BRK.B',sector:'Financials'},
-{name:'JPMorgan Chase',ticker:'JPM',sector:'Financials'},
-{name:'Johnson & Johnson',ticker:'JNJ',sector:'Healthcare'},
-{name:'UnitedHealth Group',ticker:'UNH',sector:'Healthcare'},
-{name:'Visa Inc.',ticker:'V',sector:'Financials'},
-{name:'Exxon Mobil',ticker:'XOM',sector:'Energy'},
-{name:'Walmart Inc.',ticker:'WMT',sector:'Consumer'},
-{name:'Procter & Gamble',ticker:'PG',sector:'Consumer'},
-{name:'Mastercard Inc.',ticker:'MA',sector:'Financials'},
-{name:'Chevron Corp.',ticker:'CVX',sector:'Energy'},
-{name:'Home Depot',ticker:'HD',sector:'Consumer'},
-{name:'Pfizer Inc.',ticker:'PFE',sector:'Healthcare'},
-{name:'Coca-Cola Co.',ticker:'KO',sector:'Consumer'},
-{name:'PepsiCo Inc.',ticker:'PEP',sector:'Consumer'},
-{name:'Merck & Co.',ticker:'MRK',sector:'Healthcare'},
-{name:'Abbott Labs',ticker:'ABT',sector:'Healthcare'},
-{name:'Salesforce Inc.',ticker:'CRM',sector:'Technology'},
-{name:'Adobe Inc.',ticker:'ADBE',sector:'Technology'},
-{name:'Netflix Inc.',ticker:'NFLX',sector:'Technology'},
-{name:'Comcast Corp.',ticker:'CMCSA',sector:'Technology'},
-{name:'Oracle Corp.',ticker:'ORCL',sector:'Technology'},
-{name:'Cisco Systems',ticker:'CSCO',sector:'Technology'},
-{name:'Intel Corp.',ticker:'INTC',sector:'Technology'},
-{name:'AMD Inc.',ticker:'AMD',sector:'Technology'},
-{name:'Qualcomm Inc.',ticker:'QCOM',sector:'Technology'},
-{name:'Texas Instruments',ticker:'TXN',sector:'Technology'},
-{name:'Broadcom Inc.',ticker:'AVGO',sector:'Technology'},
-{name:'IBM Corp.',ticker:'IBM',sector:'Technology'},
-{name:'Bank of America',ticker:'BAC',sector:'Financials'},
-{name:'Wells Fargo',ticker:'WFC',sector:'Financials'},
-{name:'Goldman Sachs',ticker:'GS',sector:'Financials'},
-{name:'Morgan Stanley',ticker:'MS',sector:'Financials'},
-{name:'Citigroup Inc.',ticker:'C',sector:'Financials'},
-{name:'American Express',ticker:'AXP',sector:'Financials'},
-{name:'United Parcel',ticker:'UPS',sector:'Industrials'},
-{name:'FedEx Corp.',ticker:'FDX',sector:'Industrials'},
-{name:'Boeing Co.',ticker:'BA',sector:'Industrials'},
-{name:'Caterpillar Inc.',ticker:'CAT',sector:'Industrials'},
-{name:'3M Company',ticker:'MMM',sector:'Industrials'},
-{name:'General Electric',ticker:'GE',sector:'Industrials'},
-{name:'Lockheed Martin',ticker:'LMT',sector:'Industrials'},
-{name:'Raytheon Tech',ticker:'RTX',sector:'Industrials'},
-{name:'Union Pacific',ticker:'UNP',sector:'Industrials'},
-{name:'Duke Energy',ticker:'DUK',sector:'Utilities'},
-{name:'NextEra Energy',ticker:'NEE',sector:'Utilities'},
-{name:'Southern Co.',ticker:'SO',sector:'Utilities'},
-{name:'Dominion Energy',ticker:'D',sector:'Utilities'},
-{name:'Exelon Corp.',ticker:'EXC',sector:'Utilities'},
-{name:'Dow Inc.',ticker:'DOW',sector:'Materials'},
-{name:'DuPont de Nemours',ticker:'DD',sector:'Materials'},
-{name:'Freeport-McMoRan',ticker:'FCX',sector:'Materials'},
-{name:'Newmont Corp.',ticker:'NEM',sector:'Materials'},
-{name:'Air Products',ticker:'APD',sector:'Materials'},
-{name:'Ecolab Inc.',ticker:'ECL',sector:'Materials'},
-{name:'ConocoPhillips',ticker:'COP',sector:'Energy'},
-{name:'EOG Resources',ticker:'EOG',sector:'Energy'},
-{name:'Schlumberger',ticker:'SLB',sector:'Energy'},
-{name:'Halliburton',ticker:'HAL',sector:'Energy'},
-{name:'Phillips 66',ticker:'PSX',sector:'Energy'},
-{name:'Valero Energy',ticker:'VLO',sector:'Energy'},
-{name:'Marathon Petroleum',ticker:'MPC',sector:'Energy'},
-{name:'Costco Wholesale',ticker:'COST',sector:'Consumer'},
-{name:'Target Corp.',ticker:'TGT',sector:'Consumer'},
-{name:'Starbucks Corp.',ticker:'SBUX',sector:'Consumer'},
-{name:'McDonalds Corp.',ticker:'MCD',sector:'Consumer'},
-{name:'Nike Inc.',ticker:'NKE',sector:'Consumer'},
-{name:'Booking Holdings',ticker:'BKNG',sector:'Consumer'},
-{name:'TJX Companies',ticker:'TJX',sector:'Consumer'},
-{name:'Eli Lilly & Co.',ticker:'LLY',sector:'Healthcare'},
-{name:'AbbVie Inc.',ticker:'ABBV',sector:'Healthcare'},
-{name:'Thermo Fisher',ticker:'TMO',sector:'Healthcare'},
-{name:'Danaher Corp.',ticker:'DHR',sector:'Healthcare'},
-{name:'Medtronic plc',ticker:'MDT',sector:'Healthcare'},
-{name:'Stryker Corp.',ticker:'SYK',sector:'Healthcare'},
-{name:'Intuitive Surgical',ticker:'ISRG',sector:'Healthcare'},
-{name:'Gilead Sciences',ticker:'GILD',sector:'Healthcare'},
-{name:'Amgen Inc.',ticker:'AMGN',sector:'Healthcare'},
-{name:'Biogen Inc.',ticker:'BIIB',sector:'Healthcare'},
-{name:'Regeneron Pharma',ticker:'REGN',sector:'Healthcare'},
-{name:'Vertex Pharma',ticker:'VRTX',sector:'Healthcare'},
-{name:'Moderna Inc.',ticker:'MRNA',sector:'Healthcare'},
-{name:'Zoom Video',ticker:'ZM',sector:'Technology'},
-{name:'Shopify Inc.',ticker:'SHOP',sector:'Technology'},
-{name:'Square Inc.',ticker:'SQ',sector:'Technology'},
-{name:'PayPal Holdings',ticker:'PYPL',sector:'Technology'},
-{name:'Uber Technologies',ticker:'UBER',sector:'Technology'},
-{name:'Lyft Inc.',ticker:'LYFT',sector:'Technology'},
-{name:'Airbnb Inc.',ticker:'ABNB',sector:'Technology'},
-{name:'DoorDash Inc.',ticker:'DASH',sector:'Technology'},
-{name:'Snowflake Inc.',ticker:'SNOW',sector:'Technology'},
-{name:'Palantir Tech',ticker:'PLTR',sector:'Technology'},
-{name:'Roku Inc.',ticker:'ROKU',sector:'Technology'},
-{name:'Snap Inc.',ticker:'SNAP',sector:'Technology'},
-{name:'Pinterest Inc.',ticker:'PINS',sector:'Technology'},
-{name:'Spotify Tech',ticker:'SPOT',sector:'Technology'},
-{name:'Dropbox Inc.',ticker:'DBX',sector:'Technology'},
-{name:'Twilio Inc.',ticker:'TWLO',sector:'Technology'},
-{name:'Atlassian Corp.',ticker:'TEAM',sector:'Technology'},
-{name:'Okta Inc.',ticker:'OKTA',sector:'Technology'},
-{name:'CrowdStrike',ticker:'CRWD',sector:'Technology'},
-{name:'Zscaler Inc.',ticker:'ZS',sector:'Technology'},
-{name:'Cloudflare',ticker:'NET',sector:'Technology'},
-{name:'Datadog Inc.',ticker:'DDOG',sector:'Technology'},
-{name:'MongoDB Inc.',ticker:'MDB',sector:'Technology'},
-{name:'Elastic NV',ticker:'ESTC',sector:'Technology'},
-{name:'Splunk Inc.',ticker:'SPLK',sector:'Technology'},
-{name:'VMware Inc.',ticker:'VMW',sector:'Technology'},
-{name:'SAP SE',ticker:'SAP',sector:'Technology'},
-{name:'ServiceNow Inc.',ticker:'NOW',sector:'Technology'},
-{name:'Workday Inc.',ticker:'WDAY',sector:'Technology'},
-{name:'Autodesk Inc.',ticker:'ADSK',sector:'Technology'},
-{name:'Intuit Inc.',ticker:'INTU',sector:'Technology'},
-{name:'Synopsys Inc.',ticker:'SNPS',sector:'Technology'},
-{name:'Cadence Design',ticker:'CDNS',sector:'Technology'},
-{name:'PTC Inc.',ticker:'PTC',sector:'Technology'},
-{name:'Bentley Systems',ticker:'BSY',sector:'Technology'}
+{name:'Reliance Industries',ticker:'RELIANCE',sector:'Energy'},
+{name:'Tata Consultancy Services',ticker:'TCS',sector:'Technology'},
+{name:'HDFC Bank',ticker:'HDFCBANK',sector:'Financials'},
+{name:'Infosys',ticker:'INFY',sector:'Technology'},
+{name:'ICICI Bank',ticker:'ICICIBANK',sector:'Financials'},
+{name:'Hindustan Unilever',ticker:'HINDUNILVR',sector:'Consumer'},
+{name:'State Bank of India',ticker:'SBIN',sector:'Financials'},
+{name:'Bharti Airtel',ticker:'BHARTIARTL',sector:'Technology'},
+{name:'ITC',ticker:'ITC',sector:'Consumer'},
+{name:'Kotak Mahindra Bank',ticker:'KOTAKBANK',sector:'Financials'},
+{name:'Larsen & Toubro',ticker:'LT',sector:'Industrials'},
+{name:'Axis Bank',ticker:'AXISBANK',sector:'Financials'},
+{name:'Asian Paints',ticker:'ASIANPAINT',sector:'Consumer'},
+{name:'Maruti Suzuki',ticker:'MARUTI',sector:'Consumer'},
+{name:'Tata Motors',ticker:'TATAMOTORS',sector:'Consumer'},
+{name:'Sun Pharmaceutical',ticker:'SUNPHARMA',sector:'Healthcare'},
+{name:'Titan Company',ticker:'TITAN',sector:'Consumer'},
+{name:'Bajaj Finance',ticker:'BAJFINANCE',sector:'Financials'},
+{name:'HCL Technologies',ticker:'HCLTECH',sector:'Technology'},
+{name:'Mahindra & Mahindra',ticker:'MM',sector:'Consumer'},
+{name:'Ultratech Cement',ticker:'ULTRACEMCO',sector:'Materials'},
+{name:'Nestle India',ticker:'NESTLEIND',sector:'Consumer'},
+{name:'Power Grid Corp',ticker:'POWERGRID',sector:'Utilities'},
+{name:'NTPC',ticker:'NTPC',sector:'Utilities'},
+{name:'Tata Steel',ticker:'TATASTEEL',sector:'Materials'},
+{name:'JSW Steel',ticker:'JSWSTEEL',sector:'Materials'},
+{name:'Grasim Industries',ticker:'GRASIM',sector:'Materials'},
+{name:'Adani Enterprises',ticker:'ADANIENT',sector:'Industrials'},
+{name:'Adani Ports',ticker:'ADANIPORTS',sector:'Industrials'},
+{name:'Coal India',ticker:'COALINDIA',sector:'Energy'},
+{name:'Oil & Natural Gas Corp',ticker:'ONGC',sector:'Energy'},
+{name:'Indian Oil Corp',ticker:'IOC',sector:'Energy'},
+{name:'Bharat Petroleum',ticker:'BPCL',sector:'Energy'},
+{name:'Hindustan Petroleum',ticker:'HINDPETRO',sector:'Energy'},
+{name:'Wipro',ticker:'WIPRO',sector:'Technology'},
+{name:'Tech Mahindra',ticker:'TECHM',sector:'Technology'},
+{name:'Dr Reddys Labs',ticker:'DRREDDY',sector:'Healthcare'},
+{name:'Cipla',ticker:'CIPLA',sector:'Healthcare'},
+{name:'Divis Laboratories',ticker:'DIVISLAB',sector:'Healthcare'},
+{name:'Apollo Hospitals',ticker:'APOLLOHOSP',sector:'Healthcare'},
+{name:'Max Healthcare',ticker:'MAXHEALTH',sector:'Healthcare'},
+{name:'Britannia Industries',ticker:'BRITANNIA',sector:'Consumer'},
+{name:'Godrej Consumer',ticker:'GODREJCP',sector:'Consumer'},
+{name:'Dabur India',ticker:'DABUR',sector:'Consumer'},
+{name:'Marico',ticker:'MARICO',sector:'Consumer'},
+{name:'Colgate-Palmolive',ticker:'COLPAL',sector:'Consumer'},
+{name:'Pidilite Industries',ticker:'PIDILITIND',sector:'Materials'},
+{name:'Siemens India',ticker:'SIEMENS',sector:'Industrials'},
+{name:'ABB India',ticker:'ABB',sector:'Industrials'},
+{name:'Bosch',ticker:'BOSCHLTD',sector:'Industrials'},
+{name:'Eicher Motors',ticker:'EICHERMOT',sector:'Consumer'},
+{name:'Hero MotoCorp',ticker:'HEROMOTOCO',sector:'Consumer'},
+{name:'Bajaj Auto',ticker:'BAJAJ-AUTO',sector:'Consumer'},
+{name:'TVS Motor',ticker:'TVSMOTOR',sector:'Consumer'},
+{name:'HDFC Life',ticker:'HDFCLIFE',sector:'Financials'},
+{name:'SBI Life',ticker:'SBILIFE',sector:'Financials'},
+{name:'ICICI Prudential Life',ticker:'ICICIGI',sector:'Financials'},
+{name:'Bandhan Bank',ticker:'BANDHANBNK',sector:'Financials'},
+{name:'IndusInd Bank',ticker:'INDUSINDBK',sector:'Financials'},
+{name:'Canara Bank',ticker:'CANBK',sector:'Financials'},
+{name:'Punjab National Bank',ticker:'PNB',sector:'Financials'},
+{name:'Bank of Baroda',ticker:'BANKBARODA',sector:'Financials'},
+{name:'Union Bank',ticker:'UNIONBANK',sector:'Financials'},
+{name:'Indian Bank',ticker:'INDIANB',sector:'Financials'},
+{name:'IDFC First Bank',ticker:'IDFCFIRSTB',sector:'Financials'},
+{name:'Yes Bank',ticker:'YESBANK',sector:'Financials'},
+{name:'Federal Bank',ticker:'FEDERALBNK',sector:'Financials'},
+{name:'RBL Bank',ticker:'RBLBANK',sector:'Financials'},
+{name:'AU Small Finance Bank',ticker:'AUBANK',sector:'Financials'},
+{name:'Shriram Finance',ticker:'SHRIRAMFIN',sector:'Financials'},
+{name:'Cholamandalam Inv',ticker:'CHOLAFIN',sector:'Financials'},
+{name:'Bajaj Finserv',ticker:'BAJAJFINSV',sector:'Financials'},
+{name:'Sundaram Finance',ticker:'SUNDARMFIN',sector:'Financials'},
+{name:'LIC India',ticker:'LICI',sector:'Financials'},
+{name:'GAIL India',ticker:'GAIL',sector:'Utilities'},
+{name:'NHPC',ticker:'NHPC',sector:'Utilities'},
+{name:'SJVN',ticker:'SJVN',sector:'Utilities'},
+{name:'Torrent Power',ticker:'TORNTPOWER',sector:'Utilities'},
+{name:'Adani Green Energy',ticker:'ADANIGREEN',sector:'Utilities'},
+{name:'Adani Transmission',ticker:'ADANITRANS',sector:'Utilities'},
+{name:'Tata Power',ticker:'TATAPOWER',sector:'Utilities'},
+{name:'Jindal Steel',ticker:'JINDALSTEL',sector:'Materials'},
+{name:'Hindalco Industries',ticker:'HINDALCO',sector:'Materials'},
+{name:'Vedanta',ticker:'VEDL',sector:'Materials'},
+{name:'NMDC',ticker:'NMDC',sector:'Materials'},
+{name:'Steel Authority',ticker:'SAIL',sector:'Materials'},
+{name:'Ambuja Cements',ticker:'AMBUJACEM',sector:'Materials'},
+{name:'Shree Cement',ticker:'SHREECEM',sector:'Materials'},
+{name:'ACC',ticker:'ACC',sector:'Materials'},
+{name:'Dalmia Bharat',ticker:'DALBHARAT',sector:'Materials'},
+{name:'Ramco Cements',ticker:'RAMCOCEM',sector:'Materials'},
+{name:'Balkrishna Industries',ticker:'BALKRISIND',sector:'Industrials'},
+{name:'MRF',ticker:'MRF',sector:'Consumer'},
+{name:'CEAT',ticker:'CEATLTD',sector:'Consumer'},
+{name:'Apollo Tyres',ticker:'APOLLOTYRE',sector:'Consumer'},
+{name:'Bata India',ticker:'BATAINDIA',sector:'Consumer'},
+{name:'Page Industries',ticker:'PAGEIND',sector:'Consumer'},
+{name:'Relaxo Footwears',ticker:'RELAXO',sector:'Consumer'},
+{name:'Zomato',ticker:'ZOMATO',sector:'Consumer'},
+{name:'Nykaa',ticker:'NYKAA',sector:'Consumer'},
+{name:'Paytm',ticker:'PAYTM',sector:'Technology'},
+{name:'Policybazaar',ticker:'POLICYBZR',sector:'Technology'},
+{name:'Delhivery',ticker:'DELHIVERY',sector:'Industrials'},
+{name:'InterGlobe Aviation',ticker:'INDIGO',sector:'Industrials'},
+{name:'SpiceJet',ticker:'SPICEJET',sector:'Industrials'},
+{name:'IRCTC',ticker:'IRCTC',sector:'Industrials'},
+{name:'Indian Railway Finance',ticker:'IRFC',sector:'Financials'},
+{name:'RVNL',ticker:'RVNL',sector:'Industrials'},
+{name:'NBCC India',ticker:'NBCC',sector:'Industrials'},
+{name:'NCC',ticker:'NCC',sector:'Industrials'},
+{name:'Ashoka Buildcon',ticker:'ASHOKA',sector:'Industrials'},
+{name:'IRB Infra',ticker:'IRB',sector:'Industrials'},
+{name:'GMR Airports',ticker:'GMRINFRA',sector:'Industrials'},
+{name:'Biocon',ticker:'BIOCON',sector:'Healthcare'},
+{name:'Lupin',ticker:'LUPIN',sector:'Healthcare'},
+{name:'Aurobindo Pharma',ticker:'AUROPHARMA',sector:'Healthcare'},
+{name:'Torrent Pharma',ticker:'TORNTPHARM',sector:'Healthcare'},
+{name:'Alkem Laboratories',ticker:'ALKEM',sector:'Healthcare'},
+{name:'Glenmark Pharma',ticker:'GLENMARK',sector:'Healthcare'},
+{name:'Cadila Healthcare',ticker:'CADILAHC',sector:'Healthcare'},
+{name:'Syngene International',ticker:'SYNGENE',sector:'Healthcare'},
+{name:'Laurus Labs',ticker:'LAURUSLABS',sector:'Healthcare'},
+{name:'Aarti Industries',ticker:'AARTIIND',sector:'Materials'},
+{name:'Deepak Nitrite',ticker:'DEEPAKNTR',sector:'Materials'},
+{name:'SRF',ticker:'SRF',sector:'Materials'},
+{name:'Navin Fluorine',ticker:'NAVINFLUOR',sector:'Materials'},
+{name:'Gujarat Fluorochem',ticker:'FLUOROCHEM',sector:'Materials'},
+{name:'Clean Science',ticker:'CLEANSCI',sector:'Materials'},
+{name:'PI Industries',ticker:'PIIND',sector:'Materials'},
+{name:'UPL',ticker:'UPL',sector:'Materials'},
+{name:'Sumitomo Chemical',ticker:'SUMICHEM',sector:'Materials'},
+{name:'Rallis India',ticker:'RALLIS',sector:'Materials'},
+{name:'Bayer CropScience',ticker:'BAYERCROP',sector:'Materials'},
+{name:'Coromandel Intl',ticker:'COROMANDEL',sector:'Materials'},
+{name:'Tata Chemicals',ticker:'TATACHEM',sector:'Materials'},
+{name:'Motherson Sumi',ticker:'MOTHERSON',sector:'Consumer'},
+{name:'Bharat Forge',ticker:'BHARATFORG',sector:'Industrials'},
+{name:'Minda Corp',ticker:'MINDACORP',sector:'Consumer'},
+{name:'Samvardhana Motherson',ticker:'SAMVRDHNA',sector:'Consumer'},
+{name:'Suprajit Engineering',ticker:'SUPRAJIT',sector:'Consumer'},
+{name:'Exide Industries',ticker:'EXIDEIND',sector:'Consumer'},
+{name:'Amara Raja Batteries',ticker:'AMARAJABAT',sector:'Consumer'},
+{name:'Havells India',ticker:'HAVELLS',sector:'Consumer'},
+{name:'V-Guard Industries',ticker:'VGUARD',sector:'Consumer'},
+{name:'Crompton Greaves',ticker:'CROMPTON',sector:'Consumer'},
+{name:'Polycab India',ticker:'POLYCAB',sector:'Industrials'},
+{name:'KEI Industries',ticker:'KEI',sector:'Industrials'},
+{name:'Finolex Cables',ticker:'FINCABLES',sector:'Industrials'},
+{name:'CG Power',ticker:'CGPOWER',sector:'Industrials'},
+{name:'Thermax',ticker:'THERMAX',sector:'Industrials'},
+{name:'AIA Engineering',ticker:'AIAENG',sector:'Industrials'},
+{name:'SKF India',ticker:'SKFINDIA',sector:'Industrials'},
+{name:'Timken India',ticker:'TIMKEN',sector:'Industrials'},
+{name:'Schaeffler India',ticker:'SCHAEFFLER',sector:'Industrials'},
+{name:'Carborundum Universal',ticker:'CARBORUNIV',sector:'Industrials'},
+{name:'Grindwell Norton',ticker:'GRINDWELL',sector:'Industrials'},
+{name:'Blue Star',ticker:'BLUESTARCO',sector:'Consumer'},
+{name:'Whirlpool India',ticker:'WHIRLPOOL',sector:'Consumer'},
+{name:'Voltas',ticker:'VOLTAS',sector:'Consumer'},
+{name:'Dixon Technologies',ticker:'DIXON',sector:'Consumer'},
+{name:'Amber Enterprises',ticker:'AMBER',sector:'Consumer'},
+{name:'Honeywell Auto',ticker:'HONAUT',sector:'Industrials'},
+{name:'L&T Technology',ticker:'LTTS',sector:'Technology'},
+{name:'Mindtree',ticker:'MINDTREE',sector:'Technology'},
+{name:'Coforge',ticker:'COFORGE',sector:'Technology'},
+{name:'Persistent Systems',ticker:'PERSISTENT',sector:'Technology'},
+{name:'LTIMindtree',ticker:'LTIM',sector:'Technology'},
+{name:'Mphasis',ticker:'MPHASIS',sector:'Technology'},
+{name:'Zensar Technologies',ticker:'ZENSARTECH',sector:'Technology'},
+{name:'Sonata Software',ticker:'SONATSOFTW',sector:'Technology'},
+{name:'Newgen Software',ticker:'NEWGEN',sector:'Technology'},
+{name:'Redington India',ticker:'REDINGTON',sector:'Technology'},
+{name:'Inox Wind',ticker:'INOXWIND',sector:'Energy'},
+{name:'Suzlon Energy',ticker:'SUZLON',sector:'Energy'},
+{name:'Websol Energy',ticker:'WEBSOL',sector:'Energy'},
+{name:'Tata Elxsi',ticker:'TATAELXSI',sector:'Technology'},
+{name:'BPL',ticker:'BPL',sector:'Consumer'},
+{name:'Videocon Industries',ticker:'VIDEOIND',sector:'Consumer'}
 ];
 
 let stocks = [];
@@ -791,11 +1115,11 @@ let chartInstances = {};
 
 function generateData() {
     stocks = companies.map((company, index) => {
-        const basePrice = Math.random() * 400 + 10;
+        const basePrice = Math.random() * 3000 + 5;
         const volatility = Math.random() * 0.05 + 0.01;
         const change = (Math.random() - 0.5) * volatility * basePrice;
         const changePercent = (change / basePrice) * 100;
-        const marketCap = Math.random() * 2000 + 1;
+        const marketCap = Math.random() * 150000 + 500;
         const pe = Math.random() * 40 + 5;
         const roe = Math.random() * 40 + -5;
         const debtEquity = Math.random() * 3;
@@ -865,9 +1189,19 @@ function generateData() {
         const cons = [
             'Promoter holding is low at ' + (Math.random()*30).toFixed(1) + '%',
             'The company has delivered a poor sales growth of ' + (-5 + Math.random()*10).toFixed(1) + '% over past five years',
-            'Tax rate seems low at ' + (10 + Math.random()*15).toFixed(1) + '%',
+            'Effective tax rate at ' + (20 + Math.random()*10).toFixed(1) + '%',
             'Working capital days have increased from ' + Math.floor(30+Math.random()*50) + ' to ' + Math.floor(60+Math.random()*50) + ' days'
         ];
+
+        const promoterHolding = Math.random() * 80 + 5;
+        const pledge = Math.random() * 15;
+        const fiiHolding = Math.random() * 40 + 5;
+        const diiHolding = Math.random() * 25 + 5;
+        const publicHolding = 100 - promoterHolding - fiiHolding - diiHolding;
+        const roce = Math.random() * 30 + 5;
+        const evEbitda = Math.random() * 25 + 5;
+        const piotroski = Math.floor(Math.random() * 9);
+        const altmanZ = Math.random() * 5 + 1;
 
         return {
             id: index,
@@ -881,7 +1215,7 @@ function generateData() {
             debtEquity: parseFloat(debtEquity.toFixed(2)),
             dividend: parseFloat(dividend.toFixed(2)),
             salesGrowth: parseFloat(salesGrowth.toFixed(2)),
-            volume: Math.floor(Math.random() * 50 + 1),
+            volume: Math.floor(Math.random() * 300 + 10),
             high52: parseFloat((basePrice * 1.2).toFixed(2)),
             low52: parseFloat((basePrice * 0.8).toFixed(2)),
             beta: parseFloat((Math.random() * 2).toFixed(2)),
@@ -890,14 +1224,23 @@ function generateData() {
             opm: parseFloat((15 + Math.random() * 25).toFixed(1)),
             npm: parseFloat((8 + Math.random() * 20).toFixed(1)),
             pb: parseFloat((basePrice / (basePrice * 0.15 + Math.random() * 30)).toFixed(1)),
+            promoterHolding: parseFloat(promoterHolding.toFixed(2)),
+            pledge: parseFloat(pledge.toFixed(2)),
+            fiiHolding: parseFloat(fiiHolding.toFixed(2)),
+            diiHolding: parseFloat(diiHolding.toFixed(2)),
+            publicHolding: parseFloat(Math.max(0, publicHolding).toFixed(2)),
+            roce: parseFloat(roce.toFixed(2)),
+            evEbitda: parseFloat(evEbitda.toFixed(2)),
+            piotroski: piotroski,
+            altmanZ: parseFloat(altmanZ.toFixed(2)),
             financials: financials,
             quarterly: quarterly,
             shareholding: shareholding,
             pros: pros.slice(0, 3 + Math.floor(Math.random() * 2)),
             cons: cons.slice(0, 2 + Math.floor(Math.random() * 2)),
             segments: [
-                {name:'Product A', revenue:30 + Math.random()*40},
-                {name:'Product B', revenue:20 + Math.random()*30},
+                {name:'Domestic', revenue:30 + Math.random()*40},
+                {name:'Exports', revenue:20 + Math.random()*30},
                 {name:'Services', revenue:10 + Math.random()*20},
                 {name:'Other', revenue:5 + Math.random()*15}
             ],
@@ -906,10 +1249,10 @@ function generateData() {
                 {agency:'ICRA',rating:'AA+',outlook:'Stable',date:'Mar 2024'}
             ],
             corporateActions: [
-                {date:'Aug 2024',type:'Dividend',details:'$0.25 per share'},
-                {date:'May 2024',type:'Dividend',details:'$0.25 per share'},
-                {date:'Feb 2024',type:'Dividend',details:'$0.24 per share'},
-                {date:'Nov 2023',type:'Stock Split',details:'4:1 split announced'}
+                {date:'Aug 2024',type:'Dividend',details:'₹1.00 per share'},
+                {date:'May 2024',type:'Dividend',details:'₹1.00 per share'},
+                {date:'Feb 2024',type:'Dividend',details:'₹0.90 per share'},
+                {date:'Nov 2023',type:'Stock Split',details:'1:5 split announced'}
             ]
         };
     });
@@ -952,6 +1295,30 @@ function applyFilters() {
         if (debtVal) { if (debtOp === 'gt' && stock.debtEquity <= debtVal) pass = false; if (debtOp === 'lt' && stock.debtEquity >= debtVal) pass = false; }
         if (priceVal) { if (priceOp === 'gt' && stock.price <= priceVal) pass = false; if (priceOp === 'lt' && stock.price >= priceVal) pass = false; }
         if (growthVal) { if (growthOp === 'gt' && stock.salesGrowth <= growthVal) pass = false; if (growthOp === 'lt' && stock.salesGrowth >= growthVal) pass = false; }
+        const promoterOp = document.getElementById('promoterOp').value;
+        const promoterVal = parseFloat(document.getElementById('promoterVal').value);
+        if (promoterVal) { if (promoterOp === 'gt' && stock.promoterHolding <= promoterVal) pass = false; if (promoterOp === 'lt' && stock.promoterHolding >= promoterVal) pass = false; }
+        const pledgeOp = document.getElementById('pledgeOp').value;
+        const pledgeVal = parseFloat(document.getElementById('pledgeVal').value);
+        if (pledgeVal) { if (pledgeOp === 'gt' && stock.pledge <= pledgeVal) pass = false; if (pledgeOp === 'lt' && stock.pledge >= pledgeVal) pass = false; }
+        const fiiOp = document.getElementById('fiiOp').value;
+        const fiiVal = parseFloat(document.getElementById('fiiVal').value);
+        if (fiiVal) { if (fiiOp === 'gt' && stock.fiiHolding <= fiiVal) pass = false; if (fiiOp === 'lt' && stock.fiiHolding >= fiiVal) pass = false; }
+        const diiOp = document.getElementById('diiOp').value;
+        const diiVal = parseFloat(document.getElementById('diiVal').value);
+        if (diiVal) { if (diiOp === 'gt' && stock.diiHolding <= diiVal) pass = false; if (diiOp === 'lt' && stock.diiHolding >= diiVal) pass = false; }
+        const roceOp = document.getElementById('roceOp').value;
+        const roceVal = parseFloat(document.getElementById('roceVal').value);
+        if (roceVal) { if (roceOp === 'gt' && stock.roce <= roceVal) pass = false; if (roceOp === 'lt' && stock.roce >= roceVal) pass = false; }
+        const evebitdaOp = document.getElementById('evebitdaOp').value;
+        const evebitdaVal = parseFloat(document.getElementById('evebitdaVal').value);
+        if (evebitdaVal) { if (evebitdaOp === 'gt' && stock.evEbitda <= evebitdaVal) pass = false; if (evebitdaOp === 'lt' && stock.evEbitda >= evebitdaVal) pass = false; }
+        const piotroskiOp = document.getElementById('piotroskiOp').value;
+        const piotroskiVal = parseFloat(document.getElementById('piotroskiVal').value);
+        if (piotroskiVal) { if (piotroskiOp === 'gt' && stock.piotroski <= piotroskiVal) pass = false; if (piotroskiOp === 'lt' && stock.piotroski >= piotroskiVal) pass = false; }
+        const altmanOp = document.getElementById('altmanOp').value;
+        const altmanVal = parseFloat(document.getElementById('altmanVal').value);
+        if (altmanVal) { if (altmanOp === 'gt' && stock.altmanZ <= altmanVal) pass = false; if (altmanOp === 'lt' && stock.altmanZ >= altmanVal) pass = false; }
         return pass;
     });
     currentPage = 1;
@@ -979,6 +1346,22 @@ function updateActiveFilters() {
     if (price) filters.push('Price ' + document.getElementById('priceOp').value + ' $' + price);
     const growth = document.getElementById('growthVal').value;
     if (growth) filters.push('Growth ' + document.getElementById('growthOp').value + ' ' + growth + '%');
+    const promoter = document.getElementById('promoterVal').value;
+    if (promoter) filters.push('Promoter ' + document.getElementById('promoterOp').value + ' ' + promoter + '%');
+    const pledge = document.getElementById('pledgeVal').value;
+    if (pledge) filters.push('Pledge ' + document.getElementById('pledgeOp').value + ' ' + pledge + '%');
+    const fii = document.getElementById('fiiVal').value;
+    if (fii) filters.push('FII ' + document.getElementById('fiiOp').value + ' ' + fii + '%');
+    const dii = document.getElementById('diiVal').value;
+    if (dii) filters.push('DII ' + document.getElementById('diiOp').value + ' ' + dii + '%');
+    const roce = document.getElementById('roceVal').value;
+    if (roce) filters.push('ROCE ' + document.getElementById('roceOp').value + ' ' + roce + '%');
+    const evebitda = document.getElementById('evebitdaVal').value;
+    if (evebitda) filters.push('EV/EBITDA ' + document.getElementById('evebitdaOp').value + ' ' + evebitda);
+    const piotroski = document.getElementById('piotroskiVal').value;
+    if (piotroski) filters.push('Piotroski ' + document.getElementById('piotroskiOp').value + ' ' + piotroski);
+    const altman = document.getElementById('altmanVal').value;
+    if (altman) filters.push('Altman Z ' + document.getElementById('altmanOp').value + ' ' + altman);
 
     const countEl = document.getElementById('activeFilterCount');
     if (filters.length > 0) {
@@ -1031,6 +1414,11 @@ function renderTable() {
             '<td class="px-6 py-4 text-right text-gray-600">' + stock.debtEquity.toFixed(2) + '</td>' +
             '<td class="px-6 py-4 text-right text-gray-600">' + stock.dividend.toFixed(2) + '%</td>' +
             '<td class="px-6 py-4 text-right ' + (stock.salesGrowth > 0 ? 'text-green-600' : 'text-red-600') + '">' + (stock.salesGrowth >= 0 ? '+' : '') + stock.salesGrowth.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.promoterHolding > 50 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.promoterHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.pledge > 5 ? 'text-red-600 font-medium' : 'text-gray-600') + '">' + stock.pledge.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.fiiHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roce > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roce.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.evEbitda.toFixed(1) + '</td>' +
             '<td class="px-6 py-4 text-center"><button onclick="event.stopPropagation(); addToWatchlist(stock.ticker)" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="Add to watchlist"><i class="fas fa-plus-circle"></i></button><button onclick="event.stopPropagation(); openCompanyPage(' + stock.id + ')" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="View details"><i class="fas fa-chart-line"></i></button></td>' +
             '</tr>';
     }).join('');
@@ -1075,9 +1463,9 @@ function quickFilter(type, value) {
     if (type === 'marketCap') {
         const input = document.getElementById('marketCapVal');
         const op = document.getElementById('marketCapOp');
-        if (value === 'large') { op.value = 'gt'; input.value = 100; }
-        if (value === 'mid') { op.value = 'gt'; input.value = 10; }
-        if (value === 'small') { op.value = 'lt'; input.value = 2; }
+        if (value === 'large') { op.value = 'gt'; input.value = 50000; }
+        if (value === 'mid') { op.value = 'gt'; input.value = 5000; }
+        if (value === 'small') { op.value = 'lt'; input.value = 5000; }
     }
     applyFilters();
 }
@@ -1088,7 +1476,7 @@ function applyPreset(type) {
     if (type === 'growth') { document.getElementById('growthOp').value = 'gt'; document.getElementById('growthVal').value = 20; document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 15; }
     if (type === 'dividend') { document.getElementById('divOp').value = 'gt'; document.getElementById('divVal').value = 3; document.getElementById('peOp').value = 'lt'; document.getElementById('peVal').value = 25; }
     if (type === 'quality') { document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 20; document.getElementById('debtOp').value = 'lt'; document.getElementById('debtVal').value = 0.5; }
-    if (type === 'penny') { document.getElementById('priceOp').value = 'lt'; document.getElementById('priceVal').value = 5; document.getElementById('marketCapOp').value = 'lt'; document.getElementById('marketCapVal').value = 1; }
+    if (type === 'penny') { document.getElementById('priceOp').value = 'lt'; document.getElementById('priceVal').value = 20; document.getElementById('marketCapOp').value = 'lt'; document.getElementById('marketCapVal').value = 500; }
     if (type === 'largecap') { document.getElementById('marketCapOp').value = 'gt'; document.getElementById('marketCapVal').value = 100; document.getElementById('roeOp').value = 'gt'; document.getElementById('roeVal').value = 10; }
     applyFilters();
     showToast('Preset applied successfully');
@@ -1131,24 +1519,31 @@ function openCompanyPage(id) {
 
     document.getElementById('companyLogo').textContent = stock.ticker.substring(0, 2);
     document.getElementById('companyName').textContent = stock.name;
-    document.getElementById('companyTicker').textContent = stock.ticker + ' - ' + stock.sector + ' - NASDAQ';
-    document.getElementById('companyPrice').textContent = '$' + stock.price.toFixed(2);
+    document.getElementById('companyTicker').textContent = stock.ticker + ' - ' + stock.sector + ' - NSE';
+    document.getElementById('companyPrice').textContent = '₹' + stock.price.toFixed(2);
     const changeEl = document.getElementById('companyChange');
     changeEl.textContent = (stock.change >= 0 ? '+' : '') + stock.change.toFixed(2) + ' (' + (stock.change >= 0 ? '+' : '') + stock.changePercent.toFixed(2) + '%)';
     changeEl.className = 'text-sm font-medium ' + (stock.change >= 0 ? 'text-green-600' : 'text-red-600');
-    document.getElementById('companyMarketCap').textContent = '$' + stock.marketCap.toFixed(1) + 'B';
+    document.getElementById('companyMarketCap').textContent = '₹' + stock.marketCap.toFixed(0) + ' Cr';
     document.getElementById('companyPE').textContent = stock.pe.toFixed(1);
     document.getElementById('companyROE').textContent = stock.roe.toFixed(1) + '%';
     document.getElementById('companyDE').textContent = stock.debtEquity.toFixed(2);
     document.getElementById('companyDiv').textContent = stock.dividend.toFixed(2) + '%';
-    document.getElementById('companyBV').textContent = '$' + stock.bookValue.toFixed(2);
-    document.getElementById('company52High').textContent = '$' + stock.high52.toFixed(2);
-    document.getElementById('company52Low').textContent = '$' + stock.low52.toFixed(2);
-    document.getElementById('companyVolume').textContent = stock.volume + 'M';
-    document.getElementById('companyEPS').textContent = '$' + stock.eps.toFixed(2);
+    document.getElementById('companyBV').textContent = '₹' + stock.bookValue.toFixed(2);
+    document.getElementById('company52High').textContent = '₹' + stock.high52.toFixed(2);
+    document.getElementById('company52Low').textContent = '₹' + stock.low52.toFixed(2);
+    document.getElementById('companyVolume').textContent = stock.volume + 'L';
+    document.getElementById('companyEPS').textContent = '₹' + stock.eps.toFixed(2);
     document.getElementById('companyPB').textContent = stock.pb.toFixed(1);
     document.getElementById('companyOPM').textContent = stock.opm.toFixed(1) + '%';
     document.getElementById('companyNPM').textContent = stock.npm.toFixed(1) + '%';
+    document.getElementById('companyPromoter').textContent = stock.promoterHolding.toFixed(1) + '%';
+    document.getElementById('companyPledge').textContent = stock.pledge.toFixed(1) + '%';
+    document.getElementById('companyFII').textContent = stock.fiiHolding.toFixed(1) + '%';
+    document.getElementById('companyDII').textContent = stock.diiHolding.toFixed(1) + '%';
+    document.getElementById('companyROCE').textContent = stock.roce.toFixed(1) + '%';
+    document.getElementById('companyEVEBITDA').textContent = stock.evEbitda.toFixed(1);
+    document.getElementById('companyPiotroski').textContent = stock.piotroski;
 
     const btn = document.getElementById('companyWatchlistBtn');
     if (watchlist.includes(id)) {
@@ -1204,7 +1599,7 @@ function renderCompanyCharts(stock) {
     const grad = ctx.createLinearGradient(0,0,0,300); grad.addColorStop(0,'rgba(26,115,232,0.1)'); grad.addColorStop(1,'rgba(26,115,232,0)');
     chartInstances.price = new Chart(ctx, {
         type:'line', data:{labels:labels,datasets:[{label:'Price',data:prices,borderColor:'#1a73e8',backgroundColor:grad,borderWidth:2,fill:true,tension:0.4,pointRadius:0,pointHoverRadius:6}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,0.8)',padding:12,cornerRadius:8,displayColors:false,callbacks:{label:(ctx)=>'$'+ctx.parsed.y.toFixed(2)}}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'$'+val.toFixed(0),font:{size:11}}}}}
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{backgroundColor:'rgba(0,0,0,0.8)',padding:12,cornerRadius:8,displayColors:false,callbacks:{label:(ctx)=>'₹'+ctx.parsed.y.toFixed(2)}}},scales:{x:{grid:{display:false},ticks:{maxTicksLimit:6,font:{size:11}}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'₹'+val.toFixed(0),font:{size:11}}}}}
     });
 
     const peData = Array.from({length:10},()=>stock.pe+(Math.random()-0.5)*10);
@@ -1218,7 +1613,7 @@ function renderCompanyCharts(stock) {
     if (chartInstances.salesChart) chartInstances.salesChart.destroy();
     chartInstances.salesChart = new Chart(document.getElementById('companySalesChart'), {
         type:'line', data:{labels:['2015','2016','2017','2018','2019','2020','2021','2022','2023','2024'],datasets:[{label:'Sales',data:salesData,borderColor:'#34a853',backgroundColor:'rgba(52,168,83,0.1)',borderWidth:2,fill:true,tension:0.4,pointRadius:3}]},
-        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'$'+(val/1000).toFixed(0)+'B'}}}}
+        options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'#f3f4f6'},ticks:{callback:(val)=>'₹'+(val/100).toFixed(0)+' Cr'}}}}
     });
 }
 
@@ -1276,7 +1671,7 @@ function renderQuarterly(stock) {
     ];
     document.getElementById('quarterlyBody').innerHTML = items.map(item => {
         const vals = quarters.map(q => stock.quarterly[q][item.key]);
-        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + vals.map(v => '<td class="px-4 py-3 text-right">' + (typeof v === 'number' ? '$' + (v>=1000?(v/1000).toFixed(1)+'B':v.toFixed(1)+'M') : '$'+v) + '</td>').join('') + '</tr>';
+        return '<tr class="fin-row"><td class="px-4 py-3 font-medium">' + item.label + '</td>' + vals.map(v => '<td class="px-4 py-3 text-right">' + (typeof v === 'number' ? '₹' + (v>=100?(v/100).toFixed(1)+' Cr':v.toFixed(1)+' L') : '₹'+v) + '</td>').join('') + '</tr>';
     }).join('');
 }
 
@@ -1445,10 +1840,10 @@ function renderWatchlist() {
 
     // News feed
     const newsItems = [
-        {time:'2 hours ago',title:'Q4 Results: Revenue beats estimates by 5%',ticker:'AAPL'},
-        {time:'5 hours ago',title:'Board approves share buyback program',ticker:'MSFT'},
-        {time:'1 day ago',title:'New product launch announced',ticker:'TSLA'},
-        {time:'2 days ago',title:'Analyst upgrades rating to Buy',ticker:'NVDA'},
+        {time:'2 hours ago',title:'Q4 Results: Revenue beats estimates by 5%',ticker:'RELIANCE'},
+        {time:'5 hours ago',title:'Board approves share buyback program',ticker:'TCS'},
+        {time:'1 day ago',title:'New product launch announced',ticker:'MARUTI'},
+        {time:'2 days ago',title:'Analyst upgrades rating to Buy',ticker:'INFY'},
         {time:'3 days ago',title:'Dividend declaration: $0.25/share',ticker:'JPM'}
     ];
     document.getElementById('newsFeed').innerHTML = newsItems.map(n => 
@@ -1457,8 +1852,8 @@ function renderWatchlist() {
 
     // Insider trades
     const insiderItems = [
-        {name:'John Smith',role:'CEO',action:'Buy',shares:'10,000',ticker:'AAPL'},
-        {name:'Jane Doe',role:'CFO',action:'Sell',shares:'5,000',ticker:'MSFT'},
+        {name:'Mukesh Ambani',role:'Chairman',action:'Buy',shares:'10,000',ticker:'RELIANCE'},
+        {name:'N. Chandrasekaran',role:'CEO',action:'Sell',shares:'5,000',ticker:'TCS'},
         {name:'Bob Wilson',role:'Director',action:'Buy',shares:'2,500',ticker:'TSLA'}
     ];
     document.getElementById('insiderTrades').innerHTML = insiderItems.map(it => 
@@ -1499,7 +1894,7 @@ function renderScreensDirectory() {
         {name:'Growth at Reasonable Price',desc:'High growth, moderate PE',count:35,author:'Peter Lynch',color:'purple'},
         {name:'Quality Compounders',desc:'ROE > 20%, low debt',count:18,author:'Warren Buffett',color:'amber'},
         {name:'Dividend Aristocrats',desc:'Consistent dividend payers',count:52,author:'Community',color:'red'},
-        {name:'Small Cap Gems',desc:'Market cap < 500 Cr, high growth',count:67,author:'Community',color:'teal'},
+        {name:'Small Cap Gems',desc:'Market cap < 5,000 Cr, high growth',count:67,author:'Community',color:'teal'},
         {name:'Debt Free Companies',desc:'Zero debt, high cash',count:31,author:'Community',color:'indigo'},
         {name:'Turnaround Stories',desc:'Improving margins, reducing debt',count:24,author:'Community',color:'orange'},
         {name:'Moat Companies',desc:'High ROCE, pricing power',count:15,author:'Community',color:'cyan'}
@@ -1554,7 +1949,7 @@ function exportData() {
     const blob = new Blob([csv], {type:'text/csv'});
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.href = url; a.download = 'screener_export.csv'; a.click();
+    a.href = url; a.download = 'indian_screener_export.csv'; a.click();
     showToast('Data exported to CSV');
 }
 
@@ -1567,7 +1962,7 @@ function showToast(message) {
 
 function updateMarketTime() {
     const now = new Date();
-    document.getElementById('marketTime').textContent = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short'});
+    document.getElementById('marketTime').textContent = now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit',timeZoneName:'short', timeZone:'Asia/Kolkata'});
 }
 
 // Event listeners
@@ -1583,6 +1978,16 @@ applyFilters();
 updateMarketTime();
 setInterval(updateMarketTime, 60000);
 
+
+
+function refreshData() {
+    showToast('Refreshing data from Screener.in...');
+    // In production, this would call the Python scraper or API
+    // For now, regenerate mock data with new random values
+    generateMockData();
+    applyFilters();
+    showToast('Data refreshed! (Mock data mode)');
+}
 
 // ==================== MISSING FEATURES ADDED ====================
 
@@ -1704,17 +2109,17 @@ function openDCFCalculator() {
         </div>
         <div class="p-6">
             <div class="grid grid-cols-2 gap-4 mb-6">
-                <div><label class="text-sm font-medium text-gray-700">Current EPS ($)</label><input type="number" id="dcfEPS" value="6.15" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Current EPS (₹)</label><input type="number" id="dcfEPS" value="45.50" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
                 <div><label class="text-sm font-medium text-gray-700">Growth Rate (%)</label><input type="number" id="dcfGrowth" value="12" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
                 <div><label class="text-sm font-medium text-gray-700">Discount Rate (%)</label><input type="number" id="dcfDiscount" value="10" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
                 <div><label class="text-sm font-medium text-gray-700">Terminal Growth (%)</label><input type="number" id="dcfTerminal" value="3" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
                 <div><label class="text-sm font-medium text-gray-700">Growth Stage (years)</label><input type="number" id="dcfYears" value="10" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
-                <div><label class="text-sm font-medium text-gray-700">Book Value ($)</label><input type="number" id="dcfBookValue" value="25" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
+                <div><label class="text-sm font-medium text-gray-700">Book Value (₹)</label><input type="number" id="dcfBookValue" value="850" class="w-full mt-1 text-sm border border-gray-300 rounded-lg px-3 py-2" onchange="calculateDCF()"></div>
             </div>
             <div class="bg-gray-50 rounded-xl p-6 mb-4">
                 <div class="grid grid-cols-2 gap-4">
-                    <div class="text-center"><div class="text-sm text-gray-500">Intrinsic Value</div><div class="text-3xl font-bold text-primary" id="dcfIntrinsicValue">$0.00</div></div>
-                    <div class="text-center"><div class="text-sm text-gray-500">Current Price</div><div class="text-3xl font-bold text-gray-900" id="dcfCurrentPrice">$150.00</div></div>
+                    <div class="text-center"><div class="text-sm text-gray-500">Intrinsic Value</div><div class="text-3xl font-bold text-primary" id="dcfIntrinsicValue">₹0.00</div></div>
+                    <div class="text-center"><div class="text-sm text-gray-500">Current Price</div><div class="text-3xl font-bold text-gray-900" id="dcfCurrentPrice">₹2850.00</div></div>
                     <div class="text-center"><div class="text-sm text-gray-500">Margin of Safety</div><div class="text-2xl font-bold" id="dcfMOS">0%</div></div>
                     <div class="text-center"><div class="text-sm text-gray-500">Upside Potential</div><div class="text-2xl font-bold" id="dcfUpside">0%</div></div>
                 </div>
@@ -1746,7 +2151,7 @@ function calculateDCF() {
     const currentPrice=150;
     const mos=((intrinsicValue-currentPrice)/intrinsicValue*100);
     const upside=((intrinsicValue-currentPrice)/currentPrice*100);
-    document.getElementById('dcfIntrinsicValue').textContent='$'+intrinsicValue.toFixed(2);
+    document.getElementById('dcfIntrinsicValue').textContent='₹'+intrinsicValue.toFixed(2);
     document.getElementById('dcfMOS').textContent=mos.toFixed(1)+'%';
     document.getElementById('dcfMOS').className='text-2xl font-bold '+(mos>0?'text-green-600':'text-red-600');
     document.getElementById('dcfUpside').textContent=upside.toFixed(1)+'%';
@@ -1880,7 +2285,7 @@ function openCompareModal() {
                     <thead><tr class="border-b"><th class="px-4 py-3 text-left">Metric</th>${companies.map(c=>`<th class="px-4 py-3 text-center">${c.name}</th>`).join('')}</tr></thead>
                     <tbody>${['Market Cap','P/E','ROE','D/E','Div Yield','Sales Growth','EPS','OPM','NPM'].map(metric=>{
                         const key=metric==='Market Cap'?'marketCap':metric==='P/E'?'pe':metric==='ROE'?'roe':metric==='D/E'?'debtEquity':metric==='Div Yield'?'dividend':metric==='Sales Growth'?'salesGrowth':metric==='EPS'?'eps':metric==='OPM'?'opm':'npm';
-                        return `<tr class="border-b"><td class="px-4 py-3 font-medium">${metric}</td>${companies.map(c=>`<td class="px-4 py-3 text-center">${key==='marketCap'?'$'+c[key].toFixed(1)+'B':key==='dividend'||key==='salesGrowth'||key==='roe'||key==='opm'||key==='npm'?c[key].toFixed(1)+'%':key==='eps'?'$'+c[key].toFixed(2):c[key].toFixed(1)}</td>`).join('')}</tr>`;
+                        return `<tr class="border-b"><td class="px-4 py-3 font-medium">${metric}</td>${companies.map(c=>`<td class="px-4 py-3 text-center">${key==='marketCap'?'₹'+c[key].toFixed(0)+' Cr':key==='dividend'||key==='salesGrowth'||key==='roe'||key==='opm'||key==='npm'?c[key].toFixed(1)+'%':key==='eps'?'₹'+c[key].toFixed(2):c[key].toFixed(1)}</td>`).join('')}</tr>`;
                     }).join('')}</tbody>
                 </table>
             </div>
@@ -1922,8 +2327,8 @@ function renderFinancialCalendar() {
 // 11. PRODUCT PRICES (Mock)
 function renderProductPrices() {
     const products = [
-        {name:'Crude Oil',price:78.45,unit:'USD/bbl',change:+2.3},{name:'Natural Gas',price:3.12,unit:'USD/MMBtu',change:-1.5},
-        {name:'Gold',price:2345.60,unit:'USD/oz',change:+0.8},{name:'Copper',price:4.56,unit:'USD/lb',change:+1.2}
+        {name:'Crude Oil',price:78.45,unit:'INR/bbl',change:+2.3},{name:'Natural Gas',price:3.12,unit:'INR/MMBtu',change:-1.5},
+        {name:'Gold',price:2345.60,unit:'INR/10g',change:+0.8},{name:'Copper',price:4.56,unit:'INR/kg',change:+1.2}
     ];
     return products.map(p=>`<div class="flex items-center justify-between p-3 border-b border-gray-100"><div><div class="text-sm font-medium">${p.name}</div><div class="text-xs text-gray-500">${p.unit}</div></div><div class="text-right"><div class="font-semibold">$${p.price.toFixed(2)}</div><div class="text-xs ${p.change>=0?'text-green-600':'text-red-600'}">${p.change>=0?'+':''}${p.change}%</div></div></div>`).join('');
 }
@@ -1999,13 +2404,13 @@ function backtestScreen() {
         <div class="p-6">
             <div class="grid grid-cols-3 gap-4 mb-6">
                 <div class="p-4 bg-green-50 rounded-xl text-center border border-green-200">
-                    <div class="text-xs text-green-600">CAGR Return</div><div class="text-2xl font-bold text-green-700">18.4%</div>
+                    <div class="text-xs text-green-600">CAGR Return</div><div class="text-2xl font-bold text-green-700">16.8%</div>
                 </div>
                 <div class="p-4 bg-blue-50 rounded-xl text-center border border-blue-200">
-                    <div class="text-xs text-blue-600">Max Drawdown</div><div class="text-2xl font-bold text-blue-700">-12.3%</div>
+                    <div class="text-xs text-blue-600">Max Drawdown</div><div class="text-2xl font-bold text-blue-700">-15.2%</div>
                 </div>
                 <div class="p-4 bg-purple-50 rounded-xl text-center border border-purple-200">
-                    <div class="text-xs text-purple-600">Sharpe Ratio</div><div class="text-2xl font-bold text-purple-700">1.45</div>
+                    <div class="text-xs text-purple-600">Sharpe Ratio</div><div class="text-2xl font-bold text-purple-700">1.32</div>
                 </div>
             </div>
             <canvas id="backtestChart" height="200"></canvas>
@@ -2014,7 +2419,7 @@ function backtestScreen() {
     document.body.appendChild(modal);
 
     const labels = ['2019','2020','2021','2022','2023','2024'];
-    const returns = [15, -5, 28, 12, 22, 18];
+    const returns = [12, -8, 24, 15, 18, 22];
     new Chart(document.getElementById('backtestChart'), {
         type: 'bar',
         data: { labels: labels, datasets: [{ label: 'Annual Return %', data: returns, backgroundColor: returns.map(r => r >= 0 ? '#34a853' : '#ea4335'), borderRadius: 4 }] },
@@ -2062,14 +2467,19 @@ renderTable = function() {
         const isCompared = compareList.includes(stock.id);
         return '<tr class="stock-row border-b border-gray-50 cursor-pointer" onclick="openCompanyPage(' + stock.id + ')">' +
             '<td class="px-6 py-4"><div class="flex items-center gap-3"><input type="checkbox" onclick="event.stopPropagation();toggleCompare(' + stock.id + ')" ' + (isCompared?'checked':'') + ' class="rounded border-gray-300 text-primary focus:ring-primary"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">' + stock.ticker.substring(0, 2) + '</div><div><div class="font-semibold text-gray-900">' + stock.name + '</div><div class="text-xs text-gray-500 font-mono">' + stock.ticker + ' - ' + stock.sector + '</div></div></div></td>' +
-            '<td class="px-6 py-4 text-right font-medium text-gray-900">$' + stock.price.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right font-medium text-gray-900">₹' + stock.price.toFixed(2) + '</td>' +
             '<td class="px-6 py-4 text-right ' + changeClass + ' font-medium">' + changeSign + stock.change.toFixed(2) + ' (' + changeSign + stock.changePercent.toFixed(2) + '%)</td>' +
-            '<td class="px-6 py-4 text-right text-gray-600">$' + stock.marketCap.toFixed(1) + 'B</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">₹' + stock.marketCap.toFixed(0) + ' Cr</td>' +
             '<td class="px-6 py-4 text-right text-gray-600">' + stock.pe.toFixed(1) + '</td>' +
             '<td class="px-6 py-4 text-right ' + (stock.roe > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roe.toFixed(1) + '%</td>' +
             '<td class="px-6 py-4 text-right text-gray-600">' + stock.debtEquity.toFixed(2) + '</td>' +
             '<td class="px-6 py-4 text-right text-gray-600">' + stock.dividend.toFixed(2) + '%</td>' +
             '<td class="px-6 py-4 text-right ' + (stock.salesGrowth > 0 ? 'text-green-600' : 'text-red-600') + '">' + (stock.salesGrowth >= 0 ? '+' : '') + stock.salesGrowth.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.promoterHolding > 50 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.promoterHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.pledge > 5 ? 'text-red-600 font-medium' : 'text-gray-600') + '">' + stock.pledge.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.fiiHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roce > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roce.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.evEbitda.toFixed(1) + '</td>' +
             '<td class="px-6 py-4 text-center"><button onclick="event.stopPropagation(); addToWatchlist(stock.ticker)" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="Add to watchlist"><i class="fas fa-plus-circle"></i></button></td>' +
             '</tr>';
     }).join('');
@@ -2088,6 +2498,233 @@ renderTable = function() {
     }
     document.getElementById('pageNumbers').innerHTML = pageHtml;
 };
+};
+
+// ==================== DATA INTEGRATION WITH SCREENER.IN ====================
+// This script loads real data from Screener.in scraper output
+// Falls back to mock data if real data is not available
+
+function initializeData() {
+    // Check if screener data is available from the scraper
+    if (typeof screenerData !== 'undefined' && screenerData) {
+        console.log('Loading real data from Screener.in...');
+        stocks = loadScreenerData ? loadScreenerData() : convertScreenerData(screenerData);
+    } else {
+        console.log('Real data not available, using mock data...');
+        generateMockData();
+    }
+
+    // Update stats
+    document.getElementById('totalStocks').textContent = stocks.length;
+    updateStats();
+    applyFilters();
+}
+
+function convertScreenerData(data) {
+    const companies = [];
+    let id = 0;
+
+    for (const [ticker, stock] of Object.entries(data)) {
+        if (!stock) continue;
+
+        companies.push({
+            id: id++,
+            name: stock.name || ticker,
+            ticker: ticker,
+            sector: stock.sector || 'Unknown',
+            price: parseFloat(stock.price) || 0,
+            change: parseFloat(stock.change) || 0,
+            changePercent: parseFloat(stock.changePercent) || 0,
+            marketCap: parseFloat(stock.marketCap) || 0,
+            pe: parseFloat(stock.pe) || 0,
+            roe: parseFloat(stock.roe) || 0,
+            debtEquity: parseFloat(stock.debtEquity) || 0,
+            dividend: parseFloat(stock.dividend) || 0,
+            salesGrowth: parseFloat(stock.salesGrowth) || 0,
+            volume: parseFloat(stock.volume) || 0,
+            high52: parseFloat(stock.high52) || 0,
+            low52: parseFloat(stock.low52) || 0,
+            beta: 1.0,
+            bookValue: parseFloat(stock.bookValue) || 0,
+            eps: parseFloat(stock.eps) || 0,
+            opm: parseFloat(stock.opm) || 0,
+            npm: parseFloat(stock.npm) || 0,
+            pb: parseFloat(stock.pb) || 0,
+            promoterHolding: parseFloat(stock.promoterHolding) || 0,
+            pledge: parseFloat(stock.pledge) || 0,
+            fiiHolding: parseFloat(stock.fiiHolding) || 0,
+            diiHolding: parseFloat(stock.diiHolding) || 0,
+            publicHolding: parseFloat(stock.publicHolding) || 0,
+            roce: parseFloat(stock.roce) || 0,
+            evEbitda: parseFloat(stock.evEbitda) || 0,
+            piotroski: parseFloat(stock.piotroski) || 0,
+            altmanZ: parseFloat(stock.altmanZ) || 0,
+            financials: stock.financials || {},
+            quarterly: stock.quarterly || {},
+            shareholding: stock.shareholding || [],
+            pros: stock.pros || [],
+            cons: stock.cons || [],
+            segments: stock.segments || [],
+            creditRatings: stock.creditRatings || [],
+            corporateActions: stock.corporateActions || [],
+            peers: stock.peers || [],
+            about: stock.about || ''
+        });
+    }
+
+    return companies;
+}
+
+// The original generateData() becomes generateMockData()
+const generateMockData = generateData;
+// Override generateData to use initializer
+generateData = initializeData;
+
+// ==================== MOBILE OPTIMIZATIONS ====================
+
+let isMobile = window.innerWidth <= 768;
+
+function checkMobile() {
+    isMobile = window.innerWidth <= 768;
+    if (isMobile) {
+        renderMobileCards();
+    } else {
+        renderTable();
+    }
+}
+
+window.addEventListener('resize', checkMobile);
+
+function renderMobileCards() {
+    let data = filteredStocks.length > 0 ? filteredStocks : stocks;
+    data.sort((a, b) => {
+        let aVal = a[currentSort.field], bVal = b[currentSort.field];
+        if (currentSort.direction === 'asc') return aVal > bVal ? 1 : -1;
+        return aVal < bVal ? 1 : -1;
+    });
+
+    const total = data.length;
+    const start = (currentPage - 1) * pageSize;
+    const end = Math.min(start + pageSize, total);
+    const pageData = data.slice(start, end);
+
+    const tbody = document.getElementById('stockTableBody');
+    tbody.innerHTML = pageData.map(stock => {
+        const changeClass = stock.change >= 0 ? 'text-green-600' : 'text-red-600';
+        const changeSign = stock.change >= 0 ? '+' : '';
+        return '<tr class="stock-row border-b border-gray-50 cursor-pointer md:hidden" onclick="openCompanyPage(' + stock.id + ')">' +
+            '<td colspan="15" class="p-4">' +
+            '<div class="stock-card">' +
+            '<div class="stock-card-header">' +
+            '<div class="flex items-center gap-3">' +
+            '<div class="w-10 h-10 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-sm font-bold text-gray-600">' + stock.ticker.substring(0, 2) + '</div>' +
+            '<div><div class="font-semibold text-gray-900">' + stock.name + '</div><div class="text-xs text-gray-500 font-mono">' + stock.ticker + '</div></div>' +
+            '</div>' +
+            '<div class="text-right"><div class="font-semibold text-gray-900">₹' + stock.price.toFixed(2) + '</div><div class="text-sm ' + changeClass + '">' + changeSign + stock.changePercent.toFixed(2) + '%</div></div>' +
+            '</div>' +
+            '<div class="stock-card-metrics">' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">Market Cap</div><div class="stock-card-metric-value">₹' + stock.marketCap.toFixed(0) + 'Cr</div></div>' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">P/E</div><div class="stock-card-metric-value">' + stock.pe.toFixed(1) + '</div></div>' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">ROE</div><div class="stock-card-metric-value ' + (stock.roe > 15 ? 'text-green-600' : '') + '">' + stock.roe.toFixed(1) + '%</div></div>' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">Promoter</div><div class="stock-card-metric-value ' + (stock.promoterHolding > 50 ? 'text-green-600' : '') + '">' + stock.promoterHolding.toFixed(1) + '%</div></div>' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">Pledge</div><div class="stock-card-metric-value ' + (stock.pledge > 5 ? 'text-red-600' : '') + '">' + stock.pledge.toFixed(1) + '%</div></div>' +
+            '<div class="stock-card-metric"><div class="stock-card-metric-label">ROCE</div><div class="stock-card-metric-value ' + (stock.roce > 15 ? 'text-green-600' : '') + '">' + stock.roce.toFixed(1) + '%</div></div>' +
+            '</div>' +
+            '</div>' +
+            '</td></tr>';
+    }).join('');
+
+    // Also add desktop rows (hidden on mobile)
+    const desktopRows = pageData.map(stock => {
+        const changeClass = stock.change >= 0 ? 'text-green-600' : 'text-red-600';
+        const changeSign = stock.change >= 0 ? '+' : '';
+        const isCompared = compareList.includes(stock.id);
+        return '<tr class="stock-row border-b border-gray-50 cursor-pointer hidden md:table-row" onclick="openCompanyPage(' + stock.id + ')">' +
+            '<td class="px-6 py-4"><div class="flex items-center gap-3"><input type="checkbox" onclick="event.stopPropagation();toggleCompare(' + stock.id + ')" ' + (isCompared?'checked':'') + ' class="rounded border-gray-300 text-primary focus:ring-primary"><div class="w-8 h-8 rounded-lg bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center text-xs font-bold text-gray-600">' + stock.ticker.substring(0, 2) + '</div><div><div class="font-semibold text-gray-900">' + stock.name + '</div><div class="text-xs text-gray-500 font-mono">' + stock.ticker + ' - ' + stock.sector + '</div></div></div></td>' +
+            '<td class="px-6 py-4 text-right font-medium text-gray-900">₹' + stock.price.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + changeClass + ' font-medium">' + changeSign + stock.change.toFixed(2) + ' (' + changeSign + stock.changePercent.toFixed(2) + '%)</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">₹' + stock.marketCap.toFixed(0) + ' Cr</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.pe.toFixed(1) + '</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roe > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roe.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.debtEquity.toFixed(2) + '</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.dividend.toFixed(2) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.salesGrowth > 0 ? 'text-green-600' : 'text-red-600') + '">' + (stock.salesGrowth >= 0 ? '+' : '') + stock.salesGrowth.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.promoterHolding > 50 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.promoterHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.pledge > 5 ? 'text-red-600 font-medium' : 'text-gray-600') + '">' + stock.pledge.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.fiiHolding.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right ' + (stock.roce > 15 ? 'text-green-600 font-medium' : 'text-gray-600') + '">' + stock.roce.toFixed(1) + '%</td>' +
+            '<td class="px-6 py-4 text-right text-gray-600">' + stock.evEbitda.toFixed(1) + '</td>' +
+            '<td class="px-6 py-4 text-center"><button onclick="event.stopPropagation(); addToWatchlist(stock.ticker)" class="p-1.5 text-gray-400 hover:text-primary transition-colors" title="Add to watchlist"><i class="fas fa-plus-circle"></i></button></td>' +
+            '</tr>';
+    }).join('');
+
+    tbody.innerHTML += desktopRows;
+
+    document.getElementById('resultCount').textContent = total + ' stocks found';
+    document.getElementById('showingStart').textContent = total > 0 ? start + 1 : 0;
+    document.getElementById('showingEnd').textContent = end;
+    document.getElementById('showingTotal').textContent = total;
+    document.getElementById('prevBtn').disabled = currentPage === 1;
+    document.getElementById('nextBtn').disabled = end >= total;
+
+    const totalPages = Math.ceil(total / pageSize);
+    let pageHtml = '';
+    for (let i = 1; i <= totalPages && i <= 5; i++) {
+        pageHtml += '<button onclick="goToPage(' + i + ')" class="w-8 h-8 text-sm rounded-lg ' + (i === currentPage ? 'bg-primary text-white' : 'border border-gray-300 hover:bg-gray-50') + ' transition-colors">' + i + '</button>';
+    }
+    document.getElementById('pageNumbers').innerHTML = pageHtml;
+}
+
+// Override renderTable to check mobile
+const _originalRenderTable = renderTable;
+renderTable = function() {
+    if (window.innerWidth <= 768) {
+        renderMobileCards();
+    } else {
+        _originalRenderTable();
+    }
+};
+
+// Pull-to-refresh
+let touchStartY = 0;
+let isRefreshing = false;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartY = e.touches[0].clientY;
+});
+
+document.addEventListener('touchmove', (e) => {
+    if (window.scrollY === 0 && !isRefreshing) {
+        const touchY = e.touches[0].clientY;
+        const diff = touchY - touchStartY;
+        if (diff > 80) {
+            isRefreshing = true;
+            showToast('Refreshing data...');
+            refreshData();
+            setTimeout(() => { isRefreshing = false; }, 2000);
+        }
+    }
+});
 </script>
+
+<!-- Mobile Bottom Navigation -->
+<div class="mobile-bottom-nav md:hidden">
+    <div class="mobile-bottom-nav-item active" onclick="showPage('screener')">
+        <i class="fas fa-search"></i>
+        <span>Screens</span>
+    </div>
+    <div class="mobile-bottom-nav-item" onclick="showPage('watchlist')">
+        <i class="fas fa-star"></i>
+        <span>Watchlist</span>
+    </div>
+    <div class="mobile-bottom-nav-item" onclick="showPage('screens-directory')">
+        <i class="fas fa-compass"></i>
+        <span>Explore</span>
+    </div>
+    <div class="mobile-bottom-nav-item" onclick="showPage('tools')">
+        <i class="fas fa-tools"></i>
+        <span>Tools</span>
+    </div>
+</div>
 </body>
 </html>
