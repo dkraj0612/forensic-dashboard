@@ -1,0 +1,8 @@
+{
+    "ticker": "PAVNAIND",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-28",
+    "ai_summary": "Here is a 2-3 sentence executive summary:  CRISIL Ratings has issued an advisory for Pavna Industries Limited (PIL), explicitly stating it is awaiting adequate information from the company to conduct a rating review and that this update should not be construed as a rating reaffirmation. This presents a significant red flag, highlighting potential transparency issues and introducing \"information availability risk\" as a key credit factor. Consequently, the previous 'CRISIL BBB-/Stable' rating for PIL currently operates under a cloud of uncertainty, pending receipt of necessary financial data for a comprehensive assessment.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Pavna Industries Limited-RU-28-06-2023.pdf",
+    "file_type": "pdf"
+}
