@@ -1,0 +1,8 @@
+{
+    "ticker": "POWERICA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=493de24a-c24b-4375-81aa-e79fe059a31f.pdf",
+    "file_type": "pdf"
+}

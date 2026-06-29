@@ -1,0 +1,8 @@
+{
+    "ticker": "PATINTLOG",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b2aa9460-a03c-48d2-beb8-e1ea2bbf1038.pdf",
+    "file_type": "pdf"
+}

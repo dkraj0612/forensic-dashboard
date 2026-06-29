@@ -1,0 +1,8 @@
+{
+    "ticker": "SILLYMONKS",
+    "category": "SAST",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SILLYMONKS_29062026202535_Proceedings.pdf",
+    "file_type": "pdf"
+}

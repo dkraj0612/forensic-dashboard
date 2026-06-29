@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJTHEM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=93959e72-9f84-41eb-80ec-8c1da288e7c3.pdf",
+    "file_type": "pdf"
+}

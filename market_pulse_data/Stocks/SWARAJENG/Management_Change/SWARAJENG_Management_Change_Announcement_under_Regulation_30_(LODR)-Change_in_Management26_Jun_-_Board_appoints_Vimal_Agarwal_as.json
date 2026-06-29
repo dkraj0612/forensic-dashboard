@@ -1,0 +1,8 @@
+{
+    "ticker": "SWARAJENG",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b8a76e83-5550-4179-954d-0f322334d4d4.pdf",
+    "file_type": "pdf"
+}

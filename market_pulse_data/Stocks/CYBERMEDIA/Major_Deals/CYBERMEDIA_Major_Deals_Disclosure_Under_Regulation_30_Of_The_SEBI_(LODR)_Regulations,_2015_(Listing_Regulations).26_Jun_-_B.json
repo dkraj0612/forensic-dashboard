@@ -1,0 +1,8 @@
+{
+    "ticker": "CYBERMEDIA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c502b617-2f35-441d-b150-c6109dca6479.pdf",
+    "file_type": "pdf"
+}

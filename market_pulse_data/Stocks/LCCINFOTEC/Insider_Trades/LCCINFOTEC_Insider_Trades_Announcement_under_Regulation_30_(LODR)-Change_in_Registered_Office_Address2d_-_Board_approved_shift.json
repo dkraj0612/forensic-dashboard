@@ -1,0 +1,8 @@
+{
+    "ticker": "LCCINFOTEC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7cf5bd0b-a179-43cf-8620-111cf9388e3c.pdf",
+    "file_type": "pdf"
+}

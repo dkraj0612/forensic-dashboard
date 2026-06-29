@@ -1,0 +1,8 @@
+{
+    "ticker": "ENTERO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9545519d-b028-43cf-8ed6-d8b422351549.pdf",
+    "file_type": "pdf"
+}

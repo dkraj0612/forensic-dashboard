@@ -1,0 +1,8 @@
+{
+    "ticker": "HILINFRA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Highway Infrastructure Limited-RU-26-06-2026.pdf",
+    "file_type": "pdf"
+}

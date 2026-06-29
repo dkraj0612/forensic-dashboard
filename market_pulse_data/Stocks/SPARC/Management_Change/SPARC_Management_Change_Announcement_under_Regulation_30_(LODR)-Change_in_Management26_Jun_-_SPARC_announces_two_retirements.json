@@ -1,0 +1,8 @@
+{
+    "ticker": "SPARC",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9e8f627b-e0f6-478b-b4e5-48331288cf14.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BRIGADE",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee9afde8-d91a-43a6-aa25-7b10a8587759.pdf",
+    "file_type": "pdf"
+}

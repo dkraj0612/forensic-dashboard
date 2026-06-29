@@ -1,0 +1,8 @@
+{
+    "ticker": "KEC",
+    "category": "Order_Book",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0fe3c4c7-40df-46b6-8923-8434b29b0c7f.pdf",
+    "file_type": "pdf"
+}

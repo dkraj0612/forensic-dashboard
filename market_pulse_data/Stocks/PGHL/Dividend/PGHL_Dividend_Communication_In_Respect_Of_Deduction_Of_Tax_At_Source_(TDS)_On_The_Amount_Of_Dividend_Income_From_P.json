@@ -1,0 +1,8 @@
+{
+    "ticker": "PGHL",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c320c9d2-fe04-45d5-b13a-65413031a0c4.pdf",
+    "file_type": "pdf"
+}

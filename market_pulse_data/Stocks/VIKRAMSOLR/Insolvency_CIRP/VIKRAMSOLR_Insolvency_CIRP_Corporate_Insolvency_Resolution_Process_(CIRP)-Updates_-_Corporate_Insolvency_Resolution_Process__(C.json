@@ -1,0 +1,8 @@
+{
+    "ticker": "VIKRAMSOLR",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fbdabb4e-5f74-4acf-8579-74dd9db8dd78.pdf",
+    "file_type": "pdf"
+}

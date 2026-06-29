@@ -1,0 +1,8 @@
+{
+    "ticker": "WABAG",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70b05d1b-66cc-4b52-a4da-67506c2aec17.pdf",
+    "file_type": "pdf"
+}

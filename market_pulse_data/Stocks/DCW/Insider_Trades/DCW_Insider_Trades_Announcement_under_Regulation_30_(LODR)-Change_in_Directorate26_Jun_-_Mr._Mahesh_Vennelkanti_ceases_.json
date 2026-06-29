@@ -1,0 +1,8 @@
+{
+    "ticker": "DCW",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80e5c1a1-62c7-4d90-824b-a543d6cac3e9.pdf",
+    "file_type": "pdf"
+}

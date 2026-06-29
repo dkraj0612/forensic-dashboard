@@ -1,0 +1,8 @@
+{
+    "ticker": "SOBHA",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6d2aed7-b87b-4944-abef-afa1efca76d9.pdf",
+    "file_type": "pdf"
+}

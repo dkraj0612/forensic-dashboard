@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJHCARE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=face51a6-46ff-4b87-81b6-dff6105a5fda.pdf",
+    "file_type": "pdf"
+}

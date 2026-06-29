@@ -1,0 +1,8 @@
+{
+    "ticker": "POLYPLEX",
+    "category": "Order_Book",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6e6173c2-7df6-43e3-8ced-9569e467f389.pdf",
+    "file_type": "pdf"
+}

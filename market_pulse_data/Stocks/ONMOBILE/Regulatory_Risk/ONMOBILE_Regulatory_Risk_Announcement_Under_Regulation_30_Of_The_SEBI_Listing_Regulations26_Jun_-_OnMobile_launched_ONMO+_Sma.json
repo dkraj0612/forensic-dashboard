@@ -1,0 +1,8 @@
+{
+    "ticker": "ONMOBILE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80cd855b-aa22-4f71-91e1-9f6f31b53ed0.pdf",
+    "file_type": "pdf"
+}

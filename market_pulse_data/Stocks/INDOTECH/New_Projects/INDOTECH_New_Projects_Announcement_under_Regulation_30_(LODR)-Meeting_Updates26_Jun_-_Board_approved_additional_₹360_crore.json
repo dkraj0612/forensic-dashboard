@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOTECH",
+    "category": "New_Projects",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9dac2064-9a73-4697-94d6-56716f3eb213.pdf",
+    "file_type": "pdf"
+}

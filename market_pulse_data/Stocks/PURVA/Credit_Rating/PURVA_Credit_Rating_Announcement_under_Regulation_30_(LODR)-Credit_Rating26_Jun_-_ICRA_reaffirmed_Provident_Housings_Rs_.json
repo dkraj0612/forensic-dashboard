@@ -1,0 +1,8 @@
+{
+    "ticker": "PURVA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=23a57c07-a858-4f33-9b39-7756c065ba33.pdf",
+    "file_type": "pdf"
+}

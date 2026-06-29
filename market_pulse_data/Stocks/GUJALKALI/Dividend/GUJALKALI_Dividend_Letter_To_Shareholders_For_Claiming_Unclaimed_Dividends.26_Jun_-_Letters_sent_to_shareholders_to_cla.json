@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJALKALI",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=442f6d7a-82a9-4ab6-b4f9-5081a9ce7b58.pdf",
+    "file_type": "pdf"
+}

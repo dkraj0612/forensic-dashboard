@@ -1,0 +1,8 @@
+{
+    "ticker": "EXICOM",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0c0ee74d-4b17-4614-8c41-27bded8b6e85.pdf",
+    "file_type": "pdf"
+}

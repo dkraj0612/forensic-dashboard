@@ -1,0 +1,8 @@
+{
+    "ticker": "HDBFS",
+    "category": "Results",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb6da989-6652-4cde-a609-075182624f75.pdf",
+    "file_type": "pdf"
+}

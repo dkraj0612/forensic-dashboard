@@ -1,0 +1,8 @@
+{
+    "ticker": "BILVYAPAR",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=359cbb69-cfb3-4162-85c8-9ed223827ca7.pdf",
+    "file_type": "pdf"
+}

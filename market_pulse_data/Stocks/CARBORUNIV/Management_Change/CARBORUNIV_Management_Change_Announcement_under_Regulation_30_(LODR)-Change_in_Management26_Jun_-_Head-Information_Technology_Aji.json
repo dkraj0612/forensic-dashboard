@@ -1,0 +1,8 @@
+{
+    "ticker": "CARBORUNIV",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f68a9598-ab92-494d-8cae-d8523219610e.pdf",
+    "file_type": "pdf"
+}

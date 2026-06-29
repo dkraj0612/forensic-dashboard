@@ -1,0 +1,8 @@
+{
+    "ticker": "GSFC",
+    "category": "SHP",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de29357f-6228-441d-8d53-39ce412727e4.pdf",
+    "file_type": "pdf"
+}

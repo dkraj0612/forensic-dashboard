@@ -1,0 +1,8 @@
+{
+    "ticker": "RACLGEAR",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=43cde937-aba4-432b-acae-50b73baafe73.pdf",
+    "file_type": "pdf"
+}

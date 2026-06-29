@@ -1,0 +1,8 @@
+{
+    "ticker": "MGEL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=edc8d140-7d36-4b78-b03f-d206a7584b98.pdf",
+    "file_type": "pdf"
+}

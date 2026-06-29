@@ -1,0 +1,8 @@
+{
+    "ticker": "ZUARIIND",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9668559b-1c63-49b4-8af4-7493760b9fb2.pdf",
+    "file_type": "pdf"
+}

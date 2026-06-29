@@ -1,0 +1,8 @@
+{
+    "ticker": "ZYDUSLIFE",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a203f173-5006-4866-9a36-2f87c33d33c2.pdf",
+    "file_type": "pdf"
+}

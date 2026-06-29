@@ -1,0 +1,8 @@
+{
+    "ticker": "KREBSBIO",
+    "category": "Results",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a57760c7-9770-413b-91b7-ec525996257d.pdf",
+    "file_type": "pdf"
+}

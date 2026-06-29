@@ -1,0 +1,8 @@
+{
+    "ticker": "RAJSREESUG",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7139e0e-9000-4f88-9fad-f444f73a9b0e.pdf",
+    "file_type": "pdf"
+}

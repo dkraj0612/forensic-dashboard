@@ -1,0 +1,8 @@
+{
+    "ticker": "SHINDL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=55388388-3eab-4e85-b601-bd345b88b275.pdf",
+    "file_type": "pdf"
+}

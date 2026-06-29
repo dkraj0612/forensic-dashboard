@@ -1,0 +1,8 @@
+{
+    "ticker": "SMARTLINK",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca75b53f-4caf-4afa-b253-be5a4d96729e.pdf",
+    "file_type": "pdf"
+}

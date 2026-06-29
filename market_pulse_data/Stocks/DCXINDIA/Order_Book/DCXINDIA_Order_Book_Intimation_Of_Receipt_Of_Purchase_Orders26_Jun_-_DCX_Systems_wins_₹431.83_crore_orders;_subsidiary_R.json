@@ -1,0 +1,8 @@
+{
+    "ticker": "DCXINDIA",
+    "category": "Order_Book",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=393291cd-3c12-4a6b-baff-91fd7202634f.pdf",
+    "file_type": "pdf"
+}

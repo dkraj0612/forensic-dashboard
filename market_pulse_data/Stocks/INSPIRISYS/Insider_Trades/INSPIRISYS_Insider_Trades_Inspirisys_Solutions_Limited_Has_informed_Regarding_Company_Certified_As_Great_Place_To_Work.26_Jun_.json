@@ -1,0 +1,8 @@
+{
+    "ticker": "INSPIRISYS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a85f2d64-63dd-40f0-a50a-9940fdcf5a49.pdf",
+    "file_type": "pdf"
+}

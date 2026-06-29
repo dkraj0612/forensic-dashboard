@@ -1,0 +1,8 @@
+{
+    "ticker": "FLUOROCHEM",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dfd45d7d-76a9-497e-9371-208b4b474b6b.pdf",
+    "file_type": "pdf"
+}

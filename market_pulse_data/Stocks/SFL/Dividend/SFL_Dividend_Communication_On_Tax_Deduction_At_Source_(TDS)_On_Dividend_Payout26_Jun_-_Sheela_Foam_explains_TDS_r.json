@@ -1,0 +1,8 @@
+{
+    "ticker": "SFL",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7898cf85-100e-4e65-a678-62cdf234db28.pdf",
+    "file_type": "pdf"
+}

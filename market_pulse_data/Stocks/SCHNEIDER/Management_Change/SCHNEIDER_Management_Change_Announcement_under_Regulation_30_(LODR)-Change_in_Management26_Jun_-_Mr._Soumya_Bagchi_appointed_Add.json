@@ -1,0 +1,8 @@
+{
+    "ticker": "SCHNEIDER",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb55d0e1-2d28-427d-a626-c578a6568710.pdf",
+    "file_type": "pdf"
+}

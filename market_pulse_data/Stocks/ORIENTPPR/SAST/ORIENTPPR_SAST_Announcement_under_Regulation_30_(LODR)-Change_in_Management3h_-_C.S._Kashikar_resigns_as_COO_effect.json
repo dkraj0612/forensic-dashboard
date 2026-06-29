@@ -1,0 +1,8 @@
+{
+    "ticker": "ORIENTPPR",
+    "category": "SAST",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6199a3ff-fb0e-4b5b-9612-ffde57e5ae04.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "IPCALAB",
+    "category": "Results",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=17449947-e8c4-4d92-a489-4d1fa4699884.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KCPSUGIND",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eaf6d855-08e3-49dc-853a-6f49f5ad9fd4.pdf",
+    "file_type": "pdf"
+}

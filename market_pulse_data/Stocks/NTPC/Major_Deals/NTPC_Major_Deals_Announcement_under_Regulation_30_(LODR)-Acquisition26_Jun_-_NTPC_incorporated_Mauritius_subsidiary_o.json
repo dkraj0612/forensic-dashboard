@@ -1,0 +1,8 @@
+{
+    "ticker": "NTPC",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2db04018-d922-49c5-be63-67c9c34e9d06.pdf",
+    "file_type": "pdf"
+}

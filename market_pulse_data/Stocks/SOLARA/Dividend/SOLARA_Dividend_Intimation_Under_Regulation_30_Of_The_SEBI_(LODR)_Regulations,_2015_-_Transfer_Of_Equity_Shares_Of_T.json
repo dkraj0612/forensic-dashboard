@@ -1,0 +1,8 @@
+{
+    "ticker": "SOLARA",
+    "category": "Dividend",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6e3174eb-09f3-4715-86ed-3989148028fc.pdf",
+    "file_type": "pdf"
+}

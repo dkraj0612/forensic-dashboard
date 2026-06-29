@@ -1,0 +1,8 @@
+{
+    "ticker": "SUDEEPPHRM",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b776eb6c-b4b6-4707-98ac-9351bccfce08.pdf",
+    "file_type": "pdf"
+}

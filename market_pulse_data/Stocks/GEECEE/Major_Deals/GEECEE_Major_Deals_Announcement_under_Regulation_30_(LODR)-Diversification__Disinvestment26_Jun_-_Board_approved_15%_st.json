@@ -1,0 +1,8 @@
+{
+    "ticker": "GEECEE",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=51e543bf-504b-400a-8d5f-2dc331fbefa5.pdf",
+    "file_type": "pdf"
+}

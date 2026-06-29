@@ -1,0 +1,8 @@
+{
+    "ticker": "MARKSANS",
+    "category": "Results",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df0d27f7-9611-44e3-a3bd-c5e0123ef060.pdf",
+    "file_type": "pdf"
+}

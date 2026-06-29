@@ -1,0 +1,8 @@
+{
+    "ticker": "MEDPLUS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9fe1591d-0b50-4094-9ef7-aa1bd22e0370.pdf",
+    "file_type": "pdf"
+}
