@@ -305,3 +305,71 @@
 2026-06-28 03:55:48,416 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-06-28 03:55:48,416 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-06-28 03:55:48,416 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-06-29 03:56:16,668 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-06-29 03:56:16,701 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-06-29 03:56:16,701 [INFO] 
+==================================================
+2026-06-29 03:56:16,701 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-06-29 03:56:16,701 [INFO] ==================================================
+2026-06-29 03:56:16,702 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-06-29 03:56:16,702 [INFO] 
+==================================================
+2026-06-29 03:56:16,702 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-29 03:56:16,702 [INFO] ==================================================
+2026-06-29 03:56:16,702 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-06-29 03:56:16,702 [INFO] 
+==================================================
+2026-06-29 03:56:16,702 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-29 03:56:16,702 [INFO] ==================================================
+2026-06-29 03:56:16,703 [INFO] Commencing generation for 7 pending files...
+2026-06-29 03:56:16,703 [INFO] Analyzing [ Q4_2024 ]
+2026-06-29 03:56:21,756 [INFO] [gemini-2.5-flash-lite] Tokens Used: 5940 | Total: 5940/200000
+2026-06-29 03:56:21,757 [INFO] ✅ Generated and saved: Q4_2024_Summary.md
+2026-06-29 03:56:27,757 [INFO] Analyzing [ Q1_2025 ]
+2026-06-29 03:56:35,278 [INFO] [gemini-2.5-flash-lite] Tokens Used: 18166 | Total: 24106/200000
+2026-06-29 03:56:35,279 [INFO] ✅ Generated and saved: Q1_2025_Summary.md
+2026-06-29 03:56:41,279 [INFO] Analyzing [ Q1_2025 ]
+2026-06-29 03:56:48,642 [INFO] [gemini-2.5-flash-lite] Tokens Used: 14232 | Total: 38338/200000
+2026-06-29 03:56:48,642 [INFO] ✅ Generated and saved: Q1_2025_Summary.md
+2026-06-29 03:56:54,643 [INFO] Analyzing [ Q4_2025 ]
+2026-06-29 03:57:02,525 [INFO] [gemini-2.5-flash-lite] Tokens Used: 15364 | Total: 53702/200000
+2026-06-29 03:57:02,525 [INFO] ✅ Generated and saved: Q4_2025_Summary.md
+2026-06-29 03:57:08,526 [INFO] Analyzing [ Q2_2026 ]
+2026-06-29 03:57:16,815 [INFO] [gemini-2.5-flash-lite] Tokens Used: 16729 | Total: 70431/200000
+2026-06-29 03:57:16,816 [INFO] ✅ Generated and saved: Q2_2026_Summary.md
+2026-06-29 03:57:22,816 [INFO] Analyzing [ Q3_2026 ]
+2026-06-29 03:57:30,909 [INFO] [gemini-2.5-flash-lite] Tokens Used: 16501 | Total: 86932/200000
+2026-06-29 03:57:30,910 [INFO] ✅ Generated and saved: Q3_2026_Summary.md
+2026-06-29 03:57:36,910 [INFO] Analyzing [ Q4_2026 ]
+2026-06-29 03:57:44,158 [INFO] [gemini-2.5-flash-lite] Tokens Used: 21182 | Total: 108114/200000
+2026-06-29 03:57:44,159 [INFO] ✅ Generated and saved: Q4_2026_Summary.md
+2026-06-29 03:57:50,159 [INFO] 
+==================================================
+2026-06-29 03:57:50,160 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-29 03:57:50,160 [INFO] ==================================================
+2026-06-29 03:57:50,160 [INFO] Indexing metadata for 41 raw documents in concalls...
+2026-06-29 03:57:50,531 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1315 | Total: 109429/200000
+2026-06-29 03:57:56,900 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1296 | Total: 110725/200000
+2026-06-29 03:58:03,273 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1380 | Total: 112105/200000
+2026-06-29 03:58:09,846 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1303 | Total: 113408/200000
+2026-06-29 03:58:16,234 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1318 | Total: 114726/200000
+2026-06-29 03:58:22,637 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1472 | Total: 116198/200000
+2026-06-29 03:58:29,054 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1440 | Total: 117638/200000
+2026-06-29 03:58:35,472 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1631 | Total: 119269/200000
+2026-06-29 03:58:41,789 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1436 | Total: 120705/200000
+2026-06-29 03:58:48,171 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1315 | Total: 122020/200000
+2026-06-29 03:58:54,596 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1478 | Total: 123498/200000
+2026-06-29 03:59:01,002 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1599 | Total: 125097/200000
+2026-06-29 03:59:07,468 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1411 | Total: 126508/200000
+2026-06-29 03:59:13,518 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-06-29 03:59:13,518 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-06-29 03:59:13,518 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-06-29 03:59:15,914 [INFO] [gemini-2.5-flash] Tokens Used: 1868 | Total: 1868/150000
+2026-06-29 03:59:24,260 [INFO] [gemini-2.5-flash] Tokens Used: 1817 | Total: 3685/150000
+2026-06-29 03:59:32,353 [INFO] [gemini-2.5-flash] Tokens Used: 1704 | Total: 5389/150000
+2026-06-29 03:59:43,738 [INFO] [gemini-2.5-flash] Tokens Used: 2369 | Total: 7758/150000
+2026-06-29 03:59:53,225 [INFO] [gemini-2.5-flash] Tokens Used: 1958 | Total: 9716/150000
+2026-06-29 03:59:59,266 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-06-29 03:59:59,267 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-06-29 03:59:59,267 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-06-29 03:59:59,267 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
