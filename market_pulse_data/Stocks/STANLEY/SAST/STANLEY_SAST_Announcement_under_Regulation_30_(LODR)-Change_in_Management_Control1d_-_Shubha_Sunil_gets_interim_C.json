@@ -1,0 +1,8 @@
+{
+    "ticker": "STANLEY",
+    "category": "SAST",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=59694831-663d-4335-baf3-eedbbe5743a7.pdf",
+    "file_type": "pdf"
+}

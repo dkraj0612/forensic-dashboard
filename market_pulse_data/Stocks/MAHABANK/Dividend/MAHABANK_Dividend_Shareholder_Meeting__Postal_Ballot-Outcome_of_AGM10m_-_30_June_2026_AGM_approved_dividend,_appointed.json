@@ -1,0 +1,8 @@
+{
+    "ticker": "MAHABANK",
+    "category": "Dividend",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be70a896-559d-4a9a-b93e-b9ddd2cf4586.pdf",
+    "file_type": "pdf"
+}

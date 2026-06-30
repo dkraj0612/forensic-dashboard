@@ -1,0 +1,8 @@
+{
+    "ticker": "PRUDMOULI",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Prudential_Sugar_Corporation_Limited_RR-ad.pdf",
+    "file_type": "pdf"
+}

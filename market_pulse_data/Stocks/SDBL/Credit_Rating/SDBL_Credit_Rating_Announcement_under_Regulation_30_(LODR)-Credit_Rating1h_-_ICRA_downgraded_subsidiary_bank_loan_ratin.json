@@ -1,0 +1,8 @@
+{
+    "ticker": "SDBL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6cc358a9-c427-44a5-b9b6-59500ad16712.pdf",
+    "file_type": "pdf"
+}

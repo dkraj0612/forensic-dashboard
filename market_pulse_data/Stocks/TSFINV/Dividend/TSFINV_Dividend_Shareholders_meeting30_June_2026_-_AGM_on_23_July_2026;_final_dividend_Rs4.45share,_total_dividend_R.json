@@ -1,0 +1,8 @@
+{
+    "ticker": "TSFINV",
+    "category": "Dividend",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "Skipped: Document exceeds 150 pages (245 pages).",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SUNDARMHLD_30062026165851_TSFILAGMNotice202526.pdf",
+    "file_type": "pdf"
+}

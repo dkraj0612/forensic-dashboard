@@ -1,0 +1,8 @@
+{
+    "ticker": "SAMHI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8b2a8948-a9b3-4bdd-83ad-ca912f5a7742.pdf",
+    "file_type": "pdf"
+}

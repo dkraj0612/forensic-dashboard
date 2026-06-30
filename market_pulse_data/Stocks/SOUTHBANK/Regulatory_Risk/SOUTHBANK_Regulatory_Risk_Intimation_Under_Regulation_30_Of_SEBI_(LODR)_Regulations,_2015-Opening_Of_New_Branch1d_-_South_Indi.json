@@ -1,0 +1,8 @@
+{
+    "ticker": "SOUTHBANK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=99dd791b-8ee5-439a-85d3-7ec9ecd5ca31.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "PROZONER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c4e9595-e3cb-458b-a0a9-c9abb8aa12ba.pdf",
+    "file_type": "pdf"
+}

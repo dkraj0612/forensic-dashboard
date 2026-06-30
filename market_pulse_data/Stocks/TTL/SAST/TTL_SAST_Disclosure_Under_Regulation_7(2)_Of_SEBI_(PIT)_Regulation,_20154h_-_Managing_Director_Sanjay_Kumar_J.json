@@ -1,0 +1,8 @@
+{
+    "ticker": "TTL",
+    "category": "SAST",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b397e9bb-5d77-4877-8537-485f5378131c.pdf",
+    "file_type": "pdf"
+}

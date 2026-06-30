@@ -1,0 +1,8 @@
+{
+    "ticker": "LOYALTEX",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52e309f2-3848-4c13-bf88-221428f72797.pdf",
+    "file_type": "pdf"
+}

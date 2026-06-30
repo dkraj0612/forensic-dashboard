@@ -1,0 +1,8 @@
+{
+    "ticker": "SKIPPER",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41214b0b-10bf-4424-963d-47181ab778ed.pdf",
+    "file_type": "pdf"
+}

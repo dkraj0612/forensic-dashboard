@@ -1,0 +1,8 @@
+{
+    "ticker": "MAHLIFE",
+    "category": "Major_Deals",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d6d900a1-222c-4b84-a6be-1d4d3935a9af.pdf",
+    "file_type": "pdf"
+}

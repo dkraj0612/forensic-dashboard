@@ -1,0 +1,8 @@
+{
+    "ticker": "MAANALU",
+    "category": "Results",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb81d6f2-3e53-4736-ac03-93bf397c3e0a.pdf",
+    "file_type": "pdf"
+}

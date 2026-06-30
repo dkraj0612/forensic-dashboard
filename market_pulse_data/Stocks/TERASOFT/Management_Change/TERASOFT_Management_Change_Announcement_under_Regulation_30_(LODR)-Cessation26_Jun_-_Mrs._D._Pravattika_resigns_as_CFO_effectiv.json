@@ -1,0 +1,8 @@
+{
+    "ticker": "TERASOFT",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bcd1eb8e-d94c-469e-8c4f-d42bbf7c8784.pdf",
+    "file_type": "pdf"
+}

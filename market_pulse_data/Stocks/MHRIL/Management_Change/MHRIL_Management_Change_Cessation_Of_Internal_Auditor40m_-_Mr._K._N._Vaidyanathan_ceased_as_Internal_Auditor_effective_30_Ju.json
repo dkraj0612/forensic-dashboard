@@ -1,0 +1,8 @@
+{
+    "ticker": "MHRIL",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=46c4c0a2-1765-4542-885f-0e0dfa4d4f24.pdf",
+    "file_type": "pdf"
+}

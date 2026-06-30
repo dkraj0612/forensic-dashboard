@@ -1,0 +1,8 @@
+{
+    "ticker": "RHIM",
+    "category": "Management_Change",
+    "extraction_date": "2026-06-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb472117-5ee1-4653-8d32-72de4700f5fa.pdf",
+    "file_type": "pdf"
+}
