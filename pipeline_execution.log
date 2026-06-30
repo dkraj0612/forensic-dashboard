@@ -373,3 +373,51 @@
 2026-06-29 03:59:59,267 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-06-29 03:59:59,267 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-06-29 03:59:59,267 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-06-30 03:39:29,421 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-06-30 03:39:29,473 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-06-30 03:39:29,473 [INFO] 
+==================================================
+2026-06-30 03:39:29,473 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-06-30 03:39:29,473 [INFO] ==================================================
+2026-06-30 03:39:29,474 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-06-30 03:39:29,474 [INFO] 
+==================================================
+2026-06-30 03:39:29,474 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-30 03:39:29,474 [INFO] ==================================================
+2026-06-30 03:39:29,474 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-06-30 03:39:29,474 [INFO] 
+==================================================
+2026-06-30 03:39:29,474 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-30 03:39:29,474 [INFO] ==================================================
+2026-06-30 03:39:29,475 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-06-30 03:39:29,475 [INFO] 
+==================================================
+2026-06-30 03:39:29,475 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-06-30 03:39:29,475 [INFO] ==================================================
+2026-06-30 03:39:29,475 [INFO] Indexing metadata for 23 raw documents in concalls...
+2026-06-30 03:39:30,200 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1635 | Total: 1635/200000
+2026-06-30 03:39:36,677 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1416 | Total: 3051/200000
+2026-06-30 03:39:43,266 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1420 | Total: 4471/200000
+2026-06-30 03:39:49,867 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1458 | Total: 5929/200000
+2026-06-30 03:39:59,783 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1423 | Total: 7352/200000
+2026-06-30 03:40:06,374 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1485 | Total: 8837/200000
+2026-06-30 03:40:12,884 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1413 | Total: 10250/200000
+2026-06-30 03:40:19,507 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1447 | Total: 11697/200000
+2026-06-30 03:40:26,068 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1555 | Total: 13252/200000
+2026-06-30 03:40:32,631 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1359 | Total: 14611/200000
+2026-06-30 03:40:39,114 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1446 | Total: 16057/200000
+2026-06-30 03:40:46,014 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1399 | Total: 17456/200000
+2026-06-30 03:40:52,583 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1442 | Total: 18898/200000
+2026-06-30 03:41:01,392 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1483 | Total: 20381/200000
+2026-06-30 03:41:12,828 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1318 | Total: 21699/200000
+2026-06-30 03:41:19,715 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1403 | Total: 23102/200000
+2026-06-30 03:41:32,260 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1449 | Total: 24551/200000
+2026-06-30 03:41:38,811 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1361 | Total: 25912/200000
+2026-06-30 03:41:47,190 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-06-30 03:41:47,190 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-06-30 03:41:47,190 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-06-30 03:41:49,725 [INFO] [gemini-2.5-flash] Tokens Used: 1826 | Total: 1826/150000
+2026-06-30 03:41:55,820 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-06-30 03:41:55,820 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-06-30 03:41:55,820 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-06-30 03:41:55,820 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
