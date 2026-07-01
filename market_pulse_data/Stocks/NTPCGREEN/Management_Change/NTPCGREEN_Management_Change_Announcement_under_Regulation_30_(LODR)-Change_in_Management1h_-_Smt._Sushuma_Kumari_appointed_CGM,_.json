@@ -1,0 +1,8 @@
+{
+    "ticker": "NTPCGREEN",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7fbe0c9c-41f2-4ff9-9c64-d3f3265c3177.pdf",
+    "file_type": "pdf"
+}

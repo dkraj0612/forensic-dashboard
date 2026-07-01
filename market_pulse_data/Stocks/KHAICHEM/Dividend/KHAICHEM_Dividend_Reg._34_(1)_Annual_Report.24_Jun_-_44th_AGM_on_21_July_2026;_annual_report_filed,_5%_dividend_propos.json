@@ -1,0 +1,8 @@
+{
+    "ticker": "KHAICHEM",
+    "category": "Dividend",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=418dd701-f4b4-4989-ada8-f44b13f21cfb.pdf",
+    "file_type": "pdf"
+}

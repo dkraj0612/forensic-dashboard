@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJRAFFIA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Gujarat Raffia Industries Limited-ad_RR.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "IMFA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1c7f3aed-6757-4234-92e5-103a1b499e82.pdf",
+    "file_type": "pdf"
+}

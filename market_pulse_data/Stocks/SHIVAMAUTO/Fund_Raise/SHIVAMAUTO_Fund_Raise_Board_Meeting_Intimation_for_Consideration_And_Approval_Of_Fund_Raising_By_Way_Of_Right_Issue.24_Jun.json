@@ -1,0 +1,8 @@
+{
+    "ticker": "SHIVAMAUTO",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=717365f0-64a4-40a7-8be2-6bd78c67931d.pdf",
+    "file_type": "pdf"
+}

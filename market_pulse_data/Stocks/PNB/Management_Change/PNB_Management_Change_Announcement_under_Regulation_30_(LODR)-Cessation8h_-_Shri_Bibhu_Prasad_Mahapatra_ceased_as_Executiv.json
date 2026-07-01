@@ -1,0 +1,8 @@
+{
+    "ticker": "PNB",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=811e0c23-94b7-4a43-9a67-428e889b4521.pdf",
+    "file_type": "pdf"
+}

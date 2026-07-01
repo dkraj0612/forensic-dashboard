@@ -1,0 +1,8 @@
+{
+    "ticker": "DIXON",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=055508f7-74de-4914-9249-e03f14a38e34.pdf",
+    "file_type": "pdf"
+}

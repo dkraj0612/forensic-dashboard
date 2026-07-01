@@ -1,0 +1,8 @@
+{
+    "ticker": "MHRIL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa130afa-d0b3-4cd2-a350-0499a283ca5e.pdf",
+    "file_type": "pdf"
+}

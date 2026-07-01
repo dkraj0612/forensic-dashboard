@@ -1,0 +1,8 @@
+{
+    "ticker": "MRPL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7c66d397-3829-4098-bc7d-d24102da8aae.pdf",
+    "file_type": "pdf"
+}

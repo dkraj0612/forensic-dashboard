@@ -1,0 +1,8 @@
+{
+    "ticker": "GRSE",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7970e67-7a1c-4274-9bdb-40ab9bab0ac0.pdf",
+    "file_type": "pdf"
+}

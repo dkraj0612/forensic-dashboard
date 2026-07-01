@@ -1,0 +1,8 @@
+{
+    "ticker": "MAITHANALL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=030981f4-be4e-4fe9-89d0-27778395a3db.pdf",
+    "file_type": "pdf"
+}

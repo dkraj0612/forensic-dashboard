@@ -1,0 +1,8 @@
+{
+    "ticker": "IRFC",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1bf4a333-5f20-48c9-922b-f335b3e0b08f.pdf",
+    "file_type": "pdf"
+}

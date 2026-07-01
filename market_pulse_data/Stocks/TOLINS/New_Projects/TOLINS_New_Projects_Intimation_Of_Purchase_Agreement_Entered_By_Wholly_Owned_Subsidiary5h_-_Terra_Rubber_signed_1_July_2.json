@@ -1,0 +1,8 @@
+{
+    "ticker": "TOLINS",
+    "category": "New_Projects",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0dcc6134-6015-44c6-b6ba-106fc6991a77.pdf",
+    "file_type": "pdf"
+}

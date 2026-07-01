@@ -1,0 +1,8 @@
+{
+    "ticker": "TICL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71525a02-9e9f-4a36-b0a2-a2ef2f83d086.pdf",
+    "file_type": "pdf"
+}

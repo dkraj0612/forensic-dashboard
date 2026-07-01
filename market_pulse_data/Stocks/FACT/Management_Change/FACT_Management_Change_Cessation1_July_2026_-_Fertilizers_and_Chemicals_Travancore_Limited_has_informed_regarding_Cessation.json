@@ -1,0 +1,8 @@
+{
+    "ticker": "FACT",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/FACT_01072026104142_148_cessation_Anupam_Misra_DM.pdf",
+    "file_type": "pdf"
+}

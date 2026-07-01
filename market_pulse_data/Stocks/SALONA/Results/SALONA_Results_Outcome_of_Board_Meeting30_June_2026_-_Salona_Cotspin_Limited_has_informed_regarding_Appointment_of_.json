@@ -1,0 +1,8 @@
+{
+    "ticker": "SALONA",
+    "category": "Results",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SALONA_30062026211254_Outcome_of_Board.pdf",
+    "file_type": "pdf"
+}

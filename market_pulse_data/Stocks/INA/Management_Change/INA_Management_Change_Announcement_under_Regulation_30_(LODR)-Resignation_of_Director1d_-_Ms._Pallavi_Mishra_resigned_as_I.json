@@ -1,0 +1,8 @@
+{
+    "ticker": "INA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=15573224-404f-45f0-9002-6ca0b099ee1f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MAPMYINDIA",
+    "category": "Results",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e1b4b903-a423-43aa-bd95-24e2dcc8495a.pdf",
+    "file_type": "pdf"
+}

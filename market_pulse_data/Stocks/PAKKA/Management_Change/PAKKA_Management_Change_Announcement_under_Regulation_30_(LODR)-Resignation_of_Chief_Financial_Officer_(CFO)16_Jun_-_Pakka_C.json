@@ -1,0 +1,8 @@
+{
+    "ticker": "PAKKA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3918f8b-c616-4db9-8012-da97ad419ebb.pdf",
+    "file_type": "pdf"
+}

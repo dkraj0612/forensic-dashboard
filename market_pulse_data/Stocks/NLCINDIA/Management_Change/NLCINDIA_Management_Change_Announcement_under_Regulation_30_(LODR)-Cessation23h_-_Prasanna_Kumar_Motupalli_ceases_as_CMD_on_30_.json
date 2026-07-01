@@ -1,0 +1,8 @@
+{
+    "ticker": "NLCINDIA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=38d53ab1-2c63-485b-9e78-a890d9cd3366.pdf",
+    "file_type": "pdf"
+}

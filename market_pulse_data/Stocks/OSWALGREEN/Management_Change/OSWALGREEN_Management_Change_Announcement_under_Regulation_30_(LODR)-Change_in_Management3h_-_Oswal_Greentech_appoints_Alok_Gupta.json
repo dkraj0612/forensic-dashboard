@@ -1,0 +1,8 @@
+{
+    "ticker": "OSWALGREEN",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=951b528b-dd52-4e04-9b99-1ac6efa4517d.pdf",
+    "file_type": "pdf"
+}

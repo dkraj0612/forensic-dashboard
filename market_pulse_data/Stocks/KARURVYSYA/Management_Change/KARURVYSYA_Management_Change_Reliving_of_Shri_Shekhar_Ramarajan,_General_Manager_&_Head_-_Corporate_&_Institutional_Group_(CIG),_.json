@@ -1,0 +1,8 @@
+{
+    "ticker": "KARURVYSYA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2E69114F-7325-4025-BCB8-BFE4729A78A7-082237.pdf",
+    "file_type": "pdf"
+}
