@@ -184,7 +184,45 @@
             "file_path": "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_49_Transcript.md",
             "quarter": "Q2",
             "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_61_Transcript.md",
+            "quarter": "Q1",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_40_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_51_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_56_Transcript.md",
+            "quarter": "Q1",
+            "year": 2020
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_69_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_70_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_66_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_65_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_68_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_60_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_67_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_62_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_63_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_61_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_59_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_57_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_56_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_55_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_54_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_53_Transcript.md",
+        "./ScreenerData/stocks/0-9/3BBLACKBIO/concalls/3BBLACKBIO_Fallback_Transcript_58_Transcript.md"
+    ]
 }
