@@ -1,0 +1,8 @@
+{
+    "ticker": "DMART",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://api.dmartindia.com/corporate/content/file/v1/2/nxWmnRKchjDixyjyLNUUq0wp1722949766/Transcript%20of%20Analyst%20Institutional%20Investor%20Call%20-%2030.07.2024.pdf",
+    "file_type": "pdf"
+}

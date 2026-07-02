@@ -1,0 +1,8 @@
+{
+    "ticker": "CSLFINANCE",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=968915c9-c7ea-45ad-ac09-a1ed4389e8a6.pdf",
+    "file_type": "pdf"
+}

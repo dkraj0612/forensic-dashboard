@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJCON",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "Skipped: Document exceeds 150 pages (999 pages).",
+    "source_url": "https://bajaj-assets.s3.ap-south-1.amazonaws.com/live/bajajconsumercare/s3fs-public/documents/nseconferencecalltranscripts10072015.pdf",
+    "file_type": "pdf"
+}

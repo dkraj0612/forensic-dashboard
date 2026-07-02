@@ -1,0 +1,8 @@
+{
+    "ticker": "CMSINFO",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "Skipped: Document exceeds 150 pages (999 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb575747-dc17-40c5-8fbd-113c46ffc098.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ALKYLAMINE",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e80b53d-408a-41bd-b9e0-a4cbde978bb7.pdf",
+    "file_type": "pdf"
+}

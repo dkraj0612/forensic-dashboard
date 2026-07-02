@@ -1,0 +1,8 @@
+{
+    "ticker": "ARKADE",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e04f1350-6cd5-463b-939a-68514f14ad96.pdf",
+    "file_type": "pdf"
+}

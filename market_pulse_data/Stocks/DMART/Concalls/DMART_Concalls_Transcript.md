@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "DMART"
+  call_date: "2026-07-02"
+  reporting_period: "Transcript"
+  source_url: "https://api.dmartindia.com/corporate/content/file/v1/2/nxWmnRKchjDixyjyLNUUq0wp1722949766/Transcript%20of%20Analyst%20Institutional%20Investor%20Call%20-%2030.07.2024.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 9.00
+  total_word_volume: 22120
+---
+
+# Concall NLP Analysis: DMART
+**Source URL:** [Listen/Read Original](https://api.dmartindia.com/corporate/content/file/v1/2/nxWmnRKchjDixyjyLNUUq0wp1722949766/Transcript%20of%20Analyst%20Institutional%20Investor%20Call%20-%2030.07.2024.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+6th August, 2024 To, BSE Limited Corporate Services Department Phiroze Jeejeebhoy Towers, Dalal Street, Mumbai - 400 001 National Stock Exchange of India Ltd. Corporate Communications Department “Exchange Plaza”, 5th Floor, Bandra - Kurla Complex, Bandra (East), Mumbai - 400 051 BSE Scrip Code: 540376 NSE Scrip Symbol: DMART Sub: Transcript of Analyst/ Institutional Investors Meet 2024 Dear Sir/ Madam, Pursuant to Regulation 30 of the SEBI (Listing Obligations & Disclosure Requirements) Regulations, 2015, please find enclosed herewith the transcript of conference call with Analyst/ Institutional Investors held on 30th July, 2024. The transcript is also available on website of the Company at https://www.dmartindia.com/investor-relationship. Kindly take the same on record. Thanking You, For Avenue Supermarts Limited Ashu Gupta Company Secretary & Compliance Officer Encl: As above Ashu Gupta Digitally signed by Ashu Gupta Date: 2024.08.06 18:04:39 +05'30' Page 1 of 58 “Avenue Supermarts Limited Investor/Analyst Conference Call” July 30, 2024 MANAGEMENT: MR. NEVILLE NORONHA - MANAGING DIRECTOR AND CHIEF EXECUTIVE OFFICER - AVENUE SUPERMARTS LIMITED MR. RAMAKANT BAHETI - GROUP CHIEF FINANCIAL OFFICER - AVENUE SUPERMARTS LIMITED MR. NILADRI DEB - CHIEF FINANCIAL OFFICER - AVENUE SUPERMARTS LIMITED MR. VIKRAM DASU - CHIEF EXECUTIVE OFFICER - AVENUE E-COMMERCE LIMITED MR. RUSHABH GHIYA - INVESTOR RELATIONS - AVENUE SUPERMARTS LIMITED Avenue Supermarts Limited July 30, 2024 Page 2 of 58 Moderator: Ladies and gentlemen, good day and welcome to the Avenue Supermarts Limited Investors Conference Call. As a reminder, all participant lines will be in the listen-only mode and anyone who wishes to ask a question may enter star and one on their touchtone phone. To remove yourself from the queue please enter star and two. Should you need assistance during this conference call, please signal an operator by pressing star then zero on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Mr. Rushabh Ghiya. Thank you, and over to you, Mr. Ghiya. Rushabh Ghiya: Welcome to our Annual Investor and Analyst Conference Call. I have on call with me Mr. Neville Noronha, our MD and CEO; Mr. Ramakant Baheti, Group CFO; Mr. Niladri Deb, CFO, Avenue Supermarts Limited; and Mr. Vikram Dasu, CEO, Avenue E-commerce Limited. We hope that you've had a chance to look at our presentation, which was shared on Friday, and the same is also available on our website in case you would like to refer to it. We will start the call with Neville briefly taking you through the presentation along with Niladri, and post that we will open the Q&A session. Just before that, I would like to draw your attention to the Safe Harbor statement for good governance. So, with that, over to you Neville. Neville Noronha: Good morning, everybody. Like the format is every year, we will spend some time on the presentation and then give most of the time for the Q&A. This time, we're splitting the presentation in two parts. I will be taking the business overview, followed by our CFO, Niladri Deb, who will then take you through the operating and financial summary. So, on the business overview, which is the key product categories page. It's more or less the same. I think last year has been a period of consolidation, and also a lot of the anxieties that we had around general merchandise and apparel is more or less behind us. While the numbers do not indicate to that extent yet, but we are seeing a smart recovery in the second half of last year Avenue Supermarts Limited July 30, 2024 Page 3 of 58 and in the first quarter of this year. So, GMA has moved from 23.04% to 22.37%. It's a drop, but more or less it's coming back. But just to pre-empt some of the questions that may come on this, we are not going to be 28% or 27% like it used to be earlier. A broad trend line will be around the current run rates of around 23%, is the sense we get. But otherwise, it's been a good year. I mean, most of the numbers have been shared, and I would take more specific questions in the Q&A and discuss more... *(Truncated for storage. See Source URL)*

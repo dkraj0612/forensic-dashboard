@@ -1,0 +1,8 @@
+{
+    "ticker": "ATAM",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa4b59e7-2c56-462d-82ae-4360cf6ba2dc.pdf",
+    "file_type": "pdf"
+}

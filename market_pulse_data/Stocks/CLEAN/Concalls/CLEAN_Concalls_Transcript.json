@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEAN",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ac95cc8b-9c7d-4b8a-9789-01721ff23400.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BROOKS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5366c3b1-84f5-4266-9b45-eb655b381808.pdf",
+    "file_type": "pdf"
+}

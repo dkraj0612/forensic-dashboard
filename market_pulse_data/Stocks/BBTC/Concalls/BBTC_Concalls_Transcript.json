@@ -1,0 +1,8 @@
+{
+    "ticker": "BBTC",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://bbtcl.com/wp-content/uploads/2020/12/Transcript-of-AGM-24.07.2020.pdf",
+    "file_type": "pdf"
+}

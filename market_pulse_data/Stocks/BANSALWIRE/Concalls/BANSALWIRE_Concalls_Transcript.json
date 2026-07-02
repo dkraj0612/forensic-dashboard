@@ -1,0 +1,8 @@
+{
+    "ticker": "BANSALWIRE",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=725facb4-8266-4ada-8dc2-1df897019d4f.pdf",
+    "file_type": "pdf"
+}

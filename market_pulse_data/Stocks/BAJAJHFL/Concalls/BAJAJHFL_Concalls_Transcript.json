@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJHFL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=574d45f4-bdd0-48a7-aa53-b0064762cb42.pdf",
+    "file_type": "pdf"
+}
