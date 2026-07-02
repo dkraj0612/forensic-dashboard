@@ -507,3 +507,54 @@
 2026-07-01 03:59:51,829 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-07-01 03:59:51,829 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-07-01 03:59:51,829 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-07-02 03:35:52,628 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-07-02 03:35:52,684 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-07-02 03:35:52,684 [INFO] 
+==================================================
+2026-07-02 03:35:52,684 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-07-02 03:35:52,684 [INFO] ==================================================
+2026-07-02 03:35:52,684 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-07-02 03:35:52,684 [INFO] 
+==================================================
+2026-07-02 03:35:52,685 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-02 03:35:52,685 [INFO] ==================================================
+2026-07-02 03:35:52,685 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-02 03:35:52,685 [INFO] 
+==================================================
+2026-07-02 03:35:52,685 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-02 03:35:52,685 [INFO] ==================================================
+2026-07-02 03:35:52,685 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-02 03:35:52,685 [INFO] 
+==================================================
+2026-07-02 03:35:52,685 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-02 03:35:52,685 [INFO] ==================================================
+2026-07-02 03:35:52,686 [INFO] Commencing generation for 24 pending files...
+2026-07-02 03:35:52,686 [INFO] Analyzing [ Q1_2021 ]
+2026-07-02 03:36:01,989 [INFO] [gemini-2.5-flash-lite] Tokens Used: 6469 | Total: 6469/200000
+2026-07-02 03:36:01,989 [INFO] ✅ Generated and saved: Q1_2021_Summary.md
+2026-07-02 03:36:07,990 [INFO] Analyzing [ Q1_2021 ]
+2026-07-02 03:36:24,543 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8458 | Total: 14927/200000
+2026-07-02 03:36:24,544 [INFO] ✅ Generated and saved: Q1_2021_Summary.md
+2026-07-02 03:36:30,545 [INFO] Analyzing [ Q2_2021 ]
+2026-07-02 03:36:52,886 [INFO] [gemini-2.5-flash-lite] Tokens Used: 7788 | Total: 22715/200000
+2026-07-02 03:36:52,887 [INFO] ✅ Generated and saved: Q2_2021_Summary.md
+2026-07-02 03:36:58,887 [INFO] Analyzing [ Q4_2021 ]
+2026-07-02 03:37:14,558 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8092 | Total: 30807/200000
+2026-07-02 03:37:14,558 [INFO] ✅ Generated and saved: Q4_2021_Summary.md
+2026-07-02 03:37:20,559 [INFO] Analyzing [ Q4_2021 ]
+2026-07-02 03:37:38,373 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8379 | Total: 39186/200000
+2026-07-02 03:37:38,373 [INFO] ✅ Generated and saved: Q4_2021_Summary.md
+2026-07-02 03:37:44,374 [INFO] Analyzing [ Q1_2022 ]
+2026-07-02 03:37:57,328 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8142 | Total: 47328/200000
+2026-07-02 03:37:57,329 [INFO] ✅ Generated and saved: Q1_2022_Summary.md
+2026-07-02 03:38:03,330 [INFO] Analyzing [ Q2_2022 ]
+2026-07-02 03:38:03,437 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-07-02 03:38:03,437 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-07-02 03:38:03,437 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-07-02 03:38:28,108 [INFO] [gemini-2.5-flash] Tokens Used: 11823 | Total: 11823/150000
+2026-07-02 03:38:28,109 [INFO] ✅ Generated and saved: Q2_2022_Summary.md
+2026-07-02 03:38:34,110 [INFO] Analyzing [ Q3_2022 ]
+2026-07-02 03:38:34,204 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-07-02 03:38:34,204 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-07-02 03:38:34,204 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-07-02 03:38:34,204 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
