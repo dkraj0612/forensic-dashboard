@@ -1,0 +1,8 @@
+{
+    "ticker": "HECPROJECT",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/HECPROJECT_02072026112437_WO_BPCL_48_CR.pdf",
+    "file_type": "pdf"
+}

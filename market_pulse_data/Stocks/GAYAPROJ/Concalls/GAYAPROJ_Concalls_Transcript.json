@@ -1,0 +1,8 @@
+{
+    "ticker": "GAYAPROJ",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=81bd099a-c20a-4575-a136-0cf16b096dae.pdf",
+    "file_type": "pdf"
+}

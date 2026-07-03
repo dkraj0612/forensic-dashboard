@@ -1,0 +1,8 @@
+{
+    "ticker": "HINDZINC",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cfe63060-1f0f-4a68-8c87-a1287c4177fd.pdf",
+    "file_type": "pdf"
+}

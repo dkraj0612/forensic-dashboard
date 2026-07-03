@@ -1,0 +1,8 @@
+{
+    "ticker": "DPSCLTD",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/INDIA-POWER-CORPORATION-16July2025.pdf",
+    "file_type": "pdf"
+}

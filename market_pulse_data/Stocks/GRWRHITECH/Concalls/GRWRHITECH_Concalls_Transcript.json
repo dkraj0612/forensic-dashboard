@@ -1,0 +1,8 @@
+{
+    "ticker": "GRWRHITECH",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b79510b6-4f0f-4980-a3f0-d389355f49f0.pdf",
+    "file_type": "pdf"
+}

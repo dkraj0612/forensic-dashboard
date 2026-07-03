@@ -1,0 +1,8 @@
+{
+    "ticker": "FACT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/FACT_02072026162721_74_5_DP__1_.pdf",
+    "file_type": "pdf"
+}

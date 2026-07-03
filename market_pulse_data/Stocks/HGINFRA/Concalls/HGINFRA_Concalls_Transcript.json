@@ -1,0 +1,8 @@
+{
+    "ticker": "HGINFRA",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.hginfra.com/pdf/earnings-call-transcript.pdf",
+    "file_type": "pdf"
+}

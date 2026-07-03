@@ -1,0 +1,8 @@
+{
+    "ticker": "EPIGRAL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ecedce6c-ad20-4324-9430-9ed07a735bf9.pdf",
+    "file_type": "pdf"
+}

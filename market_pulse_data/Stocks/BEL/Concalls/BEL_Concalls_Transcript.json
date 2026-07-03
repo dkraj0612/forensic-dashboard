@@ -1,0 +1,8 @@
+{
+    "ticker": "BEL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3bd89b8b-e503-4f94-8465-8faac6a70f78.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GSFC",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.gsfclimited.com/Content/writereaddata/SEBI/12.%20Transcript.pdf",
+    "file_type": "pdf"
+}

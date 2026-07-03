@@ -1,0 +1,8 @@
+{
+    "ticker": "ENIL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.enil.co.in/pdf/stock_exchange_fillings/FY17/ENIL_Concall_Transcript_Q2FY17.pdf",
+    "file_type": "pdf"
+}

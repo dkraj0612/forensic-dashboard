@@ -1,0 +1,8 @@
+{
+    "ticker": "EDELWEISS",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0928266-c84d-44cb-b73f-615a1ae8e92d.pdf",
+    "file_type": "pdf"
+}

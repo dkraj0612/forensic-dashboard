@@ -1,0 +1,8 @@
+{
+    "ticker": "GMDCLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=30a137cd-db70-4bbe-9bc7-45666320abea.pdf",
+    "file_type": "pdf"
+}

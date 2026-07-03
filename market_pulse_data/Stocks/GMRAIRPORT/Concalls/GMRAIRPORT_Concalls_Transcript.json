@@ -1,0 +1,8 @@
+{
+    "ticker": "GMRAIRPORT",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://investor.gmraero.com/pdf/GMR%20Airports%20-Q1FY26%20Concall%20Transcript.pdf",
+    "file_type": "pdf"
+}

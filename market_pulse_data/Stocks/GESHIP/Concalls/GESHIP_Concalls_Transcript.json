@@ -1,0 +1,8 @@
+{
+    "ticker": "GESHIP",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.greatship.com/upload/investors/transcripts/Transcripts_Q1FY21_Earnings_Call1.pdf",
+    "file_type": "pdf"
+}

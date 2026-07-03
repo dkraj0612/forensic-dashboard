@@ -1,0 +1,8 @@
+{
+    "ticker": "GODIGIT",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=13079155-6a72-4c6c-9665-cb80863b143a.pdf",
+    "file_type": "pdf"
+}

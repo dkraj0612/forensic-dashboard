@@ -1,0 +1,8 @@
+{
+    "ticker": "GOCOLORS",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4e6e39c-9565-4469-8f07-0599e4b50a19.pdf",
+    "file_type": "pdf"
+}

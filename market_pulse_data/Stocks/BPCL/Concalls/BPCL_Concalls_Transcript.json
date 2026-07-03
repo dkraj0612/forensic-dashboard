@@ -1,0 +1,8 @@
+{
+    "ticker": "BPCL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bharatpetroleum.in/images/files/BPCL%201QFY24%20transcript-Final.pdf",
+    "file_type": "pdf"
+}
