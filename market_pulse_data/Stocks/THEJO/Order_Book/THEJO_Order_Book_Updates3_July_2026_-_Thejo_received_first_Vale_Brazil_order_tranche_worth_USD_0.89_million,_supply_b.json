@@ -1,0 +1,8 @@
+{
+    "ticker": "THEJO",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/THEJO_03072026175713_NSE_Filing_ValeOrder_Update_20260703.pdf",
+    "file_type": "pdf"
+}

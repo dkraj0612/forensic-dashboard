@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMSRIND",
+    "category": "Dividend",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "DCM Shriram Industries Ltd. has announced a recommended dividend of \u20b90.40 per share for FY2025-26, which will be subject to Tax Deducted at Source (TDS) at varying rates based on shareholder status and provided documentation. A material impact is that shareholders must submit all relevant tax exemption or DTAA documents by the tight deadline of July 6, 2026, to prevent higher tax deductions. This short timeline, coupled with the company's explicit disclaimer of liability for higher TDS if documents are delayed, presents a red flag for investors.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1066f6a1-248e-4353-b762-1e832ccce97b.pdf",
+    "file_type": "pdf"
+}

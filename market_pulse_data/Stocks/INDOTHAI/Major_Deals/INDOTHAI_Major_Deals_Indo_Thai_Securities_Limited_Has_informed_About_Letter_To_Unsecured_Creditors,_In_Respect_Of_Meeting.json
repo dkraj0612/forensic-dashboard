@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOTHAI",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2c2ed96e-8a01-43f9-bb9f-70e8f8809fe4.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KRISHNADEF",
+    "category": "Dividend",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/KRISHNA_03072026112440_Record_Date_2026.pdf",
+    "file_type": "pdf"
+}

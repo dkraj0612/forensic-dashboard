@@ -1,0 +1,8 @@
+{
+    "ticker": "SWELECTES",
+    "category": "New_Projects",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e5ae28f9-1eba-442c-8963-7cb574f3c336.pdf",
+    "file_type": "pdf"
+}

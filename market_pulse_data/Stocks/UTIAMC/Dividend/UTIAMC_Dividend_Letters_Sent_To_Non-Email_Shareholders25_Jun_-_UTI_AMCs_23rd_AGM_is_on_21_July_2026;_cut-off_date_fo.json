@@ -1,0 +1,8 @@
+{
+    "ticker": "UTIAMC",
+    "category": "Dividend",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ff0d48a-65c2-4b3e-9e5b-0e18a2b8cc9f.pdf",
+    "file_type": "pdf"
+}

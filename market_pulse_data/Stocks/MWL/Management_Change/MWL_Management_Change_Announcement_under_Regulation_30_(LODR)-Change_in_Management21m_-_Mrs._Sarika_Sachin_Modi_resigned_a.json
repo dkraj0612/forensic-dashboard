@@ -1,0 +1,8 @@
+{
+    "ticker": "MWL",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5dab8221-06d8-425d-a71f-5d0793a3a328.pdf",
+    "file_type": "pdf"
+}

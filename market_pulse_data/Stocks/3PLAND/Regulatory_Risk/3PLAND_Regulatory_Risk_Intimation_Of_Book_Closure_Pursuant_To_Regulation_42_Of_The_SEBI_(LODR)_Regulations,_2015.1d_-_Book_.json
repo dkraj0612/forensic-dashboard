@@ -1,0 +1,8 @@
+{
+    "ticker": "3PLAND",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "Here is a 2-3 sentence executive summary of the document:  3P Land Holdings Limited has announced a routine book closure from July 24 to August 1, 2026, ahead of its 61st Annual General Meeting on August 1, 2026, to determine shareholder eligibility for voting. While this is a standard regulatory compliance, a significant red flag is the inclusion of an extraneous scrip code (PDUMJEIND) and associated corporate email belonging to a different entity in the contact details, indicating potential administrative oversight in this regulatory filing.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ea1163b3-f6b2-4d69-be27-ea0bdca68788.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "VARDHACRLC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/VARDHACRLC_03072026143453_RTA_Reg74_5__sd.pdf",
+    "file_type": "pdf"
+}
