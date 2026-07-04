@@ -4,6 +4,51 @@
             "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_50_Transcript.md",
             "quarter": "Q1",
             "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_51_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Q3FY26_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Q2_FY24_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Q1FY25_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_49_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Q1_FY24_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3IINFOLTD/concalls/3IINFOLTD_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
         }
     ],
     "completed_files": []
