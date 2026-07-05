@@ -1,0 +1,8 @@
+{
+    "ticker": "SAGCEM",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-05",
+    "ai_summary": "Here's an executive summary of the financial document:  Sagar Cements Limited has experienced a credit rating downgrade from India Ratings & Research, with its long-term bank loan facilities moving from 'IND BBB+/Negative' to 'IND BBB/Stable' and short-term facilities from 'IND A2' to 'IND A3+'. While the downgrade suggests increased financial risk and could lead to higher borrowing costs, the improved outlook from 'Negative' to 'Stable' mitigates this by indicating a reduced likelihood of further downgrades in the near term, alongside the positive material impact of fully repaying INR 115.40 million in Non-convertible Debentures.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8d8def6-26fd-4e39-b159-5f3ecc820f6d.pdf",
+    "file_type": "pdf"
+}

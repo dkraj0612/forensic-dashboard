@@ -1,0 +1,8 @@
+{
+    "ticker": "SJS",
+    "category": "Results",
+    "extraction_date": "2026-07-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11ca2e75-12cb-40c8-9a1e-eb39ca10a0d4.pdf",
+    "file_type": "pdf"
+}

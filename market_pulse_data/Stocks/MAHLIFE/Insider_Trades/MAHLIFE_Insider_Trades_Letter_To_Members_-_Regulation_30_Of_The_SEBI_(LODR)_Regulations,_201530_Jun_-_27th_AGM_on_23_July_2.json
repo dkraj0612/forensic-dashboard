@@ -1,0 +1,8 @@
+{
+    "ticker": "MAHLIFE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-05",
+    "ai_summary": "Mahindra Lifespace Developers Limited has notified stock exchanges of its communication to shareholders, particularly those without registered email addresses, providing web-links and QR codes for the FY2025-26 Integrated Annual Report and the 27th Annual General Meeting notice. A material impact for physical security holders is the mandatory Know Your Customer (KYC) requirement, encompassing PAN, bank details, and nomination, without which future payments will only be made electronically. This poses a potential compliance hurdle and risk of payment disruption for non-compliant shareholders.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=35d405f3-04bf-4eeb-a0e3-94794c99f0f2.pdf",
+    "file_type": "pdf"
+}

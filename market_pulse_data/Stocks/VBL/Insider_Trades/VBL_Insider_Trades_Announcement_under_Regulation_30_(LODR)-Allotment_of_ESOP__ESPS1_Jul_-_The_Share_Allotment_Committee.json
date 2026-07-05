@@ -1,0 +1,8 @@
+{
+    "ticker": "VBL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2eddeadf-d1f2-4f47-b415-a2686b7adfbc.pdf",
+    "file_type": "pdf"
+}

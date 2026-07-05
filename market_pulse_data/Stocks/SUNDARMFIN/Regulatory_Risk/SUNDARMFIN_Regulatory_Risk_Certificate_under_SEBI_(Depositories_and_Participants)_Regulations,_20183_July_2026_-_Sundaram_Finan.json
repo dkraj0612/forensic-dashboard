@@ -1,0 +1,8 @@
+{
+    "ticker": "SUNDARMFIN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SUNDARMFIN_03072026175939_Regulation_74_5_DP.pdf",
+    "file_type": "pdf"
+}
