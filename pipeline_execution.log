@@ -686,3 +686,79 @@
 2026-07-04 02:56:17,713 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-07-04 02:56:17,713 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-07-04 02:56:17,714 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-07-05 03:24:46,853 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-07-05 03:24:46,887 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-07-05 03:24:46,887 [INFO] 
+==================================================
+2026-07-05 03:24:46,887 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-07-05 03:24:46,887 [INFO] ==================================================
+2026-07-05 03:24:46,888 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-07-05 03:24:46,888 [INFO] 
+==================================================
+2026-07-05 03:24:46,888 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-05 03:24:46,888 [INFO] ==================================================
+2026-07-05 03:24:46,888 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-05 03:24:46,888 [INFO] 
+==================================================
+2026-07-05 03:24:46,888 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-05 03:24:46,888 [INFO] ==================================================
+2026-07-05 03:24:46,889 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-05 03:24:46,889 [INFO] 
+==================================================
+2026-07-05 03:24:46,889 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-05 03:24:46,889 [INFO] ==================================================
+2026-07-05 03:24:46,889 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-05 03:24:46,889 [INFO] 
+==================================================
+2026-07-05 03:24:46,889 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-05 03:24:46,889 [INFO] ==================================================
+2026-07-05 03:24:46,890 [INFO] Indexing metadata for 10 raw documents in concalls...
+2026-07-05 03:24:47,496 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1690 | Total: 1690/200000
+2026-07-05 03:24:54,023 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1679 | Total: 3369/200000
+2026-07-05 03:25:00,482 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1509 | Total: 4878/200000
+2026-07-05 03:25:06,873 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1796 | Total: 6674/200000
+2026-07-05 03:25:13,380 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1530 | Total: 8204/200000
+2026-07-05 03:25:19,867 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1607 | Total: 9811/200000
+2026-07-05 03:25:26,317 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1435 | Total: 11246/200000
+2026-07-05 03:25:32,786 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1826 | Total: 13072/200000
+2026-07-05 03:25:39,223 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1658 | Total: 14730/200000
+2026-07-05 03:25:45,701 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1704 | Total: 16434/200000
+2026-07-05 03:25:51,702 [INFO] Commencing generation for 20 pending files...
+2026-07-05 03:25:51,702 [INFO] Analyzing [ Q3_2021 ]
+2026-07-05 03:26:19,921 [INFO] [gemini-2.5-flash-lite] Tokens Used: 12707 | Total: 29141/200000
+2026-07-05 03:26:19,921 [INFO] ✅ Generated and saved: Q3_2021_Summary.md
+2026-07-05 03:26:25,922 [INFO] Analyzing [ Q1_2022 ]
+2026-07-05 03:26:34,188 [INFO] [gemini-2.5-flash-lite] Tokens Used: 13843 | Total: 42984/200000
+2026-07-05 03:26:34,188 [INFO] ✅ Generated and saved: Q1_2022_Summary.md
+2026-07-05 03:26:40,189 [INFO] Analyzing [ Q1_2022 ]
+2026-07-05 03:26:51,332 [INFO] [gemini-2.5-flash-lite] Tokens Used: 16288 | Total: 59272/200000
+2026-07-05 03:26:51,332 [INFO] ✅ Generated and saved: Q1_2022_Summary.md
+2026-07-05 03:26:57,333 [INFO] Analyzing [ Q2_2022 ]
+2026-07-05 03:27:06,182 [INFO] [gemini-2.5-flash-lite] Tokens Used: 9085 | Total: 68357/200000
+2026-07-05 03:27:06,182 [INFO] ✅ Generated and saved: Q2_2022_Summary.md
+2026-07-05 03:27:12,183 [INFO] Analyzing [ Q3_2022 ]
+2026-07-05 03:27:22,513 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8349 | Total: 76706/200000
+2026-07-05 03:27:22,513 [INFO] ✅ Generated and saved: Q3_2022_Summary.md
+2026-07-05 03:27:28,514 [INFO] Analyzing [ Q4_2022 ]
+2026-07-05 03:27:48,484 [INFO] [gemini-2.5-flash-lite] Tokens Used: 21430 | Total: 98136/200000
+2026-07-05 03:27:48,485 [INFO] ✅ Generated and saved: Q4_2022_Summary.md
+2026-07-05 03:27:54,485 [INFO] Analyzing [ Q4_2022 ]
+2026-07-05 03:28:00,220 [INFO] [gemini-2.5-flash-lite] Tokens Used: 6509 | Total: 104645/200000
+2026-07-05 03:28:00,220 [INFO] ✅ Generated and saved: Q4_2022_Summary.md
+2026-07-05 03:28:06,221 [INFO] Analyzing [ Q3_2023 ]
+2026-07-05 03:28:12,472 [INFO] [gemini-2.5-flash-lite] Tokens Used: 8240 | Total: 112885/200000
+2026-07-05 03:28:12,472 [INFO] ✅ Generated and saved: Q3_2023_Summary.md
+2026-07-05 03:28:18,473 [INFO] Analyzing [ Q3_2023 ]
+2026-07-05 03:28:18,548 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-07-05 03:28:18,548 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-07-05 03:28:18,548 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-07-05 03:28:33,491 [INFO] [gemini-2.5-flash] Tokens Used: 10020 | Total: 10020/150000
+2026-07-05 03:28:33,491 [INFO] ✅ Generated and saved: Q3_2023_Summary.md
+2026-07-05 03:28:39,492 [INFO] Analyzing [ Q4_2023 ]
+2026-07-05 03:29:10,137 [INFO] [gemini-2.5-flash] Tokens Used: 14468 | Total: 24488/150000
+2026-07-05 03:29:10,137 [INFO] ✅ Generated and saved: Q4_2023_Summary.md
+2026-07-05 03:29:16,138 [INFO] Analyzing [ Q1_2024 ]
+2026-07-05 03:29:16,240 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-07-05 03:29:16,240 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-07-05 03:29:16,240 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-07-05 03:29:16,240 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
