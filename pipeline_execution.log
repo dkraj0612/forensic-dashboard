@@ -762,3 +762,59 @@
 2026-07-05 03:29:16,240 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-07-05 03:29:16,240 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-07-05 03:29:16,240 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-07-06 03:33:07,437 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-07-06 03:33:07,490 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-07-06 03:33:07,491 [INFO] 
+==================================================
+2026-07-06 03:33:07,491 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-07-06 03:33:07,491 [INFO] ==================================================
+2026-07-06 03:33:07,491 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-07-06 03:33:07,491 [INFO] 
+==================================================
+2026-07-06 03:33:07,492 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-06 03:33:07,492 [INFO] ==================================================
+2026-07-06 03:33:07,492 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-06 03:33:07,492 [INFO] 
+==================================================
+2026-07-06 03:33:07,492 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-06 03:33:07,492 [INFO] ==================================================
+2026-07-06 03:33:07,493 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-06 03:33:07,493 [INFO] 
+==================================================
+2026-07-06 03:33:07,493 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-06 03:33:07,493 [INFO] ==================================================
+2026-07-06 03:33:07,493 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-07-06 03:33:07,494 [INFO] 
+==================================================
+2026-07-06 03:33:07,494 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-07-06 03:33:07,494 [INFO] ==================================================
+2026-07-06 03:33:07,494 [INFO] Commencing generation for 10 pending files...
+2026-07-06 03:33:07,494 [INFO] Analyzing [ Q1_2024 ]
+2026-07-06 03:33:17,237 [INFO] [gemini-2.5-flash-lite] Tokens Used: 17187 | Total: 17187/200000
+2026-07-06 03:33:17,238 [INFO] ✅ Generated and saved: Q1_2024_Summary.md
+2026-07-06 03:33:23,238 [INFO] Analyzing [ Q2_2024 ]
+2026-07-06 03:33:47,996 [INFO] [gemini-2.5-flash-lite] Tokens Used: 9770 | Total: 26957/200000
+2026-07-06 03:33:47,997 [INFO] ✅ Generated and saved: Q2_2024_Summary.md
+2026-07-06 03:33:53,998 [INFO] Analyzing [ Q2_2024 ]
+2026-07-06 03:35:19,365 [INFO] [gemini-2.5-flash-lite] Tokens Used: 5525 | Total: 32482/200000
+2026-07-06 03:35:19,366 [INFO] ✅ Generated and saved: Q2_2024_Summary.md
+2026-07-06 03:35:25,366 [INFO] Analyzing [ Q1_2025 ]
+2026-07-06 03:35:38,101 [INFO] [gemini-2.5-flash-lite] Tokens Used: 6752 | Total: 39234/200000
+2026-07-06 03:35:38,101 [INFO] ✅ Generated and saved: Q1_2025_Summary.md
+2026-07-06 03:35:44,102 [INFO] Analyzing [ Q2_2025 ]
+2026-07-06 03:36:01,147 [INFO] [gemini-2.5-flash-lite] Tokens Used: 6261 | Total: 45495/200000
+2026-07-06 03:36:01,147 [INFO] ✅ Generated and saved: Q2_2025_Summary.md
+2026-07-06 03:36:07,148 [INFO] Analyzing [ Q2_2025 ]
+2026-07-06 03:36:13,553 [INFO] [gemini-2.5-flash-lite] Tokens Used: 7426 | Total: 52921/200000
+2026-07-06 03:36:13,554 [INFO] ✅ Generated and saved: Q2_2025_Summary.md
+2026-07-06 03:36:19,555 [INFO] Analyzing [ Q3_2025 ]
+2026-07-06 03:36:20,005 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-07-06 03:36:20,005 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-07-06 03:36:20,005 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-07-06 03:36:48,749 [INFO] [gemini-2.5-flash] Tokens Used: 17668 | Total: 17668/150000
+2026-07-06 03:36:48,750 [INFO] ✅ Generated and saved: Q3_2025_Summary.md
+2026-07-06 03:36:54,751 [INFO] Analyzing [ Q4_2025 ]
+2026-07-06 03:36:54,935 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-07-06 03:36:54,935 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-07-06 03:36:54,935 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-07-06 03:36:54,935 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
