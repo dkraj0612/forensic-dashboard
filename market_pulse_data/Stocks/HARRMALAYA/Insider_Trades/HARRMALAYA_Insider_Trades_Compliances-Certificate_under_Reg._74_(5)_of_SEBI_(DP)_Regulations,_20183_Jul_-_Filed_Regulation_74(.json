@@ -1,0 +1,8 @@
+{
+    "ticker": "HARRMALAYA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bc6d2a46-154f-48bf-90b6-da4548750fde.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIASHLTR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7415922d-66e7-4e10-bd4c-c64317888eb8.pdf",
+    "file_type": "pdf"
+}

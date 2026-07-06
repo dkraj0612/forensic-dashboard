@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOTTIS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71d05db3-bd03-4c00-a7d8-1a42646acf8b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "JSLL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1be4b8eb-35a4-449e-a4ca-6a0d11578ce2.pdf",
+    "file_type": "pdf"
+}

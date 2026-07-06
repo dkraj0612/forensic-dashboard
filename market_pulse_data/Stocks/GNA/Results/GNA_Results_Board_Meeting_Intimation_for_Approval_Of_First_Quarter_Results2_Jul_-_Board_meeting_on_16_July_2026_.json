@@ -1,0 +1,8 @@
+{
+    "ticker": "GNA",
+    "category": "Results",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c94e7ec4-690c-45a5-a1d0-981873b520fe.pdf",
+    "file_type": "pdf"
+}

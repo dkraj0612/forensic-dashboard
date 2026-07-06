@@ -1,0 +1,8 @@
+{
+    "ticker": "FOODSIN",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=76520665-58a4-4504-9671-5c4f3cebe2b6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIANHUME",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5c5c4c51-d600-4f2e-80b1-ef76a13ee2d5.pdf",
+    "file_type": "pdf"
+}

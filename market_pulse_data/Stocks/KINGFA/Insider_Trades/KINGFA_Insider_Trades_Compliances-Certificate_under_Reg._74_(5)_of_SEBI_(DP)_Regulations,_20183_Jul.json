@@ -1,0 +1,8 @@
+{
+    "ticker": "KINGFA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cd6982f0-59ab-42e5-883e-237ce6a90cb3.pdf",
+    "file_type": "pdf"
+}

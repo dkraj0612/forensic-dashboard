@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIAGLYCO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb0cfdb1-0f61-4037-bfd9-ad66623e7a03.pdf",
+    "file_type": "pdf"
+}

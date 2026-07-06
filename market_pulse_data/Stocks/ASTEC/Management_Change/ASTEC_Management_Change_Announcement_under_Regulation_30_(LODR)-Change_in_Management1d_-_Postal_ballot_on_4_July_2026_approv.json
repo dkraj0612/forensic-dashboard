@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTEC",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bfa63c03-df3f-40ae-89fa-c49a87e59005.pdf",
+    "file_type": "pdf"
+}

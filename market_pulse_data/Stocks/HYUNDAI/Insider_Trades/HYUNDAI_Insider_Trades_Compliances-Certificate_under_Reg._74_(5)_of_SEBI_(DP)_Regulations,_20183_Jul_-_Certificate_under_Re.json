@@ -1,0 +1,8 @@
+{
+    "ticker": "HYUNDAI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2e390fd-9667-4751-a90a-a92cfa9a6f93.pdf",
+    "file_type": "pdf"
+}

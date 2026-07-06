@@ -1,0 +1,8 @@
+{
+    "ticker": "GENSOL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d0eca27-2d74-4937-8f11-57bf52e71cf1.pdf",
+    "file_type": "pdf"
+}

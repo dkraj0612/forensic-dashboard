@@ -1,0 +1,8 @@
+{
+    "ticker": "KRBL",
+    "category": "Product_Approvals",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2f3d6f96-9ce7-4732-9e62-4eff7d4e966f.pdf",
+    "file_type": "pdf"
+}

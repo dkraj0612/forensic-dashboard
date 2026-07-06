@@ -1,0 +1,8 @@
+{
+    "ticker": "HGS",
+    "category": "SAST",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7685dd9-f515-4381-aedb-1129fda37c42.pdf",
+    "file_type": "pdf"
+}

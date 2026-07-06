@@ -1,0 +1,8 @@
+{
+    "ticker": "JSFB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=06d6f7fb-66b3-4bb8-b24d-a5e683760cf3.pdf",
+    "file_type": "pdf"
+}

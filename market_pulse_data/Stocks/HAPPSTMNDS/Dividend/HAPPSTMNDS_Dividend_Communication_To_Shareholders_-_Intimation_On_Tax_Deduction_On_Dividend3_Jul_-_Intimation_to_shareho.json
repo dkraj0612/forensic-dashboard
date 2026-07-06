@@ -1,0 +1,8 @@
+{
+    "ticker": "HAPPSTMNDS",
+    "category": "Dividend",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c93d3d67-8289-4f62-98a2-c94028a956a2.pdf",
+    "file_type": "pdf"
+}

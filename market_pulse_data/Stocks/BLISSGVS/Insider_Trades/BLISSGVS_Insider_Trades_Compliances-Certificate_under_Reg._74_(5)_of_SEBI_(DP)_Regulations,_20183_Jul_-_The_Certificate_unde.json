@@ -1,0 +1,8 @@
+{
+    "ticker": "BLISSGVS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8dd16dc-06d8-4cd1-8cef-445e0f85863c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "IMPEXFERRO",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=20a4f11c-6c3e-43d7-aeca-09c05642553f.pdf",
+    "file_type": "pdf"
+}

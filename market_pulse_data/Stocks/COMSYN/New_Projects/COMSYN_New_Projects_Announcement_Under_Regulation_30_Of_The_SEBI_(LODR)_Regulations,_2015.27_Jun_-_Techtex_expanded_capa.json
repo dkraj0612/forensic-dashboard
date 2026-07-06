@@ -1,0 +1,8 @@
+{
+    "ticker": "COMSYN",
+    "category": "New_Projects",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2fe65c32-c744-45ce-80ce-b413ccffce07.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "HISARMETAL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=17d0db86-e47e-4457-97a7-cd25cdb000eb.pdf",
+    "file_type": "pdf"
+}

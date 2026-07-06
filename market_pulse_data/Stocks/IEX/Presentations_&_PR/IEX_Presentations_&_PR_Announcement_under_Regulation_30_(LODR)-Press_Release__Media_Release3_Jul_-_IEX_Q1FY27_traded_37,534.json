@@ -1,0 +1,8 @@
+{
+    "ticker": "IEX",
+    "category": "Presentations_&_PR",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "The Indian Energy Exchange (IEX) reported robust Q1FY'27 performance with 15.9% year-on-year electricity traded volume growth, primarily driven by record power demand from persistent heatwaves and significant price increases across major market segments. A material red flag is the drastic 81.4% year-on-year decline in Renewable Energy Certificate (REC) volumes, indicating severe market illiquidity due to a sharp drop in sell bids, which could hinder India's green energy transition and IEX's related offerings. This suggests a strong underlying energy demand but raises concerns about the health and liquidity of the renewable energy certificate market.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6a4d9be5-1f40-42ed-809a-4e12acfa1fdb.pdf",
+    "file_type": "pdf"
+}

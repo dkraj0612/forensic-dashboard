@@ -1,0 +1,8 @@
+{
+    "ticker": "HLEGLAS",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9f3f6f2d-f646-44a4-a07f-54013b3ebf4f.pdf",
+    "file_type": "pdf"
+}

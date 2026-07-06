@@ -1,0 +1,8 @@
+{
+    "ticker": "GRPLTD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ac7ea4d-03ed-41b8-a288-721383cdce99.pdf",
+    "file_type": "pdf"
+}

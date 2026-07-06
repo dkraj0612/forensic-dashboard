@@ -1,0 +1,8 @@
+{
+    "ticker": "DHANUKA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=44ebf584-9b7d-4caf-807f-ae04299b3f31.pdf",
+    "file_type": "pdf"
+}

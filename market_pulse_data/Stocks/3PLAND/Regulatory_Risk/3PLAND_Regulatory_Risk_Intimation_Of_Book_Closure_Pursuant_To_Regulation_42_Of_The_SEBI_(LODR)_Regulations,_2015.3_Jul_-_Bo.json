@@ -1,0 +1,8 @@
+{
+    "ticker": "3PLAND",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "**Executive Summary:**  3P LAND HOLDINGS LIMITED has announced a book closure period from July 24 to August 1, 2026, to determine shareholder eligibility for its 61st Annual General Meeting scheduled for August 1, 2026, which is a standard administrative procedure impacting share transfer records during this time. A significant red flag is the erroneous inclusion of an unrelated \"PDUMJEIND\" scrip code at the document's conclusion, creating potential confusion regarding the specific entity the communication pertains to at that point.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ea1163b3-f6b2-4d69-be27-ea0bdca68788.pdf",
+    "file_type": "pdf"
+}

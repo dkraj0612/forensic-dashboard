@@ -1,0 +1,8 @@
+{
+    "ticker": "DELTAMAGNT",
+    "category": "SAST",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b6e879f-e181-466f-8419-cb935dc94924.pdf",
+    "file_type": "pdf"
+}

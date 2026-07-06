@@ -1,0 +1,8 @@
+{
+    "ticker": "BHEL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f258589-07e9-4999-a884-df3efcf12e0f.pdf",
+    "file_type": "pdf"
+}

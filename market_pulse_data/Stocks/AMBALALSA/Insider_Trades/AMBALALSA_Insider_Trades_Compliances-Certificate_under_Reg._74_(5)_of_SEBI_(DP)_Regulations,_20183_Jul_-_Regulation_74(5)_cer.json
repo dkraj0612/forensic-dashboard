@@ -1,0 +1,8 @@
+{
+    "ticker": "AMBALALSA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c82d2451-0a22-46e3-842d-b1570b172122.pdf",
+    "file_type": "pdf"
+}

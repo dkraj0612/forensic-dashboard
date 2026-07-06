@@ -1,0 +1,8 @@
+{
+    "ticker": "ACI",
+    "category": "SAST",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "Here's an executive summary of the provided financial document:  Promoter Chemikas Speciality LLP reported a net decrease in its pledged shares of Archean Chemical Industries Limited. While 850,000 shares (0.69% of company capital) were newly pledged as collateral for loans, a larger block of 2,200,000 shares (1.78%) was simultaneously released due to loan repayment. This net reduction in encumbered shares is a positive indicator of improved financial leverage for the promoter, presenting no immediate red flags.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6C259CE5_6609_436D_8CA1_A7D3CF1E9461_104556.pdf",
+    "file_type": "pdf"
+}

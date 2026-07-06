@@ -1,0 +1,8 @@
+{
+    "ticker": "GILLETTE",
+    "category": "Dividend",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2d0c5b3-7beb-4165-b1f9-f6ce480433ac.pdf",
+    "file_type": "pdf"
+}

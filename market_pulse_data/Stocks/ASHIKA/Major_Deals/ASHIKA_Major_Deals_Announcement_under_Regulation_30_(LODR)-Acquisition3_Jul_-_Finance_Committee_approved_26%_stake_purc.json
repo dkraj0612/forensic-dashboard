@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHIKA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=32f39244-24e5-4fb4-ac65-6f37fc6f0228.pdf",
+    "file_type": "pdf"
+}

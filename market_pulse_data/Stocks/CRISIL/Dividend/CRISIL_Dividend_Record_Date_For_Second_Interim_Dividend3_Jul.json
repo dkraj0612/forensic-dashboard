@@ -1,0 +1,8 @@
+{
+    "ticker": "CRISIL",
+    "category": "Dividend",
+    "extraction_date": "2026-07-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5e9120f7-05ba-4959-ae98-e3df419af4d6.pdf",
+    "file_type": "pdf"
+}
