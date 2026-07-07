@@ -1,0 +1,65 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_30_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_36_Transcript.md",
+            "quarter": "Q1",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_29_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_26_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_27_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q4",
+            "year": 2018
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_35_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_38_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_36_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_32_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_33_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_30_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_31_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_29_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_27_Transcript.md",
+        "./ScreenerData/stocks/0-9/3MINDIA/concalls/3MINDIA_Fallback_Transcript_35_Transcript.md"
+    ]
+}
