@@ -1,0 +1,8 @@
+{
+    "ticker": "NATCOPHARM",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3f1e2ff4-a9cd-4517-94a9-f345ebe5d3ce.pdf",
+    "file_type": "pdf"
+}

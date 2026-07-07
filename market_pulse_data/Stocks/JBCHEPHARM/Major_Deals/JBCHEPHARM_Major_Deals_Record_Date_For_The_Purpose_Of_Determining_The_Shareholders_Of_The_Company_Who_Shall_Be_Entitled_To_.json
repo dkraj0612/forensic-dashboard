@@ -1,0 +1,8 @@
+{
+    "ticker": "JBCHEPHARM",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a6f1bbb-6e7d-41e6-a857-c6ef8a3c659d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "NELCAST",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=072eb774-c4fa-481e-a70a-702c22be42d0.pdf",
+    "file_type": "pdf"
+}

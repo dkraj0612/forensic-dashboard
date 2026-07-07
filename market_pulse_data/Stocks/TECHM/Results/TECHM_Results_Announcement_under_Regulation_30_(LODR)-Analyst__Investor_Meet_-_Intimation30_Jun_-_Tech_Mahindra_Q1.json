@@ -1,0 +1,8 @@
+{
+    "ticker": "TECHM",
+    "category": "Results",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab326e2a-a489-4c61-a3d9-d8e7c5cae4a0.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "TORNTPHARM",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52f5d397-19fa-4779-be01-6a8f4a12d873.pdf",
+    "file_type": "pdf"
+}

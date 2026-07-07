@@ -1,0 +1,8 @@
+{
+    "ticker": "TOUCHWOOD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/TOUCHWOOD_06072026140418_FINAL_TOUCHWOOD.pdf",
+    "file_type": "pdf"
+}

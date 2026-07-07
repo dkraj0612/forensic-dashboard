@@ -1,0 +1,8 @@
+{
+    "ticker": "SOLEX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SOLEX_06072026164011_Intimation_under_Reg_74_5_.pdf",
+    "file_type": "pdf"
+}

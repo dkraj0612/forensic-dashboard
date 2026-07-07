@@ -1,0 +1,8 @@
+{
+    "ticker": "SAGARDEEP",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SAGARDEEP_06072026182025_74_5__signed.pdf",
+    "file_type": "pdf"
+}

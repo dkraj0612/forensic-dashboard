@@ -1,0 +1,8 @@
+{
+    "ticker": "LFIC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/LFIC_07072026113747_SEBI_LODR_Reg_74_5__Q1_Lakshmi.pdf",
+    "file_type": "pdf"
+}

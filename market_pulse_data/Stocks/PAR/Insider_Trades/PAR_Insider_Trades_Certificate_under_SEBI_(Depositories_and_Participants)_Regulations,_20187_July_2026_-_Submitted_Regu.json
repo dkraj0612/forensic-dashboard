@@ -1,0 +1,8 @@
+{
+    "ticker": "PAR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/PAR_07072026150124_SignedReg74_5_30062026.pdf",
+    "file_type": "pdf"
+}
