@@ -1,0 +1,8 @@
+{
+    "ticker": "KOLTEPATIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9ab917eb-be46-45d0-b1c3-87f335e4bb71.pdf",
+    "file_type": "pdf"
+}

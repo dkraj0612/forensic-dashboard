@@ -1,0 +1,8 @@
+{
+    "ticker": "MACPOWER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MACPOWER_07072026113445_ComplianceunderRegulation74.pdf",
+    "file_type": "pdf"
+}

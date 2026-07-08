@@ -1,0 +1,8 @@
+{
+    "ticker": "TIRUPATIFL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/TIRUPATIFL_07072026160251_Certificate_under_Regulation_74_5__for_Q1_FY27.pdf",
+    "file_type": "pdf"
+}

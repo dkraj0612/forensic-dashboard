@@ -1,0 +1,8 @@
+{
+    "ticker": "GANGAFORGE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/GANGAFORGE_08072026160928_74_5_DP_Regulation_June_2026_NSE.pdf",
+    "file_type": "pdf"
+}

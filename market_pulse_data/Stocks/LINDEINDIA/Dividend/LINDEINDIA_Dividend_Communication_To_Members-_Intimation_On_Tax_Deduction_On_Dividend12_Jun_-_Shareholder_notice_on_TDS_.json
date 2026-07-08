@@ -1,0 +1,8 @@
+{
+    "ticker": "LINDEINDIA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5427ea71-08fb-4ab8-a4a0-d66c0dc4d2b8.pdf",
+    "file_type": "pdf"
+}

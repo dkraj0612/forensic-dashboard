@@ -1,0 +1,8 @@
+{
+    "ticker": "ICEMAKE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/ICEMAKE_08072026113842_Reg74.pdf",
+    "file_type": "pdf"
+}

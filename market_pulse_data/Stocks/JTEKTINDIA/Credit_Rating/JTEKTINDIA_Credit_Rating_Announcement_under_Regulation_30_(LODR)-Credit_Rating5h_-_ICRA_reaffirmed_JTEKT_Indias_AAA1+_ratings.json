@@ -1,0 +1,8 @@
+{
+    "ticker": "JTEKTINDIA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ceb9cd7-9482-4ba6-8557-7ec62a9e47a3.pdf",
+    "file_type": "pdf"
+}

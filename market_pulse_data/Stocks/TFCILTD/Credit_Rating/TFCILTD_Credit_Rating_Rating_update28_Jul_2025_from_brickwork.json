@@ -1,0 +1,8 @@
+{
+    "ticker": "TFCILTD",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/X-Tourism-Finance-Corporation-of-India-28July2025.pdf",
+    "file_type": "pdf"
+}

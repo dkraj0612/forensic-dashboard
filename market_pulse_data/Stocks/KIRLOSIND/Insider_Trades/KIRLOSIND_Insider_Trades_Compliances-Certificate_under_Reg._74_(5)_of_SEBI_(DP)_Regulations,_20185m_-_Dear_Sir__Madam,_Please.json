@@ -1,0 +1,8 @@
+{
+    "ticker": "KIRLOSIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=291b4767-93a2-4878-8379-65780a6f9932.pdf",
+    "file_type": "pdf"
+}

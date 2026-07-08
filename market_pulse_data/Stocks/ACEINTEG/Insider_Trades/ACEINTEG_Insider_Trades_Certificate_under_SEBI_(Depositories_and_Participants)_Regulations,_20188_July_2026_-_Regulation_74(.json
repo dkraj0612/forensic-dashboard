@@ -1,0 +1,8 @@
+{
+    "ticker": "ACEINTEG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "**Executive Summary:**  ACE Integrated Solutions Limited submitted a filing to the NSE regarding Regulation 74(5) compliance for the quarter ended June 30, 2026, implying active dematerialization processes confirmed by their Registrar & Share Transfer Agent (RTA). However, the accompanying certificate from the RTA explicitly states the regulation is non-applicable, as all company shares are already in dematerialized form and no demat/remat requests were received during the period. This direct contradiction between ACE's submission and the RTA's certificate is a significant red flag, highlighting potential inaccuracies or misrepresentations in the company's regulatory disclosures.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/ACEINTEG_08072026174827_Stx_intimation_74_5_.pdf",
+    "file_type": "pdf"
+}

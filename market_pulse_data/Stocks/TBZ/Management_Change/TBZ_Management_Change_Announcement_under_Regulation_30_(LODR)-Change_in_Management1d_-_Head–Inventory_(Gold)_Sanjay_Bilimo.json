@@ -1,0 +1,8 @@
+{
+    "ticker": "TBZ",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3f0cee08-6852-42b4-8ff7-98c81e9fc939.pdf",
+    "file_type": "pdf"
+}

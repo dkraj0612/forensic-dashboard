@@ -1,0 +1,8 @@
+{
+    "ticker": "UCAL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dc780277-2aff-49ec-8a65-9986ad1d1cc7.pdf",
+    "file_type": "pdf"
+}
