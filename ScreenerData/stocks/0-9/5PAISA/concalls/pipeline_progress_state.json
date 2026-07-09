@@ -84,7 +84,63 @@
             "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_45_Transcript.md",
             "quarter": "Q3",
             "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q2",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Q2FY23_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_37_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_42_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_40_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_48_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_29_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_28_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_46_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_47_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_45_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_50_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_48_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Q2FY23_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_40_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_43_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_44_Transcript.md",
+        "./ScreenerData/stocks/0-9/5PAISA/concalls/5PAISA_Fallback_Transcript_37_Transcript.md"
+    ]
 }
