@@ -1,0 +1,8 @@
+{
+    "ticker": "SANDUMA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=22fc13b5-2735-48c3-a2af-f6e3288a528d.pdf",
+    "file_type": "pdf"
+}

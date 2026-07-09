@@ -1,0 +1,8 @@
+{
+    "ticker": "SANDUMA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9cd70f30-0b78-44ac-919e-376a615b30d0.pdf",
+    "file_type": "pdf"
+}

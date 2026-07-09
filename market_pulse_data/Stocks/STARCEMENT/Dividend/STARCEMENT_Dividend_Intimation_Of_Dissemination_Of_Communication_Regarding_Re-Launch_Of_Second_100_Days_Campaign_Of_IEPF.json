@@ -1,0 +1,8 @@
+{
+    "ticker": "STARCEMENT",
+    "category": "Dividend",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e17670ad-0978-44e8-9d7c-c67bd053116e.pdf",
+    "file_type": "pdf"
+}

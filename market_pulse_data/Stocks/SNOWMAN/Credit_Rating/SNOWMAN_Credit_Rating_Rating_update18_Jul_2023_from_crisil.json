@@ -1,0 +1,8 @@
+{
+    "ticker": "SNOWMAN",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Snowman Logistics Limited_RU_18-Jul-2023.pdf",
+    "file_type": "pdf"
+}

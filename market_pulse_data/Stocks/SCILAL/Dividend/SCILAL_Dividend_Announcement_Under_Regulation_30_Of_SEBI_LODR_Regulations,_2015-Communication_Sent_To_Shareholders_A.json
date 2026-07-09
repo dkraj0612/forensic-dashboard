@@ -1,0 +1,8 @@
+{
+    "ticker": "SCILAL",
+    "category": "Dividend",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ce38526-fa35-4967-a5b1-fb3017fa9960.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SUNDROP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4cb1dcc3-5456-45ae-a424-ef1612987b24.pdf",
+    "file_type": "pdf"
+}

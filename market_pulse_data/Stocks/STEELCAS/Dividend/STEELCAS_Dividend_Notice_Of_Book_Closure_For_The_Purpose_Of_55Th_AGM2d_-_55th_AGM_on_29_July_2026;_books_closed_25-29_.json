@@ -1,0 +1,8 @@
+{
+    "ticker": "STEELCAS",
+    "category": "Dividend",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca044824-f5b6-4946-a13a-cb505cedfd28.pdf",
+    "file_type": "pdf"
+}

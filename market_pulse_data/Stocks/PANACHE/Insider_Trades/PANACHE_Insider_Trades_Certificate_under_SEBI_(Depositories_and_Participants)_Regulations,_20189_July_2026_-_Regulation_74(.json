@@ -1,0 +1,8 @@
+{
+    "ticker": "PANACHE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/PANACHE_09072026155144_Regulation_74_5__Signed.pdf",
+    "file_type": "pdf"
+}

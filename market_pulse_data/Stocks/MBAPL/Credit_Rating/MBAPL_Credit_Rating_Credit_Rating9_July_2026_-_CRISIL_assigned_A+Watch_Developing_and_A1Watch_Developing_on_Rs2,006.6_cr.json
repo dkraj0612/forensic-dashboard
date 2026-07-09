@@ -1,0 +1,8 @@
+{
+    "ticker": "MBAPL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MBAPL_09072026181903_Credit_Rating.pdf",
+    "file_type": "pdf"
+}
