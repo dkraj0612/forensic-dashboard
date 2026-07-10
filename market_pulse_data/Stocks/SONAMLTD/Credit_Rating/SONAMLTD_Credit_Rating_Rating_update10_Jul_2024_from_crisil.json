@@ -1,0 +1,8 @@
+{
+    "ticker": "SONAMLTD",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Sonam Limited-RU-10-07-2024.pdf",
+    "file_type": "pdf"
+}

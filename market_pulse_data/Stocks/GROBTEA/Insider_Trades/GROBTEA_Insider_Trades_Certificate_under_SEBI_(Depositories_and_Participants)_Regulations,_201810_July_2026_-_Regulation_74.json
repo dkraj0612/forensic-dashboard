@@ -1,0 +1,8 @@
+{
+    "ticker": "GROBTEA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/GROBTEA_10072026135600_Regulation74_5_.pdf",
+    "file_type": "pdf"
+}

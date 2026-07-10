@@ -1,0 +1,8 @@
+{
+    "ticker": "SCI",
+    "category": "Dividend",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f24e41d8-74b4-4789-a03e-0ddfadfd4660.pdf",
+    "file_type": "pdf"
+}

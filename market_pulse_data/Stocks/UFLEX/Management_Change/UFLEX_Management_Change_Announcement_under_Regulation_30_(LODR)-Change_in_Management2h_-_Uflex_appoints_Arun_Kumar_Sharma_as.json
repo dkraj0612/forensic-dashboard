@@ -1,0 +1,8 @@
+{
+    "ticker": "UFLEX",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=27acdd83-c778-4fd7-acee-389f1e4a9516.pdf",
+    "file_type": "pdf"
+}

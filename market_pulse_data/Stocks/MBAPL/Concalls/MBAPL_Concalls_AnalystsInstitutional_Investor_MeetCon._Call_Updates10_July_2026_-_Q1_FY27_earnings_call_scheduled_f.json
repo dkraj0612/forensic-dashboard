@@ -1,0 +1,8 @@
+{
+    "ticker": "MBAPL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MBAPL_10072026154107_MBAPL.pdf",
+    "file_type": "pdf"
+}

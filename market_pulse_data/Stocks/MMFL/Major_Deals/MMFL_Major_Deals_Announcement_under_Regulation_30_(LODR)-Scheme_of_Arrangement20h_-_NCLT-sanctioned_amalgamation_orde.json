@@ -1,0 +1,8 @@
+{
+    "ticker": "MMFL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c321c624-3d0b-4d80-b563-b11c6922c310.pdf",
+    "file_type": "pdf"
+}

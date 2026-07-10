@@ -1,0 +1,8 @@
+{
+    "ticker": "MMFL",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abb89fbd-ed64-4b37-83df-dba2fbef189d.pdf",
+    "file_type": "pdf"
+}

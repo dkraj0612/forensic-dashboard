@@ -1,0 +1,8 @@
+{
+    "ticker": "MUKKA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b9832924-7edd-4863-847e-3ac01f39ae2a.pdf",
+    "file_type": "pdf"
+}
