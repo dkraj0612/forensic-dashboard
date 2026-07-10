@@ -1,0 +1,12 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AAATECH/concalls/AAATECH_Fallback_Transcript_15_Transcript.md",
+            "quarter": "Q3",
+            "year": 2021
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/AAATECH/concalls/AAATECH_Fallback_Transcript_15_Transcript.md"
+    ]
+}

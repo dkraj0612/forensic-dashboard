@@ -1,0 +1,15 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AADHARHFC/concalls/AADHARHFC_Fallback_Transcript_22_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AADHARHFC/concalls/AADHARHFC_Fallback_Transcript_20_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        }
+    ],
+    "completed_files": []
+}
