@@ -1,0 +1,22 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AARON/concalls/AARON_Fallback_Transcript_15_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARON/concalls/AARON_Q4FY25_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARON/concalls/AARON_Fallback_Transcript_18_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/AARON/concalls/AARON_Fallback_Transcript_18_Transcript.md"
+    ]
+}
