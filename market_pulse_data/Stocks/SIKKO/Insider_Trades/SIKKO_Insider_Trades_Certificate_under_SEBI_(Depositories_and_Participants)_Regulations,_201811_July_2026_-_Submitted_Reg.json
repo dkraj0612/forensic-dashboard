@@ -1,0 +1,8 @@
+{
+    "ticker": "SIKKO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SIKKO_11072026115051_Covering.pdf",
+    "file_type": "pdf"
+}

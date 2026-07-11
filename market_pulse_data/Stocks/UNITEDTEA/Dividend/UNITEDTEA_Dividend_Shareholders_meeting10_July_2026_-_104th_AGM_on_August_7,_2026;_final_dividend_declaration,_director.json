@@ -1,0 +1,8 @@
+{
+    "ticker": "UNITEDTEA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/kpsarathy_10072026155857_AGM_Notice_Intimation.pdf",
+    "file_type": "pdf"
+}
