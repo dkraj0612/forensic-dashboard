@@ -1,0 +1,24 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_18_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_19_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_4_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_19_Transcript.md",
+        "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_18_Transcript.md",
+        "./ScreenerData/stocks/A/AARTECH/concalls/AARTECH_Fallback_Transcript_4_Transcript.md"
+    ]
+}
