@@ -1,0 +1,8 @@
+{
+    "ticker": "GEEKAYWIRE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/GEEKAYWIRE_13072026155309_reg_74_5_signed_merged.pdf",
+    "file_type": "pdf"
+}

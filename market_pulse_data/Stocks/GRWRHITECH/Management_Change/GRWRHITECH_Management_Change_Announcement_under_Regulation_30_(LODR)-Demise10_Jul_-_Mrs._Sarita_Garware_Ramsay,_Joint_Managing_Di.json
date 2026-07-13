@@ -1,0 +1,8 @@
+{
+    "ticker": "GRWRHITECH",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c2e2b77e-dd8e-44ba-9a9c-27b08552e7a3.pdf",
+    "file_type": "pdf"
+}

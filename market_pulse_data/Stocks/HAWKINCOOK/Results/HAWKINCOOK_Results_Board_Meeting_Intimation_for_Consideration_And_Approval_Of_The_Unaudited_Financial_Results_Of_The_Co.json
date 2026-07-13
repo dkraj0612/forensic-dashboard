@@ -1,0 +1,8 @@
+{
+    "ticker": "HAWKINCOOK",
+    "category": "Results",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=006c86e6-d618-4f0c-bc2d-d5f30d74aec0.pdf",
+    "file_type": "pdf"
+}

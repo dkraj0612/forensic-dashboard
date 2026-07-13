@@ -1,0 +1,8 @@
+{
+    "ticker": "BPL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0c049c0e-67d2-4f17-a0ad-d6fc364d5028.pdf",
+    "file_type": "pdf"
+}

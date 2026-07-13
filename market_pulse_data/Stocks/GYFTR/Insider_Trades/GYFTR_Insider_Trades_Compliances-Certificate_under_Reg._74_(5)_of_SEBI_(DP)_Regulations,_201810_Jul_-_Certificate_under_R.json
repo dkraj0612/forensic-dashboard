@@ -1,0 +1,8 @@
+{
+    "ticker": "GYFTR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b2a2f025-56d7-4bfd-8c80-88c99d4a5eab.pdf",
+    "file_type": "pdf"
+}

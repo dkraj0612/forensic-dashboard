@@ -1,0 +1,8 @@
+{
+    "ticker": "BBTC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a74ff1db-de22-4292-80c7-fcd9c24ae1a2.pdf",
+    "file_type": "pdf"
+}

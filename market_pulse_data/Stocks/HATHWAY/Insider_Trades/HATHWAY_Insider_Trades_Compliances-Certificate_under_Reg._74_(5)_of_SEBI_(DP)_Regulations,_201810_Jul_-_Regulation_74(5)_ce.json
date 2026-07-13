@@ -1,0 +1,8 @@
+{
+    "ticker": "HATHWAY",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fbcdad34-86dd-43f1-b238-620929d9879e.pdf",
+    "file_type": "pdf"
+}

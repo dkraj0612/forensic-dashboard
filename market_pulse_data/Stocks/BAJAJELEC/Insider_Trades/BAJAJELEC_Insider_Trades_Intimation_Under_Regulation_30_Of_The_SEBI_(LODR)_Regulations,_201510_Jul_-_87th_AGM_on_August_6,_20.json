@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJELEC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff409397-c03e-4cc9-89a1-b30de1d77d0c.pdf",
+    "file_type": "pdf"
+}

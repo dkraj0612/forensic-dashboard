@@ -1,0 +1,8 @@
+{
+    "ticker": "HALDER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce1ff8d5-a349-4cc3-8f38-58bf1ebead3d.pdf",
+    "file_type": "pdf"
+}

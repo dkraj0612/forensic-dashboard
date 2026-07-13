@@ -1,0 +1,8 @@
+{
+    "ticker": "HFCL",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d217589-04c2-4237-ab71-f435b687f54b.pdf",
+    "file_type": "pdf"
+}

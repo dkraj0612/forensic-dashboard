@@ -1,0 +1,8 @@
+{
+    "ticker": "FEDFINA",
+    "category": "Concalls",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=306643f3-a519-412a-be19-b3da04d79661.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CYIENT",
+    "category": "Results",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ed97e58-c813-40ce-ad60-dba4eabd1972.pdf",
+    "file_type": "pdf"
+}

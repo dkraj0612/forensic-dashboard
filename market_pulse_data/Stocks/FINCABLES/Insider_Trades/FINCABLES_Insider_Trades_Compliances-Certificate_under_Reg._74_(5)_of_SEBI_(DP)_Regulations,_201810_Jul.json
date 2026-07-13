@@ -1,0 +1,8 @@
+{
+    "ticker": "FINCABLES",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5036d45a-1e01-4625-bfda-3714534ec27b.pdf",
+    "file_type": "pdf"
+}

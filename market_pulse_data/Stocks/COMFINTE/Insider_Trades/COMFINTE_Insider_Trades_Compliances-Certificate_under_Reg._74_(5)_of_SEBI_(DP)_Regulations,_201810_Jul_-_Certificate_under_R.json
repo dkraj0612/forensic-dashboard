@@ -1,0 +1,8 @@
+{
+    "ticker": "COMFINTE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7f895cf5-6bbc-41d3-80e5-3a2cfc6f6c9f.pdf",
+    "file_type": "pdf"
+}

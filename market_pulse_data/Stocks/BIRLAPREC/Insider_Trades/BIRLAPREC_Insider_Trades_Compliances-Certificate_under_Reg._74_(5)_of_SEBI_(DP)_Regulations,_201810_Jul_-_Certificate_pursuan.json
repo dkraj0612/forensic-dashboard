@@ -1,0 +1,8 @@
+{
+    "ticker": "BIRLAPREC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2906fae-0ffd-4f5d-94be-42ce15d70be3.pdf",
+    "file_type": "pdf"
+}

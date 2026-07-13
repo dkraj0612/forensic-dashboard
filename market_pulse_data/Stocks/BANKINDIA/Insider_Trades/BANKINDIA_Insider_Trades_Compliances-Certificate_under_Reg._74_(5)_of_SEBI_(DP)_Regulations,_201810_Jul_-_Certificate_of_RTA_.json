@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=26dadc79-f84d-472d-b573-60f5ae46a7cb.pdf",
+    "file_type": "pdf"
+}

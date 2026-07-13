@@ -1,0 +1,8 @@
+{
+    "ticker": "ALEMBICLTD",
+    "category": "Dividend",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "Alembic Limited has issued an intimation dated July 10, 2026, setting August 4, 2026, as the record date for determining shareholders entitled to receive a dividend for the financial year ended March 31, 2026. The dividend payment is contingent upon approval at the Annual General Meeting scheduled for August 11, 2026, representing a standard corporate action for profit distribution. A key red flag is that all dates mentioned, including the document's own creation date, are in the future, which is highly unusual for a financial document presented for current analysis.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8eb22a3d-ebdf-4b8f-86df-dddab456d6e0.pdf",
+    "file_type": "pdf"
+}

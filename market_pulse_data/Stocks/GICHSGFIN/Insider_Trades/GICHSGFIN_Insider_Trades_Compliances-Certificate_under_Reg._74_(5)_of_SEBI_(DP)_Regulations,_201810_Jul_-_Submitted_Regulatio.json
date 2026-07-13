@@ -1,0 +1,8 @@
+{
+    "ticker": "GICHSGFIN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a8047b69-b3ca-4001-9013-5750c90d8a34.pdf",
+    "file_type": "pdf"
+}

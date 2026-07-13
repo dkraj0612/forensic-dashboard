@@ -1,0 +1,8 @@
+{
+    "ticker": "GPTINFRA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "GPT Infraprojects Limited has informed stock exchanges of its compliance by dispatching physical letters to shareholders without registered email addresses, directing them to the company website for the FY2025-26 Annual Report and the notice for the 46th virtual Annual General Meeting (AGM) on August 8, 2026. This action ensures all shareholders receive essential information and facilitates e-voting, while also prompting them to update KYC details and register email addresses for future digital communications. No material impacts or red flags are identified, as this is a routine regulatory compliance update.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=af178ba3-3a29-414c-83b6-c61b54886168.pdf",
+    "file_type": "pdf"
+}

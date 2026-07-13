@@ -1,0 +1,8 @@
+{
+    "ticker": "COSMOFIRST",
+    "category": "Dividend",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8201f9d0-c48b-403c-851c-c77636e0e646.pdf",
+    "file_type": "pdf"
+}

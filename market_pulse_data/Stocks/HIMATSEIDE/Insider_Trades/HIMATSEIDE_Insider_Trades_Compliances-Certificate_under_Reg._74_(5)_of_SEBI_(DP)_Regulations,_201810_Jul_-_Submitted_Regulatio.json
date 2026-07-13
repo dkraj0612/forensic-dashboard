@@ -1,0 +1,8 @@
+{
+    "ticker": "HIMATSEIDE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7fb4cab3-8888-44e3-aeba-5f690a1d4395.pdf",
+    "file_type": "pdf"
+}

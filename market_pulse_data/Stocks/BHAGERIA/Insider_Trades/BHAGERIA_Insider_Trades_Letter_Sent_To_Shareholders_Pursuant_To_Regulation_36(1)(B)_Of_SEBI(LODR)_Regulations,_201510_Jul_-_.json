@@ -1,0 +1,8 @@
+{
+    "ticker": "BHAGERIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5a1234c0-a5ca-44f0-8ffb-45d185b39013.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ELPROINTL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f866c201-09b9-4505-a340-ff78a9ea912c.pdf",
+    "file_type": "pdf"
+}

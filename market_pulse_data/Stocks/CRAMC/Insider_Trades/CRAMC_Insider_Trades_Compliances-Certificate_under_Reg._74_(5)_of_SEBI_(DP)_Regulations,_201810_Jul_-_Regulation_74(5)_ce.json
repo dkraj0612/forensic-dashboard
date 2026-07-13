@@ -1,0 +1,8 @@
+{
+    "ticker": "CRAMC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a706ea7c-a1ad-4eb5-8029-66b048d58a9c.pdf",
+    "file_type": "pdf"
+}

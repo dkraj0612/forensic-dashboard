@@ -1,0 +1,8 @@
+{
+    "ticker": "CELEBRITY",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ac3d94c-6bc6-47c9-9050-3052fa302587.pdf",
+    "file_type": "pdf"
+}

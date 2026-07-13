@@ -1,0 +1,8 @@
+{
+    "ticker": "GVPIL",
+    "category": "Concalls",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc6c1ad6-4f35-4202-9147-c3206c6ce7d8.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BORORENEW",
+    "category": "Results",
+    "extraction_date": "2026-07-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=82021793-4fa8-4db0-930a-bb4438e37cd8.pdf",
+    "file_type": "pdf"
+}
