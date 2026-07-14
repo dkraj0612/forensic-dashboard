@@ -104,7 +104,73 @@
             "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_56_Transcript.md",
             "quarter": "Q1",
             "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_50_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q1_FY23_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q4_FY23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q2_FY25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q3_FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q1_FY2022_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_61_Transcript.md",
+            "quarter": "Q4",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q4_FY24_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q3_FY23_Transcript.md",
+            "quarter": "Q3",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q3_FY22_Transcript.md",
+            "quarter": "Q3",
+            "year": 2022
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_63_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q2_FY2021_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q3_FY2021_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Fallback_Transcript_61_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIDRUGS/concalls/AARTIDRUGS_Q1FY21_Transcript.md"
+    ]
 }
