@@ -1,0 +1,8 @@
+{
+    "ticker": "SOMANYCERA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fed4cb8e-dc46-481c-8744-b73b656fd199.pdf",
+    "file_type": "pdf"
+}

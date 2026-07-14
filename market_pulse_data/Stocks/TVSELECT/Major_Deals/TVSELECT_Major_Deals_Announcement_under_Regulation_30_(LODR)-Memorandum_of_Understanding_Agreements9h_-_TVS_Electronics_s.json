@@ -1,0 +1,8 @@
+{
+    "ticker": "TVSELECT",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ad5b0c3-410b-4982-ae5c-8b60e04875e6.pdf",
+    "file_type": "pdf"
+}

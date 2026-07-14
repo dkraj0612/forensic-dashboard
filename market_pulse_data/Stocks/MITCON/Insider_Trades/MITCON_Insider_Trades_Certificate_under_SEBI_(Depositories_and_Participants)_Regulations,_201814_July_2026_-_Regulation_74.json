@@ -1,0 +1,8 @@
+{
+    "ticker": "MITCON",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MITCON_14072026105907_CertificateunderRegulation74_5_.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SHAHALLOYS",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d02f9bf5-c970-4b68-b0b3-7581e076aa83.pdf",
+    "file_type": "pdf"
+}

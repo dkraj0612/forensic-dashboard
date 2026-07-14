@@ -1,0 +1,8 @@
+{
+    "ticker": "PCJEWELLER",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=34f2df5b-2158-4e6c-9c39-5fc8784fb3ef.pdf",
+    "file_type": "pdf"
+}

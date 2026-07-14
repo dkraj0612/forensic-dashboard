@@ -1,0 +1,8 @@
+{
+    "ticker": "QMSMEDI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/QMS_13072026131312_1_Letter_for_NSE_74_5__sd_signed.pdf",
+    "file_type": "pdf"
+}

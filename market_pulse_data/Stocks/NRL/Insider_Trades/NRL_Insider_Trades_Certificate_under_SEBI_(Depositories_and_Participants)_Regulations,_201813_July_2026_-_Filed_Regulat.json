@@ -1,0 +1,8 @@
+{
+    "ticker": "NRL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/NUPURRECYCLERS_13072026173922_Depository_Compliance_reg_74.pdf",
+    "file_type": "pdf"
+}
