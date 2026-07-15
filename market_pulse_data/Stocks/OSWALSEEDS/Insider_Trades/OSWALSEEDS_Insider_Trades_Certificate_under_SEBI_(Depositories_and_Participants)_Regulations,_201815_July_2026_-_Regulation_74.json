@@ -1,0 +1,8 @@
+{
+    "ticker": "OSWALSEEDS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/OSWALSEEDS_15072026152258_Regulation_74_5_June_2026.pdf",
+    "file_type": "pdf"
+}

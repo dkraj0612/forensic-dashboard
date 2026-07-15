@@ -1,0 +1,8 @@
+{
+    "ticker": "POCL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80b6ec0c-09e6-4eba-9244-9d9dba19de70.pdf",
+    "file_type": "pdf"
+}

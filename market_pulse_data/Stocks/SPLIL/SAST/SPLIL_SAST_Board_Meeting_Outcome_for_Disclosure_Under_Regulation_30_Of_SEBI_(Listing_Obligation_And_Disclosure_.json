@@ -1,0 +1,8 @@
+{
+    "ticker": "SPLIL",
+    "category": "SAST",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=09b0dcdb-bfdf-4cf4-b062-afc889a414d7.pdf",
+    "file_type": "pdf"
+}

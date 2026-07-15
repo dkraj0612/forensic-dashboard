@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOTHAI",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "Here's an executive summary of the document:  Indo Thai Securities Limited has forfeited Rs. 75,62,500, representing the initial 25% subscription amount, from 60,500 convertible warrants that lapsed due to non-exercise by holders within the 18-month period. This action prevents the issuance of 605,000 new equity shares, thereby avoiding dilution for existing shareholders, but also signifies a missed opportunity to raise additional capital. The non-conversion by these preferential allottees is a soft red flag, likely indicating the underlying market share price was below the effective conversion price of Rs. 50 per share.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a55c858f-6826-4972-a1e4-4be3de357c66.pdf",
+    "file_type": "pdf"
+}

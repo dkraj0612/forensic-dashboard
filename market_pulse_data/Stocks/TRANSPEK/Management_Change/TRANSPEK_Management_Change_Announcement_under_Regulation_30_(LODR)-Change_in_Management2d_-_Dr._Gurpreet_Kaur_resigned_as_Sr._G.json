@@ -1,0 +1,8 @@
+{
+    "ticker": "TRANSPEK",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5b7bf00d-4b3d-494d-a285-9ada8446b266.pdf",
+    "file_type": "pdf"
+}

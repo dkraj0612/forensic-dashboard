@@ -1,0 +1,8 @@
+{
+    "ticker": "SSWL",
+    "category": "Results",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce300e4c-eab0-430c-a611-24c31a87d5d1.pdf",
+    "file_type": "pdf"
+}

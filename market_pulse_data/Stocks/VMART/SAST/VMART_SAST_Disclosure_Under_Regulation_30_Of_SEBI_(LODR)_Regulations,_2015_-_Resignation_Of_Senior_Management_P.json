@@ -1,0 +1,8 @@
+{
+    "ticker": "VMART",
+    "category": "SAST",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c66beb33-41d5-425b-9e82-36e4cd2dd50d.pdf",
+    "file_type": "pdf"
+}

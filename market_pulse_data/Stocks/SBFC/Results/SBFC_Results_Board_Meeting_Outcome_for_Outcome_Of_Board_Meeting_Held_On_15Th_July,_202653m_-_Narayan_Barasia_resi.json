@@ -1,0 +1,8 @@
+{
+    "ticker": "SBFC",
+    "category": "Results",
+    "extraction_date": "2026-07-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b3eac90-11d0-4812-bb29-73277a78da3d.pdf",
+    "file_type": "pdf"
+}
