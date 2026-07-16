@@ -1,0 +1,8 @@
+{
+    "ticker": "SBIN",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c97ad88d-cd21-40ef-bae1-412938c75369.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "RVNL",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bca4a026-064a-4492-a995-8ede44801969.pdf",
+    "file_type": "pdf"
+}

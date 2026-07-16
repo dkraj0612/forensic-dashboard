@@ -1,0 +1,8 @@
+{
+    "ticker": "RPEL",
+    "category": "Results",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6626df4-371f-4d86-8810-0ab797896b11.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "VINEETLAB",
+    "category": "Results",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66899fa2-88ef-476b-932f-148f2f50a54d.pdf",
+    "file_type": "pdf"
+}

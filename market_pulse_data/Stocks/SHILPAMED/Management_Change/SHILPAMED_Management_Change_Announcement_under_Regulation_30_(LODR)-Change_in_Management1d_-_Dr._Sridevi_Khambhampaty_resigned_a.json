@@ -1,0 +1,8 @@
+{
+    "ticker": "SHILPAMED",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce18bdc4-5049-44d1-b23b-af8c03bb3552.pdf",
+    "file_type": "pdf"
+}

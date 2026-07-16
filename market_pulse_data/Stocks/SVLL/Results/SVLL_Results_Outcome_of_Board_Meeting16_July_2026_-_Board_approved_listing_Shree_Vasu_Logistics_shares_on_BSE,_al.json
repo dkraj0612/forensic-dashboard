@@ -1,0 +1,8 @@
+{
+    "ticker": "SVLL",
+    "category": "Results",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SVLL_16072026171453_Svll.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SERVOTECH",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SERVOTECH_16072026190145_NSEBO__2_.pdf",
+    "file_type": "pdf"
+}
