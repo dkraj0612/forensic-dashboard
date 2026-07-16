@@ -1,0 +1,60 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_79_Transcript.md",
+            "quarter": "Q3",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_41_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY23_Transcript.md",
+            "quarter": "Q3",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q2_FY25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_78_Transcript.md",
+            "quarter": "Q4",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_69_Transcript.md",
+            "quarter": "Q1",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q1_FY23_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q1_FY25_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY22_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_60_Transcript.md",
+            "quarter": "Q2",
+            "year": 2021
+        }
+    ],
+    "completed_files": []
+}
