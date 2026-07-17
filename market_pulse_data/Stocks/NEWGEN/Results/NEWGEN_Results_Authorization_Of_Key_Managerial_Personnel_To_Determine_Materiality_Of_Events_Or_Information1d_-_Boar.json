@@ -1,0 +1,8 @@
+{
+    "ticker": "NEWGEN",
+    "category": "Results",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7469e8a3-93ab-4637-b906-208296dfb5bb.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "RUBFILA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5eac7091-fcd9-4671-a719-1ea5cdcbd162.pdf",
+    "file_type": "pdf"
+}

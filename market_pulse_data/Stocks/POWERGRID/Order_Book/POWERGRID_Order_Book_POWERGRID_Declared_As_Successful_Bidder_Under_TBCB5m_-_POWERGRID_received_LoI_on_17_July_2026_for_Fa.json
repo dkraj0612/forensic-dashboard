@@ -1,0 +1,8 @@
+{
+    "ticker": "POWERGRID",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61c52d7e-a6e2-4998-a3db-0ffdabe71f2f.pdf",
+    "file_type": "pdf"
+}

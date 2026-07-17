@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "Here's an executive summary of the provided financial document:  Bank of India's Issuer, Basel-III Tier II, and Long-Term Infra Bonds have been affirmed/assigned an 'IND AA+/Stable' rating by India Ratings & Research, reflecting strong government support, systemic importance, and improving asset quality and capitalisation. A key concern, however, is the bank's deposit profile, which remains under pressure with lagging growth and increased reliance on bulk deposits, potentially impacting future funding costs and liquidity if not addressed. This weakness requires close monitoring despite the overall stable rating action.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=965ec23f-e7b3-43f6-b907-db5f0ca0ee6c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "VIVIMEDLAB",
+    "category": "Results",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5cf22371-89af-4ccc-8732-d415dd939732.pdf",
+    "file_type": "pdf"
+}

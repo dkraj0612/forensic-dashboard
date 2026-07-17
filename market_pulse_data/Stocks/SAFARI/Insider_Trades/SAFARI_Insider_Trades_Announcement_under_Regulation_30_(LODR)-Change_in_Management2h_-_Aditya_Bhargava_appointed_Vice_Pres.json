@@ -1,0 +1,8 @@
+{
+    "ticker": "SAFARI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c843a0d2-8a60-4299-9d06-5d75fc832d7f.pdf",
+    "file_type": "pdf"
+}

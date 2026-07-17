@@ -1,0 +1,8 @@
+{
+    "ticker": "TARACHAND",
+    "category": "Dividend",
+    "extraction_date": "2026-07-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/TARACHAND_16072026133015_Proceedings_14th_AGM.pdf",
+    "file_type": "pdf"
+}
