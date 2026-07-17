@@ -54,6 +54,106 @@
             "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_60_Transcript.md",
             "quarter": "Q2",
             "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_87_Transcript.md",
+            "quarter": "Q4",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY22_Transcript.md",
+            "quarter": "Q3",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q2_FY26_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_85_Transcript.md",
+            "quarter": "FY2015",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_58_Transcript.md",
+            "quarter": "Q1",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY26_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY24_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_50_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_84_Transcript.md",
+            "quarter": "Q4",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_81_Transcript.md",
+            "quarter": "Q1",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_83_Transcript.md",
+            "quarter": "Q4",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q2_FY24_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_49_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q1_FY24_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q1_FY26_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_53_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q2_FY23_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY24_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY25_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
         }
     ],
     "completed_files": []
