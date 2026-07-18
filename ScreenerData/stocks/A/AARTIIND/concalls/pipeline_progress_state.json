@@ -154,7 +154,37 @@
             "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY25_Transcript.md",
             "quarter": "Q4",
             "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY26_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_85_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_87_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_84_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_83_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_81_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_79_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_78_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_69_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_58_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_60_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q2_FY23_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY22_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY22_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q1_FY23_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_53_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q3_FY23_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Q4_FY23_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_50_Transcript.md",
+        "./ScreenerData/stocks/A/AARTIIND/concalls/AARTIIND_Fallback_Transcript_49_Transcript.md"
+    ]
 }
