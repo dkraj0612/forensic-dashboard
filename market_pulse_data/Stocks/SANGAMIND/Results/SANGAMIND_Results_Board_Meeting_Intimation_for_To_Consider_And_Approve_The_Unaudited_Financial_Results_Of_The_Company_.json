@@ -1,0 +1,8 @@
+{
+    "ticker": "SANGAMIND",
+    "category": "Results",
+    "extraction_date": "2026-07-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a59e588b-5977-41ad-b1b8-74533a1c2cd5.pdf",
+    "file_type": "pdf"
+}

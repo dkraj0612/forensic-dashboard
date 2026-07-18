@@ -1,0 +1,8 @@
+{
+    "ticker": "NAVKARCORP",
+    "category": "Results",
+    "extraction_date": "2026-07-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=390dbe07-6f7d-403e-82a0-b1bf388ce96b.pdf",
+    "file_type": "pdf"
+}

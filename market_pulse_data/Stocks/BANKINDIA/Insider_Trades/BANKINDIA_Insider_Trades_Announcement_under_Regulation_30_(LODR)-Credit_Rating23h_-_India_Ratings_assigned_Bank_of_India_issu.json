@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-18",
+    "ai_summary": "**Executive Summary: Bank of India Credit Rating Update**  India Ratings & Research has assigned an 'IND AA+/Stable' Issuer Rating to Bank of India and reaffirmed its 'IND AA+/Stable' ratings for Basel-III compliant Tier II and Long Term Infra Bonds, reflecting robust government support, improving capital adequacy, and significant asset quality enhancement. While these ratings signify the bank's improving financial health and sustained profitability (0.93% RoA in FY26), a key red flag is the persistent pressure on its deposit profile, marked by declining CASA and deposit growth lagging advances, which could necessitate greater reliance on more expensive wholesale funding. This deposit challenge will be a critical monitorable for the bank's future liquidity and cost of funds.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=965ec23f-e7b3-43f6-b907-db5f0ca0ee6c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "TATVA",
+    "category": "Concalls",
+    "extraction_date": "2026-07-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=af31e98d-06a8-4c84-9892-9817717dc9e4.pdf",
+    "file_type": "pdf"
+}

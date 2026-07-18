@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWINFRA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-18",
+    "ai_summary": "JSW Infrastructure Limited is notifying shareholders about mandatory Tax Deduction at Source (TDS) on the recommended Re. 0.90 per equity share dividend for FY2025-26. Shareholders must submit required tax declarations via a dedicated portal by July 18, 2026, to ensure correct TDS rates, with a key impact being that non-residents claiming Double Tax Avoidance Agreement (DTAA) benefits are subject to the company's \"satisfactory review\" for application. A significant red flag is the company's discretion over DTAA application, potentially leading to higher initial withholding, alongside the strict submission deadline and the shift to electronic-only dividend payments requiring updated bank details.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f50526ba-dff2-4282-b4b6-094048c8fb55.pdf",
+    "file_type": "pdf"
+}
