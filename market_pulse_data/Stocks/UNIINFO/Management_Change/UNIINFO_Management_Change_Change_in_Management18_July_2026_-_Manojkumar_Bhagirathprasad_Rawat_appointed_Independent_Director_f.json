@@ -1,0 +1,8 @@
+{
+    "ticker": "UNIINFO",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/UNIINFO_18072026191621_SE_Letter_Reg_30_ID.pdf",
+    "file_type": "pdf"
+}

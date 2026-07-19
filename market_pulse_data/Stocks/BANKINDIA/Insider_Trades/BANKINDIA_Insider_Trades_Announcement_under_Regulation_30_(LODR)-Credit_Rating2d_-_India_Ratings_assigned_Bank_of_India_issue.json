@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-19",
+    "ai_summary": "Bank of India has received an 'IND AA+/Stable' Issuer Rating and had its Basel III Tier 2 and Infrastructure Bonds reaffirmed at the same rating by India Ratings & Research, reflecting strong systemic importance, improved capital, and asset quality. While generally positive, a key area of concern is the bank's \"pressured deposit profile,\" indicated by lagging deposit growth, increasing reliance on bulk funds, and a rising loan-to-deposit ratio (82%), which could constrain future growth and liquidity. This deposit challenge is a material impact that warrants close monitoring despite the overall positive rating.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=965ec23f-e7b3-43f6-b907-db5f0ca0ee6c.pdf",
+    "file_type": "pdf"
+}

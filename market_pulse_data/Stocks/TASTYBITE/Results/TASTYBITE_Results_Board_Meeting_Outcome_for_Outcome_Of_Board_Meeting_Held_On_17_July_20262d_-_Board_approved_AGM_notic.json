@@ -1,0 +1,8 @@
+{
+    "ticker": "TASTYBITE",
+    "category": "Results",
+    "extraction_date": "2026-07-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b4420a2-60c2-4bf8-85e6-f9a81adc9db4.pdf",
+    "file_type": "pdf"
+}
