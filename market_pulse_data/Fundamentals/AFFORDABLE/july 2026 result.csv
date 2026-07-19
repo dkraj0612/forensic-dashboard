@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-AFFORDABLE,2026-07-18,"About
+AFFORDABLE,2026-07-19,"About
 Incorporated in 2009, Affordable Robotic
 & Automation Ltd  is a Turnkey Automation Solution provider for all kind of Industrial Automation
 [1]
@@ -36,7 +36,7 @@ Other Income +,-0.01,0.24,0.07,0.23,0.32,0.44,0.10,1.52,0.02,1.65
 Interest,0.74,1.43,1.06,2.08,1.00,2.10,1.21,1.09,1.03,1.56
 Depreciation,0.64,1.68,0.29,0.66,0.32,0.93,0.51,0.41,0.58,0.90
 Profit before tax,-11.58,27.04,-7.46,-12.29,-1.66,4.53,-3.69,4.76,1.43,7.37
-Tax %,0.09%,8.17%,0.00%,0.00%,0.00%,49.23%,0.00%,4.20%,8.39%,35.14%
+Tax %,0.09%,8.17%,-0.00%,-0.00%,-0.00%,49.23%,-0.00%,4.20%,8.39%,35.14%
 Net Profit +,-11.59,24.82,-7.46,-12.29,-1.66,2.30,-3.69,4.57,1.31,4.78
 EPS in Rs,-10.35,22.07,-6.63,-10.93,-1.48,2.05,-3.28,4.06,1.16,4.25
 Raw PDF,,,,,,,,,,","Unnamed: 0,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
@@ -51,7 +51,7 @@ Profit before tax,6,7,7,4,-4,2,4,9,-9,10
 Tax %,38%,27%,23%,21%,-2%,3%,42%,26%,24%,29%
 Net Profit +,4,5,5,3,-4,2,2,6,-12,7
 EPS in Rs,28.36,7.11,4.52,2.74,-3.15,2.12,1.93,5.72,-10.36,6.20
-Dividend Payout %,0%,0%,0%,0%,0%,0%,0%,0%,0%,0%","Unnamed: 0,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
+Dividend Payout %,-0%,-0%,-0%,-0%,-0%,-0%,-0%,-0%,-0%,-0%","Unnamed: 0,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
 Equity Capital,1,6,10,10,10,10,10,11,11,11
 Reserves,6,8,37,39,36,43,49,101,90,99
 Borrowings +,10,18,24,24,26,31,44,46,56,69
