@@ -1,66 +1,64 @@
 ## Executive Overview
 
-Aarti Industries Limited (AIL) presented an analyst presentation reiterating its strategic vision for a "Golden Decade" in the chemical business, driven by India's emergence as a global manufacturing hub and significant internal capacity expansions. The company emphasized its integrated operations, robust R&D capabilities, and a strong commitment to sustainability, evidenced by ZLD facilities and high environmental ratings.
-
-Key initiatives highlighted include the development of Zone 4 at Jhagadia, which is expected to introduce new chemistries and a substantial number of value-added products, contributing significantly to future growth and margins. AIL continues to leverage long-term contracts and strategic partnerships, such as the Nitric Acid supply deal with Deepak Fertilisers, to ensure raw material security and reduce capital expenditure. While macro demand concerns persisted from FY23, management anticipates a progressive improvement in FY24, projecting substantial EBITDA growth through capacity ramp-up and operational leverage.
+Aarti Industries Limited (AIL) presented at its 40th Annual General Meeting on August 4, 2023, reiterating its mission to become a "Global partner of choice" for specialty chemicals and intermediates. The company highlighted strong FY23 performance, characterized by robust revenue momentum driven by improved realisations and volume gains, and bolstered EBITDA through operating leverage from high plant utilization. AIL emphasized its continued focus on integrated operations, cost optimization, and strong R&D capabilities. The presentation also underscored the company's commitment to sustainability, its backward integration strategies, and its strategic positioning to capitalize on India's emergence as a global chemical manufacturing hub. The ongoing development of Zone 4 at Jhagadia, along with expansions in Nitro Toluene and Ethylation capacities, were highlighted as key growth drivers for future value-added product offerings.
 
 ## Key Financial Metrics
 
-*   **FY22 Chemical Business Revenue:** ₹5,036 Cr.
-*   **FY22 Chemical Business EBITDA:** ₹1,807 Cr. (as per the "Finance - EBITDA" slide for the 2018-2023 period).
-*   **FY22 Gross Block:** ₹6,510 Cr.
-*   **FY24 EBITDA (Guidance):** ~₹1,700 Cr. (approximately 25% CAGR over FY23).
-*   **FY25 EBITDA Growth (Guidance):** ~20-25% CAGR (from FY23 to FY25).
-*   **FY25 EBITDA to Gross Block (Projection):** 28%-30% (excluding non-contributing assets).
+*   **FY23 Chemical Business Revenue:** (Reported) ₹5,805 Cr. (without termination & shortfall)
+*   **FY23 Chemical Business EBITDA:** (Reported) ₹1,541 Cr. (Ex termination, shortfall & Q1 pharma)
+*   **FY23 Gross Block:** ₹6,252 Cr.
+*   **FY23 Revenue CAGR (5-Year, excl. termination & shortfall):** 18.5%
+*   **FY23 EBITDA CAGR (5-Year, excl. termination & shortfall):** 14.2%
+*   **Debt to Equity Ratio:** 0.58x
 
 ## Business Strategy & Drivers
 
-*   **"Golden Decade" for Chemicals:** AIL aims to capitalize on India's projected 10-12% share of the USD 1 trillion global chemical market by 2040, supported by government policies (PLI) and "China Plus One" strategies.
-*   **Zone 4 at Jhagadia:** A major expansion across ~95 acres, introducing new chemistries and over 40 value-added products. Expected CAPEX of ₹2,500-3,000 crore by FY26, targeting EBITDA margins of 25-30%.
+*   **"Global Partner of Choice" Mission:** To be a preferred supplier of specialty chemicals and intermediates, driven by stakeholder delight and a commitment to care, integrity, and excellence.
+*   **Zone 4 at Jhagadia:** Site development initiated on 100+ acre land with project works underway. This multi-purpose plant and Chloro Toluene & Downstream related projects aim to drive growth from FY25 onwards, primarily for Agrochemical & Pharma end-uses. Expected CAPEX of ₹2,500-3,000 crore for Chemicals. Targeting EBITDA margins of 25%-30%.
 *   **Capacity Expansions & New Chemistries:**
-    *   NCB Capacity increase from 75,000 TPA to 108,000 TPA.
-    *   Acid Capacity expansion from 550 TPD to 670 TPD.
-    *   Nitro Toluene (NT) scale-up by ~50%.
-    *   Ethylation scale-up by 3x.
-    *   Exploration of new value chains and chemistries (e.g., Photochlorination, oxidation), and development of products for bio/sunrise sectors (battery chemicals, electronics chemicals).
-*   **Long-Term Contracts & Partnerships:** Reiteration of existing 10-year, 20-year, and 10-year supply contracts for high-value specialty chemicals, including the customer-initiated cancellation of one contract for which AIL received shortfall and termination fees. Emphasis on short-to-medium term contracts for existing and new products.
-*   **Backward Integration & Supply Security:** The 20-year Nitric Acid supply contract with Deepak Fertilisers (DFPCL) at formula-driven international prices secures a key raw material, mitigating supply chain risks and eliminating the need for internal CAPEX in this area.
-*   **Sustainability & Innovation:** Continued focus on Zero Liquid Discharge (ZLD) at 11 sites, ~45% water recycling, 90% waste recycling, and high ESG ratings (EcoVadis Gold, CDP A-). Strong R&D capabilities with 40+ patents filed and a dedicated team for strategic chemistries.
-*   **Asset Revamp & Upgradation:** Strategic investments in existing assets (some 2+ decades old) for replacement, debottlenecking, technology upgrades, automation, and enhanced utilities to meet increased demand.
-*   **Diversification:** Well-diversified customer profile with low dependence on individual customers (<6% from largest customer) and a significant portion of revenue (85%+) from customers of over 5 years. Exports to 27% of countries.
+    *   Announced Expansion in Nitro Toluene and Ethylation Capacities.
+    *   Commercialized two Speciality Chemical Complex at Jhagadia.
+    *   Operationalized Phase 1 & 2 Units at Dahej SEZ for agrochemical intermediates.
+    *   NCB Capacity Expansion at Vapi and Specialty Chemicals Blocks at various locations.
+    *   Adding new chemistries and value-added products through an integrated value chain.
+    *   Chloro Toluene Base capacity: ~42,000 TPA.
+*   **Long-Term Contracts & Partnerships:** Commercialized facility for the 3rd Long Term contract at Jhagadia. Project related to the 2nd contract started seeing volume ramp up. Binding term-sheet with Deepak Fertilisers for a 20-year Nitric Acid offtake and supply arrangement valued at over ₹8,000 crore, ensuring raw material security.
+*   **Sustainability & Innovation:**
+    *   11 sites are Zero Liquid Discharge (ZLD).
+    *   Total water recycled ~45% of total water withdrawal in FY23.
+    *   Recycled 92% of waste.
+    *   Received Gold award in EcoVadis CSR assessment (top 3% globally).
+    *   Achieved B in Climate Change and A- rating in Supplier Engagement disclosure.
+    *   Strong R&D capabilities with 40+ products in R&D pipeline and 40+ patents filed. Expertise in diverse chemistries including Photochlorination, Nitrilation, AHF, Grignard, Diazotization, and Flow Chemistry.
+*   **India as a Chemical Manufacturing Hub:** Positioned to capitalize on the USD 1 trillion global chemical market by 2040, with expectations of 10-12% market share for India. Leveraging government policies like PLI.
+*   **Diversification:** Well-diversified across customer profile and product end-usage, with polymers and other industries including personal care ingredients, rubber chemicals, water, and resins. Exports to 60+ countries.
 
 ## Management Accountability & Consistency Audit
 
 ### Audit of Previous Promises & Guidance
 
-*   **EBITDA Guidance (FY23):** The previous summary indicated an implied FY23 EBITDA close to ₹1,100 crore. The current presentation for FY24 guides ~₹1,700 Cr, which is stated as "~25% CAGR over FY23." This calculation *implies* an FY23 EBITDA of approximately ₹1,360 Cr (₹1700 Cr / 1.25), suggesting a potential upward revision or clarification of the previous implied FY23 figure. Management's narrative around FY23-FY25 growth has remained consistent with a 25% CAGR.
-*   **Capex Program (FY23):** The previous summary noted "over Rs. 1,300 crore" for FY23 CAPEX. The current presentation details "Total Future spend-Existing Business" as ₹1000-1150 crore for NT & Ethylation Expansion/Debottlenecking and ₹350-400 crore for Asset Revamp & Expansion, totaling ₹1350-1550 crore. This aligns well with the previously stated CAPEX figures.
-*   **Long-Term Contract 1 Utilization:** The previous summary noted a slowdown and unlikely utilization. The current presentation explicitly states the "Customer opted to cancel the contract due to demand issues- AIL gets Shortfall and Termination Fees." This confirms the earlier narrative regarding the challenges with this specific contract.
-*   **Pharma Demerger:** The demerger is again explicitly mentioned as a past, completed event in the company's timeline (2018-2023), consistent with previous statements.
-*   **Nitric Acid Backward Integration:** The DFPCL deal for Nitric Acid supply is once again highlighted as eliminating the need for internal backward integration CAPEX and ensuring supply security, consistently aligning with previous guidance.
-*   **Value-Added Products:** The focus on increasing value-added products, particularly with Zone 4 and new product development, remains a consistent strategic pillar.
-*   **Input Cost Pass-Through:** The DFPCL contract for Nitric Acid is still noted to be at "formula-driven international prices," indicating a mechanism for managing input costs, consistent with previous mentions.
+*   **FY23 Revenue & EBITDA Performance:** The company reported robust revenue momentum and EBITDA performance in FY23, backed by strong demand and operating leverage. The reported FY23 revenue (₹5,805 Cr. without termination & shortfall) and EBITDA (₹1,541 Cr. ex termination, shortfall & Q1 pharma) align with the general narrative of strong operational execution. The previously stated "5-Year Revenue CAGR (excl. termination & Shortfall income)" of 18.5% and "5-Year EBITDA CAGR (excl. termination & Shortfall income)" of 14.2% indicate that actual performance is being tracked against these historical growth trends.
+*   **Capex Program (FY23):** The "CAPEX entailed INR 1300+ cr." mentioned as a key milestone for FY23 aligns with previous indications of significant investment in expansion and asset upgradation. Specific projects like the expansion of Nitro Toluene and Ethylation capacities, and commercialization of specialty chemical complexes, confirm the execution of the planned capex.
+*   **Long-Term Contract 2 & 3 Utilization:** The statement that "Project related to 2nd contract started seeing volume ramp up" and "Commercialised facility for the 3rd Long Term contract at Jhagadia" confirms progress and execution on these key contracts, consistent with management's focus on these.
+*   **Nitric Acid Backward Integration:** The binding term-sheet with Deepak Fertilisers for a 20-year Nitric Acid offtake and supply arrangement (valued at over ₹8,000 crore) reiterates the strategic decision to secure raw material supply through partnership rather than internal CAPEX, a consistent theme.
+*   **Pharma Demerger:** Explicitly mentioned as a completed event within the 2018-2023 timeline, confirming its status.
+*   **Value-Added Products & New Chemistries:** The emphasis on developing new chemistries and value-added products, particularly through the Zone 4 development and new product introductions in the R&D pipeline, remains a consistent strategic pillar.
 
 ### New Forward-Looking Promises & Guidance to Track
 
-*   **FY24 Outlook:**
-    *   Macro concerns on demand from FY23 are expected to progressively improve.
-    *   EBITDA is expected to reach ~₹1,700 Cr (approximately 25% CAGR over FY23).
-    *   Zone 4 at Jhagadia will start gradually going onstream.
-*   **FY25 Outlook:**
-    *   EBITDA is projected to grow by ~20-25% CAGR from FY23 to FY25, driven by Zone 4 ramping up, new strategic opportunities, and higher utilization for existing capacities (Zone 1, 2, 3).
-    *   EBITDA to Gross Block (excluding non-contributing assets) is projected at 28%-30%.
-    *   Existing capacities utilization to be around 75%-90%.
-*   **FY26 and Beyond:**
-    *   AIL is positioned to be a leading participant in the "Golden Decade" for chemicals in India.
-    *   Zone 4 CAPEX: ₹2,500-3,000 crore by FY26.
-    *   Potential to increase EBITDA further by 10-15% beyond FY25, linked with higher capacity utilizations and possible uptick in demand.
-*   **Project Commercialization & Ramp-up:**
-    *   NCB Capacity Expansion and Specialty Chemicals Blocks at various locations: To be completed from H2 FY23 - FY25.
-    *   NT & Ethylation Expansion: To be completed from H2 FY23 - FY25.
-    *   Zone 4: Commissioning starting FY25, with major volume growth from FY26 onwards.
-*   **Margins:**
-    *   Zone 4 projects are targeting EBITDA margins of ~25-30%.
-    *   Newer projects targeting 25-30% EBITDA margins are expected to begin impacting blended margins post-FY25.
+*   **FY24 & Beyond Outlook:**
+    *   Zone 4 at Jhagadia: Site development initiated, project works underway, and will drive growth from FY25 and beyond. Targeting EBITDA margins of 25-30% for Zone 4 projects. CAPEX of about Rs. 2,500-3,000 crore for Chemicals.
+    *   EBITDA margin for new projects targeting 25-30% expected to impact blended margins post-FY25.
+    *   Chloro Toluene Base capacity: ~42,000 TPA.
+    *   Newer range of Value Added products & Strategic Alliances.
+*   **Project Commercialization & Ramp-up Timelines:**
+    *   New Research & Technology Centre at Navi Mumbai: To be Completed by Sept 24.
+    *   NCB Capacity Expansion at Vapi: To be Completed by Sept 24.
+    *   Specialty Chemicals Blocks at various locations: To be Completed by Sept 24.
+    *   Expansion cum Asset Upgradation for Acid Unit at Vapi: To be Completed by Sept 24.
+    *   Asset Restoration, Sustainability initiatives etc.: To be Completed by Sept 24.
+*   **Capacity & Utilization:**
+    *   Planned product introductions, more than 50% products will be launched first time in India.
+    *   Existing capacities utilization to be around 75%-90% (This is a carry-forward projection from previous context, not explicitly stated in this transcript but implied by the overall strategy).
 *   **Capex:**
-    *   Total Future Spend for Existing Business: ₹1000-1150 crore for NT & Ethylation Expansion/Debottlenecking and ₹350-400 crore for Asset Revamp & Expansion.
+    *   Total Future Spend for Zone 4 Chemicals: ₹2,500-3,000 crore.
