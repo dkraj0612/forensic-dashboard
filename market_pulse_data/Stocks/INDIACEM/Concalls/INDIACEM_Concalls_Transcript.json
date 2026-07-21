@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIACEM",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6216b578-95b8-4605-af5b-6c4324d0d46b.pdf",
+    "file_type": "pdf"
+}

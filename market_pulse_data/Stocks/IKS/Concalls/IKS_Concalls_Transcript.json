@@ -1,0 +1,8 @@
+{
+    "ticker": "IKS",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2a9ef6a0-1c0b-4499-90d2-f6b66a2f0252.pdf",
+    "file_type": "pdf"
+}

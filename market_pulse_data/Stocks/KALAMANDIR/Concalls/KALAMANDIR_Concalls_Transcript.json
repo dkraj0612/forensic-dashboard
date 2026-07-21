@@ -1,0 +1,8 @@
+{
+    "ticker": "KALAMANDIR",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f7438df1-ba94-4ef1-a084-e334079bb92c.pdf",
+    "file_type": "pdf"
+}

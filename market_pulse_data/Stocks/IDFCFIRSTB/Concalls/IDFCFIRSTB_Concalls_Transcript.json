@@ -1,0 +1,8 @@
+{
+    "ticker": "IDFCFIRSTB",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a932927b-e000-4c15-b6ef-5dd13f82750d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "INNOVANA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc42cfce-7712-4002-a0ca-dc1c6bdfa99b.pdf",
+    "file_type": "pdf"
+}

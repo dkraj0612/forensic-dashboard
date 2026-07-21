@@ -1,0 +1,8 @@
+{
+    "ticker": "ECLERX",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50a68d19-d334-4310-832e-08a1da50c3dd.pdf",
+    "file_type": "pdf"
+}

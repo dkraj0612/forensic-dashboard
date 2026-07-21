@@ -1,0 +1,8 @@
+{
+    "ticker": "JISLDVREQS",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d0042ae3-56ea-4348-9f42-15b7d1d21e16.pdf",
+    "file_type": "pdf"
+}

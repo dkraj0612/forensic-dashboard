@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIAMART",
+    "category": "Results",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a69df4f-a326-445b-958e-e9f61f1a1414.pdf",
+    "file_type": "pdf"
+}

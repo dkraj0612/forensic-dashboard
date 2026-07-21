@@ -1,0 +1,8 @@
+{
+    "ticker": "KAYA",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.kaya.in/media/wysiwyg/investor/pdf/earning_calls_transcript-Q1FY24.pdf",
+    "file_type": "pdf"
+}

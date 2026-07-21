@@ -1,0 +1,8 @@
+{
+    "ticker": "HYUNDAI",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.hyundai.com/content/dam/hyundai/in/en/data/investor-relations/quaterly-financials/Q1-transcript.pdf",
+    "file_type": "pdf"
+}

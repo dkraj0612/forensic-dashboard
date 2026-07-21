@@ -1,0 +1,8 @@
+{
+    "ticker": "GROWW",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0e39237b-00a4-4c38-85d4-4417dba6abdb.pdf",
+    "file_type": "pdf"
+}

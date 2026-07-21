@@ -1,0 +1,8 @@
+{
+    "ticker": "ISGEC",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=afa9ae81-0dd4-4e91-b088-6a25060cdb42.pdf",
+    "file_type": "pdf"
+}

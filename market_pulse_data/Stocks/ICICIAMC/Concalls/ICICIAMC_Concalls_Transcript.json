@@ -1,0 +1,8 @@
+{
+    "ticker": "ICICIAMC",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=315ae9c4-8f45-456c-a289-89e9fac12d73.pdf",
+    "file_type": "pdf"
+}

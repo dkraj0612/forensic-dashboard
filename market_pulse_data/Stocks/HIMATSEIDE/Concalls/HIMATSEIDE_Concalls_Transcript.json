@@ -1,0 +1,8 @@
+{
+    "ticker": "HIMATSEIDE",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3d76d0d-3fb2-48c9-80b1-1be4c0fb8a9a.pdf",
+    "file_type": "pdf"
+}

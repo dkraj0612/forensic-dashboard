@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOFARM",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=24970037-ad57-4144-bd8f-4db0208e48c7.pdf",
+    "file_type": "pdf"
+}

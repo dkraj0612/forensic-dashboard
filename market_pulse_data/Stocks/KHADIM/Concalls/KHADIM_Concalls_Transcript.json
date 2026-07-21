@@ -1,0 +1,8 @@
+{
+    "ticker": "KHADIM",
+    "category": "Concalls",
+    "extraction_date": "2026-07-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=18a8665b-3362-45d6-ae8a-c05004a875ad.pdf",
+    "file_type": "pdf"
+}
