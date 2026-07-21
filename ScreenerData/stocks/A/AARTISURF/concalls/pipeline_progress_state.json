@@ -1,0 +1,18 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTISURF/concalls/AARTISURF_Fallback_Transcript_23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AARTISURF/concalls/AARTISURF_Fallback_Transcript_22_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/AARTISURF/concalls/AARTISURF_Fallback_Transcript_23_Transcript.md",
+        "./ScreenerData/stocks/A/AARTISURF/concalls/AARTISURF_Fallback_Transcript_22_Transcript.md"
+    ]
+}
