@@ -1,0 +1,8 @@
+{
+    "ticker": "REPL",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/REPL_21072026144824_Work_Order_Intimation_Final.pdf",
+    "file_type": "pdf"
+}

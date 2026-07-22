@@ -1,0 +1,8 @@
+{
+    "ticker": "UCOBANK",
+    "category": "Results",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66324306-5db9-42ae-95db-3f34c3fee524.pdf",
+    "file_type": "pdf"
+}

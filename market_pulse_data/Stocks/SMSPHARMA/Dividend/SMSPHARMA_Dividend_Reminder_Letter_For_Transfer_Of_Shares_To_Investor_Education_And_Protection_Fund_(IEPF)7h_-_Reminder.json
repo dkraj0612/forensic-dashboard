@@ -1,0 +1,8 @@
+{
+    "ticker": "SMSPHARMA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2f3de538-b076-4350-818e-01e563732a30.pdf",
+    "file_type": "pdf"
+}

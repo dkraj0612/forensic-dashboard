@@ -1,0 +1,8 @@
+{
+    "ticker": "MAHLOG",
+    "category": "Concalls",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c124f23-c212-488c-8368-17d6d3c867d8.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SIYSIL",
+    "category": "Bonus",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e14f929c-8c93-44c1-b5fd-c89159cfea0f.pdf",
+    "file_type": "pdf"
+}

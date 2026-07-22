@@ -1,0 +1,8 @@
+{
+    "ticker": "SWANDEF",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-22",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8893fbb4-5828-45ed-a6a3-7483f74a9ebc.pdf",
+    "file_type": "pdf"
+}
