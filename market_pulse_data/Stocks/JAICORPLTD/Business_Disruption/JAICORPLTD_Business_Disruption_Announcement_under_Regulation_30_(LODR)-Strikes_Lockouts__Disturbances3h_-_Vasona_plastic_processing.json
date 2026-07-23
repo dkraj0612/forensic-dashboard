@@ -1,0 +1,8 @@
+{
+    "ticker": "JAICORPLTD",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ee92e08-f1d0-4f2a-bcbe-08cb84a6dbb0.pdf",
+    "file_type": "pdf"
+}

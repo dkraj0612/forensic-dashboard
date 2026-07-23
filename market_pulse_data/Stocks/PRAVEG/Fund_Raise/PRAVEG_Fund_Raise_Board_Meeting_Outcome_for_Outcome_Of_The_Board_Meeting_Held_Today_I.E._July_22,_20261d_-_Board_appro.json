@@ -1,0 +1,8 @@
+{
+    "ticker": "PRAVEG",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccff2f69-2692-40d2-9ecc-0ad80da95663.pdf",
+    "file_type": "pdf"
+}

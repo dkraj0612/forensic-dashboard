@@ -1,0 +1,8 @@
+{
+    "ticker": "EMAMIPAP",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "**Executive Summary: Emami Paper Mills Corrigendum**  Emami Paper Mills issued a corrigendum correcting an inadvertent clerical error regarding the reported commencement time of its Board Meeting from 12:30 p.m. to 12:00 noon. This minor adjustment has no material impact on the Board's decisions or the company's financial position, as all other contents of the original submission remain unchanged and the correct time was already noted in the XBRL filing. Consequently, this correction does not raise any red flags concerning governance or reporting integrity.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9da70819-9ee6-473c-9740-a112132bd869.pdf",
+    "file_type": "pdf"
+}

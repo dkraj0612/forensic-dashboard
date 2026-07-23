@@ -1,0 +1,8 @@
+{
+    "ticker": "UYFINCORP",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a98b5112-a70c-47ab-b2a8-fb064c999f54.pdf",
+    "file_type": "pdf"
+}

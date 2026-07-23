@@ -1,0 +1,8 @@
+{
+    "ticker": "RPPL",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/RPPL_23072026175008_Reg30RPPLOrder.pdf",
+    "file_type": "pdf"
+}

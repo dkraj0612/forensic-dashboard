@@ -1,0 +1,8 @@
+{
+    "ticker": "MALUPAPER",
+    "category": "Results",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3d9a99b5-8b45-40ae-a7f8-ce482f7d31b0.pdf",
+    "file_type": "pdf"
+}

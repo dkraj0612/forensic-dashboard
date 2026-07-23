@@ -1,0 +1,8 @@
+{
+    "ticker": "IBULLSLTD",
+    "category": "Results",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0da9c84c-efa8-4342-91a6-a90d6775e236.pdf",
+    "file_type": "pdf"
+}

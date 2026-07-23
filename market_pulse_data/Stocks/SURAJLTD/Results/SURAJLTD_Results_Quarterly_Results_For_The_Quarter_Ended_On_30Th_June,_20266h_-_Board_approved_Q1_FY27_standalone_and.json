@@ -1,0 +1,8 @@
+{
+    "ticker": "SURAJLTD",
+    "category": "Results",
+    "extraction_date": "2026-07-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d4d96bf-35c6-4926-951c-f5afc2c4b163.pdf",
+    "file_type": "pdf"
+}
