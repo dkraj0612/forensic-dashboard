@@ -1,0 +1,8 @@
+{
+    "ticker": "SURANASOL",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e2dcfb1f-30f2-47f2-a9bf-53f2e9f5bdd1.pdf",
+    "file_type": "pdf"
+}

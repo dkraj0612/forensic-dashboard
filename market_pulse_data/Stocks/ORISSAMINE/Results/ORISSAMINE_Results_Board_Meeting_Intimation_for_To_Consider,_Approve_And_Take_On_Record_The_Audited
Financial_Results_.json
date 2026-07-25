@@ -1,0 +1,8 @@
+{
+    "ticker": "ORISSAMINE",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a24e2b54-6bcc-4958-a3aa-318451a36133.pdf",
+    "file_type": "pdf"
+}

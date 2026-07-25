@@ -1,0 +1,8 @@
+{
+    "ticker": "RATNAVEER",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=97ccc6e3-5247-441f-a94c-488c7889ac5e.pdf",
+    "file_type": "pdf"
+}

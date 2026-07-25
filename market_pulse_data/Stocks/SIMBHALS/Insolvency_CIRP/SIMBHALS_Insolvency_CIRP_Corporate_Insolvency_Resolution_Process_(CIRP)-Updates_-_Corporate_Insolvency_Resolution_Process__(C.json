@@ -1,0 +1,8 @@
+{
+    "ticker": "SIMBHALS",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ed4be44-d329-499d-bb57-3cbd0bcd8ed8.pdf",
+    "file_type": "pdf"
+}

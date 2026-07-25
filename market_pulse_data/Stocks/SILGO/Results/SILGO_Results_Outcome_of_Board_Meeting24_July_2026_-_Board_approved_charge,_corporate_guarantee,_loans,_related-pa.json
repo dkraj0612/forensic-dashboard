@@ -1,0 +1,8 @@
+{
+    "ticker": "SILGO",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SILGO_24072026130707_Outcome_BM_2407.pdf",
+    "file_type": "pdf"
+}

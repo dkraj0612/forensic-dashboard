@@ -1,0 +1,8 @@
+{
+    "ticker": "RAJRATAN",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=38a18701-e417-4baf-a20f-f31ecd922993.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MOSCHIP",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cbedbf82-94a1-42bb-98f1-ae6ff7b1f472.pdf",
+    "file_type": "pdf"
+}

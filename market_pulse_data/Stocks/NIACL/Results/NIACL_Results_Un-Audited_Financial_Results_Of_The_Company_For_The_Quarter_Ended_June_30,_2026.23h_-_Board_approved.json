@@ -1,0 +1,8 @@
+{
+    "ticker": "NIACL",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7aeafd12-2375-40bf-88ec-7cf781bc7776.pdf",
+    "file_type": "pdf"
+}

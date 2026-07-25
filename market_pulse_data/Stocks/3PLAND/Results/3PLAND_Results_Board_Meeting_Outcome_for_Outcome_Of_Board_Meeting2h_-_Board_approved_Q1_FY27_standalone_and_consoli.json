@@ -1,0 +1,8 @@
+{
+    "ticker": "3PLAND",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "**Executive Summary:**  3P Land Holdings Limited reported improved profitability for the quarter ended June 30, 2026, with Basic EPS rising to \u20b90.26 from \u20b90.21 in the prior year quarter. However, the financial statements present significant data quality issues, including extremely low reported total income (\u20b910 lakhs) that conflicts with detailed segment revenue figures (\u20b961 lakhs), and a substantial arithmetic discrepancy in reported consolidated total assets. Critically, the consolidated financial results are incomplete as they explicitly exclude data from an associate firm, with management's unilateral estimation of no material impact raising a key red flag regarding the completeness and reliability of the consolidated financial overview.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a24eefe-fff7-4f2f-be0b-1f089ad77478.pdf",
+    "file_type": "pdf"
+}

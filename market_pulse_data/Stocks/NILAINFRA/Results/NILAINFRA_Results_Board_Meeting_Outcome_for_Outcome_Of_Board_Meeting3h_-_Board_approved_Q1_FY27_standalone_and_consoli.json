@@ -1,0 +1,8 @@
+{
+    "ticker": "NILAINFRA",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2f314105-93bf-4d31-ae11-b7b5bad5d151.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SHREDIGCEM",
+    "category": "Results",
+    "extraction_date": "2026-07-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a901966-9c42-47ea-923f-3d8d42cd0561.pdf",
+    "file_type": "pdf"
+}
