@@ -1,0 +1,30 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AAVAS/concalls/AAVAS_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q3",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AAVAS/concalls/AAVAS_Fallback_Transcript_57_Transcript.md",
+            "quarter": "Q2",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AAVAS/concalls/AAVAS_Fallback_Transcript_44_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AAVAS/concalls/AAVAS_Fallback_Transcript_30_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AAVAS/concalls/AAVAS_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        }
+    ],
+    "completed_files": []
+}
