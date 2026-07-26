@@ -1,0 +1,8 @@
+{
+    "ticker": "SAKAR",
+    "category": "Results",
+    "extraction_date": "2026-07-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SAKAR_24072026201654_Intimation.pdf",
+    "file_type": "pdf"
+}
