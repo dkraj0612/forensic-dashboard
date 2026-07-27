@@ -1,0 +1,8 @@
+{
+    "ticker": "BSE",
+    "category": "Results",
+    "extraction_date": "2026-07-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/BSE1_27072026113751_NSEIntimation.pdf",
+    "file_type": "pdf"
+}

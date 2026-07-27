@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEANMAX",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=109b0cdf-a0ab-4544-8fe2-4f6ae1264d76.pdf",
+    "file_type": "pdf"
+}
