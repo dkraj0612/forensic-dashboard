@@ -1,0 +1,8 @@
+{
+    "ticker": "ITI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b2abda24-d1bd-4338-8dc3-46193c06e654.pdf",
+    "file_type": "pdf"
+}

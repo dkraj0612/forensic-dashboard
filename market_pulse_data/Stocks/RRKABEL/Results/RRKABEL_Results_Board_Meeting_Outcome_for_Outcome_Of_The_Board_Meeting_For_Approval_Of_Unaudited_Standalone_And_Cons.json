@@ -1,0 +1,8 @@
+{
+    "ticker": "RRKABEL",
+    "category": "Results",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41784f47-f07d-4900-8e21-ca4fd6b50254.pdf",
+    "file_type": "pdf"
+}

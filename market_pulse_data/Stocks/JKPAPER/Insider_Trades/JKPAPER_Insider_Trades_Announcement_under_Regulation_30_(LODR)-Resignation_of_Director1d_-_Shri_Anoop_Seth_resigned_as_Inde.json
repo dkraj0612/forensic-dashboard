@@ -1,0 +1,8 @@
+{
+    "ticker": "JKPAPER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7558325-9354-4d92-88df-af251952f365.pdf",
+    "file_type": "pdf"
+}

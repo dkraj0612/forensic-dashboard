@@ -1,0 +1,8 @@
+{
+    "ticker": "NDGL",
+    "category": "Dividend",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/NDGL_28072026161138_Notice_NDGL.pdf",
+    "file_type": "pdf"
+}

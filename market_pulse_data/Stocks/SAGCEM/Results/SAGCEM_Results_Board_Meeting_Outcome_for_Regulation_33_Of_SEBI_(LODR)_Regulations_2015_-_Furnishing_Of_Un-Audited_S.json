@@ -1,0 +1,8 @@
+{
+    "ticker": "SAGCEM",
+    "category": "Results",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eaf6fc2a-8758-4c80-8473-9cdd4b75254d.pdf",
+    "file_type": "pdf"
+}

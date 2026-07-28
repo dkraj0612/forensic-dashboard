@@ -1,0 +1,8 @@
+{
+    "ticker": "SHIVALIK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b58159e-d113-43e0-9836-219c8f8e2156.pdf",
+    "file_type": "pdf"
+}

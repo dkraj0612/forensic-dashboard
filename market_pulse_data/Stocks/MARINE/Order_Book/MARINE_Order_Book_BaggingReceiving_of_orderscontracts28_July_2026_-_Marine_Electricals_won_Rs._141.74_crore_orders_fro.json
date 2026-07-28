@@ -1,0 +1,8 @@
+{
+    "ticker": "MARINE",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MARINE_28072026103123_Signed_Regulation_30_PDG.pdf",
+    "file_type": "pdf"
+}

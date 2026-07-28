@@ -1,0 +1,8 @@
+{
+    "ticker": "VSTIND",
+    "category": "Results",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=22f19d43-16d5-422c-bbd7-73c75c4c455c.pdf",
+    "file_type": "pdf"
+}

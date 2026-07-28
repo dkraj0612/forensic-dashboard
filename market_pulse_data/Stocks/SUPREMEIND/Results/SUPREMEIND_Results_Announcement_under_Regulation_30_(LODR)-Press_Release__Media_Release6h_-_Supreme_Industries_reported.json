@@ -1,0 +1,8 @@
+{
+    "ticker": "SUPREMEIND",
+    "category": "Results",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d1cdadce-1aa0-47ea-9c2e-7fe82e9c42bd.pdf",
+    "file_type": "pdf"
+}

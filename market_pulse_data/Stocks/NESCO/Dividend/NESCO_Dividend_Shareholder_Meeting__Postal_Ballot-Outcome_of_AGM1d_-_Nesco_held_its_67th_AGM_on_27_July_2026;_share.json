@@ -1,0 +1,8 @@
+{
+    "ticker": "NESCO",
+    "category": "Dividend",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5c98cf64-52a5-4e51-a729-f3ffd3d3519b.pdf",
+    "file_type": "pdf"
+}

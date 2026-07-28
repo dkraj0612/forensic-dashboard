@@ -1,0 +1,8 @@
+{
+    "ticker": "IFBAGRO",
+    "category": "Results",
+    "extraction_date": "2026-07-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2acf98f1-ecba-48f4-8fb2-8a9d41269b12.pdf",
+    "file_type": "pdf"
+}
