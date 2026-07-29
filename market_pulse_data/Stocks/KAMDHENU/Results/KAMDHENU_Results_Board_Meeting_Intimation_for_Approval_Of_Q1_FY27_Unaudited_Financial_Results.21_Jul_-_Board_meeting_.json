@@ -1,0 +1,8 @@
+{
+    "ticker": "KAMDHENU",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52b1c759-6988-408b-9787-acb5f768800d.pdf",
+    "file_type": "pdf"
+}

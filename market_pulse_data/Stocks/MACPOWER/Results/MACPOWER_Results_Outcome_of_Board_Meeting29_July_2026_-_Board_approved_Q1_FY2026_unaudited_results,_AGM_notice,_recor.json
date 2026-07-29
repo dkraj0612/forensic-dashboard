@@ -1,0 +1,8 @@
+{
+    "ticker": "MACPOWER",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MACPOWER_29072026131302_Outcome.pdf",
+    "file_type": "pdf"
+}

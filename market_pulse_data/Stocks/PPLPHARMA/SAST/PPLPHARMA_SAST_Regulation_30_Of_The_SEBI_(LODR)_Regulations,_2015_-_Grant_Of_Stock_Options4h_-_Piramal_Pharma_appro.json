@@ -1,0 +1,8 @@
+{
+    "ticker": "PPLPHARMA",
+    "category": "SAST",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=137c25d6-7423-4067-b2e6-91a749ff3853.pdf",
+    "file_type": "pdf"
+}

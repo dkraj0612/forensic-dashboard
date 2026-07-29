@@ -1,0 +1,8 @@
+{
+    "ticker": "SHANTIGEAR",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e7a4bab5-c16e-4a0c-99e7-f07e0c096c93.pdf",
+    "file_type": "pdf"
+}

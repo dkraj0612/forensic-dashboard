@@ -1,0 +1,8 @@
+{
+    "ticker": "THANGAMAYL",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dcb66286-00b3-4d85-ac3d-a78fd0f2a12e.pdf",
+    "file_type": "pdf"
+}

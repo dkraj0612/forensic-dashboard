@@ -1,0 +1,8 @@
+{
+    "ticker": "SUZLON",
+    "category": "SAST",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e7713b5-ad63-4bc8-9cca-317125fa2dc2.pdf",
+    "file_type": "pdf"
+}

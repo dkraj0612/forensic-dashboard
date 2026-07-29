@@ -1,0 +1,8 @@
+{
+    "ticker": "HEIDELBERG",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b48c55e9-c358-4da3-b9aa-0a0cf2de48c6.pdf",
+    "file_type": "pdf"
+}

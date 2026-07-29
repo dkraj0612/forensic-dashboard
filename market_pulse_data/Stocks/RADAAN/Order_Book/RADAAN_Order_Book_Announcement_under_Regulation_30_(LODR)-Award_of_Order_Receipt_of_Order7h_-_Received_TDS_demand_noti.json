@@ -1,0 +1,8 @@
+{
+    "ticker": "RADAAN",
+    "category": "Order_Book",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f429dd60-ff3d-4e9d-9325-f11844f685be.pdf",
+    "file_type": "pdf"
+}

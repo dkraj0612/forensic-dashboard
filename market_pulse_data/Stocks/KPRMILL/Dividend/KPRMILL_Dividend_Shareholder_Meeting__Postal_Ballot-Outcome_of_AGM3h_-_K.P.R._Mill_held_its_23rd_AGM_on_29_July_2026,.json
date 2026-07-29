@@ -1,0 +1,8 @@
+{
+    "ticker": "KPRMILL",
+    "category": "Dividend",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01f3dffb-581b-4daa-8471-c0bf6edb2794.pdf",
+    "file_type": "pdf"
+}

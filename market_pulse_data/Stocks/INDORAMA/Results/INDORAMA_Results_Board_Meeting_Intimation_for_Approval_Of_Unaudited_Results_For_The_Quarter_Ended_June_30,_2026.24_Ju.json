@@ -1,0 +1,8 @@
+{
+    "ticker": "INDORAMA",
+    "category": "Results",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1fc05b26-ee1d-4826-bf7f-2f70687adefa.pdf",
+    "file_type": "pdf"
+}

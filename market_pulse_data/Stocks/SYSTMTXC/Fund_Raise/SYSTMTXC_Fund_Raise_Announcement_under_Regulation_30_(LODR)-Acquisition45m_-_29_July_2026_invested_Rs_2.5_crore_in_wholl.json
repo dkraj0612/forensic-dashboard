@@ -1,0 +1,8 @@
+{
+    "ticker": "SYSTMTXC",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-07-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11a15fd9-7c00-4bbd-a1cd-777a140a51a8.pdf",
+    "file_type": "pdf"
+}
