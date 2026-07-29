@@ -1,0 +1,70 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_53_Transcript.md",
+            "quarter": "Q1",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_63_Transcript.md",
+            "quarter": "Q1",
+            "year": 2016
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_65_Transcript.md",
+            "quarter": "Q3",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_51_Transcript.md",
+            "quarter": "Q2",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_48_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_41_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_42_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABB/concalls/ABB_Fallback_Transcript_7_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        }
+    ],
+    "completed_files": []
+}
