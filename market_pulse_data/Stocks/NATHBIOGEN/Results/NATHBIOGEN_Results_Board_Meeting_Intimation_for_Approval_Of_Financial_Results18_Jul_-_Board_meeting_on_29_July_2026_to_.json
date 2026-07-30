@@ -1,0 +1,8 @@
+{
+    "ticker": "NATHBIOGEN",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1477acc0-c6a6-47bc-b540-197001e2a82c.pdf",
+    "file_type": "pdf"
+}

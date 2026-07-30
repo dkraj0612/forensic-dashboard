@@ -1,0 +1,8 @@
+{
+    "ticker": "LAGNAM",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/LAGNAM_30072026144437_OutcomeFR300726.pdf",
+    "file_type": "pdf"
+}

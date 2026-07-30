@@ -1,0 +1,8 @@
+{
+    "ticker": "SRF",
+    "category": "Dividend",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1118184e-80b4-4ecf-8e9d-76feef211773.pdf",
+    "file_type": "pdf"
+}

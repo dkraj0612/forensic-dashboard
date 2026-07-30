@@ -1,0 +1,8 @@
+{
+    "ticker": "MPSLTD",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9d63ae56-7dea-4c4e-b8c4-2193b8f8f960.pdf",
+    "file_type": "pdf"
+}

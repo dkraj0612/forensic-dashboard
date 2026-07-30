@@ -1,0 +1,8 @@
+{
+    "ticker": "MACPOWER",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MACPOWER_30072026170746_Q1FY27_Conference_Call_dated_30_07_2026_Audio_Video_Recording_Link.pdf",
+    "file_type": "pdf"
+}

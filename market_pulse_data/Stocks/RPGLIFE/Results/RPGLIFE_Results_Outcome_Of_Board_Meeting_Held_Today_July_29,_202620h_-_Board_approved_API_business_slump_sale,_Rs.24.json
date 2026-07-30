@@ -1,0 +1,8 @@
+{
+    "ticker": "RPGLIFE",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=390c960d-f96e-46dd-8c17-acbd7ad7ab96.pdf",
+    "file_type": "pdf"
+}

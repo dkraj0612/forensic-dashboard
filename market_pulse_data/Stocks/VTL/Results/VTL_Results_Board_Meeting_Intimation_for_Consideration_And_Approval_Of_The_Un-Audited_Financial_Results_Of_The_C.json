@@ -1,0 +1,8 @@
+{
+    "ticker": "VTL",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3091ca86-e887-49dd-8070-9caf2ce94d52.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "UNIDT",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/United%20-Drilling-%20Tools-30Jul2020.pdf",
+    "file_type": "pdf"
+}

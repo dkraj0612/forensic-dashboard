@@ -1,0 +1,8 @@
+{
+    "ticker": "SKMEGGPROD",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6a2016ea-d6d2-4f18-9ab7-66b69a1e32a7.pdf",
+    "file_type": "pdf"
+}

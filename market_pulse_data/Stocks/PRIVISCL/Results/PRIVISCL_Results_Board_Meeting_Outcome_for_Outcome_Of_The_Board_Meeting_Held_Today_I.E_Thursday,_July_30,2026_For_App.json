@@ -1,0 +1,8 @@
+{
+    "ticker": "PRIVISCL",
+    "category": "Results",
+    "extraction_date": "2026-07-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a07433bb-5d06-482d-855e-00a3c106e1eb.pdf",
+    "file_type": "pdf"
+}
