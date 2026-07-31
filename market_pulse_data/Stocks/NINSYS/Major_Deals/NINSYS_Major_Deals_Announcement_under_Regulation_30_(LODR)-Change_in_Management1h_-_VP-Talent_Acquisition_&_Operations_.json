@@ -1,0 +1,8 @@
+{
+    "ticker": "NINSYS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3abd533-1880-4fcd-b5e4-cd4a9c9eeafc.pdf",
+    "file_type": "pdf"
+}

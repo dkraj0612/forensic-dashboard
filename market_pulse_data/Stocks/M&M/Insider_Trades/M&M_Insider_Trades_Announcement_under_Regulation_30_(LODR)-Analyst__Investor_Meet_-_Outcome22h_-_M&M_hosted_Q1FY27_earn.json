@@ -1,0 +1,8 @@
+{
+    "ticker": "M&M",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c009d6d1-22c2-4d09-894c-5e5852e43d5e.pdf",
+    "file_type": "pdf"
+}

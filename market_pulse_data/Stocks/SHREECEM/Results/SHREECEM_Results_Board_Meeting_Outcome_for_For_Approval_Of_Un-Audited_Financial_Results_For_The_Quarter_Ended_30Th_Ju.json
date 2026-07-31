@@ -1,0 +1,8 @@
+{
+    "ticker": "SHREECEM",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c2b5a69e-5b2a-4320-bfe7-bace0145966d.pdf",
+    "file_type": "pdf"
+}

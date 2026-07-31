@@ -1,0 +1,8 @@
+{
+    "ticker": "OPTIEMUS",
+    "category": "New_Projects",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc7af842-de6c-4ef6-b7d3-ccaa3bb3110a.pdf",
+    "file_type": "pdf"
+}

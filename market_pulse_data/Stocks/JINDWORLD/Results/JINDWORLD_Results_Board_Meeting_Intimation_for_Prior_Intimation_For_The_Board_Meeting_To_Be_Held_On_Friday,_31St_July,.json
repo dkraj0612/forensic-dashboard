@@ -1,0 +1,8 @@
+{
+    "ticker": "JINDWORLD",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c32040e-a683-47b3-b176-dfbc6feca411.pdf",
+    "file_type": "pdf"
+}

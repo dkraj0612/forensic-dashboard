@@ -1,0 +1,8 @@
+{
+    "ticker": "PUNJABCHEM",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29aad7cb-8e31-43a3-84db-32c43f230d14.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "NTPCGREEN",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f79392ba-dc1b-4245-9fb1-b08f71dce1da.pdf",
+    "file_type": "pdf"
+}

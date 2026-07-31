@@ -1,0 +1,8 @@
+{
+    "ticker": "ROLEXRINGS",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b52f1f8-a90d-4271-9578-2da87672a159.pdf",
+    "file_type": "pdf"
+}

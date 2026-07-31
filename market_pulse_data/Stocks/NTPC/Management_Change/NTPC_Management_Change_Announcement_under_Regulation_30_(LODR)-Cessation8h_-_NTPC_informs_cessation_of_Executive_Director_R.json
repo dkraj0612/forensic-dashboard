@@ -1,0 +1,8 @@
+{
+    "ticker": "NTPC",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=333494e6-aa96-4cf7-97bf-a7c4b4b65a4a.pdf",
+    "file_type": "pdf"
+}

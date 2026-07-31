@@ -1,0 +1,8 @@
+{
+    "ticker": "SARVESHWAR",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=643000a3-fd48-4681-befb-7ae72fe09b54.pdf",
+    "file_type": "pdf"
+}

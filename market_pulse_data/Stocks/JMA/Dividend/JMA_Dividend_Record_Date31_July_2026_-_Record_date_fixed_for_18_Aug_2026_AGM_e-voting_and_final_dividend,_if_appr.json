@@ -1,0 +1,8 @@
+{
+    "ticker": "JMA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/JMA_31072026141840_JMAIntimationOfRecordDate.pdf",
+    "file_type": "pdf"
+}

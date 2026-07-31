@@ -1,0 +1,8 @@
+{
+    "ticker": "WELCORP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b36223b8-3b3f-4d1d-9f7b-4f24495f8fe6.pdf",
+    "file_type": "pdf"
+}

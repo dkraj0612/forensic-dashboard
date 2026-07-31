@@ -1,0 +1,8 @@
+{
+    "ticker": "SHILCTECH",
+    "category": "Dividend",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=40aa125e-441d-47de-b6a3-6f431d569a58.pdf",
+    "file_type": "pdf"
+}

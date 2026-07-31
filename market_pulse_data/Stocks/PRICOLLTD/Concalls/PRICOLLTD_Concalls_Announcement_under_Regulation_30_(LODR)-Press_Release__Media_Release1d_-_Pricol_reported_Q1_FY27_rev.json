@@ -1,0 +1,8 @@
+{
+    "ticker": "PRICOLLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=67c3822f-6f1b-4724-b278-880529529b7d.pdf",
+    "file_type": "pdf"
+}

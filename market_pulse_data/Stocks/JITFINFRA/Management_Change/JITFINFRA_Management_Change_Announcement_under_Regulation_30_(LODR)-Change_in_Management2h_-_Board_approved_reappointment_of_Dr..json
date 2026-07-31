@@ -1,0 +1,8 @@
+{
+    "ticker": "JITFINFRA",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bc5bf744-e98b-41e7-bca1-cc12294619de.pdf",
+    "file_type": "pdf"
+}

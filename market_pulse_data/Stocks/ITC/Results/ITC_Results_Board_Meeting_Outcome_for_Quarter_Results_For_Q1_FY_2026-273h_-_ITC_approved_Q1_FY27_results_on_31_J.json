@@ -1,0 +1,8 @@
+{
+    "ticker": "ITC",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3636404-126c-4362-b3ea-9306284a1de9.pdf",
+    "file_type": "pdf"
+}

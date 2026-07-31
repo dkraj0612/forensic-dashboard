@@ -1,0 +1,8 @@
+{
+    "ticker": "VMART",
+    "category": "Dividend",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7a4fb89-6511-4bde-86e2-bdd30f07982c.pdf",
+    "file_type": "pdf"
+}

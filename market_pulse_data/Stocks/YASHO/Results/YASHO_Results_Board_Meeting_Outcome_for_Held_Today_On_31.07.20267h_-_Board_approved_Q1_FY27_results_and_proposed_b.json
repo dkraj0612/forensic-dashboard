@@ -1,0 +1,8 @@
+{
+    "ticker": "YASHO",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c00ff711-e968-46f3-8b75-4bf94ec21ece.pdf",
+    "file_type": "pdf"
+}

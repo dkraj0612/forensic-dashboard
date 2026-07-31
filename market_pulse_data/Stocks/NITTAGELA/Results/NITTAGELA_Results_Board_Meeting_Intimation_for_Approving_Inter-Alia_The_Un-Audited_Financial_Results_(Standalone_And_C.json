@@ -1,0 +1,8 @@
+{
+    "ticker": "NITTAGELA",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=271e1768-79a8-4b0a-b847-c85d96c27af1.pdf",
+    "file_type": "pdf"
+}

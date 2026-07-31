@@ -1,0 +1,8 @@
+{
+    "ticker": "BRITANNIA",
+    "category": "Dividend",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "Here's an executive summary of the document:  Britannia Industries Limited announced a final dividend of \u20b990.50 per share for FY2026, which will be subject to Tax Deducted at Source (TDS) under the Income Tax Act, 2025. A critical impact for shareholders is the requirement to update bank details, PAN, and submit all relevant tax exemption documents by the Record Date of July 31, 2026, to ensure the correct TDS rate is applied and dividend is paid electronically. Failure to comply will result in a higher default TDS rate (e.g., 20% for residents without valid PAN linkage), with shareholders solely responsible for claiming any refund directly from the Income Tax Department.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d990a97e-3eab-4e8e-ad91-79ba6e664c92.pdf",
+    "file_type": "pdf"
+}

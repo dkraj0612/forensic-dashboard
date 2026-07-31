@@ -1,0 +1,8 @@
+{
+    "ticker": "UEL",
+    "category": "Results",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91131b59-82b9-494f-b5ae-a740e4ea04fb.pdf",
+    "file_type": "pdf"
+}

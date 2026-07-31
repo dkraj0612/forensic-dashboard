@@ -1,0 +1,8 @@
+{
+    "ticker": "SILINV",
+    "category": "Dividend",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6ce0875-c9b1-4136-b246-abdce3a40e94.pdf",
+    "file_type": "pdf"
+}

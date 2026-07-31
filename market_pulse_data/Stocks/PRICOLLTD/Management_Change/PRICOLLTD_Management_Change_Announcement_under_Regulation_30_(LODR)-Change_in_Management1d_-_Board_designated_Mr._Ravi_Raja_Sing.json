@@ -1,0 +1,8 @@
+{
+    "ticker": "PRICOLLTD",
+    "category": "Management_Change",
+    "extraction_date": "2026-07-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa3ccce2-9aa4-40d2-9ab7-04a8fcb40e15.pdf",
+    "file_type": "pdf"
+}
