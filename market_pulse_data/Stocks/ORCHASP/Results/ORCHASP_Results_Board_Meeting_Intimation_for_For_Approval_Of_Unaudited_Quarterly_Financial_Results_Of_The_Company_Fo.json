@@ -1,0 +1,8 @@
+{
+    "ticker": "ORCHASP",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f569fcd6-6aa0-44fc-a831-135a1941b72b.pdf",
+    "file_type": "pdf"
+}

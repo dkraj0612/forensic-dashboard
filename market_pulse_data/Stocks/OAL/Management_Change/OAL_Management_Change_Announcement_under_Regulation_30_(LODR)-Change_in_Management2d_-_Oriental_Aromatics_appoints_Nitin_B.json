@@ -1,0 +1,8 @@
+{
+    "ticker": "OAL",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=108f72c6-8d01-4230-ae60-6baa62d55d10.pdf",
+    "file_type": "pdf"
+}

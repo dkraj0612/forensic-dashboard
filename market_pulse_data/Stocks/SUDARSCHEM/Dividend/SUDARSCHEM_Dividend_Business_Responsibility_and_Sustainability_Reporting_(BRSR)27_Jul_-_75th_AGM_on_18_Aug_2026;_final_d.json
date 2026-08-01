@@ -1,0 +1,8 @@
+{
+    "ticker": "SUDARSCHEM",
+    "category": "Dividend",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "Skipped: Document exceeds 150 pages (225 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=213d4c41-65db-426d-990e-3b5736ded22f.pdf",
+    "file_type": "pdf"
+}

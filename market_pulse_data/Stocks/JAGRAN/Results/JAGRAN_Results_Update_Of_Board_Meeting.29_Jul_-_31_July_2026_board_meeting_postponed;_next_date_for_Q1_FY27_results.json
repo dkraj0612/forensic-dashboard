@@ -1,0 +1,8 @@
+{
+    "ticker": "JAGRAN",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a4175592-ea93-421f-a3d7-6855daa0ddbd.pdf",
+    "file_type": "pdf"
+}

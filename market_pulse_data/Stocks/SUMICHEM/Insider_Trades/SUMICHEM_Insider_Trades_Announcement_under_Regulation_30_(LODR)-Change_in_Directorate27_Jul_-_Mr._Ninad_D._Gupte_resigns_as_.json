@@ -1,0 +1,8 @@
+{
+    "ticker": "SUMICHEM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=89ddcf1a-3d4d-4868-8c2e-97162b98ef5e.pdf",
+    "file_type": "pdf"
+}

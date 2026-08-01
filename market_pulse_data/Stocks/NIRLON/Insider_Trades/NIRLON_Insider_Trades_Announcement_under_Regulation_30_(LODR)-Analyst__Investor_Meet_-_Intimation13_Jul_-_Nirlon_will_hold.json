@@ -1,0 +1,8 @@
+{
+    "ticker": "NIRLON",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7d7bdac9-1d2f-4f71-be8e-397cf2abbc47.pdf",
+    "file_type": "pdf"
+}

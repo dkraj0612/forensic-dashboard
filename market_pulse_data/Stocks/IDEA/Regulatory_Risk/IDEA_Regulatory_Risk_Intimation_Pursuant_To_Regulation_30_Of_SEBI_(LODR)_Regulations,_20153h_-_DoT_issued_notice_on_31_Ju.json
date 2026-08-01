@@ -1,0 +1,8 @@
+{
+    "ticker": "IDEA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0e90a576-c0ba-454a-a95a-d9264ecfc036.pdf",
+    "file_type": "pdf"
+}

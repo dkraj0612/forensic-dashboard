@@ -1,0 +1,8 @@
+{
+    "ticker": "ROSSTECH",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=E676355F_3959_4819_8926_061820CF9C1C_163956.pdf",
+    "file_type": "pdf"
+}

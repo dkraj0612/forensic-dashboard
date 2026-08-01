@@ -1,0 +1,8 @@
+{
+    "ticker": "NHPC",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=22accc37-faa1-4c64-bc9e-8ee79d105c05.pdf",
+    "file_type": "pdf"
+}

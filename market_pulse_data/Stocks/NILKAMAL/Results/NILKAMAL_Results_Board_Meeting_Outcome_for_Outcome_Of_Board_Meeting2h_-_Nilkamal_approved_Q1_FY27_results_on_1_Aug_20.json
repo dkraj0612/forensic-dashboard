@@ -1,0 +1,8 @@
+{
+    "ticker": "NILKAMAL",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=21d5050b-76a2-467f-b20a-cd099fb0da49.pdf",
+    "file_type": "pdf"
+}

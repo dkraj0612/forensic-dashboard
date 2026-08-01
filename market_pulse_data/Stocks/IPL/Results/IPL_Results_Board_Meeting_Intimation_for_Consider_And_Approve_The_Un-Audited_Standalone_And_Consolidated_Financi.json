@@ -1,0 +1,8 @@
+{
+    "ticker": "IPL",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c2c23ac2-f67e-4be4-9bc4-620d0744cac7.pdf",
+    "file_type": "pdf"
+}

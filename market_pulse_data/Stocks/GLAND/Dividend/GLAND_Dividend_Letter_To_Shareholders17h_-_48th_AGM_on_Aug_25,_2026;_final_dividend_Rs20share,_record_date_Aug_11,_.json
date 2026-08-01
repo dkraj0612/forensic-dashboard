@@ -1,0 +1,8 @@
+{
+    "ticker": "GLAND",
+    "category": "Dividend",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a11467ce-0948-448e-aa97-7d93465ea6be.pdf",
+    "file_type": "pdf"
+}

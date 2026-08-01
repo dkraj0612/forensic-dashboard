@@ -1,0 +1,8 @@
+{
+    "ticker": "NITTAGELA",
+    "category": "Dividend",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1c475b4d-a9d7-4dba-be1e-ec0c9ca2e294.pdf",
+    "file_type": "pdf"
+}

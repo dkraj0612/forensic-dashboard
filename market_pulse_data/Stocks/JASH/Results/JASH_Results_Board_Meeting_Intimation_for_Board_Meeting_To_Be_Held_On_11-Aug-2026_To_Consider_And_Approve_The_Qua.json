@@ -1,0 +1,8 @@
+{
+    "ticker": "JASH",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=67c36bb8-3555-4e17-87bb-631d18d85e98.pdf",
+    "file_type": "pdf"
+}

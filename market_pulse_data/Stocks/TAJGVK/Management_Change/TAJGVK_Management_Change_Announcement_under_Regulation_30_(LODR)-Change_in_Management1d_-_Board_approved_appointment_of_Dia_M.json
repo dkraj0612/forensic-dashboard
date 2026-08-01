@@ -1,0 +1,8 @@
+{
+    "ticker": "TAJGVK",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=05e2ae87-8014-4d79-95b1-ef1a6eb70afe.pdf",
+    "file_type": "pdf"
+}

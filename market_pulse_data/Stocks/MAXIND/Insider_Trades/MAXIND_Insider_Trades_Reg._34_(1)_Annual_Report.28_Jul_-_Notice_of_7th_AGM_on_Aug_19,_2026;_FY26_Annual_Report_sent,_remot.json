@@ -1,0 +1,8 @@
+{
+    "ticker": "MAXIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "Skipped: Document exceeds 150 pages (285 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eee50898-b16f-46d1-aae2-855c0229be75.pdf",
+    "file_type": "pdf"
+}

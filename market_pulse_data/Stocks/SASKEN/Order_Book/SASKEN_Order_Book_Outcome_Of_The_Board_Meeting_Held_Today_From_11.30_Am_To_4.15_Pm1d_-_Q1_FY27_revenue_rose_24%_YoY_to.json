@@ -1,0 +1,8 @@
+{
+    "ticker": "SASKEN",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b7cb28fd-3723-416e-a9be-17ac3c08d309.pdf",
+    "file_type": "pdf"
+}

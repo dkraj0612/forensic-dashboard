@@ -1,0 +1,8 @@
+{
+    "ticker": "BOSCHLTD",
+    "category": "Dividend",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "Bosch Limited has announced a recommended final dividend of Rs. 270 per share for FY 2025-26, which will be subject to Tax Deducted at Source (TDS) as per the Income-tax Act, 2025. Shareholders must submit specific tax-related documents by July 27, 2026, to ensure the appropriate withholding tax rate is applied; otherwise, a higher default rate will be deducted, leaving shareholders responsible for claiming any eligible refunds from tax authorities. The company will not be liable for higher deductions due to non-compliance with documentation requirements.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc9ca3c2-060d-47f0-b8cd-9b6304ada8d9.pdf",
+    "file_type": "pdf"
+}

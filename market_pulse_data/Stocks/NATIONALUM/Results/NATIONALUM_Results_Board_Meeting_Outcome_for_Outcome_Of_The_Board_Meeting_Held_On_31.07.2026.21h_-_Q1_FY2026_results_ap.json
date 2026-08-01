@@ -1,0 +1,8 @@
+{
+    "ticker": "NATIONALUM",
+    "category": "Results",
+    "extraction_date": "2026-08-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b45cd34-791e-47d3-8c02-d7965893ccc3.pdf",
+    "file_type": "pdf"
+}
