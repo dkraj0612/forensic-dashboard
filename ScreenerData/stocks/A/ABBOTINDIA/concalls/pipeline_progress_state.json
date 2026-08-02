@@ -1,0 +1,12 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ABBOTINDIA/concalls/ABBOTINDIA_Fallback_Transcript_25_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ABBOTINDIA/concalls/ABBOTINDIA_Fallback_Transcript_25_Transcript.md"
+    ]
+}
