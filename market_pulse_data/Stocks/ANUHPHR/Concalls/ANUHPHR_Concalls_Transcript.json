@@ -1,0 +1,8 @@
+{
+    "ticker": "ANUHPHR",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=471c3a21-c171-4907-be1a-f9eff0dce9d7.pdf",
+    "file_type": "pdf"
+}

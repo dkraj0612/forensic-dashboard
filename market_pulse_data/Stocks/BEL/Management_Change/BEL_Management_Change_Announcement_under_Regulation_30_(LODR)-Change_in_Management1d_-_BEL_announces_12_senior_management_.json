@@ -1,0 +1,8 @@
+{
+    "ticker": "BEL",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abe29a22-a5f1-4c45-b76f-1e4c5711ed34.pdf",
+    "file_type": "pdf"
+}

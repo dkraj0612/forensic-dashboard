@@ -1,0 +1,8 @@
+{
+    "ticker": "CARRARO",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=887882e3-e8a5-450f-913d-aa5054c63873.pdf",
+    "file_type": "pdf"
+}

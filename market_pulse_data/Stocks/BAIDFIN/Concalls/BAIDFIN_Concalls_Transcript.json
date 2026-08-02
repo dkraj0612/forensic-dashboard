@@ -1,0 +1,8 @@
+{
+    "ticker": "BAIDFIN",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c509e82c-1939-4373-b7a5-35ad7f91cba3.pdf",
+    "file_type": "pdf"
+}

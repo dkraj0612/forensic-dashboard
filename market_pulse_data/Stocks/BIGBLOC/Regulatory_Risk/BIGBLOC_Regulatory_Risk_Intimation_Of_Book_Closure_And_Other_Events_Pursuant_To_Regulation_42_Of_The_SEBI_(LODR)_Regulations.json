@@ -1,0 +1,8 @@
+{
+    "ticker": "BIGBLOC",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=895fd889-647c-46ca-b564-f5966000baa5.pdf",
+    "file_type": "pdf"
+}

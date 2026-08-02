@@ -1,0 +1,8 @@
+{
+    "ticker": "AJANTPHARM",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=694ff1ee-1c91-42d0-aeb1-56e94bb44931.pdf",
+    "file_type": "pdf"
+}

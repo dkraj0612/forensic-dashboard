@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUSPRING",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=acb88894-53f6-4c26-a31f-9d8749579b01.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTEC",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c70edbbf-5cbd-47b3-87d5-76a2617d59d6.pdf",
+    "file_type": "pdf"
+}

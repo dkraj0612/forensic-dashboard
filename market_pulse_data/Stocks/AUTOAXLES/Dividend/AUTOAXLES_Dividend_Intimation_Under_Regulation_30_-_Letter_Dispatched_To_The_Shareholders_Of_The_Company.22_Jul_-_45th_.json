@@ -1,0 +1,8 @@
+{
+    "ticker": "AUTOAXLES",
+    "category": "Dividend",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bfe412b1-f92e-4587-a17d-e628ed7582d1.pdf",
+    "file_type": "pdf"
+}

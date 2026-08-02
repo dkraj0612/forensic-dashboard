@@ -1,0 +1,8 @@
+{
+    "ticker": "BRIGHOTEL",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61d7c824-4823-4ecf-866d-2eb7c585c0af.pdf",
+    "file_type": "pdf"
+}

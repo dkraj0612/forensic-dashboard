@@ -1,0 +1,8 @@
+{
+    "ticker": "AGARWALEYE",
+    "category": "Concalls",
+    "extraction_date": "2026-08-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb88f7c8-5f81-4f76-bd69-f9bef4d67530.pdf",
+    "file_type": "pdf"
+}
