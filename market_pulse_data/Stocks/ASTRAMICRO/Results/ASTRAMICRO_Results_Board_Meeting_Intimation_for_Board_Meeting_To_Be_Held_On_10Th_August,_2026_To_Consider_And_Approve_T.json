@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTRAMICRO",
+    "category": "Results",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d54232e1-dbd7-4d21-b289-4cfd78300ede.pdf",
+    "file_type": "pdf"
+}

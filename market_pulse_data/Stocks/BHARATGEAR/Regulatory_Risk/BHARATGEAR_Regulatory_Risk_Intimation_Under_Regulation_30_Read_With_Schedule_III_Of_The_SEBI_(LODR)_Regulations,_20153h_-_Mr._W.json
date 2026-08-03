@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATGEAR",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b07dcb88-a51b-4001-9bf2-0a3eb950a8a5.pdf",
+    "file_type": "pdf"
+}

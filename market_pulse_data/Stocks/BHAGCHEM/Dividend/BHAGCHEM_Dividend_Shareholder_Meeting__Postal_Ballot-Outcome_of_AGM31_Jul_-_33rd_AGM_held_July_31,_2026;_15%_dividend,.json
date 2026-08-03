@@ -1,0 +1,8 @@
+{
+    "ticker": "BHAGCHEM",
+    "category": "Dividend",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a9154f18-e8ee-4583-9244-7522196f50d8.pdf",
+    "file_type": "pdf"
+}

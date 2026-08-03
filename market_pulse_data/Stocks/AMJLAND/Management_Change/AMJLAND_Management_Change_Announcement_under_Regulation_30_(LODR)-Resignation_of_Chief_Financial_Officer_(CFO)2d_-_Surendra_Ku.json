@@ -1,0 +1,8 @@
+{
+    "ticker": "AMJLAND",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d949e9f0-30f0-4e02-a8b7-0b61489f93b9.pdf",
+    "file_type": "pdf"
+}

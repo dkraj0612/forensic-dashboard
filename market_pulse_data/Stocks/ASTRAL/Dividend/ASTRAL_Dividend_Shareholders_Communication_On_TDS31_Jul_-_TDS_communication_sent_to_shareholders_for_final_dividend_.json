@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTRAL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dfadf12f-3dd1-484e-8625-f58a1a6815f6.pdf",
+    "file_type": "pdf"
+}

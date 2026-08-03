@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATWIRE",
+    "category": "Concalls",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=73d9de99-3600-4b86-b795-7d95098ad658.pdf",
+    "file_type": "pdf"
+}

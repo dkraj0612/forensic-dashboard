@@ -1,0 +1,8 @@
+{
+    "ticker": "BLACKROSE",
+    "category": "Results",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1245a434-d231-4b3b-9e48-ad5600ec15ef.pdf",
+    "file_type": "pdf"
+}

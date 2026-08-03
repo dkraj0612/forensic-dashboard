@@ -1,0 +1,8 @@
+{
+    "ticker": "ALPHAGEO",
+    "category": "Results",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4a8200f3-dca9-41c0-8b17-844ef77afd4e.pdf",
+    "file_type": "pdf"
+}

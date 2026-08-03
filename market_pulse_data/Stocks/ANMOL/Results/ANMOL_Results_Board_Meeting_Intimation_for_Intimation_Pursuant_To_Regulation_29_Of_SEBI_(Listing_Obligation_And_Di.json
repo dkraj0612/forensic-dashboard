@@ -1,0 +1,8 @@
+{
+    "ticker": "ANMOL",
+    "category": "Results",
+    "extraction_date": "2026-08-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=471e04b7-09f9-496d-af7e-a8e0b30e15f6.pdf",
+    "file_type": "pdf"
+}
