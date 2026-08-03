@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-BEEKAY,2026-08-02,"About
+BEEKAY,2026-08-03,"About
 Beekay Steel was incorporated in India on 28th March 1981, is engaged in the manufacturing of thermomechanical treatment (TMT) bars, hot rolled sections, bright bars, structurals, and machined bars. It offers both standard and customized sections, such as including round bars, square bars, etc.
 [1]
 Key Points
@@ -59,12 +59,12 @@ CWIP,21,24,23,25,23,21,22,23,213,273,217,69
 Investments,0,0,1,1,2,37,79,109,199,174,203,198
 Other Assets +,309,294,309,382,381,372,473,724,448,480,548,607
 Total Assets,528,510,522,595,614,642,780,1053,1125,1262,1433,1547","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
-Cash from Operating Activity +,0,45,37,48,56,81,96,-104,408,129,147,146
-Cash from Investing Activity +,0,-12,-10,-15,-36,-61,-58,-31,-373,-90,-107,-86
-Cash from Financing Activity +,0,-34,-21,-39,-19,-18,-13,110,-37,-38,-41,-60
-Net Cash Flow,0,-1,5,-6,1,2,24,-25,-3,1,-1,-0
-Free Cash Flow,0,33,26,32,21,55,79,-116,125,-28,38,41
-CFO/OP,0%,78%,61%,64%,60%,88%,88%,-24%,261%,109%,131%,149%","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
+Cash from Operating Activity +,-0,45,37,48,56,81,96,-104,408,129,147,146
+Cash from Investing Activity +,-0,-12,-10,-15,-36,-61,-58,-31,-373,-90,-107,-86
+Cash from Financing Activity +,-0,-34,-21,-39,-19,-18,-13,110,-37,-38,-41,-60
+Net Cash Flow,-0,-1,5,-6,1,2,24,-25,-3,1,-1,-0
+Free Cash Flow,-0,33,26,32,21,55,79,-116,125,-28,38,41
+CFO/OP,-0%,78%,61%,64%,60%,88%,88%,-24%,261%,109%,131%,149%","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
 Debtor Days,45.0,56,43,49,45,43,66,45,57,56,53,54
 Inventory Days,139.0,136,117,96,133,167,164,126,121,137,156,174
 Days Payable,86.0,56,25,20,22,20,23,16,18,32,39,51
