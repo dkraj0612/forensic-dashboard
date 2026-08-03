@@ -3996,3 +3996,142 @@
 2026-08-02 02:50:32,743 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-08-02 02:50:32,743 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-08-02 02:50:32,743 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-08-03 02:48:13,684 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-08-03 02:48:13,738 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-08-03 02:48:13,738 [INFO] 
+==================================================
+2026-08-03 02:48:13,738 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-08-03 02:48:13,738 [INFO] ==================================================
+2026-08-03 02:48:13,738 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-08-03 02:48:13,739 [INFO] 
+==================================================
+2026-08-03 02:48:13,739 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,739 [INFO] ==================================================
+2026-08-03 02:48:13,739 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,739 [INFO] 
+==================================================
+2026-08-03 02:48:13,739 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,739 [INFO] ==================================================
+2026-08-03 02:48:13,740 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,740 [INFO] 
+==================================================
+2026-08-03 02:48:13,740 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,740 [INFO] ==================================================
+2026-08-03 02:48:13,740 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,741 [INFO] 
+==================================================
+2026-08-03 02:48:13,741 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,741 [INFO] ==================================================
+2026-08-03 02:48:13,741 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,741 [INFO] 
+==================================================
+2026-08-03 02:48:13,741 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,741 [INFO] ==================================================
+2026-08-03 02:48:13,741 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,741 [INFO] 
+==================================================
+2026-08-03 02:48:13,742 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,742 [INFO] ==================================================
+2026-08-03 02:48:13,742 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,742 [INFO] 
+==================================================
+2026-08-03 02:48:13,742 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,742 [INFO] ==================================================
+2026-08-03 02:48:13,742 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,742 [INFO] 
+==================================================
+2026-08-03 02:48:13,742 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,743 [INFO] ==================================================
+2026-08-03 02:48:13,743 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,743 [INFO] 
+==================================================
+2026-08-03 02:48:13,743 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,743 [INFO] ==================================================
+2026-08-03 02:48:13,743 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,743 [INFO] 
+==================================================
+2026-08-03 02:48:13,743 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,743 [INFO] ==================================================
+2026-08-03 02:48:13,743 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,744 [INFO] 
+==================================================
+2026-08-03 02:48:13,744 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,744 [INFO] ==================================================
+2026-08-03 02:48:13,744 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,744 [INFO] 
+==================================================
+2026-08-03 02:48:13,744 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,744 [INFO] ==================================================
+2026-08-03 02:48:13,745 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,745 [INFO] 
+==================================================
+2026-08-03 02:48:13,745 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,745 [INFO] ==================================================
+2026-08-03 02:48:13,745 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,745 [INFO] 
+==================================================
+2026-08-03 02:48:13,745 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,745 [INFO] ==================================================
+2026-08-03 02:48:13,746 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,746 [INFO] 
+==================================================
+2026-08-03 02:48:13,746 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,746 [INFO] ==================================================
+2026-08-03 02:48:13,746 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,746 [INFO] 
+==================================================
+2026-08-03 02:48:13,746 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,747 [INFO] ==================================================
+2026-08-03 02:48:13,747 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,747 [INFO] 
+==================================================
+2026-08-03 02:48:13,747 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,747 [INFO] ==================================================
+2026-08-03 02:48:13,748 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,748 [INFO] 
+==================================================
+2026-08-03 02:48:13,748 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,748 [INFO] ==================================================
+2026-08-03 02:48:13,748 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-08-03 02:48:13,748 [INFO] 
+==================================================
+2026-08-03 02:48:13,748 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-08-03 02:48:13,748 [INFO] ==================================================
+2026-08-03 02:48:13,748 [INFO] Indexing metadata for 19 raw documents in concalls...
+2026-08-03 02:48:14,238 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1886 | Total: 1886/200000
+2026-08-03 02:48:20,772 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1461 | Total: 3347/200000
+2026-08-03 02:48:27,326 [INFO] [gemini-2.5-flash-lite] Tokens Used: 2060 | Total: 5407/200000
+2026-08-03 02:48:33,843 [INFO] [gemini-2.5-flash-lite] Tokens Used: 2177 | Total: 7584/200000
+2026-08-03 02:48:40,356 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1826 | Total: 9410/200000
+2026-08-03 02:48:46,774 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1991 | Total: 11401/200000
+2026-08-03 02:48:53,237 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1926 | Total: 13327/200000
+2026-08-03 02:48:59,689 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1378 | Total: 14705/200000
+2026-08-03 02:49:06,149 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1667 | Total: 16372/200000
+2026-08-03 02:49:12,570 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1641 | Total: 18013/200000
+2026-08-03 02:49:18,947 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1399 | Total: 19412/200000
+2026-08-03 02:49:25,384 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1358 | Total: 20770/200000
+2026-08-03 02:49:31,843 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1681 | Total: 22451/200000
+2026-08-03 02:49:38,271 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1465 | Total: 23916/200000
+2026-08-03 02:49:44,723 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1946 | Total: 25862/200000
+2026-08-03 02:49:51,137 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1522 | Total: 27384/200000
+2026-08-03 02:49:57,600 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1639 | Total: 29023/200000
+2026-08-03 02:50:04,000 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1533 | Total: 30556/200000
+2026-08-03 02:50:10,629 [INFO] [gemini-2.5-flash-lite] Tokens Used: 1912 | Total: 32468/200000
+2026-08-03 02:50:16,630 [INFO] Commencing generation for 33 pending files...
+2026-08-03 02:50:16,630 [INFO] Analyzing [ Q2_2018 ]
+2026-08-03 02:50:22,233 [INFO] [gemini-2.5-flash-lite] Tokens Used: 6466 | Total: 38934/200000
+2026-08-03 02:50:22,234 [INFO] ✅ Generated and saved: Q2_2018_Summary.md
+2026-08-03 02:50:28,234 [INFO] Analyzing [ Q3_2018 ]
+2026-08-03 02:50:36,161 [INFO] [gemini-2.5-flash-lite] Tokens Used: 11135 | Total: 50069/200000
+2026-08-03 02:50:36,161 [INFO] ✅ Generated and saved: Q3_2018_Summary.md
+2026-08-03 02:50:42,162 [INFO] Analyzing [ H1_2019 ]
+2026-08-03 02:50:42,245 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-08-03 02:50:42,245 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-08-03 02:50:42,245 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-08-03 02:50:59,642 [INFO] [gemini-2.5-flash] Tokens Used: 14576 | Total: 14576/150000
+2026-08-03 02:50:59,642 [INFO] ✅ Generated and saved: H1_2019_Summary.md
+2026-08-03 02:51:05,643 [INFO] Analyzing [ Q1_2019 ]
+2026-08-03 02:51:05,739 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-08-03 02:51:05,739 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-08-03 02:51:05,739 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-08-03 02:51:05,739 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
