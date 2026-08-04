@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "MACPOWER"
+  call_date: "2026-08-04"
+  reporting_period: "AnalystsInstitutional_Investor_MeetCon._Call_Updates4_August_2026_-_Q1_FY27_call_transcript_revenue_"
+  source_url: "https://nsearchives.nseindia.com/corporate/MACPOWER_04082026181859_Q1FY27_Conference_Call_dated_30_07_2026_Transcript.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 9.37
+  total_word_volume: 9723
+---
+
+# Concall NLP Analysis: MACPOWER
+**Source URL:** [Listen/Read Original](https://nsearchives.nseindia.com/corporate/MACPOWER_04082026181859_Q1FY27_Conference_Call_dated_30_07_2026_Transcript.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+CIN : L30009GJ2003PLC043419 August 04, 2026 To, The Listing Compliance Department, National Stock Exchange of India Limited, ‘Exchange Plazza’,C-1,Block G, Bandra kurla complex (BKC), Bandra (East), Mumbai-400 051, Maharashtra, India Symbol: MACPOWER Series:EQ ISIN: INE155Z01011 Subject: Submission of Conference call transcript. Dear sir/ Madam, The Company had organized a conference call for the Investors on Thursday, July 30, 2026 at 2:00 PM to discuss the financial results for the quarter ended on June 30, 2026. The transcript of the said conference call held with the Investors is enclosed herewith. The Company shall also disseminate the above information on the website of the Company- https://macpowercnc.com/ Request you to kindly take note of the same. Thanking you Yours Faithfully For MACPOWER CNC MACHINES LIMITED ____________________ KISHOR KIKANI Company Secretary Encl: a/a KISHORBHAI MADHUBHA I KIKANI Digitally signed by KISHORBHAI MADHUBHAI KIKANI Date: 2026.08.04 18:14:45 +05'30' Macpower CNC Machines Limited Q1 FY27 POST EARNINGS CONFERENCE CALL July 30, 2026 2:00 PM IST Management Team Mr. Rupesh Mehta - Chairman & Managing Director Mr. Vishal Mehta, Chief Financial Officer Mr. Kishore Kikani, Company Secretary & Management Team Call Coordinator Strategy & Investor Relations Consulting Disclaimer: - This transcript is edited for factual errors. Macpower CNC Machines Limited Q1 FY27 Post Earnings Conference Call July 30, 2026 02:00 PM IST Page 2 of 24 Presentation Vinay Pandit: Ladies and gentlemen, on behalf of Kaptify Consulting Investor Relations team, I welcome you all to the Q1 FY27, Post Earnings Conference Call of Macpower CNC Machines Limited. Today on the call from the management we have with us, Mr. Rupesh Mehta, Chairman and Managing Director, Mr. Vishal Mehta, Chief Financial Officer, Mr. Kishore Kikani, Company Secretary, and the management team. As a disclaimer, I would like to inform all of you that this call may contain forward-looking statements which may involve risk and uncertainties. Also, a reminder that this call is being recorded. I would now request the management to brief us about the business and performance highlights for the period ended June 2026, the growth plan and vision for the coming year, post which we will open the floor for Q&A. Over to the management team. Rupesh Mehta: Thank you very much Vinayji and team Kaptify to arranging the very nice concall of quarter one Good afternoon everyone. I warmly welcome all of you to our Q1 FY27 post result conference call. Thank you for taking time out of your busy schedule to join us. We truly value your continuous interest and support. The financial result and presentation have been uploaded on the company's website. I hope you have had a chance to review them. I will bring my walking you through the key highlights of our Q1 FY27 performance, followed by an update on our strategic initiative and growth outlook. After that, we will be happy to take your questions. We are pleased to state that in quarter one FY27, the company delivered its highest-ever performance across revenue, EBITDA, and PAT for any quarter one. Revenue stood at INR95.24 crores, registered a y-o-y growth of 56.1%. EBITDA stood at INR15.43 crore, grown by 95% in y-o-y. And EBITDA margin of 16.20%, PAT stood at INR9.58 crore, grown by 110% y-o-y with the PAT margin of 10.06%. Average machine realization around INR20 lakh. CapEx during quarter one was INR2.25 crore, internal CapEx has led to corresponding increase in depreciation. Robust order book and strong demand in pipeline, pending order book of quarter one stands at INR456 crore, reflecting 32% y-o-y growth. NEXA series contribution around 40% of the pending order book. Domestic bid submitted INR739 crore. Tender bid under evolution INR304 crores and domestic quotations is in pipeline for INR1,000-plus crore INR1,043 crore. Macpower CNC Machines Limited Q1 FY27 Post Earnings Conference Call July 30, 2026 02:00 PM IST Page 3 of 24 New product innovation. Recently we have successfully developed and launched several new models in Q1 like DCM 2518, double column machines, LX 1000 and TOM 200 with Y-axis.... *(Truncated for storage. See Source URL)*

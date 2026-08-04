@@ -1,0 +1,8 @@
+{
+    "ticker": "KAMOPAINTS",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66e42335-f9b9-4ce5-89a8-bf177718f290.pdf",
+    "file_type": "pdf"
+}

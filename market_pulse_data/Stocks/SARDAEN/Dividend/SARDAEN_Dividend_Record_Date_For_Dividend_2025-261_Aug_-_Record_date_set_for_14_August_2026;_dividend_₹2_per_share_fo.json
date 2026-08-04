@@ -1,0 +1,8 @@
+{
+    "ticker": "SARDAEN",
+    "category": "Dividend",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb96caab-76e2-4f29-916a-cd251e109c47.pdf",
+    "file_type": "pdf"
+}

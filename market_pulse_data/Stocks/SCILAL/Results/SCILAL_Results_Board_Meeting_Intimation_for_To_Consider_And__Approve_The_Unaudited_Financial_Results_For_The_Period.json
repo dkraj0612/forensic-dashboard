@@ -1,0 +1,8 @@
+{
+    "ticker": "SCILAL",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bbec5d59-f101-424d-b4dd-17fc4efb2dac.pdf",
+    "file_type": "pdf"
+}

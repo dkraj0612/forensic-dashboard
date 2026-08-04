@@ -1,0 +1,8 @@
+{
+    "ticker": "CUBEXTUB",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1725c8c7-1e0b-44e2-9375-5c5e22c146dc.pdf",
+    "file_type": "pdf"
+}

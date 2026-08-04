@@ -1,0 +1,8 @@
+{
+    "ticker": "MUNJALSHOW",
+    "category": "Dividend",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c9c20755-a167-4c34-b55e-472b2261a535.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MASTERTR",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=431110db-16f0-4307-8c20-3e13ee4665e9.pdf",
+    "file_type": "pdf"
+}

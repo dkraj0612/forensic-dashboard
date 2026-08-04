@@ -1,0 +1,8 @@
+{
+    "ticker": "INVENTURE",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=681f6114-1e4e-4d9b-a51d-e1a2245262d0.pdf",
+    "file_type": "pdf"
+}

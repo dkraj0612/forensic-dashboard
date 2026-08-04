@@ -1,0 +1,8 @@
+{
+    "ticker": "KCP",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=97288418-0a59-44b2-8420-b36484e8d3e5.pdf",
+    "file_type": "pdf"
+}

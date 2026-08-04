@@ -1,0 +1,8 @@
+{
+    "ticker": "STEELCITY",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/STEELCITY_03082026185105_Outcome.pdf",
+    "file_type": "pdf"
+}

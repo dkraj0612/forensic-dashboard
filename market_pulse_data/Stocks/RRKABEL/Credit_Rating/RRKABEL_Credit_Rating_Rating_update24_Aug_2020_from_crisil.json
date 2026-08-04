@@ -1,0 +1,8 @@
+{
+    "ticker": "RRKABEL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/RR Kabel Limited-ad.pdf",
+    "file_type": "pdf"
+}

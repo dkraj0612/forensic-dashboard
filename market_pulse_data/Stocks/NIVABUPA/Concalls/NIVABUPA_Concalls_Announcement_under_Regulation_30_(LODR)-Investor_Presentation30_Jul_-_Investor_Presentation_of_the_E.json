@@ -1,0 +1,8 @@
+{
+    "ticker": "NIVABUPA",
+    "category": "Concalls",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f35970e8-a5f3-4152-a399-aeadab3c62fb.pdf",
+    "file_type": "pdf"
+}

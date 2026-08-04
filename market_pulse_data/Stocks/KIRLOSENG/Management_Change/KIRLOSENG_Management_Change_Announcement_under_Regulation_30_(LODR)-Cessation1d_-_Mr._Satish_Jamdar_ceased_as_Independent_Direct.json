@@ -1,0 +1,8 @@
+{
+    "ticker": "KIRLOSENG",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a01bd75-98c5-4b22-8fd2-47d7a5d6e9e7.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "PATINTLOG",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4f077314-9280-4a74-a98b-842e90558f01.pdf",
+    "file_type": "pdf"
+}

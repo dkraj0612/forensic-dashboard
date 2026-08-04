@@ -1,0 +1,8 @@
+{
+    "ticker": "TIL",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=13efb61c-8593-4468-812e-d1533888ba26.pdf",
+    "file_type": "pdf"
+}

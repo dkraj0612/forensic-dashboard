@@ -1,0 +1,8 @@
+{
+    "ticker": "PIDILITIND",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b012db1-eca3-4470-a2d0-ed5f6f3fd4d3.pdf",
+    "file_type": "pdf"
+}

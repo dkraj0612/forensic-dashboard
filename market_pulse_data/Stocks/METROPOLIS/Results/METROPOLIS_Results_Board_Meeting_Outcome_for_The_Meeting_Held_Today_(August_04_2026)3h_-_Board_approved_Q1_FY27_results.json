@@ -1,0 +1,8 @@
+{
+    "ticker": "METROPOLIS",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2081a9d9-aa59-4858-9a29-8aa5adb91b1f.pdf",
+    "file_type": "pdf"
+}

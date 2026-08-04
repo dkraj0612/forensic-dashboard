@@ -1,0 +1,8 @@
+{
+    "ticker": "EIHAHOTELS",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2c010798-2e5e-4836-bee3-7dd8acbf3cf8.pdf",
+    "file_type": "pdf"
+}

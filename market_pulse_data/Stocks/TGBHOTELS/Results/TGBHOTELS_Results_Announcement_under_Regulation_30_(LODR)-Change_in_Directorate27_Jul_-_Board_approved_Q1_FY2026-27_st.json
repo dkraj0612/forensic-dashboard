@@ -1,0 +1,8 @@
+{
+    "ticker": "TGBHOTELS",
+    "category": "Results",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b930e4c5-4f31-4200-a3ce-1c986a8c606a.pdf",
+    "file_type": "pdf"
+}

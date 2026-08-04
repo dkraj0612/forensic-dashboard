@@ -1,0 +1,8 @@
+{
+    "ticker": "PNBHOUSING",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9f5ba235-6655-4744-9f82-987b25becde5.pdf",
+    "file_type": "pdf"
+}

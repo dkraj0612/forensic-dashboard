@@ -1,0 +1,8 @@
+{
+    "ticker": "PRADPME",
+    "category": "Dividend",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9023f049-7e6b-4f05-8abb-211d4f5f7837.pdf",
+    "file_type": "pdf"
+}

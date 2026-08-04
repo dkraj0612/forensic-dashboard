@@ -1,0 +1,8 @@
+{
+    "ticker": "KNRCON",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f522b8ce-bddd-4f6f-8d37-abdae8b0c99e.pdf",
+    "file_type": "pdf"
+}

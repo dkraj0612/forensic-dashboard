@@ -1,0 +1,8 @@
+{
+    "ticker": "DCBBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff06b16d-9ce6-4158-9aad-09354b9180ba.pdf",
+    "file_type": "pdf"
+}

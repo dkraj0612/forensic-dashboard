@@ -1,0 +1,8 @@
+{
+    "ticker": "LINDEINDIA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c12cccb1-d228-4b7f-8e4a-53c168bd7200.pdf",
+    "file_type": "pdf"
+}
