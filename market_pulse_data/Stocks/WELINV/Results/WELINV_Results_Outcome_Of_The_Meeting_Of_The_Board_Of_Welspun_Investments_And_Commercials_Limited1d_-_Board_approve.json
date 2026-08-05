@@ -1,0 +1,8 @@
+{
+    "ticker": "WELINV",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e305c035-d150-4666-9380-0cda75627df0.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SUNPHARMA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa3eda68-6ad9-412c-ab7e-75365a289c4f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ELECTCAST",
+    "category": "Dividend",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "Skipped: Document exceeds 150 pages (324 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e3e66fb6-118b-448c-94e3-fc62a312ab61.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "HITECHCORP",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7dea89be-f132-456f-b2f8-44ab15584964.pdf",
+    "file_type": "pdf"
+}

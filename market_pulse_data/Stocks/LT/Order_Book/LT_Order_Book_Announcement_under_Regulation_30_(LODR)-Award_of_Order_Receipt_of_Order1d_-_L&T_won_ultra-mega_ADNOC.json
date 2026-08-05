@@ -1,0 +1,8 @@
+{
+    "ticker": "LT",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fa58a150-9fcb-4c89-b498-36d7f516af98.pdf",
+    "file_type": "pdf"
+}

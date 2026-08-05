@@ -1,0 +1,8 @@
+{
+    "ticker": "ELANTAS",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cae4703f-53a3-4385-bc89-f4b52cc21a2f.pdf",
+    "file_type": "pdf"
+}

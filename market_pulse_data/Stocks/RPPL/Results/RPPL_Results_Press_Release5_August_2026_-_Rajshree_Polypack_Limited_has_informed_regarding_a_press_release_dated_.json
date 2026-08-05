@@ -1,0 +1,8 @@
+{
+    "ticker": "RPPL",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/RPPL_05082026210746_RPPL_Press_Release_intimation_QE_30062026.pdf",
+    "file_type": "pdf"
+}

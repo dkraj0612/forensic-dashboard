@@ -1,0 +1,8 @@
+{
+    "ticker": "HALEOSLABS",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4d9e3d2-33a1-4b17-9144-cf2c13d162fa.pdf",
+    "file_type": "pdf"
+}

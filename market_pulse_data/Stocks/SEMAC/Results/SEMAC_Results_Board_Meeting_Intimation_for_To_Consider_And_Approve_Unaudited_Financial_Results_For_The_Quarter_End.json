@@ -1,0 +1,8 @@
+{
+    "ticker": "SEMAC",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=413397d4-11d5-4970-8485-42712cb0ebb4.pdf",
+    "file_type": "pdf"
+}

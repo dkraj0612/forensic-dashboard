@@ -1,0 +1,8 @@
+{
+    "ticker": "MENNPIS",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b866474d-76f0-4182-b3b5-6ba93995296d.pdf",
+    "file_type": "pdf"
+}

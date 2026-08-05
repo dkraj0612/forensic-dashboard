@@ -1,0 +1,8 @@
+{
+    "ticker": "STARTECK",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/Starteck-Finance-5Aug2021.pdf",
+    "file_type": "pdf"
+}

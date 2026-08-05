@@ -1,0 +1,8 @@
+{
+    "ticker": "TIMKEN",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be7902d8-8f6a-4372-b7d0-12fa490e8f06.pdf",
+    "file_type": "pdf"
+}

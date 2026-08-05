@@ -1,0 +1,8 @@
+{
+    "ticker": "ICIL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9860d8f0-484e-43e9-9310-3b2255eb48c6.pdf",
+    "file_type": "pdf"
+}

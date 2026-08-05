@@ -1,0 +1,8 @@
+{
+    "ticker": "S&SPOWER",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2f406c8-6b60-4f0a-89fa-fd132e0c9b8f.pdf",
+    "file_type": "pdf"
+}

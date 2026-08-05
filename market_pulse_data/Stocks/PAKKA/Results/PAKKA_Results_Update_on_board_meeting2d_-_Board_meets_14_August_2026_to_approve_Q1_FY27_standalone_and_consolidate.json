@@ -1,0 +1,8 @@
+{
+    "ticker": "PAKKA",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=310ebbbc-94c4-416a-9a2f-d624b27fa52f.pdf",
+    "file_type": "pdf"
+}

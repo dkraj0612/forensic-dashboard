@@ -1,0 +1,8 @@
+{
+    "ticker": "SANOFI",
+    "category": "Results",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ca7f685-2dee-4525-be08-4e29a1bcd59c.pdf",
+    "file_type": "pdf"
+}

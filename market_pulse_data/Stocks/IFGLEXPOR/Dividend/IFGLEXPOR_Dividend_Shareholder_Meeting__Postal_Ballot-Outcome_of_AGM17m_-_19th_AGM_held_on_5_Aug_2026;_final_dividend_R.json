@@ -1,0 +1,8 @@
+{
+    "ticker": "IFGLEXPOR",
+    "category": "Dividend",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1db59152-8582-4352-8bc8-45aceefed32e.pdf",
+    "file_type": "pdf"
+}

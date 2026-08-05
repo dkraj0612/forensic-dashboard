@@ -1,0 +1,8 @@
+{
+    "ticker": "GREAVESCOT",
+    "category": "Dividend",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3b3b5e6-c60e-401c-81b8-cb6854fe8f72.pdf",
+    "file_type": "pdf"
+}

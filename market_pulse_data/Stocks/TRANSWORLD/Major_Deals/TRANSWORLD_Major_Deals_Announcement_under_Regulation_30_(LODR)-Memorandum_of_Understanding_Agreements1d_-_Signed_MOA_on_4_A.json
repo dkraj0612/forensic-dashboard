@@ -1,0 +1,8 @@
+{
+    "ticker": "TRANSWORLD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2a1e57b2-e61d-4cd9-b838-080c9694216a.pdf",
+    "file_type": "pdf"
+}
