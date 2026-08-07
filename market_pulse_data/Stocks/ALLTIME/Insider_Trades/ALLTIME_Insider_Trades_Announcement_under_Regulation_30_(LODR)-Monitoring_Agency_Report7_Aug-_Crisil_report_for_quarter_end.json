@@ -1,0 +1,8 @@
+{
+    "ticker": "ALLTIME",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=adc47016-a203-4dc3-9481-7b2bad04394b.pdf",
+    "file_type": "pdf"
+}

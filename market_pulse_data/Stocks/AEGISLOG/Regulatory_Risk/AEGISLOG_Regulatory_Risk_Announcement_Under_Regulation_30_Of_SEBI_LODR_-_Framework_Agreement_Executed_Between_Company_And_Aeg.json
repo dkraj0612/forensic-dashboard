@@ -1,0 +1,8 @@
+{
+    "ticker": "AEGISLOG",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=afb7f76f-8083-4f5b-a282-dd6adbf46a44.pdf",
+    "file_type": "pdf"
+}

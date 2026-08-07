@@ -1,0 +1,8 @@
+{
+    "ticker": "ARMANFIN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f31a7d3b-d539-4a92-b21b-a92a4655a3a1.pdf",
+    "file_type": "pdf"
+}

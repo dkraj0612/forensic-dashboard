@@ -1,0 +1,8 @@
+{
+    "ticker": "AETHER",
+    "category": "Concalls",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=74f8b04f-e15e-4756-843f-2038bac68616.pdf",
+    "file_type": "pdf"
+}

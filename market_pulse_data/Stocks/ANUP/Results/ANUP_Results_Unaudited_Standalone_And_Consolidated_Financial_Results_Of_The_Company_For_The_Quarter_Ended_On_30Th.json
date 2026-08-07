@@ -1,0 +1,8 @@
+{
+    "ticker": "ANUP",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=53cb9a2a-c664-4bb9-b1ee-df4c6d0150e5.pdf",
+    "file_type": "pdf"
+}

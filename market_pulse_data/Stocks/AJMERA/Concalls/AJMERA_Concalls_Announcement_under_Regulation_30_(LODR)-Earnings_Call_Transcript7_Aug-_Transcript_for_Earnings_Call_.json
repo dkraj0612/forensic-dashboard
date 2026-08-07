@@ -1,0 +1,8 @@
+{
+    "ticker": "AJMERA",
+    "category": "Concalls",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d96f95a4-a803-4fe2-b550-b251498dbdb0.pdf",
+    "file_type": "pdf"
+}

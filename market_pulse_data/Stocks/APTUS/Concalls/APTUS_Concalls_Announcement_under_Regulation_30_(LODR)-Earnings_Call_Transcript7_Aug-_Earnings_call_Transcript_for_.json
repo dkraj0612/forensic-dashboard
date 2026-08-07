@@ -1,0 +1,8 @@
+{
+    "ticker": "APTUS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=efa4bbaf-18b7-4be2-b502-c0ddcc5494f0.pdf",
+    "file_type": "pdf"
+}

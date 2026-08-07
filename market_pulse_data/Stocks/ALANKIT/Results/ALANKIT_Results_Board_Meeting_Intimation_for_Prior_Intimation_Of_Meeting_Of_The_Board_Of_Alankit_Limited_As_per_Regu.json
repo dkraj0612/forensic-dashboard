@@ -1,0 +1,8 @@
+{
+    "ticker": "ALANKIT",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=703cb7c1-7ca4-4e7d-bdb0-5b1a6213b327.pdf",
+    "file_type": "pdf"
+}

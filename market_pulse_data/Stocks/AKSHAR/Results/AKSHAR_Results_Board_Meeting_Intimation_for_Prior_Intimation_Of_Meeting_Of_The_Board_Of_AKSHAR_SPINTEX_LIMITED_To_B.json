@@ -1,0 +1,8 @@
+{
+    "ticker": "AKSHAR",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9c61c82f-86b5-490b-8177-25a5d906ed9a.pdf",
+    "file_type": "pdf"
+}

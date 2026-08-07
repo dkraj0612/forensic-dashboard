@@ -1,0 +1,8 @@
+{
+    "ticker": "AHLUCONT",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=58bd4844-179b-4c98-91e1-fd2927b10d0a.pdf",
+    "file_type": "pdf"
+}

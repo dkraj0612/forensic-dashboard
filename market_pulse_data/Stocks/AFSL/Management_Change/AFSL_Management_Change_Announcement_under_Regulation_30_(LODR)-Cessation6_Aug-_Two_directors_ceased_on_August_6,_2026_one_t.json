@@ -1,0 +1,8 @@
+{
+    "ticker": "AFSL",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bfe7e160-08e6-4005-b362-1cbe45e86a25.pdf",
+    "file_type": "pdf"
+}

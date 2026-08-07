@@ -1,0 +1,8 @@
+{
+    "ticker": "AUBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=12336113-e945-4886-87f6-0c1d8272a69b.pdf",
+    "file_type": "pdf"
+}

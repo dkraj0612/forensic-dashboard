@@ -1,0 +1,8 @@
+{
+    "ticker": "AGRITECH",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6dd8f8ce-4e4d-425e-a513-1b79127dd393.pdf",
+    "file_type": "pdf"
+}

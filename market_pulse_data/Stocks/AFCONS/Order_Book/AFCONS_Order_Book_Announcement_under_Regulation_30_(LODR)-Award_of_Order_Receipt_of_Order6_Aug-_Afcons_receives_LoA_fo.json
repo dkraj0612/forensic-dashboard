@@ -1,0 +1,8 @@
+{
+    "ticker": "AFCONS",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec13720a-418d-4cd3-a89d-b1abc706d81a.pdf",
+    "file_type": "pdf"
+}

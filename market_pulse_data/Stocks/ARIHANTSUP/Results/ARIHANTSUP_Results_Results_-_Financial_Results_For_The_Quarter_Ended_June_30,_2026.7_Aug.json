@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIHANTSUP",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=675efe8a-c43e-4aa4-8dda-7bf7cf7a1954.pdf",
+    "file_type": "pdf"
+}

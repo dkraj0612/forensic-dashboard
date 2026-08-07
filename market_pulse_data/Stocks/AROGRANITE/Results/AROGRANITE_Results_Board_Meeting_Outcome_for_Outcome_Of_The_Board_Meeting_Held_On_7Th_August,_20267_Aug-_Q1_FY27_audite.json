@@ -1,0 +1,8 @@
+{
+    "ticker": "AROGRANITE",
+    "category": "Results",
+    "extraction_date": "2026-08-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4dcc1496-7158-4574-9e07-8c6d08c93fa8.pdf",
+    "file_type": "pdf"
+}
