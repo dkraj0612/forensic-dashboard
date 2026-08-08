@@ -24,7 +24,43 @@
             "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_21_Transcript.md",
             "quarter": "Q2",
             "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_23_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Q2FY25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_28_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_19_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_20_Transcript.md",
+            "quarter": "Q2",
+            "year": 2026
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_29_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_23_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_28_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_26_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_21_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Q2FY25_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Q1FY2026_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_20_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_19_Transcript.md",
+        "./ScreenerData/stocks/A/ABDL/concalls/ABDL_Fallback_Transcript_18_Transcript.md"
+    ]
 }
