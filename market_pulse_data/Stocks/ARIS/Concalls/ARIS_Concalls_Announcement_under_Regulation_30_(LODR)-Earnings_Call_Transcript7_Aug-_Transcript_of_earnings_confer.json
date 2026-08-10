@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ed7df5f6-ebc5-44a5-a175-0d85a595bf2d.pdf",
+    "file_type": "pdf"
+}

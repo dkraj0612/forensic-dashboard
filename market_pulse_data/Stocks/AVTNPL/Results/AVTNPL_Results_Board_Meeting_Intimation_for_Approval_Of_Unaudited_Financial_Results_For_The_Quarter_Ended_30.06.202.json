@@ -1,0 +1,8 @@
+{
+    "ticker": "AVTNPL",
+    "category": "Results",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d680a1aa-ea2e-47d4-a7a1-dbfcdd3920d0.pdf",
+    "file_type": "pdf"
+}

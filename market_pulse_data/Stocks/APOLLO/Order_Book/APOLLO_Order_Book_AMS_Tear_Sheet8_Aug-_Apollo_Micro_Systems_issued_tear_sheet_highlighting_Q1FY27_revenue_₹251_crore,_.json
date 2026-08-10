@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLLO",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8266d80c-adcb-4068-93b3-8a86b17c4ae0.pdf",
+    "file_type": "pdf"
+}

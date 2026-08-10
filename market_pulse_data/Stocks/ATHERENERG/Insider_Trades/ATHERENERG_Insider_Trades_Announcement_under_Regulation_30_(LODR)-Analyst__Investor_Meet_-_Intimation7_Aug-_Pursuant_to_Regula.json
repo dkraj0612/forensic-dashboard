@@ -1,0 +1,8 @@
+{
+    "ticker": "ATHERENERG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b6203359-eacd-4a44-b45c-a7de26ec26bb.pdf",
+    "file_type": "pdf"
+}

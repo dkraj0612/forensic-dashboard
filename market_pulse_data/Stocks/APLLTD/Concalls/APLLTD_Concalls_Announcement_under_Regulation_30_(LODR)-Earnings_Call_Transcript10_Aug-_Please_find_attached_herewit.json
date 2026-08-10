@@ -1,0 +1,8 @@
+{
+    "ticker": "APLLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b8f27d1b-f644-4885-a463-793dbbfce7ca.pdf",
+    "file_type": "pdf"
+}

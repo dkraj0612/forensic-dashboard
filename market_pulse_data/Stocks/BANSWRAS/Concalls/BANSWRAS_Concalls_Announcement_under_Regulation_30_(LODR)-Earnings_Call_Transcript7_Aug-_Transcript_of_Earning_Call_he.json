@@ -1,0 +1,8 @@
+{
+    "ticker": "BANSWRAS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be2a3ef1-2787-4f24-9886-0619af1719a4.pdf",
+    "file_type": "pdf"
+}

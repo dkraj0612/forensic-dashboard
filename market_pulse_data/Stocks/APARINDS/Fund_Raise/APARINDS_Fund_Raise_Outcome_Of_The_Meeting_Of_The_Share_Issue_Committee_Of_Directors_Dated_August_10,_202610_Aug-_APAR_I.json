@@ -1,0 +1,8 @@
+{
+    "ticker": "APARINDS",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d7a0a85-a3c6-4993-8971-d0dcfa5fdf6f.pdf",
+    "file_type": "pdf"
+}

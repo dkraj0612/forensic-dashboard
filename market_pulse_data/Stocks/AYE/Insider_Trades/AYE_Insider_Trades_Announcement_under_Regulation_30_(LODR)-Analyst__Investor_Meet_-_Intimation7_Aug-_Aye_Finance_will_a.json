@@ -1,0 +1,8 @@
+{
+    "ticker": "AYE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f3bd9f14-5597-4123-8092-ec1e8dc2d43c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ARE&M",
+    "category": "Results",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f00555ea-3463-4268-bd84-7fef29367325.pdf",
+    "file_type": "pdf"
+}

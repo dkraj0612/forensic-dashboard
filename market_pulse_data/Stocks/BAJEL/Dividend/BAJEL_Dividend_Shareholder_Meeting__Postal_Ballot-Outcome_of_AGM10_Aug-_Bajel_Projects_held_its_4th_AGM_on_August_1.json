@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJEL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f19ac5c-7e54-42d7-9bc1-af57cd32de1b.pdf",
+    "file_type": "pdf"
+}

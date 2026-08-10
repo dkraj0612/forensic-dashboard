@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "ASKAUTOLTD"
+  call_date: "2026-08-10"
+  reporting_period: "Announcement_under_Regulation_30_(LODR)-Earnings_Call_Transcript10_Aug-_Q1_FY27_earnings_call_transc"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64dee966-ee79-4563-8e67-348784a17e1e.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 10.03
+  total_word_volume: 5027
+---
+
+# Concall NLP Analysis: ASKAUTOLTD
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64dee966-ee79-4563-8e67-348784a17e1e.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+® ASK AUTOMOTIVE LIMITED (Formerly known as A S K Automotive Private Limited) Date: August 10, 2026 BSE Limited Phiroze Jeejeebhoy Towers, Dalal Street, Mumbai - 400 001 Scrip Code: 544022 ISIN No.: INE491J01022 Re.: ASK Automotive Limited National Stock Exchange of India Limited Exchange Plaza, C-1, Block - G, Bandra Kurla Complex, Bandra (East), Mumbai - 400 051 Symbol: ASKAUTOLTD ISIN No.: INE491J01022 Re.: ASK Automotive Limited Sub: Transcript of Investors/analysts Call - Q1 FY 2026-27 Unaudited Financial Results Dear Sir/Madam, Pursuant to the requirement of Regulation 30 read with Part A of Schedule III of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, please find enclosed herewith Transcript of Investors/analysts Call organized on August 05, 2026, post declaration of Unaudited Financial Results of the Company (Standalone & Consolidated) for the quarter ended on June 30, 2026. The same shall be available on our website i.e. www.askbrake.com. Kindly take the above information on your record. Thanking you. For ASK Automotive Limited Rajani Sharma Company Secretary &Compliance Officer Membership No.: ACS14391 Encl: As above Corporate Office: - Plot No. 13-14, Sector - 5, I.M.T. Manesar, Distt. Gurgaon. PIN - 122050 (Hr.) Ph: 0124 - 4396900 e-mail: info@askbrake.com : roc@askbrake.com Website : www.askbrake.com IATF ISO ISO ISO Registered Office: Flat No. 104, 929/1, Naiwala, Faiz Road, Karol Bagh, New Delhi - 110 005 Tel: 011-28758433, 28759605 011-28752694, 43071516 CIN: L34300DL1988PLC030342 Rajani Sharma Digitally signed by Rajani Sharma Date: 2026.08.10 13:09:47 +05'30' Page 1 of 11 “ASK Automotive Limited Q1 FY27 Post Results Earnings Conference Call” August 05, 2026 MANAGEMENT: MR. KULDIP SINGH RATHEE - CHAIRMAN AND MANAGING DIRECTOR MR. PRASHANT RATHEE - JOINT MANAGING DIRECTOR MR. AMAN RATHEE - JOINT MANAGING DIRECTOR MR. NARESH KUMAR - CHIEF FINANCIAL OFFICER MR. MANOJ SHARMA - CHIEF GENERAL MANAGER - INVESTOR RELATIONS MODERATOR: MR. RUSHABH SHAH - ADFACTORS PR ASK Automotive Limited August 05, 2026 Page 2 of 11 Moderator: Ladies and gentlemen, good day and welcome to the ASK Automotive Q1 FY27 Post Results Earnings Conference Call, hosted by Adfactors PR. As a reminder, all participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the conference call, please signal an operator by pressing star then zero on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Mr. Rushabh Shah from Adfactors PR. Thank you and over to you, sir. Rushabh Shah: Thank you. A very good evening to everyone, and welcome to the Q1 FY27 Earnings Call of ASK Automotive Limited. From the senior management, we have with us Mr. Kuldip Singh Rathee, Chairman and Managing Director, Mr. Prashant Rathee, Joint Managing Director, Mr. Aman Rathee, Joint Managing Director, and Mr. Naresh Kumar, Chief Financial Officer, and Mr. Manoj Sharma, Chief General Manager Investor Relations. Before we begin the call, I would like to mention that some of the statements made during today's call may be forward-looking in nature, and hence, it may involve risks and uncertainties, including those related to the future financial and operating performance of the company. Please bear with us if there is a call drop during the course of the conference call. We would ensure that the call is reconnected at the earliest. I would now like to hand over the call to Mr. Kuldip Singh Rathee, Chairman and Managing Director, for his opening remarks. Thank you, and over to you, sir. Kuldip Singh Rathee: Thank you, Rushabh. Good evening, ladies and gentlemen. It's my great pleasure to welcome you all to our Q1 FY27 Earnings Conference Call. I hope you have had the opportunity to review the detailed presentation submitted to the exchanges and available on our website. FY27 has begun on a strong note for the Indian economy, which continues to be the world's fastest growing major economy. Domestic demand remains robust, private consumption is... *(Truncated for storage. See Source URL)*

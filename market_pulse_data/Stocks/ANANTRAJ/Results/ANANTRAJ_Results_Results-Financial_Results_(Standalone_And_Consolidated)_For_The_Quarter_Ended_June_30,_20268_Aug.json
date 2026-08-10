@@ -1,0 +1,8 @@
+{
+    "ticker": "ANANTRAJ",
+    "category": "Results",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3d60445e-acea-4519-b24a-c354a14eead3.pdf",
+    "file_type": "pdf"
+}

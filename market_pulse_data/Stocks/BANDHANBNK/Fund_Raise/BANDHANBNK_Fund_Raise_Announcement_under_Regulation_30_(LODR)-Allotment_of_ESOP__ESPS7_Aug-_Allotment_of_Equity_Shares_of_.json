@@ -1,0 +1,8 @@
+{
+    "ticker": "BANDHANBNK",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bfc4c963-3a79-48a0-ab8d-acd98d70afbf.pdf",
+    "file_type": "pdf"
+}

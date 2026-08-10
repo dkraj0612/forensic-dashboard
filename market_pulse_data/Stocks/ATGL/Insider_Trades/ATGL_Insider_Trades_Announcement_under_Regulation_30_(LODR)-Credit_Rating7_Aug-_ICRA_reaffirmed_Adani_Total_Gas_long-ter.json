@@ -1,0 +1,8 @@
+{
+    "ticker": "ATGL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb6b803a-206c-4e1c-9693-b4604cb69c75.pdf",
+    "file_type": "pdf"
+}

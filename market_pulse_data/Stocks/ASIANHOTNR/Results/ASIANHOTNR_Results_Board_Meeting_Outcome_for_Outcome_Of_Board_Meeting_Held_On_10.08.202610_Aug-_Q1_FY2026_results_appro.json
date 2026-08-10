@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANHOTNR",
+    "category": "Results",
+    "extraction_date": "2026-08-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3d06cf0-6543-4ad8-85b8-8561263ae05b.pdf",
+    "file_type": "pdf"
+}
