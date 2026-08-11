@@ -1,0 +1,8 @@
+{
+    "ticker": "AMRUTANJAN",
+    "category": "Dividend",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=58e8150f-3118-4b9e-adbe-7e1c0a16c433.pdf",
+    "file_type": "pdf"
+}

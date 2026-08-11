@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHIMASYN",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7c58276c-545c-4c6c-a88f-b8ec1bf4ad55.pdf",
+    "file_type": "pdf"
+}

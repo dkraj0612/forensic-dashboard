@@ -1,0 +1,8 @@
+{
+    "ticker": "BLSE",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf4bf8d6-0e16-4bc8-8fb6-010b1050cc51.pdf",
+    "file_type": "pdf"
+}

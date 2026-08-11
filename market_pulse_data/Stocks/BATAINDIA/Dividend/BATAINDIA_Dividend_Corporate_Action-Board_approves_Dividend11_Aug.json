@@ -1,0 +1,8 @@
+{
+    "ticker": "BATAINDIA",
+    "category": "Dividend",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=33b7826e-f8a7-48f1-a52b-332c1d995c75.pdf",
+    "file_type": "pdf"
+}

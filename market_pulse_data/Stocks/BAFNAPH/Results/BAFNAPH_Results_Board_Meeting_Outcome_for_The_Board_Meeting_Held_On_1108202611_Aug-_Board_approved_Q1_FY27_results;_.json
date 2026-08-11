@@ -1,0 +1,8 @@
+{
+    "ticker": "BAFNAPH",
+    "category": "Results",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab243131-b596-4422-9977-a6a2909a6453.pdf",
+    "file_type": "pdf"
+}

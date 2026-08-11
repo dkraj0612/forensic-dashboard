@@ -1,0 +1,8 @@
+{
+    "ticker": "BEEKAY",
+    "category": "Results",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0e8bc566-824d-4fb9-bf3f-e19ea65c36dd.pdf",
+    "file_type": "pdf"
+}

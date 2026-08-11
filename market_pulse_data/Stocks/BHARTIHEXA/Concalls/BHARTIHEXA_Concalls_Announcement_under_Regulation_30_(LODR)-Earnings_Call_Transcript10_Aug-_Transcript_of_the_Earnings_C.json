@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARTIHEXA",
+    "category": "Concalls",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ae368f4-2309-45e5-9fdf-d396fce910f1.pdf",
+    "file_type": "pdf"
+}

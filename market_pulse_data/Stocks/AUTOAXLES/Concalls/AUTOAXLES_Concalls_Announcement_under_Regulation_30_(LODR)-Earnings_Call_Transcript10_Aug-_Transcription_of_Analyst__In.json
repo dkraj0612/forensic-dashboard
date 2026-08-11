@@ -1,0 +1,8 @@
+{
+    "ticker": "AUTOAXLES",
+    "category": "Concalls",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e66ff54-82af-47da-9e68-f02c31983e64.pdf",
+    "file_type": "pdf"
+}

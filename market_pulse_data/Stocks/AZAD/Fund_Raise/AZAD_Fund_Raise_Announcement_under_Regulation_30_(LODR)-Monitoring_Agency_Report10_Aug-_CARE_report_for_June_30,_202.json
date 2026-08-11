@@ -1,0 +1,8 @@
+{
+    "ticker": "AZAD",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=82d8f14e-58da-406c-8f83-f9d7f01bd6ce.pdf",
+    "file_type": "pdf"
+}

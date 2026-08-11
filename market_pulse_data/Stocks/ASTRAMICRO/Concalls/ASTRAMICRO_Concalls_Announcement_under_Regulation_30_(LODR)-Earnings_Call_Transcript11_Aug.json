@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTRAMICRO",
+    "category": "Concalls",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7640d848-bf8c-4a39-99bf-fda75bd68631.pdf",
+    "file_type": "pdf"
+}

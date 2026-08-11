@@ -1,0 +1,8 @@
+{
+    "ticker": "ASAL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8e1d9768-390e-4f6a-b2b1-40f5a0c403e1.pdf",
+    "file_type": "pdf"
+}

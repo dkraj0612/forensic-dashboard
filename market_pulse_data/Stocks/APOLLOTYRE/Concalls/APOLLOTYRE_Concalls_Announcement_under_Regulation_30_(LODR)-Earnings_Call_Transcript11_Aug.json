@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLLOTYRE",
+    "category": "Concalls",
+    "extraction_date": "2026-08-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=54960a36-80db-4b96-8394-542a87f3b4ff.pdf",
+    "file_type": "pdf"
+}
