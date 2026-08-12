@@ -1,0 +1,30 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Fallback_Transcript_17_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Q3_FY26_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Q4_FY26_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Fallback_Transcript_18_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Fallback_Transcript_17_Transcript.md",
+        "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Fallback_Transcript_18_Transcript.md",
+        "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Q3_FY26_Transcript.md",
+        "./ScreenerData/stocks/A/ABLBL/concalls/ABLBL_Q4_FY26_Transcript.md"
+    ]
+}
