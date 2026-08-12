@@ -1,0 +1,8 @@
+{
+    "ticker": "AKSHARCHEM",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d23ff7c-bbd7-410f-b518-d6b3947301fd.pdf",
+    "file_type": "pdf"
+}

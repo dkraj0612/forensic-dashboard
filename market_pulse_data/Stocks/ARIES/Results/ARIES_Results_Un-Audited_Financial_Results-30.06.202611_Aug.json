@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIES",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4716527-3ca3-4709-a952-afcb9db9b1c1.pdf",
+    "file_type": "pdf"
+}

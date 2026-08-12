@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLANTAA",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8e6fd3d1-169f-48ce-aa6c-db3a71c47fa3.pdf",
+    "file_type": "pdf"
+}

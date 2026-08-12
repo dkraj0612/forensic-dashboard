@@ -1,0 +1,8 @@
+{
+    "ticker": "BALAJEE",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e3698863-69d0-4d46-89f2-f270dcbcf530.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BCLIND",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bf8537f1-3907-4375-84e0-324309bde71e.pdf",
+    "file_type": "pdf"
+}

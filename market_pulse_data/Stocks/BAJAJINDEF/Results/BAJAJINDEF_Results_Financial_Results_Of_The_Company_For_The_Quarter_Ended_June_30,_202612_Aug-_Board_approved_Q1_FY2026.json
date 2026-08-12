@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJINDEF",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec036730-e6c6-457f-85bf-12e4422f8d9b.pdf",
+    "file_type": "pdf"
+}

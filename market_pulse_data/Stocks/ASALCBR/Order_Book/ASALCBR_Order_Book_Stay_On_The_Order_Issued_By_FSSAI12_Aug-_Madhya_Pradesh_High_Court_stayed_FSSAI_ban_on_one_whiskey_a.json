@@ -1,0 +1,8 @@
+{
+    "ticker": "ASALCBR",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d57769f-1762-4953-853a-7dbba1a5df1f.pdf",
+    "file_type": "pdf"
+}

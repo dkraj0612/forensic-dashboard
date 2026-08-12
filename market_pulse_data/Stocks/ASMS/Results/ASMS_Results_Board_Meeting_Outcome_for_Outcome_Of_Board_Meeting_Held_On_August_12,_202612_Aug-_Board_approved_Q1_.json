@@ -1,0 +1,8 @@
+{
+    "ticker": "ASMS",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1efff462-1be3-4457-a957-8d5835e1457f.pdf",
+    "file_type": "pdf"
+}

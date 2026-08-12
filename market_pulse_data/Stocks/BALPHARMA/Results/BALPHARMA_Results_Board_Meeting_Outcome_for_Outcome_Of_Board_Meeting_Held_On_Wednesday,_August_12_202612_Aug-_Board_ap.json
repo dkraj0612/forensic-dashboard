@@ -1,0 +1,8 @@
+{
+    "ticker": "BALPHARMA",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b4e1b1f-00b6-4e26-a3eb-9e03a795ebb3.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ANDHRAPAP",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c625dc01-37b3-4508-8625-8c03ca6bca07.pdf",
+    "file_type": "pdf"
+}

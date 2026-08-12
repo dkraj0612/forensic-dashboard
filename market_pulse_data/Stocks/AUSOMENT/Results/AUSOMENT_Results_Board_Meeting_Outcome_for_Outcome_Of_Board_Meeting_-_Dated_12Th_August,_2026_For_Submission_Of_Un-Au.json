@@ -1,0 +1,8 @@
+{
+    "ticker": "AUSOMENT",
+    "category": "Results",
+    "extraction_date": "2026-08-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4d1be2c5-ff56-4f3d-a6fa-8322fd88b085.pdf",
+    "file_type": "pdf"
+}
