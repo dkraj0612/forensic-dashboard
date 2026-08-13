@@ -1,0 +1,8 @@
+{
+    "ticker": "AXITA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad21484e-d3a4-4d5c-979f-7742876ffc44.pdf",
+    "file_type": "pdf"
+}

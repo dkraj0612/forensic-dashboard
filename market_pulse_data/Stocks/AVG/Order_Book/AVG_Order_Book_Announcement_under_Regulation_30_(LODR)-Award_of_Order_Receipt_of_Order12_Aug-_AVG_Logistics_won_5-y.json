@@ -1,0 +1,8 @@
+{
+    "ticker": "AVG",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=698de704-6aeb-4480-8f5c-8104e24db31d.pdf",
+    "file_type": "pdf"
+}

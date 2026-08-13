@@ -1,0 +1,8 @@
+{
+    "ticker": "AXITA",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=047ba35b-90e6-443b-9a3f-8219cda52df9.pdf",
+    "file_type": "pdf"
+}

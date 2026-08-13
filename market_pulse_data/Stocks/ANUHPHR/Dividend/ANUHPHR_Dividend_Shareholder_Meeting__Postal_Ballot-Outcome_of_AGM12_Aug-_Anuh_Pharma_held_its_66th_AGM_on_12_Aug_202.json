@@ -1,0 +1,8 @@
+{
+    "ticker": "ANUHPHR",
+    "category": "Dividend",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=683b11ba-8c0b-4bcc-9533-6f459099d3a6.pdf",
+    "file_type": "pdf"
+}

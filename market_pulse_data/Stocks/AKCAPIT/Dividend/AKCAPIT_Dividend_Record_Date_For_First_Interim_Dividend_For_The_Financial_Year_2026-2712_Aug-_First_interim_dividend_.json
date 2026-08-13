@@ -1,0 +1,8 @@
+{
+    "ticker": "AKCAPIT",
+    "category": "Dividend",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=21054fc7-bb71-42a0-a62b-af4f74af8282.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "APCL",
+    "category": "Results",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5213f88-c464-450c-bc72-23b161384ae4.pdf",
+    "file_type": "pdf"
+}

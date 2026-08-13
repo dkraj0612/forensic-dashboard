@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLASCYCLE",
+    "category": "Results",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b0ac265e-132a-4f1b-a563-530a3b0134fc.pdf",
+    "file_type": "pdf"
+}

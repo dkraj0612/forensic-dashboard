@@ -1,0 +1,8 @@
+{
+    "ticker": "ALLTIME",
+    "category": "Concalls",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c40eb5ec-c7cd-4cc0-a93c-09583aaaf9f3.pdf",
+    "file_type": "pdf"
+}

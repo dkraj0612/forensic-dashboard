@@ -1,0 +1,8 @@
+{
+    "ticker": "ARROWGREEN",
+    "category": "Results",
+    "extraction_date": "2026-08-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f7498413-bbbe-4442-8133-8f14c56bdcba.pdf",
+    "file_type": "pdf"
+}
