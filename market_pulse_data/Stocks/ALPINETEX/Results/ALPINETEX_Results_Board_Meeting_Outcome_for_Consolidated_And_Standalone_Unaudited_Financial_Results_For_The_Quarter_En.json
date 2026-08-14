@@ -1,0 +1,8 @@
+{
+    "ticker": "ALPINETEX",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a0e09ff8-fc78-4ef2-9601-f6f48d5be2d4.pdf",
+    "file_type": "pdf"
+}

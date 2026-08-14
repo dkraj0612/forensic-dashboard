@@ -1,0 +1,8 @@
+{
+    "ticker": "ALGOQUANT",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6510a3e3-c277-4840-bea8-b677f961ad42.pdf",
+    "file_type": "pdf"
+}

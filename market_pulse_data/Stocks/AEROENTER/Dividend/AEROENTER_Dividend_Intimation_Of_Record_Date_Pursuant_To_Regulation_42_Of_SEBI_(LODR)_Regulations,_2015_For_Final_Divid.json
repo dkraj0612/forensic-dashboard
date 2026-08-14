@@ -1,0 +1,8 @@
+{
+    "ticker": "AEROENTER",
+    "category": "Dividend",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77119043-9602-4e3d-8f1d-36310e699639.pdf",
+    "file_type": "pdf"
+}

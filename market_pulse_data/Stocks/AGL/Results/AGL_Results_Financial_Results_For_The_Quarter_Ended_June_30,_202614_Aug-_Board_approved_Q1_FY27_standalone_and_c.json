@@ -1,0 +1,8 @@
+{
+    "ticker": "AGL",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c717733a-afbc-413f-b455-f3f720429357.pdf",
+    "file_type": "pdf"
+}

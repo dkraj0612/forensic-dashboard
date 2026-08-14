@@ -1,0 +1,8 @@
+{
+    "ticker": "ALKEM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f0998d1-9c91-488d-87f2-38bb1998c09c.pdf",
+    "file_type": "pdf"
+}

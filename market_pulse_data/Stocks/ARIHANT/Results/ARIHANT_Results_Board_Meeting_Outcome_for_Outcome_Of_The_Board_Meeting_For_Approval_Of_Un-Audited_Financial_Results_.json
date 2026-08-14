@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIHANT",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fac9b469-71c8-44c2-a824-da158fd55fb5.pdf",
+    "file_type": "pdf"
+}

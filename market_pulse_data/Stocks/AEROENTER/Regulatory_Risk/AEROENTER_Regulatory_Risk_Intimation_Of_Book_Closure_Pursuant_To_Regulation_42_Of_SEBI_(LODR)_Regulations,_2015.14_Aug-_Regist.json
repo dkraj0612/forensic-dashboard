@@ -1,0 +1,8 @@
+{
+    "ticker": "AEROENTER",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68f0d5fc-7430-4bf2-b693-a7114f66b1ed.pdf",
+    "file_type": "pdf"
+}

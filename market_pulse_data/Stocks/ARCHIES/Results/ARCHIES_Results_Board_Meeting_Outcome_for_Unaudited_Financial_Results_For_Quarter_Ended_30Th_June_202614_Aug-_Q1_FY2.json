@@ -1,0 +1,8 @@
+{
+    "ticker": "ARCHIES",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4f85c1f8-fe29-40d7-ad06-ebd6ceaf5125.pdf",
+    "file_type": "pdf"
+}

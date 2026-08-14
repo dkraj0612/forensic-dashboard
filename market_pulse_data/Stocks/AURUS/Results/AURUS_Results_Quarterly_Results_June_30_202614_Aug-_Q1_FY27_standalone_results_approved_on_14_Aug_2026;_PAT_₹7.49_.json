@@ -1,0 +1,8 @@
+{
+    "ticker": "AURUS",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c72c296-0be3-490d-b1f8-49488a485bfb.pdf",
+    "file_type": "pdf"
+}

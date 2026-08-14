@@ -1,0 +1,8 @@
+{
+    "ticker": "AHLWEST",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9af19ba1-f34e-482f-9b10-7f31241f7e52.pdf",
+    "file_type": "pdf"
+}

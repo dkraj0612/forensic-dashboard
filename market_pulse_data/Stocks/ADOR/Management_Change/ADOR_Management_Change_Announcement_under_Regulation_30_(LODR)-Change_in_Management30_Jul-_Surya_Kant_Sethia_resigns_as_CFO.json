@@ -1,0 +1,8 @@
+{
+    "ticker": "ADOR",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=62a241af-d492-4887-a6d1-5cc98d747619.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANENE",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=da2803cf-2bb0-4f52-87b1-fd4893a5d548.pdf",
+    "file_type": "pdf"
+}

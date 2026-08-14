@@ -1,0 +1,8 @@
+{
+    "ticker": "AHLADA",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/AHLADA_14082026190313_AEL_Q1_FR_26-27.pdf",
+    "file_type": "pdf"
+}

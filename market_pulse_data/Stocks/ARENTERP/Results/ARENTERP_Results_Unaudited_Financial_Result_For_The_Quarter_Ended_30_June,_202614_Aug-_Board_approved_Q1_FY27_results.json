@@ -1,0 +1,8 @@
+{
+    "ticker": "ARENTERP",
+    "category": "Results",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66edc34a-7f95-4926-bc5d-533e115fb5c3.pdf",
+    "file_type": "pdf"
+}

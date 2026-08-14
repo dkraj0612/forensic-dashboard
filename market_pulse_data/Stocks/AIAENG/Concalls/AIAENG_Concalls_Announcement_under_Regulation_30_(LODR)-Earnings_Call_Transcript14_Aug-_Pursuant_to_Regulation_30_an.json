@@ -1,0 +1,8 @@
+{
+    "ticker": "AIAENG",
+    "category": "Concalls",
+    "extraction_date": "2026-08-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cd3399bd-6b78-4418-bb3d-70407333ecd0.pdf",
+    "file_type": "pdf"
+}
