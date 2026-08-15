@@ -1,0 +1,8 @@
+{
+    "ticker": "AVL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e5ffb2ce-6819-436a-8396-c5a730904192.pdf",
+    "file_type": "pdf"
+}

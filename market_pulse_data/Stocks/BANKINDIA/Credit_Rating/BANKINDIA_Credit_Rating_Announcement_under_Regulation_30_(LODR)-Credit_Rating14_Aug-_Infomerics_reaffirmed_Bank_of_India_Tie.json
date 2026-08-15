@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=456df779-63c0-475b-9712-de20287587ac.pdf",
+    "file_type": "pdf"
+}

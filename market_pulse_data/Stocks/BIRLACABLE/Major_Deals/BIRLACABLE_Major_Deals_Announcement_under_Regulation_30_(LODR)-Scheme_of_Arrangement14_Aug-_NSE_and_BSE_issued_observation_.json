@@ -1,0 +1,8 @@
+{
+    "ticker": "BIRLACABLE",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=15a36f53-72f8-4c47-88ed-75a7625b036d.pdf",
+    "file_type": "pdf"
+}

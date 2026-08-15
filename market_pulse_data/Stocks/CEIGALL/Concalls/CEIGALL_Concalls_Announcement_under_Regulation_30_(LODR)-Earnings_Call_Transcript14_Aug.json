@@ -1,0 +1,8 @@
+{
+    "ticker": "CEIGALL",
+    "category": "Concalls",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3e9eb9b5-5f78-4e62-a41a-6c5a6e7748c2.pdf",
+    "file_type": "pdf"
+}

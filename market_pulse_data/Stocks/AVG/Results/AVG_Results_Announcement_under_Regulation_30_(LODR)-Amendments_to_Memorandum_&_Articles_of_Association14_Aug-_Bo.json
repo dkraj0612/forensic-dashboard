@@ -1,0 +1,8 @@
+{
+    "ticker": "AVG",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b32edc53-b704-40d9-a85d-07bedbd97a22.pdf",
+    "file_type": "pdf"
+}

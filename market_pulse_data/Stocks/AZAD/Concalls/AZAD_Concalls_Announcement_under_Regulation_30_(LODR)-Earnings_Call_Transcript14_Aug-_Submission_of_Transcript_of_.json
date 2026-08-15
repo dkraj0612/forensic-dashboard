@@ -1,0 +1,8 @@
+{
+    "ticker": "AZAD",
+    "category": "Concalls",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c595c5f6-1b54-40da-96cf-e395cb5ee8ad.pdf",
+    "file_type": "pdf"
+}

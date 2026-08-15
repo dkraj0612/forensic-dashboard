@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUECHIP",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e9d5ef9-be64-4233-bd7c-2688283671f5.pdf",
+    "file_type": "pdf"
+}

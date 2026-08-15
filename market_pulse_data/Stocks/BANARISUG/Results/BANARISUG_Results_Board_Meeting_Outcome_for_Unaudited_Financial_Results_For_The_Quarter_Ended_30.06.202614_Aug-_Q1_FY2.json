@@ -1,0 +1,8 @@
+{
+    "ticker": "BANARISUG",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4536e2c5-4989-430f-9eb0-3e0e3f5c9eea.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BBTCL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b777b7f9-0618-4a00-8d47-1c6cf7ed87ea.pdf",
+    "file_type": "pdf"
+}

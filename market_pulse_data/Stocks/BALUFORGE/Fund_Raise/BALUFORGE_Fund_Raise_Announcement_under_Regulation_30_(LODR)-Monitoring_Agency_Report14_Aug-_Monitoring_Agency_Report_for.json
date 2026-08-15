@@ -1,0 +1,8 @@
+{
+    "ticker": "BALUFORGE",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8975aed5-f986-4f7e-97c0-804c3561f750.pdf",
+    "file_type": "pdf"
+}

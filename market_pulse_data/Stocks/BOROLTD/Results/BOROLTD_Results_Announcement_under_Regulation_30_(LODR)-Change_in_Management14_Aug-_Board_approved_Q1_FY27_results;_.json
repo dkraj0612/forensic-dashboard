@@ -1,0 +1,8 @@
+{
+    "ticker": "BOROLTD",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4e097e7-bf0e-48f0-aa14-1b52a689698c.pdf",
+    "file_type": "pdf"
+}

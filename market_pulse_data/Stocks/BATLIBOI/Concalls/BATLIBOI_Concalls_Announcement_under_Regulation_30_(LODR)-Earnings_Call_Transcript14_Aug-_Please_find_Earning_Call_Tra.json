@@ -1,0 +1,8 @@
+{
+    "ticker": "BATLIBOI",
+    "category": "Concalls",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=71185d09-847a-4d0d-9ba1-f54fa9f6bf54.pdf",
+    "file_type": "pdf"
+}

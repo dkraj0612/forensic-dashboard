@@ -1,0 +1,8 @@
+{
+    "ticker": "CARBORUNIV",
+    "category": "Concalls",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6573705-903f-495c-a806-5898eda4f66e.pdf",
+    "file_type": "pdf"
+}

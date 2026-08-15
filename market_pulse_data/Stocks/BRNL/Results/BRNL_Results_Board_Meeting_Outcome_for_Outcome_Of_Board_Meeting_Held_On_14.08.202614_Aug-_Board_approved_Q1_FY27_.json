@@ -1,0 +1,8 @@
+{
+    "ticker": "BRNL",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8873623-3f76-4be9-8007-9fa190189daf.pdf",
+    "file_type": "pdf"
+}

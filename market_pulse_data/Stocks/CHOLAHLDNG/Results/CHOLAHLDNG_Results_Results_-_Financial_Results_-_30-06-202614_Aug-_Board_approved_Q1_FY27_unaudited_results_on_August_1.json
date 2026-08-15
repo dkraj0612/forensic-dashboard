@@ -1,0 +1,8 @@
+{
+    "ticker": "CHOLAHLDNG",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b422c4c6-baf3-47e8-9828-bfe3d7b87279.pdf",
+    "file_type": "pdf"
+}

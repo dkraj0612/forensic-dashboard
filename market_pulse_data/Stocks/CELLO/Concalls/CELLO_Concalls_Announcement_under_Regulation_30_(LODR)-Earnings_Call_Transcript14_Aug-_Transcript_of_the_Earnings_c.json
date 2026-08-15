@@ -1,0 +1,8 @@
+{
+    "ticker": "CELLO",
+    "category": "Concalls",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01f15fa2-17cc-468c-9e3f-7b4c76bccaff.pdf",
+    "file_type": "pdf"
+}

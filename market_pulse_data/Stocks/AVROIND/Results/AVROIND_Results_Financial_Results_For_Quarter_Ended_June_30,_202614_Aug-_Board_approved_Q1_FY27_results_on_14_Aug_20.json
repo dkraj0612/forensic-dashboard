@@ -1,0 +1,8 @@
+{
+    "ticker": "AVROIND",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0349239-aba0-4e15-8a9f-22073cb2406a.pdf",
+    "file_type": "pdf"
+}

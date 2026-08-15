@@ -1,0 +1,8 @@
+{
+    "ticker": "BELLACASA",
+    "category": "Results",
+    "extraction_date": "2026-08-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4ba1c24-a7d1-4554-aa0c-f4a68f2d6aeb.pdf",
+    "file_type": "pdf"
+}
