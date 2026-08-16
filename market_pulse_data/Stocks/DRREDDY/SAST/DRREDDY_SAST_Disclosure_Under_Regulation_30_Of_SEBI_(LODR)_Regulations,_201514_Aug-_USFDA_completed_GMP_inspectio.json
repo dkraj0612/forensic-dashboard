@@ -1,0 +1,8 @@
+{
+    "ticker": "DRREDDY",
+    "category": "SAST",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41c10d6f-1f55-4fd6-ad73-4d80be5125e7.pdf",
+    "file_type": "pdf"
+}

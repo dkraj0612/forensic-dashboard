@@ -1,0 +1,8 @@
+{
+    "ticker": "FISCHER",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=926990ee-34dc-4254-8cf5-1c3252b02030.pdf",
+    "file_type": "pdf"
+}

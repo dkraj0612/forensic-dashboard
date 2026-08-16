@@ -1,0 +1,8 @@
+{
+    "ticker": "DAVANGERE",
+    "category": "Results",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2e02d81-5876-47dd-bd1c-6bd3d2740e9c.pdf",
+    "file_type": "pdf"
+}

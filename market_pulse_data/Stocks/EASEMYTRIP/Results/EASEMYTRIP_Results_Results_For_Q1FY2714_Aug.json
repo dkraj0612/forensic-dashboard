@@ -1,0 +1,8 @@
+{
+    "ticker": "EASEMYTRIP",
+    "category": "Results",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fccd02ac-d3a9-4d77-830f-080af55da06b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DRAGARWQ",
+    "category": "Dividend",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb6ab0af-e2fb-42ce-9f27-48318510d0e0.pdf",
+    "file_type": "pdf"
+}

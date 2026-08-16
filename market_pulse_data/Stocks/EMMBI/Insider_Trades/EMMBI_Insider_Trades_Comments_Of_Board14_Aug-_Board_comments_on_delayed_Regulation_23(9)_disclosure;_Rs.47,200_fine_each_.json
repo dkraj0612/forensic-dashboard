@@ -1,0 +1,8 @@
+{
+    "ticker": "EMMBI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5ee9d314-4123-481a-aaa2-b5ea652e0136.pdf",
+    "file_type": "pdf"
+}

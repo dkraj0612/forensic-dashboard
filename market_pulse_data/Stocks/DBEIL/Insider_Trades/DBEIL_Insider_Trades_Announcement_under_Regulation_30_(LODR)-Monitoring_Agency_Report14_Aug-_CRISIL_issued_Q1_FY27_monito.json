@@ -1,0 +1,8 @@
+{
+    "ticker": "DBEIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4d2487f3-0ea1-40da-ae4f-4eb3b4e3bfdf.pdf",
+    "file_type": "pdf"
+}

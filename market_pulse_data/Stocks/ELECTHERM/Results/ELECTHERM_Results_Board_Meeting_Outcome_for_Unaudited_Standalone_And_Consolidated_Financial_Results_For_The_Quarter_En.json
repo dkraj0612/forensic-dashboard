@@ -1,0 +1,8 @@
+{
+    "ticker": "ELECTHERM",
+    "category": "Results",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2aceec5a-d936-45c4-862c-85c8d674d068.pdf",
+    "file_type": "pdf"
+}

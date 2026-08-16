@@ -1,0 +1,8 @@
+{
+    "ticker": "FEDDERSHOL",
+    "category": "Results",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=74d71d42-a1b3-4831-afd8-4a65f7f66b9e.pdf",
+    "file_type": "pdf"
+}

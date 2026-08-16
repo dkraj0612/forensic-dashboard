@@ -1,0 +1,8 @@
+{
+    "ticker": "FCSSOFT",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee60f002-ae0c-4ffd-9564-66b02d0be52a.pdf",
+    "file_type": "pdf"
+}

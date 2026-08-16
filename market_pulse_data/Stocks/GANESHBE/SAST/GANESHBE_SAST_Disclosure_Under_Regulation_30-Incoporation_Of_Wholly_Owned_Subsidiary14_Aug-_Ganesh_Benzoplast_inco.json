@@ -1,0 +1,8 @@
+{
+    "ticker": "GANESHBE",
+    "category": "SAST",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6a7a7297-470c-4db3-a324-1015c433d910.pdf",
+    "file_type": "pdf"
+}

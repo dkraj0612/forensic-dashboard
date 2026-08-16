@@ -1,0 +1,8 @@
+{
+    "ticker": "GAYAPROJ",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7931f21-63dc-4d32-9496-9ed5e003a1ee.pdf",
+    "file_type": "pdf"
+}

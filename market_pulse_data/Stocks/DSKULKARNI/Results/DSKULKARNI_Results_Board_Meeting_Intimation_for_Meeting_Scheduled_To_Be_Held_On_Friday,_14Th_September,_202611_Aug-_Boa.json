@@ -1,0 +1,8 @@
+{
+    "ticker": "DSKULKARNI",
+    "category": "Results",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60cb6afd-6eed-4674-a8f7-141c3d6f7c0e.pdf",
+    "file_type": "pdf"
+}

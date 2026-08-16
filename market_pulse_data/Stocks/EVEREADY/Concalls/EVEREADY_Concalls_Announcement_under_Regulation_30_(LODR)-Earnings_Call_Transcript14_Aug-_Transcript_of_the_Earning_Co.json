@@ -1,0 +1,8 @@
+{
+    "ticker": "EVEREADY",
+    "category": "Concalls",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=842fb51a-b618-4a1f-b338-e0e440c291dc.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GANECOS",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-08-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a858722c-3491-4423-95c0-a839365000fb.pdf",
+    "file_type": "pdf"
+}
