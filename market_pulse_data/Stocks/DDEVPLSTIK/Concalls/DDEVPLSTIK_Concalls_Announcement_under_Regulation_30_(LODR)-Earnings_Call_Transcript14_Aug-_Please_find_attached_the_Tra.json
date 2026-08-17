@@ -1,0 +1,8 @@
+{
+    "ticker": "DDEVPLSTIK",
+    "category": "Concalls",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=af5fcefb-6299-41e9-9380-683c2131ed7c.pdf",
+    "file_type": "pdf"
+}

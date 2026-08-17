@@ -1,0 +1,8 @@
+{
+    "ticker": "EMBDL",
+    "category": "Concalls",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be2ebf0f-c6eb-44de-a96a-e238f0d76d39.pdf",
+    "file_type": "pdf"
+}

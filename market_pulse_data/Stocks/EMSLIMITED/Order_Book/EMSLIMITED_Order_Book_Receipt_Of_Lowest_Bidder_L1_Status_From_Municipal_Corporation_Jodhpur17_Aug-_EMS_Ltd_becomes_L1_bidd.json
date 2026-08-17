@@ -1,0 +1,8 @@
+{
+    "ticker": "EMSLIMITED",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe899a3e-7ca6-4ea1-a3a5-0cab12f3829d.pdf",
+    "file_type": "pdf"
+}

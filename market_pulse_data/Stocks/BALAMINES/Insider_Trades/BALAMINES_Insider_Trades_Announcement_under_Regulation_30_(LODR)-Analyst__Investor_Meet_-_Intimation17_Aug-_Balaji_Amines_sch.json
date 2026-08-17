@@ -1,0 +1,8 @@
+{
+    "ticker": "BALAMINES",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad50c5ee-4985-49a2-9422-fa4fd8e4375b.pdf",
+    "file_type": "pdf"
+}

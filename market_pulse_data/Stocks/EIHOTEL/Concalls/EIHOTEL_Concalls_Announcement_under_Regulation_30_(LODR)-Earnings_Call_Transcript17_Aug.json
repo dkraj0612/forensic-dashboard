@@ -1,0 +1,8 @@
+{
+    "ticker": "EIHOTEL",
+    "category": "Concalls",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=718297d1-2753-4c0c-9b92-43b4a9441715.pdf",
+    "file_type": "pdf"
+}

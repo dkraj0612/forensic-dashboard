@@ -1,0 +1,8 @@
+{
+    "ticker": "CEWATER",
+    "category": "Concalls",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7ed5d3b9-1c86-47e0-b53e-ff5eafa9b4b2.pdf",
+    "file_type": "pdf"
+}

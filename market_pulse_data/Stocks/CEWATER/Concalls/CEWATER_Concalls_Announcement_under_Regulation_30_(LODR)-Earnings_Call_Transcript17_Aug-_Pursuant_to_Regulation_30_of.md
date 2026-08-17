@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "CEWATER"
+  call_date: "2026-08-17"
+  reporting_period: "Announcement_under_Regulation_30_(LODR)-Earnings_Call_Transcript17_Aug-_Pursuant_to_Regulation_30_of"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7ed5d3b9-1c86-47e0-b53e-ff5eafa9b4b2.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 12.27
+  total_word_volume: 5402
+---
+
+# Concall NLP Analysis: CEWATER
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7ed5d3b9-1c86-47e0-b53e-ff5eafa9b4b2.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Date: 17.08.2026 To, National Stock Exchange of India Limited Exchange Plaza, C-1, Block G, Bandra Kurla Complex, Bandra (E), Mumbai - 400051. BSE Limited Phiroze Jeejeebhoy Towers, Dalal Street, Mumbai - 400001. Scrip Symbol: CEWATER Scrip Code: 544315 Dear Sir/Madam, Sub: Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015: Transcript of Conference Call held on 12th August, 2026. Pursuant to Regulation 30 read with Part A of Schedule III of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, please find enclosed transcript of Conference Call of Concord Enviro Systems Limited (“Company”) held on 12th August 2026. The same is being uploaded on the Company’s website and can be accessed at https://www.concordenviro.in/investors.php. The above is for your information and record. Thanking you, For Concord Enviro Systems Limited Prerak Goel Director DIN: 00348563 Place: Mumbai Encl: As above Concord Enviro Systems Limited 101, HDIL Towers, Anant Kanekar Marg, Bandra (E), Mumbai - 400 051, India T F E W CIN +91 22 6704 9000 +91 22 6704 9010 cs@concordenviro.in www.concordenviro.in L45209MH1999PLC120599 Prera k Goel Digitally signed by Prerak Goel DN: c=IN, st=Maharashtra, 2.5.4.20=beb938ac9e4c1a077fab0d93 c25c50c49c8a02af69da02a94e9502a6 88c7fb0a, postalCode=400054, street=SO Kamlesh Kumar Goel f1001 eben ezer tagore road opp vera moda showroom Mumbai, pseudonym=71eeaf46b1b74c28a5dc5 92bfa1a1027, title=6215, serialNumber=51ce672053a7bfa66d51 6eff302eda4e72eea43005f79c11f10d0 47e2c8c2f5f, o=Personal, cn=Prerak Goel Date: 2026.08.17 13:12:37 +05'30' Page 1 of 11 “Concord Enviro Systems Limited Q1 FY27 Earnings Conference Call” August 12, 2026 MANAGEMENT: MR. PRAYAS GOEL - CHAIRMAN AND MANAGING DIRECTOR - CONCORD ENVIRO SYSTEMS LIMITED MR. PRERAK GOEL - EXECUTIVE DIRECTOR - CONCORD ENVIRO SYSTEMS LIMITED MODERATOR: MR. KANAV KHANNA - ERNST & YOUNG (EY LLP) Concord Enviro Systems Limited August 12, 2026 Page 2 of 11 Moderator: Ladies and gentlemen, good day and welcome to the Q1 FY27 Earnings Conference Call of Concord Enviro Systems Limited. As a reminder, all participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions at the end of today's presentation. Should you need assistance during this conference call, please signal an operator by pressing * then 0 on your touch-tone phone. Please note that this conference is being recorded. I would now like to hand the conference over to Mr. Kanav Khanna from EY. Thank you and over to you, sir. Kanav Khanna: Thanks Manav, and good morning to all the participants on the call. And thank you for joining us on the Q1 FY27 earnings call. Please note that we have mailed out the results to everyone and you can also see it on the exchanges and our website. And in case you have not received it, you can write to us, we'll be happy to send it over. Before we proceed to the call, let me remind you that the discussion may contain some forward- looking statement and may invoke some known or unknown risks, uncertainties and factors. It must be viewed in conjunction with our business model and could also cause future results or performance to vary significantly from what is being implied. To take the results for the quarter and full year and answer to all your queries, we have the management of Concord Enviro Systems Limited with us. Please welcome Mr. Prayas Goel, Chairman and Managing Director; Mr. Prerak Goel, Executive Director; and Mr. Shleshank Laheri , Group CFO. We will start the call with a brief overview of the quarter gone past and we will follow it up with some question and answers. With that being said, I'll transfer the call to the management. Over to you, sir. Prerak Goel: Hi, good morning, everyone. Thank you for joining the call. A very warm welcome to Concord Enviro's Q1 FY27 earnings call. Thank you for taking the time to join us today. The first quarter of FY27 was characterized by a combination of near-term operational challenges and encouraging strategic progress across several areas of our business. Our revenue performance during the quarter was impacted by supply chain disruptions due to... *(Truncated for storage. See Source URL)*

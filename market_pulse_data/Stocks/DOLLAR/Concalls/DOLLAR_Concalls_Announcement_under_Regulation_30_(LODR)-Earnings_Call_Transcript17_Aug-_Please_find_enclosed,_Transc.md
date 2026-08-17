@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "DOLLAR"
+  call_date: "2026-08-17"
+  reporting_period: "Announcement_under_Regulation_30_(LODR)-Earnings_Call_Transcript17_Aug-_Please_find_enclosed,_Transc"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bef5e7f2-0678-41ab-b6e1-9ed12e06575e.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 10.25
+  total_word_volume: 7376
+---
+
+# Concall NLP Analysis: DOLLAR
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bef5e7f2-0678-41ab-b6e1-9ed12e06575e.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Date: 17th August, 2026 The Secretary National Stock Exchange of India Limited Exchange Plaza, C-1, Block ‘G’ Bandra- Kurla Complex, Bandra (E) Mumbai - 400 051 Symbol - DOLLAR The Secretary BSE Limited Phiroze Jeejeebhoy Towers Dalal Street Mumbai - 400 001 Scrip Code :541403 Dear Sir / Madam, Reg : Intimation of availability of transcript on Analyst(s)/Institutional Investor(s) meet - ‘Earnings Call’ In continuation to our letter dated 5th August, 2026 and pursuant to Regulation 30(6) and 46 (2) of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, the transcript of the Earnings Call held on Tuesday, 11th August, 2026 at 4.00 pm (IST) as organized by Anand Rathi Research, on the interaction of the Company’s representative(s) on the Un-Audited Financial Results of the Company for the quarter ended 30th June, 2026 and/ or any other matter as discussed, is as enclosed. Please note that the same is also available on the Company's website at https://www.dollarglobal.in/board-of-directors/earnings-call/ This is for your information and record. Thanking you, Yours Sincerely, For Dollar Industries Limited Abhishek Mishra Company Secretary & Compliance Officer Encl: As above ABHISHE K MISHRA Digitally signed by ABHISHEK MISHRA Date: 2026.08.17 17:05:48 +05'30' Page 1 of 17 “Dollar Industries Limited Q1 FY '27 Earnings Conference Call” August 11, 2026 MANAGEMENT: MR. ANKIT GUPTA - PRESIDENT - MARKETING - DOLLAR INDUSTRIES LIMITED MR. AJAY PATODIA - CHIEF FINANCIAL OFFICER - DOLLAR INDUSTRIES LIMITED MODERATOR: MS. ANJALI OJHA - ANAND RATHI SHARES AND STOCK BROKERS LIMITED Dollar Industries Limited August 11, 2026 Page 2 of 17 Moderator: Ladies and gentlemen, good day and welcome to Dollar Industries Limited Q1 FY '27 Earnings Conference Call hosted by Anand Rathi Shares and Stock Brokers Limited. As a reminder, all participant lines will be in the listen-only mode, and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the conference call, please signal an operator by pressing ‘*’ then ‘0’ on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Ms. Anjali Ojha from Anand Rathi Shares and Stock Brokers. Thank you and over to you, ma'am. Anjali Ojha: Thank you. Hi, good evening everyone. I would like to welcome the Management and thank them for this opportunity. We have with us today Mr. Ankit Gupta - President, Marketing and Mr. Ajay Patodia - Chief Financial Officer. I will now hand over this call to the Management for their opening remarks. Over to you, sir. Ankit Gupta: Thank you, Anjali. Good evening, everyone, and welcome to our Q1 FY '27 Earnings Call. Before we begin, I would like to extend my sincere gratitude to our shareholders, analysts and partners. Your continued trust is what drives us to maintain execution discipline, uphold the highest standards of governance and remain focused on compounding long-term value. I would also request everyone to take note of the Safe Harbor statement in our presentation. We are pleased to report that operating income for the quarter stood at INR 405 crore. Gross profit for the quarter grew 6.9% year-on-year to INR 151 crore with the gross profit margin expanding 192 basis points YoY to 37.4%. This improvement was supported by the calibrated price increase implemented during the quarter which we had flagged in our previous call, and it is encouraging to see it translate into healthier realizations and stronger margins. Operating EBITDA rose 11.4% year-on-year to INR 48 crore with the operating EBITDA margin improving 106 basis points year-on-year to 11.8%, reflecting the benefit of better gross margins alongside our continued focus on operational efficiency. Profit after tax grew 22.1% year-on-year to INR 26 crore with the PAT margin expanding 108 basis points year-on-year to 6.4%. Moving on to Project Lakshya: Dollar Industries Limited August 11, 2026 Page 3 of 17 As indicated previously, we have now commenced Phase-2 of Project Lakshya. We have begun building the team for this phase and have started mapping the retailers we aim to activate across... *(Truncated for storage. See Source URL)*

@@ -1,0 +1,8 @@
+{
+    "ticker": "BURNPUR",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cab147f1-c83a-46c0-8272-f9f749207ea5.pdf",
+    "file_type": "pdf"
+}

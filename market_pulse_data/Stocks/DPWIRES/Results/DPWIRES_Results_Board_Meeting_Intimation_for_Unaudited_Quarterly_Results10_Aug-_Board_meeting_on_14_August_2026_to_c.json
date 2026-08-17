@@ -1,0 +1,8 @@
+{
+    "ticker": "DPWIRES",
+    "category": "Results",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52d6d081-2cb1-4a9e-9d8d-2d7095d284af.pdf",
+    "file_type": "pdf"
+}

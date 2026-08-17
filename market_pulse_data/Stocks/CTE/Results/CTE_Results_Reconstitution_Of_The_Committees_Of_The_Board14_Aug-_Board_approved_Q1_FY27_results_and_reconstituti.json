@@ -1,0 +1,8 @@
+{
+    "ticker": "CTE",
+    "category": "Results",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0e64a639-132a-48e8-be12-5607c695cf2c.pdf",
+    "file_type": "pdf"
+}

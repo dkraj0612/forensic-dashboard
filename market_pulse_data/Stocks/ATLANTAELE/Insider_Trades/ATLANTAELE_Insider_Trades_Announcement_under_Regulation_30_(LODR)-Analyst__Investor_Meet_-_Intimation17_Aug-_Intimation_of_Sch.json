@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLANTAELE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0b584bd-74c5-4d70-9ea9-d96bac32a7ef.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CCAVENUE",
+    "category": "Concalls",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9c6ec63e-11f0-4cb8-9e75-da789b6a4a3c.pdf",
+    "file_type": "pdf"
+}

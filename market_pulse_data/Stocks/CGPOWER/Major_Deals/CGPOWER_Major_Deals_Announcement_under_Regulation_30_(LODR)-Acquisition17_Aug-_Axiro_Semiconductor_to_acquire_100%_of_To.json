@@ -1,0 +1,8 @@
+{
+    "ticker": "CGPOWER",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2376cd15-f1cf-4311-b6d6-42a610682ba2.pdf",
+    "file_type": "pdf"
+}

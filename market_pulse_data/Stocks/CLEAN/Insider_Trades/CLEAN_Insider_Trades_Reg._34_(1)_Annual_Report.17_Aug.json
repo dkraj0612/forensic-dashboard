@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEAN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-17",
+    "ai_summary": "Skipped: Document exceeds 150 pages (325 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5906b214-2479-4cae-9ae6-4207f25f19c9.pdf",
+    "file_type": "pdf"
+}
