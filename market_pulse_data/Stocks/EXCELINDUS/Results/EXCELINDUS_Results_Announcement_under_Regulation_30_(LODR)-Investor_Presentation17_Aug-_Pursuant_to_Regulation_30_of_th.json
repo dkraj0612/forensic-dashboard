@@ -1,0 +1,8 @@
+{
+    "ticker": "EXCELINDUS",
+    "category": "Results",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dd12d8c7-e0bd-4b26-8ae9-16fefb3c7585.pdf",
+    "file_type": "pdf"
+}

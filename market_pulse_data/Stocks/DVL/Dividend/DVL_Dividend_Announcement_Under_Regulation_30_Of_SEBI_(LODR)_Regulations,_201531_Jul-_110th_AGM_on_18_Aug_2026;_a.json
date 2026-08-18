@@ -1,0 +1,8 @@
+{
+    "ticker": "DVL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=83ac3a08-18d3-43e2-bc93-bfa38f0e0cde.pdf",
+    "file_type": "pdf"
+}

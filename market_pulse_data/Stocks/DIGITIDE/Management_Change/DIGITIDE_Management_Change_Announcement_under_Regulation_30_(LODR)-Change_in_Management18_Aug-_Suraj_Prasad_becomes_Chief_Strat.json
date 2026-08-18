@@ -1,0 +1,8 @@
+{
+    "ticker": "DIGITIDE",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d05b9e33-e897-4607-806d-bb9e5ac89e0f.pdf",
+    "file_type": "pdf"
+}

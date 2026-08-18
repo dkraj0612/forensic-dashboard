@@ -1,0 +1,8 @@
+{
+    "ticker": "AVG",
+    "category": "Dividend",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4570cbd1-ad8b-4dd3-928a-2bdf1df3c38f.pdf",
+    "file_type": "pdf"
+}

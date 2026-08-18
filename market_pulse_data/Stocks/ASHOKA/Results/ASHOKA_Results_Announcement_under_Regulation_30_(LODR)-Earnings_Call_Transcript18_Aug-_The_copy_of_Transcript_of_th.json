@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHOKA",
+    "category": "Results",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f530bfde-0bc8-4c92-bbff-6ab6373a0e04.pdf",
+    "file_type": "pdf"
+}

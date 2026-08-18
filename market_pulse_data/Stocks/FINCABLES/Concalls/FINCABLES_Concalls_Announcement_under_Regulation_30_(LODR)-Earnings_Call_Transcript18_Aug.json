@@ -1,0 +1,8 @@
+{
+    "ticker": "FINCABLES",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1aa0c4e1-2bb3-4940-bf47-89e2513c94f4.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BDL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ffd4b18-1012-4a7b-8f05-1f4f69523d29.pdf",
+    "file_type": "pdf"
+}

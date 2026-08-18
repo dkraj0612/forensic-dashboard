@@ -1,0 +1,8 @@
+{
+    "ticker": "BLS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68038b20-ecd7-4b24-9be1-c66fa3924f88.pdf",
+    "file_type": "pdf"
+}

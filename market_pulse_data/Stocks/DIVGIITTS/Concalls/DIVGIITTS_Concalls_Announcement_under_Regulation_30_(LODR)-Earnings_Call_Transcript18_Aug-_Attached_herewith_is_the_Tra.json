@@ -1,0 +1,8 @@
+{
+    "ticker": "DIVGIITTS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=18a64e6b-1935-4a4c-bf65-1f7ac1907e80.pdf",
+    "file_type": "pdf"
+}

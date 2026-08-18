@@ -1,0 +1,8 @@
+{
+    "ticker": "CUMMINSIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9841652f-d138-4b4e-8a44-0804cc543c74.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTUM",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0ecbe5d-d9e3-4e2e-8b46-11b7d4c4a9d5.pdf",
+    "file_type": "pdf"
+}

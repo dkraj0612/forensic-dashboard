@@ -1,0 +1,8 @@
+{
+    "ticker": "GATECHDVR",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b47fd26-e08b-4ab5-85b1-d109548fa362.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FOSECOIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de6fe456-6669-49a9-ac84-6298c10bef55.pdf",
+    "file_type": "pdf"
+}

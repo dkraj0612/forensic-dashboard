@@ -1,0 +1,8 @@
+{
+    "ticker": "FREDUN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=54f65dd0-fe28-422d-b744-c78677fcec5c.pdf",
+    "file_type": "pdf"
+}

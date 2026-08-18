@@ -1,0 +1,8 @@
+{
+    "ticker": "EMPIND",
+    "category": "Dividend",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=56a1d343-41ce-4a3b-be09-5ca4418ffc33.pdf",
+    "file_type": "pdf"
+}

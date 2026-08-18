@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMSHRIRAM",
+    "category": "Dividend",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5430588e-12d4-45d8-afdc-04ff06cb367b.pdf",
+    "file_type": "pdf"
+}

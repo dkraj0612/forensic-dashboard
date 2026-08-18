@@ -1,0 +1,8 @@
+{
+    "ticker": "FINOPB",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=75863643-c9f7-48bb-bded-3d848e78f9e4.pdf",
+    "file_type": "pdf"
+}

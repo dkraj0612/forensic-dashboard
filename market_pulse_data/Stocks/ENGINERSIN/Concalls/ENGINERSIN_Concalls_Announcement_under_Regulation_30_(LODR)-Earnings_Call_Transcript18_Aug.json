@@ -1,0 +1,8 @@
+{
+    "ticker": "ENGINERSIN",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=18713484-078f-45d9-96a9-d56fe2f56981.pdf",
+    "file_type": "pdf"
+}

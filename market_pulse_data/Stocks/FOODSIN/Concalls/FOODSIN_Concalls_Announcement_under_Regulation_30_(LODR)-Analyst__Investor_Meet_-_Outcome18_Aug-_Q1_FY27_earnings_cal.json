@@ -1,0 +1,8 @@
+{
+    "ticker": "FOODSIN",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6507c5b3-dc36-499c-8576-e7a0fee85f81.pdf",
+    "file_type": "pdf"
+}

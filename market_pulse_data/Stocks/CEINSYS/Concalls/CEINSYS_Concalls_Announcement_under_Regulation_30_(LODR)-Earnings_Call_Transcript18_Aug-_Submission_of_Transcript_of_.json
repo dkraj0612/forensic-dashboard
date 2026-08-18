@@ -1,0 +1,8 @@
+{
+    "ticker": "CEINSYS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=acb38768-db83-4f05-af9f-ba3c40a6ceb8.pdf",
+    "file_type": "pdf"
+}

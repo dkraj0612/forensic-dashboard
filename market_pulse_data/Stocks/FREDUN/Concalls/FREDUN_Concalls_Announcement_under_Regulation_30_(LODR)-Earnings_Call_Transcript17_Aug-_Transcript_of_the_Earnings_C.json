@@ -1,0 +1,8 @@
+{
+    "ticker": "FREDUN",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7ffaefd-35c8-455d-89ba-26d5ae540ec2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ECOSMOBLTY",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=388d25d8-ff50-4126-9147-485e47aa7be8.pdf",
+    "file_type": "pdf"
+}

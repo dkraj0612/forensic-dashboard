@@ -1,0 +1,8 @@
+{
+    "ticker": "FERMENTA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe8c7bc9-42fd-4e86-b7af-e013b15a1f32.pdf",
+    "file_type": "pdf"
+}

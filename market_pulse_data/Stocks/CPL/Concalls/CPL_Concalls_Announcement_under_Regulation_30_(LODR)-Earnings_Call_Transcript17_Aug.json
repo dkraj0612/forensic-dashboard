@@ -1,0 +1,8 @@
+{
+    "ticker": "CPL",
+    "category": "Concalls",
+    "extraction_date": "2026-08-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0df98ba2-9ac0-4856-b622-cbfd0330d6a8.pdf",
+    "file_type": "pdf"
+}
