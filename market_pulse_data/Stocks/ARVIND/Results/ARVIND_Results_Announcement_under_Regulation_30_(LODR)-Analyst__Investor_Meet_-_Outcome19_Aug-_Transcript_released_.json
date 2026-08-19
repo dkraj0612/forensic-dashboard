@@ -1,0 +1,8 @@
+{
+    "ticker": "ARVIND",
+    "category": "Results",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ae22afd-9bea-4317-8810-3d58897c94eb.pdf",
+    "file_type": "pdf"
+}

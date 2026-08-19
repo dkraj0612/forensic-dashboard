@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJENERGY",
+    "category": "Dividend",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc794ade-081d-4054-a2f4-f6af1bd7808e.pdf",
+    "file_type": "pdf"
+}

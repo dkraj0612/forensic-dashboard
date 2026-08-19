@@ -1,0 +1,8 @@
+{
+    "ticker": "EIDPARRY",
+    "category": "Concalls",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=27e756a7-d24c-4149-8d72-28ade49e8adc.pdf",
+    "file_type": "pdf"
+}

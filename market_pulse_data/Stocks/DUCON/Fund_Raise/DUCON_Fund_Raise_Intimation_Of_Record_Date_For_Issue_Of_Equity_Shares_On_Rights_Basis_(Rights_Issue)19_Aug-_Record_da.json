@@ -1,0 +1,8 @@
+{
+    "ticker": "DUCON",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3fe8e312-c066-4684-b39f-c2a259f01850.pdf",
+    "file_type": "pdf"
+}

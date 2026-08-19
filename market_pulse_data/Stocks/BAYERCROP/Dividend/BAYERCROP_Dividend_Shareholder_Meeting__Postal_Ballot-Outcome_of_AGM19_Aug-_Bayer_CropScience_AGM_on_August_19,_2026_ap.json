@@ -1,0 +1,8 @@
+{
+    "ticker": "BAYERCROP",
+    "category": "Dividend",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d042f45b-1d9e-4fe1-97b8-3478f17bb8ba.pdf",
+    "file_type": "pdf"
+}

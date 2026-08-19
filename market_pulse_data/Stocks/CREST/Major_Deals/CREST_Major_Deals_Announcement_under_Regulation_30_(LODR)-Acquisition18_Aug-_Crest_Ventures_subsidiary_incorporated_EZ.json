@@ -1,0 +1,8 @@
+{
+    "ticker": "CREST",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65c325eb-77ce-432a-babd-417519c014d0.pdf",
+    "file_type": "pdf"
+}

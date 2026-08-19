@@ -1,0 +1,8 @@
+{
+    "ticker": "HCC",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68d36c1d-4b84-4cc9-9f02-b1b52f41fa25.pdf",
+    "file_type": "pdf"
+}

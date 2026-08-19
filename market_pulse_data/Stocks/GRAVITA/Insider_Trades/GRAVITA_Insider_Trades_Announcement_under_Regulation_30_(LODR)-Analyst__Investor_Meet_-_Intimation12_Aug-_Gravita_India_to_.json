@@ -1,0 +1,8 @@
+{
+    "ticker": "GRAVITA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=396a8454-4296-4acd-be92-12726d1fed07.pdf",
+    "file_type": "pdf"
+}

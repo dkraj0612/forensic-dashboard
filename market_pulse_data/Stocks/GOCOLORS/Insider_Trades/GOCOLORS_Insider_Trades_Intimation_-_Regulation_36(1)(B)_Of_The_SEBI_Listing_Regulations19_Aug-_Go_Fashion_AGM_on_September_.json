@@ -1,0 +1,8 @@
+{
+    "ticker": "GOCOLORS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9b950aa1-5cc6-446c-a46b-f4bf84aa2dca.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CAPACITE",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=28d5d280-2b72-4ad9-976f-5077e59feca4.pdf",
+    "file_type": "pdf"
+}

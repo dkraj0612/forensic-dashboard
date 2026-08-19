@@ -1,0 +1,8 @@
+{
+    "ticker": "GSFC",
+    "category": "Concalls",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aae18602-be0d-4ee9-8c82-6ac1977e45af.pdf",
+    "file_type": "pdf"
+}

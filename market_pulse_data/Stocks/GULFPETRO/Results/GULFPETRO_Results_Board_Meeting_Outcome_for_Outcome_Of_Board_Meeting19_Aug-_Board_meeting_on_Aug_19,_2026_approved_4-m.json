@@ -1,0 +1,8 @@
+{
+    "ticker": "GULFPETRO",
+    "category": "Results",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de8a6d24-63fc-44dd-9564-0b137e49071d.pdf",
+    "file_type": "pdf"
+}

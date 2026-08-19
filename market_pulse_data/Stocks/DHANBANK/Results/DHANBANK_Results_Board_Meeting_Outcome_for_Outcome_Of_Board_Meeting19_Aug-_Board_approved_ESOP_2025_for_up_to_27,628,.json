@@ -1,0 +1,8 @@
+{
+    "ticker": "DHANBANK",
+    "category": "Results",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7092a46-cc49-473b-bc4c-1a41d513c45b.pdf",
+    "file_type": "pdf"
+}

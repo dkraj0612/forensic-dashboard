@@ -1,0 +1,8 @@
+{
+    "ticker": "AIIL",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a0b08451-e9a9-406d-86d0-0e4a32d74092.pdf",
+    "file_type": "pdf"
+}

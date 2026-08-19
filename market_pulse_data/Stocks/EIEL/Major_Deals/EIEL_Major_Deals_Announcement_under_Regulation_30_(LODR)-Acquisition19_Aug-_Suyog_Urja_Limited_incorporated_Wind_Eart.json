@@ -1,0 +1,8 @@
+{
+    "ticker": "EIEL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=435b4cdc-069c-4026-898d-edaac77abf24.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FINKURVE",
+    "category": "Results",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ae71c03-6132-4c8f-8f51-06d634b1869d.pdf",
+    "file_type": "pdf"
+}

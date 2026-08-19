@@ -1,0 +1,8 @@
+{
+    "ticker": "CPPLUS",
+    "category": "Results",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4fcef750-d220-4ee2-8a4d-c93f8ee88a06.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FIEMIND",
+    "category": "SAST",
+    "extraction_date": "2026-08-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=B085F386_3AC1_4D35_9DF8_F5D42C9C9489_105231.pdf",
+    "file_type": "pdf"
+}
