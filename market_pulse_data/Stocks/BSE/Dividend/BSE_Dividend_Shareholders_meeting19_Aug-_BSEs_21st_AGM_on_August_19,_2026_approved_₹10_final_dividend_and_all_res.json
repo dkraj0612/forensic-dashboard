@@ -1,0 +1,8 @@
+{
+    "ticker": "BSE",
+    "category": "Dividend",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/BSE1_19082026211512_NSEIntimationforProceedingofAGM.pdf",
+    "file_type": "pdf"
+}

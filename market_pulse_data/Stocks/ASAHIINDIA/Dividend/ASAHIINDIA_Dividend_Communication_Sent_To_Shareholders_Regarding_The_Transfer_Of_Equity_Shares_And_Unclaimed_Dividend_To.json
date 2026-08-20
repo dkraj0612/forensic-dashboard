@@ -1,0 +1,8 @@
+{
+    "ticker": "ASAHIINDIA",
+    "category": "Dividend",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6356d843-b724-4d41-96c7-afd7cd422c5e.pdf",
+    "file_type": "pdf"
+}

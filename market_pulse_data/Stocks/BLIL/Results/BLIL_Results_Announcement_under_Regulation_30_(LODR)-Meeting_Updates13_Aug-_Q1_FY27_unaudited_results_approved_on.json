@@ -1,0 +1,8 @@
+{
+    "ticker": "BLIL",
+    "category": "Results",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a597cd2-3e25-4009-b2e8-280b22af7d0b.pdf",
+    "file_type": "pdf"
+}

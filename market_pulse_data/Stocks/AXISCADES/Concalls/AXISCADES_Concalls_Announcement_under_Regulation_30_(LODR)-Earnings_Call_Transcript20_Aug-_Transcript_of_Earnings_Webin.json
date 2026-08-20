@@ -1,0 +1,8 @@
+{
+    "ticker": "AXISCADES",
+    "category": "Concalls",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5187e350-3379-4f05-9d54-85f6a65683aa.pdf",
+    "file_type": "pdf"
+}

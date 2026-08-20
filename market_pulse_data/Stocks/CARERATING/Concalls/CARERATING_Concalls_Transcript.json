@@ -1,0 +1,8 @@
+{
+    "ticker": "CARERATING",
+    "category": "Concalls",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d78bf455-34c4-49aa-ac9f-a334a7e28da5.pdf",
+    "file_type": "pdf"
+}

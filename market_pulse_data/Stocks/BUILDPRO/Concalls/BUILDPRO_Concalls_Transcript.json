@@ -1,0 +1,8 @@
+{
+    "ticker": "BUILDPRO",
+    "category": "Concalls",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95ae9a01-308a-477d-9df3-4c03a3b06d98.pdf",
+    "file_type": "pdf"
+}

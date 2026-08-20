@@ -1,0 +1,8 @@
+{
+    "ticker": "CHAMBLFERT",
+    "category": "New_Projects",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=13b001e6-9fd1-43e7-8f55-98e4e2bfe3cd.pdf",
+    "file_type": "pdf"
+}

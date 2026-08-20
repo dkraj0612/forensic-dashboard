@@ -1,0 +1,8 @@
+{
+    "ticker": "BHANDARI",
+    "category": "Dividend",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aff4adcc-783c-4604-9568-e0a76a32340a.pdf",
+    "file_type": "pdf"
+}

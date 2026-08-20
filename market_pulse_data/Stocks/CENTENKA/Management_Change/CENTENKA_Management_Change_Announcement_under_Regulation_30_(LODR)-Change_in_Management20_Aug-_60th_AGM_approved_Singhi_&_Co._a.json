@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTENKA",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1244a415-7b47-451e-8a37-ee6f7ae63e2d.pdf",
+    "file_type": "pdf"
+}
