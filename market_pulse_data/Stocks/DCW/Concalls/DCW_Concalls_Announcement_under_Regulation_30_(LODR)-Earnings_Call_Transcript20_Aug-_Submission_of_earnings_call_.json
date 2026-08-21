@@ -1,0 +1,8 @@
+{
+    "ticker": "DCW",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5feaeccd-917b-4fa8-95ab-9a48c3229c0f.pdf",
+    "file_type": "pdf"
+}

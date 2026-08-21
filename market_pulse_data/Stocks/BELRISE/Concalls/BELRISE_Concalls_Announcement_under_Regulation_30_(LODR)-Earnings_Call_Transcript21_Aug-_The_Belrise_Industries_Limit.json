@@ -1,0 +1,8 @@
+{
+    "ticker": "BELRISE",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=30329106-58b8-4af3-b55e-a84f22350b9a.pdf",
+    "file_type": "pdf"
+}

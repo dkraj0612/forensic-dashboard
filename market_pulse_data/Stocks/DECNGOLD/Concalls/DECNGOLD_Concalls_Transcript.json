@@ -1,0 +1,8 @@
+{
+    "ticker": "DECNGOLD",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0f1aa3d0-8cc4-4e2a-903c-47ee3f5b738a.pdf",
+    "file_type": "pdf"
+}

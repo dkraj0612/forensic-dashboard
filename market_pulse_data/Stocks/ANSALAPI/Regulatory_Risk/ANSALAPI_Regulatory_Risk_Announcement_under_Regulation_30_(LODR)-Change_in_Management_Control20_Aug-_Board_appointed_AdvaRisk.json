@@ -1,0 +1,8 @@
+{
+    "ticker": "ANSALAPI",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dcb521c3-9b2e-46e5-bdd0-0000a629812e.pdf",
+    "file_type": "pdf"
+}

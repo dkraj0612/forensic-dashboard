@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEAN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e63cfa2-4f39-410c-b637-077ac4cd99ac.pdf",
+    "file_type": "pdf"
+}

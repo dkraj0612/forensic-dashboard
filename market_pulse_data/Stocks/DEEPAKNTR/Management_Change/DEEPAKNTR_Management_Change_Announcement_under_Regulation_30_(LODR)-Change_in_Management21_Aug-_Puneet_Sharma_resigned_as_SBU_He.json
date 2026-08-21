@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEPAKNTR",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=24b25ece-4be7-4e0c-a13f-7c818f99cdde.pdf",
+    "file_type": "pdf"
+}

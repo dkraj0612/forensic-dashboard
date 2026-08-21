@@ -1,0 +1,8 @@
+{
+    "ticker": "CPCAP",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "http://www.cpil.in/downloads/2016-17/Call-Transcript_1QFY2016-17.pdf",
+    "file_type": "pdf"
+}

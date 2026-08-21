@@ -1,0 +1,8 @@
+{
+    "ticker": "DEVX",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a1d19c45-59e0-44be-bfdf-913d80c4a3ff.pdf",
+    "file_type": "pdf"
+}

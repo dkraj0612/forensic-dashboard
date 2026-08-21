@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEDEV",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2ba4db67-1366-411e-9047-304db7f209d8.pdf",
+    "file_type": "pdf"
+}

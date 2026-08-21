@@ -1,0 +1,8 @@
+{
+    "ticker": "BODALCHEM",
+    "category": "Results",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f99a9847-68b6-44fb-8afc-19c325fe7738.pdf",
+    "file_type": "pdf"
+}

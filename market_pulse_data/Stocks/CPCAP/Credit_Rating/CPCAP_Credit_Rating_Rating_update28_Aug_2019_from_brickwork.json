@@ -1,0 +1,8 @@
+{
+    "ticker": "CPCAP",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/Career-Point-BLR-28Aug2019.pdf",
+    "file_type": "pdf"
+}

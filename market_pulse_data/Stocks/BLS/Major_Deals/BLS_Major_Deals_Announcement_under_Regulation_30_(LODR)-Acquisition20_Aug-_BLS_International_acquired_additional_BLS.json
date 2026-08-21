@@ -1,0 +1,8 @@
+{
+    "ticker": "BLS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f038b85e-2210-4e5c-b3df-f3f8071b88a6.pdf",
+    "file_type": "pdf"
+}

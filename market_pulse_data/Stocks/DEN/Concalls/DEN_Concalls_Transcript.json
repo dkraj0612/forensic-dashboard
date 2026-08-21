@@ -1,0 +1,8 @@
+{
+    "ticker": "DEN",
+    "category": "Concalls",
+    "extraction_date": "2026-08-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://dennetworks.com/upload/results/Q1FY19.pdf",
+    "file_type": "pdf"
+}
