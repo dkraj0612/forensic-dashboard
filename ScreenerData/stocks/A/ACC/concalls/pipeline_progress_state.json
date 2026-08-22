@@ -99,7 +99,66 @@
             "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Q2FY26_Transcript.md",
             "quarter": "Q2",
             "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_60_Transcript.md",
+            "quarter": "Q2",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_56_Transcript.md",
+            "quarter": "Q2",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_53_Transcript.md",
+            "quarter": "Q4",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_55_Transcript.md",
+            "quarter": "Q2",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_61_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_60_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_57_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_56_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_55_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_54_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_53_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_52_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_51_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_50_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_48_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_47_Transcript.md",
+        "./ScreenerData/stocks/A/ACC/concalls/ACC_Fallback_Transcript_46_Transcript.md"
+    ]
 }
