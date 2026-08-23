@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-DAICHI,2026-08-21,"About
+DAICHI,2026-08-22,"About
 Incorporated in 1963, Dai-ichi Karkaria Ltd
 is in the business of manufacture and sale
 of Specialty chemicals
@@ -49,10 +49,10 @@ Other Income +,15,4,12,6,2,-0,87,8,17,24,6,4,5
 Interest,0,1,0,0,7,10,9,1,3,3,2,1,1
 Depreciation,5,2,2,4,8,9,9,7,7,9,10,10,10
 Profit before tax,32,34,27,16,-24,-25,56,-18,22,18,8,-3,2
-Tax %,28%,35%,24%,27%,-48%,-0%,13%,-0%,16%,27%,27%,2%,
+Tax %,28%,35%,24%,27%,-48%,0%,13%,0%,16%,27%,27%,2%,
 Net Profit +,23,22,25,14,-13,-23,51,-18,20,14,9,-1,2
 EPS in Rs,31.24,29.34,33.43,18.32,-16.92,-30.76,68.02,-24.20,26.94,18.65,12.11,-0.99,2.91
-Dividend Payout %,10%,10%,9%,14%,-15%,-8%,4%,-0%,15%,11%,29%,-151%,","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
+Dividend Payout %,10%,10%,9%,14%,-15%,-8%,4%,0%,15%,11%,29%,-151%,","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
 Equity Capital,7,7,7,7,7,7,7,7,7,7,7,7
 Reserves,101,119,142,151,135,112,163,142,162,173,181,177
 Borrowings +,1,1,4,77,104,108,20,22,38,19,13,13
@@ -89,7 +89,7 @@ TTM:,-68%
 [Stock Price CAGR]
 10 Years:,-3%
 5 Years:,-3%
-3 Years:,-6%
+3 Years:,-8%
 1 Year:,16%
 
 [Return on Equity]
