@@ -1,0 +1,54 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_36_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_37_Transcript.md",
+            "quarter": "Q4",
+            "year": 21
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q3",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q4",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_35_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_37_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_38_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_36_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_35_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_34_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_33_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_32_Transcript.md",
+        "./ScreenerData/stocks/A/ACCELYA/concalls/ACCELYA_Fallback_Transcript_31_Transcript.md"
+    ]
+}
