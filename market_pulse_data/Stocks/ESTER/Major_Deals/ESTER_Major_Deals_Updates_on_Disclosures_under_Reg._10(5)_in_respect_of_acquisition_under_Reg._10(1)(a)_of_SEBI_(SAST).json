@@ -1,0 +1,8 @@
+{
+    "ticker": "ESTER",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=EDF42B11_958D_4E1F_8076_03D286E29FC3_114535.pdf",
+    "file_type": "pdf"
+}

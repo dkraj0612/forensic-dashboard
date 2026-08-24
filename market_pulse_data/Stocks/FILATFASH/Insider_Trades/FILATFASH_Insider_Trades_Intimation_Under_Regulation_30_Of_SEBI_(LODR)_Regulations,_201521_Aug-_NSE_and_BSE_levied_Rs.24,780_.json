@@ -1,0 +1,8 @@
+{
+    "ticker": "FILATFASH",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ea16648c-a57f-4add-be73-77ea855b6d9a.pdf",
+    "file_type": "pdf"
+}

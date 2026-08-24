@@ -1,0 +1,8 @@
+{
+    "ticker": "ESABINDIA",
+    "category": "SAST",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d029ab99-d115-496c-b830-1a7a1c533a10.pdf",
+    "file_type": "pdf"
+}

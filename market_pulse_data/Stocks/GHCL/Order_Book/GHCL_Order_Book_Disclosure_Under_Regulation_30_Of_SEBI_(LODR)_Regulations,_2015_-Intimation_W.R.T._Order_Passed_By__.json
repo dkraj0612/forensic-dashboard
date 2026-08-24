@@ -1,0 +1,8 @@
+{
+    "ticker": "GHCL",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d620b1de-ff9c-49f0-a7de-ee9bff052ed2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "EPACK",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=240f5ebf-1731-4e0c-90f9-e8f45e7f9530.pdf",
+    "file_type": "pdf"
+}

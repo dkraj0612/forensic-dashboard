@@ -1,0 +1,8 @@
+{
+    "ticker": "ESTER",
+    "category": "Concalls",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=efe79505-51b3-4f49-a5f2-d669ff7c2c31.pdf",
+    "file_type": "pdf"
+}

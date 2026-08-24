@@ -1,0 +1,8 @@
+{
+    "ticker": "DONEAR",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=EEB701FB_46CA_4F4D_9300_8903FAB82F19_102122.pdf",
+    "file_type": "pdf"
+}

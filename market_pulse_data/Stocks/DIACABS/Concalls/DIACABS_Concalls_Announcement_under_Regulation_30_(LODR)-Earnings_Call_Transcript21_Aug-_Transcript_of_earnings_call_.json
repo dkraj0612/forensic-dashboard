@@ -1,0 +1,8 @@
+{
+    "ticker": "DIACABS",
+    "category": "Concalls",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d25f11df-52e7-4d8f-9c0a-d1dea065044f.pdf",
+    "file_type": "pdf"
+}

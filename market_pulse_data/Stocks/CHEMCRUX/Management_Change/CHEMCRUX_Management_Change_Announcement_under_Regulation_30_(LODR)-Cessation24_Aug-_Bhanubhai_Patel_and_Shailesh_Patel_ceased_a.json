@@ -1,0 +1,8 @@
+{
+    "ticker": "CHEMCRUX",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3becc7ac-cf28-4f2b-9dd7-5bb183d47021.pdf",
+    "file_type": "pdf"
+}

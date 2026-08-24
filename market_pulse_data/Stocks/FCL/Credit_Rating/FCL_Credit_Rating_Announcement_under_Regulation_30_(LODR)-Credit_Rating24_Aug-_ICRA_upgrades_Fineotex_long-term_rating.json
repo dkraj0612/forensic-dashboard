@@ -1,0 +1,8 @@
+{
+    "ticker": "FCL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a53bcc58-de92-4169-8dcd-51d4b87ff076.pdf",
+    "file_type": "pdf"
+}

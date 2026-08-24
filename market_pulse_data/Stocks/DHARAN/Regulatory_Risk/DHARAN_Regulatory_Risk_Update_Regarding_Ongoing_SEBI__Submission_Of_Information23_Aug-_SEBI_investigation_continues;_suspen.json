@@ -1,0 +1,8 @@
+{
+    "ticker": "DHARAN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a2a787fc-01df-412b-b337-eb648f572615.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DABUR",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=168c63a0-4d9f-49b0-ad3c-5375942ea38c.pdf",
+    "file_type": "pdf"
+}

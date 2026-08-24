@@ -1,0 +1,8 @@
+{
+    "ticker": "FMGOETZE",
+    "category": "Dividend",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c1cb5268-1eb7-4b14-bcf6-96c60dcf4004.pdf",
+    "file_type": "pdf"
+}

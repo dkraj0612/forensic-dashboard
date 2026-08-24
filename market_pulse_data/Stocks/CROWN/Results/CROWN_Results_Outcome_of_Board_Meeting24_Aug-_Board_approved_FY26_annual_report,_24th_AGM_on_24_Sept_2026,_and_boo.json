@@ -1,0 +1,8 @@
+{
+    "ticker": "CROWN",
+    "category": "Results",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/CROWN_24082026172920_OUTCOME_CROWN_F.pdf",
+    "file_type": "pdf"
+}

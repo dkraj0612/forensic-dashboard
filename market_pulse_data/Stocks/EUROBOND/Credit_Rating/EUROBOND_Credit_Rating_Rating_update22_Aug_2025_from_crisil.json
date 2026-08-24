@@ -1,0 +1,8 @@
+{
+    "ticker": "EUROBOND",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Euro Panel Products Limited-RU-22-08-2025.pdf",
+    "file_type": "pdf"
+}

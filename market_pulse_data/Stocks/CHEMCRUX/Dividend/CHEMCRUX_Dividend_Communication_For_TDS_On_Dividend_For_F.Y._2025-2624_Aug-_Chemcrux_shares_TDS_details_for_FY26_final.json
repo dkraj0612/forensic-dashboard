@@ -1,0 +1,8 @@
+{
+    "ticker": "CHEMCRUX",
+    "category": "Dividend",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=99975f60-a584-41b3-b4be-85b2e1e8ad56.pdf",
+    "file_type": "pdf"
+}

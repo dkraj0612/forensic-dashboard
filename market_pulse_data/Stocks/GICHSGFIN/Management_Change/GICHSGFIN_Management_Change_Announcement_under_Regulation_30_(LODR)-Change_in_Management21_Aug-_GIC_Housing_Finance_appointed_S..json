@@ -1,0 +1,8 @@
+{
+    "ticker": "GICHSGFIN",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fbb195f6-132a-43a2-bb89-99ba14df7199.pdf",
+    "file_type": "pdf"
+}

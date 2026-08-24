@@ -1,0 +1,8 @@
+{
+    "ticker": "CEINSYS",
+    "category": "Order_Book",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d81c8b6-71c7-4bcd-aaef-a19106cc7cd4.pdf",
+    "file_type": "pdf"
+}

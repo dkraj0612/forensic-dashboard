@@ -1,0 +1,8 @@
+{
+    "ticker": "EMSLIMITED",
+    "category": "Pledge_Action",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5bb42249-4364-4a70-b7a7-79d86efa2ed0.pdf",
+    "file_type": "pdf"
+}

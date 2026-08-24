@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANPAINT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "Asian Paints Limited disclosed that its promoter entity, Geetanjali Trading and Investments Private Limited (GTIPL), partially failed to execute a pre-approved trading plan for purchasing 200,000 equity shares. The non-implementation was deemed \"bona fide\" by the Audit Committee, as the company's market price remained above the plan's upper price limit of Rs. 2,650 per share during the specified trading period. This indicates adherence to SEBI regulations and no apparent red flags regarding insider trading, with other planned transactions being successfully completed.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8eb172c-7e4a-4fd2-af24-fdfa101a22ae.pdf",
+    "file_type": "pdf"
+}

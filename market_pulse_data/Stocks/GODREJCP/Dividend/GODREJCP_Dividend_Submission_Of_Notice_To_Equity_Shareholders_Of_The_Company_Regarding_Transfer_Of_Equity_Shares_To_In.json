@@ -1,0 +1,8 @@
+{
+    "ticker": "GODREJCP",
+    "category": "Dividend",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de8c2a53-7c8d-42b3-baf2-2fc5bc93cad6.pdf",
+    "file_type": "pdf"
+}

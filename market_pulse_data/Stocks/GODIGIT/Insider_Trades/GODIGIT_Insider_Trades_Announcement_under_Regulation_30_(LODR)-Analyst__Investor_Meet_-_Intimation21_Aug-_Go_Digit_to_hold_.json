@@ -1,0 +1,8 @@
+{
+    "ticker": "GODIGIT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7416209-2718-4c11-95f7-f2948bc6b41c.pdf",
+    "file_type": "pdf"
+}

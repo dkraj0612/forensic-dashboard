@@ -1,0 +1,8 @@
+{
+    "ticker": "AUTOIND",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c04d130-7ea8-4814-aefa-83cead559ab9.pdf",
+    "file_type": "pdf"
+}

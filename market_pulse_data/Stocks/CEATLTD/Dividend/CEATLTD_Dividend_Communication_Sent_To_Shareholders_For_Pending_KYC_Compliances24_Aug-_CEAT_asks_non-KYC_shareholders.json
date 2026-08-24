@@ -1,0 +1,8 @@
+{
+    "ticker": "CEATLTD",
+    "category": "Dividend",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=24f54b11-5f47-4cfb-addb-6dac70dfd4c3.pdf",
+    "file_type": "pdf"
+}

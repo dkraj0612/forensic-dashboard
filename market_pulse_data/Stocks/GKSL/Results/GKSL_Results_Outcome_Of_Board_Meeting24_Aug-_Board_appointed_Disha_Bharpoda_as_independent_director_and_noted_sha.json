@@ -1,0 +1,8 @@
+{
+    "ticker": "GKSL",
+    "category": "Results",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0ca2f06-50dd-43fe-8cef-9c06c833b34c.pdf",
+    "file_type": "pdf"
+}

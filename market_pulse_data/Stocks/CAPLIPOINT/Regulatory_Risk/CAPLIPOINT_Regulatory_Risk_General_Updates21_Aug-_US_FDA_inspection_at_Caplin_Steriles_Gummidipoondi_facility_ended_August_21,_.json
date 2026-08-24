@@ -1,0 +1,8 @@
+{
+    "ticker": "CAPLIPOINT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=afc6cb39-7c1b-440a-a7a6-37c299ead42b.pdf",
+    "file_type": "pdf"
+}

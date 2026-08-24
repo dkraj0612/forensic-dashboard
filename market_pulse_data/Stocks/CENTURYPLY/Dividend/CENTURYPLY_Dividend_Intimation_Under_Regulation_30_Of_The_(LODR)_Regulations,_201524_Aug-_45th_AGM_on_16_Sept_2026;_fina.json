@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTURYPLY",
+    "category": "Dividend",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca9047d5-4f7f-4317-82a6-b593c0e24954.pdf",
+    "file_type": "pdf"
+}

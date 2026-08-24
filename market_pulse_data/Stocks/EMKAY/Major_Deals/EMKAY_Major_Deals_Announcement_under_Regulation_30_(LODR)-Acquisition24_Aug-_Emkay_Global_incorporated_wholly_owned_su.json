@@ -1,0 +1,8 @@
+{
+    "ticker": "EMKAY",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d1a6c17d-e14b-4573-a184-2601b6f35cf3.pdf",
+    "file_type": "pdf"
+}
