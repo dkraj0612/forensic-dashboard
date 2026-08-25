@@ -1,0 +1,8 @@
+{
+    "ticker": "HEROMOTOCO",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a4713d9a-3d06-42e8-b85e-a4bd85861cc5.pdf",
+    "file_type": "pdf"
+}

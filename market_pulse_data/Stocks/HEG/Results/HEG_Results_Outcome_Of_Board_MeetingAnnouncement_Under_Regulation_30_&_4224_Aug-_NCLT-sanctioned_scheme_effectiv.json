@@ -1,0 +1,8 @@
+{
+    "ticker": "HEG",
+    "category": "Results",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b8ce4d53-7ca6-489a-b142-d7ba3fcc6666.pdf",
+    "file_type": "pdf"
+}

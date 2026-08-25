@@ -1,0 +1,8 @@
+{
+    "ticker": "CAPILLARY",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9a49d6e4-3493-434a-a622-cd030517147b.pdf",
+    "file_type": "pdf"
+}

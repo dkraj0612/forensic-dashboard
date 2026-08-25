@@ -1,0 +1,8 @@
+{
+    "ticker": "GANDHITUBE",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=963be2e3-eef2-445c-830d-b455deff44b3.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DATAPATTNS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc9833ce-25a5-4817-af75-a9c9d08766ed.pdf",
+    "file_type": "pdf"
+}

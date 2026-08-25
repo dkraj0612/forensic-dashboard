@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOSTERLTD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d0d47389-48a4-4fbb-bf3d-185f942c463e.pdf",
+    "file_type": "pdf"
+}

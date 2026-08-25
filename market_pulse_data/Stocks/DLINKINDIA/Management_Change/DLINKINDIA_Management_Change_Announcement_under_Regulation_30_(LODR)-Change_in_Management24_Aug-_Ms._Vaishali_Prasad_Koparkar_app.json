@@ -1,0 +1,8 @@
+{
+    "ticker": "DLINKINDIA",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2f250dfd-822a-4b97-a350-722e4af4fdf8.pdf",
+    "file_type": "pdf"
+}

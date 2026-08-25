@@ -1,0 +1,8 @@
+{
+    "ticker": "GODREJPROP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=92093bce-a7f6-47f7-b1e1-ee0290e9efaf.pdf",
+    "file_type": "pdf"
+}

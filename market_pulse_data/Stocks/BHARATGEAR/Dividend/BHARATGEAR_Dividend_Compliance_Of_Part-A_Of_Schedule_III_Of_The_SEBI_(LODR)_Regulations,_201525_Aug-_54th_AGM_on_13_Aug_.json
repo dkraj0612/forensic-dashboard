@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATGEAR",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c0249d0-5c48-4e77-a0da-c47e7f598276.pdf",
+    "file_type": "pdf"
+}

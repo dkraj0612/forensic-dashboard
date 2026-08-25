@@ -1,0 +1,8 @@
+{
+    "ticker": "HITECHGEAR",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff9c379e-d4f8-466a-a2cd-421938f9d2c6.pdf",
+    "file_type": "pdf"
+}

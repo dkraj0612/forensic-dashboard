@@ -1,0 +1,8 @@
+{
+    "ticker": "HSCL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=950213d6-8175-4487-9a63-9596c7c499af.pdf",
+    "file_type": "pdf"
+}

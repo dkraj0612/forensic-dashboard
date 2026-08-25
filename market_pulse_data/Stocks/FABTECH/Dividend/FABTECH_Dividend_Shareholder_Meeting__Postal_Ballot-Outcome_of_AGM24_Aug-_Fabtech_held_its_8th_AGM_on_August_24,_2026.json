@@ -1,0 +1,8 @@
+{
+    "ticker": "FABTECH",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef83f150-e2a0-4229-8f54-9715b54b6049.pdf",
+    "file_type": "pdf"
+}

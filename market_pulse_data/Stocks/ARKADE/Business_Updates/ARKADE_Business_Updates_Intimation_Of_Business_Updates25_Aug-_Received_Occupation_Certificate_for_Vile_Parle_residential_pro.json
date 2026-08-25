@@ -1,0 +1,8 @@
+{
+    "ticker": "ARKADE",
+    "category": "Business_Updates",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1524769e-09d1-4ffe-aa9f-49a56f012272.pdf",
+    "file_type": "pdf"
+}

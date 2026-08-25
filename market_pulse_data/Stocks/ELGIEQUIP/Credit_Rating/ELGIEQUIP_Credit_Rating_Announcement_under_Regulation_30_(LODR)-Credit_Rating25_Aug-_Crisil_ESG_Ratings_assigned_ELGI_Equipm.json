@@ -1,0 +1,8 @@
+{
+    "ticker": "ELGIEQUIP",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5bbf077-7f67-4bfc-b6d6-832abc102aba.pdf",
+    "file_type": "pdf"
+}

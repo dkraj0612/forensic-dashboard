@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLLOTYRE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3de63c4e-3f8b-46e3-9dec-3bbad8d6d6a0.pdf",
+    "file_type": "pdf"
+}

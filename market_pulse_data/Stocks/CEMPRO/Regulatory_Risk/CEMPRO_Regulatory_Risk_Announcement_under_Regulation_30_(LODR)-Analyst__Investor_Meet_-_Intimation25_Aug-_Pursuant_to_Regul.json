@@ -1,0 +1,8 @@
+{
+    "ticker": "CEMPRO",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=967a26b3-3b6e-49ec-bba4-15f21d5cb13f.pdf",
+    "file_type": "pdf"
+}

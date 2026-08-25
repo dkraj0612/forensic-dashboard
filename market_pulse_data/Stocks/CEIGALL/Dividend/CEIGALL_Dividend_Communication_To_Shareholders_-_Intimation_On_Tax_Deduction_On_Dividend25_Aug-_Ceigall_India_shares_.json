@@ -1,0 +1,8 @@
+{
+    "ticker": "CEIGALL",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66641cb8-c5bb-4f3e-903f-c29d4f49487c.pdf",
+    "file_type": "pdf"
+}

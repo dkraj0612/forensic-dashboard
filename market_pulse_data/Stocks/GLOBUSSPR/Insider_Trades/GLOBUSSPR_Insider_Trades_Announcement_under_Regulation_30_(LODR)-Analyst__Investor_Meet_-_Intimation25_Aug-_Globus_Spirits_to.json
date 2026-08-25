@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBUSSPR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d3660a23-ae18-479e-a2de-cb4e5f5edbbc.pdf",
+    "file_type": "pdf"
+}

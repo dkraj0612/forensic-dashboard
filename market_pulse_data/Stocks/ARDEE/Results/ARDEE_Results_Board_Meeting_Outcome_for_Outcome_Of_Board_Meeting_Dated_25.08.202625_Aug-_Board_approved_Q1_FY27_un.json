@@ -1,0 +1,8 @@
+{
+    "ticker": "ARDEE",
+    "category": "Results",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=36abab4d-774b-48cb-b99b-66e600ba0108.pdf",
+    "file_type": "pdf"
+}

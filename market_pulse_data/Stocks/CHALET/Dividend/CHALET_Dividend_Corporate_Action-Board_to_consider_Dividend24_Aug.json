@@ -1,0 +1,8 @@
+{
+    "ticker": "CHALET",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=26933b61-9a77-4d8e-ba7a-f51a13e4511a.pdf",
+    "file_type": "pdf"
+}

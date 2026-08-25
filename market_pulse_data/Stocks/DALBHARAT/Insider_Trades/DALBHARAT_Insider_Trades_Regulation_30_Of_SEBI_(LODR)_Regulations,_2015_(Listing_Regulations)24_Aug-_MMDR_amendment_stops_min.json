@@ -1,0 +1,8 @@
+{
+    "ticker": "DALBHARAT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a42faf0-bb59-4fac-9612-d9fc99f344d3.pdf",
+    "file_type": "pdf"
+}

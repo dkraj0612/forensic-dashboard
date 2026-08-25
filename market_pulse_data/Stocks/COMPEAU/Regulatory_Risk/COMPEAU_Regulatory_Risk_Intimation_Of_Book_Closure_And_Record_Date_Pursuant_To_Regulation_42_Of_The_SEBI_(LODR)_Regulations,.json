@@ -1,0 +1,8 @@
+{
+    "ticker": "COMPEAU",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c8a0ecc7-54d9-4bde-b9f2-7b970d8298ea.pdf",
+    "file_type": "pdf"
+}

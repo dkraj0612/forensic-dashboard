@@ -1,0 +1,8 @@
+{
+    "ticker": "BMWVENTLTD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a0509ad6-ff0f-40c2-8fc8-cbacddf5300e.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AKCAPIT",
+    "category": "Dividend",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "**Executive Summary:**  A. K. Capital Services Limited has declared an interim dividend of INR 12 per share for FY 2026-27, primarily communicating the associated Tax Deduction at Source (TDS) provisions under the Income Tax Act, 2025. Shareholders are materially impacted as they must update KYC details and submit relevant tax declarations by September 1, 2026, to ensure electronic dividend payment and apply correct TDS rates. A key red flag is the company explicitly stating it will not refund excess TDS and places the burden on shareholders to claim refunds, alongside an indemnification clause for any tax demands arising from inaccurate shareholder information.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b685bd61-e260-4944-bed3-37048b451531.pdf",
+    "file_type": "pdf"
+}

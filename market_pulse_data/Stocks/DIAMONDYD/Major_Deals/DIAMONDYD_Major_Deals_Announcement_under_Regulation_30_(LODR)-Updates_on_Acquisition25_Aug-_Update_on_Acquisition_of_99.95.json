@@ -1,0 +1,8 @@
+{
+    "ticker": "DIAMONDYD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f43ed871-2c8f-4c1c-9cc7-2d274646a534.pdf",
+    "file_type": "pdf"
+}
