@@ -19,7 +19,102 @@
             "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q2_FY24_Transcript.md",
             "quarter": "Q2",
             "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_26_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q3_FY24_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_29_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q1_FY25_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_37_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q3_FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q2_FY25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_35_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q4",
+            "year": 2020
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q4_FY25_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q3_FY23_Transcript.md",
+            "quarter": "Q3",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q1_FY24_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q3_FY26_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Q2_FY26_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_39_Transcript.md",
+        "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_37_Transcript.md",
+        "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_35_Transcript.md",
+        "./ScreenerData/stocks/A/ACCURACY/concalls/ACCURACY_Fallback_Transcript_32_Transcript.md"
+    ]
 }
