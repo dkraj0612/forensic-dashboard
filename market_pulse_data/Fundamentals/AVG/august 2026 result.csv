@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-AVG,2026-08-12,"About
+AVG,2026-08-25,"About
 Incorporated in 2010, AVG Logistics
 Ltd is in the business of transportation
 of goods, warehousing and other incidental activities, along with trading business
@@ -17,12 +17,12 @@ has
 fully computerized branches
 across India.
 Read More
-                - BE","Market Cap: ₹ 372 Cr.
-Current Price: ₹ 199
+                - BE","Market Cap: ₹ 352 Cr.
+Current Price: ₹ 188
 High / Low: ₹ 258 / 113
-Stock P/E: 37.0
+Stock P/E: 28.4
 Book Value: ₹ 145
-Dividend Yield: 0.60 %
+Dividend Yield: 0.64 %
 ROCE: 9.28 %
 ROE: 3.89 %
 Face Value: ₹ 10.0","PROS:
@@ -34,33 +34,33 @@ CONS:
 - The company has delivered a poor sales growth of 10.8% over past five years.
 - Company has a low return on equity of 8.36% over last 3 years.
 - Promoters have pledged 66.7% of their holding.
-- Earnings include an other income of Rs.25.1 Cr.
+- Earnings include an other income of Rs.26.1 Cr.
 - Dividend payout has been low at 4.54% of profits over last 3 years
-- Company has high debtors of 155 days.","Unnamed: 0,Mar 2023,Jun 2023,Sep 2023,Dec 2023,Mar 2024,Jun 2024,Sep 2024,Dec 2024,Mar 2025,Jun 2025,Sep 2025,Dec 2025,Mar 2026
-Sales +,113,100,117,125,137,123,138,142,148,125,143,134,155
-Expenses +,86,82,97,102,116,100,115,117,124,101,119,108,142
-Operating Profit,26,19,21,23,21,23,23,26,24,24,24,26,13
-OPM %,23%,19%,18%,18%,15%,19%,17%,18%,16%,19%,17%,19%,9%
-Other Income +,2,0,1,0,24,1,1,1,0,1,2,1,21
-Interest,7,7,7,7,7,7,7,6,6,6,8,8,9
-Depreciation,9,9,10,10,10,10,11,12,10,11,12,12,12
-Profit before tax,12,3,5,7,28,7,7,8,8,7,7,7,14
-Tax %,23%,21%,37%,33%,20%,21%,24%,30%,31%,29%,23%,24%,22%
-Net Profit +,11,3,2,5,23,5,5,6,5,5,5,5,11
-EPS in Rs,7.58,1.73,1.18,3.29,13.45,3.06,3.11,2.98,2.80,2.66,2.72,2.89,5.73
-Raw PDF,,,,,,,,,,,,,","Unnamed: 0,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
-Sales +,227,313,322,333,432,427,480,552,557
-Expenses +,202,285,298,318,390,352,395,455,470
-Operating Profit,25,28,24,15,41,76,85,96,87
-OPM %,11%,9%,8%,4.5%,10%,18%,18%,17%,16%
-Other Income +,0,1,1,2,1,3,25,3,25
-Interest,7,9,10,13,23,31,29,26,31
-Depreciation,6,8,9,7,18,36,38,43,47
-Profit before tax,12,13,6,-2,1,11,42,29,34
-Tax %,37%,25%,30%,-25%,-8%,30%,24%,27%,24%
-Net Profit +,8,9,5,-2,1,8,32,21,26
-EPS in Rs,8.39,7.41,4.05,-1.18,0.66,5.71,18.78,11.41,13.99
-Dividend Payout %,0%,0%,0%,0%,0%,14%,5%,8%,0%","Unnamed: 0,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
+- Company has high debtors of 155 days.","Unnamed: 0,Jun 2023,Sep 2023,Dec 2023,Mar 2024,Jun 2024,Sep 2024,Dec 2024,Mar 2025,Jun 2025,Sep 2025,Dec 2025,Mar 2026,Jun 2026
+Sales +,100.34,117.43,124.77,136.95,122.91,138.46,142.44,147.71,125.02,143.03,134.08,155.28,132.48
+Expenses +,81.77,96.58,102.12,115.74,100.07,115.14,116.74,124.00,101.39,118.76,108.00,141.89,113.00
+Operating Profit,18.57,20.85,22.65,21.21,22.84,23.32,25.70,23.71,23.63,24.27,26.08,13.39,19.48
+OPM %,18.51%,17.76%,18.15%,15.49%,18.58%,16.84%,18.04%,16.05%,18.90%,16.97%,19.45%,8.62%,14.70%
+Other Income +,0.42,0.54,0.50,24.10,0.78,1.10,0.76,0.20,0.65,1.99,1.11,21.33,1.65
+Interest,7.24,7.01,7.06,6.80,6.63,6.76,6.41,6.04,6.16,7.95,8.16,8.80,6.66
+Depreciation,9.09,9.71,9.57,10.01,10.37,10.60,12.12,10.31,11.12,11.74,11.94,12.12,5.76
+Profit before tax,2.66,4.67,6.52,28.50,6.62,7.06,7.93,7.56,7.00,6.57,7.09,13.80,8.71
+Tax %,21.43%,37.47%,32.82%,19.75%,21.30%,23.80%,30.39%,30.95%,28.86%,22.68%,23.84%,22.39%,25.83%
+Net Profit +,2.53,1.72,4.80,22.87,5.21,5.38,5.51,5.23,4.97,5.08,5.40,10.71,6.46
+EPS in Rs,1.73,1.18,3.29,13.45,3.06,3.11,2.98,2.80,2.66,2.72,2.89,5.73,3.45
+Raw PDF,,,,,,,,,,,,,","Unnamed: 0,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026,TTM
+Sales +,227,313,322,333,432,427,480,552,557,565
+Expenses +,202,285,298,318,390,352,395,455,470,482
+Operating Profit,25,28,24,15,41,76,85,96,87,83
+OPM %,11%,9%,8%,4.5%,10%,18%,18%,17%,16%,15%
+Other Income +,0,1,1,2,1,3,25,3,25,26
+Interest,7,9,10,13,23,31,29,26,31,32
+Depreciation,6,8,9,7,18,36,38,43,47,42
+Profit before tax,12,13,6,-2,1,11,42,29,34,36
+Tax %,37%,25%,30%,-25%,-8%,30%,24%,27%,24%,
+Net Profit +,8,9,5,-2,1,8,32,21,26,28
+EPS in Rs,8.39,7.41,4.05,-1.18,0.66,5.71,18.78,11.41,13.99,14.79
+Dividend Payout %,0%,0%,0%,0%,0%,14%,5%,8%,0%,","Unnamed: 0,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
 Equity Capital,7,10,10,12,12,12,14,15,15
 Reserves,22,58,64,67,70,78,186,232,256
 Borrowings +,50,73,80,107,287,266,220,219,220
@@ -86,19 +86,19 @@ ROCE %,,21%,11%,6%,9%,12%,15%,13%,9%","[Compounded Sales Growth]
 10 Years:,%
 5 Years:,11%
 3 Years:,9%
-TTM:,1%
+TTM:,2%
 
 [Compounded Profit Growth]
 10 Years:,%
 5 Years:,42%
 3 Years:,7%
-TTM:,-53%
+TTM:,-41%
 
 [Stock Price CAGR]
 10 Years:,%
-5 Years:,22%
-3 Years:,-8%
-1 Year:,-16%
+5 Years:,23%
+3 Years:,-10%
+1 Year:,-15%
 
 [Return on Equity]
 10 Years:,%
