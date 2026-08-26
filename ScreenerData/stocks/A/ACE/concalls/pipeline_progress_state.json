@@ -1,0 +1,25 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ACE/concalls/ACE_Q3FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACE/concalls/ACE_Fallback_Transcript_48_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACE/concalls/ACE_Fallback_Transcript_54_Transcript.md",
+            "quarter": "Q2",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACE/concalls/ACE_Fallback_Transcript_56_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        }
+    ],
+    "completed_files": []
+}
