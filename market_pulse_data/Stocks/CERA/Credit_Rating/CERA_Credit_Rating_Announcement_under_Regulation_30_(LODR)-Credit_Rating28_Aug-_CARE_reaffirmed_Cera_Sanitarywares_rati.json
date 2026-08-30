@@ -1,0 +1,8 @@
+{
+    "ticker": "CERA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5c7e1a18-eab0-4c2f-8d46-965f16dc5780.pdf",
+    "file_type": "pdf"
+}

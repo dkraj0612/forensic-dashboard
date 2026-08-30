@@ -1,0 +1,8 @@
+{
+    "ticker": "CEINSYS",
+    "category": "SAST",
+    "extraction_date": "2026-08-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c23af13c-175e-44e6-adf3-17dc267ee9cc.pdf",
+    "file_type": "pdf"
+}

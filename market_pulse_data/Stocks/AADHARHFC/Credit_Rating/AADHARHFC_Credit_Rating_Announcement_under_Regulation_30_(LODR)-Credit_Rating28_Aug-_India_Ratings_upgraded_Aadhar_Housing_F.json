@@ -1,0 +1,8 @@
+{
+    "ticker": "AADHARHFC",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-08-30",
+    "ai_summary": "API Error: 504 The request timed out. Please try again.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=99c9785c-8fad-42ea-8663-27c8b0893249.pdf",
+    "file_type": "pdf"
+}
