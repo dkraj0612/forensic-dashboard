@@ -1,0 +1,88 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_31_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_28_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_20_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_30_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_26_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_24_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_21_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_22_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_19_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_29_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_27_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Q4_FY23_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACI/concalls/ACI_Q3_FY2023_Transcript.md",
+            "quarter": "Q3",
+            "year": 2023
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Q3_FY2023_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Q4_FY23_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_31_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_27_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_30_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_24_Transcript.md",
+        "./ScreenerData/stocks/A/ACI/concalls/ACI_Fallback_Transcript_29_Transcript.md"
+    ]
+}
