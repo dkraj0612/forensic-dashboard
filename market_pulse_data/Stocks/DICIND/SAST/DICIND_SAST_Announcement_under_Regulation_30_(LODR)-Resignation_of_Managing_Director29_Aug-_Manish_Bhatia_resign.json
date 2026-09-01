@@ -1,0 +1,8 @@
+{
+    "ticker": "DICIND",
+    "category": "SAST",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7393c7f-74af-49df-b434-cca258f61c12.pdf",
+    "file_type": "pdf"
+}

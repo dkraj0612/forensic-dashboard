@@ -1,0 +1,8 @@
+{
+    "ticker": "GIPCL",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=150d8f6f-f28c-4e54-93f6-68726912b4e0.pdf",
+    "file_type": "pdf"
+}

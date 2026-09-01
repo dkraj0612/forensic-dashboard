@@ -1,0 +1,8 @@
+{
+    "ticker": "ENGINERSIN",
+    "category": "Dividend",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f345a569-b60f-4e19-aaa8-29b0f668865f.pdf",
+    "file_type": "pdf"
+}

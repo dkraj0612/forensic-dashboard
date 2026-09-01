@@ -1,0 +1,8 @@
+{
+    "ticker": "FLAIR",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50293dd5-77df-4f5c-bf22-bddb70302f81.pdf",
+    "file_type": "pdf"
+}

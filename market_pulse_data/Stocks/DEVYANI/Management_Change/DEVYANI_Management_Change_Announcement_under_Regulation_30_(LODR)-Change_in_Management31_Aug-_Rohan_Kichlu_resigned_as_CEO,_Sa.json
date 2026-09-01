@@ -1,0 +1,8 @@
+{
+    "ticker": "DEVYANI",
+    "category": "Management_Change",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8317161-f4ee-4f76-80fe-1f705dacd9d9.pdf",
+    "file_type": "pdf"
+}

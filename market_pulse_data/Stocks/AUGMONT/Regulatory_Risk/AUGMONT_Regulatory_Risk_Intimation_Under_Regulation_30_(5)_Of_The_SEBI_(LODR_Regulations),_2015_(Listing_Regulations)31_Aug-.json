@@ -1,0 +1,8 @@
+{
+    "ticker": "AUGMONT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8863e340-f97b-44b8-84ba-0176e221a5cf.pdf",
+    "file_type": "pdf"
+}

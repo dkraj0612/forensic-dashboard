@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATRAS",
+    "category": "Dividend",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=BA39403D-3A4D-430D-BE82-B72EB5BAA10F-170922.pdf",
+    "file_type": "pdf"
+}

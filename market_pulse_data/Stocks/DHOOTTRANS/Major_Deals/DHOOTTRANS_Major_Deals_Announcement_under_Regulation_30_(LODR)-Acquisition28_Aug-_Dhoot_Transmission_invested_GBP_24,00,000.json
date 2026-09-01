@@ -1,0 +1,8 @@
+{
+    "ticker": "DHOOTTRANS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c844775b-d6a1-4bc6-bdc1-619e60a82502.pdf",
+    "file_type": "pdf"
+}

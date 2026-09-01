@@ -1,0 +1,8 @@
+{
+    "ticker": "BLKASHYAP",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=492a2f1e-a359-4364-887f-5da822839f6b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CRSL",
+    "category": "Results",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3a7fca8b-b631-4ce4-a9d0-405e05c20667.pdf",
+    "file_type": "pdf"
+}

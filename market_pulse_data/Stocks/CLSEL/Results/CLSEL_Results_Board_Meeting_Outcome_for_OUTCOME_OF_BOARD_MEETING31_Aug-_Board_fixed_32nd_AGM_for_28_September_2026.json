@@ -1,0 +1,8 @@
+{
+    "ticker": "CLSEL",
+    "category": "Results",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29f94b45-50f3-4dcc-8496-dc527213a114.pdf",
+    "file_type": "pdf"
+}

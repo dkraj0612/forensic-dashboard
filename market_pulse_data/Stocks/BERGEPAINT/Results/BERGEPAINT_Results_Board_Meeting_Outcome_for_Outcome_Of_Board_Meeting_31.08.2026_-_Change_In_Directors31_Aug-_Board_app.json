@@ -1,0 +1,8 @@
+{
+    "ticker": "BERGEPAINT",
+    "category": "Results",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c88f7d35-e91d-402c-b5d2-b4a70819e50b.pdf",
+    "file_type": "pdf"
+}

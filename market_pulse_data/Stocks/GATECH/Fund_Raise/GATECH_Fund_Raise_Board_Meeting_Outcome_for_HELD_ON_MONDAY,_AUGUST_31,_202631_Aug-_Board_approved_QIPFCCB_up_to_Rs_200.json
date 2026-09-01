@@ -1,0 +1,8 @@
+{
+    "ticker": "GATECH",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-08-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df096afb-8f45-44c2-82ff-e67660d70827.pdf",
+    "file_type": "pdf"
+}
