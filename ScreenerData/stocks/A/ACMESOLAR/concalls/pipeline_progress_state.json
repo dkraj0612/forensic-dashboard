@@ -1,0 +1,47 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_23_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Q3_FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_19_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_20_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Q4FY25_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_17_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_18_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_23_Transcript.md",
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_20_Transcript.md",
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_19_Transcript.md",
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Q3_FY25_Transcript.md",
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Fallback_Transcript_18_Transcript.md",
+        "./ScreenerData/stocks/A/ACMESOLAR/concalls/ACMESOLAR_Q4FY25_Transcript.md"
+    ]
+}
