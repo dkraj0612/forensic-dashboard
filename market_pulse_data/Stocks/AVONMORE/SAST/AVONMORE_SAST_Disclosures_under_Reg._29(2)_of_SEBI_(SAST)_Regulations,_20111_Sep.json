@@ -1,0 +1,8 @@
+{
+    "ticker": "AVONMORE",
+    "category": "SAST",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=D926D8C9_3E1E_4F40_BD21_8C324A8601EC_104957.pdf",
+    "file_type": "pdf"
+}

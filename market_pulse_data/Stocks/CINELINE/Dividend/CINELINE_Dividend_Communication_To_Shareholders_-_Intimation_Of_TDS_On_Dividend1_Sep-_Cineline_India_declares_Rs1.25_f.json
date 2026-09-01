@@ -1,0 +1,8 @@
+{
+    "ticker": "CINELINE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3ae22321-3834-408b-bb9f-564b4ca77be9.pdf",
+    "file_type": "pdf"
+}

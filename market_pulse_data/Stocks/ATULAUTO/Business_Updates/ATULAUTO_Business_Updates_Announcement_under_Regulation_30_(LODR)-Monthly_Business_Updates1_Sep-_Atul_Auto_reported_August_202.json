@@ -1,0 +1,8 @@
+{
+    "ticker": "ATULAUTO",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ed0ddcc-8101-4b24-aa37-a85ec9eb16ad.pdf",
+    "file_type": "pdf"
+}

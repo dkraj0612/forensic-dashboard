@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMSHRIRAM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=23c93f01-d696-4ebc-a646-31ad136beae2.pdf",
+    "file_type": "pdf"
+}

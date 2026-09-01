@@ -1,0 +1,8 @@
+{
+    "ticker": "BDL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9d216981-2a72-4258-8c5b-a75fa392306e.pdf",
+    "file_type": "pdf"
+}

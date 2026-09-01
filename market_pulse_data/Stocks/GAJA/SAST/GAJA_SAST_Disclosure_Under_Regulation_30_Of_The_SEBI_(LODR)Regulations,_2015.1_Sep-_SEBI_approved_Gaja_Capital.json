@@ -1,0 +1,8 @@
+{
+    "ticker": "GAJA",
+    "category": "SAST",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fc3808fc-ef63-4a28-be11-dba4b4ae37b2.pdf",
+    "file_type": "pdf"
+}

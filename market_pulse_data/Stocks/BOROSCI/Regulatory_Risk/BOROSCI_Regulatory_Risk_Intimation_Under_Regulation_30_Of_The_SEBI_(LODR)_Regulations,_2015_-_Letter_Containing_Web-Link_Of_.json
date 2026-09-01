@@ -1,0 +1,8 @@
+{
+    "ticker": "BOROSCI",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=12c9afa5-fd8e-42dc-ab25-3a6df70574ce.pdf",
+    "file_type": "pdf"
+}

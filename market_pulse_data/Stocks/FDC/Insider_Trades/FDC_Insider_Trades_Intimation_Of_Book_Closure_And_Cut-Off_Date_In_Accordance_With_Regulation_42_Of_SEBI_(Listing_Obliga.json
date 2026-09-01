@@ -1,0 +1,8 @@
+{
+    "ticker": "FDC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f931e5a-df18-46dc-bea1-19c83d052ca2.pdf",
+    "file_type": "pdf"
+}

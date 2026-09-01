@@ -1,0 +1,8 @@
+{
+    "ticker": "DELPHIFX",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e259817b-61e3-4495-8c7d-259cc89119f1.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FORCEMOT",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6e269bd-09a4-438c-8757-034ee20ee614.pdf",
+    "file_type": "pdf"
+}

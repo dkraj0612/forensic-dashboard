@@ -1,0 +1,8 @@
+{
+    "ticker": "CHEMBOND",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ea18cc2a-5b3d-483a-af87-ac8d0219280b.pdf",
+    "file_type": "pdf"
+}

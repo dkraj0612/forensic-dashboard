@@ -1,0 +1,8 @@
+{
+    "ticker": "CARERATING",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6243d4c4-a08d-4c94-bec1-7086f3d32a24.pdf",
+    "file_type": "pdf"
+}

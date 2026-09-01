@@ -1,0 +1,8 @@
+{
+    "ticker": "BENGALASM",
+    "category": "Dividend",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=994181a4-dea2-4d61-9113-6ef9ac037b92.pdf",
+    "file_type": "pdf"
+}

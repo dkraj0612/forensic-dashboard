@@ -1,0 +1,8 @@
+{
+    "ticker": "GABRIEL",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5256716e-de1a-43f4-9f3a-88183f9c0117.pdf",
+    "file_type": "pdf"
+}

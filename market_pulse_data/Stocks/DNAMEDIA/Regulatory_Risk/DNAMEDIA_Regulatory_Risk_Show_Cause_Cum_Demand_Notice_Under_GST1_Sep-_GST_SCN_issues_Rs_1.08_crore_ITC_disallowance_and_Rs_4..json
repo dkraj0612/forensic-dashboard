@@ -1,0 +1,8 @@
+{
+    "ticker": "DNAMEDIA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca2004c1-5a16-41bd-8c4b-ee0a5b0832fe.pdf",
+    "file_type": "pdf"
+}

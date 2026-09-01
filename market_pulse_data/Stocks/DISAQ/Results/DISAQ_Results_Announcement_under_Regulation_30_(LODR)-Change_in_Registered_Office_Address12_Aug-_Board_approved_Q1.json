@@ -1,0 +1,8 @@
+{
+    "ticker": "DISAQ",
+    "category": "Results",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0ed91009-c99a-4fa9-82ea-13efa052c271.pdf",
+    "file_type": "pdf"
+}

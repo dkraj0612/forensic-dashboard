@@ -1,0 +1,8 @@
+{
+    "ticker": "BLIL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "Skipped: Document exceeds 150 pages (183 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c7bff8a-876c-4590-8a5a-0da51570f46a.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DEVX",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3dd36d89-3da1-408a-a6c3-f11bff6a12d0.pdf",
+    "file_type": "pdf"
+}
