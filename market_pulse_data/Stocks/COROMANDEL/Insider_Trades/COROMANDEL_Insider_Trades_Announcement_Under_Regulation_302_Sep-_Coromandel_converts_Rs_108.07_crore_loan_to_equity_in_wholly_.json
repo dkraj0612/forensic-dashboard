@@ -1,0 +1,8 @@
+{
+    "ticker": "COROMANDEL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb080f90-e032-4b3a-891c-2e3315e354cf.pdf",
+    "file_type": "pdf"
+}

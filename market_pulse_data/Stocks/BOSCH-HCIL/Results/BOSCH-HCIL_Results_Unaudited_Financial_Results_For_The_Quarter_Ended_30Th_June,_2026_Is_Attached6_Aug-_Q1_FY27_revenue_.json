@@ -1,0 +1,8 @@
+{
+    "ticker": "BOSCH-HCIL",
+    "category": "Results",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c2bf99fb-d7f3-4a93-bec9-6bd757a6a327.pdf",
+    "file_type": "pdf"
+}

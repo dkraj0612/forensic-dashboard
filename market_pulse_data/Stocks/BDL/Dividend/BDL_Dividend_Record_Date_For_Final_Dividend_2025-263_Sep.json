@@ -1,0 +1,8 @@
+{
+    "ticker": "BDL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f8bc5af-3e1d-420f-9836-d823c500e456.pdf",
+    "file_type": "pdf"
+}

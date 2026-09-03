@@ -1,0 +1,8 @@
+{
+    "ticker": "CEATLTD",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=59d382bf-2202-48ac-aa56-aa53f27e7d14.pdf",
+    "file_type": "pdf"
+}

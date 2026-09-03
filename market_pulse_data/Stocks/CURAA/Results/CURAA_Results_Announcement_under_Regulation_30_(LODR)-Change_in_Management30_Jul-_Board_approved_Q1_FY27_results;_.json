@@ -1,0 +1,8 @@
+{
+    "ticker": "CURAA",
+    "category": "Results",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7bb78f81-200e-4767-b939-bec9b351d84c.pdf",
+    "file_type": "pdf"
+}

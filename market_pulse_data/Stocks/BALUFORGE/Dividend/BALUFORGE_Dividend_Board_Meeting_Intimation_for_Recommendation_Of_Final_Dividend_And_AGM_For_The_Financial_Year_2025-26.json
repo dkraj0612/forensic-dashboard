@@ -1,0 +1,8 @@
+{
+    "ticker": "BALUFORGE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=84f5b867-1e2b-4046-accf-a924b3728e37.pdf",
+    "file_type": "pdf"
+}

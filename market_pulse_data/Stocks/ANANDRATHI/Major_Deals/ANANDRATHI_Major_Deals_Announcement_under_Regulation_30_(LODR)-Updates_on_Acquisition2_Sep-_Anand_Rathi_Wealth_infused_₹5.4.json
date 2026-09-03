@@ -1,0 +1,8 @@
+{
+    "ticker": "ANANDRATHI",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ae242ca-f554-4087-92b0-fa75247bbcd4.pdf",
+    "file_type": "pdf"
+}

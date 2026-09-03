@@ -1,0 +1,8 @@
+{
+    "ticker": "ASALCBR",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Associated Alcohols and Breweries Limited-RU-01-09-2025.pdf",
+    "file_type": "pdf"
+}

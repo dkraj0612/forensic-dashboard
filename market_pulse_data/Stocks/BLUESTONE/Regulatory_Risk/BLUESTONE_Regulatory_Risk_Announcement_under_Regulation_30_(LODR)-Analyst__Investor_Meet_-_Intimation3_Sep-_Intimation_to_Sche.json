@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUESTONE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=882365c7-0436-4445-ad34-938c9a25c7e9.pdf",
+    "file_type": "pdf"
+}

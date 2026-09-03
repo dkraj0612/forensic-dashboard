@@ -1,0 +1,8 @@
+{
+    "ticker": "BORANA",
+    "category": "SAST",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=53eb09ef-26e0-4b38-bb0a-4a1be0c77aa7.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CGCL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=826cc9d8-6325-4083-a670-4b0cc6d12585.pdf",
+    "file_type": "pdf"
+}

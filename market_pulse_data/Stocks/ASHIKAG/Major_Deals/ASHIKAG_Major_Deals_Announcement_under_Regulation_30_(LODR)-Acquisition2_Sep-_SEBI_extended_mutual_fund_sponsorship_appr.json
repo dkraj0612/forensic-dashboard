@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHIKAG",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=59a2dfb5-b953-45c3-b601-ca5852ba7f57.pdf",
+    "file_type": "pdf"
+}

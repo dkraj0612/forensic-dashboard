@@ -1,0 +1,8 @@
+{
+    "ticker": "CARYSIL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0111b3a9-ba96-4d5b-82e5-121471eec31d.pdf",
+    "file_type": "pdf"
+}

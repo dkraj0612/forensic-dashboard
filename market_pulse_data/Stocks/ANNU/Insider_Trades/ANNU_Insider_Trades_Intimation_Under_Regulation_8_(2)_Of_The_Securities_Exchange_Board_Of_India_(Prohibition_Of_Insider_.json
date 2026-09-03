@@ -1,0 +1,8 @@
+{
+    "ticker": "ANNU",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=411e86da-d3ae-483a-bda9-fe0cf4589c58.pdf",
+    "file_type": "pdf"
+}

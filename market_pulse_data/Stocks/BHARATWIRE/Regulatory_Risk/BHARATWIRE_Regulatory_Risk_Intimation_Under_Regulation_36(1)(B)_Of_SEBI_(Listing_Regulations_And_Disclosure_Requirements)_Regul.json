@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATWIRE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ed653f07-62ab-4271-9b65-6d0d6c4efeb5.pdf",
+    "file_type": "pdf"
+}

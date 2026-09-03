@@ -1,0 +1,8 @@
+{
+    "ticker": "ALMONDZ",
+    "category": "Results",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d6fc7966-ab75-4fc3-a2b4-38e127a3dc56.pdf",
+    "file_type": "pdf"
+}

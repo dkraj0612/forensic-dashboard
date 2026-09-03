@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTAR",
+    "category": "Dividend",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ecae7d17-97ad-4267-be33-3bee2304c29b.pdf",
+    "file_type": "pdf"
+}

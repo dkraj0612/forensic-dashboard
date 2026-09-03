@@ -1,0 +1,8 @@
+{
+    "ticker": "CONTROLPR",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61814883-cd06-42b0-9e0a-4f0e559b4176.pdf",
+    "file_type": "pdf"
+}

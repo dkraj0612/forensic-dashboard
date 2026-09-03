@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTRAZEN",
+    "category": "SAST",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=033d9e48-2099-4d1a-955f-b4c93b19fbac.pdf",
+    "file_type": "pdf"
+}

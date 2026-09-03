@@ -1,0 +1,8 @@
+{
+    "ticker": "BETA",
+    "category": "Results",
+    "extraction_date": "2026-09-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/BETA_03092026175522_outcome_of_board_meeting.pdf",
+    "file_type": "pdf"
+}
