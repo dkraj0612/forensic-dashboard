@@ -126,6 +126,13 @@
         "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Fallback_Transcript_28_Transcript.md",
         "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q4_FY24_Transcript.md",
         "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q1_FY25_Transcript.md",
-        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q2_FY25_Transcript.md"
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q2_FY25_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Fallback_Transcript_21_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q3_FY25_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q4_FY25_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q1_FY26_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q3_FY26_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Q4_FY26_Transcript.md",
+        "./ScreenerData/stocks/A/ACUTAAS/concalls/ACUTAAS_Fallback_Transcript_19_Transcript.md"
     ]
 }
