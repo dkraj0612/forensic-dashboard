@@ -1,0 +1,8 @@
+{
+    "ticker": "EPL",
+    "category": "SAST",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5C9556AF_FCB8_4DF8_91FD_65A06B3EB121_144036.pdf",
+    "file_type": "pdf"
+}

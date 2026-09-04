@@ -1,0 +1,8 @@
+{
+    "ticker": "DHRUV",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69d438ab-e487-46d1-807a-8114066c713b.pdf",
+    "file_type": "pdf"
+}

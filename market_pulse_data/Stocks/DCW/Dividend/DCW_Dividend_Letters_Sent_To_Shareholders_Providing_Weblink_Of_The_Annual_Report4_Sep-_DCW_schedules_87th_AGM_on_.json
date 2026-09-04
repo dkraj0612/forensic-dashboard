@@ -1,0 +1,8 @@
+{
+    "ticker": "DCW",
+    "category": "Dividend",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4380dd42-24ce-45f1-bb80-ddfb9965b83a.pdf",
+    "file_type": "pdf"
+}

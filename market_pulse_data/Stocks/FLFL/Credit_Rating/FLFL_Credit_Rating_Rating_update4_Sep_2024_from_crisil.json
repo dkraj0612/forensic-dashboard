@@ -1,0 +1,8 @@
+{
+    "ticker": "FLFL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Future Lifestyle Fashions Limited-RU-04-09-2024.pdf",
+    "file_type": "pdf"
+}

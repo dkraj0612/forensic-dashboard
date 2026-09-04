@@ -1,0 +1,8 @@
+{
+    "ticker": "CREATIVEYE",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=689ef2bd-43e1-4e48-ad32-b52c969740a3.pdf",
+    "file_type": "pdf"
+}

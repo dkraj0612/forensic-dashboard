@@ -1,0 +1,8 @@
+{
+    "ticker": "FEDFINA",
+    "category": "SAST",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "Skipped: Document exceeds 150 pages (182 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d1c75b4e-5468-40ed-82f2-5dda93de487d.pdf",
+    "file_type": "pdf"
+}

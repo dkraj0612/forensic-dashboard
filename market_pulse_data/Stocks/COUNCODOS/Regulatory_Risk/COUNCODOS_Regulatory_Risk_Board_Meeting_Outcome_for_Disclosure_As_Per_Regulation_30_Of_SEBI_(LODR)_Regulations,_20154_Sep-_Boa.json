@@ -1,0 +1,8 @@
+{
+    "ticker": "COUNCODOS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2e01ded-2e4b-4189-8e1f-e30cad5b73aa.pdf",
+    "file_type": "pdf"
+}

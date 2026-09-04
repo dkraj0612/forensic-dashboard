@@ -1,0 +1,8 @@
+{
+    "ticker": "BEARDSELL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/BEARDSELL_04092026122136_Beardsell_AGMNotice_2026_SE.pdf",
+    "file_type": "pdf"
+}

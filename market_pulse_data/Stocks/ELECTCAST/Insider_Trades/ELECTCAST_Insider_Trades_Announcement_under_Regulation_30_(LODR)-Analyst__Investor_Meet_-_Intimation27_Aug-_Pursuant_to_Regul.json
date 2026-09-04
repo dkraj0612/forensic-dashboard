@@ -1,0 +1,8 @@
+{
+    "ticker": "ELECTCAST",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c193b7e-9cec-4ec2-925d-2268c773ca29.pdf",
+    "file_type": "pdf"
+}

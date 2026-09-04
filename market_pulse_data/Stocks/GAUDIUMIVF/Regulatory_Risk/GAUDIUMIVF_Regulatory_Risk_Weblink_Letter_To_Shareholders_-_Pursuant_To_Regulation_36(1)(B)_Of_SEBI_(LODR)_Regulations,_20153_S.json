@@ -1,0 +1,8 @@
+{
+    "ticker": "GAUDIUMIVF",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3895212c-dc7a-4026-84f1-4aea01fe1d8f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CREDITACC",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60221eb2-835b-4585-aa68-9e7dbeacefe5.pdf",
+    "file_type": "pdf"
+}

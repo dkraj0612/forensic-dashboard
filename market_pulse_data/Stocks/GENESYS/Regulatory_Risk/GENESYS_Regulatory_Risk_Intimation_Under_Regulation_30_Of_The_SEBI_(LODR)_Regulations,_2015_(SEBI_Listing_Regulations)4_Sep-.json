@@ -1,0 +1,8 @@
+{
+    "ticker": "GENESYS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e559203-1d01-48ec-8896-7829655aaa7c.pdf",
+    "file_type": "pdf"
+}
