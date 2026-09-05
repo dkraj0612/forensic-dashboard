@@ -1,0 +1,12 @@
+# ACI - SAST - Disclosures_under_Reg._29(2)_of_SEBI_(SAST)_Regulations,_20115_Sep
+
+**Extraction Date:** 2026-09-05
+
+**Source URL:** [View Original Document](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=09B3B306_15D1_4071_B78A_CBA3B423B58D_112225.pdf)
+---
+
+### 🤖 AI Intelligence Summary
+> **Executive Summary:**  SBI Mutual Fund has reduced its shareholding in Archean Chemical Industries Ltd. through a market sale on September 3, 2026, decreasing its stake by 0.1196%. This transaction brings their total holding to 4.3444% of the company's paid-up capital, notably falling below the 5% regulatory disclosure threshold. While this could signify routine portfolio rebalancing, it represents a modest reduction in a significant institutional investor's position.
+---
+
+> ⚠️ **SCANNED IMAGE DETECTED:** This document appears to be a scanned image or handwritten filing. Standard Python text extraction bypassed.

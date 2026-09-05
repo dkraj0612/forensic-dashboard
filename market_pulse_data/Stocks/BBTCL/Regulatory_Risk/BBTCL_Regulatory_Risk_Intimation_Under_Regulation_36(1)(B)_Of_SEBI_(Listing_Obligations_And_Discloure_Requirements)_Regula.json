@@ -1,0 +1,8 @@
+{
+    "ticker": "BBTCL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=885765bc-aa5a-4133-adb5-3d19494036ac.pdf",
+    "file_type": "pdf"
+}

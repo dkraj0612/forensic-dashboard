@@ -1,0 +1,8 @@
+{
+    "ticker": "GRANDOAK",
+    "category": "Results",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=63096ae7-a6a4-46fd-810d-0485aa1ba19f.pdf",
+    "file_type": "pdf"
+}

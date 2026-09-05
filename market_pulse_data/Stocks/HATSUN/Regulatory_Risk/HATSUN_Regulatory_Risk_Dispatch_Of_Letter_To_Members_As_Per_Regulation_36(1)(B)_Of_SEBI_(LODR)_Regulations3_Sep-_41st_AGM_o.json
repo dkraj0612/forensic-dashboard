@@ -1,0 +1,8 @@
+{
+    "ticker": "HATSUN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=20e0bddc-6918-442d-97c7-d65ec71f949f.pdf",
+    "file_type": "pdf"
+}

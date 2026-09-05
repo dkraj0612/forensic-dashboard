@@ -1,0 +1,8 @@
+{
+    "ticker": "HEALTHX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=84be14e8-3dd7-4896-b2cf-0568469af034.pdf",
+    "file_type": "pdf"
+}

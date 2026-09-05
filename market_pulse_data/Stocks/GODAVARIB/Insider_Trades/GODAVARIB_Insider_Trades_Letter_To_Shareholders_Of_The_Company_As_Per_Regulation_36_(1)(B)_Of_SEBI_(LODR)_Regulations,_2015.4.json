@@ -1,0 +1,8 @@
+{
+    "ticker": "GODAVARIB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8f15426-502b-4ef8-88a6-195bb331b7ac.pdf",
+    "file_type": "pdf"
+}

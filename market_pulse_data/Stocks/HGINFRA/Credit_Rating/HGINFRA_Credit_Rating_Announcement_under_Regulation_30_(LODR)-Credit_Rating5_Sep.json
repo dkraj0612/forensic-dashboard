@@ -1,0 +1,8 @@
+{
+    "ticker": "HGINFRA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3f74a574-57bd-4c53-99d6-77d6dd3a34ce.pdf",
+    "file_type": "pdf"
+}

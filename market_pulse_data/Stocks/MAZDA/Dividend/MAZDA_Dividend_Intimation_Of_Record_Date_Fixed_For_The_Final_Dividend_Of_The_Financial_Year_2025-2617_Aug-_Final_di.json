@@ -1,0 +1,8 @@
+{
+    "ticker": "MAZDA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe5d45b1-cadb-4147-9efc-f8388c2920b3.pdf",
+    "file_type": "pdf"
+}

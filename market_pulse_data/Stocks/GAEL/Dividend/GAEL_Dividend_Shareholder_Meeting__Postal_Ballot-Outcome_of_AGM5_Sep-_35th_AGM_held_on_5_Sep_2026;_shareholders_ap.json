@@ -1,0 +1,8 @@
+{
+    "ticker": "GAEL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f280ea7-48c2-4069-bf47-adba20ba7a9a.pdf",
+    "file_type": "pdf"
+}

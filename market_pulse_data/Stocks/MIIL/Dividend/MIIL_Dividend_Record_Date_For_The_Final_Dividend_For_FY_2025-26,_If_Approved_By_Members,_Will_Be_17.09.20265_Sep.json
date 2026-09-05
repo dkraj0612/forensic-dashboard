@@ -1,0 +1,8 @@
+{
+    "ticker": "MIIL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=76397347-25a4-4e65-9d5b-c63b4ed9ebbf.pdf",
+    "file_type": "pdf"
+}

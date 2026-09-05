@@ -1,0 +1,8 @@
+{
+    "ticker": "COMSYN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=327e0266-74bf-4bae-b199-e4ff1e90f0d9.pdf",
+    "file_type": "pdf"
+}

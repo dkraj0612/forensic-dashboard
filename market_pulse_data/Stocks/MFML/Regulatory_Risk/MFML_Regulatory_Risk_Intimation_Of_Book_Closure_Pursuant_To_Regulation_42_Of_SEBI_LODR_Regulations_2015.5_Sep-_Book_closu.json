@@ -1,0 +1,8 @@
+{
+    "ticker": "MFML",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c8d314c-f10a-4422-9e74-c57ed89b6e48.pdf",
+    "file_type": "pdf"
+}

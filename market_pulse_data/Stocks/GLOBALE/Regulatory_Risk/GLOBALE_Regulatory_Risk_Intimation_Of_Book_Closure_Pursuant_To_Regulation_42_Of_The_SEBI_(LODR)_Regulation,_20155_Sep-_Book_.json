@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBALE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8931b4d1-cb56-4f5e-8c04-118cf7f6f753.pdf",
+    "file_type": "pdf"
+}

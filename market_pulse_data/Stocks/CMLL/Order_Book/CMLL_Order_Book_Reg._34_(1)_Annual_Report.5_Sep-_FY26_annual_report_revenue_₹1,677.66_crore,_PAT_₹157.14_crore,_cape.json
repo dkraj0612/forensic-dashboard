@@ -1,0 +1,8 @@
+{
+    "ticker": "CMLL",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "Skipped: Document exceeds 150 pages (230 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4321b2e9-414a-4188-af2b-a235fcc51004.pdf",
+    "file_type": "pdf"
+}

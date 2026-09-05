@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLSINHOT",
+    "category": "Dividend",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/APOLSINHOT_05092026184920_intimationletterAGMNoticesigned.pdf",
+    "file_type": "pdf"
+}

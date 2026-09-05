@@ -1,0 +1,8 @@
+{
+    "ticker": "CANTABIL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6be480a1-208c-466b-a341-296667803b7c.pdf",
+    "file_type": "pdf"
+}

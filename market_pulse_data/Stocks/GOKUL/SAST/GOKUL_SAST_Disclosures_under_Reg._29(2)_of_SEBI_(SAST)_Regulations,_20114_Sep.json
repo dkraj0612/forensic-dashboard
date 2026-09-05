@@ -1,0 +1,8 @@
+{
+    "ticker": "GOKUL",
+    "category": "SAST",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=838C2006_89F5_4E9B_AEA7_62BC2FCED452_110318.pdf",
+    "file_type": "pdf"
+}

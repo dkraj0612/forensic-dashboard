@@ -1,0 +1,8 @@
+{
+    "ticker": "EMAMIPAP",
+    "category": "Results",
+    "extraction_date": "2026-09-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9197e9e-db06-4c59-acdd-39c403787bf3.pdf",
+    "file_type": "pdf"
+}
