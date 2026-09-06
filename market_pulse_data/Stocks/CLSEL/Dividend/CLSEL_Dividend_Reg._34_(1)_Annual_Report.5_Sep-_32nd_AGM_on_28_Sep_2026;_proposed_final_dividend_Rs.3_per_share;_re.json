@@ -1,0 +1,8 @@
+{
+    "ticker": "CLSEL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ff91af5-dcd4-4b42-8e8c-4519fa9ad3b9.pdf",
+    "file_type": "pdf"
+}

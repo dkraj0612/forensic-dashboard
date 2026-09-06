@@ -1,0 +1,8 @@
+{
+    "ticker": "DYNAMATECH",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65522ff1-d6bc-43d3-bbb9-abc25fcc8df6.pdf",
+    "file_type": "pdf"
+}

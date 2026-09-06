@@ -1,0 +1,8 @@
+{
+    "ticker": "JINDALPOLY",
+    "category": "Results",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b7251610-40ac-4113-a70e-dd2c2429a5e4.pdf",
+    "file_type": "pdf"
+}

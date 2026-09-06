@@ -1,0 +1,8 @@
+{
+    "ticker": "KEYFINSERV",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3dcd62ce-3335-4b12-b3ac-635a2cd423fd.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOWIND",
+    "category": "Results",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65f9facc-84ea-4e04-8adb-09f734297c7b.pdf",
+    "file_type": "pdf"
+}

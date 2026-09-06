@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOUS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d76fa6ea-084a-4ff5-990b-0cf48f0b840a.pdf",
+    "file_type": "pdf"
+}

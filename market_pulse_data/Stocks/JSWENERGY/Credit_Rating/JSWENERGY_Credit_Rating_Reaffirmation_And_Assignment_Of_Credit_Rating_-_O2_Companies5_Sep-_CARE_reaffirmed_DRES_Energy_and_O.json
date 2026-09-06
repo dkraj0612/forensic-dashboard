@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWENERGY",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c14e1ae3-cae3-4ddc-94cf-f528a449fad1.pdf",
+    "file_type": "pdf"
+}

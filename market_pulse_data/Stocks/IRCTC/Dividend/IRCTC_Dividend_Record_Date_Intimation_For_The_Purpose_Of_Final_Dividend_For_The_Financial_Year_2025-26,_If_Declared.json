@@ -1,0 +1,8 @@
+{
+    "ticker": "IRCTC",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=438d3ad4-d286-4abc-ac3f-c515f4334475.pdf",
+    "file_type": "pdf"
+}

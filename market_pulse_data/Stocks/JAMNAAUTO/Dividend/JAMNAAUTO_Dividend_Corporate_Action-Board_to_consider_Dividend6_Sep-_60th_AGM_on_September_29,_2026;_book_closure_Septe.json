@@ -1,0 +1,8 @@
+{
+    "ticker": "JAMNAAUTO",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=78886f35-4436-4efd-9db6-81991acb100d.pdf",
+    "file_type": "pdf"
+}

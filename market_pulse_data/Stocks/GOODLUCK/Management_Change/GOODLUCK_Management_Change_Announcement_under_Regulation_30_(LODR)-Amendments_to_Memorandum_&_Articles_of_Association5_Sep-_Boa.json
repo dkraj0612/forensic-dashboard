@@ -1,0 +1,8 @@
+{
+    "ticker": "GOODLUCK",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=161f3177-a4e0-4391-9757-063f7b0d248f.pdf",
+    "file_type": "pdf"
+}

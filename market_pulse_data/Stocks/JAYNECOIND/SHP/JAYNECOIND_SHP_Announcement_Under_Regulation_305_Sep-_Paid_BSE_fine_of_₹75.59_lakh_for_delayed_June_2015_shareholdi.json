@@ -1,0 +1,8 @@
+{
+    "ticker": "JAYNECOIND",
+    "category": "SHP",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4e94e61-795a-47d9-af97-359d11e79b53.pdf",
+    "file_type": "pdf"
+}

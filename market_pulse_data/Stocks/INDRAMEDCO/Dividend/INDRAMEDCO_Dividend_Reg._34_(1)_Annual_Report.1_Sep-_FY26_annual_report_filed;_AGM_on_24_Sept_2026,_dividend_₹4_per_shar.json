@@ -1,0 +1,8 @@
+{
+    "ticker": "INDRAMEDCO",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0e0580f6-2402-4725-b541-da78000801e8.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DANGEE",
+    "category": "Results",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/DANGEE_05092026161517_Outcome_of_Board_Meeting_.pdf",
+    "file_type": "pdf"
+}

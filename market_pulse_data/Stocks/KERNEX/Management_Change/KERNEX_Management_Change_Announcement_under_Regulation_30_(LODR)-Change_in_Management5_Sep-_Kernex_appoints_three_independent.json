@@ -1,0 +1,8 @@
+{
+    "ticker": "KERNEX",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b8de5da-133c-4eeb-a471-479b47c89283.pdf",
+    "file_type": "pdf"
+}

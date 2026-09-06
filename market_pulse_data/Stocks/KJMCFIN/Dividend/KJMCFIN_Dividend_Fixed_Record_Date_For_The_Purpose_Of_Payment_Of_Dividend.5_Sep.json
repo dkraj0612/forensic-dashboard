@@ -1,0 +1,8 @@
+{
+    "ticker": "KJMCFIN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=25ce9c11-5da6-48cd-80dd-444a86fb3295.pdf",
+    "file_type": "pdf"
+}

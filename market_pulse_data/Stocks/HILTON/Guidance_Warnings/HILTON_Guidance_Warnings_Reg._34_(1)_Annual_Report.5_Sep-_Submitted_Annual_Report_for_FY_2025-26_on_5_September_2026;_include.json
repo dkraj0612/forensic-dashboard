@@ -1,0 +1,8 @@
+{
+    "ticker": "HILTON",
+    "category": "Guidance_Warnings",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be9171d4-2046-4198-a95c-43174707e040.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KINGFA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d145fc45-ce95-4aca-b08b-0cb8414bb961.pdf",
+    "file_type": "pdf"
+}

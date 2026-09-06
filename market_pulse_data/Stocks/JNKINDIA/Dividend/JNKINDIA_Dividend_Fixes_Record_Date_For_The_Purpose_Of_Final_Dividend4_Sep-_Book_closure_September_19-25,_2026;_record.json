@@ -1,0 +1,8 @@
+{
+    "ticker": "JNKINDIA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b75ff192-e42c-4e47-8b63-546a901aee5a.pdf",
+    "file_type": "pdf"
+}

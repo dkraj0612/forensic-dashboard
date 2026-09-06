@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWDULUX",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=632c45a6-db15-4e95-bad7-fcfed18fe66d.pdf",
+    "file_type": "pdf"
+}

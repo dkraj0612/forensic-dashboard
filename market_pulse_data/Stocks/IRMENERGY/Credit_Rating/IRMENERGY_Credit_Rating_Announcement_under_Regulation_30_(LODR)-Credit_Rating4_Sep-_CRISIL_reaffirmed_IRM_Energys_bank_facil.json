@@ -1,0 +1,8 @@
+{
+    "ticker": "IRMENERGY",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d979d42-a345-4448-b3f8-86be2e15e67b.pdf",
+    "file_type": "pdf"
+}

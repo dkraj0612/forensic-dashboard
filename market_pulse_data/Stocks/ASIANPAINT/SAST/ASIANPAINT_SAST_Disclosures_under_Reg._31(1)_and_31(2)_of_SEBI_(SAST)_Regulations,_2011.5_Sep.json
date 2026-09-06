@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANPAINT",
+    "category": "SAST",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "API Error: 504 The request timed out. Please try again.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=F746F473_5A66_4240_9F66_53538231C045_123803.pdf",
+    "file_type": "pdf"
+}

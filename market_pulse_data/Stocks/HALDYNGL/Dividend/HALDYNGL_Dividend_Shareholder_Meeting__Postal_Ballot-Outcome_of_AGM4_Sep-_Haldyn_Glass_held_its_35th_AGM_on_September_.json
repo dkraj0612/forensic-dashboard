@@ -1,0 +1,8 @@
+{
+    "ticker": "HALDYNGL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=81c357fc-66e6-4946-bb93-f91d7405a7c2.pdf",
+    "file_type": "pdf"
+}

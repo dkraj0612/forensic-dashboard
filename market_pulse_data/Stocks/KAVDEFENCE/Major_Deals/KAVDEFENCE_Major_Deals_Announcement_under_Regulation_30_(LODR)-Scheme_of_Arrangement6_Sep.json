@@ -1,0 +1,8 @@
+{
+    "ticker": "KAVDEFENCE",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=742804ae-7bfc-41e9-969c-29c2d0272ffc.pdf",
+    "file_type": "pdf"
+}

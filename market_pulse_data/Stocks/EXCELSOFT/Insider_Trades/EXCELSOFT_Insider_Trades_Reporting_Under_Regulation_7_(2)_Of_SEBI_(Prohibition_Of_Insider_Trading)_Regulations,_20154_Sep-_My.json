@@ -1,0 +1,8 @@
+{
+    "ticker": "EXCELSOFT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=acd5e088-3db8-498a-b839-f8bd0eb731ab.pdf",
+    "file_type": "pdf"
+}

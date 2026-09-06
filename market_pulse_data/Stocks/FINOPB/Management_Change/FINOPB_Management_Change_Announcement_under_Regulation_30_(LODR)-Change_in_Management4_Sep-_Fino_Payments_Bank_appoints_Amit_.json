@@ -1,0 +1,8 @@
+{
+    "ticker": "FINOPB",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f6c0e06-a6cb-4996-aded-0d1130217f87.pdf",
+    "file_type": "pdf"
+}

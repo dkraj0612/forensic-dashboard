@@ -1,0 +1,8 @@
+{
+    "ticker": "E2E",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e1b9437c-68df-49e1-a7f1-b47e6943aec1.pdf",
+    "file_type": "pdf"
+}
