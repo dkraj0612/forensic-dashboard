@@ -1,0 +1,8 @@
+{
+    "ticker": "BCLIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d759b8f7-872a-4fdb-9b60-24548378b7bb.pdf",
+    "file_type": "pdf"
+}

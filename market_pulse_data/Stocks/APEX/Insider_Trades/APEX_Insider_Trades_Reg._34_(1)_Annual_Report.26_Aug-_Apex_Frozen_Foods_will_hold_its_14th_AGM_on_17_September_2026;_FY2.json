@@ -1,0 +1,8 @@
+{
+    "ticker": "APEX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de552374-ac2b-423a-bc95-bbf896acdfaf.pdf",
+    "file_type": "pdf"
+}

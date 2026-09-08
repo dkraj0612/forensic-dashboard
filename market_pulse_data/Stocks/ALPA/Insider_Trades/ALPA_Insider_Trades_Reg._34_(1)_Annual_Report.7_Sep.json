@@ -1,0 +1,8 @@
+{
+    "ticker": "ALPA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d497591-b51c-454d-9c52-ecb8a40c0659.pdf",
+    "file_type": "pdf"
+}

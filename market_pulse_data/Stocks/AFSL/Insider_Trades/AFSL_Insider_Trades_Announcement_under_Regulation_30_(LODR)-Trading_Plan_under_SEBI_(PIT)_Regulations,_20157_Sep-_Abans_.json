@@ -1,0 +1,8 @@
+{
+    "ticker": "AFSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=481a6173-1512-4c83-a994-bf64b7d1f79e.pdf",
+    "file_type": "pdf"
+}

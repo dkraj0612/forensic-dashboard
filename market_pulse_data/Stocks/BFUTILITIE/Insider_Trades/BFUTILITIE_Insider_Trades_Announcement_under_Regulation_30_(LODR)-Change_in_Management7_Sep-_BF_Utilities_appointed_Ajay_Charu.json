@@ -1,0 +1,8 @@
+{
+    "ticker": "BFUTILITIE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=080290e5-1735-45bd-9943-b331f08c4fba.pdf",
+    "file_type": "pdf"
+}

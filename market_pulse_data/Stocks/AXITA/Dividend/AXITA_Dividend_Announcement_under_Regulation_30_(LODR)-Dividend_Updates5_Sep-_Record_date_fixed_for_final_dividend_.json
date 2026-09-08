@@ -1,0 +1,8 @@
+{
+    "ticker": "AXITA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8aa69534-c205-42ec-9745-7c38db284b77.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AMDIND",
+    "category": "Results",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=915207cd-eb0d-421a-9416-b8aa3a22a662.pdf",
+    "file_type": "pdf"
+}

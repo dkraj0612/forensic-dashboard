@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHIANA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b7bc71f8-3e5d-482e-8bcd-956543d92ed5.pdf",
+    "file_type": "pdf"
+}

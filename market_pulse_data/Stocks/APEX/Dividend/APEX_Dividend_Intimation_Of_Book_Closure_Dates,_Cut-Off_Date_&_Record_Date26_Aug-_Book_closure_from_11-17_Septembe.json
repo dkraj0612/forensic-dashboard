@@ -1,0 +1,8 @@
+{
+    "ticker": "APEX",
+    "category": "Dividend",
+    "extraction_date": "2026-09-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=23b483f3-4ef7-4ac5-a686-ccf639276e39.pdf",
+    "file_type": "pdf"
+}
