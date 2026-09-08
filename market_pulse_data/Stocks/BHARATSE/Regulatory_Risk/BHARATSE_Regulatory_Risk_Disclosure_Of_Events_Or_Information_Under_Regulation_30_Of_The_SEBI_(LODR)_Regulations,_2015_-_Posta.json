@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATSE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d5092208-66d7-47f8-b340-90d4d8f8831f.pdf",
+    "file_type": "pdf"
+}

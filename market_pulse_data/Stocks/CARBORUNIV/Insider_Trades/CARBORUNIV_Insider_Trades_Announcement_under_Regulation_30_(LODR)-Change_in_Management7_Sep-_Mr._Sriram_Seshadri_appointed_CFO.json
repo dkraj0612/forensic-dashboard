@@ -1,0 +1,8 @@
+{
+    "ticker": "CARBORUNIV",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=049871dd-2c93-4e47-9895-651ac6a63a98.pdf",
+    "file_type": "pdf"
+}

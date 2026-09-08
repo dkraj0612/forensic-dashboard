@@ -1,0 +1,8 @@
+{
+    "ticker": "AVANTIFEED",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5319d6d-66df-44fa-a2a0-c805a03e717a.pdf",
+    "file_type": "pdf"
+}

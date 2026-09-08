@@ -1,0 +1,8 @@
+{
+    "ticker": "BEL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=96e6f1a8-f55b-48e0-8c9d-6c71103e2608.pdf",
+    "file_type": "pdf"
+}

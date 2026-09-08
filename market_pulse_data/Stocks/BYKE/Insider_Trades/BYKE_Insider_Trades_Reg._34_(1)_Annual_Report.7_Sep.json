@@ -1,0 +1,8 @@
+{
+    "ticker": "BYKE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=75245f9a-1d85-4e38-b507-bf59c959691d.pdf",
+    "file_type": "pdf"
+}

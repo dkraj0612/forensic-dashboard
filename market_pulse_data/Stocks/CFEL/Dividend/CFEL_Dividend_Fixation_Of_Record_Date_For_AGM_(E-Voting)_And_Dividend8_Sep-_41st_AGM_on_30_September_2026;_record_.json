@@ -1,0 +1,8 @@
+{
+    "ticker": "CFEL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=365d5e66-2fbf-4c21-9230-71f4c50da13e.pdf",
+    "file_type": "pdf"
+}

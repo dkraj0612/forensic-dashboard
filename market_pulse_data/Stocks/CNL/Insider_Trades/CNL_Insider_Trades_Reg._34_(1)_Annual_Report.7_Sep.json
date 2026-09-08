@@ -1,0 +1,8 @@
+{
+    "ticker": "CNL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ccc6691f-c586-428b-8a7f-8bf70ce57393.pdf",
+    "file_type": "pdf"
+}

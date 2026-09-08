@@ -1,0 +1,8 @@
+{
+    "ticker": "BLBLIMITED",
+    "category": "SAST",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=53DEC9DB_DFF6_4215_A426_84BC2DB4C3F8_124931.pdf",
+    "file_type": "pdf"
+}

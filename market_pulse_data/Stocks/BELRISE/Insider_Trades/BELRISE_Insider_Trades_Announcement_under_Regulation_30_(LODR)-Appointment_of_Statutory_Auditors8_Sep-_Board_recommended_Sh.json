@@ -1,0 +1,8 @@
+{
+    "ticker": "BELRISE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bd6d2b4b-a16b-4d91-bf11-a1253b980925.pdf",
+    "file_type": "pdf"
+}

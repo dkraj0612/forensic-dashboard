@@ -1,0 +1,8 @@
+{
+    "ticker": "BHEL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=becf190c-0fbf-43d4-afda-148481b1bd03.pdf",
+    "file_type": "pdf"
+}

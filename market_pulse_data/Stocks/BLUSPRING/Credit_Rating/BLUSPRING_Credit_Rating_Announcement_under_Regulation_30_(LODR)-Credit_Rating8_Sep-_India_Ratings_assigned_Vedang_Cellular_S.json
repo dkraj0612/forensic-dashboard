@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUSPRING",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-08",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5d9aa4b4-3be3-43d9-8c96-a1befd674d2d.pdf",
+    "file_type": "pdf"
+}
