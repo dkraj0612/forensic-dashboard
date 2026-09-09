@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTRALBK",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65daa012-589a-400c-ae0a-203f9184acff.pdf",
+    "file_type": "pdf"
+}

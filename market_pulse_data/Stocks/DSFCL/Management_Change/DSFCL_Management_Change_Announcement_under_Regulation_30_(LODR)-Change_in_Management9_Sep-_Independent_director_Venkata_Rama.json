@@ -1,0 +1,8 @@
+{
+    "ticker": "DSFCL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ddb027bf-c208-486e-8ecd-65242ed1ee33.pdf",
+    "file_type": "pdf"
+}

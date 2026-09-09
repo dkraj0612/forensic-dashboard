@@ -1,0 +1,909 @@
+# GATECH - Major_Deals - Board_Meeting_Outcome_for_FOR_MEETING_HELD_ON_TUESDAY,_SEPTEMBER_08,_20268_Sep-_Board_approved_revis
+
+**Extraction Date:** 2026-09-09
+
+**Source URL:** [View Original Document](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=adf99124-3a99-474d-96e0-b406b3f89444.pdf)
+---
+
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+---
+
+## Page 1
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+Date:  September 08, 2026 
+ 
+ 
+To, 
+The Secretary, 
+Listing Department 
+BSE Limited 
+P.J Towers, Dalal Street, Fort, 
+Mumbai - 400 001 
+ 
+SCRIP CODE: 531723 / 570005 
+To, 
+The Manager,  
+Listing Department, 
+National Stock Exchange of India Limited 
+Exchange Plaza. 5th Floor, Plot No. C/1, G Block 
+Bandra - Kurla Complex, Bandra (E), Mumbai-
+400051, Maharashtra. 
+SYMBOL: GATECH / GATECHDVR  
+ 
+ 
+SUBJECT: OUTCOME FOR MEETING OF THE BOARD OF DIRECTORS OF GACM TECHNOLOGIES 
+LIMITED (“THE COMPANY”) HELD ON TUESDAY, SEPTEMBER 08, 2026.  
+ 
+REFERENCE: REGULATION 30 READ WITH SCHEDULE III OF THE SECURITIES AND EXCHANGE 
+BOARD OF INDIA (“SEBI”) (LISTING OBLIGATIONS AND DISCLOSURE REQUIREMENTS) 
+REGULATIONS, 2015 (“THE LISTING REGULATIONS”). 
+ 
+ 
+Dear Sir/Madam, 
+ 
+In furtherance to the captioned subject and mentioned reference, we wish to inform you that the 
+Board of Directors of the Company in its meeting held today i.e., Tuesday, September 08, 2026, has 
+inter-alia considered and approved the following: 
+ 
+1. The revised list of proposed allottees and the revised number of Equity Shares proposed to be 
+allotted under the preferential issue basis (Share Swap) in lieu of acquisition of Stake in WEXL 
+EDU Limited, subject to applicable statutory and regulatory approvals. -(Annexure-1 &2) 
+ 
+2. The Notice of 31st Annual General Meeting of the Company for the Financial Year 2025-26. 
+ 
+The meeting of the Board of directors commenced at 10.30 A.M. and concluded at 11.10 A.M. 
+ 
+We request you to take the same on record. 
+Thanking You, 
+Yours faithfully, 
+For and on behalf of GACM Technologies Limited 
+ 
+ 
+ 
+Sujata Suresh Jain 
+Company Secretary & Compliance Officer 
+Membership No.: A59706 
+Place: Hyderabad  
+Encl 
+: A.A 
+ 
+Sujata 
+Suresh 
+Jain
+Digitally signed 
+by Sujata Suresh 
+Jain 
+Date: 2026.09.08 
+11:11:11 +05'30'
+
+---
+
+
+## Page 2
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+ 
+ANEEXURE – 1 
+ 
+THE DETAILS AS REQUIRED UNDER REGULATION 30 OF SEBI LISTING REGULATIONS READ 
+WITH SEBI CIRCULAR SEBI/HO/CFD/CFD-POD-1/P/CIR/2023/123 DATED JULY 13, 2023 ARE 
+AS UNDER 
+ 
+S. No. 
+Particulars 
+Disclosures 
+1.  Type of securities proposed to be 
+Issued 
+Equity Shares with Ordinary Rights 
+2. 
+Type of issuance 
+Preferential Allotment 
+3. 
+Total number of securities proposed 
+to be issued or total amount for which 
+the securities will be issued 
+1202634840 Equity Shares of the Company 
+having face value of Re. 1/- (Rupee One Only) 
+at an issue price of Rs. 1/- (Rupees One Only) 
+per equity shares “Non-Promoters, Public 
+Category” on preferential issue basis (Share 
+Swap) to the shareholders of WEXL EDU 
+Limited, towards the enterprise value of Rs. 
+120.26 Crores 
+In case of preferential issue, the listed entity shall disclose the following additional details to 
+the stock exchange(s): 
+4. 
+Name and number of the Investor(s) 
+As per the list attached as Annexure-2 
+5. 
+Issue price 
+Rs.1/- per Equity Shares 
+6. 
+post allotment of securities - 
+outcome of the subscription, 
+Not applicable 
+7. 
+in case of convertibles - intimation on 
+conversion of securities or on lapse of 
+the tenure of the instrument 
+Not applicable 
+8. 
+Any cancellation or termination of 
+proposal for issuance of securities 
+including reasons thereof. 
+Not applicable
+
+---
+
+
+## Page 3
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+ANEEXURE – 2 
+THE NAMES OF THE PROPOSED ALLOTTEES OF EQUITY SHARES, TO BE ALLOTTED ON 
+PREFERENTIAL BASIS (SHARE SWAP) TO NON-PROMOTER, PUBLIC CATEGORY: 
+ 
+S.no 
+Name of the existing 
+Shareholder of M/s.WEXL 
+EDU Limited / 
+Proposed Allottees 
+No. of 
+shares 
+held by the 
+respective 
+allottees in 
+WEXL EDU 
+Limited 
+Maximum Nos. of 
+Equity Shares to be 
+allotted by way of 
+swap shares in the 
+swap ratio of 120:1 (Equity 
+Shares) 
+1 
+AVM TECH ED SOLUTIONS PRIVATE LIMITED 
+3,700,000 
+444,000,000 
+2 
+BHARATH KUMAR PALATLA 
+625,000 
+75,000,000 
+3 
+SWARNA GOURI KURAKULA 
+588,235 
+70,588,200 
+4 
+PRIYA RAHUL MALU 
+358,823 
+43,058,760 
+5 
+KARTHICK CHAKRAVARTHY GANGAVARAPU 
+250,000 
+30,000,000 
+6 
+RONGALA JAI BHARAT KUMAR 
+208,333 
+24,999,960 
+7 
+MOHAN BABU JALUKURI 
+177,648 
+21,317,760 
+8 
+PUDI PRADEEP KUMAR 
+166,666 
+19,999,920 
+9 
+GORINTA PRAVEEN KUMAR 
+145,000 
+17,400,000 
+10 
+SRINIVAS RAO PATANGAY 
+134,800 
+16,176,000 
+11 
+SERU MAHENDRA VARAPU LOKESH 
+132,259 
+15,871,080 
+12 
+GOVIND THOTA 
+123,530 
+14,823,600 
+13 
+BANDARI PHANEESH GUPTA 
+122,352 
+14,682,240 
+14 
+SRINIVASA RAJU KALIDINDI 
+117,647 
+14,117,640 
+15 
+HUSAIN SULTAN ALI NENSEY 
+117,647 
+14,117,640 
+16 
+KALIDAS CHINTA 
+115,685 
+13,882,200 
+17 
+V MANOHAR RAO 
+101,177 
+12,141,240 
+18 
+ANURADHA DENDI 
+100,293 
+12,035,160 
+19 
+BHARGAVI BANDARU 
+96,274 
+11,552,880 
+20 
+UDAYA MANIKANTA PEMMANABOYINA 
+83,333 
+9,999,960 
+21 
+AMITHA PATANGAY 
+82,353 
+9,882,360 
+22 
+SATYANARAYANA MURTHY VARANASI 
+92,550 
+11,106,000 
+23 
+PANKAJ JAIPRAKASH KANKATTI 
+66,668 
+8,000,160 
+24 
+DILESHWAR REDDY GAGIREDDY 
+63,886 
+7,666,320 
+25 
+PAPIREDDY VAIBHAV REDDY 
+59,823 
+7,178,760 
+26 
+SRINIVASA RAO THADIVADA 
+58,333 
+6,999,960 
+27 
+NARINDER KUMAR BHATARA 
+54,275 
+6,513,000 
+28 
+GORINTA VIJAYA BABU 
+50,000 
+6,000,000 
+29 
+GORINTA LAVANYA 
+50,000 
+6,000,000 
+30 
+KODURU NARESH 
+50,000 
+6,000,000 
+31 
+REVU SAILAJA 
+50,000 
+6,000,000 
+32 
+THADIVADA UPENDRA 
+48,120 
+5,774,400 
+33 
+KURUGANTI VENKAT SHIVANAND REDDY 
+46,686 
+5,602,320 
+34 
+T.V REMESH 
+42,737 
+5,128,440
+
+---
+
+
+## Page 4
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+35 
+D RAM REDDY 
+41,411 
+4,969,320 
+36 
+ABHIMANYU KHURANA 
+94,575 
+11,349,000 
+37 
+DENDI SANJANA 
+40,882 
+4,905,840 
+38 
+AASHISH KUMAR 
+39,529 
+4,743,480 
+39 
+RAJ KUMAR BALAKRISHNA 
+37,629 
+4,515,480 
+40 
+SATYA VENKATA RAMANA TELIDEVARA 
+32,353 
+3,882,360 
+41 
+PAWAN KUMAR AGARWAL 
+30,118 
+3,614,160 
+42 
+NEELAMMA 
+29,412 
+3,529,440 
+43 
+RAJENDRA KUMAR 
+29,412 
+3,529,440 
+44 
+SWAPNA TUMMALA 
+29,412 
+3,529,440 
+45 
+MOHAMMED BASRI RABIYA 
+17,647 
+2,117,640 
+46 
+VENKATA NARASIMHA MURTY VURIMI 
+26,467 
+3,176,040 
+47 
+MARUPUDI SRAVANI 
+25,459 
+3,055,080 
+48 
+SUGUMAR PRIYA 
+25,411 
+3,049,320 
+49 
+SNEHA DENDI 
+23,800 
+2,856,000 
+50 
+CHANDRA MOULI KUNAPULI 
+23,530 
+2,823,600 
+51 
+USHA GUPTA 
+23,530 
+2,823,600 
+52 
+TECH RUDRAUM PRIVATE LIMITED 
+23,529 
+2,823,480 
+53 
+MANVENDRA SINGH 
+22,939 
+2,752,680 
+54 
+RAJENDAR GARIGANTI 
+35,294 
+4,235,280 
+55 
+JAYANTH SIVA MADHAV KARUMURI 
+20,200 
+2,424,000 
+56 
+SURENDER JAIN 
+17,648 
+2,117,760 
+57 
+SASI KIRAN PAMARTHI 
+17,624 
+2,114,880 
+58 
+N KRITHIKA 
+15,915 
+1,909,800 
+59 
+CHANDRASEKHAR SITARAMA MALLELA 
+15,294 
+1,835,280 
+60 
+LEO JOSEPH LEMOS 
+14,171 
+1,700,520 
+61 
+KHURRAM AZIZ SIDDIQUE 
+23,529 
+2,823,480 
+62 
+BOMMA GYANESHWAR NAETHA 
+13,500 
+1,620,000 
+63 
+THOYAJA RAO M 
+20,614 
+2,473,680 
+64 
+PARTHO GANGOPADHYAY 
+12,706 
+1,524,720 
+65 
+AYUSH TANEJA 
+12,404 
+1,488,480 
+66 
+SHALINI LAXMAN 
+12,353 
+1,482,360 
+67 
+RAMAKRISHNAN N 
+12,353 
+1,482,360 
+68 
+MOHD FAIZAN AHMED KHAN 
+12,353 
+1,482,360 
+69 
+K N SUMITHRA 
+11,765 
+1,411,800 
+70 
+PARESH KAPADE 
+11,765 
+1,411,800 
+71 
+SHITAL KAPADE 
+11,765 
+1,411,800 
+72 
+NARENDRA KUMAR VANKAYALA 
+11,765 
+1,411,800 
+73 
+SUVARCHALA KAITHEPALLI 
+11,764 
+1,411,680 
+74 
+SRINIVAS BANDARU 
+11,764 
+1,411,680 
+75 
+KRISHNA VENI MADEM 
+34,484 
+4,138,080 
+76 
+NAGESH A 
+11,765 
+1,411,800 
+77 
+NIKHILESH MATAM 
+11,666 
+1,399,920
+
+---
+
+
+## Page 5
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+78 
+VARUN REDDY DENDI 
+10,823 
+1,298,760 
+79 
+TIRUMALASETTI LAKSHMI PRAVALLIKA 
+10,677 
+1,281,240 
+80 
+PRAKASH KUMAR JAIN 
+10,000 
+1,200,000 
+81 
+KUNAPAREDDY VISHAL SAI 
+10,000 
+1,200,000 
+82 
+VALLELA PAVANKUMAR REDDY 
+8,647 
+1,037,640 
+83 
+CHAKRI BABU KURELLA 
+2,353 
+282,360 
+84 
+ASHOK PANDURANG AKADE 
+8,236 
+988,320 
+85 
+KRISHAN KUMAR RAWAT 
+8,236 
+988,320 
+86 
+CHANDRA ARUNACHALAM 
+8,235 
+988,200 
+87 
+SYAMLA VORUGANTI 
+24,901 
+2,988,120 
+88 
+M SAROJINI REDDY 
+13,882 
+1,665,840 
+89 
+GODA ANAND 
+23,000 
+2,760,000 
+90 
+PRIYA JAISHANKAR 
+7,412 
+889,440 
+91 
+MAINA BALDOTA 
+7,059 
+847,080 
+92 
+HARSHA VARDHAN PARIDALA 
+7,059 
+847,080 
+93 
+NAVEEN KUMAR PEDDI 
+7,059 
+847,080 
+94 
+UTKARSH SINGH BAIS 
+10,392 
+1,247,040 
+95 
+VINITHA TANDRA 
+7,059 
+847,080 
+96 
+SHRADDHA LAXMIKANT AGARWAL 
+14,437 
+1,732,440 
+97 
+JAYA SREE VIJAYAGIRI 
+7,059 
+847,080 
+98 
+KRISHNAVENI CHAVALI 
+6,470 
+776,400 
+99 
+GEETHALAKSHMI D 
+6,176 
+741,120 
+100 
+SIVAKUMAR UMAPATHY 
+6,176 
+741,120 
+101 
+BONDILI ANIL KUMAR SINGH 
+7,751 
+930,120 
+102 
+NOOKALA KARUNA REDDY 
+11,534 
+1,384,080 
+103 
+FAZAL ARAFAT 
+16,800 
+2,016,000 
+104 
+DHRITI RUNGTA 
+4,712 
+565,440 
+105 
+AAYUSH KUMAR RUNGTA 
+5,888 
+706,560 
+106 
+ANIL KUMAR BHALLA 
+5,883 
+705,960 
+107 
+AAKASH JAIN 
+5,882 
+705,840 
+108 
+MANISH SHAH 
+5,882 
+705,840 
+109 
+PRATAP KUMAR POLAMARASETTY 
+5,882 
+705,840 
+110 
+SARAVANA KUMAR N 
+5,882 
+705,840 
+111 
+SATISH CHANDRA DEGAPUDI 
+5,882 
+705,840 
+112 
+SAURABH MUDGAL 
+5,882 
+705,840 
+113 
+RAVI KUMAR KOTTURMATTA 
+5,882 
+705,840 
+114 
+VENKATA SATISH KUMAR KAKI 
+5,882 
+705,840 
+115 
+RAJKUMARI RAI 
+5,882 
+705,840 
+116 
+K ABIRAMI 
+8,333 
+999,960 
+117 
+NEELAM BHALLA 
+5,882 
+705,840 
+118 
+BOBBY SINGH YADAV 
+5,882 
+705,840 
+119 
+ANURAG KUMAR 
+5,882 
+705,840 
+120 
+PRAMOD RADHAKRISHNARAO MULEY 
+5,882 
+705,840
+
+---
+
+
+## Page 6
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+121 
+DEELIP NANAKRAM PARASWANI 
+5,882 
+705,840 
+122 
+GYANESHWAR ARCHANA 
+5,882 
+705,840 
+123 
+AMIT BATRA 
+11,764 
+1,411,680 
+124 
+ISHANA RAINA 
+9,412 
+1,129,440 
+125 
+RAJESH ANANDCHANDRA GUJRATHI 
+5,882 
+705,840 
+126 
+SARATA PANKAJ SINGH 
+5,882 
+705,840 
+127 
+NANDEPU RAJESH 
+36,471 
+4,376,520 
+128 
+SHREE RAMA CHANDRA PRABHU VARANASI 
+7,529 
+903,480 
+129 
+DAYALAN .R.M 
+6,176 
+741,120 
+130 
+SAMBI REDDY BOMMAREDDY 
+5,529 
+663,480 
+131 
+PADMALAYA DEVI S 
+10,828 
+1,299,360 
+132 
+ASHOK BASABANNAYA VASTRAD 
+5,012 
+601,440 
+133 
+NARMADA NADADHURI 
+4,706 
+564,720 
+134 
+NIRMALA VYAS 
+4,706 
+564,720 
+135 
+SALMA VISHWANATHAN 
+8,944 
+1,073,280 
+136 
+B VIJAYA REDDY 
+4,294 
+515,280 
+137 
+PRADIP BHIKAJI WAGHMARE 
+4,118 
+494,160 
+138 
+KURUKUNDA KIRANKUMAR 
+3,824 
+458,880 
+139 
+ARVIND DHIMAN 
+3,530 
+423,600 
+140 
+GANESHBABU NALINI 
+3,529 
+423,480 
+141 
+KUMPATLA JAINENDHRA SAI 
+3,529 
+423,480 
+142 
+MOHIT GUPTA 
+3,529 
+423,480 
+143 
+SUNIL KUMAR PATCHAVA 
+3,529 
+423,480 
+144 
+CHAVARE SATHISH KUMAR 
+3,529 
+423,480 
+145 
+VINOD KUMAR BHOINI 
+3,332 
+399,840 
+146 
+DHARMA RAO PASAPU 
+2,971 
+356,520 
+147 
+KADALI LAKSHMI RAMADEVI 
+2,960 
+355,200 
+148 
+AJAY KUMAR TIWARI 
+2,941 
+352,920 
+149 
+GANESH BABURAO KAMBLE 
+2,941 
+352,920 
+150 
+SUGUMAR 
+2,941 
+352,920 
+151 
+NATESH KOLUSU 
+2,824 
+338,880 
+152 
+GOPAL SOMANI 
+2,353 
+282,360 
+153 
+GOUTAM BETALA 
+2,353 
+282,360 
+154 
+HARSHA PARASHURAMA SHANKAR 
+2,353 
+282,360 
+155 
+KRUPANAND MANDALA 
+2,353 
+282,360 
+156 
+POOJA RANI 
+2,353 
+282,360 
+157 
+RAJESH SRINIVAS 
+2,353 
+282,360 
+158 
+GANESAN SARANYA 
+2,353 
+282,360 
+159 
+SATISH NOOKIREDDY 
+2,353 
+282,360 
+160 
+SHRADDHA SENGAR 
+5,686 
+682,320 
+161 
+VEERA VENKATA SATYA PRASAD UPPULURI 
+2,353 
+282,360 
+162 
+MUDHIGONDA RUKMINI 
+2,188 
+262,560 
+163 
+ATHUKURI INDRAJA VAISHNAVI 
+2,109 
+253,080
+
+---
+
+
+## Page 7
+
+GACM TECHNOLOGIES LIMITED 
+REGISTERED OFFICE: 2nd Floor, GHMC No- 3-260/KA/201/NR PLOT NO. 260, Guttala Begumpet, Kavuri Hills, 
+Hyderabad- 500033, Telangana, India 
+CIN: L67120TG1995PLC020170  
+WEBSITE: https://gacmtech.com/ EMAIL ID: cs@gacmtech.com  
+CONTACT: 040-69086900/84 
+ 
+164 
+JAYA DURGA PASAPU 
+2,003 
+240,360 
+165 
+RAJESH JAYASUDHA 
+1,765 
+211,800 
+166 
+AJAY KUMAR JAIN 
+115,880 
+13,905,600 
+167 
+RESHMA SAHU 
+10,000 
+1,200,000 
+168 
+VENKATESAN .RANGABASHYAM 
+27,869 
+3,344,280
+
+---

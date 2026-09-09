@@ -1,0 +1,8 @@
+{
+    "ticker": "FLEXITUFF",
+    "category": "Results",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29ec42d0-5bcb-421a-9d10-ee433ab27c19.pdf",
+    "file_type": "pdf"
+}

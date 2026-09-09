@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIS",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c671166-8cad-4ceb-b565-a879eb5d391c.pdf",
+    "file_type": "pdf"
+}

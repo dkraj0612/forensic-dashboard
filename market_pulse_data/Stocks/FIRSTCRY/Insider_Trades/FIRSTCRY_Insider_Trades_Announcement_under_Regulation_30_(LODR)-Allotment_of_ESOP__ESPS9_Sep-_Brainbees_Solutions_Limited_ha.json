@@ -1,0 +1,8 @@
+{
+    "ticker": "FIRSTCRY",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5ae76028-b607-4cb0-8339-56eed05f7832.pdf",
+    "file_type": "pdf"
+}

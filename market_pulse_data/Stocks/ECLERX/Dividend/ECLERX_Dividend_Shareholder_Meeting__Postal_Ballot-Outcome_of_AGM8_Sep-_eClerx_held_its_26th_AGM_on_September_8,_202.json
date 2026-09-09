@@ -1,0 +1,8 @@
+{
+    "ticker": "ECLERX",
+    "category": "Dividend",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a530450d-673b-4a2f-8af1-ed77298d5f3e.pdf",
+    "file_type": "pdf"
+}

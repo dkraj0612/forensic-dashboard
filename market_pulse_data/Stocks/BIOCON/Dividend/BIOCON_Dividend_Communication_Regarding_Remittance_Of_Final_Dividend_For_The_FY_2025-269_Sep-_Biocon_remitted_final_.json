@@ -1,0 +1,8 @@
+{
+    "ticker": "BIOCON",
+    "category": "Dividend",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=00964635-ca0b-4612-84a4-44fa2690c86e.pdf",
+    "file_type": "pdf"
+}

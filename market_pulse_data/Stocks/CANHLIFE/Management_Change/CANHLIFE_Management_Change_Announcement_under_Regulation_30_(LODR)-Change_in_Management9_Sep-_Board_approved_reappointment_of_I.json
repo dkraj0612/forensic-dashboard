@@ -1,0 +1,8 @@
+{
+    "ticker": "CANHLIFE",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf8c3375-1932-477a-8407-d64904080f33.pdf",
+    "file_type": "pdf"
+}

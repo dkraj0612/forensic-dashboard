@@ -1,0 +1,8 @@
+{
+    "ticker": "CAMLINFINE",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41a8a2e6-1855-4bda-8d45-4734ab6b5e92.pdf",
+    "file_type": "pdf"
+}

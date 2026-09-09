@@ -1,0 +1,8 @@
+{
+    "ticker": "COFORGE",
+    "category": "Results",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=336b735c-3882-429b-ad57-4cdd774cea8e.pdf",
+    "file_type": "pdf"
+}

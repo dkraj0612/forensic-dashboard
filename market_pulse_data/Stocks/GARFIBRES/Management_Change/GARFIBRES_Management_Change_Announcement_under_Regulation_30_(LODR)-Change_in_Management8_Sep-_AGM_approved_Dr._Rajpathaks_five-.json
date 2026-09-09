@@ -1,0 +1,8 @@
+{
+    "ticker": "GARFIBRES",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f02f99bb-0a18-43b2-9bcf-c4b8b19c60b2.pdf",
+    "file_type": "pdf"
+}

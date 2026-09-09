@@ -1,0 +1,8 @@
+{
+    "ticker": "FRACTAL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=57b33baa-9153-45c9-84f3-c407247b27e0.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GARFIBRES",
+    "category": "Dividend",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=415966fc-d709-431c-a02f-268313a50772.pdf",
+    "file_type": "pdf"
+}

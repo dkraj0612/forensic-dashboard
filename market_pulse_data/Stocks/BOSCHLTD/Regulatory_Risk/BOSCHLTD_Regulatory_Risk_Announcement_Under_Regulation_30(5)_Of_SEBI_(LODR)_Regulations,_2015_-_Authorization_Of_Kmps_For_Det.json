@@ -1,0 +1,8 @@
+{
+    "ticker": "BOSCHLTD",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f532935-5ba7-4dae-bcc2-0a2329e3e34c.pdf",
+    "file_type": "pdf"
+}

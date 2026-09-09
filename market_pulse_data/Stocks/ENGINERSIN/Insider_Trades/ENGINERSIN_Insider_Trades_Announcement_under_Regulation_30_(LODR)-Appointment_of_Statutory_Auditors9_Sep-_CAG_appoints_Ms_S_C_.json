@@ -1,0 +1,8 @@
+{
+    "ticker": "ENGINERSIN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=32cc2170-7110-46a5-b257-bd8755c518cb.pdf",
+    "file_type": "pdf"
+}

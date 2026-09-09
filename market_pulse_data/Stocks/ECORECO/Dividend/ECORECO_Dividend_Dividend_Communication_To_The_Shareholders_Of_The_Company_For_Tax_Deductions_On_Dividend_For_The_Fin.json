@@ -1,0 +1,8 @@
+{
+    "ticker": "ECORECO",
+    "category": "Dividend",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee342110-a7b0-424d-b0dd-4c965e43597d.pdf",
+    "file_type": "pdf"
+}

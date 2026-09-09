@@ -1,0 +1,8 @@
+{
+    "ticker": "BANSWRAS",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=87b6db46-9a2a-4bc5-9a24-1f8611e66557.pdf",
+    "file_type": "pdf"
+}

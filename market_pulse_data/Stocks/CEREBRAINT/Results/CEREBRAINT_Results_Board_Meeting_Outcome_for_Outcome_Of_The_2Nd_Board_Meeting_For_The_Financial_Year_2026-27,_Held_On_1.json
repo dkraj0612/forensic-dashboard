@@ -1,0 +1,8 @@
+{
+    "ticker": "CEREBRAINT",
+    "category": "Results",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c12d00a6-5a72-40d4-81fa-1eee4527edd3.pdf",
+    "file_type": "pdf"
+}

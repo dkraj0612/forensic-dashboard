@@ -1,0 +1,8 @@
+{
+    "ticker": "DHABRIYA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c813a7d-8d33-4790-a4b0-72267a82ef24.pdf",
+    "file_type": "pdf"
+}

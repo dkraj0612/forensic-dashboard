@@ -1,0 +1,8 @@
+{
+    "ticker": "EQUITASBNK",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64dc61eb-577e-4c0d-8425-7bf759bf669a.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ERIS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=04c9e327-8995-42b1-bdc4-cd0a69b0106f.pdf",
+    "file_type": "pdf"
+}
