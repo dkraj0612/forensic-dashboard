@@ -1,0 +1,8 @@
+{
+    "ticker": "EKI",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=125c321d-0909-4d9f-b04a-78855049160d.pdf",
+    "file_type": "pdf"
+}

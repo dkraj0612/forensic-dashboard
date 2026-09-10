@@ -1,0 +1,8 @@
+{
+    "ticker": "FORTIS",
+    "category": "Concalls",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=75cc9d36-7c45-4fd2-97f6-b586b422f7fa.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GVT&D",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b3456d27-c40b-4e60-a5ff-8afa2d5b969a.pdf",
+    "file_type": "pdf"
+}

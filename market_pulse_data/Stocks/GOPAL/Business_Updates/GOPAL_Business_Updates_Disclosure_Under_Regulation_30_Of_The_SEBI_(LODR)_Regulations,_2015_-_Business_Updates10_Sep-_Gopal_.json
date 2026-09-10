@@ -1,0 +1,8 @@
+{
+    "ticker": "GOPAL",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9deb0e9d-414e-47e1-a691-a1a30c361d66.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GRAPHITE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3ae964d1-f4a4-49d6-a666-cb753b5d664c.pdf",
+    "file_type": "pdf"
+}

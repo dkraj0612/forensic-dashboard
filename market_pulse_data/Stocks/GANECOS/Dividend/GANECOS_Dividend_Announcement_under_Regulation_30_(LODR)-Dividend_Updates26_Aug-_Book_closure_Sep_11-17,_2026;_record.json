@@ -1,0 +1,8 @@
+{
+    "ticker": "GANECOS",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=645c2fe5-f747-47eb-a26f-dcc8b1af824e.pdf",
+    "file_type": "pdf"
+}

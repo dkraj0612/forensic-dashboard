@@ -1,0 +1,8 @@
+{
+    "ticker": "DELTACORP",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=af127f90-1b9c-4602-a7f2-4eb84acb0d28.pdf",
+    "file_type": "pdf"
+}

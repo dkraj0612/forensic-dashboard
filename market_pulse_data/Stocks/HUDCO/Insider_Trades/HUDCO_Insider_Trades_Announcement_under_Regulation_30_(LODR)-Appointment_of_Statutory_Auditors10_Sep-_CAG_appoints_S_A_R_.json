@@ -1,0 +1,8 @@
+{
+    "ticker": "HUDCO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b2e41b1c-52a8-48e8-8c5b-95a3625d1def.pdf",
+    "file_type": "pdf"
+}

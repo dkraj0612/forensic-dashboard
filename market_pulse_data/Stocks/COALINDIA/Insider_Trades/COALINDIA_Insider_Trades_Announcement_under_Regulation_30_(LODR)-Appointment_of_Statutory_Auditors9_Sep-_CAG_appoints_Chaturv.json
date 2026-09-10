@@ -1,0 +1,8 @@
+{
+    "ticker": "COALINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fc4c4963-d868-4a96-9fa9-050d206268b8.pdf",
+    "file_type": "pdf"
+}

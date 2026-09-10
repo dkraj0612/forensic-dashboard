@@ -1,0 +1,8 @@
+{
+    "ticker": "GNFC",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c8827c0a-e475-4162-9f05-9a0cc11bd99d.pdf",
+    "file_type": "pdf"
+}

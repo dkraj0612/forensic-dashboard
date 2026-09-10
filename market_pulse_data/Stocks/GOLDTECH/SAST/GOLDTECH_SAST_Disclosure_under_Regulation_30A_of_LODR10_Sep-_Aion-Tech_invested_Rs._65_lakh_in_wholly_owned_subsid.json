@@ -1,0 +1,8 @@
+{
+    "ticker": "GOLDTECH",
+    "category": "SAST",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a1ca67e-b76e-46e1-8b3b-b40c0cd02dfc.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DEVIT",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ad073d3-1c77-48d9-a728-717417dfd581.pdf",
+    "file_type": "pdf"
+}

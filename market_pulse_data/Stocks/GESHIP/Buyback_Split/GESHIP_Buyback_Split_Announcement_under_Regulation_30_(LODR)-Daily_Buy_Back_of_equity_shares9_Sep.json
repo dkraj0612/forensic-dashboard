@@ -1,0 +1,8 @@
+{
+    "ticker": "GESHIP",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aeef3102-5236-49a0-b26d-4be5973c940a.pdf",
+    "file_type": "pdf"
+}

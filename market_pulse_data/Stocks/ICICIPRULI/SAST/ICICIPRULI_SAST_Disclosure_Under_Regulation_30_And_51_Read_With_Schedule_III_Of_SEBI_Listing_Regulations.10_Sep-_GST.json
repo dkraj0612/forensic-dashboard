@@ -1,0 +1,8 @@
+{
+    "ticker": "ICICIPRULI",
+    "category": "SAST",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3b40c8d-64ce-4b4c-ae7d-947bde3cdaed.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "HINDCOMPOS",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f7fb2fb5-60fc-4426-8406-344dca40d783.pdf",
+    "file_type": "pdf"
+}

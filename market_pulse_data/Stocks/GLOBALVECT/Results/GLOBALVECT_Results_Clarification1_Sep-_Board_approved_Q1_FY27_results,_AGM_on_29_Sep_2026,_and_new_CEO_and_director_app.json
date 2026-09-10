@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBALVECT",
+    "category": "Results",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb8f9266-250d-44b4-99a4-e93a0f4f2e7d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GPPL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "Skipped: Document exceeds 150 pages (241 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=85eb5206-2c76-4b1d-bd19-d727368c4a9a.pdf",
+    "file_type": "pdf"
+}

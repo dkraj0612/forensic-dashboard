@@ -1,0 +1,8 @@
+{
+    "ticker": "HMAAGRO",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0eb175e6-a987-4d4f-b022-77cf9aaad497.pdf",
+    "file_type": "pdf"
+}

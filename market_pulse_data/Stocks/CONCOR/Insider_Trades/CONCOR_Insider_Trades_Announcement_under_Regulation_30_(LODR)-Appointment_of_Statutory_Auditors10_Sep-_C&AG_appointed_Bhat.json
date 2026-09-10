@@ -1,0 +1,8 @@
+{
+    "ticker": "CONCOR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6950b253-2584-452c-85f2-771b8e9e682a.pdf",
+    "file_type": "pdf"
+}

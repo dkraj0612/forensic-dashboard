@@ -1,0 +1,8 @@
+{
+    "ticker": "DIGJAMLMTD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d99958d-6cbe-4a12-b835-0c134350d9e2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "IIFL",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad6ba14a-63db-403d-8dfc-3f49fe108ca6.pdf",
+    "file_type": "pdf"
+}

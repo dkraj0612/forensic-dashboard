@@ -1,0 +1,8 @@
+{
+    "ticker": "HALEOSLABS",
+    "category": "Dividend",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c1d4b89-81ea-46f5-8478-54b44297eb59.pdf",
+    "file_type": "pdf"
+}

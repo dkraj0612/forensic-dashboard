@@ -1,0 +1,8 @@
+{
+    "ticker": "JSLL",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f291892c-ad70-414d-a58d-f2579f275b5a.pdf",
+    "file_type": "pdf"
+}

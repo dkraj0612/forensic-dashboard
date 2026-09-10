@@ -1,0 +1,8 @@
+{
+    "ticker": "HEMIPROP",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0c6ed8b9-1074-4ab5-99e0-ea7351e32e83.pdf",
+    "file_type": "pdf"
+}
