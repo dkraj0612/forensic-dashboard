@@ -1,0 +1,8 @@
+{
+    "ticker": "FORTIS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=67afc01b-0644-472a-8105-3d9222ff5bfb.pdf",
+    "file_type": "pdf"
+}

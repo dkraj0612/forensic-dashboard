@@ -1,0 +1,8 @@
+{
+    "ticker": "HMT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=acd3cbbd-ac50-4309-b702-4c2b575e2ac4.pdf",
+    "file_type": "pdf"
+}

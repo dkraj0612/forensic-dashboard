@@ -1,0 +1,8 @@
+{
+    "ticker": "EVERESTIND",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1e87285-a827-49a6-a52d-815f13c2a406.pdf",
+    "file_type": "pdf"
+}

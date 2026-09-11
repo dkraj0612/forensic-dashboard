@@ -1,0 +1,8 @@
+{
+    "ticker": "HORIZONIND",
+    "category": "Results",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=76fb0f4d-93ff-40ec-bd7e-6038c074b258.pdf",
+    "file_type": "pdf"
+}

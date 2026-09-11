@@ -1,0 +1,8 @@
+{
+    "ticker": "HINDPETRO",
+    "category": "SAST",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e55ee7ab-83b4-4a11-a843-71e2c87e840f.pdf",
+    "file_type": "pdf"
+}

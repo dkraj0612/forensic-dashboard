@@ -1,0 +1,8 @@
+{
+    "ticker": "CRIZAC",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4a93bed5-3c8d-4c64-9e27-1631e238c49f.pdf",
+    "file_type": "pdf"
+}

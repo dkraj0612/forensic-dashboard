@@ -1,0 +1,8 @@
+{
+    "ticker": "BEL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b26d495b-4344-492b-9e4a-34196cce189b.pdf",
+    "file_type": "pdf"
+}

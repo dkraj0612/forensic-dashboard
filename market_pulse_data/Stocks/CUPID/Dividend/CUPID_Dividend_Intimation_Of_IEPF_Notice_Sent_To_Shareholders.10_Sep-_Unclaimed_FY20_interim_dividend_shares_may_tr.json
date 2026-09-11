@@ -1,0 +1,8 @@
+{
+    "ticker": "CUPID",
+    "category": "Dividend",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=deff55a4-052d-468a-82aa-3f6a39074a4b.pdf",
+    "file_type": "pdf"
+}

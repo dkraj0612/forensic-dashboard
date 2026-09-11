@@ -1,0 +1,8 @@
+{
+    "ticker": "CORALFINAC",
+    "category": "Dividend",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eecb51d5-7820-481d-a17a-f450c2eb046a.pdf",
+    "file_type": "pdf"
+}

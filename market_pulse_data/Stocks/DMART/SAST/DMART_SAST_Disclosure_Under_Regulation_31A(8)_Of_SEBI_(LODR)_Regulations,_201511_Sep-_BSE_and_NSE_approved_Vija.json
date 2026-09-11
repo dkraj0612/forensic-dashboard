@@ -1,0 +1,8 @@
+{
+    "ticker": "DMART",
+    "category": "SAST",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86466a26-d650-4cd2-996d-6b7d5f1dded6.pdf",
+    "file_type": "pdf"
+}

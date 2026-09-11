@@ -1,0 +1,8 @@
+{
+    "ticker": "JYOTHYLAB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=967739dd-2575-4863-b12c-eceb7bde88bb.pdf",
+    "file_type": "pdf"
+}

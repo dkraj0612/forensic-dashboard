@@ -1,0 +1,8 @@
+{
+    "ticker": "DCM",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=804492a3-e6f0-4c48-abf1-15f9d2159fb6.pdf",
+    "file_type": "pdf"
+}

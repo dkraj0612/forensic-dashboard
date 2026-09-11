@@ -1,0 +1,8 @@
+{
+    "ticker": "INNOVISION",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eff6eb0c-de70-4eb1-9dc5-cec6306755e5.pdf",
+    "file_type": "pdf"
+}

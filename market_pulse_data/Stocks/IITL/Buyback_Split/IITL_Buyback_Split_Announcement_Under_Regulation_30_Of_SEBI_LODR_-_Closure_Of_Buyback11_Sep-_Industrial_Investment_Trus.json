@@ -1,0 +1,8 @@
+{
+    "ticker": "IITL",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=656e0de8-2ff6-4917-8fc7-9d06ab09a04c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "JUBLFOOD",
+    "category": "Dividend",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2a45104b-b341-4e20-8d3b-964edb8e99be.pdf",
+    "file_type": "pdf"
+}

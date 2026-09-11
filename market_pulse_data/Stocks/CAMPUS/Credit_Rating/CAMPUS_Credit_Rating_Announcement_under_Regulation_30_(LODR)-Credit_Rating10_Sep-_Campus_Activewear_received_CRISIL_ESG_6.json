@@ -1,0 +1,8 @@
+{
+    "ticker": "CAMPUS",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dfb1f83e-d16e-4f99-b0c6-8d66d55204cf.pdf",
+    "file_type": "pdf"
+}

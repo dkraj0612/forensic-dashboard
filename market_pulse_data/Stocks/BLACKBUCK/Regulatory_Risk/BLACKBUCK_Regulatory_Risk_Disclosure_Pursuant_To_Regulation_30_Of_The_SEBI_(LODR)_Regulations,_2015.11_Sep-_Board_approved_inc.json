@@ -1,0 +1,8 @@
+{
+    "ticker": "BLACKBUCK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d1c0a5a-4495-42bf-bebb-d01f5d4e169d.pdf",
+    "file_type": "pdf"
+}

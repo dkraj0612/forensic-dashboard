@@ -1,0 +1,8 @@
+{
+    "ticker": "EMMVEE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=10ca39e5-06c8-4bf3-a957-7773a9bcc345.pdf",
+    "file_type": "pdf"
+}

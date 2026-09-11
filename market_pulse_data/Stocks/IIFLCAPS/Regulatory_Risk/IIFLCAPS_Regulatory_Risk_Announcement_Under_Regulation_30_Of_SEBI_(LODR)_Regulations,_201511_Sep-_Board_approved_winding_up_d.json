@@ -1,0 +1,8 @@
+{
+    "ticker": "IIFLCAPS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=089a2bde-e539-4934-907c-c63c01d771d6.pdf",
+    "file_type": "pdf"
+}

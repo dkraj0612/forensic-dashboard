@@ -1,0 +1,8 @@
+{
+    "ticker": "JKIPL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef62288a-09d9-4a0d-bd59-53be7da175f0.pdf",
+    "file_type": "pdf"
+}
