@@ -176,5 +176,16 @@
             "year": 2022
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_64_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Q1_FY2022_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Q2_FY21_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_58_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_55_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_56_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_59_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_57_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_61_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIGREEN/concalls/ADANIGREEN_Fallback_Transcript_54_Transcript.md"
+    ]
 }
