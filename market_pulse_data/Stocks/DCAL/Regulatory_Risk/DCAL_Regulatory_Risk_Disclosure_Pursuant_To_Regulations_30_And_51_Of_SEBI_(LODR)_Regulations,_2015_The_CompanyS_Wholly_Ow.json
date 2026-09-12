@@ -1,0 +1,8 @@
+{
+    "ticker": "DCAL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c4baa613-3540-4907-ad1b-916f08233210.pdf",
+    "file_type": "pdf"
+}

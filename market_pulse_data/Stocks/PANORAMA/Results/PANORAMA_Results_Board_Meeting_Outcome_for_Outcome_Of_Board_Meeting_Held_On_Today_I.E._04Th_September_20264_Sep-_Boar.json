@@ -1,0 +1,8 @@
+{
+    "ticker": "PANORAMA",
+    "category": "Results",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4217a9f8-f31d-4773-9458-c631bb1eaca2.pdf",
+    "file_type": "pdf"
+}

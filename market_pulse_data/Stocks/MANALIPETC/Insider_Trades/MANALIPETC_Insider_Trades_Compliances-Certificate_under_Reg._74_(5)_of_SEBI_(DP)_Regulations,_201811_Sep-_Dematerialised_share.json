@@ -1,0 +1,8 @@
+{
+    "ticker": "MANALIPETC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3420f3b9-5e77-44f6-b75c-9a0385d0de9d.pdf",
+    "file_type": "pdf"
+}

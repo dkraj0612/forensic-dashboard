@@ -1,0 +1,8 @@
+{
+    "ticker": "ORIRAIL",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f269e20b-efe6-42a5-9806-2ec0c4748a70.pdf",
+    "file_type": "pdf"
+}

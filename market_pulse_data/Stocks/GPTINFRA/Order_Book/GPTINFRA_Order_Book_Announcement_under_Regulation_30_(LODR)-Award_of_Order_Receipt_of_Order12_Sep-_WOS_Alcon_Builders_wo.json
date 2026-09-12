@@ -1,0 +1,8 @@
+{
+    "ticker": "GPTINFRA",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bfa873ee-a80a-4b77-8130-0487f65bfb20.pdf",
+    "file_type": "pdf"
+}

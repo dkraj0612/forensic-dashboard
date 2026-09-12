@@ -1,0 +1,8 @@
+{
+    "ticker": "AFFLE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "**Executive Summary:**  Affle 3i Limited filed a routine regulatory disclosure regarding a one-on-one investor call with IIFL Capital PMS, stating that no unpublished price-sensitive information was shared. A significant red flag is the reported meeting date of September 11, 2026, which is two years in the future and highly unusual for such an intimation, strongly suggesting a material typographical error. While the content itself indicates no immediate material impact, this date discrepancy necessitates clarification to maintain transparency and avoid potential investor confusion.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=78e3b68e-2bb2-4bdc-a55c-d5315b300d50.pdf",
+    "file_type": "pdf"
+}

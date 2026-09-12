@@ -1,0 +1,8 @@
+{
+    "ticker": "GFSTEELS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8b26f8fc-bcfc-4c46-8c10-4aa76a9c2d40.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEAN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60286240-cedc-4cd5-88f4-4982966f8bd7.pdf",
+    "file_type": "pdf"
+}

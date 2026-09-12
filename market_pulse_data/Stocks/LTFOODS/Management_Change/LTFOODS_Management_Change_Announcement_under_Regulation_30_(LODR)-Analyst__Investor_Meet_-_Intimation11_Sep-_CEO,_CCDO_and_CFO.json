@@ -1,0 +1,8 @@
+{
+    "ticker": "LTFOODS",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=013ecb39-5d40-4c3c-b209-5f2fd7369bd7.pdf",
+    "file_type": "pdf"
+}

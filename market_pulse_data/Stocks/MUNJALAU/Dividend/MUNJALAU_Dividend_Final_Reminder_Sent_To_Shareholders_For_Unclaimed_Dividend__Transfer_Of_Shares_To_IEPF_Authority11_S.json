@@ -1,0 +1,8 @@
+{
+    "ticker": "MUNJALAU",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9037f8f4-200b-4033-92f3-1847e87bb80e.pdf",
+    "file_type": "pdf"
+}

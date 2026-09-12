@@ -1,0 +1,8 @@
+{
+    "ticker": "MUNJALAU",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ae764c8-3291-4751-a6b1-0951455c6354.pdf",
+    "file_type": "pdf"
+}

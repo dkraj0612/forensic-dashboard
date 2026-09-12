@@ -1,0 +1,8 @@
+{
+    "ticker": "NAHARINDUS",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0275f845-92a7-4358-a1ff-889c9677dfb4.pdf",
+    "file_type": "pdf"
+}

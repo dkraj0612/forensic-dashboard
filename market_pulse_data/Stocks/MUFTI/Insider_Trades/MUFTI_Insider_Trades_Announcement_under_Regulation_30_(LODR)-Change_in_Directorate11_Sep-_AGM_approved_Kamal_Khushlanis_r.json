@@ -1,0 +1,8 @@
+{
+    "ticker": "MUFTI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c338661b-86a9-4d0f-bd71-543d9246562d.pdf",
+    "file_type": "pdf"
+}

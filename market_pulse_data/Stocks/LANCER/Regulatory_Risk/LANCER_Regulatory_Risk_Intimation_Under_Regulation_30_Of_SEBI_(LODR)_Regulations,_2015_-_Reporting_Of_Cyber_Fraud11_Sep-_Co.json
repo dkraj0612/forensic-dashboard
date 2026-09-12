@@ -1,0 +1,8 @@
+{
+    "ticker": "LANCER",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c03b91dc-5691-4803-9efd-287b36d17f6b.pdf",
+    "file_type": "pdf"
+}

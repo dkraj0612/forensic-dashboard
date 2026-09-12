@@ -1,0 +1,8 @@
+{
+    "ticker": "JAMNAAUTO",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=67619523_7D89_443E_A20E_F865EF868D6C_110117.pdf",
+    "file_type": "pdf"
+}

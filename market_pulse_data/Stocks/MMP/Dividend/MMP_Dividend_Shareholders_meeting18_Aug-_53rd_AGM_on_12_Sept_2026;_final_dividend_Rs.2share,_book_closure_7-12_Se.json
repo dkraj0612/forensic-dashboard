@@ -1,0 +1,8 @@
+{
+    "ticker": "MMP",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MMP_18082026123015_MMPAGMIntimation2026.pdf",
+    "file_type": "pdf"
+}

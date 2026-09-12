@@ -1,0 +1,8 @@
+{
+    "ticker": "IONEXCHANG",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "Skipped: Document exceeds 150 pages (281 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dc8810c5-6fc3-45cb-8cf8-914423fa47a1.pdf",
+    "file_type": "pdf"
+}

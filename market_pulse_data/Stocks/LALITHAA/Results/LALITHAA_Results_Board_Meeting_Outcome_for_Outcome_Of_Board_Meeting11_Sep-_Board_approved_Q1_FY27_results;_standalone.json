@@ -1,0 +1,8 @@
+{
+    "ticker": "LALITHAA",
+    "category": "Results",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0eafbb03-df28-4893-a22d-29ee9857badb.pdf",
+    "file_type": "pdf"
+}

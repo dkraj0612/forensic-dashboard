@@ -1,0 +1,8 @@
+{
+    "ticker": "NYKAA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ba704a15-b493-42af-98d3-1af00891316e.pdf",
+    "file_type": "pdf"
+}

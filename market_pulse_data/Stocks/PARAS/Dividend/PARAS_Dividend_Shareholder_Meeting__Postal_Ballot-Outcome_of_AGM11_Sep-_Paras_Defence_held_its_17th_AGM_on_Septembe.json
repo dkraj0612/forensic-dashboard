@@ -1,0 +1,8 @@
+{
+    "ticker": "PARAS",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c8019724-e723-49b1-9f91-f89991aa4247.pdf",
+    "file_type": "pdf"
+}

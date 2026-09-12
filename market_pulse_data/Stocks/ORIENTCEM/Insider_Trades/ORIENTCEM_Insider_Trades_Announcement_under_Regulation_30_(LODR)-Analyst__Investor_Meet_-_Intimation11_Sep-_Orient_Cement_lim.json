@@ -1,0 +1,8 @@
+{
+    "ticker": "ORIENTCEM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=387690e4-f711-42c9-bd8b-33fd7cd9767f.pdf",
+    "file_type": "pdf"
+}

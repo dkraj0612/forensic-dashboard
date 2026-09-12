@@ -1,0 +1,8 @@
+{
+    "ticker": "MARUTI",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c76c17af-c10e-4846-b669-b1b61159c9e4.pdf",
+    "file_type": "pdf"
+}

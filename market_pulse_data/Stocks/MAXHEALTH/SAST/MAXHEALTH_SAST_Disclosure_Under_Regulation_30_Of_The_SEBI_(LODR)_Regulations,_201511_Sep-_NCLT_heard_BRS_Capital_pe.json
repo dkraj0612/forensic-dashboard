@@ -1,0 +1,8 @@
+{
+    "ticker": "MAXHEALTH",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2add7e7d-0655-4be1-a13d-26e631cf287d.pdf",
+    "file_type": "pdf"
+}

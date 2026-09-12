@@ -1,0 +1,8 @@
+{
+    "ticker": "MERCURYEV",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8d7e498-7964-4bbb-9e3c-e23ed01d1102.pdf",
+    "file_type": "pdf"
+}

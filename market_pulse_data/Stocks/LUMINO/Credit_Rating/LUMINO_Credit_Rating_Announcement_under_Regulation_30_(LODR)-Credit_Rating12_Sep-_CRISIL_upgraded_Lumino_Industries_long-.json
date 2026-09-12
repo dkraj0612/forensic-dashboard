@@ -1,0 +1,8 @@
+{
+    "ticker": "LUMINO",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=79c9d42c-093f-46dc-8267-492f94781803.pdf",
+    "file_type": "pdf"
+}

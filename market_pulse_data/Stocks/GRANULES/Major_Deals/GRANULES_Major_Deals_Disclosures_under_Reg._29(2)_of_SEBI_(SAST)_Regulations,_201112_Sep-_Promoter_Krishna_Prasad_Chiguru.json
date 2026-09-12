@@ -1,0 +1,8 @@
+{
+    "ticker": "GRANULES",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1F797963_B25F_4769_A1E7_91BB21185798_123327.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "NUVAMA",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=B5F4D3CA_38D0_4D9B_83AD_B5A5DC81850E_151326.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "OMPOWER",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4a676c0e-0ccc-45b1-b6b6-d68abb5e9e33.pdf",
+    "file_type": "pdf"
+}

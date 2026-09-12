@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBECIVIL",
+    "category": "Results",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f933453-e1b3-4acf-a147-0d9524b0a12c.pdf",
+    "file_type": "pdf"
+}

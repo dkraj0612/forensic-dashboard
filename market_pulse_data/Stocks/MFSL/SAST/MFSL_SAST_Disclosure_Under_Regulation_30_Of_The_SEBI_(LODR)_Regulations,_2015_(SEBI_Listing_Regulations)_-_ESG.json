@@ -1,0 +1,8 @@
+{
+    "ticker": "MFSL",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a0524e4d-83e5-4616-a801-0f79bf46ff9c.pdf",
+    "file_type": "pdf"
+}

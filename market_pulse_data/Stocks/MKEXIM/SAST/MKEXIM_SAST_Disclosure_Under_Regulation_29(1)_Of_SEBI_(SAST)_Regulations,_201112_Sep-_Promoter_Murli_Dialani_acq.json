@@ -1,0 +1,8 @@
+{
+    "ticker": "MKEXIM",
+    "category": "SAST",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=feaef2f7-5c1b-495e-972c-bd26279fe58f.pdf",
+    "file_type": "pdf"
+}

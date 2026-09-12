@@ -1,0 +1,8 @@
+{
+    "ticker": "HONASA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5164f1de-cbea-4483-91e6-0030301acdd4.pdf",
+    "file_type": "pdf"
+}

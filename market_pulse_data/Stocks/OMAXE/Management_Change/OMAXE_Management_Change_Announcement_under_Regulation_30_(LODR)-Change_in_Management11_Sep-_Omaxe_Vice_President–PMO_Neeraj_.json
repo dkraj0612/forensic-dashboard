@@ -1,0 +1,8 @@
+{
+    "ticker": "OMAXE",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cef6ccbd-96c1-4ef2-b635-048d0823fe7a.pdf",
+    "file_type": "pdf"
+}

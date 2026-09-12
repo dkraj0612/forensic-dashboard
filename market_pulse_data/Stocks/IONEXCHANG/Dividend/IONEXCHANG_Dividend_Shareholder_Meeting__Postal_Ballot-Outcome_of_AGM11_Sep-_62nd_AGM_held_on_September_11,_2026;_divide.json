@@ -1,0 +1,8 @@
+{
+    "ticker": "IONEXCHANG",
+    "category": "Dividend",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=96904eb2-c929-4702-b8d3-0bf9bde9a95e.pdf",
+    "file_type": "pdf"
+}

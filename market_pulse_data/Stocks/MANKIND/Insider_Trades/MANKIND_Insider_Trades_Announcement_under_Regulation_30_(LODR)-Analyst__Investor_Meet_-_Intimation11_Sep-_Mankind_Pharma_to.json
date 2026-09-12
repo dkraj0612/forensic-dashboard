@@ -1,0 +1,8 @@
+{
+    "ticker": "MANKIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5b6be6d7-d5f5-4526-bac4-9927a4715093.pdf",
+    "file_type": "pdf"
+}
