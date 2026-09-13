@@ -1,0 +1,8 @@
+{
+    "ticker": "SUPTANERY",
+    "category": "Dividend",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=024c5619-6d21-4ad4-9fc4-275a62986b10.pdf",
+    "file_type": "pdf"
+}

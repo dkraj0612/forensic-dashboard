@@ -1,0 +1,8 @@
+{
+    "ticker": "SAMBANDAM",
+    "category": "Results",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d29a8f6-35cb-4707-aa6a-2816e650d52b.pdf",
+    "file_type": "pdf"
+}

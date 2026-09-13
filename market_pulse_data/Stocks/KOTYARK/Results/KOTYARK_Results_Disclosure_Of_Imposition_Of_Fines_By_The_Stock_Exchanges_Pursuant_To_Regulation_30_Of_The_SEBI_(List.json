@@ -1,0 +1,8 @@
+{
+    "ticker": "KOTYARK",
+    "category": "Results",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7b4fd012-322f-4b26-9a8a-7d3d6589aeda.pdf",
+    "file_type": "pdf"
+}

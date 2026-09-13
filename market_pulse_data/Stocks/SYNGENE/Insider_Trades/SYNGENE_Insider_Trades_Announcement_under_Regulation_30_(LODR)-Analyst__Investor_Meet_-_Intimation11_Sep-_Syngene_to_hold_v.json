@@ -1,0 +1,8 @@
+{
+    "ticker": "SYNGENE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=89a74df7-6220-4814-bd8e-4c9b2affb703.pdf",
+    "file_type": "pdf"
+}

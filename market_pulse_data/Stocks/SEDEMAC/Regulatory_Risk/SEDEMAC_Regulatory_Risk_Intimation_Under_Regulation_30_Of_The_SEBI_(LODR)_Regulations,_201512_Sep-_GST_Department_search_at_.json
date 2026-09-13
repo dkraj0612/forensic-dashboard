@@ -1,0 +1,8 @@
+{
+    "ticker": "SEDEMAC",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f787bc98-91cc-41f1-b9f9-fc880021f43f.pdf",
+    "file_type": "pdf"
+}

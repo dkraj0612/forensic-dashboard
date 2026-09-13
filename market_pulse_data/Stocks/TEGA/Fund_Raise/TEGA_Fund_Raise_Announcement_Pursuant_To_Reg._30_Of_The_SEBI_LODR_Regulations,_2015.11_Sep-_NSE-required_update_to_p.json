@@ -1,0 +1,8 @@
+{
+    "ticker": "TEGA",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df5d5ffa-8f9f-4ce4-aa3e-d1d3964181db.pdf",
+    "file_type": "pdf"
+}

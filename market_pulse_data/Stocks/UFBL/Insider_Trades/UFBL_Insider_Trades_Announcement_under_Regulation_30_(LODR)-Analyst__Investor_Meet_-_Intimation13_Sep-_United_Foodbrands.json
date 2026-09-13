@@ -1,0 +1,8 @@
+{
+    "ticker": "UFBL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b4aeb95-e2cd-4ee1-ace1-ba23b27d80a5.pdf",
+    "file_type": "pdf"
+}

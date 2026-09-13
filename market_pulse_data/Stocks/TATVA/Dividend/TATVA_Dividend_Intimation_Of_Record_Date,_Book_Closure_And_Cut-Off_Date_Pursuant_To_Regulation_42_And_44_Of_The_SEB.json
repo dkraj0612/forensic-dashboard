@@ -1,0 +1,8 @@
+{
+    "ticker": "TATVA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e44421e4-8d9c-448b-a510-6d6272e19cbb.pdf",
+    "file_type": "pdf"
+}

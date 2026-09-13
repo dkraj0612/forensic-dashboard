@@ -1,0 +1,8 @@
+{
+    "ticker": "PSB",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d50b4200-0d5c-4a28-8d91-05e39a319c75.pdf",
+    "file_type": "pdf"
+}

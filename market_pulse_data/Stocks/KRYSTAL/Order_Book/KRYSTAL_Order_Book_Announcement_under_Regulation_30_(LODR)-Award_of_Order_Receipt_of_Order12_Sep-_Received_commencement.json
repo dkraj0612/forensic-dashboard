@@ -1,0 +1,8 @@
+{
+    "ticker": "KRYSTAL",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b4b222f-cd5f-457a-83f9-34f09c48b19c.pdf",
+    "file_type": "pdf"
+}

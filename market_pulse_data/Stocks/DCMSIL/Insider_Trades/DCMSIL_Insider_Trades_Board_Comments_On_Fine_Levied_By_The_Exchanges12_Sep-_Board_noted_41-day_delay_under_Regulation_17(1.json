@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMSIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "DCMSIL reported addressing notices from BSE and NSE regarding a 41-day delay in compliance with SEBI (LODR) Regulation 17(1A) for the June 2026 quarter, related to a Non-Executive Director's appointment. This resulted in a total fine of Rs. 193,520 (Rs. 96,760 per exchange), which the company has paid, noting that shareholders had already approved the director's appointment. The matter is now considered resolved and closed, indicating a minor administrative lapse with minimal financial impact rather than a significant ongoing red flag.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c88726a2-5c33-4328-9e68-df9d1ac39777.pdf",
+    "file_type": "pdf"
+}

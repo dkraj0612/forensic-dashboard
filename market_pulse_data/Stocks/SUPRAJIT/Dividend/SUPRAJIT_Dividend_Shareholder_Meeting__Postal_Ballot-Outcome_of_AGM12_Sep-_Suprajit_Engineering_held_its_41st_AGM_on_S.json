@@ -1,0 +1,8 @@
+{
+    "ticker": "SUPRAJIT",
+    "category": "Dividend",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fdc352f1-b064-4c84-838d-20014e4e7ce0.pdf",
+    "file_type": "pdf"
+}

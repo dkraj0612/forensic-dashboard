@@ -1,0 +1,8 @@
+{
+    "ticker": "SUDARCOLOR",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4fa1bdd8-21a0-4dea-9587-54dc1755758e.pdf",
+    "file_type": "pdf"
+}

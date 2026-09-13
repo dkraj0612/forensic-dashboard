@@ -1,0 +1,8 @@
+{
+    "ticker": "SPECTRUM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4761692-0069-4f7d-b2ee-01476b5f0e76.pdf",
+    "file_type": "pdf"
+}

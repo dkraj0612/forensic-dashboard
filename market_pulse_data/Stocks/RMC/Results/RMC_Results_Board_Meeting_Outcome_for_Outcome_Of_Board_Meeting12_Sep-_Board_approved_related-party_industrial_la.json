@@ -1,0 +1,8 @@
+{
+    "ticker": "RMC",
+    "category": "Results",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cadc4ae4-fadc-4823-a095-78eb4453c4d3.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "OBCL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4f0ff538-3f75-4678-8989-be4a7caa4e80.pdf",
+    "file_type": "pdf"
+}

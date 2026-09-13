@@ -1,0 +1,8 @@
+{
+    "ticker": "UNIONBANK",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=66c27164-651d-41ed-aaca-56f3e8d3034b.pdf",
+    "file_type": "pdf"
+}

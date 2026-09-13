@@ -1,0 +1,8 @@
+{
+    "ticker": "SUMEDHA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68c5590e-5476-4127-8c3e-40794a740a11.pdf",
+    "file_type": "pdf"
+}

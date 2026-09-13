@@ -1,0 +1,8 @@
+{
+    "ticker": "TCI",
+    "category": "Dividend",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b94e0d44-9422-4aaa-b9e7-084129b12f28.pdf",
+    "file_type": "pdf"
+}

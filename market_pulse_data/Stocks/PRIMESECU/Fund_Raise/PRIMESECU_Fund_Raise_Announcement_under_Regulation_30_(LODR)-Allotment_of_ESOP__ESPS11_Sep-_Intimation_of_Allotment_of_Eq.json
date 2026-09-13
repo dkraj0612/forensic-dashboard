@@ -1,0 +1,8 @@
+{
+    "ticker": "PRIMESECU",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=908a98e2-f3ef-43cf-ae3b-02ab8db6ad38.pdf",
+    "file_type": "pdf"
+}

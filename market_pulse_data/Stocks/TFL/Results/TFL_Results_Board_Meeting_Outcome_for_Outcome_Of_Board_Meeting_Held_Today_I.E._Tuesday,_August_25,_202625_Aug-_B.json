@@ -1,0 +1,8 @@
+{
+    "ticker": "TFL",
+    "category": "Results",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7f9ac2c-1049-4d9a-b3b9-8eff54cc8077.pdf",
+    "file_type": "pdf"
+}

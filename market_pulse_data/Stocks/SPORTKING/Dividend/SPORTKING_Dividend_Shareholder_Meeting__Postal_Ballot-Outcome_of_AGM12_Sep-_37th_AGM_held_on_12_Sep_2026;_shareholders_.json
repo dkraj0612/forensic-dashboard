@@ -1,0 +1,8 @@
+{
+    "ticker": "SPORTKING",
+    "category": "Dividend",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e9bec3d4-a943-4bd5-8878-068afa9605e9.pdf",
+    "file_type": "pdf"
+}

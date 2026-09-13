@@ -1,0 +1,8 @@
+{
+    "ticker": "THAKDEV",
+    "category": "Results",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c524f5b6-2e9d-4ddf-8826-d437e309a017.pdf",
+    "file_type": "pdf"
+}

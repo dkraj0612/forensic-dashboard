@@ -1,0 +1,8 @@
+{
+    "ticker": "TATACHEM",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bffcf4bd-14f9-4cf8-8b3c-1b38c50a512d.pdf",
+    "file_type": "pdf"
+}

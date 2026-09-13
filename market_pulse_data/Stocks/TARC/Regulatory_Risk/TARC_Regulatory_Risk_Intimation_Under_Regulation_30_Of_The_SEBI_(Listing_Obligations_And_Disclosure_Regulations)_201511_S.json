@@ -1,0 +1,8 @@
+{
+    "ticker": "TARC",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6621617-f118-4b89-9944-d6665e5e0970.pdf",
+    "file_type": "pdf"
+}

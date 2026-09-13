@@ -1,0 +1,8 @@
+{
+    "ticker": "SYMPHONY",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0a9b7e46-ff53-4a1a-8fe1-9592d652e9ac.pdf",
+    "file_type": "pdf"
+}

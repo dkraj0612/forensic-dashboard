@@ -1,0 +1,8 @@
+{
+    "ticker": "KRSNAA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4ae8b8b6-4241-46e9-95d0-634e68899bbc.pdf",
+    "file_type": "pdf"
+}

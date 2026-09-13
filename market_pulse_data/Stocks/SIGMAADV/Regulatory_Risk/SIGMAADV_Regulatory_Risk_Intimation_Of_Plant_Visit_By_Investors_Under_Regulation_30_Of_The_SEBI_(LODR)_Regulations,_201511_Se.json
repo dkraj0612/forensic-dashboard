@@ -1,0 +1,8 @@
+{
+    "ticker": "SIGMAADV",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e015763-1517-4895-ae74-38131f5460d2.pdf",
+    "file_type": "pdf"
+}

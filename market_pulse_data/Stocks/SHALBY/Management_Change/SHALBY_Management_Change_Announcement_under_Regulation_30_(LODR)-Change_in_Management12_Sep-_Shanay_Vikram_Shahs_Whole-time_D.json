@@ -1,0 +1,8 @@
+{
+    "ticker": "SHALBY",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=15bf03d9-7d86-4a82-8564-090948040651.pdf",
+    "file_type": "pdf"
+}

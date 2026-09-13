@@ -1,0 +1,8 @@
+{
+    "ticker": "GEOJITFSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b9ee24f-adfa-498b-9540-59608430ef26.pdf",
+    "file_type": "pdf"
+}

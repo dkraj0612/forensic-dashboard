@@ -1,0 +1,8 @@
+{
+    "ticker": "SILVERTUC",
+    "category": "SAST",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2EEA2EE6_4EDA_4D4B_809F_E095D7BFFB57_123605.pdf",
+    "file_type": "pdf"
+}

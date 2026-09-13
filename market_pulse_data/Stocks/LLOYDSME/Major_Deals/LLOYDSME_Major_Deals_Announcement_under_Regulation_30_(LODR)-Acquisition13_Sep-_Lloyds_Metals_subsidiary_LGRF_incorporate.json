@@ -1,0 +1,8 @@
+{
+    "ticker": "LLOYDSME",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=583a39d6-afc1-4c6e-87fc-e9d374c7ec09.pdf",
+    "file_type": "pdf"
+}

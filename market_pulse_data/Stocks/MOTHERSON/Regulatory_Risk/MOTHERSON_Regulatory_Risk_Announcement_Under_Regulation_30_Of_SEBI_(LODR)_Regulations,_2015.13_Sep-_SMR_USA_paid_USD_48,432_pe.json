@@ -1,0 +1,8 @@
+{
+    "ticker": "MOTHERSON",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69a0c9cc-c7da-4e0e-be88-02502aa5886d.pdf",
+    "file_type": "pdf"
+}

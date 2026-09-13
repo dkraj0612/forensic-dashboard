@@ -1,0 +1,8 @@
+{
+    "ticker": "SHALPAINTS",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=00de1de4-9b64-4fa7-acaf-058c28e21cbf.pdf",
+    "file_type": "pdf"
+}
