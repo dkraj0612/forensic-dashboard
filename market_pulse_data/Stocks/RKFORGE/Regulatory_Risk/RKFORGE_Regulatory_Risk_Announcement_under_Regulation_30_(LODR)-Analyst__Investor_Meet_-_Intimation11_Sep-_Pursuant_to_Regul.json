@@ -1,0 +1,8 @@
+{
+    "ticker": "RKFORGE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e6febbbf-7d45-472a-8b0a-bbe9eabce182.pdf",
+    "file_type": "pdf"
+}

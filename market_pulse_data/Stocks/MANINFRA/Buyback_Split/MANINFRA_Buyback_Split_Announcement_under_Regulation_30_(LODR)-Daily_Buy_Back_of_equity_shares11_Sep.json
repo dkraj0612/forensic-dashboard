@@ -1,0 +1,8 @@
+{
+    "ticker": "MANINFRA",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65f9aa09-50cb-480d-a759-2097ea8b2634.pdf",
+    "file_type": "pdf"
+}

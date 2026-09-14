@@ -1,0 +1,8 @@
+{
+    "ticker": "SIS",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b9c1b7b-b181-4a0a-bdbe-509072b31c58.pdf",
+    "file_type": "pdf"
+}

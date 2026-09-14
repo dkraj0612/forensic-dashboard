@@ -1,0 +1,8 @@
+{
+    "ticker": "RAYMONDREL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7507dd7c-4e5b-456a-b77d-57ca8c13296d.pdf",
+    "file_type": "pdf"
+}

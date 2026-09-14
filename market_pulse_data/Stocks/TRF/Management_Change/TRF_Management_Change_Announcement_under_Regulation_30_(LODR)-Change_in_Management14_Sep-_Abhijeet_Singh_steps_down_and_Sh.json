@@ -1,0 +1,8 @@
+{
+    "ticker": "TRF",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3c3aaf24-4286-4bae-84a4-c355ce04167e.pdf",
+    "file_type": "pdf"
+}

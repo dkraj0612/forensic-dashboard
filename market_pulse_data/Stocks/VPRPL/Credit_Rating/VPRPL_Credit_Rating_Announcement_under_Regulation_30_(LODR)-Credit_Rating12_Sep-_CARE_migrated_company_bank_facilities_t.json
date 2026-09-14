@@ -1,0 +1,8 @@
+{
+    "ticker": "VPRPL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c13584f-3940-429e-b4db-598d742d7d8b.pdf",
+    "file_type": "pdf"
+}

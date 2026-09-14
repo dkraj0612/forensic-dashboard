@@ -1,0 +1,8 @@
+{
+    "ticker": "TEXINFRA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ff13204-0c55-40b6-9924-32c2c1b8a734.pdf",
+    "file_type": "pdf"
+}

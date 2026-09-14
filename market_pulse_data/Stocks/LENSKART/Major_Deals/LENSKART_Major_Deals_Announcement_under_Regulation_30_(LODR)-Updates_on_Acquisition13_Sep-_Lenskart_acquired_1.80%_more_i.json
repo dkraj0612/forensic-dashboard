@@ -1,0 +1,8 @@
+{
+    "ticker": "LENSKART",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b1192556-dda0-4fc3-9f36-72444020ba3a.pdf",
+    "file_type": "pdf"
+}

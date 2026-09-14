@@ -1,0 +1,8 @@
+{
+    "ticker": "SOLARINDS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9d718ab3-5437-4aeb-8bec-7582b8499a4c.pdf",
+    "file_type": "pdf"
+}

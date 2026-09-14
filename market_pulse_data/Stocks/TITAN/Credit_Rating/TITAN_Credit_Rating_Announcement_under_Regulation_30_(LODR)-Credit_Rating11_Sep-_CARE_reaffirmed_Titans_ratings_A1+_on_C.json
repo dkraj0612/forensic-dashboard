@@ -1,0 +1,8 @@
+{
+    "ticker": "TITAN",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=455321c3-4d1d-4429-b5d2-08ca2ac1408a.pdf",
+    "file_type": "pdf"
+}

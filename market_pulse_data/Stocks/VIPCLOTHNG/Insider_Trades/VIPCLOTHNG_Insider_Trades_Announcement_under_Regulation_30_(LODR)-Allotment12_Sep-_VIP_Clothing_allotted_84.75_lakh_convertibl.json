@@ -1,0 +1,8 @@
+{
+    "ticker": "VIPCLOTHNG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e00a1321-6d21-4c6e-85ec-b60c99a3c564.pdf",
+    "file_type": "pdf"
+}

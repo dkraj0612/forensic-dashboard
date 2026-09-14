@@ -1,0 +1,8 @@
+{
+    "ticker": "STYLEBAAZA",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=10f0c6e8-6f65-4a1d-97f6-e3b460f1ca4e.pdf",
+    "file_type": "pdf"
+}

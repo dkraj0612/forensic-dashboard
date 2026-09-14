@@ -1,0 +1,8 @@
+{
+    "ticker": "PODDARMENT",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f7155ab2-e32b-4e89-84b2-9bdd0798621e.pdf",
+    "file_type": "pdf"
+}

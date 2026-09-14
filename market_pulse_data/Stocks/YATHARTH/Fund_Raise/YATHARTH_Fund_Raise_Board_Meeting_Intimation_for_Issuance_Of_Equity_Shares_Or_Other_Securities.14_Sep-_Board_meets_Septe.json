@@ -1,0 +1,8 @@
+{
+    "ticker": "YATHARTH",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0dce671c-9213-4f75-9483-325695115195.pdf",
+    "file_type": "pdf"
+}

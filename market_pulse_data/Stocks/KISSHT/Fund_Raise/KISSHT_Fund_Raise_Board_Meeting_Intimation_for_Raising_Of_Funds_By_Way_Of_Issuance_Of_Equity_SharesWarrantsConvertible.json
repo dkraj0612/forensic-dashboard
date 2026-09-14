@@ -1,0 +1,8 @@
+{
+    "ticker": "KISSHT",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=270ab101-c432-48f9-92b7-bea75605dc83.pdf",
+    "file_type": "pdf"
+}

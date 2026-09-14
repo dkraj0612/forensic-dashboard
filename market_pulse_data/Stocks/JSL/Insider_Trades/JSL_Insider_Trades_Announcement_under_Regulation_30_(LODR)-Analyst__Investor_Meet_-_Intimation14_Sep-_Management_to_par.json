@@ -1,0 +1,8 @@
+{
+    "ticker": "JSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b193366-cb15-4d9a-9b39-1f7aa4ab68f0.pdf",
+    "file_type": "pdf"
+}

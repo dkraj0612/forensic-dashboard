@@ -1,0 +1,8 @@
+{
+    "ticker": "ROTO",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=657aea49-6737-47de-bba8-48b1faa2b57a.pdf",
+    "file_type": "pdf"
+}

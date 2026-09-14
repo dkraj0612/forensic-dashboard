@@ -1,0 +1,8 @@
+{
+    "ticker": "QUESS",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe6488b8-6b97-44f1-8361-0634b5230780.pdf",
+    "file_type": "pdf"
+}

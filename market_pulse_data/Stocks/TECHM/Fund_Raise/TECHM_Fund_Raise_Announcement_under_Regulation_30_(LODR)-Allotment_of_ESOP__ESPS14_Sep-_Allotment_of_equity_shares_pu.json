@@ -1,0 +1,8 @@
+{
+    "ticker": "TECHM",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=287f9157-1bb1-42d1-86a8-70e1fcce0ef7.pdf",
+    "file_type": "pdf"
+}

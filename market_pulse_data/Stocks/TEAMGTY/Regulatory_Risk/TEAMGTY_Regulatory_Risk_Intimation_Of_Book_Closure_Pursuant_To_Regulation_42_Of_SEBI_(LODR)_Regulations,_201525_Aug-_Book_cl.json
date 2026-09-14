@@ -1,0 +1,8 @@
+{
+    "ticker": "TEAMGTY",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ade4af51-c500-43e7-9e2c-78654d029c5d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "VINYLINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=661ebbe4-a2c8-44c9-8cad-c1d40969e2b5.pdf",
+    "file_type": "pdf"
+}

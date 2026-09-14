@@ -1,0 +1,8 @@
+{
+    "ticker": "ORIENTELEC",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=294aec31-f5c1-4abb-9081-1feef2ced101.pdf",
+    "file_type": "pdf"
+}

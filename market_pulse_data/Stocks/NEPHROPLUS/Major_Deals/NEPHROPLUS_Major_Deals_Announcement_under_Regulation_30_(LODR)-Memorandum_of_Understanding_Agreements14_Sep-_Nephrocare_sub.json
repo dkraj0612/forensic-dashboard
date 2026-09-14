@@ -1,0 +1,8 @@
+{
+    "ticker": "NEPHROPLUS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d380b581-f881-40a6-beb8-7d543fc62697.pdf",
+    "file_type": "pdf"
+}

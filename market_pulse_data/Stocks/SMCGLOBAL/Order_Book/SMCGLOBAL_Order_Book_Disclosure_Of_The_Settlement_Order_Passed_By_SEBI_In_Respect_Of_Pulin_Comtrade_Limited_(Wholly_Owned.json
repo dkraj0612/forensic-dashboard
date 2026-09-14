@@ -1,0 +1,8 @@
+{
+    "ticker": "SMCGLOBAL",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b1cc89d-d7e9-4e29-bb05-56b9ded3cd9c.pdf",
+    "file_type": "pdf"
+}

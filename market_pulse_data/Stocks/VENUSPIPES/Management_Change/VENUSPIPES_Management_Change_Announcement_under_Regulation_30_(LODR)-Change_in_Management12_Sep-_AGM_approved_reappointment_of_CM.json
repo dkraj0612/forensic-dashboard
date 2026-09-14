@@ -1,0 +1,8 @@
+{
+    "ticker": "VENUSPIPES",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=836046d6-dc5d-4061-813c-5b64d2785450.pdf",
+    "file_type": "pdf"
+}

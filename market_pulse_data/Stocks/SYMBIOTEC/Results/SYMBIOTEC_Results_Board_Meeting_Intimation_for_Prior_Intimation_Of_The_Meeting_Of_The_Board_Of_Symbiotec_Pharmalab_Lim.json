@@ -1,0 +1,8 @@
+{
+    "ticker": "SYMBIOTEC",
+    "category": "Results",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a39e2d56-6226-4294-9d75-922538bc7fe5.pdf",
+    "file_type": "pdf"
+}

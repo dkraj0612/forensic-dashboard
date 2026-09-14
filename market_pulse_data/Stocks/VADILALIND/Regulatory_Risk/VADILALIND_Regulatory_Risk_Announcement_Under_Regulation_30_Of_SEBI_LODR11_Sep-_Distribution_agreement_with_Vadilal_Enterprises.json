@@ -1,0 +1,8 @@
+{
+    "ticker": "VADILALIND",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce4270bd-b603-4e6c-9262-8e0a624910ab.pdf",
+    "file_type": "pdf"
+}

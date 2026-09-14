@@ -1,0 +1,8 @@
+{
+    "ticker": "VIKRAN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1e1c10df-8781-4430-b964-0368dcb2412a.pdf",
+    "file_type": "pdf"
+}

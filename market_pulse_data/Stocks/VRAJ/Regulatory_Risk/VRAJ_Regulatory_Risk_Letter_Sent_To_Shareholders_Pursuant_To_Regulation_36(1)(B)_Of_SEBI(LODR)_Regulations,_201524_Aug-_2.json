@@ -1,0 +1,8 @@
+{
+    "ticker": "VRAJ",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c134b90-0b1f-4073-8b46-a18f2de80b10.pdf",
+    "file_type": "pdf"
+}

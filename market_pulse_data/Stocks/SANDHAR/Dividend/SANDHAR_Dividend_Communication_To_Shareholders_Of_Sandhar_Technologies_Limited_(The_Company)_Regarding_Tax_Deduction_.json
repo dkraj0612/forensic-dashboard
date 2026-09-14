@@ -1,0 +1,8 @@
+{
+    "ticker": "SANDHAR",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce2b7426-1960-432f-9790-899a8b145d2f.pdf",
+    "file_type": "pdf"
+}

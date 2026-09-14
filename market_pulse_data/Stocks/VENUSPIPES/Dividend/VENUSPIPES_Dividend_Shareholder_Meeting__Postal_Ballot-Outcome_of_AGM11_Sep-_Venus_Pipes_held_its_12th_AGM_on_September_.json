@@ -1,0 +1,8 @@
+{
+    "ticker": "VENUSPIPES",
+    "category": "Dividend",
+    "extraction_date": "2026-09-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=03c8ce05-68c3-471b-a4df-6811f0dedf1e.pdf",
+    "file_type": "pdf"
+}
