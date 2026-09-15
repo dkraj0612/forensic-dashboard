@@ -179,7 +179,80 @@
             "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_45_Transcript.md",
             "quarter": "Q3",
             "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_42_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Q3_FY2023_Transcript.md",
+            "quarter": "Q3",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q2",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_77_Transcript.md",
+            "quarter": "Q2",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Q4_FY2019_Transcript.md",
+            "quarter": "Q4",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Q1_FY19_Transcript.md",
+            "quarter": "Q1",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_59_Transcript.md",
+            "quarter": "Q4",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_70_Transcript.md",
+            "quarter": "Q3",
+            "year": 2019
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_76_Transcript.md",
+            "quarter": "Q3",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_50_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Q3_FY16_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_79_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_78_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_77_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_76_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_74_Transcript.md",
+        "./ScreenerData/stocks/A/ADANIPORTS/concalls/ADANIPORTS_Fallback_Transcript_75_Transcript.md"
+    ]
 }
