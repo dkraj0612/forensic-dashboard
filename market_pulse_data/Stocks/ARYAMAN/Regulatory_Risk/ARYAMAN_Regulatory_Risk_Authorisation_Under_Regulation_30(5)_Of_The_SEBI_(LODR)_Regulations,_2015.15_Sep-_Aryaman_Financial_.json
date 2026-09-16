@@ -1,0 +1,8 @@
+{
+    "ticker": "ARYAMAN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "This document is a routine compliance filing from Aryaman Financial Services Limited (AFSL) to the BSE, identifying Key Managerial Personnel (KMPs) authorized to determine the materiality of events and make disclosures under SEBI regulations. Shripal Shah (Director & CFO) is designated for materiality assessment, and Anjali Gorsia (Company Secretary & Compliance Officer) for stock exchange disclosures, enhancing internal governance for regulatory transparency. A material red flag is the document's date, September 15, 2026, which is a future date and highly unusual for a compliance submission, suggesting a potential error or procedural anomaly.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=731377aa-eaed-4541-8fcf-09d5742e7348.pdf",
+    "file_type": "pdf"
+}

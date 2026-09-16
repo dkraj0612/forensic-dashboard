@@ -1,0 +1,8 @@
+{
+    "ticker": "FIVESTAR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9b48d569-a26a-4193-a8e4-3dc7a3b77917.pdf",
+    "file_type": "pdf"
+}

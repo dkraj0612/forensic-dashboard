@@ -1,0 +1,8 @@
+{
+    "ticker": "CUPID",
+    "category": "SAST",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=81BC9ACC_3F0F_48F3_A737_29F62D8A4312_120148.pdf",
+    "file_type": "pdf"
+}

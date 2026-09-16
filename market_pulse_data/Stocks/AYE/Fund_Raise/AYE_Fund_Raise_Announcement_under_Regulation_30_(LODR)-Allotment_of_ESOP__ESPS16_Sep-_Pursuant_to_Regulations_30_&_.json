@@ -1,0 +1,8 @@
+{
+    "ticker": "AYE",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e08761bd-1719-49c2-9e53-c16e470d477a.pdf",
+    "file_type": "pdf"
+}

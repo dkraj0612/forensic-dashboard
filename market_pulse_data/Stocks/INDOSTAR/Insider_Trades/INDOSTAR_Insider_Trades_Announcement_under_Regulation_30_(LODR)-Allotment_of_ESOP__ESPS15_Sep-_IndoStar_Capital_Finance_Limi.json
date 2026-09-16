@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOSTAR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7264d86-26b2-43cc-80a9-fc8ab69d1992.pdf",
+    "file_type": "pdf"
+}

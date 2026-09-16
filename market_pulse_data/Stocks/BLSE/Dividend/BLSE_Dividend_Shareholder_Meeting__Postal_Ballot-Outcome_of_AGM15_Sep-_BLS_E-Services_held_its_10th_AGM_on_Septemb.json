@@ -1,0 +1,8 @@
+{
+    "ticker": "BLSE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e2f9713-ce51-4b9e-aafe-b39a1699bae0.pdf",
+    "file_type": "pdf"
+}

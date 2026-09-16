@@ -1,0 +1,8 @@
+{
+    "ticker": "FIBERWEB",
+    "category": "SAST",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=A13D3F2F_35BD_4A26_A6C3_2D3CD87F7255_142306.pdf",
+    "file_type": "pdf"
+}

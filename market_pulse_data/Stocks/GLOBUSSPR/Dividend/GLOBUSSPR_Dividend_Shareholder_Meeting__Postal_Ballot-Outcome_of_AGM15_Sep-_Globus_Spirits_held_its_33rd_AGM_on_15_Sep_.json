@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBUSSPR",
+    "category": "Dividend",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=903b2aa1-f73a-41d8-b743-ef3f0bf5e17b.pdf",
+    "file_type": "pdf"
+}

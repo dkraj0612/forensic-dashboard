@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTRON",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f3901958-bc31-4091-8b2f-8324e23228bc.pdf",
+    "file_type": "pdf"
+}

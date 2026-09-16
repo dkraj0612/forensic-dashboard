@@ -1,0 +1,8 @@
+{
+    "ticker": "HAMPTON",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=96fb62a2-1e5c-44f2-bbec-abf5d0574ff6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "IMAGICAA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bc9539e9-27a4-4f72-a4ec-467fa29812d9.pdf",
+    "file_type": "pdf"
+}

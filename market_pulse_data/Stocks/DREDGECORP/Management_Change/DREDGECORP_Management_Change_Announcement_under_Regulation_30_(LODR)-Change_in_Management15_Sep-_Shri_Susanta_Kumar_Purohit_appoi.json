@@ -1,0 +1,8 @@
+{
+    "ticker": "DREDGECORP",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6657ed8a-f4d4-4f95-874c-08f95b7983bc.pdf",
+    "file_type": "pdf"
+}

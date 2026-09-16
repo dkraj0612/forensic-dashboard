@@ -1,0 +1,8 @@
+{
+    "ticker": "INTERARCH",
+    "category": "SAST",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a8fa3097-9884-4aa3-a430-5113e8ee82ef.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FINEORG",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4cedca17-4280-4144-acf0-81967172f1a6.pdf",
+    "file_type": "pdf"
+}

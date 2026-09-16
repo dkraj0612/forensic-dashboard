@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUESTARCO",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b84c1ad5-3b5b-4647-bbe2-01dc9f14970a.pdf",
+    "file_type": "pdf"
+}

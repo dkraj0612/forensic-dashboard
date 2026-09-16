@@ -1,0 +1,8 @@
+{
+    "ticker": "DCI",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e673ec6f-5ffe-452f-ad70-0369e7e18018.pdf",
+    "file_type": "pdf"
+}

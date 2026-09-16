@@ -1,0 +1,8 @@
+{
+    "ticker": "ITDC",
+    "category": "Dividend",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=93e495ef-5eb3-4898-abad-3cf8d5d8fe17.pdf",
+    "file_type": "pdf"
+}

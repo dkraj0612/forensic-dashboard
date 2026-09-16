@@ -1,0 +1,8 @@
+{
+    "ticker": "AFFLE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "Affle 3i Limited (formerly Affle (India) Limited) issued a regulatory intimation regarding an analyst/investor call with Motilal Oswal Securities and Prudent Investment Managers, confirming no unpublished price sensitive information was shared. The primary red flag and material impact is the reported meeting date of **September 15, 2026**, which is nearly two and a half years in the future, strongly indicating a significant typographical error in a formal filing. While the meeting itself is routine, this error highlights a lack of diligence in preparing a public disclosure.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e6ef4543-7c41-472b-b880-1cf902f98b3f.pdf",
+    "file_type": "pdf"
+}

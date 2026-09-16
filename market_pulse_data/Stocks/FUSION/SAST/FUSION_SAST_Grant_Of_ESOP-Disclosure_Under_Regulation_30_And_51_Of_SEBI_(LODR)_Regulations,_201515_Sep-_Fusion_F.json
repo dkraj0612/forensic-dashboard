@@ -1,0 +1,8 @@
+{
+    "ticker": "FUSION",
+    "category": "SAST",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e97b734-883e-42a2-98fc-d03fad83b068.pdf",
+    "file_type": "pdf"
+}

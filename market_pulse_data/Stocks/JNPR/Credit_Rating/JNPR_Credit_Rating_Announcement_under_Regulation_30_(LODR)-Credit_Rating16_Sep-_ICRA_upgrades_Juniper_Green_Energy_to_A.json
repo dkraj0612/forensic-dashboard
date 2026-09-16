@@ -1,0 +1,8 @@
+{
+    "ticker": "JNPR",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fd99a26c-9b44-43e8-b3f6-d98aa7aea88d.pdf",
+    "file_type": "pdf"
+}

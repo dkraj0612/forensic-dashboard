@@ -1,0 +1,8 @@
+{
+    "ticker": "HDFCBANK",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d00c64e0-2d45-499f-876f-bd1fd49214f2.pdf",
+    "file_type": "pdf"
+}
