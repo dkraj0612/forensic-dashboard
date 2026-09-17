@@ -1,0 +1,8 @@
+{
+    "ticker": "BANSALWIRE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=59d39de5-2883-4c02-bc68-5ec5755ca38e.pdf",
+    "file_type": "pdf"
+}

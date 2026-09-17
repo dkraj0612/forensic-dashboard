@@ -1,0 +1,8 @@
+{
+    "ticker": "GMMPFAUDLR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dfa6bc1f-2dac-447b-a67f-024844c97fdc.pdf",
+    "file_type": "pdf"
+}

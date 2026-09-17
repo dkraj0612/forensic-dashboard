@@ -1,0 +1,8 @@
+{
+    "ticker": "HOMEFIRST",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=45b9e719-646a-4631-a818-b5f893027b21.pdf",
+    "file_type": "pdf"
+}

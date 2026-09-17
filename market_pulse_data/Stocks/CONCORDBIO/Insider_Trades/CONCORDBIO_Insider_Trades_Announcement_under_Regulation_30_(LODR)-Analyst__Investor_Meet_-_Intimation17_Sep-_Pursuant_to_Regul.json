@@ -1,0 +1,8 @@
+{
+    "ticker": "CONCORDBIO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a659a6ad-c66f-4d74-a1be-0e64f1adefcd.pdf",
+    "file_type": "pdf"
+}

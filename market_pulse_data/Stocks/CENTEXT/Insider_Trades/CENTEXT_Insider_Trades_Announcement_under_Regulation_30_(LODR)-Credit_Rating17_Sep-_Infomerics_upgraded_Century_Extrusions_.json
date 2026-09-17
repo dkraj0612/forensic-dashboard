@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTEXT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dcf1bd47-d6dc-4b65-942c-ff8bb25525a3.pdf",
+    "file_type": "pdf"
+}

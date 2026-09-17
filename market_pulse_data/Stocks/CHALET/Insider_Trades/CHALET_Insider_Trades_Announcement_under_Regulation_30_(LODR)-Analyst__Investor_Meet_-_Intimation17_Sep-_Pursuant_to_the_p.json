@@ -1,0 +1,8 @@
+{
+    "ticker": "CHALET",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=75dfd4fb-ac6d-439d-b350-7a5ec9238406.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "HARDWYN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b35b1d0-32a9-4df0-9747-4113c985e028.pdf",
+    "file_type": "pdf"
+}

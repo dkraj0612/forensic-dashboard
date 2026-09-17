@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANPAINT",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e21fb62-464e-40db-a3f2-9b333a98e33c.pdf",
+    "file_type": "pdf"
+}

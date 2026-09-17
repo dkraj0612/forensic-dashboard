@@ -1,0 +1,8 @@
+{
+    "ticker": "COHANCE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a413a09a-5527-4a59-85ab-3e8e6f52f558.pdf",
+    "file_type": "pdf"
+}

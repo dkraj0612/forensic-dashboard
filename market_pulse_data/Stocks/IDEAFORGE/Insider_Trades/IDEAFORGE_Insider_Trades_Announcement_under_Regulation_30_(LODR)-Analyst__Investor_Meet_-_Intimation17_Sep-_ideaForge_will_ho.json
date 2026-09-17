@@ -1,0 +1,8 @@
+{
+    "ticker": "IDEAFORGE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=008d7581-de97-4d39-b569-2072d19d1841.pdf",
+    "file_type": "pdf"
+}

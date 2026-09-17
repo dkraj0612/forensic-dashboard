@@ -1,0 +1,8 @@
+{
+    "ticker": "IDEA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6f434db-0723-4b03-8e47-f6af7a63edf3.pdf",
+    "file_type": "pdf"
+}

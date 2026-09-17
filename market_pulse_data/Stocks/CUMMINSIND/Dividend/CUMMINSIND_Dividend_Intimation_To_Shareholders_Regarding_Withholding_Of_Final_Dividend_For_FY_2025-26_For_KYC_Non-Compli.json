@@ -1,0 +1,8 @@
+{
+    "ticker": "CUMMINSIND",
+    "category": "Dividend",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61b6ec62-a64f-42bc-a580-8d3b16e709fa.pdf",
+    "file_type": "pdf"
+}

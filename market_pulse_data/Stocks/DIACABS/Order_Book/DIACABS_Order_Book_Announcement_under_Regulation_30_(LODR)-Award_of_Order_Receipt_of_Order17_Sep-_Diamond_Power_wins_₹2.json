@@ -1,0 +1,8 @@
+{
+    "ticker": "DIACABS",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e764466f-3555-48ea-9bb8-ea713fb08507.pdf",
+    "file_type": "pdf"
+}

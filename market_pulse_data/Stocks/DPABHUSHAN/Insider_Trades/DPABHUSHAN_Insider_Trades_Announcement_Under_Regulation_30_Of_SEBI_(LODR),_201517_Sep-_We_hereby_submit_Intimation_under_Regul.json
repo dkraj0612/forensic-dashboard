@@ -1,0 +1,8 @@
+{
+    "ticker": "DPABHUSHAN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1f3c4cfd-5a07-43d6-89ec-5b74e220e908.pdf",
+    "file_type": "pdf"
+}

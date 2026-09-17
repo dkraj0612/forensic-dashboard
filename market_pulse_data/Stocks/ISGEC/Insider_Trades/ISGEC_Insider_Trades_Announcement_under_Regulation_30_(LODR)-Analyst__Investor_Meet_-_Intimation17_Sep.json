@@ -1,0 +1,8 @@
+{
+    "ticker": "ISGEC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a94f0308-6b01-47de-940c-9321459736fa.pdf",
+    "file_type": "pdf"
+}

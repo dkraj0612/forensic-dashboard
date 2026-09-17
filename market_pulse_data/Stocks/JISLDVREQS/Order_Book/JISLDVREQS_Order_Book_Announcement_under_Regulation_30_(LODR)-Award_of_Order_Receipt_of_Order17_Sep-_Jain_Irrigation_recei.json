@@ -1,0 +1,8 @@
+{
+    "ticker": "JISLDVREQS",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4f19d5c2-2090-42a4-86f4-fa35de65fb2e.pdf",
+    "file_type": "pdf"
+}

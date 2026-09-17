@@ -1,0 +1,8 @@
+{
+    "ticker": "BMWVENTLTD",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8228fb98-ac99-4b1c-a4b3-2b07b851041b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BLS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6a15fd11-2d4b-4eac-b2f4-1f24c5b32796.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GALAPREC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29ec6a0c-d71d-440d-a35d-5f23ed0cd548.pdf",
+    "file_type": "pdf"
+}

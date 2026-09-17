@@ -1,0 +1,8 @@
+{
+    "ticker": "BBOX",
+    "category": "Dividend",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=87055014-5f35-402d-940c-027f7aa2af12.pdf",
+    "file_type": "pdf"
+}

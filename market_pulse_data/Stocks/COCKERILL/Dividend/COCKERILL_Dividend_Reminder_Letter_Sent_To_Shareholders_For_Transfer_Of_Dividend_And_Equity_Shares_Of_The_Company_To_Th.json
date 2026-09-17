@@ -1,0 +1,8 @@
+{
+    "ticker": "COCKERILL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f651163c-505b-47cc-a423-5b7fb226536f.pdf",
+    "file_type": "pdf"
+}

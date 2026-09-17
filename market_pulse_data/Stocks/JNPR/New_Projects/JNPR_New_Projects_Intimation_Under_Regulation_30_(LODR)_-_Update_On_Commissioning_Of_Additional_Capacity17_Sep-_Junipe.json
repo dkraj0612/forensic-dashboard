@@ -1,0 +1,8 @@
+{
+    "ticker": "JNPR",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abcfd9a6-1ab7-4f64-8dc5-7062c1a33f0f.pdf",
+    "file_type": "pdf"
+}

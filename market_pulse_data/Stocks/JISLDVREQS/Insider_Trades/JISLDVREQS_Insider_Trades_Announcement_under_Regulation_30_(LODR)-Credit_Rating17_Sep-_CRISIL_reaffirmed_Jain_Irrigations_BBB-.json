@@ -1,0 +1,8 @@
+{
+    "ticker": "JISLDVREQS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2cc76c2-a43b-4ec7-a746-9d60a7dbec7f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJFINANCE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0b6ee0d-573c-4e1a-8f1d-f3fcee3d236b.pdf",
+    "file_type": "pdf"
+}
