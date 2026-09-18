@@ -1,0 +1,60 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q1_FY26_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q4FY24_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q4_FY26_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Fallback_Transcript_42_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q2_FY25_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q3_FY25_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Q2_FY26_Transcript.md",
+            "quarter": "Q2",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Fallback_Transcript_52_Transcript.md",
+            "quarter": "Q2",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADANIPOWER/concalls/ADANIPOWER_Fallback_Transcript_56_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
+        }
+    ],
+    "completed_files": []
+}
