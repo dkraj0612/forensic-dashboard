@@ -1,0 +1,8 @@
+{
+    "ticker": "BRIGHTBR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4db694ed-f738-4047-ac3f-ae26c0df5743.pdf",
+    "file_type": "pdf"
+}

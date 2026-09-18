@@ -1,0 +1,8 @@
+{
+    "ticker": "HNDFDS",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=54df6acc-44c6-4ec4-90ad-eca1c4333f0a.pdf",
+    "file_type": "pdf"
+}

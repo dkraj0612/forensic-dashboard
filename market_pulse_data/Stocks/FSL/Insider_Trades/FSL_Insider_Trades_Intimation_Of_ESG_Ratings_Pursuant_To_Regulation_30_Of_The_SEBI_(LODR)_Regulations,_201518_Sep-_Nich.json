@@ -1,0 +1,8 @@
+{
+    "ticker": "FSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9a5eeb30-7b04-415b-9e18-78fc3c2a115b.pdf",
+    "file_type": "pdf"
+}

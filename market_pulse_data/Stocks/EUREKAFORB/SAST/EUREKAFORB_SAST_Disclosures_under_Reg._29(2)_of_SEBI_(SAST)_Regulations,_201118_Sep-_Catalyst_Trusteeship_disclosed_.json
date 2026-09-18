@@ -1,0 +1,8 @@
+{
+    "ticker": "EUREKAFORB",
+    "category": "SAST",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=CF42B144_3A7A_48CA_A1BC_0F29A266D2BC_143305.pdf",
+    "file_type": "pdf"
+}

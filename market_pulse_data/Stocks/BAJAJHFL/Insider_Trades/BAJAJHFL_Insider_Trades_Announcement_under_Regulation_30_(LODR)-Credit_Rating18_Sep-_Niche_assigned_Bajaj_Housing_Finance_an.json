@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJHFL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a5a92644-dd58-4e15-8471-9f890acfbb9a.pdf",
+    "file_type": "pdf"
+}

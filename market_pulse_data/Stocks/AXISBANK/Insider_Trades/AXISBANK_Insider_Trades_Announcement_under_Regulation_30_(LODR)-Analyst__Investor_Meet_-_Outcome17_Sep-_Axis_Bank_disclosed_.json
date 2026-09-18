@@ -1,0 +1,8 @@
+{
+    "ticker": "AXISBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb69bf58-bfb4-4f90-9575-2d67a3d831c3.pdf",
+    "file_type": "pdf"
+}

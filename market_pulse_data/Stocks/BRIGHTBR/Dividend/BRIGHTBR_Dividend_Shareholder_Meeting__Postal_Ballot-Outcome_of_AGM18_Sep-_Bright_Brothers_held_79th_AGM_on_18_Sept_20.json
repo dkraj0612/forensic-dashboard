@@ -1,0 +1,8 @@
+{
+    "ticker": "BRIGHTBR",
+    "category": "Dividend",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9aa3d0be-5ed6-4b73-8f76-7e96f7b3ec83.pdf",
+    "file_type": "pdf"
+}

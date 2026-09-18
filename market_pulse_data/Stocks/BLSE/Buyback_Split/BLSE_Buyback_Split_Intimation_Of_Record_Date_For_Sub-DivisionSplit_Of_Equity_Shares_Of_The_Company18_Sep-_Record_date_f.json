@@ -1,0 +1,8 @@
+{
+    "ticker": "BLSE",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fe6b7782-49c6-44ca-9a5d-e5a2f42fc00e.pdf",
+    "file_type": "pdf"
+}

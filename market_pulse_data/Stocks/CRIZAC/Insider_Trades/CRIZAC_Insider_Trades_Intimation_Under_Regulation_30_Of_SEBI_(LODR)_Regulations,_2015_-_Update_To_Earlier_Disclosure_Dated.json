@@ -1,0 +1,8 @@
+{
+    "ticker": "CRIZAC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6ee566a4-21aa-4729-a060-552b19205771.pdf",
+    "file_type": "pdf"
+}

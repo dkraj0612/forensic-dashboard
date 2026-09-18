@@ -1,0 +1,8 @@
+{
+    "ticker": "GENUSPOWER",
+    "category": "SAST",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9E2ADB9F_FFAF_44B5_8518_70F2588CED8A_175801.pdf",
+    "file_type": "pdf"
+}

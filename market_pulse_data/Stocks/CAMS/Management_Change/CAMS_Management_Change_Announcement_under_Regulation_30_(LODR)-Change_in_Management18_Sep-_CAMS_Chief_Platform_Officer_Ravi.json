@@ -1,0 +1,8 @@
+{
+    "ticker": "CAMS",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=36f01a21-27ee-4bc5-b546-6f5b605569cf.pdf",
+    "file_type": "pdf"
+}

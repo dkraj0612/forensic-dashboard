@@ -1,0 +1,8 @@
+{
+    "ticker": "ESDS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eea5ceb0-fa75-460b-9853-2dedc9a258f0.pdf",
+    "file_type": "pdf"
+}

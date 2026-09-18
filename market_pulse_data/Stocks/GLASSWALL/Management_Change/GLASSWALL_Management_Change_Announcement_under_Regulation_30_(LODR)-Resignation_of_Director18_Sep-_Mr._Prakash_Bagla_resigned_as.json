@@ -1,0 +1,8 @@
+{
+    "ticker": "GLASSWALL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5a57c4c-5b4c-4153-b70d-719d426788bc.pdf",
+    "file_type": "pdf"
+}

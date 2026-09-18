@@ -1,0 +1,8 @@
+{
+    "ticker": "AVANTEL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7bd0cd74-0ea1-4b2c-a6c9-a7952402286d.pdf",
+    "file_type": "pdf"
+}

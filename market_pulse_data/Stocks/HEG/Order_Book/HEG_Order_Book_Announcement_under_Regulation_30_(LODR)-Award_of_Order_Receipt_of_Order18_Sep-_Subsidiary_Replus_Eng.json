@@ -1,0 +1,8 @@
+{
+    "ticker": "HEG",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "Skipped: Document exceeds 150 pages (999 pages).",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a257ccd9-7a30-4113-a113-c43c2fbfdd09.pdf",
+    "file_type": "pdf"
+}

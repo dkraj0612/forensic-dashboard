@@ -1,0 +1,8 @@
+{
+    "ticker": "AKCAPIT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=474d28fc-c147-4a80-9c5b-de465c0e3d80.pdf",
+    "file_type": "pdf"
+}

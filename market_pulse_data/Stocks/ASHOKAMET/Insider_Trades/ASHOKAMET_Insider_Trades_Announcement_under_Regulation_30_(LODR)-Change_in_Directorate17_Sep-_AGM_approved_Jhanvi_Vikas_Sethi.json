@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHOKAMET",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fabc6a00-2b24-4a81-b619-086a5e3224c6.pdf",
+    "file_type": "pdf"
+}

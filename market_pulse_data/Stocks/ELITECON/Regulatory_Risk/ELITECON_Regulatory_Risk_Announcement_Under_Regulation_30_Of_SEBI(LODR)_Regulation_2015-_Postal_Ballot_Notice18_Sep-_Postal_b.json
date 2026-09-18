@@ -1,0 +1,8 @@
+{
+    "ticker": "ELITECON",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9cc357f-14c4-418f-a688-8a6b7ae4e92d.pdf",
+    "file_type": "pdf"
+}

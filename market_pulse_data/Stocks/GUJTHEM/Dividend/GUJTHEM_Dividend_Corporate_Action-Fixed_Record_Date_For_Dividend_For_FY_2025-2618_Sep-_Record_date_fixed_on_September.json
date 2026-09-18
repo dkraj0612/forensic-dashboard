@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJTHEM",
+    "category": "Dividend",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a6eddee-fac7-42ba-ad6b-ac2484d2a585.pdf",
+    "file_type": "pdf"
+}

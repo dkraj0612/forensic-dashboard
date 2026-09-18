@@ -1,0 +1,8 @@
+{
+    "ticker": "BTML",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3cd4b415-caaf-4a2e-8e27-cacdb9850afd.pdf",
+    "file_type": "pdf"
+}

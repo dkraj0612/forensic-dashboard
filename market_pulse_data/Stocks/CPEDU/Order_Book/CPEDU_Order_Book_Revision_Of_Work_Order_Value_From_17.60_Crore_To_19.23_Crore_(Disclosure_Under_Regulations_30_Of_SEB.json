@@ -1,0 +1,8 @@
+{
+    "ticker": "CPEDU",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6aa2f64a-b04b-492e-8e59-529a7a2069d3.pdf",
+    "file_type": "pdf"
+}
