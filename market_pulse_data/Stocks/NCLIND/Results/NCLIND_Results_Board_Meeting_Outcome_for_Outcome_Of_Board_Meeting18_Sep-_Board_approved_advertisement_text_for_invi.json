@@ -1,0 +1,8 @@
+{
+    "ticker": "NCLIND",
+    "category": "Results",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=39a48261-83c8-46b0-984b-2b70d6a99305.pdf",
+    "file_type": "pdf"
+}

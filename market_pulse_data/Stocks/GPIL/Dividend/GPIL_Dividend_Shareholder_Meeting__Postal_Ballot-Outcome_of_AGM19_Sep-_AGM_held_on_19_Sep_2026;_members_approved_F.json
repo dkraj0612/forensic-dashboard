@@ -1,0 +1,8 @@
+{
+    "ticker": "GPIL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fadcfa28-a751-4cfd-985b-4f6c6396a1cf.pdf",
+    "file_type": "pdf"
+}

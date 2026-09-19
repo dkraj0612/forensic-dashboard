@@ -1,0 +1,8 @@
+{
+    "ticker": "METROGLOBL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=190b9a7a-0652-434e-9a94-7f82bb0645a4.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MIIL",
+    "category": "Results",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f5f3882-bbc6-454d-8314-ed2f6014ad79.pdf",
+    "file_type": "pdf"
+}

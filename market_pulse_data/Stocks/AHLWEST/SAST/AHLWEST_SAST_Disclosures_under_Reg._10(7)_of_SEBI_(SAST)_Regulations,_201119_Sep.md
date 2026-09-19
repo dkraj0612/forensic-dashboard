@@ -1,0 +1,12 @@
+# AHLWEST - SAST - Disclosures_under_Reg._10(7)_of_SEBI_(SAST)_Regulations,_201119_Sep
+
+**Extraction Date:** 2026-09-19
+
+**Source URL:** [View Original Document](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=B60F3913_ED41_4CFB_972F_B866CB79AFC1_141434.pdf)
+---
+
+### 🤖 AI Intelligence Summary
+> This financial document reports an inter-se transfer of shares by way of gift within the promoter group of Asian Hotels (West) Limited. Sandeep Gupta received shares from his mother, Vinita Gupta, effectively doubling his individual stake from 8.16% to 16.32% in the company. This transaction is exempt from open offer requirements under SEBI Regulation 10(1)(a)(i), with all necessary regulatory filings and fees appearing to be completed on time and no red flags identified.
+---
+
+> ⚠️ **SCANNED IMAGE DETECTED:** This document appears to be a scanned image or handwritten filing. Standard Python text extraction bypassed.

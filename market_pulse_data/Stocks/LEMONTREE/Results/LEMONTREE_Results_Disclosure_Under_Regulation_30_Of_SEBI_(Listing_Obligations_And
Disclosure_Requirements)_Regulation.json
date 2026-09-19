@@ -1,0 +1,8 @@
+{
+    "ticker": "LEMONTREE",
+    "category": "Results",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6361d2d8-b8b5-4f05-95e7-202253d56fe4.pdf",
+    "file_type": "pdf"
+}

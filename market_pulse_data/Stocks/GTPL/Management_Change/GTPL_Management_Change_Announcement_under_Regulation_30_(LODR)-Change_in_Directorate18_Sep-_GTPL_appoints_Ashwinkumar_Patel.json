@@ -1,0 +1,8 @@
+{
+    "ticker": "GTPL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1581a3bc-5226-4efa-ae8c-4ef031e74f6b.pdf",
+    "file_type": "pdf"
+}

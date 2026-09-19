@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOCO",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=60f5a985-5f1f-4476-89f4-ba5bdf603bb9.pdf",
+    "file_type": "pdf"
+}

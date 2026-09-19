@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOFARM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=537ac544-4818-48d6-8e6d-1acd165fb2ac.pdf",
+    "file_type": "pdf"
+}

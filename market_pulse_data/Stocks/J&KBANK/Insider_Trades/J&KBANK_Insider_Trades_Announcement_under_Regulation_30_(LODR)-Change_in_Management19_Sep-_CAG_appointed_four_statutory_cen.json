@@ -1,0 +1,8 @@
+{
+    "ticker": "J&KBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d2b3aa0d-06cc-4e9a-bab2-1f83b1d166a7.pdf",
+    "file_type": "pdf"
+}

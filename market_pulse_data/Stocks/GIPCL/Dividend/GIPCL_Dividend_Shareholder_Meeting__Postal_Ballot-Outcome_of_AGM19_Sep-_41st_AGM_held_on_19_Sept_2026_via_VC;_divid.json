@@ -1,0 +1,8 @@
+{
+    "ticker": "GIPCL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=98685b14-bdb1-4341-a05f-b932eb2eca17.pdf",
+    "file_type": "pdf"
+}

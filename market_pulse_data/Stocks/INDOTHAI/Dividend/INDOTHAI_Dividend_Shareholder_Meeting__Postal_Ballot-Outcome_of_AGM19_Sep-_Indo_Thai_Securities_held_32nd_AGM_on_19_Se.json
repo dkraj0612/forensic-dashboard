@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOTHAI",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e2040883-6142-433a-8964-38e3498e16d3.pdf",
+    "file_type": "pdf"
+}

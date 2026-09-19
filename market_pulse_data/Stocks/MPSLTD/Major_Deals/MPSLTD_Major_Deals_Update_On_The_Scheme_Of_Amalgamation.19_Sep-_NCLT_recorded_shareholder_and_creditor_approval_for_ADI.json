@@ -1,0 +1,8 @@
+{
+    "ticker": "MPSLTD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3e186558-67b8-4c7c-b9c0-72853e9637b2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MAZDOCK",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df4eb4aa-dc5f-46a9-bdb4-7e8fb42ed232.pdf",
+    "file_type": "pdf"
+}

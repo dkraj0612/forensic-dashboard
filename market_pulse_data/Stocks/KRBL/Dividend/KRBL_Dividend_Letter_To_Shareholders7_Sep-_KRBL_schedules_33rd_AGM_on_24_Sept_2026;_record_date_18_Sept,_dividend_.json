@@ -1,0 +1,8 @@
+{
+    "ticker": "KRBL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f5080dca-ee90-4ef2-9cc3-e93243eec625.pdf",
+    "file_type": "pdf"
+}

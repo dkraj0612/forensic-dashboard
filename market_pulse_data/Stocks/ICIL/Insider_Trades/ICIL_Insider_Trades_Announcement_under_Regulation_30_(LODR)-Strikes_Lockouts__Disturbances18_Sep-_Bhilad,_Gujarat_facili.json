@@ -1,0 +1,8 @@
+{
+    "ticker": "ICIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f86c44b4-94de-4a6b-aeb6-08fe08f44a60.pdf",
+    "file_type": "pdf"
+}

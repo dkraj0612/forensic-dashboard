@@ -1,0 +1,8 @@
+{
+    "ticker": "JOCIL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/JOCIL_19092026170054_48AGMProceedings.pdf",
+    "file_type": "pdf"
+}

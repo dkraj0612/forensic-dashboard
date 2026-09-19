@@ -1,0 +1,8 @@
+{
+    "ticker": "JYOTICNC",
+    "category": "SAST",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5FB2024E_0D75_4C83_8A33_63890B22754F_101418.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "LATENTVIEW",
+    "category": "SAST",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4b5acd72-59ef-4a69-a63c-4255251fc022.pdf",
+    "file_type": "pdf"
+}

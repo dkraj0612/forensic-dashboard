@@ -1,0 +1,8 @@
+{
+    "ticker": "JAYKAY",
+    "category": "SAST",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6e3d97d-cb3e-41c5-9b64-d911b72382f2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FEDERALBNK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bd454fe6-c9e3-41ae-b567-4cc158d0529b.pdf",
+    "file_type": "pdf"
+}

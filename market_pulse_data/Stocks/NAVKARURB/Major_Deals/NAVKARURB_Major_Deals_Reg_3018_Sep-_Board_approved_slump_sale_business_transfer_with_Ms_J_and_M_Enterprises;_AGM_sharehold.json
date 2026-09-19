@@ -1,0 +1,8 @@
+{
+    "ticker": "NAVKARURB",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e91dab06-f582-40b0-bd99-c55b394db92c.pdf",
+    "file_type": "pdf"
+}

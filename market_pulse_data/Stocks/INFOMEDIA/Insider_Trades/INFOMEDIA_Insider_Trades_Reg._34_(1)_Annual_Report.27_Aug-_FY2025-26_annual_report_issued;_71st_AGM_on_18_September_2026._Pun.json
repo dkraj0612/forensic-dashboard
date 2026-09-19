@@ -1,0 +1,8 @@
+{
+    "ticker": "INFOMEDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0c20fddb-3ee4-49e0-bb1e-508196260cd5.pdf",
+    "file_type": "pdf"
+}

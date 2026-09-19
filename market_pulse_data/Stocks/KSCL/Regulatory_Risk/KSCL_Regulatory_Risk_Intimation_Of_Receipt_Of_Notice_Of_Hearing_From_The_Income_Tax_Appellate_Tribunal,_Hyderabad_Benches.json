@@ -1,0 +1,8 @@
+{
+    "ticker": "KSCL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=48c8af28-0872-4d3e-a0a3-366162fd0f37.pdf",
+    "file_type": "pdf"
+}

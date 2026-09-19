@@ -1,0 +1,8 @@
+{
+    "ticker": "KMSUGAR",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=266c6fbc-9a01-4a8e-8e52-b4b4cc406cbd.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BANCOINDIA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "This document details the proceedings of Banco Products (India) Limited's 65th Annual General Meeting, where shareholders approved a substantial 400% dividend for FY2026, signaling robust financial performance. Key governance changes include the formalization and elevation of Mr. Hiteshbhai Manubhai Patel to a Whole-time Director (Key Managerial Personnel). A potential red flag is the approval for commission payment to a non-executive, non-independent director, which is an unusual compensation structure that might warrant closer examination for conflicts of interest or rationale.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ecd4384d-2815-413f-adf4-aa3a6c064bae.pdf",
+    "file_type": "pdf"
+}

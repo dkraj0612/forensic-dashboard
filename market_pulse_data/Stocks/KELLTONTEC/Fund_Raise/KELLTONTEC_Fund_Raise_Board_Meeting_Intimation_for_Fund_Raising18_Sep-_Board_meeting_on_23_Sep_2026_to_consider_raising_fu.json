@@ -1,0 +1,8 @@
+{
+    "ticker": "KELLTONTEC",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8f4a1eef-fcce-460c-a445-6d69872b1d39.pdf",
+    "file_type": "pdf"
+}

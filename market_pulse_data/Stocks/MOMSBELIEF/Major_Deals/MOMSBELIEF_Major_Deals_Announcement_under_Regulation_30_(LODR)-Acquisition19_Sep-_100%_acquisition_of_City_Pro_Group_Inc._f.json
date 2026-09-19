@@ -1,0 +1,8 @@
+{
+    "ticker": "MOMSBELIEF",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e0ea3e2-8461-4df1-b67b-8492ee93beee.pdf",
+    "file_type": "pdf"
+}

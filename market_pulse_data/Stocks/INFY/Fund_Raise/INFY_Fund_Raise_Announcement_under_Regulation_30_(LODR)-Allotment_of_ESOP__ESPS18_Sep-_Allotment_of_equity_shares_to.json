@@ -1,0 +1,8 @@
+{
+    "ticker": "INFY",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b6434677-15b4-42e1-9bdc-0ae34029ba3c.pdf",
+    "file_type": "pdf"
+}

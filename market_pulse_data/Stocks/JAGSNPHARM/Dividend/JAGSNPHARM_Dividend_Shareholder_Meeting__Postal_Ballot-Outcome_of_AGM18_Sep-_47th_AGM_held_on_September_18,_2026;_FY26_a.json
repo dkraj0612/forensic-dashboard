@@ -1,0 +1,8 @@
+{
+    "ticker": "JAGSNPHARM",
+    "category": "Dividend",
+    "extraction_date": "2026-09-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2995e985-d54e-452d-a821-453570e68e33.pdf",
+    "file_type": "pdf"
+}
