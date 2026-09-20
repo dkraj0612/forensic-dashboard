@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "INDOBORAX"
+  call_date: "2026-09-20"
+  reporting_period: "Transcript"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2b236e22-137b-483a-b188-a5f74a700ee6.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 10.82
+  total_word_volume: 11327
+---
+
+# Concall NLP Analysis: INDOBORAX
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2b236e22-137b-483a-b188-a5f74a700ee6.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Pravin Chavan Company Secretary and Compliance Officer Membership No.: Al6857 Thanking You. Yours faithfully, For Inda Borax & Chemicals Limited i.e. website Company's The transcript is also available on the hltps:/ /www.indoborax.com/Press-Media-Release.php Kindly take the above said information on record. .. This is in continuation to our letter dated September 02, 2026 wherein we had informed regarding the audio link of the Earnings Call held on Wednesday, September 02, 2026 to discuss the Unaudited (Standalone and Consolidated) Financial Results of the Company for the quarter and three months ended June 30, 2026. In this regard and pursuant to Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015, please find enclosed herewith the transcript of the said Earnings Call. Subject: Transcript of the Investor/Analyst Earnings Call held on Wednesday, September 2, 2026. Dear Sir / Ma' am, To, National Stock Exchange of India Limited Listing and Compliance Department Exchange Plaza, C-1, Block G Bandra-Kurla Complex, Bandra (East), Mumbai -400051 Symbol: INDOBORAX To, BSE Limited Corporate Relationship Department Phiroze Jeejeebhoy Towers, Dalal Street, Fort, Mumbai - 400001 Scrip Code: 524342 Date: September 8, 2026 INDO BORAX & CHEMICALS LTD. Regd. Office: 506. 5th Floor, Tulsiani Chambers, Free Press Journal Marg, Nariman Point. Mumbai. 400021, India. Ph.: 022 35218591 • CIN : L24100MH1980PLC023177 ·- Email : info~, indoborax.com • Website : www.indoborax.com PRAVIN PRABHAKAR CHAVAN Digitally signed by PRAVIN PRABHAKAR CHAVAN DN: cn=PRAVIN PRABHAKAR CHAVAN c=IN l=MUMBAI o=Personal e=PRAVIN7922@GMAIL.COM Reason: I am the author of this document Location: Date: 2026-09-08 15:04+05:30 Page 1 of 23 Indo Borax & Chemicals Limited Q1 FY '27 Earnings Conference Call September 02, 2026 Moderator: Good evening and welcome to the Q1 FY2027 Earnings Conference Call for Indo Borax & Chemicals Limited. We have with us today Mr. Suresh Kalra - Managing Director & CEO of the company. We also have Mr. Shashikant Bharuka - CFO, and Mr. Harsh Malhotra - Executive Director. As a reminder, all participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the management discussion concludes. Should you need assistance during the conference call, please signal an operator by pressing “*” and then “0” on your touchtone phone. I would now like to hand the conference over to Mr. Suresh Kalra, Managing Director and CEO of Indo Borax & Chemicals Limited for his opening remarks and to share with the audience the company's performance in Q1 FY '27. Thank you, and over to you, sir. Suresh Kalra: Thank you, Sagar, and pleasure to be here again. Good evening, ladies and gentlemen. Very warm welcome to you for the Earnings Call for Q1 FY2027 of Indo Borax. As you know, Indo Borax & Chemicals Limited was incorporated in 1980, and it has emerged as a leading player in the Indian Boric Acid market, commanding almost 50% market share in the markets we operate in. We are the sole manufacturer of the IP-grade Boric Acid in the country with valid FDA and BIS licenses. Our manufacturing facility is in Pithampur, Madhya Pradesh and has the capacity of about 26,000 tons per year, which is comprising of about 20,000 tons per annum of Boric acid and about 6,000 tons per annum of Disodium Octaborate Tetrahydrate, which we very fondly call as DOT, and we are headquartered in Mumbai as you also know. The core product portfolio comprises of Boric Acid Technical, which is mostly used in steel industry, glass, ceramics, flame retardants, chemicals and metallurgical industry. We also have Boric acid I.P. grade, as I said, which is mainly used in the pharma industry and personal care products and of course DOT, which is used in agriculture as a micronutrient. Page 2 of 23 We also are planning Boron Oxide as a product, which we traded sometime in the past, which is used in fiberglass and the steel industry, and we also have traded in products like Borax Pentahydrate and Gypsum, which is one of our byproducts of the company. So, this is the product portfolio of the organization today. A brief on how the market looks like. Today in India, the Boric Acid market is estimated about... *(Truncated for storage. See Source URL)*

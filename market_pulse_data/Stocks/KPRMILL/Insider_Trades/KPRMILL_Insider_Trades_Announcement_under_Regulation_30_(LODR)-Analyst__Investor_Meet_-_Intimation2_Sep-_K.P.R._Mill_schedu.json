@@ -1,0 +1,8 @@
+{
+    "ticker": "KPRMILL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d7e72d56-a987-4188-a727-cdd5ac4cf19b.pdf",
+    "file_type": "pdf"
+}

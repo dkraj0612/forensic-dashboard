@@ -1,0 +1,8 @@
+{
+    "ticker": "HPAL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c389b12-7c7b-439c-8a90-0026c6052fc8.pdf",
+    "file_type": "pdf"
+}

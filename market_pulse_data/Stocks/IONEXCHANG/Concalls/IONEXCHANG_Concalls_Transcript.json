@@ -1,0 +1,8 @@
+{
+    "ticker": "IONEXCHANG",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8c981cf1-2059-4e60-9dd3-a075c508571d.pdf",
+    "file_type": "pdf"
+}

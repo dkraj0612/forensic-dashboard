@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJENERGY",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9375bbe3-7823-4559-ad67-5a5892d21def.pdf",
+    "file_type": "pdf"
+}

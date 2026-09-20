@@ -1,0 +1,8 @@
+{
+    "ticker": "IOLCP",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7912f1a3-c48a-4865-b87e-9fb39f63bbfc.pdf",
+    "file_type": "pdf"
+}

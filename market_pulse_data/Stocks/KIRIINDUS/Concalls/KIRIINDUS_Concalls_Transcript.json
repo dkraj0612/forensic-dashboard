@@ -1,0 +1,8 @@
+{
+    "ticker": "KIRIINDUS",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61f6870c-f3a2-4b65-bb29-0471e8a61728.pdf",
+    "file_type": "pdf"
+}

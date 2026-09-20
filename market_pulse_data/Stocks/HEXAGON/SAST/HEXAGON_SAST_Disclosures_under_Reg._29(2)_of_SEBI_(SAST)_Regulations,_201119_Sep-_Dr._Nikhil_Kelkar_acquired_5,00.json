@@ -1,0 +1,8 @@
+{
+    "ticker": "HEXAGON",
+    "category": "SAST",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=426E97A2_7CC5_4686_96D7_90FE6ABEA228_142734.pdf",
+    "file_type": "pdf"
+}

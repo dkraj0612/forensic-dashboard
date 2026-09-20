@@ -1,0 +1,8 @@
+{
+    "ticker": "HEROMOTOCO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=429f0f87-075a-4a7a-b280-221fd18055e8.pdf",
+    "file_type": "pdf"
+}

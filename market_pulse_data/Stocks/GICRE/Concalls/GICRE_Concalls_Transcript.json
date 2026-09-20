@@ -1,0 +1,8 @@
+{
+    "ticker": "GICRE",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.gicofindia.com/images/pdf/Transcript_of_InvestorsCall_09Sep-2020.pdf",
+    "file_type": "pdf"
+}

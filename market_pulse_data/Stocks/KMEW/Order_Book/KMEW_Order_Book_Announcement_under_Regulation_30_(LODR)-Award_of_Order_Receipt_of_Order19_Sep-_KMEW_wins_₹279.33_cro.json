@@ -1,0 +1,8 @@
+{
+    "ticker": "KMEW",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=445679dc-f5a5-49bf-a8a4-4e4912a69994.pdf",
+    "file_type": "pdf"
+}

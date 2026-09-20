@@ -1,0 +1,8 @@
+{
+    "ticker": "IFGLEXPOR",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6eab88a8-5c90-46fd-9e08-98ffddea525f.pdf",
+    "file_type": "pdf"
+}

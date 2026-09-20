@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJRAFFIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8972277-e277-4807-96a7-10e29c2f3105.pdf",
+    "file_type": "pdf"
+}

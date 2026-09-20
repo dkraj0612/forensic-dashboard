@@ -1,0 +1,8 @@
+{
+    "ticker": "GOKEX",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=202d774f-7d3a-4adc-820d-f4252b4b38e1.pdf",
+    "file_type": "pdf"
+}

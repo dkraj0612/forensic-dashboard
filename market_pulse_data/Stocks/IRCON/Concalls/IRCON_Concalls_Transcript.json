@@ -1,0 +1,8 @@
+{
+    "ticker": "IRCON",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.ircon.org/images/file/cosecy/44th_AGM_Transcript.pdf",
+    "file_type": "pdf"
+}

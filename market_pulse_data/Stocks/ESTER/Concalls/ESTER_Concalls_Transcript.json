@@ -1,0 +1,8 @@
+{
+    "ticker": "ESTER",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.esterindustries.com/sites/default/files/Q1%20FY18%20Earnings%20Call%20Transcript.pdf",
+    "file_type": "pdf"
+}

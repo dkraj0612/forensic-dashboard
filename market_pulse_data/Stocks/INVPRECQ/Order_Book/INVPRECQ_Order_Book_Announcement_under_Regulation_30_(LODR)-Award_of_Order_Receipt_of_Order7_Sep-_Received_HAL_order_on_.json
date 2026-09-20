@@ -1,0 +1,8 @@
+{
+    "ticker": "INVPRECQ",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5316de67-a660-4e05-aab8-f6aa5138f576.pdf",
+    "file_type": "pdf"
+}

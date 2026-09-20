@@ -1,0 +1,8 @@
+{
+    "ticker": "EMSLIMITED",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=815814c7-4b50-4f2d-ae90-54f7446b88f9.pdf",
+    "file_type": "pdf"
+}

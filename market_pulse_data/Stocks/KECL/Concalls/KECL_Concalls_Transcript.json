@@ -1,0 +1,8 @@
+{
+    "ticker": "KECL",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://kirloskarelectric.com/images/pdf/transcript_77th_agm.pdf",
+    "file_type": "pdf"
+}

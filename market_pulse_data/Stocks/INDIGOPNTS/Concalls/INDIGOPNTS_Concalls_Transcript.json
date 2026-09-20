@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIGOPNTS",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=89d1ac66-69ea-446a-b391-0835a41724cb.pdf",
+    "file_type": "pdf"
+}

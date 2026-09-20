@@ -1,0 +1,8 @@
+{
+    "ticker": "JNPR",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b97d3ebc-f0b5-41d4-ae8f-3953b221f8e2.pdf",
+    "file_type": "pdf"
+}

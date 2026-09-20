@@ -1,0 +1,8 @@
+{
+    "ticker": "KEI",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.kei-ind.com/wp-content/uploads/2020/09/KEI-AGM-dated-09092020-transcript.pdf",
+    "file_type": "pdf"
+}

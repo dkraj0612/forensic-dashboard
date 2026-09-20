@@ -1,0 +1,8 @@
+{
+    "ticker": "HAL",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2f3151c7-e5a7-4f62-bc1d-398be356ea1d.pdf",
+    "file_type": "pdf"
+}

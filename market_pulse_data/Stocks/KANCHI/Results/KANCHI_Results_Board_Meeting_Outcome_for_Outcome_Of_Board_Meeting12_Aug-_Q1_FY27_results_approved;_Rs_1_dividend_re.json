@@ -1,0 +1,8 @@
+{
+    "ticker": "KANCHI",
+    "category": "Results",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d6e3aa32-a8ab-47b8-9b70-36b47e03a768.pdf",
+    "file_type": "pdf"
+}

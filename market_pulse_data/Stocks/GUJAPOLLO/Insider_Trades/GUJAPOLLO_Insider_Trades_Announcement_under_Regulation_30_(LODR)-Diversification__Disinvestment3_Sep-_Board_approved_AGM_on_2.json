@@ -1,0 +1,8 @@
+{
+    "ticker": "GUJAPOLLO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=da892e94-e52d-44ee-b3cb-90c93961885a.pdf",
+    "file_type": "pdf"
+}

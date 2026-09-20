@@ -1,0 +1,8 @@
+{
+    "ticker": "GNRL",
+    "category": "SAST",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ac054500-61d2-4f92-8b7f-0ab2ea0114e6.pdf",
+    "file_type": "pdf"
+}

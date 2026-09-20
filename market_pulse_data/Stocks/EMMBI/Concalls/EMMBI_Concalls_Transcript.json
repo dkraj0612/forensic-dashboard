@@ -1,0 +1,8 @@
+{
+    "ticker": "EMMBI",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://emmbi.com/wp-content/uploads/2020/11/Q1-ConCall-Transcript-2020-2021-1.pdf",
+    "file_type": "pdf"
+}

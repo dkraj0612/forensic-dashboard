@@ -1,0 +1,8 @@
+{
+    "ticker": "INCREDIBLE",
+    "category": "Results",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c527ded1-c0d4-4cd7-b043-6b92da8bf470.pdf",
+    "file_type": "pdf"
+}

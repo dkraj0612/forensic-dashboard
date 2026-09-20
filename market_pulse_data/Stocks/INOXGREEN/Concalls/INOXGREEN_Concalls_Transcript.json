@@ -1,0 +1,8 @@
+{
+    "ticker": "INOXGREEN",
+    "category": "Concalls",
+    "extraction_date": "2026-09-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ac349021-05a3-4a4e-84a8-edb5f23d90bd.pdf",
+    "file_type": "pdf"
+}
