@@ -1,0 +1,75 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_43_Transcript.md",
+            "quarter": "Q4",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_8_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_39_Transcript.md",
+            "quarter": "Q4",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Q4_FY2022_Transcript.md",
+            "quarter": "Q4",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_51_Transcript.md",
+            "quarter": "Q4",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_45_Transcript.md",
+            "quarter": "Q2",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_40_Transcript.md",
+            "quarter": "Q3",
+            "year": 2024
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_36_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Q1_FY24_Transcript.md",
+            "quarter": "Q1",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_33_Transcript.md",
+            "quarter": "Q2",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_46_Transcript.md",
+            "quarter": "Q1",
+            "year": 2023
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADFFOODS/concalls/ADFFOODS_Fallback_Transcript_55_Transcript.md",
+            "quarter": "Q4",
+            "year": 2020
+        }
+    ],
+    "completed_files": []
+}
