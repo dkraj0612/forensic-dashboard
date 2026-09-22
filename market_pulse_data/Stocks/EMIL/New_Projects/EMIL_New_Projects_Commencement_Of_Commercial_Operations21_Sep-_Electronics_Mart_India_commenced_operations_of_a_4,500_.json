@@ -1,0 +1,8 @@
+{
+    "ticker": "EMIL",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6ffd8e5-f9aa-4452-b2b4-e4874d6191a2.pdf",
+    "file_type": "pdf"
+}

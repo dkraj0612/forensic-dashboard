@@ -1,0 +1,8 @@
+{
+    "ticker": "KDGREEN",
+    "category": "Results",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef96e213-f164-419b-b5ba-e0ff7617275b.pdf",
+    "file_type": "pdf"
+}

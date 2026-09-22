@@ -1,0 +1,8 @@
+{
+    "ticker": "HCG",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://hcgel.com/wp-content/uploads/2020/10/HCG-Q1FY21-Call-Transcript.pdf",
+    "file_type": "pdf"
+}

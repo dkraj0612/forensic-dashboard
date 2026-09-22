@@ -1,0 +1,8 @@
+{
+    "ticker": "LICI",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0d2e5638-97d5-40d5-992f-9600ed8337e1.pdf",
+    "file_type": "pdf"
+}

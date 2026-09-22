@@ -1,0 +1,8 @@
+{
+    "ticker": "DIXON",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ac93879f-136b-4bf5-add3-6f2cd411fe45.pdf",
+    "file_type": "pdf"
+}

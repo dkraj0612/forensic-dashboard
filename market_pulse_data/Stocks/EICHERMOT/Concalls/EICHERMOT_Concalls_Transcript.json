@@ -1,0 +1,8 @@
+{
+    "ticker": "EICHERMOT",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.eicher.in/uploads/1632983315_conference-call-transcripts-Q1.pdf",
+    "file_type": "pdf"
+}

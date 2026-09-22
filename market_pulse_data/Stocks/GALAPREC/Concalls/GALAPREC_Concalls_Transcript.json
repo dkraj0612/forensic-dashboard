@@ -1,0 +1,8 @@
+{
+    "ticker": "GALAPREC",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d0124dc3-6c4c-4450-be30-1e60b99219ce.pdf",
+    "file_type": "pdf"
+}

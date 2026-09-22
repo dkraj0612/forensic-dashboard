@@ -1,0 +1,8 @@
+{
+    "ticker": "HINDOILEXP",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "http://www.valoremadvisors.com/admin/ClnUpdFile/41_TC_4504_Q1FY21%20Concall%20Transcripts.pdf",
+    "file_type": "pdf"
+}

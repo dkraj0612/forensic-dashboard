@@ -1,0 +1,8 @@
+{
+    "ticker": "LOTUSDEV",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8f10e4a-5dfc-43e1-a376-fbc288600af1.pdf",
+    "file_type": "pdf"
+}

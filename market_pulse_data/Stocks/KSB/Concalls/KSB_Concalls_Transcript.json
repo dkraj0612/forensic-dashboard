@@ -1,0 +1,8 @@
+{
+    "ticker": "KSB",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cd4ca834-2aa9-4b50-8de1-5526ccc1015d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ISGEC",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68e62d11-678b-4758-b345-f1cc7f67e17e.pdf",
+    "file_type": "pdf"
+}

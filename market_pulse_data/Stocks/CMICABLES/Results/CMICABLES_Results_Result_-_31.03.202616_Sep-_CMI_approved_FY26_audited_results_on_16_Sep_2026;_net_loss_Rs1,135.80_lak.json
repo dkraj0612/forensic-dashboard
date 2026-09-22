@@ -1,0 +1,8 @@
+{
+    "ticker": "CMICABLES",
+    "category": "Results",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=621270cf-2ded-4784-a5f4-9dd8247add2b.pdf",
+    "file_type": "pdf"
+}

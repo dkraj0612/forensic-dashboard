@@ -1,0 +1,8 @@
+{
+    "ticker": "CANBK",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb3ce660-f265-40ae-afdc-329d6b3fcade.pdf",
+    "file_type": "pdf"
+}

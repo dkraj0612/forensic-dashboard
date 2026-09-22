@@ -1,0 +1,8 @@
+{
+    "ticker": "KIRLOSIND",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86bf56aa-ace8-4815-a10f-b5974fa0aaf5.pdf",
+    "file_type": "pdf"
+}

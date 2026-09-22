@@ -1,0 +1,8 @@
+{
+    "ticker": "HBLENGINE",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://hbl.in/reports/agm/hbl_engi_ltd_agm_transcript_2025.pdf",
+    "file_type": "pdf"
+}

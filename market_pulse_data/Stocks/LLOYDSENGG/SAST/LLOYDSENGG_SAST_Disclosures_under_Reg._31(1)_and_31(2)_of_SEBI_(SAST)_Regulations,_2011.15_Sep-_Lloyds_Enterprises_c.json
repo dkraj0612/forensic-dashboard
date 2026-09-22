@@ -1,0 +1,8 @@
+{
+    "ticker": "LLOYDSENGG",
+    "category": "SAST",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=63080DEB_3D51_4692_9583_2D62AAE4D09D_145426.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEANMAX",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d62756a2-8071-462f-b494-42756532327b.pdf",
+    "file_type": "pdf"
+}

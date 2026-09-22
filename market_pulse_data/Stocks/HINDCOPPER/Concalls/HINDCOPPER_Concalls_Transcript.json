@@ -1,0 +1,8 @@
+{
+    "ticker": "HINDCOPPER",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2178e39a-8106-4671-95fa-4fffb9d22388.pdf",
+    "file_type": "pdf"
+}

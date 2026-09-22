@@ -1,0 +1,8 @@
+{
+    "ticker": "KIRLFER",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=12020ab6-0530-4ccd-8fac-e9f4289ea8d4.pdf",
+    "file_type": "pdf"
+}

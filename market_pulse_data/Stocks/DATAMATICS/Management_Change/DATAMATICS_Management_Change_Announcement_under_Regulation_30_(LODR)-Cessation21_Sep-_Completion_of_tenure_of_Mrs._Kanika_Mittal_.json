@@ -1,0 +1,8 @@
+{
+    "ticker": "DATAMATICS",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b7fe569-be42-42ff-bc0d-ddd25c7a6407.pdf",
+    "file_type": "pdf"
+}

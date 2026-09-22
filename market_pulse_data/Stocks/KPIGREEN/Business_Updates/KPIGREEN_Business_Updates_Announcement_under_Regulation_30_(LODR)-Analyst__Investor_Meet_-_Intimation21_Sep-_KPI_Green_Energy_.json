@@ -1,0 +1,8 @@
+{
+    "ticker": "KPIGREEN",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c909e5a5-bab2-40bb-930a-0f87a7a4659d.pdf",
+    "file_type": "pdf"
+}

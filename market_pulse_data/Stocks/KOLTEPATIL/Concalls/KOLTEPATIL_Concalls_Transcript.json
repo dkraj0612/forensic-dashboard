@@ -1,0 +1,8 @@
+{
+    "ticker": "KOLTEPATIL",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=A19F74B4_4310_4BB0_B5A0_9978E74B8753_111030.pdf",
+    "file_type": "pdf"
+}

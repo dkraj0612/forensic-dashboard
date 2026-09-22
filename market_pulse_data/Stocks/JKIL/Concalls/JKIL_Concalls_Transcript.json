@@ -1,0 +1,8 @@
+{
+    "ticker": "JKIL",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "http://www.jkumar.com/content/upload/1/conference-call-transcript/2016-2017/q1-conference-call-transcript.pdf",
+    "file_type": "pdf"
+}

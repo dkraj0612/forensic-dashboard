@@ -1,0 +1,8 @@
+{
+    "ticker": "LEAPIND",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=30dd8a52-f87e-4a89-85df-ee9cdb5c4f54.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "EUROPRATIK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c49cabda-f8a0-4fda-a45d-dbd75d21e86d.pdf",
+    "file_type": "pdf"
+}

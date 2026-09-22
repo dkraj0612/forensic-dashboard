@@ -1,0 +1,8 @@
+{
+    "ticker": "KNRCON",
+    "category": "Concalls",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "http://knrcl.com/images/transcript-of-concall/KNRCL-Earning-call-Transcript-Q1FY22.pdf",
+    "file_type": "pdf"
+}

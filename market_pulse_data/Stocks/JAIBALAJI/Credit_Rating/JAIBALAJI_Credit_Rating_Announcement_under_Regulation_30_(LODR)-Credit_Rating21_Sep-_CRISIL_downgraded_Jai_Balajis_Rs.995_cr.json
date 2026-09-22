@@ -1,0 +1,8 @@
+{
+    "ticker": "JAIBALAJI",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=76c45bf7-0072-4ffa-8d4e-5c8557c6cbab.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GODREJAGRO",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=db5d2070-6598-4c27-93a7-e40a69d50639.pdf",
+    "file_type": "pdf"
+}
