@@ -1,0 +1,8 @@
+{
+    "ticker": "ELECTCAST",
+    "category": "SAST",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3e649779-509e-4b3f-80ed-5a3b21d4b98d.pdf",
+    "file_type": "pdf"
+}

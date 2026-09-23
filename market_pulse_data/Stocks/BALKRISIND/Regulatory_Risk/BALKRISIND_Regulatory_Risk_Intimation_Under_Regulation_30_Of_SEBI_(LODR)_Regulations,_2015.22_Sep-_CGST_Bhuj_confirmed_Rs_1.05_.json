@@ -1,0 +1,8 @@
+{
+    "ticker": "BALKRISIND",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cbe408f4-b90f-43ae-92f8-8ea8dde8501f.pdf",
+    "file_type": "pdf"
+}

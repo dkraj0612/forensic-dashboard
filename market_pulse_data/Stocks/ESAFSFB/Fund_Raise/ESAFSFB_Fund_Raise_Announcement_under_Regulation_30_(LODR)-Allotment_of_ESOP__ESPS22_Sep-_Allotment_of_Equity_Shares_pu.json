@@ -1,0 +1,8 @@
+{
+    "ticker": "ESAFSFB",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a88f1e8f-ab79-4ffd-9c51-46e79fda64c7.pdf",
+    "file_type": "pdf"
+}

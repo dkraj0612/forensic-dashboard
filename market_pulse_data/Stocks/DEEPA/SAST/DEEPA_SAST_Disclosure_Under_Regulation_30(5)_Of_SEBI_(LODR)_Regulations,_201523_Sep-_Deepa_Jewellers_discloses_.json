@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEPA",
+    "category": "SAST",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b670c97f-fe0c-4489-812f-c02a13c38355.pdf",
+    "file_type": "pdf"
+}

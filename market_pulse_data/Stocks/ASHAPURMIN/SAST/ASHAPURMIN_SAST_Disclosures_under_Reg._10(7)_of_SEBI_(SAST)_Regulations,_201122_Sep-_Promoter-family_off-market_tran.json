@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHAPURMIN",
+    "category": "SAST",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9D135432_0F9A_4CD0_A70D_5DEFBC2F63F3_172029.pdf",
+    "file_type": "pdf"
+}

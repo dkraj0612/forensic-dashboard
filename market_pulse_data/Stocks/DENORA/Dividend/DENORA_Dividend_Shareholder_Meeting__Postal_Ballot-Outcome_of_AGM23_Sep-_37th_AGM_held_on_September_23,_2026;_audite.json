@@ -1,0 +1,8 @@
+{
+    "ticker": "DENORA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8cde6efc-0440-478f-bef2-88b5c87ac78b.pdf",
+    "file_type": "pdf"
+}

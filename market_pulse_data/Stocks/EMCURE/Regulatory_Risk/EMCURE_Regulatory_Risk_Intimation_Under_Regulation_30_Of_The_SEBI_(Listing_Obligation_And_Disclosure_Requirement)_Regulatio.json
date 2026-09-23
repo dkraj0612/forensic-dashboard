@@ -1,0 +1,8 @@
+{
+    "ticker": "EMCURE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e3bf0d4b-0de3-416f-a412-322a84c72e5f.pdf",
+    "file_type": "pdf"
+}
