@@ -1,0 +1,8 @@
+{
+    "ticker": "GRASIM",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f3ce8a04-fd43-484a-b50a-089a64b1d209.pdf",
+    "file_type": "pdf"
+}

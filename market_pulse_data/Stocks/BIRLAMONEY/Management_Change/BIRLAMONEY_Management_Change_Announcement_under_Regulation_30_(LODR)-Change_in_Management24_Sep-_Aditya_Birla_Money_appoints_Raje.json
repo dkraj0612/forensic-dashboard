@@ -1,0 +1,8 @@
+{
+    "ticker": "BIRLAMONEY",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=141fb1d4-dcd0-4c95-9f54-3243fd3ea71c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEDEV",
+    "category": "Dividend",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=45f61375-3610-44f4-8380-6ac6eb60c0f4.pdf",
+    "file_type": "pdf"
+}

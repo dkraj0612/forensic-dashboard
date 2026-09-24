@@ -1,0 +1,8 @@
+{
+    "ticker": "GRWRHITECH",
+    "category": "Dividend",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=94a8d4c5-0ec4-4e44-a477-26c6611d771d.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DHUNINV",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f106cea-624b-4c90-9840-c8e5a2bf3f15.pdf",
+    "file_type": "pdf"
+}

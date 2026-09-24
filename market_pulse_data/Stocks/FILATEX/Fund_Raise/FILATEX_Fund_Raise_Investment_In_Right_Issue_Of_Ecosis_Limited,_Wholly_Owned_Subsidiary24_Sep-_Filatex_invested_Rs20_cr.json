@@ -1,0 +1,8 @@
+{
+    "ticker": "FILATEX",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cef91981-b5ae-4180-a579-b9cda679c711.pdf",
+    "file_type": "pdf"
+}

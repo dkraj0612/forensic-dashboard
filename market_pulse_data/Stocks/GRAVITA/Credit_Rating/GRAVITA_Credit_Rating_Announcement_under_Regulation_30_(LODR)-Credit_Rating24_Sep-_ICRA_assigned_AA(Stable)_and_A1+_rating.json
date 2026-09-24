@@ -1,0 +1,8 @@
+{
+    "ticker": "GRAVITA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a24c37bb-929a-4030-aafd-078fd6510e50.pdf",
+    "file_type": "pdf"
+}

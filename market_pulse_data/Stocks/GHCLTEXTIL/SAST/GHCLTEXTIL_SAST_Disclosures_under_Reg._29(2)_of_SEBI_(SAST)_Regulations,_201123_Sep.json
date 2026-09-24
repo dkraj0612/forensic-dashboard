@@ -1,0 +1,8 @@
+{
+    "ticker": "GHCLTEXTIL",
+    "category": "SAST",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=C7D4C411_A4F3_437B_B69A_8635247298FA_161345.pdf",
+    "file_type": "pdf"
+}

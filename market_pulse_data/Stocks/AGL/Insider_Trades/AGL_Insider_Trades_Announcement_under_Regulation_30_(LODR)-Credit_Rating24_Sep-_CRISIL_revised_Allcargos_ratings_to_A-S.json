@@ -1,0 +1,8 @@
+{
+    "ticker": "AGL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70a29b5c-d911-4a2b-b2dd-4f048faf0ea1.pdf",
+    "file_type": "pdf"
+}

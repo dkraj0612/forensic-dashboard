@@ -1,0 +1,8 @@
+{
+    "ticker": "ATAM",
+    "category": "Dividend",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ced4732f-9d49-4ed9-8287-f727ef6f7608.pdf",
+    "file_type": "pdf"
+}

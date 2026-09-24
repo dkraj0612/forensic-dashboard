@@ -1,0 +1,8 @@
+{
+    "ticker": "FISCHER",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=319f7f85-f93c-4814-a4dc-a56bca0e0ae9.pdf",
+    "file_type": "pdf"
+}

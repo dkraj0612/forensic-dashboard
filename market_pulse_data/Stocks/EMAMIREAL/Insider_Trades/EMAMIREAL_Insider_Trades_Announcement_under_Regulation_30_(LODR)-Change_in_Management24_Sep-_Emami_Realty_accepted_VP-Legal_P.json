@@ -1,0 +1,8 @@
+{
+    "ticker": "EMAMIREAL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9f85ff74-4711-4d4c-af72-28290588402b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DPSCLTD",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/DPSCLTD_24092026144905_IntimationofNotice_MCA_SFIOUnderReg30ofSEBI_LODR__24092026.pdf",
+    "file_type": "pdf"
+}

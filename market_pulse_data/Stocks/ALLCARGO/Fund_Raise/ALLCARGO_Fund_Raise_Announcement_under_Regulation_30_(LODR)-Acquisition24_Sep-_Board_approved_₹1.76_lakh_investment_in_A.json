@@ -1,0 +1,8 @@
+{
+    "ticker": "ALLCARGO",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e43a2d8f-b6b1-4a8a-b51c-89c107a13c82.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BPLPHARMA",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=305d8c08-5cb1-4e98-8dee-863572fb92fe.pdf",
+    "file_type": "pdf"
+}

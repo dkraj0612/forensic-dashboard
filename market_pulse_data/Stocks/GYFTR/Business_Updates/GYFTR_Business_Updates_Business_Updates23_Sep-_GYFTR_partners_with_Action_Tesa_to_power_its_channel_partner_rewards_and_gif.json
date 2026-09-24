@@ -1,0 +1,8 @@
+{
+    "ticker": "GYFTR",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6fc8c5c5-6594-4697-8798-f98714d1119f.pdf",
+    "file_type": "pdf"
+}

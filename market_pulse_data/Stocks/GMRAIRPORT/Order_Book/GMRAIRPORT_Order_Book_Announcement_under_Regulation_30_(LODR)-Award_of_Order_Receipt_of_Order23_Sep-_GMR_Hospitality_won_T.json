@@ -1,0 +1,8 @@
+{
+    "ticker": "GMRAIRPORT",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a367dde1-7d90-47a4-89c6-3a3fc8468b2e.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AFFORDABLE",
+    "category": "SAST",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6db72c9-8f22-4f8e-aaac-667def6e907e.pdf",
+    "file_type": "pdf"
+}

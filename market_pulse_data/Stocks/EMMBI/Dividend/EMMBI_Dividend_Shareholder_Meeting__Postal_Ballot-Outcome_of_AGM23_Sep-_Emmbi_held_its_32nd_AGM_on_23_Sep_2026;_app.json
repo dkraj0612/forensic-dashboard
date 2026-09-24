@@ -1,0 +1,8 @@
+{
+    "ticker": "EMMBI",
+    "category": "Dividend",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5e16ed70-78e9-43af-a007-8384752ccb71.pdf",
+    "file_type": "pdf"
+}

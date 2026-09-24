@@ -1,0 +1,8 @@
+{
+    "ticker": "ATL",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3e268af5-223c-462d-8f69-2fc1c42ac534.pdf",
+    "file_type": "pdf"
+}

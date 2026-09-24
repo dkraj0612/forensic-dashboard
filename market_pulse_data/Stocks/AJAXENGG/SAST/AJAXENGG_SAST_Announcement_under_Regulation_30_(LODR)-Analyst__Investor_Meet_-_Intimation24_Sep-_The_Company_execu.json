@@ -1,0 +1,8 @@
+{
+    "ticker": "AJAXENGG",
+    "category": "SAST",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fffc6daa-d4e0-41f1-a8b5-76fa9d7667fc.pdf",
+    "file_type": "pdf"
+}

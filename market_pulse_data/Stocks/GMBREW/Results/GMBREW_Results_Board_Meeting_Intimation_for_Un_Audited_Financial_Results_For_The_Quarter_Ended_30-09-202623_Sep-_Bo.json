@@ -1,0 +1,8 @@
+{
+    "ticker": "GMBREW",
+    "category": "Results",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2220b86-7dd7-434e-a832-36fd4753fe0a.pdf",
+    "file_type": "pdf"
+}

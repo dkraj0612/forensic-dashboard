@@ -1,0 +1,8 @@
+{
+    "ticker": "BATAINDIA",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-24",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7156e10-5e00-4577-a0a1-5b50d0c7e414.pdf",
+    "file_type": "pdf"
+}
