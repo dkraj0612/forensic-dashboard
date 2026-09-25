@@ -1,0 +1,8 @@
+{
+    "ticker": "ICICIBANK",
+    "category": "SAST",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cf25771b-62fe-4c57-98c0-b75328d33398.pdf",
+    "file_type": "pdf"
+}

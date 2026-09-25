@@ -1,0 +1,8 @@
+{
+    "ticker": "IDBI",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb9784ed-85db-444c-af85-a7f783125fe5.pdf",
+    "file_type": "pdf"
+}

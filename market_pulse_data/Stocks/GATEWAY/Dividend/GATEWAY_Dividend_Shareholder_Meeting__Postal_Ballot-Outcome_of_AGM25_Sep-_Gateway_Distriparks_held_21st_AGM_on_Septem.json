@@ -1,0 +1,8 @@
+{
+    "ticker": "GATEWAY",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=94d6858f-2b8c-494a-872d-d67a98d42180.pdf",
+    "file_type": "pdf"
+}

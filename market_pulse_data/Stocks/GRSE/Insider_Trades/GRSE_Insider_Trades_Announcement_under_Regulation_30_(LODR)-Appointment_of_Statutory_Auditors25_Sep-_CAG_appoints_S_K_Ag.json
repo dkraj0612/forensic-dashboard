@@ -1,0 +1,8 @@
+{
+    "ticker": "GRSE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3769d885-a7a0-4372-8b3f-dad69d750954.pdf",
+    "file_type": "pdf"
+}

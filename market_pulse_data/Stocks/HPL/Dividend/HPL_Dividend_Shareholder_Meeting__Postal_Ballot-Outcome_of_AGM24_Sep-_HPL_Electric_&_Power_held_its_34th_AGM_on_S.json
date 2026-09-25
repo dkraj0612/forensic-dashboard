@@ -1,0 +1,8 @@
+{
+    "ticker": "HPL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=27e344bd-d7df-4972-8a65-61dffc9ee736.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "HTEL",
+    "category": "Concalls",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b541d499-ef0b-4ad0-80ce-9dd1c420d42a.pdf",
+    "file_type": "pdf"
+}

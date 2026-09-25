@@ -1,0 +1,8 @@
+{
+    "ticker": "ENDURANCE",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9fb579d-16f0-4610-98e6-f7e571758e33.pdf",
+    "file_type": "pdf"
+}

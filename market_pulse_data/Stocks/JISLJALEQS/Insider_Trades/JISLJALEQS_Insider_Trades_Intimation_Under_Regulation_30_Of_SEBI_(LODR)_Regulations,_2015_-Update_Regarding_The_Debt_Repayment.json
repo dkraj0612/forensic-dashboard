@@ -1,0 +1,8 @@
+{
+    "ticker": "JISLJALEQS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9bba9078-e3d6-46c2-9bab-18f1ce744eb9.pdf",
+    "file_type": "pdf"
+}

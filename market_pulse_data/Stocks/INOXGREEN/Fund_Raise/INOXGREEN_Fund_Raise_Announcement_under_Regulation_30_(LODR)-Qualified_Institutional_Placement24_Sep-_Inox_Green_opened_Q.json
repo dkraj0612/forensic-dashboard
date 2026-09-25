@@ -1,0 +1,8 @@
+{
+    "ticker": "INOXGREEN",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=675e48c9-61b7-47a5-899b-45c30ebabdef.pdf",
+    "file_type": "pdf"
+}

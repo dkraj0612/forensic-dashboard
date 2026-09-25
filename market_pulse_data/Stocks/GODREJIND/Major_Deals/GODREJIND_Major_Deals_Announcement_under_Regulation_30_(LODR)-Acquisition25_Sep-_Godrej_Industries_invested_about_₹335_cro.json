@@ -1,0 +1,8 @@
+{
+    "ticker": "GODREJIND",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=afe360a9-9086-43a8-b0c0-42592b8a6c3c.pdf",
+    "file_type": "pdf"
+}

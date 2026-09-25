@@ -1,0 +1,8 @@
+{
+    "ticker": "BAIDFIN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7d022b11-8108-4f6e-94ff-591fa26d4edd.pdf",
+    "file_type": "pdf"
+}

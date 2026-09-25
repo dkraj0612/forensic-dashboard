@@ -1,0 +1,8 @@
+{
+    "ticker": "CESC",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=122af0c1-3725-422c-8c49-4f84161c1a64.pdf",
+    "file_type": "pdf"
+}

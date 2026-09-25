@@ -1,0 +1,8 @@
+{
+    "ticker": "GREENPOWER",
+    "category": "SAST",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=FE7C15E9_4C8B_483A_B52B_14F6A25FD8FD_174001.pdf",
+    "file_type": "pdf"
+}

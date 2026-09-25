@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOBORAX",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9ac7ae7a-1fa5-4e6b-a85b-bebe57d29f08.pdf",
+    "file_type": "pdf"
+}

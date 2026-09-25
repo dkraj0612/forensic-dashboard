@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOAMIN",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f738fa6c-6e59-42a6-82f2-0cda8d47a7eb.pdf",
+    "file_type": "pdf"
+}

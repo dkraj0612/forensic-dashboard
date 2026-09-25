@@ -1,0 +1,8 @@
+{
+    "ticker": "GOCLCORP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=05a3e54a-59d8-48e7-ac97-e1ebbeb60090.pdf",
+    "file_type": "pdf"
+}

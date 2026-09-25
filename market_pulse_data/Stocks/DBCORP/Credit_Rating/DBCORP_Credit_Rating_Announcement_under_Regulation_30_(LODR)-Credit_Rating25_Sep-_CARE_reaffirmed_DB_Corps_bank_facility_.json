@@ -1,0 +1,8 @@
+{
+    "ticker": "DBCORP",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a2644a15-f895-4c3d-8f76-4b1041b0a9cb.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "COFFEEDAY",
+    "category": "Results",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5936797e-57b2-4914-9704-64443682bff3.pdf",
+    "file_type": "pdf"
+}

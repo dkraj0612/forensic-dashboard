@@ -1,0 +1,8 @@
+{
+    "ticker": "HIRECT",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7f90d6af-f4cb-41eb-bd12-2cfe9718efac.pdf",
+    "file_type": "pdf"
+}

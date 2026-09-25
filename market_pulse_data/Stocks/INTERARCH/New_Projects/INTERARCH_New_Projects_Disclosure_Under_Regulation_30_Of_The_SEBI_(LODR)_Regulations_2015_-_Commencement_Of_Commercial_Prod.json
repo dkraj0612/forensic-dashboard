@@ -1,0 +1,8 @@
+{
+    "ticker": "INTERARCH",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e8b63080-e4ca-46a2-83ad-816bf1523c8a.pdf",
+    "file_type": "pdf"
+}

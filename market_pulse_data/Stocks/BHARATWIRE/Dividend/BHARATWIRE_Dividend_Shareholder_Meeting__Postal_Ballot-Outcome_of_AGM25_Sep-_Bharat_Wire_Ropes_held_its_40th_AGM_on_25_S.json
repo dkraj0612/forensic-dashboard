@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATWIRE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fa91cbba-02fa-46b7-854c-ff1c78e50d4f.pdf",
+    "file_type": "pdf"
+}

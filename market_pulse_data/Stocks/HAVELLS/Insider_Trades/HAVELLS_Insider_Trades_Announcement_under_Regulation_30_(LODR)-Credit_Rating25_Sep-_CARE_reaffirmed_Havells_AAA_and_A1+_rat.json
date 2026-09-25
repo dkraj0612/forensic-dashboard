@@ -1,0 +1,8 @@
+{
+    "ticker": "HAVELLS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3084255-f9e1-4cd9-9b0e-27266a66515c.pdf",
+    "file_type": "pdf"
+}

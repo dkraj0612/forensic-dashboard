@@ -1,0 +1,8 @@
+{
+    "ticker": "GRINFRA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e9716c9f-b668-4493-830d-7ec4a8d2ec2b.pdf",
+    "file_type": "pdf"
+}

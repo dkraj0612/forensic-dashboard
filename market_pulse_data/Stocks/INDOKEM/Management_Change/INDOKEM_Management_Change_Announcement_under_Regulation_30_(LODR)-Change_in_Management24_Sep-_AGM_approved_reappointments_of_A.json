@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOKEM",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7eacb036-063c-4a06-9864-3ba9a386019d.pdf",
+    "file_type": "pdf"
+}

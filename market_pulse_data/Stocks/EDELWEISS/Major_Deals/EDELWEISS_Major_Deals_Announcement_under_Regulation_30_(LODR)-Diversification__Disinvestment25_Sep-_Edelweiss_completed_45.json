@@ -1,0 +1,8 @@
+{
+    "ticker": "EDELWEISS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9db41283-d04b-43e6-9089-381f26941610.pdf",
+    "file_type": "pdf"
+}

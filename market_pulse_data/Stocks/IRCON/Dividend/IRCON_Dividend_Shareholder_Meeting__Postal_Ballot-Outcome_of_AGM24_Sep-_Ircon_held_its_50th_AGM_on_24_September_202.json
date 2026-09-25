@@ -1,0 +1,8 @@
+{
+    "ticker": "IRCON",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7966844b-bc98-48d3-9f3b-a9fa5c337593.pdf",
+    "file_type": "pdf"
+}

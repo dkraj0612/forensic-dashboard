@@ -1,0 +1,8 @@
+{
+    "ticker": "BLAL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aa31b06f-3c3c-49ff-9b7f-7a8cb21f24ae.pdf",
+    "file_type": "pdf"
+}

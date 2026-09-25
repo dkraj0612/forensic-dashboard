@@ -1,0 +1,8 @@
+{
+    "ticker": "DNAMEDIA",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=58812304-a8cd-4634-8159-b2ac5b7493f1.pdf",
+    "file_type": "pdf"
+}

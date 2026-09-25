@@ -1,0 +1,8 @@
+{
+    "ticker": "CIEINDIA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b56b3728-bf9d-4943-ab84-f17c40bbf5b6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FABTECH",
+    "category": "SAST",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d46a8f9d-d702-41eb-b177-ffa030efc14b.pdf",
+    "file_type": "pdf"
+}

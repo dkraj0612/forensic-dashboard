@@ -1,0 +1,8 @@
+{
+    "ticker": "GENUSPOWER",
+    "category": "Dividend",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0f012814-0b97-4d0b-a999-634fe4dfc2ec.pdf",
+    "file_type": "pdf"
+}

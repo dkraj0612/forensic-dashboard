@@ -1,0 +1,8 @@
+{
+    "ticker": "COCHINSHIP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=117f2a1e-1c84-43b7-8d0c-a0b53a50b062.pdf",
+    "file_type": "pdf"
+}
