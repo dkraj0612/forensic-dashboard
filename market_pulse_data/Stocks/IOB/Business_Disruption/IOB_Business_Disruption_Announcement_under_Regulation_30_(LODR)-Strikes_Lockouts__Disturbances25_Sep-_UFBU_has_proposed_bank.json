@@ -1,0 +1,8 @@
+{
+    "ticker": "IOB",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bbd00638-5323-48aa-a5cd-027eaf487930.pdf",
+    "file_type": "pdf"
+}

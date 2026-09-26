@@ -1,0 +1,8 @@
+{
+    "ticker": "NRBBEARING",
+    "category": "SAST",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=F3104FA2_E6F1_49F1_8E2D_B89A90F86F3B_174130.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "LGEINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=256ae3ee-3a5a-46ff-889a-b96934a745bc.pdf",
+    "file_type": "pdf"
+}

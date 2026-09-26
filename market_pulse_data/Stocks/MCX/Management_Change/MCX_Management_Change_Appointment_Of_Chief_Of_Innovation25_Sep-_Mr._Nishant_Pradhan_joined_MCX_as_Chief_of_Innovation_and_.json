@@ -1,0 +1,8 @@
+{
+    "ticker": "MCX",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e50ff0d0-d512-4e9a-ac9e-2d363aeb3a55.pdf",
+    "file_type": "pdf"
+}

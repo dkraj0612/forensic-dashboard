@@ -1,0 +1,8 @@
+{
+    "ticker": "KFINTECH",
+    "category": "Results",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=064573e9-9fd3-4858-a47f-58f20572fca6.pdf",
+    "file_type": "pdf"
+}

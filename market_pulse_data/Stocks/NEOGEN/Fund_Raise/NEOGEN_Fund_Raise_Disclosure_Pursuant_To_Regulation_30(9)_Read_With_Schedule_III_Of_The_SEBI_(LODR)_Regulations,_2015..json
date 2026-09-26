@@ -1,0 +1,8 @@
+{
+    "ticker": "NEOGEN",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b0b3a8c0-f9cb-459d-9287-d6dcdb966c3f.pdf",
+    "file_type": "pdf"
+}

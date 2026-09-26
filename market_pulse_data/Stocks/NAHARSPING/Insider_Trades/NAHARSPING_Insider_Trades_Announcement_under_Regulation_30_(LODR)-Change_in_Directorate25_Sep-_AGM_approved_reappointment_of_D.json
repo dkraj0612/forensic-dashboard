@@ -1,0 +1,8 @@
+{
+    "ticker": "NAHARSPING",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ece12be6-4ef5-4c24-a173-8ae4e788d46d.pdf",
+    "file_type": "pdf"
+}

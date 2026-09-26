@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUESTONE",
+    "category": "SAST",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "Here's an executive summary of the provided financial document:  Accel India III (Mauritius) Ltd. has divested 2.50% of Bluestone Jewellery and Lifestyle Limited's shares through an open market sale, reducing its ownership from 8.08% to 5.58%. This partial exit by a non-promoter investor increases the free float and liquidity of Bluestone's stock. A critical red flag is the stated transaction date of September 24, 2026, and the reference to Q2 2026 shareholding data, strongly suggesting a typographical error regarding the year.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2AB81DC8_87E5_4D70_81C8_EE5E2950698D_105210.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ENIL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=34023662-5c49-422d-a68e-d8f6eb7f758f.pdf",
+    "file_type": "pdf"
+}

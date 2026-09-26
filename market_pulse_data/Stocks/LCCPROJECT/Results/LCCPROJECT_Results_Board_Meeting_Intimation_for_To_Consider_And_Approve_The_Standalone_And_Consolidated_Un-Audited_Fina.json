@@ -1,0 +1,8 @@
+{
+    "ticker": "LCCPROJECT",
+    "category": "Results",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9caeae11-a1b3-4ce4-88e8-2007a63d0f14.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "KHAITANLTD",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a2154152-d969-4334-8527-b9cf8211f9be.pdf",
+    "file_type": "pdf"
+}

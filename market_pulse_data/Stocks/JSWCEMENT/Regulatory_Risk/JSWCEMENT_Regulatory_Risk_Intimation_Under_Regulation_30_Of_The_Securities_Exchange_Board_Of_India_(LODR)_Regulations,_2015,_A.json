@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWCEMENT",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=95c93700-ac42-4b98-897b-a8a0f8a0472e.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MTNL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=40443373-236e-48d3-9878-03843096dd4f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "MAHSEAMLES",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7615886b-1d9f-4e2e-9a7f-8cd1c94016db.pdf",
+    "file_type": "pdf"
+}

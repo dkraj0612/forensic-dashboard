@@ -1,0 +1,378 @@
+# BLBLIMITED - SAST - Disclosures_under_Reg._29(2)_of_SEBI_(SAST)_Regulations,_201126_Sep
+
+**Extraction Date:** 2026-09-26
+
+**Source URL:** [View Original Document](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5BE2BBFE_F66B_49FA_81BE_AB017D4330CF_122525.pdf)
+---
+
+### 🤖 AI Intelligence Summary
+> This document reports that Brij Rattan Bagri, Promoter and Managing Director of BLB Limited, acquired 14,386 equity shares of the company through open market transactions on September 25, 2026. This minor purchase increased his total shareholding from 47.72% to 47.74%, representing a negligible 0.03% rise in his stake. The transaction, while signaling insider confidence, has no material impact on the company's ownership structure or financial position, and presents no immediate red flags.
+---
+
+## Page 1
+
+26th September, 2026 
+ 
+ 
+To, 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+To, 
+ 
+National Stock Exchange of India Limited 
+ 
+BSE Limited 
+Exchange Plaza, Bandra Kurla Complex, 
+ 
+ 
+Phiroze Jeejeebhoy Towers, 
+Bandra (East), Mumbai- 400051 
+ 
+ 
+ 
+Dalal Street, Mumbai-400001 
+ 
+ 
+Sub: Disclosure under Regulation 29(2) of SEBI (Substantial Acquisition of Shares & 
+Takeover Regulations), 2011 
+ 
+ 
+Dear Sir/ Ma’am, 
+ 
+I, Brij Rattan Bagri, Promoter & Managing Director of M/s. BLB Limited (Symbol: BLBLIMITED, 
+Scrip Code: 532290), hereby submit the Disclosure under Regulation 29(2) of SEBI (Substantial 
+Acquisition of Shares & Takeover Regulations), 2011 with regard to purchase of 14,386 equity 
+shares of M/s. BLB Limited on 25th September, 2026 through open market mode. 
+ 
+Kindly take the same in your records. 
+ 
+Thanking You. 
+ 
+ 
+ 
+ 
+ 
+Brij Rattan Bagri 
+Promoter & Managing Director - BLB Limited 
+DIN: 00007441 
+ 
+Encl: As above 
+ 
+ 
+CC: 
+Sh. Nishant Garud 
+ 
+(Company Secretary & Compliance Officer) 
+ 
+M/s. BLB Limited 
+ 
+H. No. 4760-61/23, 3rd Floor,  
+Ansari Road, Daryaganj,  
+New Delhi- 110002 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+BRIJ RATTAN 
+BAGRI
+Digitally signed by BRIJ 
+RATTAN BAGRI 
+Date: 2026.09.26 10:31:22 
++05'30'
+
+---
+
+
+## Page 2
+
+Disclosures under Regulation 29(2) of SEBI (Substantial Acquisition of Shares and 
+Takeovers) Regulations, 2011 
+ 
+Name of the Target Company (TC) 
+ 
+BLB Limited 
+Name(s) of the acquirer and Persons Acting in Concert (PAC) with the 
+acquirer 
+ 
+Brij Rattan Bagri 
+Whether the acquirer belongs to Promoter/ Promoter group 
+ 
+Yes 
+Name(s) of the Stock Exchange(s) where the shares of TC are Listed 
+ 
+National Stock Exchange of India Limited 
+BSE Limited 
+ 
+Details of the acquisition/ disposal as follows 
+Number 
+% w.r.t. total 
+share/ voting 
+capital 
+wherever 
+applicable (*) 
+ 
+% w.r.t. 
+total diluted 
+share/ voting 
+capital of 
+the TC (**) 
+Before the acquisition under consideration, holding of: 
+ 
+a) 
+Shares carrying voting rights  
+ 
+b) 
+Shares in the nature of encumbrance (pledge/ lien/ non-disposal 
+undertaking/ others) 
+ 
+c) 
+Voting rights (VR) otherwise than by equity shares 
+ 
+d) 
+Warrants/ convertible securities/ any other instrument that entitles 
+the acquirer to receive shares carrying voting rights in the TC (specify 
+holding in each category) 
+ 
+e) 
+Total (a+b+c+d)  
+ 
+ 
+ 
+2,52,25,067 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+2,52,25,067 
+ 
+ 
+47.72% 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+47.72% 
+ 
+ 
+ 
+47.72% 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+Nil 
+ 
+ 
+47.72% 
+ 
+Details of sale/acquisition 
+ 
+a) 
+Shares carrying voting rights sold/ acquired 
+ 
+b) 
+VRs acquired/ sold otherwise than by equity shares 
+ 
+c) 
+Warrants/ convertible securities/ any other instrument that entitles 
+the acquirer to receive shares carrying voting rights in the TC (specify 
+holding in each category) acquired/ sold. 
+ 
+d) 
+Shares encumbered/ invoked/ released by the acquirer 
+ 
+e) 
+Total (a+b+c+d) 
+ 
+ 
+ 
+14,386 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+Nil 
+ 
+14,386 
+ 
+ 
+0.03% 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+Nil 
+ 
+0.03% 
+ 
+ 
+0.03% 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+Nil 
+ 
+0.03% 
+After the sale/ acquisition, holding of: 
+ 
+a) 
+Shares carrying voting rights  
+ 
+b) 
+Shares encumbered with the acquirer 
+ 
+c) 
+VRs otherwise than by equity shares 
+ 
+d) 
+Warrants/ convertible securities/ any other instrument that entitles 
+the acquirer to receive shares carrying voting rights in the TC (specify 
+holding in each category) after acquisition 
+ 
+e) 
+Total (a+b+c+d) 
+ 
+ 
+2,52,39,453 
+ 
+Nil 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+2,52,39,453 
+ 
+ 
+47.74% 
+ 
+Nil 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+47.74% 
+ 
+ 
+ 
+47.74% 
+ 
+Nil 
+ 
+Nil 
+ 
+Nil 
+ 
+ 
+ 
+47.74% 
+ 
+ 
+ 
+ 
+BRIJ RATTAN 
+BAGRI
+Digitally signed by 
+BRIJ RATTAN BAGRI 
+Date: 2026.09.26 
+10:31:41 +05'30'
+
+---
+
+
+## Page 3
+
+Mode of sale/ acquisition (e.g. open market / off-market/ public issue/ 
+rights issue/ preferential allotment/ inter-se transfer etc.) 
+ 
+Open Market 
+Date of sale/ acquisition of shares/ VR or date of receipt of intimation of 
+allotment of shares/ transaction, whichever is applicable 
+ 
+25-09-2026 to 25-09-2026 
+(14,386 shares) 
+Equity share capital/ total voting capital of the TC before the said 
+acquisition/ sale 
+ 
+Rs. 5,28,65,258.00 
+(52865258 equity shares of Re. 1/- each) 
+Equity share capital/ total voting capital of the TC after the said acquisition/ 
+sale 
+ 
+Rs. 5,28,65,258.00 
+(52865258 equity shares of Re. 1/- each) 
+Total diluted share/voting capital of the TC after the said acquisition/ sale 
+ 
+Rs. 5,28,65,258.00 
+(52865258 equity shares of Re. 1/- each) 
+ 
+(*)  
+Total share capital/ voting capital to be taken as per the latest filing done by the company to the Stock Exchange under Clause 
+35 of the listing Agreement. 
+ 
+ (**)  Diluted share/voting capital means the total number of shares in the TC assuming full conversion of the outstanding convertible 
+securities/warrants into equity shares of the TC. 
+ 
+ 
+ 
+ 
+ 
+Brij Rattan Bagri 
+Promoter & Managing Director 
+DIN: 00007441 
+ 
+Place 
+: Karnataka 
+Date 
+: 26-09-2026 
+BRIJ RATTAN 
+BAGRI
+Digitally signed by BRIJ 
+RATTAN BAGRI 
+Date: 2026.09.26 
+10:31:54 +05'30'
+
+---

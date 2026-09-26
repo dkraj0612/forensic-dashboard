@@ -1,0 +1,8 @@
+{
+    "ticker": "NAHARCAP",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2578c767-1fff-4513-9565-eec6cd42812d.pdf",
+    "file_type": "pdf"
+}

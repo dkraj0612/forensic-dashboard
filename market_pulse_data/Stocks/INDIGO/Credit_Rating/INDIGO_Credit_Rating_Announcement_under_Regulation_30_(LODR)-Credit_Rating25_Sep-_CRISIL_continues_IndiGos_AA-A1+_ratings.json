@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIGO",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a1964421-247e-42c3-8fe9-d63e3bafb4e7.pdf",
+    "file_type": "pdf"
+}

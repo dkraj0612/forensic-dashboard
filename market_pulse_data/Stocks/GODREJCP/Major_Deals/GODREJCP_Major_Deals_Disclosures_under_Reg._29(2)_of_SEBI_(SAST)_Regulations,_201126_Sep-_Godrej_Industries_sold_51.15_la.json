@@ -1,0 +1,8 @@
+{
+    "ticker": "GODREJCP",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6C7B43F6_24DE_4D0A_9E2F_16E5CF7A43A4_121507.pdf",
+    "file_type": "pdf"
+}

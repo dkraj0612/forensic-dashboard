@@ -1,0 +1,8 @@
+{
+    "ticker": "MOLBIO",
+    "category": "SAST",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=E0CF22B0_CEC1_44AD_8A0B_51DF1ECB7BDF_114307.pdf",
+    "file_type": "pdf"
+}

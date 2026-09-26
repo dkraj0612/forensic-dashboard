@@ -1,0 +1,8 @@
+{
+    "ticker": "HTMEDIA",
+    "category": "Results",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aeea221c-0320-4e48-a403-77092ad680ad.pdf",
+    "file_type": "pdf"
+}

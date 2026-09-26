@@ -1,0 +1,8 @@
+{
+    "ticker": "KARURVYSYA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11494851-D775-479E-A042-48906348239E-181435.pdf",
+    "file_type": "pdf"
+}

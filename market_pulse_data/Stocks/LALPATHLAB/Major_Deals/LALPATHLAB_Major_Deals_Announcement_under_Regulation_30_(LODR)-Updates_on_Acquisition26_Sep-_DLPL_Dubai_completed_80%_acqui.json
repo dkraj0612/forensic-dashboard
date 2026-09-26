@@ -1,0 +1,8 @@
+{
+    "ticker": "LALPATHLAB",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=02ec4999-8290-4895-8c3c-ff6cea12d0de.pdf",
+    "file_type": "pdf"
+}

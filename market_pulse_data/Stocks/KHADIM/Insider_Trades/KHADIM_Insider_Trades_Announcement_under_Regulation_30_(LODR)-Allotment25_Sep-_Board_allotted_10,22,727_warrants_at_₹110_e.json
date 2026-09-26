@@ -1,0 +1,8 @@
+{
+    "ticker": "KHADIM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=218ab29e-8002-43cb-a407-29dfbe7a92ed.pdf",
+    "file_type": "pdf"
+}

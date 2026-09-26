@@ -1,0 +1,8 @@
+{
+    "ticker": "JSWSTEEL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ddb5828d-aea0-4bd9-98ff-e602f120fec4.pdf",
+    "file_type": "pdf"
+}

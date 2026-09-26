@@ -1,0 +1,8 @@
+{
+    "ticker": "KABRAEXTRU",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=47046606-3f71-4287-930b-7664104f6113.pdf",
+    "file_type": "pdf"
+}

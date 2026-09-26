@@ -1,0 +1,8 @@
+{
+    "ticker": "DBREALTY",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab706554-8be9-44dc-ac1a-7441a361e6c2.pdf",
+    "file_type": "pdf"
+}

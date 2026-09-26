@@ -1,0 +1,8 @@
+{
+    "ticker": "MOREPENLAB",
+    "category": "Dividend",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=211c5625-7e7d-4df5-9171-5782173da4e0.pdf",
+    "file_type": "pdf"
+}

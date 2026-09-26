@@ -1,0 +1,8 @@
+{
+    "ticker": "OLECTRA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d0e3303c-d04f-4e8f-9ea7-c65590f4b750.pdf",
+    "file_type": "pdf"
+}

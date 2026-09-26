@@ -1,0 +1,8 @@
+{
+    "ticker": "KALPATARU",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=35851c4e-1fa7-49e4-8342-aac4a544067d.pdf",
+    "file_type": "pdf"
+}

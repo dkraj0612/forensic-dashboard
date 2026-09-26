@@ -1,0 +1,8 @@
+{
+    "ticker": "EMSLIMITED",
+    "category": "Dividend",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9064d391-b7c6-436f-89c5-73cc33126fb3.pdf",
+    "file_type": "pdf"
+}

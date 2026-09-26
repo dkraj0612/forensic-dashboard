@@ -1,0 +1,8 @@
+{
+    "ticker": "JTLIND",
+    "category": "Dividend",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=38c261a9-dd46-4a2b-b540-d1844a93397e.pdf",
+    "file_type": "pdf"
+}

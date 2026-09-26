@@ -1,0 +1,8 @@
+{
+    "ticker": "MANBA",
+    "category": "Results",
+    "extraction_date": "2026-09-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6c1601e4-b092-475d-8c5c-2c1b30ecc9b9.pdf",
+    "file_type": "pdf"
+}
