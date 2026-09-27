@@ -1,0 +1,8 @@
+{
+    "ticker": "SAIL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5248fc0c-7ae4-4ede-835c-ae40f0946c66.pdf",
+    "file_type": "pdf"
+}

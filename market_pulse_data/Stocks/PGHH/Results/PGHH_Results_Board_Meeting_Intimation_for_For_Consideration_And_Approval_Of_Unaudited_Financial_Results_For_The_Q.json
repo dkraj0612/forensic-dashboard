@@ -1,0 +1,8 @@
+{
+    "ticker": "PGHH",
+    "category": "Results",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=73e292c5-05ba-4845-99ad-47363f52b75a.pdf",
+    "file_type": "pdf"
+}

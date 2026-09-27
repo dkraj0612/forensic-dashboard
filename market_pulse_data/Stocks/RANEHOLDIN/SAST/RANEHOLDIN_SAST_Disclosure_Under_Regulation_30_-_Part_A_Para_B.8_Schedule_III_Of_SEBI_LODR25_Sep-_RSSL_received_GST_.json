@@ -1,0 +1,8 @@
+{
+    "ticker": "RANEHOLDIN",
+    "category": "SAST",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b18447e8-9cd7-4d76-ae2a-4ca506efcd08.pdf",
+    "file_type": "pdf"
+}

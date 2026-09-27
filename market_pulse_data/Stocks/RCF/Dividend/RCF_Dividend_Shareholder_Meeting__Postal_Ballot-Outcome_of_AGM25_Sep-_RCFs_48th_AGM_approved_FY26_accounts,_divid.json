@@ -1,0 +1,8 @@
+{
+    "ticker": "RCF",
+    "category": "Dividend",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f5db7d16-b412-4054-b1c1-7de6e4cf6ce7.pdf",
+    "file_type": "pdf"
+}

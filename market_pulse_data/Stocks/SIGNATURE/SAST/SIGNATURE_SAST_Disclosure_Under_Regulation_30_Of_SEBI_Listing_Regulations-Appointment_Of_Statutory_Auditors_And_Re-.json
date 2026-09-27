@@ -1,0 +1,8 @@
+{
+    "ticker": "SIGNATURE",
+    "category": "SAST",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=34070c33-9a49-47d3-b1bc-50a3d57d98cd.pdf",
+    "file_type": "pdf"
+}

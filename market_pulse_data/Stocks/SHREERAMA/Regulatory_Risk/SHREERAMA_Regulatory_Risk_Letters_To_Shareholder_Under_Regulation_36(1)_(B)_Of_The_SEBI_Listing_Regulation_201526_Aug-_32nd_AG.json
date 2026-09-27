@@ -1,0 +1,8 @@
+{
+    "ticker": "SHREERAMA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9fef3b13-9c92-4bd7-a1f6-ff2cccfd3cfc.pdf",
+    "file_type": "pdf"
+}

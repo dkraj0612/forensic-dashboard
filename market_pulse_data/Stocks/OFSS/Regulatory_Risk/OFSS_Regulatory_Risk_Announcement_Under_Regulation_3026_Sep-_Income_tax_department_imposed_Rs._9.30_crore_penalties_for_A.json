@@ -1,0 +1,8 @@
+{
+    "ticker": "OFSS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c33239b0-c5e3-45a9-9898-34f3358d31ce.pdf",
+    "file_type": "pdf"
+}

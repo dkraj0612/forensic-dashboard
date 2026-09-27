@@ -1,0 +1,8 @@
+{
+    "ticker": "SHANTIGOLD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a9396572-063f-43b5-86b4-92cabd1e6ad4.pdf",
+    "file_type": "pdf"
+}

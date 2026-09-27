@@ -1,0 +1,8 @@
+{
+    "ticker": "RSYSTEMS",
+    "category": "Dividend",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6f41a7d6-5a13-40bb-9ebe-a53d80206798.pdf",
+    "file_type": "pdf"
+}

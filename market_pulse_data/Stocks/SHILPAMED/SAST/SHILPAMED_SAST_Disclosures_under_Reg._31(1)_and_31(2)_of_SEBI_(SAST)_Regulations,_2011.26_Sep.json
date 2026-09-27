@@ -1,0 +1,8 @@
+{
+    "ticker": "SHILPAMED",
+    "category": "SAST",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=BAB5D01C_3E88_4E61_9ABE_3F6EFCAC9AB8_142348.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SAPPHIRE",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=270ede8d-27af-4426-b7af-fa5078ad1af6.pdf",
+    "file_type": "pdf"
+}

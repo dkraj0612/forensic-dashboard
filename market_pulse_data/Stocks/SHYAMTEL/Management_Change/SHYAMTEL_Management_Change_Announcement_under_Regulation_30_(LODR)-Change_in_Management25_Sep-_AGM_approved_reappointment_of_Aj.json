@@ -1,0 +1,8 @@
+{
+    "ticker": "SHYAMTEL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a6e8c193-fea6-49a8-b6dd-21420c7a35ce.pdf",
+    "file_type": "pdf"
+}

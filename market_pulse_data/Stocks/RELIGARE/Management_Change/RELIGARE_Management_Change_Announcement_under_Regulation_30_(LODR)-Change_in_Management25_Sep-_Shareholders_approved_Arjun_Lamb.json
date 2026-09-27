@@ -1,0 +1,8 @@
+{
+    "ticker": "RELIGARE",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d9f3692e-4b68-4148-9860-b6cfcb38830b.pdf",
+    "file_type": "pdf"
+}

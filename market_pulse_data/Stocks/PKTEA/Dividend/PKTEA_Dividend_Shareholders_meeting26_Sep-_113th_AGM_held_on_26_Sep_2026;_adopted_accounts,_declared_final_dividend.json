@@ -1,0 +1,8 @@
+{
+    "ticker": "PKTEA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/PKTEA_26092026165218_Proceedings113thAGMPERIA.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "SENCO",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f28b7f48-5dfe-4d60-9219-c17dabad128e.pdf",
+    "file_type": "pdf"
+}

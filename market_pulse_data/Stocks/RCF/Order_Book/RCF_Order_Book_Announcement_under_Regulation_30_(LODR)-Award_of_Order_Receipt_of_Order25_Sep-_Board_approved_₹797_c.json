@@ -1,0 +1,8 @@
+{
+    "ticker": "RCF",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abf3806a-f35b-42b8-92ca-a45234d421b2.pdf",
+    "file_type": "pdf"
+}

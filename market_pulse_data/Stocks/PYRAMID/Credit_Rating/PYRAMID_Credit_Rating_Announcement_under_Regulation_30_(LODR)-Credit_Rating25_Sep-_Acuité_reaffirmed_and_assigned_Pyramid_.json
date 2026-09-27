@@ -1,0 +1,8 @@
+{
+    "ticker": "PYRAMID",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=76045c18-0539-4c91-aec1-cf1be77edaf0.pdf",
+    "file_type": "pdf"
+}

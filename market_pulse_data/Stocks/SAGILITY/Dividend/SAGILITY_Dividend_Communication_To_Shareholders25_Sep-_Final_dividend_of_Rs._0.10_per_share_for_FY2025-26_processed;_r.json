@@ -1,0 +1,8 @@
+{
+    "ticker": "SAGILITY",
+    "category": "Dividend",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5aa11597-f5df-44b4-a375-f52de5d011bd.pdf",
+    "file_type": "pdf"
+}

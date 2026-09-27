@@ -1,0 +1,8 @@
+{
+    "ticker": "LICI",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-27",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=92963d8a-5dac-47f9-9bb2-07c87d6dfe8c.pdf",
+    "file_type": "pdf"
+}
