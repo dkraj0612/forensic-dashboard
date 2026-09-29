@@ -1,0 +1,8 @@
+{
+    "ticker": "KSOLVES",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=642bb62e-1e21-4784-83fb-de43736366bb.pdf",
+    "file_type": "pdf"
+}

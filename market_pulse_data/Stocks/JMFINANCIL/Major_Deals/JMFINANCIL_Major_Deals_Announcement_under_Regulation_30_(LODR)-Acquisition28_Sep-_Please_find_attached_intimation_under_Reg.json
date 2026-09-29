@@ -1,0 +1,8 @@
+{
+    "ticker": "JMFINANCIL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3a8a9712-eebd-452c-a8eb-389b55683f30.pdf",
+    "file_type": "pdf"
+}

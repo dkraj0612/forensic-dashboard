@@ -1,0 +1,8 @@
+{
+    "ticker": "CORDSCABLE",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7556cfc3-c2ae-4bd5-879c-0fd93c5f3e13.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "INDSWFTLAB",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=02ec66ba-f96b-417c-ae85-0cdfb14c461c.pdf",
+    "file_type": "pdf"
+}

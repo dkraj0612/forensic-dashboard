@@ -1,0 +1,8 @@
+{
+    "ticker": "E2E",
+    "category": "Results",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01e388eb-2c85-4e68-ba16-584ef5c444e9.pdf",
+    "file_type": "pdf"
+}

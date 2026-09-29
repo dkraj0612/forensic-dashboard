@@ -1,0 +1,8 @@
+{
+    "ticker": "JUBLPHARMA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff4357a1-801f-4396-b3c6-bb31c394f880.pdf",
+    "file_type": "pdf"
+}

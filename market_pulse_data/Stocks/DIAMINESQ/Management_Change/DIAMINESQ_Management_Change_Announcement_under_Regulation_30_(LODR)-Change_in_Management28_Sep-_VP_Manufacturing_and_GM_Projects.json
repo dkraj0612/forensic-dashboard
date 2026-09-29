@@ -1,0 +1,8 @@
+{
+    "ticker": "DIAMINESQ",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7707de4a-beb4-4195-983b-de966ea22a81.pdf",
+    "file_type": "pdf"
+}

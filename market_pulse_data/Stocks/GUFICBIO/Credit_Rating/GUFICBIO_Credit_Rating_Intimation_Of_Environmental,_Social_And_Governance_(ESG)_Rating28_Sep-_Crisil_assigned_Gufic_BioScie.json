@@ -1,0 +1,8 @@
+{
+    "ticker": "GUFICBIO",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4ac27e0-d85a-448c-9b82-b1fc098b2e02.pdf",
+    "file_type": "pdf"
+}

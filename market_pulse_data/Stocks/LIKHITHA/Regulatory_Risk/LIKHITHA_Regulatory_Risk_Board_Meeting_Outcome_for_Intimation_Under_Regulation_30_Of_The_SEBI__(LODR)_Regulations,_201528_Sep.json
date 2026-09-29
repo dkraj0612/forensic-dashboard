@@ -1,0 +1,8 @@
+{
+    "ticker": "LIKHITHA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=57de64e5-4b36-430e-818b-bcb4c308f071.pdf",
+    "file_type": "pdf"
+}

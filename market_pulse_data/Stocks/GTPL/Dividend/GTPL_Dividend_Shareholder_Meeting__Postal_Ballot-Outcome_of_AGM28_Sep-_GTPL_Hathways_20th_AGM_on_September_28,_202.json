@@ -1,0 +1,8 @@
+{
+    "ticker": "GTPL",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c3ec579e-fd03-4f60-84ac-5a597d478647.pdf",
+    "file_type": "pdf"
+}

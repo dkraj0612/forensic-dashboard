@@ -1,0 +1,8 @@
+{
+    "ticker": "GFLLIMITED",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01870d90-fc8e-4359-ac98-56ec4b9b4b46.pdf",
+    "file_type": "pdf"
+}

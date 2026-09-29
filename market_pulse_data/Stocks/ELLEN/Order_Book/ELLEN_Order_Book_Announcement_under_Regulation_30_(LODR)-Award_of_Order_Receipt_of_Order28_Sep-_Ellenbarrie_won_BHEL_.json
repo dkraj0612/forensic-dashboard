@@ -1,0 +1,8 @@
+{
+    "ticker": "ELLEN",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=65cf81dc-a720-4386-a73a-ce5355425b01.pdf",
+    "file_type": "pdf"
+}

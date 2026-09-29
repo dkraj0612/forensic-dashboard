@@ -1,0 +1,8 @@
+{
+    "ticker": "CARRARO",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1fbbaf98-0435-4710-8d3d-c7d8311a0a61.pdf",
+    "file_type": "pdf"
+}

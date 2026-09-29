@@ -1,0 +1,8 @@
+{
+    "ticker": "GANESHCP",
+    "category": "Results",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=55703ae6-25f8-4a67-b9e0-6e125bd9b05f.pdf",
+    "file_type": "pdf"
+}

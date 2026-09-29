@@ -1,0 +1,8 @@
+{
+    "ticker": "DDEVPLSTIK",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f603ba4-ac94-4228-8525-077e22934664.pdf",
+    "file_type": "pdf"
+}

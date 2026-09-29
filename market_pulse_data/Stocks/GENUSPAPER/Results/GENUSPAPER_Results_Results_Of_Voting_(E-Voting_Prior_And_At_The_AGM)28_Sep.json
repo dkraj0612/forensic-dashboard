@@ -1,0 +1,8 @@
+{
+    "ticker": "GENUSPAPER",
+    "category": "Results",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1dd6a500-828f-4b6a-a23d-77973e3bf85c.pdf",
+    "file_type": "pdf"
+}

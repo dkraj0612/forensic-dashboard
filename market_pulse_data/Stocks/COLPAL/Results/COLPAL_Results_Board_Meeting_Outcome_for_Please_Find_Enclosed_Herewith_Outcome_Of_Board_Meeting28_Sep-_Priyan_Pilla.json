@@ -1,0 +1,8 @@
+{
+    "ticker": "COLPAL",
+    "category": "Results",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29a24ef2-2774-4723-bea3-f5e6286fbc30.pdf",
+    "file_type": "pdf"
+}

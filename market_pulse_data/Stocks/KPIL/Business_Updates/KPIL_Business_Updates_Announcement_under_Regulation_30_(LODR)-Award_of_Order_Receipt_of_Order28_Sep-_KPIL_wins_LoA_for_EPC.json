@@ -1,0 +1,8 @@
+{
+    "ticker": "KPIL",
+    "category": "Business_Updates",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=133ac89c-5d6a-48e3-af59-61ae9d2377ff.pdf",
+    "file_type": "pdf"
+}

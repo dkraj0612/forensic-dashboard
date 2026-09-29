@@ -1,0 +1,8 @@
+{
+    "ticker": "ICICIAMC",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ac43953d-c920-41ae-9949-2ebeb579d9ce.pdf",
+    "file_type": "pdf"
+}

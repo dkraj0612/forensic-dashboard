@@ -1,0 +1,8 @@
+{
+    "ticker": "ASSAMENT",
+    "category": "SAST",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=F230916F_A152_4C47_9780_C3FB495692A8_102342.pdf",
+    "file_type": "pdf"
+}

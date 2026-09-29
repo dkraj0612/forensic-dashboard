@@ -1,0 +1,8 @@
+{
+    "ticker": "LASERPOWER",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=26f85548-0a2b-4442-8076-b9f11e1f04dd.pdf",
+    "file_type": "pdf"
+}

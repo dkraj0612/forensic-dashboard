@@ -1,0 +1,8 @@
+{
+    "ticker": "DYCL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=be656562-16b3-4206-b5e7-284850d87cfd.pdf",
+    "file_type": "pdf"
+}

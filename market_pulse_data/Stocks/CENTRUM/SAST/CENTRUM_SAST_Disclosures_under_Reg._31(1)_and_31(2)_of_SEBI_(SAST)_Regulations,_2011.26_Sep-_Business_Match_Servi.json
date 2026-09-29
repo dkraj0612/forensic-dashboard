@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTRUM",
+    "category": "SAST",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7F98C4CC_70C4_4AAE_88C1_9845E0C98782_105640.pdf",
+    "file_type": "pdf"
+}

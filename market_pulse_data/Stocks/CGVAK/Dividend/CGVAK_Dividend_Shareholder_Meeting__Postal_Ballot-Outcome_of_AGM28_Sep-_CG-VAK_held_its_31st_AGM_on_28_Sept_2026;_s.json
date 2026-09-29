@@ -1,0 +1,8 @@
+{
+    "ticker": "CGVAK",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7ff249a-325f-43d7-91ea-bc51d5a62e09.pdf",
+    "file_type": "pdf"
+}

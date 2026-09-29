@@ -1,0 +1,8 @@
+{
+    "ticker": "HAL",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2fc2f5da-34a9-4a6c-a7d2-59cdcf975f69.pdf",
+    "file_type": "pdf"
+}

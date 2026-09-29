@@ -1,0 +1,8 @@
+{
+    "ticker": "LEAPIND",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec230ace-048e-4941-b459-661d4519613f.pdf",
+    "file_type": "pdf"
+}

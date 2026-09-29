@@ -1,0 +1,8 @@
+{
+    "ticker": "DBL",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9eafc14f-b5c9-47d0-b3f9-8ae030bd30ab.pdf",
+    "file_type": "pdf"
+}

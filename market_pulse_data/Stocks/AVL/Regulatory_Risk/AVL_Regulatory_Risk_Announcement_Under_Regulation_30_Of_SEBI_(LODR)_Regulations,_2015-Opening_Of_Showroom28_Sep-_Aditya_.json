@@ -1,0 +1,8 @@
+{
+    "ticker": "AVL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3d8127d9-1103-42ac-8d56-d90895740533.pdf",
+    "file_type": "pdf"
+}

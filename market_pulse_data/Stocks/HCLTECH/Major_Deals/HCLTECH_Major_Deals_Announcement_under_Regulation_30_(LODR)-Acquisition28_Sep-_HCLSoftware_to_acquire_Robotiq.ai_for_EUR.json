@@ -1,0 +1,8 @@
+{
+    "ticker": "HCLTECH",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a33a8486-a7f0-409e-8728-7904f04291aa.pdf",
+    "file_type": "pdf"
+}

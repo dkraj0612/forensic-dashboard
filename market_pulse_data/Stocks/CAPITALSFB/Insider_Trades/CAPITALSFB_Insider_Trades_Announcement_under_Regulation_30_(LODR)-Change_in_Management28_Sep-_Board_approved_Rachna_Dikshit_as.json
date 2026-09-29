@@ -1,0 +1,8 @@
+{
+    "ticker": "CAPITALSFB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1ac106a1-082f-44f5-aa03-d1641a1fcac2.pdf",
+    "file_type": "pdf"
+}

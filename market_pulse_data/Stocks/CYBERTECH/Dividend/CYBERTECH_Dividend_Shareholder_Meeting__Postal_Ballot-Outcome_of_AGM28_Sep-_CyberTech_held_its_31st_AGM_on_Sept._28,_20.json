@@ -1,0 +1,8 @@
+{
+    "ticker": "CYBERTECH",
+    "category": "Dividend",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5888e228-eeb2-492f-833f-701c8d2d96ec.pdf",
+    "file_type": "pdf"
+}

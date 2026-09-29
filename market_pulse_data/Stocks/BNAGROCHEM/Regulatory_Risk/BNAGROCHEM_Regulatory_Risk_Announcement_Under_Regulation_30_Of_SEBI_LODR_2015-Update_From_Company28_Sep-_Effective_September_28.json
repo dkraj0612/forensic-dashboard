@@ -1,0 +1,8 @@
+{
+    "ticker": "BNAGROCHEM",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-09-28",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5e31d6c5-adac-4ed2-a21a-63bdc2b9edd0.pdf",
+    "file_type": "pdf"
+}
