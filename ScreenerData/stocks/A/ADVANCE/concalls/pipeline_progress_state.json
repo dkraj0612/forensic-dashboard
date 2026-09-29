@@ -1,0 +1,18 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ADVANCE/concalls/ADVANCE_Fallback_Transcript_12_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADVANCE/concalls/ADVANCE_Fallback_Transcript_13_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/ADVANCE/concalls/ADVANCE_Fallback_Transcript_13_Transcript.md",
+        "./ScreenerData/stocks/A/ADVANCE/concalls/ADVANCE_Fallback_Transcript_12_Transcript.md"
+    ]
+}

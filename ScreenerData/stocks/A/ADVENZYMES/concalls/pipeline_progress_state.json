@@ -1,0 +1,15 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_78_Transcript.md",
+            "quarter": "Q3",
+            "year": 2018
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_79_Transcript.md",
+            "quarter": "Q2",
+            "year": 2017
+        }
+    ],
+    "completed_files": []
+}

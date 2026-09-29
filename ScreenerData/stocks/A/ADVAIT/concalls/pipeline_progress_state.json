@@ -71,5 +71,20 @@
             "year": 2026
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_33_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_32_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_34_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_29_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_31_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_28_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_30_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_25_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_23_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_27_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_22_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_26_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_24_Transcript.md",
+        "./ScreenerData/stocks/A/ADVAIT/concalls/ADVAIT_Fallback_Transcript_21_Transcript.md"
+    ]
 }
