@@ -1,0 +1,8 @@
+{
+    "ticker": "HONASA",
+    "category": "Dividend",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a71a6ff7-f20e-4235-8ae1-79e5b2caaa1b.pdf",
+    "file_type": "pdf"
+}

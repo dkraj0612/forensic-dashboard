@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKBARODA",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=075ca3ab-6470-4362-9caf-80b671accf81.pdf",
+    "file_type": "pdf"
+}

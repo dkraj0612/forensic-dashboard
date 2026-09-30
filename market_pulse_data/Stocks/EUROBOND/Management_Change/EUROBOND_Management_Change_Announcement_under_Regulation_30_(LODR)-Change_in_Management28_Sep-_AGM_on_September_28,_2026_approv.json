@@ -1,0 +1,8 @@
+{
+    "ticker": "EUROBOND",
+    "category": "Management_Change",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=01194168-8561-44ba-8166-c22916c61d9d.pdf",
+    "file_type": "pdf"
+}

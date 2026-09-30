@@ -1,0 +1,8 @@
+{
+    "ticker": "INDOCO",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bff418ad-ba1a-4432-bfbc-d210cd408bd3.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "EMAMILTD",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=25f1958a-ded0-4407-a2a4-0de7502aed88.pdf",
+    "file_type": "pdf"
+}

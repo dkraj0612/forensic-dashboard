@@ -1,0 +1,8 @@
+{
+    "ticker": "GPIL",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c616161a-7979-458b-9b1b-4ebb9493160c.pdf",
+    "file_type": "pdf"
+}

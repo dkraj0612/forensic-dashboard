@@ -1,0 +1,8 @@
+{
+    "ticker": "DYNPRO",
+    "category": "Results",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9adce785-b83a-4d91-82df-7ef5379f9574.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "EKC",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=265d2da5-65a9-41c4-97d8-c7860da0e6ca.pdf",
+    "file_type": "pdf"
+}

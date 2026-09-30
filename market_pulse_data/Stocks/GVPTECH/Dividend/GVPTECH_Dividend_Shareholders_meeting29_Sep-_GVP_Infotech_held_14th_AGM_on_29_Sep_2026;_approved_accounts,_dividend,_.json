@@ -1,0 +1,8 @@
+{
+    "ticker": "GVPTECH",
+    "category": "Dividend",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/4THDIM_29092026182744_Proceeding_of_14_AGM_SE.pdf",
+    "file_type": "pdf"
+}

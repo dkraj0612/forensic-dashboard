@@ -1,0 +1,8 @@
+{
+    "ticker": "FINOPB",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ae8cb67e-ad47-48d5-88ef-88b0de12eafa.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AURUM",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5b9424b7-a20d-4dc8-9675-d7082a22ade9.pdf",
+    "file_type": "pdf"
+}

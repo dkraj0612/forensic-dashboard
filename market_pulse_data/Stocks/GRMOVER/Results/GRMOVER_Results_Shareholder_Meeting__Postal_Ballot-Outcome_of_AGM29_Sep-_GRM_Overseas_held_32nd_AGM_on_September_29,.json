@@ -1,0 +1,8 @@
+{
+    "ticker": "GRMOVER",
+    "category": "Results",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d39ce5f-4bc5-4ca3-baf5-157182d56876.pdf",
+    "file_type": "pdf"
+}

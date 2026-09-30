@@ -1,0 +1,8 @@
+{
+    "ticker": "EKC",
+    "category": "New_Projects",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8935acce-106a-4b21-ad08-4fd87b633f53.pdf",
+    "file_type": "pdf"
+}

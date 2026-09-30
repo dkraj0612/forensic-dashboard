@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBAL",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/GLOBAL_24092026144505_GELPostal_BallotNotice.pdf",
+    "file_type": "pdf"
+}

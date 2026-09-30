@@ -1,0 +1,8 @@
+{
+    "ticker": "ABMKNO",
+    "category": "SAST",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "Here's a 2-3 sentence executive summary of the provided financial document:  ABM Knowledgeware Limited has disclosed an off-market gift of 31,000 equity shares from Designated Person Pushpa Singh to her Immediate Relative, Anjali Govind Singh Chauhan, as required by SEBI (PIT) Regulations. This transaction represents a shift in beneficial ownership within the insider's family without a market impact or cash consideration. A minor red flag is a reporting inconsistency on Form C regarding Pushpa Singh's post-disposal shareholding, which appears to be incorrectly stated as 31,000 shares despite the disposal.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a7bf2fd4-e6f6-4e86-a595-13c54f3e517e.pdf",
+    "file_type": "pdf"
+}

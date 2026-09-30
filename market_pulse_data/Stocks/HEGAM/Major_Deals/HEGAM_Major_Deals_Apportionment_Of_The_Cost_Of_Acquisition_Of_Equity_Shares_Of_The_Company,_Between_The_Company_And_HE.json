@@ -1,0 +1,8 @@
+{
+    "ticker": "HEGAM",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b6a9a434-753d-4da2-8de3-3658d5b3fb76.pdf",
+    "file_type": "pdf"
+}

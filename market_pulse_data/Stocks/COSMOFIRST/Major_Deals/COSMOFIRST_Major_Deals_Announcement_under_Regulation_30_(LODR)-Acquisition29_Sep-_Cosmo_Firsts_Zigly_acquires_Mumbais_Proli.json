@@ -1,0 +1,8 @@
+{
+    "ticker": "COSMOFIRST",
+    "category": "Major_Deals",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=49fde0c7-0697-4cd4-be2c-5c8d01961b9c.pdf",
+    "file_type": "pdf"
+}

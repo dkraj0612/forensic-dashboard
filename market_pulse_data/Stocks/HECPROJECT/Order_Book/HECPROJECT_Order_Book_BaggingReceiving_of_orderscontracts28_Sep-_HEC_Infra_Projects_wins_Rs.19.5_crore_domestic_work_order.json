@@ -1,0 +1,8 @@
+{
+    "ticker": "HECPROJECT",
+    "category": "Order_Book",
+    "extraction_date": "2026-09-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/HECPROJECT_28092026165353_workorder_stellar_19_cr.pdf",
+    "file_type": "pdf"
+}
