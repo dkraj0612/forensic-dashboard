@@ -1,0 +1,8 @@
+{
+    "ticker": "ARVSMART",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=589df897-8eb7-430b-ab21-b53da23ad7e8.pdf",
+    "file_type": "pdf"
+}

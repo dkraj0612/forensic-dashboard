@@ -1,0 +1,8 @@
+{
+    "ticker": "AIAENG",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de505980-12f1-4bf9-8a8c-9b7f62d4dbb7.pdf",
+    "file_type": "pdf"
+}

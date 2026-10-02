@@ -1,0 +1,8 @@
+{
+    "ticker": "AVALON",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0cf5faca-0e56-4ac1-945f-b67007cff173.pdf",
+    "file_type": "pdf"
+}

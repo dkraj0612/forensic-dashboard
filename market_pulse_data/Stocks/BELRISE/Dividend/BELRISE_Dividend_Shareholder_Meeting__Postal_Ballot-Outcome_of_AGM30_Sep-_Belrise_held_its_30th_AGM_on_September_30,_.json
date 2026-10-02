@@ -1,0 +1,8 @@
+{
+    "ticker": "BELRISE",
+    "category": "Dividend",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b19bfd7e-a0df-44c4-a1cd-e08ed580d071.pdf",
+    "file_type": "pdf"
+}

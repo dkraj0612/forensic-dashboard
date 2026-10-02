@@ -1,0 +1,12 @@
+# AAATECH - SAST - Disclosures_under_Reg._29(2)_of_SEBI_(SAST)_Regulations,_201130_Sep
+
+**Extraction Date:** 2026-10-01
+
+**Source URL:** [View Original Document](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=957BB53E_72BA_4A6D_932B_F7211B79E1AA_173231.pdf)
+---
+
+### 🤖 AI Intelligence Summary
+> CENTURY INDIA OPPORTUNITY FUNDPC has increased its stake in AAA Technologies Limited by acquiring an additional 2.09% through open market purchases, raising its total holding to 9.92%. This significant accumulation by a non-promoter investor, now nearing the 10% threshold, could signal growing institutional confidence or strategic interest in AAA Technologies Limited. There are no immediate red flags evident from this disclosure, indicating a standard market-based investment.
+---
+
+> ⚠️ **SCANNED IMAGE DETECTED:** This document appears to be a scanned image or handwritten filing. Standard Python text extraction bypassed.

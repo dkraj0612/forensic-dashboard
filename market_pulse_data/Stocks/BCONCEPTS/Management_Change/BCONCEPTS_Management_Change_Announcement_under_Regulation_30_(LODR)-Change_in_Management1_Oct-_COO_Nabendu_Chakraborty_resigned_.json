@@ -1,0 +1,8 @@
+{
+    "ticker": "BCONCEPTS",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=16f816d4-4d99-4714-949c-2b1b04fe051f.pdf",
+    "file_type": "pdf"
+}

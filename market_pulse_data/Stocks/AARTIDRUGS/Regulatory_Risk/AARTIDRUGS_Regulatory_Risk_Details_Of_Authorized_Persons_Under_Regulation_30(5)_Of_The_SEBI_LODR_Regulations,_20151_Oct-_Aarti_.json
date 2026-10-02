@@ -1,0 +1,8 @@
+{
+    "ticker": "AARTIDRUGS",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cdede56b-8133-418e-a333-7981d9c5f0f1.pdf",
+    "file_type": "pdf"
+}

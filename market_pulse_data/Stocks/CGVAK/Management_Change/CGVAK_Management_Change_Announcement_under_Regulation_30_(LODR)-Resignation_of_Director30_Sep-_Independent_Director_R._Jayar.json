@@ -1,0 +1,8 @@
+{
+    "ticker": "CGVAK",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3900cc57-f3de-4172-8661-4fc63ab86f8c.pdf",
+    "file_type": "pdf"
+}

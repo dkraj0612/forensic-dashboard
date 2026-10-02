@@ -1,0 +1,8 @@
+{
+    "ticker": "AZAD",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7e8ddece-9cfe-44a7-919e-76d50072d366.pdf",
+    "file_type": "pdf"
+}

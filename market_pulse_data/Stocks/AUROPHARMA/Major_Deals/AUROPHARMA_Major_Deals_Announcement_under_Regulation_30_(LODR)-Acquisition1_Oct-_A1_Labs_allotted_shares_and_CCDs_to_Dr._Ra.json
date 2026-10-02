@@ -1,0 +1,8 @@
+{
+    "ticker": "AUROPHARMA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2bf9239f-28f2-4510-8e2d-c5e80c24332e.pdf",
+    "file_type": "pdf"
+}

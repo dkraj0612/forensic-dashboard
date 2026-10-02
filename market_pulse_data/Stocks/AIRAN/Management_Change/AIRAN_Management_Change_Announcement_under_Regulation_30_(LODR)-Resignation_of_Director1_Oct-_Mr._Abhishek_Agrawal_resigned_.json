@@ -1,0 +1,8 @@
+{
+    "ticker": "AIRAN",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e4db729-65e2-4616-bdfc-c2c842cd6fc7.pdf",
+    "file_type": "pdf"
+}

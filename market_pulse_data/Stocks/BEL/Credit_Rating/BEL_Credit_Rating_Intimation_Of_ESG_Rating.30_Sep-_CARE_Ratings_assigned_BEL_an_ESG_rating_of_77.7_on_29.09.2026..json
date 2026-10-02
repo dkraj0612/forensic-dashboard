@@ -1,0 +1,8 @@
+{
+    "ticker": "BEL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5b279b5a-f1d5-42e5-902d-12a25bc1f1db.pdf",
+    "file_type": "pdf"
+}

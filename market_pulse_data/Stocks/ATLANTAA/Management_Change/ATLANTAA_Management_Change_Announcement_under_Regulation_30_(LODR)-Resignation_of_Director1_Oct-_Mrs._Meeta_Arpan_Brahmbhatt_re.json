@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLANTAA",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0796c872-3f3b-4448-a98f-8a70459f40cc.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ACE",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7769e0c-f8e6-479b-a77e-b5d2bf4e6848.pdf",
+    "file_type": "pdf"
+}

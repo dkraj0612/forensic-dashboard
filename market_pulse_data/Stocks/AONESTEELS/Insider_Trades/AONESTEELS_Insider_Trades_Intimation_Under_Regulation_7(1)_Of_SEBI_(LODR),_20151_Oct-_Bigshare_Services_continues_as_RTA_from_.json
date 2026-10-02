@@ -1,0 +1,8 @@
+{
+    "ticker": "AONESTEELS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c1d3b9ae-de4d-4256-b055-17761f2f798a.pdf",
+    "file_type": "pdf"
+}
