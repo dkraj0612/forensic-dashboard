@@ -266,5 +266,27 @@
             "year": 2021
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_73_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_84_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_81_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_87_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_79_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q2_FY17_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_85_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q4_FY2017_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_83_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q1_FY2018_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_78_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q4_FY18_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q4FY18_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_76_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_69_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_71_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_70_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q2FY20_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_59_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Fallback_Transcript_67_Transcript.md",
+        "./ScreenerData/stocks/A/ADVENZYMES/concalls/ADVENZYMES_Q3_FY2020_Transcript.md"
+    ]
 }
