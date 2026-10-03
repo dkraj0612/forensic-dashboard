@@ -1,0 +1,8 @@
+{
+    "ticker": "CANHLIFE",
+    "category": "Concalls",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4bf5763f-6b4b-4cc4-8dd6-b546700e0787.pdf",
+    "file_type": "pdf"
+}

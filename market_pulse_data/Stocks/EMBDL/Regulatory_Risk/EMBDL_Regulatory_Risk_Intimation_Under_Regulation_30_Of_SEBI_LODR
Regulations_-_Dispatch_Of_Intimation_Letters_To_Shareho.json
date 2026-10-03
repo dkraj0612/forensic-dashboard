@@ -1,0 +1,8 @@
+{
+    "ticker": "EMBDL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff8e3d46-62f2-4302-a491-a9bf483088f5.pdf",
+    "file_type": "pdf"
+}

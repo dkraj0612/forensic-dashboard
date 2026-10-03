@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJFINSV",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb17d156-8b4c-49f9-99e6-8a2238c6810f.pdf",
+    "file_type": "pdf"
+}

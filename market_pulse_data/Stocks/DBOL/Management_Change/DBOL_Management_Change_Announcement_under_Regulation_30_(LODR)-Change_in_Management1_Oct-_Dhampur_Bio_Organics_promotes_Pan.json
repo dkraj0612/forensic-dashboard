@@ -1,0 +1,8 @@
+{
+    "ticker": "DBOL",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c43137f3-03de-4c3c-94d8-34c8c0934e92.pdf",
+    "file_type": "pdf"
+}

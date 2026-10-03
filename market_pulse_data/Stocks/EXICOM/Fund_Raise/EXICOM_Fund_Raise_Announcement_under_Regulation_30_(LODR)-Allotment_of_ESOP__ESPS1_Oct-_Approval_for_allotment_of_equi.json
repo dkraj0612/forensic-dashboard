@@ -1,0 +1,8 @@
+{
+    "ticker": "EXICOM",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aabb2fd9-5c33-4845-ad8e-360420addb55.pdf",
+    "file_type": "pdf"
+}

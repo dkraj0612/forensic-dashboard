@@ -1,0 +1,8 @@
+{
+    "ticker": "AUSTENG",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.crisil.com/mnt/winshare/Ratings/RatingList/RatingDocs/Austin Engineering Company Limited-RA.pdf",
+    "file_type": "pdf"
+}

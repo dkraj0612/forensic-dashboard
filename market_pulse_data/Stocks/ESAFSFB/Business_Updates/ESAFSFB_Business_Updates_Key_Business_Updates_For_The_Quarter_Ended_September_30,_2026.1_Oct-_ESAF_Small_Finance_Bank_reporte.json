@@ -1,0 +1,8 @@
+{
+    "ticker": "ESAFSFB",
+    "category": "Business_Updates",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=31d31d4a-c2d5-49bc-ac15-8970906ba6da.pdf",
+    "file_type": "pdf"
+}

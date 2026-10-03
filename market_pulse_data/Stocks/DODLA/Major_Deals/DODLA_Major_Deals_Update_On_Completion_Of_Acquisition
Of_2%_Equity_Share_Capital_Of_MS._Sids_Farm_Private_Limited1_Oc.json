@@ -1,0 +1,8 @@
+{
+    "ticker": "DODLA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=93d61de5-c36c-4ab8-9146-57c9f5de219c.pdf",
+    "file_type": "pdf"
+}

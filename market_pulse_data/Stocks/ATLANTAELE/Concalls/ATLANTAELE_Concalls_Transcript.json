@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLANTAELE",
+    "category": "Concalls",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7181003c-4fb6-40c5-a64e-e71536816223.pdf",
+    "file_type": "pdf"
+}

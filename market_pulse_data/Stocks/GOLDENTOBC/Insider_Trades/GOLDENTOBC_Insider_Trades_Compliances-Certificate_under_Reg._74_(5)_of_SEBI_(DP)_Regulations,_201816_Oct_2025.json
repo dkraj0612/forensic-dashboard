@@ -1,0 +1,8 @@
+{
+    "ticker": "GOLDENTOBC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a4a1c0ed-833b-48aa-a202-5373fc384ab4.pdf",
+    "file_type": "pdf"
+}

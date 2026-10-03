@@ -1,0 +1,8 @@
+{
+    "ticker": "DREAMFOLKS",
+    "category": "Concalls",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c7faff0-4918-4fb8-b797-9b9eeb455386.pdf",
+    "file_type": "pdf"
+}

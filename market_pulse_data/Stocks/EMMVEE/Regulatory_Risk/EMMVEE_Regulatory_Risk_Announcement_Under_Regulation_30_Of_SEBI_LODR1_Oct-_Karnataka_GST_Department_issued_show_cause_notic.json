@@ -1,0 +1,8 @@
+{
+    "ticker": "EMMVEE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fb2187ea-6c26-4be5-8172-2af6d0d026d2.pdf",
+    "file_type": "pdf"
+}

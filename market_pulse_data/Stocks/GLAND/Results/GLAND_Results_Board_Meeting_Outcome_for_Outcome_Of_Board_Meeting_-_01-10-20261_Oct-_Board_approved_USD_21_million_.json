@@ -1,0 +1,8 @@
+{
+    "ticker": "GLAND",
+    "category": "Results",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=226a44bf-3813-410b-9c39-08dc48b1bee0.pdf",
+    "file_type": "pdf"
+}

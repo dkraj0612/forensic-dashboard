@@ -1,0 +1,8 @@
+{
+    "ticker": "CRISIL",
+    "category": "Results",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9955efd1-0566-4b80-ad8e-f2e066dfeeba.pdf",
+    "file_type": "pdf"
+}

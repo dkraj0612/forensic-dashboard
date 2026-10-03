@@ -1,0 +1,8 @@
+{
+    "ticker": "EFCIL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f686a5a1-91d6-473f-a306-2dd3b2fdf2ba.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AUBANK",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AU Small Finance Bank received a re-affirmed long-term debt rating of [ICRA] AA, with its outlook revised from Stable to Positive by ICRA, and a new [ICRA] AA (Positive) rating for infrastructure bonds. This upgrade reflects the bank's strong operational scale, improving asset quality, and robust capitalisation, materially enhancing its borrowing capacity and competitive positioning ahead of its transition to a universal bank. Key monitorables include maintaining asset quality in newer loan segments and improving deposit granularity beyond the current moderate CASA ratio to support its ambitious growth plans.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=31cc0738-d71f-4bb0-a5fd-b0318f91be69.pdf",
+    "file_type": "pdf"
+}

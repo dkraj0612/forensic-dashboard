@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJFINANCE",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50fbec1c-9852-4043-9020-d9df179271d5.pdf",
+    "file_type": "pdf"
+}

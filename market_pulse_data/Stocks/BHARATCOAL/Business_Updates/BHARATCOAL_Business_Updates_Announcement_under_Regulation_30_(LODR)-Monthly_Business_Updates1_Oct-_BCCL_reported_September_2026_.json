@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATCOAL",
+    "category": "Business_Updates",
+    "extraction_date": "2026-10-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c01a1a0e-c6e1-4df3-9556-216a94a5ccb2.pdf",
+    "file_type": "pdf"
+}
