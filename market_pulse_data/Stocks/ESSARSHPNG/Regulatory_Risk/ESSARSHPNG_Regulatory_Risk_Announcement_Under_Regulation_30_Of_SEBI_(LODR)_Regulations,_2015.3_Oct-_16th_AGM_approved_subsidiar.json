@@ -1,0 +1,8 @@
+{
+    "ticker": "ESSARSHPNG",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=693b9e0c-9779-42ee-b133-0457127b20c6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GREAVESCOT",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.greavescotton.com/php/media/brochure_files/GCL%20Q2FY22%20Concall%20Transcript.pdf",
+    "file_type": "pdf"
+}

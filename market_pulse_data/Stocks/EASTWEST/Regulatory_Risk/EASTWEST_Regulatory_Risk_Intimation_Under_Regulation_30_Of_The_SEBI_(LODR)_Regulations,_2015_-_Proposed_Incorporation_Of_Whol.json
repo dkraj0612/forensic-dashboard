@@ -1,0 +1,8 @@
+{
+    "ticker": "EASTWEST",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c87a67fc-9fd2-49f8-8570-dabc068f8362.pdf",
+    "file_type": "pdf"
+}

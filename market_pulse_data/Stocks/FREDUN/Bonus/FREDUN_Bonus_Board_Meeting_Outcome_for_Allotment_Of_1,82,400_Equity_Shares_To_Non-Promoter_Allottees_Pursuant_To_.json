@@ -1,0 +1,8 @@
+{
+    "ticker": "FREDUN",
+    "category": "Bonus",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=62b91c7b-2b5e-4306-978e-1fe5777a7cba.pdf",
+    "file_type": "pdf"
+}

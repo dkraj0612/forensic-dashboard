@@ -1,0 +1,8 @@
+{
+    "ticker": "IBULLSLTD",
+    "category": "SAST",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b673cfdd-af0b-4612-b057-bad9f9f1f924.pdf",
+    "file_type": "pdf"
+}

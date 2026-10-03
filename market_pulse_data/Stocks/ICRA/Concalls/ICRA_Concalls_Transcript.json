@@ -1,0 +1,8 @@
+{
+    "ticker": "ICRA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8061a6f4-6594-42e3-bd4a-5a37a605b8c5.pdf",
+    "file_type": "pdf"
+}

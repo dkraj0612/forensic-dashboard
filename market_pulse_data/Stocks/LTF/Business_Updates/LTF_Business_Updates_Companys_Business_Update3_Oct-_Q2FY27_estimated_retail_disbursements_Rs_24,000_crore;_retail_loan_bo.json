@@ -1,0 +1,8 @@
+{
+    "ticker": "LTF",
+    "category": "Business_Updates",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91d75f70-354e-4c93-a158-c492c1ccb417.pdf",
+    "file_type": "pdf"
+}

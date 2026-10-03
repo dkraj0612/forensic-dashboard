@@ -1,0 +1,8 @@
+{
+    "ticker": "KEC",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.kecrpg.com/KEC%20data/Investor%20relations/presentation%20to%20analysts/KEC%20International%20Earnings%20call%20transcript_Q2%20FY22.pdf",
+    "file_type": "pdf"
+}

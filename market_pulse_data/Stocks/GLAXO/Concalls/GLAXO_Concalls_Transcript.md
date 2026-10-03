@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "GLAXO"
+  call_date: "2026-10-03"
+  reporting_period: "Transcript"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50c88077-6708-452c-8af2-08dd1c068980.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 16.08
+  total_word_volume: 2359
+---
+
+# Concall NLP Analysis: GLAXO
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50c88077-6708-452c-8af2-08dd1c068980.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+GlaxoSmithKline Pharmaceuticals Limited GSK House, Dr. Annie Besant Road, Worli, Mumbai - 400 030 Tel No: +91 22 2495 9595 Fax No: +91 22 2495 9494 Web: www.gsk-india.com Email: askus@gsk.com 8th August 2024 To, BSE LIMITED THE NATIONAL STOCK EXCHANGE OF INDIA LIMITED Phiroze Jeejeebhoy Towers Exchange Plaza, 5th Floor, Plot No. C/1, G Block Dalal Street Bandra-Kurla Complex, Bandra (East) Mumbai - 400001 Mumbai - 400051 Dear Sirs, Subject: Transcript of Analyst / Institutional Investor Meetings We wish to inform you that pursuant to Regulation 30(6) of the Schedule III, of the Listing Obligations and Disclosure requirements (LODR), Regulations, 2015, please find enclosed the transcript of the Analyst / Institutional Meeting held on 5th August 2024. The said transcript is also uploaded on the website of the Corporation and can be accessed through the link: https://india-pharma.gsk.com/en-in/investors/analyst-meets/. Thanking you, Yours faithfully For GlaxoSmithKline Pharmaceuticals Limited Ajay Nadkarni Vice President - Administration, Real Estate & Company Secretary CIN: L24239MH1924PLC001151 Ajay Avinash Nadkarni Digitally signed by Ajay Avinash Nadkarni Date: 2024.08.08 11:36:16 +05'30' GSK India 5th Aug 2024 “GSKIndia AnalystMeetCall” August5,2024 MANAGEMENT: BHUSHANAKSHIKAR-MANAGINGDIRECTOR-GLAXOSMITHKLINE PHARMACEUTICALSLIMITED MR. JUBY CHANDY - CHIEF FINANCIAL OFFICER ‐‐ GLAXOSMITHKLINEPHARMACEUTICALSLIMITED GSK India 5th Aug 2024 RansomDsouza:Goodevening,everyone.Andthankyouforjoiningthecall.Intheroom,we have our managing director Mr. Bhushan Akshikar. Some of you have interacted.SomeofyouhaveinteractedwithBhushanearlier.Also,wehave ourCFOJubyChandy.Withoutfurtherado,I'dhanditovertoBhushan,who willgiveyouanintroductionandalsoafterthat,followedbythefinancial slidepresentationbyJubyandpostthatwewillopenupforquestions.Inthe meantime,ifsomeofyouhaveanyquestions,kindlyposeyourquestionsin thechatbox,andwewillrespondtothemattheend.Thankyousomuch. Overtoyou. Mr.BhushanAkshikar:Thankyouverymuch,Ransom.So,firstofallanythankstoeachoneof youfortakingourtimetobeonthiscall.Asyoumusthaveseenin theresultsthatwereannouncedtothestateonFridaylastweek,this isconcludedQ1.Butasweusetheseguetotalkaboutthefinancial numbersinafewminutes,I'llprobablyframethecontextinthenext fivetosixminutes.Justtoletyouknow,whatisitthathashappened in Q1, which has allowed us to deliver the performance and the resultsthatyoualreadysee?AsIsaidinthelastcallandtheinvestor meetingsthatwehadpriortothis,ontheleft‐handside,ifyoucan seeontheslideGSKIndiacontinuestobeoneofthemostbroadly diversified healthcare companies amongst multinationals and even otherwise operating at both ends of the spectrum in the form of preventivemedicinesandvaccinesinthepreventionarea.Andmore importantly with the general medicine’s portfolio. We continue to operate, as I said, at both ends with general medicines straddling anti‐infectives,dermatologyproductswhichareusedinthetherapy areasthattrainvitaminsandarerenewedeffortsintherespiratory. Inthevaccinesbusiness,apartfromthemainstaythatwehaveinthe GSK India 5th Aug 2024 self‐paypediatricvaccinemarket,we'vealsomadestrides.SoQ1was the first full year that we completed. That's for our foreign adult vaccinationwiththelaunchofshinglesprevention.Sothat'swhere theportfoliois.Ifyoulookatwhereweremainanchoredintermsof ourstrategicintent,it'sallaboutgrowingandgrowingwithasharp focus.Clearlyhavingstrategieswhichareallowingustomakeourbig brands even bigger and to be having to deliver that competitive performanceforallthoseidentifiedassets,bothingeneralmedicines aswellasourvaccinesportfolio. Continuetoinnovate,sosomeofourbrandsareasIsay,asyoungas30 and40years,butwecontinuetobringinnovationsbothintermsof lifecyclemanagementaswellasthekindofsciencethathealthcare practitionersexpectfromacompanylikeus.Sothatcontinuestobe oneoftheotheranchorsininnovation.Andthethirdoneisreally having agility to not only test and learn but to really, you know, kickstartactivities,especiallygiventhefactthatwearelaunchedand anewcategoryintheformoffederalvaccination,reallylearnalot along the way. Make those changes in a nimble‐footed manner to further improve the offerings. Underpinning all of that is a culture... *(Truncated for storage. See Source URL)*

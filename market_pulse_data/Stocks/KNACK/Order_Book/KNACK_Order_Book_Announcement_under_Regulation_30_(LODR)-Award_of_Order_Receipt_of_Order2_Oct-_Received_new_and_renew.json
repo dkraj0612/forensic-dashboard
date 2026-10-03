@@ -1,0 +1,8 @@
+{
+    "ticker": "KNACK",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b01ffb41-4b12-4a44-ad91-2535159840da.pdf",
+    "file_type": "pdf"
+}

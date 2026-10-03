@@ -1,0 +1,8 @@
+{
+    "ticker": "LICHSGFIN",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.lichousing.com/static-assets/pdf/concall_transcript/fy_2024_25/Q2FY25_LICHFL_Transcript.pdf?crafterSite=lichfl-corporate-website-cms&embedded=true",
+    "file_type": "pdf"
+}

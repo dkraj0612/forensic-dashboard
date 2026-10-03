@@ -1,0 +1,8 @@
+{
+    "ticker": "M&MFIN",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1fc4ab43-f7f9-411a-96e5-2eb769bd91c3.pdf",
+    "file_type": "pdf"
+}

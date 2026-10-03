@@ -1,0 +1,8 @@
+{
+    "ticker": "KRSNAA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=485d1bdc-04aa-40ee-91c3-6d3f40542407.pdf",
+    "file_type": "pdf"
+}

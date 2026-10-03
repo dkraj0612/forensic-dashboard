@@ -1,0 +1,8 @@
+{
+    "ticker": "AUBANK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AU Small Finance Bank reported robust preliminary Q2 FY27 results, with total deposits growing 28.6% YoY and the gross loan portfolio expanding 25.1% YoY, indicating strong business expansion. This growth is supported by a healthy 29.1% YoY increase in CASA deposits, maintaining a stable CASA ratio of 29.5%, which suggests sound and cost-effective funding. While these figures are provisional, they reflect strong operational performance with no immediate red flags.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a05cd63c-eea8-4582-afa1-27fd7220b9a2.pdf",
+    "file_type": "pdf"
+}

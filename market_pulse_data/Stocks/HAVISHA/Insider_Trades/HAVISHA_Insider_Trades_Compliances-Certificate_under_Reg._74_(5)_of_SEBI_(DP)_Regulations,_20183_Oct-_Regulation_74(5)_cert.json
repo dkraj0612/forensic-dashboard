@@ -1,0 +1,8 @@
+{
+    "ticker": "HAVISHA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bf303b3b-bb99-49b1-9f49-be8e88188a31.pdf",
+    "file_type": "pdf"
+}

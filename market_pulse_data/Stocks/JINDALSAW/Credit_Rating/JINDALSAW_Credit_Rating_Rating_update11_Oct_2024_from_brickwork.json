@@ -1,0 +1,8 @@
+{
+    "ticker": "JINDALSAW",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/Jindal-Saw-11Oct2024.pdf",
+    "file_type": "pdf"
+}

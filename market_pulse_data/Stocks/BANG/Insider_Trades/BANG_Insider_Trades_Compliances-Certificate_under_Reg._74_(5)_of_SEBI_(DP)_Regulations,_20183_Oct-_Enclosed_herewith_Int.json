@@ -1,0 +1,8 @@
+{
+    "ticker": "BANG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "This document confirms that Bang Overseas Limited has submitted its routine compliance certificate under SEBI Regulation 74(5) for the quarter ended September 30, 2026. The certificate, issued by their Registrar and Share Transfer Agent, KFIN Technologies Limited, verifies that all details concerning securities dematerialized or rematerialized were duly furnished to the depositories (NSDL, CDSL) and stock exchanges. This indicates adherence to regulatory requirements for share transfer processes, with no material negative impacts or red flags identified.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=251c58ec-cb1f-4055-84db-bd9e8b18401d.pdf",
+    "file_type": "pdf"
+}

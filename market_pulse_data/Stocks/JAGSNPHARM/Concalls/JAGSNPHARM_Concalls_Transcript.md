@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "JAGSNPHARM"
+  call_date: "2026-10-03"
+  reporting_period: "Transcript"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef3c1c32-5168-43ec-a8ad-37e66505d06e.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 10.60
+  total_word_volume: 6478
+---
+
+# Concall NLP Analysis: JAGSNPHARM
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef3c1c32-5168-43ec-a8ad-37e66505d06e.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Corporate Office: Plot No. 412-415, Nimai Tower, 3rd Floor, Phase-IV, Udyog Vihar, Sector-18, Gurugram -122015, Haryana (India) +91 124 4406710; info@jagsonpal.com; www.jagsonpal.com Ph.: E-mail: Website: L74899DL1978PLC009181 CIN : . Regd. Office: Innov8 3 Floor, Plot No. 211, Okhla Phase-3, New Delhi-110020 (India) , rd 13-14, Unit 3B, Phoenix Paragon Plaza, Kurla West, Mumbai, Maharashtra- 400070 Mumbai Office: July 31, 2025 The Department of Corporate Services- Listing BSE Ltd, Phiroze Jeejeebhoy Towers, Dalal Street Mumbai-400 001 Scrip Code: 507789 The Department of Corporate Services- Listing National Stock Exchange of India Ltd Exchange Plaza, C-1, Block G, Bandra Kurla Complex, Bandra (E) Mumbai - 400 051 Symbol: JAGSNPHARM Subject: Earnings Call Transcript for Jagsonpal Pharmaceuticals Limited Q1FY26 Earnings Conference Call held on July 28, 2025 at 3:00 PM. Dear Sir/ Madam, Pursuant to Regulation 30 of the Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015, please find enclosed transcript for the Jagsonpal Pharmaceuticals Limited Q1FY26 Earnings Conference Call held on Monday, July 28, 2025 at 3:00 PM for discussion of Q1FY26 Financial Results. The same is also uploaded on Company’s website. We request you to take the same on record. Thanking you, For Jagsonpal Pharmaceuticals Limited Pratham Rawal Company Secretary & Compliance officer JAGSONPAL PHARMACEUTICALS LIMITED UAGSONPAL! y -i akht A CSR Initiative PRATHAM RAWAL Digitally signed by PRATHAM RAWAL Date: 2025.07.31 11:57:33 +05'30' Page 1 of 14 “Jagsonpal Pharmaceuticals Limited Q1 FY '26 Earnings Conference Call” July 28, 2025 MANAGEMENT: MR. MANISH GUPTA - MANAGING DIRECTOR, JAGSONPAL PHARMACEUTICALS LIMITED MODERATOR: MS. SOUMYA - GO INDIA ADVISORS o India Advisors G Unbiased and !alanced Jagsonpal Pharmaceuticals Limited July 28, 2025 Page 2 of 14 Moderator: Ladies and gentlemen, good day and welcome to Jagsonpal Pharmaceuticals Limited Q1 FY '26 Earnings Conference Call. As a reminder, all participants’ lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during this conference call, please signal an operator by pressing ‘*’, then ‘0’ on your touchtone phone. Please note that this conference is being recorded. I now hand the conference over to Ms. Soumya from Go India Advisors. Thank you and over to you, ma'am. Soumya: Good evening, everyone and welcome to the Q1 FY '26 Earnings Con-Call of Jagsonpal Pharmaceuticals Limited. We have on call with us Mr. Manish Gupta - Managing Director. We must remind you that the discussion on today's call may include certain forward-looking statements and must be therefore viewed in conjunction with the risks pertaining to the business. We are sure that all of you have gone through the Q1 FY '26 Results and the Presentation released by the Company on 26th of July. I now request Mr. Manish Gupta to take us through the same and provide some insights on the quarter gone by. Post that, we will open the floor for Q&A. Thank you and over to you, sir. Manish Gupta: Thank you, Soumya and good evening or good afternoon everyone. Thank you for joining us today for Earnings Call of Jagsonpal Pharmaceuticals Limited. We are pleased to welcome you all as we share Company's progress as also discussed our growth strategies. We appreciate your interest in Jagsonpal and your continued support as we navigate through this pivotal phase of growth in this journey. Before I dive into the performance for the period, it is my duty to update you about an important recent corporate development: The employment of Mr. Sachin Jain who was appointed CFO on 5th February 2025, was terminated by the Company on 8th July 2025 within the probation period for acts of misbehavior, misconduct and misrepresentation. Overall, his conduct was not in line with the ethics and governance that we stand for as an organization, thereby necessitating this decision. I wish to put on record my deepest appreciation to our entire finance team for their strong ethics and compliance in safeguarding the Company as also the Board of Directors who acted quickly and... *(Truncated for storage. See Source URL)*

@@ -1,0 +1,8 @@
+{
+    "ticker": "GALAXYSURF",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=49ba8ba9-fa0e-4cd9-a2b7-7b1173f9cb0e.pdf",
+    "file_type": "pdf"
+}

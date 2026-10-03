@@ -1,0 +1,8 @@
+{
+    "ticker": "JARO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b05a788a-1db8-4b00-8e56-9798a16b71db.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FILATEX",
+    "category": "Business_Disruption",
+    "extraction_date": "2026-10-03",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4614a1af-1908-41f7-9c58-70d05ec37512.pdf",
+    "file_type": "pdf"
+}
