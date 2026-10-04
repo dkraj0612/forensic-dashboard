@@ -1,0 +1,8 @@
+{
+    "ticker": "PANCHMAHQ",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb7e5b73-21d3-4467-af20-02247fe0aa45.pdf",
+    "file_type": "pdf"
+}

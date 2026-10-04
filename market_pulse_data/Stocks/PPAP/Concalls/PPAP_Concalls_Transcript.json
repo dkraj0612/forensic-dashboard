@@ -1,0 +1,8 @@
+{
+    "ticker": "PPAP",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.ppapco.in/assets/pdf/quarterly_reports/PPAP_Automotive_Ltd_Q2FY19_earnings_call_transcript.pdf",
+    "file_type": "pdf"
+}

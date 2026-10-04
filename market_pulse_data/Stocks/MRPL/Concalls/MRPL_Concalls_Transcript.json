@@ -1,0 +1,8 @@
+{
+    "ticker": "MRPL",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c2f28ef-8ec3-4503-86a5-28311ee58318.pdf",
+    "file_type": "pdf"
+}

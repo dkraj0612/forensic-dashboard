@@ -1,0 +1,8 @@
+{
+    "ticker": "POWERINDIA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb13b5c5-e1ae-45a4-a082-3ff28a6d3515.pdf",
+    "file_type": "pdf"
+}

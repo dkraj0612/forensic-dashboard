@@ -1,0 +1,8 @@
+{
+    "ticker": "KSCL",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8D0EDA87_8EF6_4A5A_85A4_09C588A6FD45_122458.pdf",
+    "file_type": "pdf"
+}

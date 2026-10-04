@@ -1,0 +1,8 @@
+{
+    "ticker": "POLYMED",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b8340ad9-4f2d-49f4-b5f6-c7de62556299.pdf",
+    "file_type": "pdf"
+}

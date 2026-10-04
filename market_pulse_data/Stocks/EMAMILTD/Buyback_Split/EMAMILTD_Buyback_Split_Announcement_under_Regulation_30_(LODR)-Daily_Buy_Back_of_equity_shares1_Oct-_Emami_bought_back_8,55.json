@@ -1,0 +1,8 @@
+{
+    "ticker": "EMAMILTD",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "Emami Limited reported a daily update on its ongoing open market share buyback, purchasing 855,000 equity shares on October 1, 2026, at an average price of INR 374.89. This action, cumulatively totaling 6,122,000 shares bought back, signifies a substantial capital deployment aimed at reducing outstanding shares and enhancing shareholder value. A minor red flag is the significant formatting errors in the provided table, with cumulative share data misplaced under the \"Average Price of acquisition\" column, which could lead to misinterpretation of the buyback figures.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dbcb86c9-6274-43d6-8769-a47d3f4843a3.pdf",
+    "file_type": "pdf"
+}

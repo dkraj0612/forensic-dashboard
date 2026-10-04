@@ -1,0 +1,8 @@
+{
+    "ticker": "MANORAMA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6498dfed-92dd-4e1e-b71f-2a58bc35b1a0.pdf",
+    "file_type": "pdf"
+}

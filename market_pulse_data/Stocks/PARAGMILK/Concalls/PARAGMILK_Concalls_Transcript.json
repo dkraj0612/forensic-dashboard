@@ -1,0 +1,8 @@
+{
+    "ticker": "PARAGMILK",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=73fcc796-887b-47dd-8eaa-d77cc2bcddb0.pdf",
+    "file_type": "pdf"
+}

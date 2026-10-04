@@ -1,0 +1,8 @@
+{
+    "ticker": "JAINREC",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=40266034-bdec-43ce-890b-e21f86ac0c96.pdf",
+    "file_type": "pdf"
+}

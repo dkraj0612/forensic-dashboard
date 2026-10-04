@@ -1,0 +1,8 @@
+{
+    "ticker": "PETRONET",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c154bef3-b7c0-4a57-8e91-6e0cfa086246.pdf",
+    "file_type": "pdf"
+}

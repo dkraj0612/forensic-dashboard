@@ -1,0 +1,8 @@
+{
+    "ticker": "MODISONLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=07df96dd-fe4f-4da7-ab8a-1de47492a434.pdf",
+    "file_type": "pdf"
+}

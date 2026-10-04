@@ -1,0 +1,8 @@
+{
+    "ticker": "NETWEB",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dee5b3bd-5843-42ee-bad5-9b031108a5dd.pdf",
+    "file_type": "pdf"
+}

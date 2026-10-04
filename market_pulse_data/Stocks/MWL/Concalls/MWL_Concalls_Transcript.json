@@ -1,0 +1,8 @@
+{
+    "ticker": "MWL",
+    "category": "Concalls",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/MWL_23102023161300_MWL_TRASCRIPT_CONCALL.pdf",
+    "file_type": "pdf"
+}

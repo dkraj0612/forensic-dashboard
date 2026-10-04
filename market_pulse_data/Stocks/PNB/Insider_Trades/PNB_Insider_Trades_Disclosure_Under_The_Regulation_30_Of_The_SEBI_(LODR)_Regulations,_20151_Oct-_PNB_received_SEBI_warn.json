@@ -1,0 +1,8 @@
+{
+    "ticker": "PNB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0f46f8a9-a90d-4d4d-903a-e6376091772c.pdf",
+    "file_type": "pdf"
+}

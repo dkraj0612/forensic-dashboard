@@ -1,0 +1,8 @@
+{
+    "ticker": "HDFCBANK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "HDFC Bank reported strong business growth for the September 2026 quarter, with period-end gross advances increasing by 16.3% and total deposits by 18.8% year-over-year. A key material impact is the shift in the deposit mix, as lower-cost CASA deposits grew slower at 10.8% compared to higher-cost time deposits at 22.8%, potentially pressuring Net Interest Margins. While this trend warrants monitoring, the bank also successfully diversified its funding by mobilizing significant foreign currency deposits and issuing USD bonds, with no immediate red flags indicated in this disclosure.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b525dd-aefa-4773-93d4-08b72f426e54.pdf",
+    "file_type": "pdf"
+}

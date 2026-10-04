@@ -1,0 +1,8 @@
+{
+    "ticker": "NARMADA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=97cc85b4-f44c-4f8c-8896-170bfa8fc32d.pdf",
+    "file_type": "pdf"
+}

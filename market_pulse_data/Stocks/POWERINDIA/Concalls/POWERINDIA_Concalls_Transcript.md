@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "POWERINDIA"
+  call_date: "2026-10-04"
+  reporting_period: "Transcript"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb13b5c5-e1ae-45a4-a082-3ff28a6d3515.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 11.46
+  total_word_volume: 8085
+---
+
+# Concall NLP Analysis: POWERINDIA
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb13b5c5-e1ae-45a4-a082-3ff28a6d3515.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Hitachi Energy India Limited Registered and Corporate Office: 8th Floor, Brigade Opus, 70/401, Kodigehalli Main Road, Bengaluru - 560 092, Phone: 080 68473700 CIN: L31904KA2019PLC121597 www.hitachienergy.com/in July 30, 2024 The Secretary, Listing Department, BSE Limited, 1st Floor, Phiroze Jeejeebhoy Towers, Dalal Street, Mumbai - 400 001 Scrip Code: 543187 The Manager, Listing Department, National Stock Exchange of India Limited, ‘Exchange Plaza’, 5th Floor, Plot No. C/1, G Block, Bandra Kurla Complex, Bandra (East), Mumbai - 400 051 Scrip Symbol: POWERINDIA Subject: Transcript of the conference call with Analysts/ Investors held on July 25, 2024 Dear Sir / Madam, Pursuant to Regulation 30 and 46 of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015, we are enclosing herewith the transcript of the conference call that was organized with the Analysts/Investors on Thursday, July 25, 2024 and the same can be accessed at https://www.hitachienergy.com/in/en/investor-relations/analyst-section. Kindly take the same on your records. Thank you, Yours faithfully, For Hitachi Energy India Limited Poovanna Ammatanda General Counsel and Company Secretary Encl.: as above HITACHI lnspire the Next @Hitachi Energy Ammatanda Chinnappa Poovanna Digitally signed by Ammatanda Chinnappa Poovanna Date: 2024.07.30 22:03:57 +05'30' Public 1/20 Hitachi Energy India Limited Q1 FY25 Analyst Conference Call - July 25, 2024 MANAGEMENT: Mr. N Venu - Managing Director & CEO, Hitachi Energy India Limited Mr. Ajay Singh - Chief Financial Officer, Hitachi Energy India Limited Mr. Poovanna Ammatanda - General Counsel & Company Secretary, Hitachi Energy India Limited Ms. Manashwi Banerjee - Head of Communications, Hitachi Energy India Limited HITACHI lnspire the Nexl @Hitachi Energy Public 2/20 Moderator: Ladies and gentlemen, good day, and welcome to Hitachi Energy India Limited Q1 FY '25 Analyst Conference Call. As a reminder, all participant lines will be in the listen-only mode, and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the conference call, please signal an operator by pressing “*” then “0” on your touch-tone phone. Please note that this conference is being recorded. I now hand the conference over to Mr. N. Venu - MD and CEO, Hitachi Energy India Limited. Thank you, and over to you, sir. N Venu: Thank you, Yashashri. Good afternoon, everybody. Thank you for joining us for the Analyst Conference Call. And I hope all of you are fine and doing well. So, yesterday, we announced our Results for the 1st Quarter of FY '24-'25. And over the next 20 - 25 minutes, we will take you through these results in detail. We have uploaded the slide deck in the BSE and NSE portal, and I will refer those page numbers for ease of your understanding in case you are joining through phone. With me in the room today, I have our CFO - Ajay Singh; General Counsel and Company Secretary - Mr. Poovanna Ammatanda; and our Head of Communications, Investor Relations - Manashwi Banerjee. Throughout the last fiscal, our focus was on balancing operational complexity and efficiency, which has helped us in achieving a strong order intake, resulting in a record order backlog in the 1st Quarter of FY '24-'25. As energy transition gathers pace, investments in the power sector, especially in the renewable and grid connections continue to grow. And with the backdrop of Union Budget '24-'25 announced on Tuesday, in which energy security is a key priority, we expect more traction in terms of opportunities, in the coming quarters. So, let me start my presentation and moving to Slide #3. So, as you know that safety, integrity and quality are our license to operate and are a fundamental part of our day-to-day operations. As we review the quarter, I want to start with the good news that Hitachi Energy has been accorded with the Prestigious International Safety Award from Royal Society for the Prevention of Accidents, Gold 2024 for our Mumbai HVDC project, which is under execution. HITACHI lnspire the Next @Hitachi Energy Public 3/20 Human capital is at the heart of all decisions and employee wellbeing is paramount to us. So, this quarter, we have organized multiple awareness sessions, health camps,... *(Truncated for storage. See Source URL)*

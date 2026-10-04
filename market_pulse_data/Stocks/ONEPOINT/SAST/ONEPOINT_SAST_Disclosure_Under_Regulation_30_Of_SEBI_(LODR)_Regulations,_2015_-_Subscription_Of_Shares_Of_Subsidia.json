@@ -1,0 +1,8 @@
+{
+    "ticker": "ONEPOINT",
+    "category": "SAST",
+    "extraction_date": "2026-10-04",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ea70655e-e27b-472c-8676-adb8e0fc216b.pdf",
+    "file_type": "pdf"
+}
