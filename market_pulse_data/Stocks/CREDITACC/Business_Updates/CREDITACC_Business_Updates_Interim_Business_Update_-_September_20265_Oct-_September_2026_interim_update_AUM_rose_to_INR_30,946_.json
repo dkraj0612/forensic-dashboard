@@ -1,0 +1,8 @@
+{
+    "ticker": "CREDITACC",
+    "category": "Business_Updates",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=421fef52-c6da-460c-8f8e-ff8c013af334.pdf",
+    "file_type": "pdf"
+}

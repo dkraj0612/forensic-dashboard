@@ -1,0 +1,8 @@
+{
+    "ticker": "KAJARIACER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab3ba2f4-3527-4824-9b25-6f535f36db93.pdf",
+    "file_type": "pdf"
+}

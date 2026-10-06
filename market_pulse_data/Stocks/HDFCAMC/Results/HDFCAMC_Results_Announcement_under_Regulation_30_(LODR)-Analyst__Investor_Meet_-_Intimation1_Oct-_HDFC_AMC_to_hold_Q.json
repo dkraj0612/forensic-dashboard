@@ -1,0 +1,8 @@
+{
+    "ticker": "HDFCAMC",
+    "category": "Results",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=955bb45d-ccd2-4606-9946-4357e6410275.pdf",
+    "file_type": "pdf"
+}

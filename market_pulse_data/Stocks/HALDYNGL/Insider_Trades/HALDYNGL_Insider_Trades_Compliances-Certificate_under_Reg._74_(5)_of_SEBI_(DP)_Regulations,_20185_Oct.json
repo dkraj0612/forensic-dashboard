@@ -1,0 +1,8 @@
+{
+    "ticker": "HALDYNGL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f4294c33-28c8-4efc-8e5e-f4129981b24f.pdf",
+    "file_type": "pdf"
+}

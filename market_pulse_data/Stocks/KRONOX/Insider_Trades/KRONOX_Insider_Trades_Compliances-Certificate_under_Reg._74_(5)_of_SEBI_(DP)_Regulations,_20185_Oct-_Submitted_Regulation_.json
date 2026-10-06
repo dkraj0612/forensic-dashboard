@@ -1,0 +1,8 @@
+{
+    "ticker": "KRONOX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ca6f932d-164a-4c99-80a9-8b390f9b8b40.pdf",
+    "file_type": "pdf"
+}

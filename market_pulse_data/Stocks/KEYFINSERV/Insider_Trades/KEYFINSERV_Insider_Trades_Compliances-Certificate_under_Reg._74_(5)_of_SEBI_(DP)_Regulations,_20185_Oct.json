@@ -1,0 +1,8 @@
+{
+    "ticker": "KEYFINSERV",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=641f86a8-977e-46ee-8581-2b19a336d42c.pdf",
+    "file_type": "pdf"
+}

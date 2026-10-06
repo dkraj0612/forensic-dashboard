@@ -1,0 +1,8 @@
+{
+    "ticker": "HARIOMPIPE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ee3d7e2f-9c08-4793-91cb-69200be63e39.pdf",
+    "file_type": "pdf"
+}

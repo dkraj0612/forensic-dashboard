@@ -1,0 +1,8 @@
+{
+    "ticker": "EMUDHRA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d0fa9d7-8e5d-4778-bd23-811295e8ef2d.pdf",
+    "file_type": "pdf"
+}

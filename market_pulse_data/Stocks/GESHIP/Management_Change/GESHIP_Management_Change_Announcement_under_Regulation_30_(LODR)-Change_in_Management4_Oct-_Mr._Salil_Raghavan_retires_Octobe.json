@@ -1,0 +1,8 @@
+{
+    "ticker": "GESHIP",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0f0282e-7a58-427a-be25-3a3191cc6a93.pdf",
+    "file_type": "pdf"
+}

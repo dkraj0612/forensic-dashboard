@@ -1,0 +1,8 @@
+{
+    "ticker": "GANESHHOU",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=209300ea-92e4-4b66-ab44-6350848fcd82.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CARERATING",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d8d42d7-f42e-40a4-92f2-8739be8ddb18.pdf",
+    "file_type": "pdf"
+}

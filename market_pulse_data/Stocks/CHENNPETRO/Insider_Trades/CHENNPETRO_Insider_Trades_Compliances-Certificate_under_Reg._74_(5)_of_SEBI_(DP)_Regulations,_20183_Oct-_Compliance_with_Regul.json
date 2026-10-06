@@ -1,0 +1,8 @@
+{
+    "ticker": "CHENNPETRO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=83aebd34-72ee-46f9-b4a7-020bdd9a0652.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "GOLDIAM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d2dcd6d-6fb6-482d-991d-b4d94a56e447.pdf",
+    "file_type": "pdf"
+}

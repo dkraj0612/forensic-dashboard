@@ -1,0 +1,8 @@
+{
+    "ticker": "HNDFDS",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ac5e41d-ae30-46bd-901b-327dfe45c673.pdf",
+    "file_type": "pdf"
+}

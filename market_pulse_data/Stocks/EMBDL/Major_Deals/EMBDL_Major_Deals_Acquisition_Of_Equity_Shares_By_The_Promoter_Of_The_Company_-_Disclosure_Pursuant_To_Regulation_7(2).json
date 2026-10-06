@@ -1,0 +1,8 @@
+{
+    "ticker": "EMBDL",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7fa70dc-38ed-4774-a491-d7dd34d6d92e.pdf",
+    "file_type": "pdf"
+}

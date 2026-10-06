@@ -1,0 +1,8 @@
+{
+    "ticker": "CYIENTDLM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f6df54ce-c4ff-4640-9d7b-375560899060.pdf",
+    "file_type": "pdf"
+}

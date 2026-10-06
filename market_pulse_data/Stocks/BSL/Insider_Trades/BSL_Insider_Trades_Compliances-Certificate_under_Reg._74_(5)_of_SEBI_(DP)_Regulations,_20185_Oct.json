@@ -1,0 +1,8 @@
+{
+    "ticker": "BSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9a60b5eb-7592-4901-ab1b-37ad08afd5bf.pdf",
+    "file_type": "pdf"
+}

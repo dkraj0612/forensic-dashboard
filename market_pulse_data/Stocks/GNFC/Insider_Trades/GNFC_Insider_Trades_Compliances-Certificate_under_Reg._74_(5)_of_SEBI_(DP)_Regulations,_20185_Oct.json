@@ -1,0 +1,8 @@
+{
+    "ticker": "GNFC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=93db7617-ae63-43eb-9bbd-cd40b3cf5c50.pdf",
+    "file_type": "pdf"
+}

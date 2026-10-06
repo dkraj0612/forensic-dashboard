@@ -1,0 +1,8 @@
+{
+    "ticker": "LANDSMILL",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=37115561-9823-4e06-9022-2ed145ece83d.pdf",
+    "file_type": "pdf"
+}

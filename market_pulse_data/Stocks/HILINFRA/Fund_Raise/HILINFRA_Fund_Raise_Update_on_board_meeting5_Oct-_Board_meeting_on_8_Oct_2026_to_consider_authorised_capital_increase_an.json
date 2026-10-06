@@ -1,0 +1,8 @@
+{
+    "ticker": "HILINFRA",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=095d44c8-096b-4898-9779-08dab07c3654.pdf",
+    "file_type": "pdf"
+}

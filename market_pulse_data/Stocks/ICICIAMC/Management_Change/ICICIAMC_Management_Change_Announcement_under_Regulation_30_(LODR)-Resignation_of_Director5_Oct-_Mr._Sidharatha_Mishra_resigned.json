@@ -1,0 +1,8 @@
+{
+    "ticker": "ICICIAMC",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=87574b2c-b358-42a7-b795-cf1c5895f123.pdf",
+    "file_type": "pdf"
+}

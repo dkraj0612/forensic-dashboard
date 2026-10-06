@@ -1,0 +1,8 @@
+{
+    "ticker": "JTLIND",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=620d3548-883f-4882-a347-78aa826e2867.pdf",
+    "file_type": "pdf"
+}

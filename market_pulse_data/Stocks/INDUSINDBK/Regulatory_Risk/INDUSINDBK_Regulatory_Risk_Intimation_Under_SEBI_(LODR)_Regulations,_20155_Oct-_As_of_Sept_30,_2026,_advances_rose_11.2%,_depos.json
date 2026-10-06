@@ -1,0 +1,8 @@
+{
+    "ticker": "INDUSINDBK",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=764a2dcf-4b3f-4595-8b09-b753275e875c.pdf",
+    "file_type": "pdf"
+}

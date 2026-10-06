@@ -1,0 +1,8 @@
+{
+    "ticker": "IRB",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=101b1ab6-3c64-46d1-987b-2bc46fa21bff.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BASF",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=710c258b-8420-4b5e-a1f0-5fdefb3623e6.pdf",
+    "file_type": "pdf"
+}

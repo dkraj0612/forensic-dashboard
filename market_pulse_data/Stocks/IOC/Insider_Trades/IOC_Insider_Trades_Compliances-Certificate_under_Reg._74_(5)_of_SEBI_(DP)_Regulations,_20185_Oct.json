@@ -1,0 +1,8 @@
+{
+    "ticker": "IOC",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d4248a74-e71b-4cb2-9876-d9027f332b57.pdf",
+    "file_type": "pdf"
+}

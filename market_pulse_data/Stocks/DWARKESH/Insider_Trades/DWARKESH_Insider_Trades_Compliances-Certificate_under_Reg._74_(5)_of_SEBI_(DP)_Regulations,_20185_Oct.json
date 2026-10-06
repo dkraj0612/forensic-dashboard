@@ -1,0 +1,8 @@
+{
+    "ticker": "DWARKESH",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=382f0424-8dc8-486f-879f-cd994fdf21e8.pdf",
+    "file_type": "pdf"
+}

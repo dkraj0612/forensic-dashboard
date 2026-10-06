@@ -1,0 +1,8 @@
+{
+    "ticker": "HCG",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8511bb5b-6a94-4a45-adfa-24fda82cf9fb.pdf",
+    "file_type": "pdf"
+}

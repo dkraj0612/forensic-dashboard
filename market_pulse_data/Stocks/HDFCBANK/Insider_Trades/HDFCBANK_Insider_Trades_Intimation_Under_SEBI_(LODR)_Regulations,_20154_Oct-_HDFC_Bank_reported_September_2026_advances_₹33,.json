@@ -1,0 +1,8 @@
+{
+    "ticker": "HDFCBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=77b525dd-aefa-4773-93d4-08b72f426e54.pdf",
+    "file_type": "pdf"
+}

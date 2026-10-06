@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJHLDNG",
+    "category": "Results",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab140684-4147-4df3-b3a7-9f7c6ca0e25f.pdf",
+    "file_type": "pdf"
+}

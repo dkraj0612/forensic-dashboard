@@ -1,0 +1,8 @@
+{
+    "ticker": "ERIS",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6aa7c5ac-c88e-41e0-9afa-7de1d0f4906d.pdf",
+    "file_type": "pdf"
+}

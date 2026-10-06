@@ -1,0 +1,8 @@
+{
+    "ticker": "INDIANB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-05",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=46d5e827-858d-46f1-8739-2f722d42d343.pdf",
+    "file_type": "pdf"
+}
