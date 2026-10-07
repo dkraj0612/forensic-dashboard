@@ -1,0 +1,8 @@
+{
+    "ticker": "AEROFLEX",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fed05d27-a68b-441f-99ea-5cc097a22aed.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ANURAS",
+    "category": "SAST",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9F545F1C_AE2D_43D6_9F3A_CEA83F6F5CB5_103901.pdf",
+    "file_type": "pdf"
+}

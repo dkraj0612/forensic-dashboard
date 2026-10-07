@@ -1,0 +1,8 @@
+{
+    "ticker": "APOORVA",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d31139f-7699-4dd5-b4ac-61a821e522d4.pdf",
+    "file_type": "pdf"
+}

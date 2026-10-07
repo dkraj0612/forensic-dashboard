@@ -1,0 +1,8 @@
+{
+    "ticker": "AMBER",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5698214f-cf0f-4533-880f-25901585f266.pdf",
+    "file_type": "pdf"
+}

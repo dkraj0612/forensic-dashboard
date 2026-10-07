@@ -1,0 +1,8 @@
+{
+    "ticker": "APLLTD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1d3299cf-f81c-4eed-b3b7-06aaf1c11c25.pdf",
+    "file_type": "pdf"
+}

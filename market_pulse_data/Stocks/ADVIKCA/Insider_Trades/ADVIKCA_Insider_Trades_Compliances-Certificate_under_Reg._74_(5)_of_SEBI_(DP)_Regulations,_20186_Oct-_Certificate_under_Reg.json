@@ -1,0 +1,8 @@
+{
+    "ticker": "ADVIKCA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c6ca02ca-6cf1-4d13-b5ff-7779e2e149f8.pdf",
+    "file_type": "pdf"
+}

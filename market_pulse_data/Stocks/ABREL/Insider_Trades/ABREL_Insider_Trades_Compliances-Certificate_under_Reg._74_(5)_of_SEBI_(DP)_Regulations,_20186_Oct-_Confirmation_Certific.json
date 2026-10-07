@@ -1,0 +1,8 @@
+{
+    "ticker": "ABREL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "This document is a routine compliance filing from Aditya Birla Real Estate Limited, enclosing a certificate from its Registrar and Share Transfer Agent, MUFG Intime India Private Limited. The certificate confirms that all share dematerialisation requests for the quarter ended September 30, 2026, were processed correctly, accepted/rejected, listed, and physical certificates duly cancelled, with the register of members updated within prescribed timelines. This indicates sound operational compliance with Regulation 74(5) of SEBI DP Regulations, showing no material impacts or red flags.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3dbe27ea-d361-4021-b7c5-3930fb3ae702.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ANGELONE",
+    "category": "Dividend",
+    "extraction_date": "2026-10-06",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=28a8b549-3e20-4042-9158-9fc92dba2d87.pdf",
+    "file_type": "pdf"
+}
