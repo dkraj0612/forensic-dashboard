@@ -114,7 +114,67 @@
             "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_33_Transcript.md",
             "quarter": "Q2",
             "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_71_Transcript.md",
+            "quarter": "Q4",
+            "year": 2018
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_84_Transcript.md",
+            "quarter": "Q4",
+            "year": 2015
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_58_Transcript.md",
+            "quarter": "Q3",
+            "year": 2021
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_47_Transcript.md",
+            "quarter": "Q1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_32_Transcript.md",
+            "quarter": "Q3",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Q4_FY2025_Transcript.md",
+            "quarter": "Q4",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_75_Transcript.md",
+            "quarter": "Q3",
+            "year": 2017
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_34_Transcript.md",
+            "quarter": "Q1",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_45_Transcript.md",
+            "quarter": "H1",
+            "year": 2022
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_38_Transcript.md",
+            "quarter": "Q1",
+            "year": 2024
         }
     ],
-    "completed_files": []
+    "completed_files": [
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_81_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_82_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_84_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_83_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_75_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_74_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_71_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Fallback_Transcript_69_Transcript.md",
+        "./ScreenerData/stocks/A/AEGISLOG/concalls/AEGISLOG_Q2_FY2019_Transcript.md"
+    ]
 }
