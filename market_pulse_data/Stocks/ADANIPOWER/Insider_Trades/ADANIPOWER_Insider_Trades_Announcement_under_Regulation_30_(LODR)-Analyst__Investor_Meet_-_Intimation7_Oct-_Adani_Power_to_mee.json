@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIPOWER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1e11c9bb-0fc9-45f4-94f0-12adea406246.pdf",
+    "file_type": "pdf"
+}

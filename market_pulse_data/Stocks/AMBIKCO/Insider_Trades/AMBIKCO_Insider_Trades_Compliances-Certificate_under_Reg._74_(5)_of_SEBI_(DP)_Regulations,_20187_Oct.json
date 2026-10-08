@@ -1,0 +1,8 @@
+{
+    "ticker": "AMBIKCO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de09d856-57f1-4773-85b4-b8bb856c97bc.pdf",
+    "file_type": "pdf"
+}

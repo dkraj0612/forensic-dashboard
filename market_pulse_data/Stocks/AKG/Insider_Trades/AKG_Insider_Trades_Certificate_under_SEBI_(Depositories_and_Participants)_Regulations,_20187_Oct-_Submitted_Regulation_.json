@@ -1,0 +1,8 @@
+{
+    "ticker": "AKG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/AKG_07102026153010_Intimation_NSE_Certificate_UR_74_5_.pdf",
+    "file_type": "pdf"
+}

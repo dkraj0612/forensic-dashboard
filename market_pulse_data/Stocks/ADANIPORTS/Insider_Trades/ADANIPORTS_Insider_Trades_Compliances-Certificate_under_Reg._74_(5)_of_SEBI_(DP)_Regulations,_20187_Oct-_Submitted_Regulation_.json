@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIPORTS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "This document is a routine regulatory filing by Adani Ports and Special Economic Zone Limited (APSEZL), submitting a certificate from its Registrar and Share Transfer Agent, MUFG Intime India Private Limited, for the quarter ended September 30, 2026. The RTA confirms that all share dematerialization requests were processed correctly\u2014accepted/rejected, mutilated, cancelled, and recorded in the register of members within prescribed timelines\u2014ensuring compliance with SEBI Regulation 74(5). This is a standard operational compliance report with no material impacts or red flags identified.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=40467571-acea-44fa-87d0-9c617bce59dc.pdf",
+    "file_type": "pdf"
+}

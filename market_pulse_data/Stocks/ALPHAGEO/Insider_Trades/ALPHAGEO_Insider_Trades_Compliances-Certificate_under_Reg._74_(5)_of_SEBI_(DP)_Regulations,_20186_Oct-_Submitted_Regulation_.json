@@ -1,0 +1,8 @@
+{
+    "ticker": "ALPHAGEO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8fd43153-f0e7-4395-9d74-534626aa92e3.pdf",
+    "file_type": "pdf"
+}

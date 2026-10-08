@@ -1,0 +1,8 @@
+{
+    "ticker": "ARCL",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9a49eed8-fe6d-414a-adc4-8772e7b384ba.pdf",
+    "file_type": "pdf"
+}

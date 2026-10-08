@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIGREEN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eb9dcffd-5f90-4d21-94cd-050a891237f3.pdf",
+    "file_type": "pdf"
+}

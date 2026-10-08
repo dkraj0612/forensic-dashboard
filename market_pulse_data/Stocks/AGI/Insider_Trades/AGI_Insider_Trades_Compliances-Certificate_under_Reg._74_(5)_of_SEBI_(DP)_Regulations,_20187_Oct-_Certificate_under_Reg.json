@@ -1,0 +1,8 @@
+{
+    "ticker": "AGI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a3197956-8de5-43b7-a1ed-8e483bbda0dc.pdf",
+    "file_type": "pdf"
+}

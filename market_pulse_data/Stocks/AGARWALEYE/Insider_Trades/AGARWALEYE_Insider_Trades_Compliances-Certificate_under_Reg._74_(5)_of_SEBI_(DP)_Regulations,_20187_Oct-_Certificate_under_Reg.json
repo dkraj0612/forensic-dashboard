@@ -1,0 +1,8 @@
+{
+    "ticker": "AGARWALEYE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8ee0a4fc-b434-4c48-a38a-989bf20bc7ae.pdf",
+    "file_type": "pdf"
+}

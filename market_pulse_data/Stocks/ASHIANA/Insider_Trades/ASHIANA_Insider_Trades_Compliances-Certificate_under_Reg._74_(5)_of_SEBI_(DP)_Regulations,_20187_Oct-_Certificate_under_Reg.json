@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHIANA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e798b400-f831-464b-8bad-2d0bd3fe38b5.pdf",
+    "file_type": "pdf"
+}
