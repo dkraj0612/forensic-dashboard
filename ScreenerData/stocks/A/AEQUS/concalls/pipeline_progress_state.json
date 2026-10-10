@@ -1,0 +1,29 @@
+{
+    "indexed_files": [
+        {
+            "file_path": "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_15_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_17_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_16_Transcript.md",
+            "quarter": "Q3",
+            "year": 2025
+        },
+        {
+            "file_path": "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_14_Transcript.md",
+            "quarter": "Q4",
+            "year": 2026
+        }
+    ],
+    "completed_files": [
+        "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_17_Transcript.md",
+        "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_16_Transcript.md",
+        "./ScreenerData/stocks/A/AEQUS/concalls/AEQUS_Fallback_Transcript_15_Transcript.md"
+    ]
+}
