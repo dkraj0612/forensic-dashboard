@@ -1,0 +1,8 @@
+{
+    "ticker": "ATAM",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0d47ad3-4b84-43ac-b6e1-b8432ce75d37.pdf",
+    "file_type": "pdf"
+}

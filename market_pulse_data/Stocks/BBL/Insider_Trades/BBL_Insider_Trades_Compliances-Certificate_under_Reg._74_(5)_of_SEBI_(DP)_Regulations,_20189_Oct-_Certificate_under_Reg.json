@@ -1,0 +1,8 @@
+{
+    "ticker": "BBL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=25d085b3-d815-44fa-901d-65a0efcd34e2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ARFIN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=917a8f1e-149c-4e70-9e16-105cadeb6cd2.pdf",
+    "file_type": "pdf"
+}

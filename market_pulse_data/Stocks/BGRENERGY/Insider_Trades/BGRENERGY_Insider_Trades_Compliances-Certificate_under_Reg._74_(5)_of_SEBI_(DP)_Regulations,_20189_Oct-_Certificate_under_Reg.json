@@ -1,0 +1,8 @@
+{
+    "ticker": "BGRENERGY",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=62c2a6d1-b512-46a3-957d-e623c34e734a.pdf",
+    "file_type": "pdf"
+}

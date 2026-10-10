@@ -1,0 +1,8 @@
+{
+    "ticker": "ANDHRSUGAR",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/ANDHRSUGAR_09102026093241_ICRA.pdf",
+    "file_type": "pdf"
+}

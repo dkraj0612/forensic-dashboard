@@ -1,0 +1,8 @@
+{
+    "ticker": "BEPL",
+    "category": "New_Projects",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3427455c-c0ac-4fec-b89b-07cd38b267d4.pdf",
+    "file_type": "pdf"
+}

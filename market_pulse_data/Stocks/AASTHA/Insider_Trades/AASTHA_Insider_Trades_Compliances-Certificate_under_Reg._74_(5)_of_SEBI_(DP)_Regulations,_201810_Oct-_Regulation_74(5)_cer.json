@@ -1,0 +1,8 @@
+{
+    "ticker": "AASTHA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "Here's an executive summary of the document:  Aastha Spintex Limited reported a near threefold increase in its total demat shareholding, from 31.6 million to 88.3 million shares, in the quarter ended September 30, 2026. This substantial increase, which matches the number of shares with in-principal listing approval, presents a significant red flag as the RTA simultaneously confirmed no intimation of any 'further issue of shares' was received during the period. This discrepancy points to potential undisclosed dilution or a major equity event that lacks transparent explanation regarding how the additional shares were introduced.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4a771fbb-2118-49ff-b743-0cc7ac4aa777.pdf",
+    "file_type": "pdf"
+}

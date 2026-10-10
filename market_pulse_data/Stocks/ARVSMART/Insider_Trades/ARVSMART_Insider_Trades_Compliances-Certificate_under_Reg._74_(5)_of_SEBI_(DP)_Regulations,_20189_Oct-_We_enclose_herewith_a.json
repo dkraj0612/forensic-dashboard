@@ -1,0 +1,8 @@
+{
+    "ticker": "ARVSMART",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "This document is a routine compliance filing by Arvind SmartSpaces Limited, confirming adherence to Regulation 74(5) of the SEBI (Depositories and Participants) Regulations, 2018 for the quarter ended September 30, 2026. Their Registrar and Transfer Agent, MUFG Intime India, confirmed that all securities received for dematerialisation were processed (accepted/rejected), physical certificates were mutilated and cancelled, and the register of members was updated within prescribed timelines. The report indicates robust operational compliance with no material impacts or red flags identified.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7d274596-020c-4b11-ba18-2d6f79fa3ba7.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BROOKS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11b70150-9aa3-41b5-a066-0170153768ce.pdf",
+    "file_type": "pdf"
+}

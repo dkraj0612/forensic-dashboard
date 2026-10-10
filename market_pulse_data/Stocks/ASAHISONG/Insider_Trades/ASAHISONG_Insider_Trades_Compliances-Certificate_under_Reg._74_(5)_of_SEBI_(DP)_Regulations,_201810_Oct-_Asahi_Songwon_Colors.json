@@ -1,0 +1,8 @@
+{
+    "ticker": "ASAHISONG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=39f20e1a-aa3a-445c-8701-a02077b1f49d.pdf",
+    "file_type": "pdf"
+}

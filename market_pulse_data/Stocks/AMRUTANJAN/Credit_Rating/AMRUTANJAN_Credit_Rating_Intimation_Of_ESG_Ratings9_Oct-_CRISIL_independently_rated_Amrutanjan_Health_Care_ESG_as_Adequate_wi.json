@@ -1,0 +1,8 @@
+{
+    "ticker": "AMRUTANJAN",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e937db74-7c29-4cf0-a445-53f1646c4646.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ABCOTS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-10",
+    "ai_summary": "This document reports A B Cotspin India Limited's routine compliance with SEBI Regulation 74(5) for the quarter ended September 30, 2026. Their Registrar and Share Transfer Agent confirmed no dematerialization requests were received, primarily because the company has no physical shares outstanding, indicating a fully dematerialized equity base. This reflects robust shareholding management with no material impacts or red flags identified.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ae460d13-16cc-4085-8bea-a9792ef307fe.pdf",
+    "file_type": "pdf"
+}
