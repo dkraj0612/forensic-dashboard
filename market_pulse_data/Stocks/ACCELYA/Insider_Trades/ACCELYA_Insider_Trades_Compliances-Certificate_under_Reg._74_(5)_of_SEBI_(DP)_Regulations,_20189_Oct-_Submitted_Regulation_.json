@@ -1,0 +1,8 @@
+{
+    "ticker": "ACCELYA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=364e3218-07f1-41f0-9640-1974e1baad28.pdf",
+    "file_type": "pdf"
+}

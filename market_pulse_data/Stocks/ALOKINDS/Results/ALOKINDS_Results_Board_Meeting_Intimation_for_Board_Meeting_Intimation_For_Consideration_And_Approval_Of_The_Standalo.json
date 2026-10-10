@@ -1,0 +1,8 @@
+{
+    "ticker": "ALOKINDS",
+    "category": "Results",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9ab27171-2f21-4093-9e56-1edb1372ed75.pdf",
+    "file_type": "pdf"
+}

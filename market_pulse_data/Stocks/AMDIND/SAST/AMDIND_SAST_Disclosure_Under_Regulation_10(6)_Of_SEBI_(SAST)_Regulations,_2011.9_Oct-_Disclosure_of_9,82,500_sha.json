@@ -1,0 +1,8 @@
+{
+    "ticker": "AMDIND",
+    "category": "SAST",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1f0b0b39-ba47-4a6b-b4c9-db4b8c4a272b.pdf",
+    "file_type": "pdf"
+}

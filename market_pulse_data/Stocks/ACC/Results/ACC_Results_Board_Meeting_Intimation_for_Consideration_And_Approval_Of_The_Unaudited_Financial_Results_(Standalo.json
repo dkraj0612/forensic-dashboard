@@ -1,0 +1,8 @@
+{
+    "ticker": "ACC",
+    "category": "Results",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a60cbcb2-16cc-4ee8-9c2e-c09f1b7e3340.pdf",
+    "file_type": "pdf"
+}

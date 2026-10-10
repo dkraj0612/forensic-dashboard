@@ -1,0 +1,8 @@
+{
+    "ticker": "ADSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a5dbccd6-ba54-4d36-b13e-bbb1aa17a6e2.pdf",
+    "file_type": "pdf"
+}

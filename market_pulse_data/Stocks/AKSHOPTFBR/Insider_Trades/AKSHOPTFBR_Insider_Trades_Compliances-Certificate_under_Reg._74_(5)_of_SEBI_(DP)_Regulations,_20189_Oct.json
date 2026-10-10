@@ -1,0 +1,8 @@
+{
+    "ticker": "AKSHOPTFBR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cb951494-b45e-4e53-b74b-dbd0a71148d4.pdf",
+    "file_type": "pdf"
+}

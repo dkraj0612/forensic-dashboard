@@ -1,0 +1,8 @@
+{
+    "ticker": "ACGL",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41d2a5cc-47f4-4fe8-9219-b7a35c2f5e90.pdf",
+    "file_type": "pdf"
+}

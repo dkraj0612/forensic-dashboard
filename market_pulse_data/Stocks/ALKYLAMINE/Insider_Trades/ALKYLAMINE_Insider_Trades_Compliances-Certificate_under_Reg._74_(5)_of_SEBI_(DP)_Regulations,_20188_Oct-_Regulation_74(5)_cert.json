@@ -1,0 +1,8 @@
+{
+    "ticker": "ALKYLAMINE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ebbf22e0-317b-4383-b0eb-8ab6bf345832.pdf",
+    "file_type": "pdf"
+}

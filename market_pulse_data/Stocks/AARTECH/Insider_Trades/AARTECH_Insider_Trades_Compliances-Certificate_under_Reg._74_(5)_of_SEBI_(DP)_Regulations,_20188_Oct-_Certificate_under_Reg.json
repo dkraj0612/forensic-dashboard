@@ -1,0 +1,8 @@
+{
+    "ticker": "AARTECH",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc9690f2-1dc6-41be-8645-566981e5eb3c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AFIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff699b0f-ca66-4e94-9ed8-3efe6c0b8d8f.pdf",
+    "file_type": "pdf"
+}

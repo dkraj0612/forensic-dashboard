@@ -1,0 +1,8 @@
+{
+    "ticker": "ABANSENT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8780698d-71b9-4315-9bc4-90e53a9f5d8e.pdf",
+    "file_type": "pdf"
+}
