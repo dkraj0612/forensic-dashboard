@@ -1,0 +1,8 @@
+{
+    "ticker": "CYIENTDLM",
+    "category": "Concalls",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=74d3a24b-cd1b-4905-963a-d68beb4aee50.pdf",
+    "file_type": "pdf"
+}

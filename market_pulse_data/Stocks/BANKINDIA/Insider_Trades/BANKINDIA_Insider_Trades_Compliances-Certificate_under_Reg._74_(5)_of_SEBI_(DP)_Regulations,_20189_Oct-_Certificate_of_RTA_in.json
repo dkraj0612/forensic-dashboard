@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "Here is a 2-3 sentence executive summary:  Bank of India has filed a routine compliance certificate for the quarter ended September 30, 2026, confirming adherence to SEBI Regulation 74(5) regarding the dematerialization of shares. Its Registrar and Transfer Agent, Bigshare Services, verified that all physical share certificates received were processed, mutilated, cancelled, and recorded within the stipulated timeframe. This filing indicates proper operational control over share transfers and presents no material impacts or red flags.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ec3b5759-d002-462f-bde7-60922345e6a0.pdf",
+    "file_type": "pdf"
+}

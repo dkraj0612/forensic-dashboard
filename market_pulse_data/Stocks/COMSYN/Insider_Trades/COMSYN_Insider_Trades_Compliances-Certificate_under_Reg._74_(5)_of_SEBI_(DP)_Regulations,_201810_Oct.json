@@ -1,0 +1,8 @@
+{
+    "ticker": "COMSYN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8024faf7-1667-4ad3-9d9e-80edfa57d313.pdf",
+    "file_type": "pdf"
+}

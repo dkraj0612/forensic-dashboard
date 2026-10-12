@@ -1,0 +1,8 @@
+{
+    "ticker": "CHEMPLASTS",
+    "category": "Results",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a167bec2-fb89-49cd-969b-4a05f1f01348.pdf",
+    "file_type": "pdf"
+}

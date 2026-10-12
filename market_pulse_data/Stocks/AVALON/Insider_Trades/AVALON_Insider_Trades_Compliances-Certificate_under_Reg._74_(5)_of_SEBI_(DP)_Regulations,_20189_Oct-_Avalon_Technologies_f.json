@@ -1,0 +1,8 @@
+{
+    "ticker": "AVALON",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "This document is a routine compliance filing by Avalon Technologies Limited, confirming that its Registrar and Share Transfer Agent (R&STA) processed no dematerialization or rematerialization requests for the quarter ended September 30, 2026. This aligns with the company's statement that 100% of its shares are already in dematerialized form, indicating no material impact on its share structure. A minor red flag is the R&STA's certificate containing boilerplate language implying transaction processing, immediately followed by a clarifying note that no requests were actually received, suggesting an inconsistent use of templates.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c0788393-c42f-4cb8-be95-a55b6b9a4d54.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DBEIL",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e4dedf11-fbc5-4081-a7ad-1da27fc04293.pdf",
+    "file_type": "pdf"
+}

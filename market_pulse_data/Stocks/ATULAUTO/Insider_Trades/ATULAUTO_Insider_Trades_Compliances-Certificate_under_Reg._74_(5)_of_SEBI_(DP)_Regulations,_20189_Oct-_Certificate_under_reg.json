@@ -1,0 +1,8 @@
+{
+    "ticker": "ATULAUTO",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-11",
+    "ai_summary": "This document is a routine regulatory filing by Atul Auto Limited, confirming compliance with SEBI Regulation 74(5) for the quarter ended September 30, 2026. It certifies that all dematerialization requests were processed correctly, with securities mutilated, cancelled, and registered within prescribed timelines and listed on appropriate stock exchanges, as confirmed by their Registrar and Share Transfer Agent. This is a standard compliance report, indicating no material financial impacts or red flags.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0dca8037-5749-4e98-8ad1-9cc2d7a5c6b0.pdf",
+    "file_type": "pdf"
+}
