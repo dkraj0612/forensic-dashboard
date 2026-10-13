@@ -1,0 +1,8 @@
+{
+    "ticker": "BSOFT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1346027-47ac-44b2-aae0-bf3b25d470e2.pdf",
+    "file_type": "pdf"
+}

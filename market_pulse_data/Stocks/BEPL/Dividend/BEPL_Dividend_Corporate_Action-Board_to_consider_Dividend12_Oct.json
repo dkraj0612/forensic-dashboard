@@ -1,0 +1,8 @@
+{
+    "ticker": "BEPL",
+    "category": "Dividend",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2d49a8df-e579-454c-83ce-6986ef082bad.pdf",
+    "file_type": "pdf"
+}

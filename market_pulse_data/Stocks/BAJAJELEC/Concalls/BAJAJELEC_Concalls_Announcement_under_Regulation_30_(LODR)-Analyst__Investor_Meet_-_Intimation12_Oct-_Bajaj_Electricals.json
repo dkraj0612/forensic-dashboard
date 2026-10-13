@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJELEC",
+    "category": "Concalls",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=52a9d0e0-ddd1-4e21-bdc5-bf6f1c67de49.pdf",
+    "file_type": "pdf"
+}

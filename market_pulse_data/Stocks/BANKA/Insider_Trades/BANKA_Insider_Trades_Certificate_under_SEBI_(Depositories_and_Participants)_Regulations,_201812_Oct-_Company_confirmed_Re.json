@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKA",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/BANKA_12102026120831_Intimation_Reg74_5_.pdf",
+    "file_type": "pdf"
+}

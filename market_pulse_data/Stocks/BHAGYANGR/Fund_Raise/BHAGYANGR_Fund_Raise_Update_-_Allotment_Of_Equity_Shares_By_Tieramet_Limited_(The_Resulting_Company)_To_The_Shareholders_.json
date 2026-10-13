@@ -1,0 +1,8 @@
+{
+    "ticker": "BHAGYANGR",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b1555a6f-499e-430a-aef0-fa8846d8566b.pdf",
+    "file_type": "pdf"
+}

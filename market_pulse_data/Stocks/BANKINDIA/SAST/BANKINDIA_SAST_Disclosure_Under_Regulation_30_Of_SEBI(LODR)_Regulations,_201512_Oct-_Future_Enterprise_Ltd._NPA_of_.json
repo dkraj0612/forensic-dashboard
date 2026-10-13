@@ -1,0 +1,8 @@
+{
+    "ticker": "BANKINDIA",
+    "category": "SAST",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "Bank of India has disclosed that a Non-Performing Asset (NPA) amounting to Rs. 575.40 crore, linked to Future Enterprise Ltd., has been declared as fraud and reported to the RBI. While this represents a significant fraud event and a material red flag regarding lending practices, its immediate financial impact on the bank's profitability from this specific disclosure is mitigated as the entire outstanding amount has been fully provisioned, suggesting the loss recognition occurred previously.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=63899d08-fc8f-4df4-85c4-d28fc4908ce7.pdf",
+    "file_type": "pdf"
+}

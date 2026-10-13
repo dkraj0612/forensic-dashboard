@@ -1,0 +1,8 @@
+{
+    "ticker": "ATALREAL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-12",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5e9c7217-76ef-479b-bc07-2d4a246d1c6b.pdf",
+    "file_type": "pdf"
+}
