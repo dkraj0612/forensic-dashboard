@@ -1,0 +1,8 @@
+{
+    "ticker": "AMAGI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c78bf538-263d-4154-9bfb-973377fd9f21.pdf",
+    "file_type": "pdf"
+}

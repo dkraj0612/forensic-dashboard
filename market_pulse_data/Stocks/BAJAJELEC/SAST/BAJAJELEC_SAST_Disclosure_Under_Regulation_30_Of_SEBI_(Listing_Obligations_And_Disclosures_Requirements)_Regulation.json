@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJELEC",
+    "category": "SAST",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c7b7b0ad-2607-412f-9b22-bba4d9a0a83f.pdf",
+    "file_type": "pdf"
+}

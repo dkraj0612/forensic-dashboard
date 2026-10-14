@@ -1,0 +1,8 @@
+{
+    "ticker": "ARSSBL",
+    "category": "Results",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7d6f0b17-29ee-4938-b5f3-ddcaa4f66dad.pdf",
+    "file_type": "pdf"
+}

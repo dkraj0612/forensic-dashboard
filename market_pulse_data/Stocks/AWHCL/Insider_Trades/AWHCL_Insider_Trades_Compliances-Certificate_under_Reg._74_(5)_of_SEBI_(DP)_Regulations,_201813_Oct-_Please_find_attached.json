@@ -1,0 +1,8 @@
+{
+    "ticker": "AWHCL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ad916652-a7a0-4d38-bd7c-9c71e2357a35.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AGI",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5b780dde-da75-4d01-9ee9-648e10dfe17e.pdf",
+    "file_type": "pdf"
+}

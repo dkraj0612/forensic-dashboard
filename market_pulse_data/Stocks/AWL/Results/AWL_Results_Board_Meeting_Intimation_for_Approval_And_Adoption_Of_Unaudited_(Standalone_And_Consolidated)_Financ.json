@@ -1,0 +1,8 @@
+{
+    "ticker": "AWL",
+    "category": "Results",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=89f1cdd9-2897-4850-8bdd-ce11f536416f.pdf",
+    "file_type": "pdf"
+}

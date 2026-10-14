@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLSINHOT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/APOLSINHOT_13102026192258_Confirmation_Certificate_Reg_74signed.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AGIIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e0592549-de5e-432b-aec0-2a05087db4a8.pdf",
+    "file_type": "pdf"
+}

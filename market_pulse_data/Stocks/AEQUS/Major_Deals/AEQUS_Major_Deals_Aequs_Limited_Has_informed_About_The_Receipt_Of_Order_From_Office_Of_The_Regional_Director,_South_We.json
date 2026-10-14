@@ -1,0 +1,8 @@
+{
+    "ticker": "AEQUS",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fd983e80-69a5-48a3-8635-387c96c0a5cc.pdf",
+    "file_type": "pdf"
+}

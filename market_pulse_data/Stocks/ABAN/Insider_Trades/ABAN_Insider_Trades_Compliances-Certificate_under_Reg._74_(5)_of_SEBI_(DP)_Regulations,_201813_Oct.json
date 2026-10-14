@@ -1,0 +1,8 @@
+{
+    "ticker": "ABAN",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "This document confirms Aban Offshore Limited's compliance with SEBI Regulation 74(5) for the quarter ended September 2026, indicating proper handling of dematerialised securities and share registry updates by its Registrar and Share Transfer Agent. However, the most significant red flag and material impact is the explicit mention that Aban Offshore Limited is \"Undergoing CIRP\" (Corporate Insolvency Resolution Process), signifying severe financial distress and a significant adverse event for the company, despite this being a routine compliance filing.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d6431510-9dc3-4f70-86cd-e011c1bb9252.pdf",
+    "file_type": "pdf"
+}

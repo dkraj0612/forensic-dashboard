@@ -1,0 +1,8 @@
+{
+    "ticker": "APTUS",
+    "category": "Results",
+    "extraction_date": "2026-10-13",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e7b72563-0ada-480d-b8b0-8637120c3937.pdf",
+    "file_type": "pdf"
+}
