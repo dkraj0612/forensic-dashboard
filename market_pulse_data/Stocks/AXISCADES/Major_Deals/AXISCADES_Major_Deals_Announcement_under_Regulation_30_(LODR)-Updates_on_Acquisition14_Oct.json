@@ -1,0 +1,8 @@
+{
+    "ticker": "AXISCADES",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d80e8ef-ae4e-4b29-b778-c95dbad5d9bc.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BEML",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=61588916-f8fc-49d1-91ce-3ac1ff9866c5.pdf",
+    "file_type": "pdf"
+}

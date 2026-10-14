@@ -1,0 +1,8 @@
+{
+    "ticker": "AZADIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=581f4bf9-b793-4106-b962-b990f7aab3db.pdf",
+    "file_type": "pdf"
+}

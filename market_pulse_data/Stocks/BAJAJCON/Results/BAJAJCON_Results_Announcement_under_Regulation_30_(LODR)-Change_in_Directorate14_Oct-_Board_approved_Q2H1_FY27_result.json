@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJCON",
+    "category": "Results",
+    "extraction_date": "2026-10-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0b6c2e9e-f53d-40ee-a5b2-713c41f50f23.pdf",
+    "file_type": "pdf"
+}

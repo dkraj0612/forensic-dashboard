@@ -1,0 +1,8 @@
+{
+    "ticker": "BELDING",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-14",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e4995957-49ca-4072-9007-b8fc8fe74cb8.pdf",
+    "file_type": "pdf"
+}
