@@ -1,0 +1,8 @@
+{
+    "ticker": "AEPL",
+    "category": "Results",
+    "extraction_date": "2026-10-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3bdb75f1-d931-499c-9e79-344b4b984e59.pdf",
+    "file_type": "pdf"
+}

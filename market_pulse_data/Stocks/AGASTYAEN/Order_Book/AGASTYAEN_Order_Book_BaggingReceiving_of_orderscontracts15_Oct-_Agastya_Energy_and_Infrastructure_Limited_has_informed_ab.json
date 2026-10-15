@@ -1,0 +1,8 @@
+{
+    "ticker": "AGASTYAEN",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-15",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/SANGINITA_15102026203100_Bagging_of_Contract_IMC_solar.pdf",
+    "file_type": "pdf"
+}
