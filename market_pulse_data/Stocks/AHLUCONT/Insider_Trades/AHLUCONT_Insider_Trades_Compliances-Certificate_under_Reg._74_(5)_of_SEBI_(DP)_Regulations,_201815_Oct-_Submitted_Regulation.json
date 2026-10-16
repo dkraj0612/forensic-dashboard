@@ -1,0 +1,8 @@
+{
+    "ticker": "AHLUCONT",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-16",
+    "ai_summary": "Here's an executive summary of the provided financial document:  This document confirms Ahluwalia Contracts (India) Limited's routine compliance filing for the quarter ended September 30, 2026, under SEBI (Depository & Participants) Regulations, 2018. It includes a certificate from their Registrar and Share Transfer Agent, MUFG Intime India, affirming that securities received for dematerialization were processed and listed during the period. A key red flag is that the text of the RTA's confirmation regarding the timely processing of these requests is incomplete or corrupted, preventing a definitive assessment of full regulatory compliance based solely on this document.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ce6edccc-9b04-462f-a0d5-3cfa7c2f53d9.pdf",
+    "file_type": "pdf"
+}

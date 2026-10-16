@@ -1,0 +1,8 @@
+{
+    "ticker": "ARMEE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-16",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff6a6288-ccbf-41f3-bf9d-cedf71b2df12.pdf",
+    "file_type": "pdf"
+}
