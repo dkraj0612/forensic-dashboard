@@ -1,0 +1,8 @@
+{
+    "ticker": "BALKRISHNA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=499cfcec-7aa8-46cd-880c-9015adffc0eb.pdf",
+    "file_type": "pdf"
+}

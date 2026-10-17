@@ -1,0 +1,8 @@
+{
+    "ticker": "BENARAS",
+    "category": "Results",
+    "extraction_date": "2026-10-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80160719-6565-4743-a9f4-8c215499cadc.pdf",
+    "file_type": "pdf"
+}

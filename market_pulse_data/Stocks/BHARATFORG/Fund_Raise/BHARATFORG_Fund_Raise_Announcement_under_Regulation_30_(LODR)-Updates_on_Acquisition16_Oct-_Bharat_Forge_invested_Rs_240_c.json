@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARATFORG",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-17",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70b0a6c3-1b4c-444d-b45a-0bb76bda9969.pdf",
+    "file_type": "pdf"
+}
