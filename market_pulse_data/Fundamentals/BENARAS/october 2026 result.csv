@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-BENARAS,2026-10-11,"About
+BENARAS,2026-10-18,"About
 Incorporated in 1971, Benares Hotels Limited (BHL) operates its hotels, viz. Taj Ganges and Taj Nadesar Palace in Varanasi, and Ginger, Gondia in Maharashtra.
 [1]
 Key Points
@@ -52,7 +52,7 @@ Cash from Investing Activity +
 Cash from Financing Activity +
 Net Cash Flow
 Free Cash Flow
-CFO/OP","Debtor Days
+CFO/EBITDA  Share of operating profit converting into cash: CFO (before tax) / Operating Profit","Debtor Days
 Inventory Days
 Days Payable
 Cash Conversion Cycle
