@@ -1,0 +1,8 @@
+{
+    "ticker": "DLF",
+    "category": "Results",
+    "extraction_date": "2026-10-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=299ea7c0-33a9-4711-bbb6-d62108c80c4e.pdf",
+    "file_type": "pdf"
+}

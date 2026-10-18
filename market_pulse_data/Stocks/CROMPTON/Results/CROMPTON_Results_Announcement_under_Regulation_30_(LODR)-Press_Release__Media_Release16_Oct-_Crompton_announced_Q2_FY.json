@@ -1,0 +1,8 @@
+{
+    "ticker": "CROMPTON",
+    "category": "Results",
+    "extraction_date": "2026-10-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=73d83cbb-f52c-4cdd-879d-4a22e0b4e562.pdf",
+    "file_type": "pdf"
+}

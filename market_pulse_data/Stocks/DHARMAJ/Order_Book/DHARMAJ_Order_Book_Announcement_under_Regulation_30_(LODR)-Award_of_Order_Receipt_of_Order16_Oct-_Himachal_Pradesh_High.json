@@ -1,0 +1,8 @@
+{
+    "ticker": "DHARMAJ",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d71264d8-84f8-4fad-80cc-3d759dc34696.pdf",
+    "file_type": "pdf"
+}
