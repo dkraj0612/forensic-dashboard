@@ -1,0 +1,8 @@
+{
+    "ticker": "CMPDI",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9d7f1cf9-d9be-4e98-bf29-149a770a81ba.pdf",
+    "file_type": "pdf"
+}

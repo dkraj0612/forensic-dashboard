@@ -1,0 +1,8 @@
+{
+    "ticker": "DELTACORP",
+    "category": "Results",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=280b3957-8772-4c4a-ac57-76295127c80c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DHANUKA",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4964dcda-4e30-481e-b2e9-33b28aabbbd2.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DHARAN",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e2d6b755-59dc-49ed-970f-cfaf6e98dda6.pdf",
+    "file_type": "pdf"
+}

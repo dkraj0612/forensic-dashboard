@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEP",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=68f2365e-b2bf-455d-a2d3-ff70fabf1a7f.pdf",
+    "file_type": "pdf"
+}

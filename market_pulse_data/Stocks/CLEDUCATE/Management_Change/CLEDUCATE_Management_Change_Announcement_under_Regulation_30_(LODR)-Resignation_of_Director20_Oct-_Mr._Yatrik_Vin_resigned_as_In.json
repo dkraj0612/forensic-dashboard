@@ -1,0 +1,8 @@
+{
+    "ticker": "CLEDUCATE",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0ad7ff06-1d07-41ce-8e0e-23a61ed93247.pdf",
+    "file_type": "pdf"
+}

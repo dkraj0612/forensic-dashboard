@@ -1,0 +1,8 @@
+{
+    "ticker": "CORDELIA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-20",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1cc6f326-f1f3-4ac7-92ee-c3334aae7d39.pdf",
+    "file_type": "pdf"
+}
