@@ -1,0 +1,8 @@
+{
+    "ticker": "CEATLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-10-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e3b78726-5f18-41ba-bbcb-961f66e89017.pdf",
+    "file_type": "pdf"
+}

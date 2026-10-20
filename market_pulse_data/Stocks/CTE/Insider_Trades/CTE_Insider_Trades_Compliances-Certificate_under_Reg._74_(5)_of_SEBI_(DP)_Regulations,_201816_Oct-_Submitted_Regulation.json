@@ -1,0 +1,8 @@
+{
+    "ticker": "CTE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c55282e5-f194-4ce7-aaac-9a6576f11d65.pdf",
+    "file_type": "pdf"
+}

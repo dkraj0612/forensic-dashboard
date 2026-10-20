@@ -1,0 +1,8 @@
+{
+    "ticker": "DEEPA",
+    "category": "Concalls",
+    "extraction_date": "2026-10-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8d41b612-bccc-4822-a2e5-7150720ae30b.pdf",
+    "file_type": "pdf"
+}
