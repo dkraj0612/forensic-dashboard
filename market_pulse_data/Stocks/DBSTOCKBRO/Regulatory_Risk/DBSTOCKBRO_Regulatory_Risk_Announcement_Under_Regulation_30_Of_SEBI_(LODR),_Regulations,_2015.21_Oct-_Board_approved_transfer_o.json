@@ -1,0 +1,8 @@
+{
+    "ticker": "DBSTOCKBRO",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8292abaf-7d52-4265-a78d-97ad9c117101.pdf",
+    "file_type": "pdf"
+}

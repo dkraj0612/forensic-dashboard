@@ -1,0 +1,8 @@
+{
+    "ticker": "CRAMC",
+    "category": "Concalls",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=50278f7d-b6f9-48d8-9d61-3fe869475fd8.pdf",
+    "file_type": "pdf"
+}

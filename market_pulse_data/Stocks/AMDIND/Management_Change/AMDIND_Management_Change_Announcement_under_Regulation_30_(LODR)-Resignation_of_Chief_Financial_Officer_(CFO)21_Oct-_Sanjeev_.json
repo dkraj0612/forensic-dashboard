@@ -1,0 +1,8 @@
+{
+    "ticker": "AMDIND",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ab481034-2ef9-43c4-8b3d-8c2c93f20f53.pdf",
+    "file_type": "pdf"
+}

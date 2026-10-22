@@ -1,0 +1,8 @@
+{
+    "ticker": "DAMODARIND",
+    "category": "Results",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3084b4f6-53a7-479b-b025-aebf397f1d11.pdf",
+    "file_type": "pdf"
+}

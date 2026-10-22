@@ -1,0 +1,8 @@
+{
+    "ticker": "BAIDFIN",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=80fae27c-164f-4f1a-b6e6-c5568d782099.pdf",
+    "file_type": "pdf"
+}

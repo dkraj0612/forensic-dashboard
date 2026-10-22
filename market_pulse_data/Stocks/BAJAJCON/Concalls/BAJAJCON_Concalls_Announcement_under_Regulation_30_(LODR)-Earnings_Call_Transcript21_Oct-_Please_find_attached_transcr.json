@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJCON",
+    "category": "Concalls",
+    "extraction_date": "2026-10-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b439531b-bd03-4416-a0bb-8ada71ee3847.pdf",
+    "file_type": "pdf"
+}
