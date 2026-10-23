@@ -1,0 +1,8 @@
+{
+    "ticker": "AETHER",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b5f61eef-c08d-4ca1-8e0b-e35ad296e440.pdf",
+    "file_type": "pdf"
+}

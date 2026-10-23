@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIHANTSUP",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8a2f6716-373f-4d3a-9250-633e4343fd86.pdf",
+    "file_type": "pdf"
+}

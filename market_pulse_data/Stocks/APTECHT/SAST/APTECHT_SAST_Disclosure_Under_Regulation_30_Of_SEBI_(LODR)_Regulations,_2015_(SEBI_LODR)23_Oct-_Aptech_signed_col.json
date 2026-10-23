@@ -1,0 +1,8 @@
+{
+    "ticker": "APTECHT",
+    "category": "SAST",
+    "extraction_date": "2026-10-23",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b7cb989-16fc-443e-a666-826913811ae6.pdf",
+    "file_type": "pdf"
+}

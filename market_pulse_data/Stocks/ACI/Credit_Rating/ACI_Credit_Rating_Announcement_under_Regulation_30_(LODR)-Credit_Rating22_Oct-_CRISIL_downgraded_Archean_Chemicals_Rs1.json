@@ -1,0 +1,8 @@
+{
+    "ticker": "ACI",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-23",
+    "ai_summary": "Archean Chemical Industries Limited (ACIL) has had its long-term bank facilities rating downgraded from 'CRISIL A/Negative' to 'Crisil A-/Stable' due to moderation in its core business performance and significant financial strain from a large, unrelated silicon carbide semiconductor project. This new project, facing cost overruns and not generating revenue until after fiscal 2029, will substantially increase debt, with net debt-to-EBITDA projected to more than double from 1.53x to 3.50-3.80x, severely impacting debt metrics. Key red flags include a substantial increase in promoter share pledge to support a group entity, an ongoing Income Tax investigation, and significant execution and market risks associated with the semiconductor venture.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3629fdba-14f9-4571-b1f6-6333ad5e1808.pdf",
+    "file_type": "pdf"
+}
