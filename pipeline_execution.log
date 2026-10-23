@@ -20901,3 +20901,243 @@
 2026-10-22 03:46:04,061 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
 2026-10-22 03:46:04,061 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
 2026-10-22 03:46:04,061 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
+2026-10-23 03:48:57,909 [INFO] Initialized Model Controller. Primary: gemini-2.5-flash-lite
+2026-10-23 03:48:58,238 [INFO] 🔍 Discovered 478 unique stock directories containing transcripts. Beginning master run.
+2026-10-23 03:48:58,238 [INFO] 
+==================================================
+2026-10-23 03:48:58,238 [INFO] 📁 ENTERING DIRECTORY: ScreenerData
+2026-10-23 03:48:58,238 [INFO] ==================================================
+2026-10-23 03:48:58,238 [INFO] ✔️ All documents in ScreenerData are fully processed. Moving on.
+2026-10-23 03:48:58,238 [INFO] 
+==================================================
+2026-10-23 03:48:58,238 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,239 [INFO] ==================================================
+2026-10-23 03:48:58,239 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,239 [INFO] 
+==================================================
+2026-10-23 03:48:58,239 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,239 [INFO] ==================================================
+2026-10-23 03:48:58,240 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,240 [INFO] 
+==================================================
+2026-10-23 03:48:58,240 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,240 [INFO] ==================================================
+2026-10-23 03:48:58,240 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,240 [INFO] 
+==================================================
+2026-10-23 03:48:58,240 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,241 [INFO] ==================================================
+2026-10-23 03:48:58,241 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,241 [INFO] 
+==================================================
+2026-10-23 03:48:58,241 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,241 [INFO] ==================================================
+2026-10-23 03:48:58,242 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,242 [INFO] 
+==================================================
+2026-10-23 03:48:58,242 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,242 [INFO] ==================================================
+2026-10-23 03:48:58,242 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,242 [INFO] 
+==================================================
+2026-10-23 03:48:58,242 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,242 [INFO] ==================================================
+2026-10-23 03:48:58,243 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,243 [INFO] 
+==================================================
+2026-10-23 03:48:58,243 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,243 [INFO] ==================================================
+2026-10-23 03:48:58,243 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,243 [INFO] 
+==================================================
+2026-10-23 03:48:58,243 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,243 [INFO] ==================================================
+2026-10-23 03:48:58,244 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,244 [INFO] 
+==================================================
+2026-10-23 03:48:58,244 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,244 [INFO] ==================================================
+2026-10-23 03:48:58,244 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,244 [INFO] 
+==================================================
+2026-10-23 03:48:58,244 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,244 [INFO] ==================================================
+2026-10-23 03:48:58,245 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,245 [INFO] 
+==================================================
+2026-10-23 03:48:58,245 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,245 [INFO] ==================================================
+2026-10-23 03:48:58,245 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,245 [INFO] 
+==================================================
+2026-10-23 03:48:58,246 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,246 [INFO] ==================================================
+2026-10-23 03:48:58,246 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,246 [INFO] 
+==================================================
+2026-10-23 03:48:58,246 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,246 [INFO] ==================================================
+2026-10-23 03:48:58,246 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,247 [INFO] 
+==================================================
+2026-10-23 03:48:58,247 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,247 [INFO] ==================================================
+2026-10-23 03:48:58,247 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,247 [INFO] 
+==================================================
+2026-10-23 03:48:58,247 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,247 [INFO] ==================================================
+2026-10-23 03:48:58,248 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,248 [INFO] 
+==================================================
+2026-10-23 03:48:58,248 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,248 [INFO] ==================================================
+2026-10-23 03:48:58,249 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,249 [INFO] 
+==================================================
+2026-10-23 03:48:58,249 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,249 [INFO] ==================================================
+2026-10-23 03:48:58,249 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,249 [INFO] 
+==================================================
+2026-10-23 03:48:58,249 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,249 [INFO] ==================================================
+2026-10-23 03:48:58,250 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,250 [INFO] 
+==================================================
+2026-10-23 03:48:58,250 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,250 [INFO] ==================================================
+2026-10-23 03:48:58,250 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,251 [INFO] 
+==================================================
+2026-10-23 03:48:58,251 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,251 [INFO] ==================================================
+2026-10-23 03:48:58,251 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,251 [INFO] 
+==================================================
+2026-10-23 03:48:58,251 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,251 [INFO] ==================================================
+2026-10-23 03:48:58,252 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,252 [INFO] 
+==================================================
+2026-10-23 03:48:58,252 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,252 [INFO] ==================================================
+2026-10-23 03:48:58,252 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,252 [INFO] 
+==================================================
+2026-10-23 03:48:58,252 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,252 [INFO] ==================================================
+2026-10-23 03:48:58,253 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,253 [INFO] 
+==================================================
+2026-10-23 03:48:58,253 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,253 [INFO] ==================================================
+2026-10-23 03:48:58,254 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,254 [INFO] 
+==================================================
+2026-10-23 03:48:58,254 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,254 [INFO] ==================================================
+2026-10-23 03:48:58,254 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,254 [INFO] 
+==================================================
+2026-10-23 03:48:58,254 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,254 [INFO] ==================================================
+2026-10-23 03:48:58,255 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,255 [INFO] 
+==================================================
+2026-10-23 03:48:58,255 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,255 [INFO] ==================================================
+2026-10-23 03:48:58,255 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,255 [INFO] 
+==================================================
+2026-10-23 03:48:58,255 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,255 [INFO] ==================================================
+2026-10-23 03:48:58,256 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,256 [INFO] 
+==================================================
+2026-10-23 03:48:58,256 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,256 [INFO] ==================================================
+2026-10-23 03:48:58,256 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,257 [INFO] 
+==================================================
+2026-10-23 03:48:58,257 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,257 [INFO] ==================================================
+2026-10-23 03:48:58,257 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,257 [INFO] 
+==================================================
+2026-10-23 03:48:58,257 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,257 [INFO] ==================================================
+2026-10-23 03:48:58,258 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,258 [INFO] 
+==================================================
+2026-10-23 03:48:58,258 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,258 [INFO] ==================================================
+2026-10-23 03:48:58,258 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,258 [INFO] 
+==================================================
+2026-10-23 03:48:58,258 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,258 [INFO] ==================================================
+2026-10-23 03:48:58,259 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,259 [INFO] 
+==================================================
+2026-10-23 03:48:58,259 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,259 [INFO] ==================================================
+2026-10-23 03:48:58,260 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,260 [INFO] 
+==================================================
+2026-10-23 03:48:58,260 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,260 [INFO] ==================================================
+2026-10-23 03:48:58,260 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,260 [INFO] 
+==================================================
+2026-10-23 03:48:58,261 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,261 [INFO] ==================================================
+2026-10-23 03:48:58,261 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,261 [INFO] 
+==================================================
+2026-10-23 03:48:58,261 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,261 [INFO] ==================================================
+2026-10-23 03:48:58,262 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,262 [INFO] 
+==================================================
+2026-10-23 03:48:58,262 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,262 [INFO] ==================================================
+2026-10-23 03:48:58,262 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,262 [INFO] 
+==================================================
+2026-10-23 03:48:58,262 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,262 [INFO] ==================================================
+2026-10-23 03:48:58,263 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,263 [INFO] 
+==================================================
+2026-10-23 03:48:58,263 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,263 [INFO] ==================================================
+2026-10-23 03:48:58,263 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,263 [INFO] 
+==================================================
+2026-10-23 03:48:58,263 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,263 [INFO] ==================================================
+2026-10-23 03:48:58,264 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,264 [INFO] 
+==================================================
+2026-10-23 03:48:58,264 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,264 [INFO] ==================================================
+2026-10-23 03:48:58,265 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,265 [INFO] 
+==================================================
+2026-10-23 03:48:58,265 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,265 [INFO] ==================================================
+2026-10-23 03:48:58,265 [INFO] ✔️ All documents in concalls are fully processed. Moving on.
+2026-10-23 03:48:58,265 [INFO] 
+==================================================
+2026-10-23 03:48:58,265 [INFO] 📁 ENTERING DIRECTORY: concalls
+2026-10-23 03:48:58,265 [INFO] ==================================================
+2026-10-23 03:48:58,266 [INFO] Commencing generation for 1 pending files...
+2026-10-23 03:48:58,270 [INFO] Analyzing [ Q4_2026 ]
+2026-10-23 03:48:58,571 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash-lite.
+2026-10-23 03:48:58,572 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash-lite.
+2026-10-23 03:48:58,572 [INFO] 🔄 Dynamic Shift: Switched to fallback model -> gemini-2.5-flash
+2026-10-23 03:48:58,843 [ERROR] 🛑 Rate Limit Hit (ResourceExhausted) on gemini-2.5-flash.
+2026-10-23 03:48:58,843 [WARNING] ⚠️ API-level block detected for gemini-2.5-flash.
+2026-10-23 03:48:58,843 [WARNING] 🚨 ALL TOKEN POOLS EXHAUSTED or API QUOTA HIT.
+2026-10-23 03:48:58,843 [INFO] Triggering graceful exit. The pipeline will resume automatically on the next scheduled GitHub run.
