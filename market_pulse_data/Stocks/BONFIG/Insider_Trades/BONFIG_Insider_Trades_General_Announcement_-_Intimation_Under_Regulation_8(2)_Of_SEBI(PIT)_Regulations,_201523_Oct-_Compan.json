@@ -1,0 +1,8 @@
+{
+    "ticker": "BONFIG",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1dc0a061-9ba3-4d45-8a98-e0ad3baa3f28.pdf",
+    "file_type": "pdf"
+}

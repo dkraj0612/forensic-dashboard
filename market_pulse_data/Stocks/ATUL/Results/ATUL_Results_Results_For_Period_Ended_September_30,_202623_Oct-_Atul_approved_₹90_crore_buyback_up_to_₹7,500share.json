@@ -1,0 +1,8 @@
+{
+    "ticker": "ATUL",
+    "category": "Results",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a543940a-213a-4e3d-bc88-bf3530c86cdd.pdf",
+    "file_type": "pdf"
+}

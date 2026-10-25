@@ -1,0 +1,8 @@
+{
+    "ticker": "BASML",
+    "category": "Results",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a1f7545d-4f30-4796-ae31-1cc29eee450f.pdf",
+    "file_type": "pdf"
+}

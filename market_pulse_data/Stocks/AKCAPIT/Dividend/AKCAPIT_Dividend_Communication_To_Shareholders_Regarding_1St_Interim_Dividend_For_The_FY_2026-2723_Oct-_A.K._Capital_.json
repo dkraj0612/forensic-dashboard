@@ -1,0 +1,8 @@
+{
+    "ticker": "AKCAPIT",
+    "category": "Dividend",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "**Executive Summary:**  A. K. Capital Services Limited has processed its first interim dividend for FY 2026-27, distributing INR 12 per equity share to eligible shareholders. A material impact is that a notable portion of payments failed due to shareholders having incomplete KYC, incorrect bank details, or dormant accounts, requiring them to update their information to receive the withheld dividends. This situation is not a company financial red flag but highlights widespread shareholder non-compliance with regulatory requirements, creating an administrative burden for the company and delaying dividend access for affected investors until rectified.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9eb5a55c-3c09-40e7-94ca-3264e10924d0.pdf",
+    "file_type": "pdf"
+}

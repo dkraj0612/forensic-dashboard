@@ -1,0 +1,8 @@
+{
+    "ticker": "BPCL",
+    "category": "Results",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e84e2b25-4c3b-4ac9-bff3-99ca57a32d21.pdf",
+    "file_type": "pdf"
+}

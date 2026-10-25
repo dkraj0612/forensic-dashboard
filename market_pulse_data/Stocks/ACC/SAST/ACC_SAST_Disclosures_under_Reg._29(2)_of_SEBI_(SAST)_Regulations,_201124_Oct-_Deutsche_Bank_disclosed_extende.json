@@ -1,0 +1,8 @@
+{
+    "ticker": "ACC",
+    "category": "SAST",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "Deutsche Bank AG, acting as a security agent, has disclosed the refinancing of a loan facility for Endeavour Trade and Investment Ltd, which continues to secure an existing encumbrance of 56.69% of ACC Limited's shares. This transaction does not change the number of ACC shares under encumbrance; rather, it extends the benefit of the existing security to new lenders for the refinanced debt. While not a new encumbrance, the ongoing pledging of a majority stake in ACC Limited, held through a complex structure of intermediary entities, signifies potential control shifts if the borrower defaults.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=EC8759E1_4B04_4C5A_A3D7_0F596AD4DA80_111843.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BAYERCROP",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-25",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4d8fcd1d-1437-4466-8bfa-b512b6e70c54.pdf",
+    "file_type": "pdf"
+}
