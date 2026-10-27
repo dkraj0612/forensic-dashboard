@@ -2,7 +2,7 @@ const screenerData = {
   "RELIANCE": {
     "name": "About",
     "sector": "Energy",
-    "price": 1202.0,
+    "price": 1200.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -152,11 +152,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 71.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -193,7 +193,7 @@ const screenerData = {
   "TCS": {
     "name": "About",
     "sector": "Technology",
-    "price": 2536.0,
+    "price": 2500.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -202,7 +202,7 @@ const screenerData = {
     "roe": 51.8,
     "roce": 51.8,
     "debtEquity": 0.0,
-    "dividend": 2.52,
+    "dividend": 2.56,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -338,17 +338,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 77.5%"
     ],
     "cons": [
-      "Stock is trading at 7.71 times its book value",
+      "Stock is trading at 7.60 times its book value",
       "The company has delivered a poor sales growth of 10.2% over past five years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 65.0
+        "revenue": 84.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -385,7 +385,7 @@ const screenerData = {
   "HDFCBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 688.0,
+    "price": 680.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -394,7 +394,7 @@ const screenerData = {
     "roe": 13.6,
     "roce": 13.6,
     "debtEquity": 0.0,
-    "dividend": 1.89,
+    "dividend": 1.91,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -522,11 +522,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -563,7 +563,7 @@ const screenerData = {
   "INFY": {
     "name": "About",
     "sector": "Technology",
-    "price": 1165.0,
+    "price": 1162.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -572,7 +572,7 @@ const screenerData = {
     "roe": 31.9,
     "roce": 31.9,
     "debtEquity": 0.0,
-    "dividend": 4.12,
+    "dividend": 4.13,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -708,7 +708,7 @@ const screenerData = {
     ],
     "pros": [
       "Company is almost debt free.",
-      "Stock is providing a good dividend yield of 4.12%.",
+      "Stock is providing a good dividend yield of 4.13%.",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 30.8%",
       "Company has been maintaining a healthy dividend payout of 68.5%",
       "Company's working capital requirements have reduced from 42.0 days to 32.7 days"
@@ -719,11 +719,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 66.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -760,7 +760,7 @@ const screenerData = {
   "ICICIBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 1402.0,
+    "price": 1388.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -769,7 +769,7 @@ const screenerData = {
     "roe": 15.9,
     "roce": 15.9,
     "debtEquity": 0.0,
-    "dividend": 0.86,
+    "dividend": 0.87,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -888,7 +888,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 2.60 times its book value",
+      "Stock is trading at 2.57 times its book value",
       "Company has low interest coverage ratio.",
       "Contingent liabilities of Rs.65,46,110 Cr.",
       "Company might be capitalizing the interest cost",
@@ -898,11 +898,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 60.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -948,7 +948,7 @@ const screenerData = {
     "roe": 31.0,
     "roce": 31.0,
     "debtEquity": 0.0,
-    "dividend": 2.25,
+    "dividend": 2.26,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -1084,18 +1084,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 92.4%"
     ],
     "cons": [
-      "Stock is trading at 8.78 times its book value",
+      "Stock is trading at 8.77 times its book value",
       "The company has delivered a poor sales growth of 6.51% over past five years.",
       "Earnings include an other income of Rs.4,933 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 79.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -1132,7 +1132,7 @@ const screenerData = {
   "SBIN": {
     "name": "About",
     "sector": "Financials",
-    "price": 960.0,
+    "price": 945.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -1141,7 +1141,7 @@ const screenerData = {
     "roe": 15.4,
     "roce": 15.4,
     "debtEquity": 0.0,
-    "dividend": 1.81,
+    "dividend": 1.84,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -1271,11 +1271,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 70.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -1312,7 +1312,7 @@ const screenerData = {
   "BHARTIARTL": {
     "name": "About",
     "sector": "Technology",
-    "price": 1917.0,
+    "price": 1978.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -1321,7 +1321,7 @@ const screenerData = {
     "roe": 20.3,
     "roce": 20.3,
     "debtEquity": 0.0,
-    "dividend": 1.25,
+    "dividend": 1.21,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -1460,17 +1460,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 48.0%"
     ],
     "cons": [
-      "Stock is trading at 7.84 times its book value",
+      "Stock is trading at 8.09 times its book value",
       "Promoter holding has decreased over last 3 years: -4.68%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 85.0
+        "revenue": 65.0
       },
       {
         "name": "Exports",
-        "revenue": 35.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -1516,7 +1516,7 @@ const screenerData = {
     "roe": 29.3,
     "roce": 29.3,
     "debtEquity": 0.0,
-    "dividend": 5.57,
+    "dividend": 5.58,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -1646,7 +1646,7 @@ const screenerData = {
     ],
     "pros": [
       "Company is almost debt free.",
-      "Stock is providing a good dividend yield of 5.57%.",
+      "Stock is providing a good dividend yield of 5.58%.",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 35.2%",
       "Company has been maintaining a healthy dividend payout of 74.5%"
     ],
@@ -1656,11 +1656,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -1697,7 +1697,7 @@ const screenerData = {
   "KOTAKBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 441.0,
+    "price": 443.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -1835,11 +1835,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 80.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -1876,7 +1876,7 @@ const screenerData = {
   "LT": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3677.0,
+    "price": 3670.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -1885,7 +1885,7 @@ const screenerData = {
     "roe": 15.9,
     "roce": 15.9,
     "debtEquity": 0.0,
-    "dividend": 1.03,
+    "dividend": 1.04,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -2017,16 +2017,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 33.1%"
     ],
     "cons": [
-      "Stock is trading at 4.63 times its book value"
+      "Stock is trading at 4.62 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 74.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 24.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -2063,7 +2063,7 @@ const screenerData = {
   "AXISBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 1225.0,
+    "price": 1206.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -2201,11 +2201,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -2242,7 +2242,7 @@ const screenerData = {
   "ASIANPAINT": {
     "name": "About",
     "sector": "Consumer",
-    "price": 2323.0,
+    "price": 2290.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -2251,7 +2251,7 @@ const screenerData = {
     "roe": 21.8,
     "roce": 21.8,
     "debtEquity": 0.0,
-    "dividend": 1.18,
+    "dividend": 1.2,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -2389,17 +2389,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 61.4%"
     ],
     "cons": [
-      "Stock is trading at 10.4 times its book value",
+      "Stock is trading at 10.3 times its book value",
       "The company has delivered a poor sales growth of 10.4% over past five years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 65.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -2436,7 +2436,7 @@ const screenerData = {
   "MARUTI": {
     "name": "About",
     "sector": "Consumer",
-    "price": 11200.0,
+    "price": 11455.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -2445,7 +2445,7 @@ const screenerData = {
     "roe": 14.3,
     "roce": 14.3,
     "debtEquity": 0.0,
-    "dividend": 1.25,
+    "dividend": 1.22,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -2588,11 +2588,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -2629,7 +2629,7 @@ const screenerData = {
   "SUNPHARMA": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 1743.0,
+    "price": 1760.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -2638,7 +2638,7 @@ const screenerData = {
     "roe": 16.0,
     "roce": 16.0,
     "debtEquity": 0.0,
-    "dividend": 0.92,
+    "dividend": 0.91,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -2780,11 +2780,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -2821,7 +2821,7 @@ const screenerData = {
   "TITAN": {
     "name": "About",
     "sector": "Consumer",
-    "price": 4325.0,
+    "price": 4367.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -2830,7 +2830,7 @@ const screenerData = {
     "roe": 37.7,
     "roce": 37.7,
     "debtEquity": 0.0,
-    "dividend": 0.35,
+    "dividend": 0.34,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -2971,17 +2971,17 @@ const screenerData = {
       "Company's median sales growth is 22.1% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 24.4 times its book value",
+      "Stock is trading at 24.7 times its book value",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 69.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -3018,7 +3018,7 @@ const screenerData = {
   "BAJFINANCE": {
     "name": "About",
     "sector": "Financials",
-    "price": 920.0,
+    "price": 913.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3154,14 +3154,14 @@ const screenerData = {
       "Company's median sales growth is 29.4% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 4.65 times its book value",
+      "Stock is trading at 4.62 times its book value",
       "Company has low interest coverage ratio.",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 68.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
@@ -3202,7 +3202,7 @@ const screenerData = {
   "HCLTECH": {
     "name": "About",
     "sector": "Technology",
-    "price": 1418.0,
+    "price": 1416.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3356,11 +3356,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 83.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -3397,7 +3397,7 @@ const screenerData = {
   "ULTRACEMCO": {
     "name": "About",
     "sector": "Materials",
-    "price": 11172.0,
+    "price": 11195.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3406,7 +3406,7 @@ const screenerData = {
     "roe": 11.1,
     "roce": 11.1,
     "debtEquity": 0.0,
-    "dividend": 2.15,
+    "dividend": 2.14,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -3544,18 +3544,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 51.1%"
     ],
     "cons": [
-      "Stock is trading at 4.48 times its book value",
+      "Stock is trading at 4.49 times its book value",
       "Promoter holding has decreased over last quarter: -0.85%",
       "Company has a low return on equity of 10.7% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 73.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -3592,7 +3592,7 @@ const screenerData = {
   "NESTLEIND": {
     "name": "About",
     "sector": "Consumer",
-    "price": 1168.0,
+    "price": 1176.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3722,16 +3722,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 75.4%"
     ],
     "cons": [
-      "Stock is trading at 39.0 times its book value"
+      "Stock is trading at 39.2 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 69.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -3768,7 +3768,7 @@ const screenerData = {
   "POWERGRID": {
     "name": "About",
     "sector": "Utilities",
-    "price": 247.0,
+    "price": 252.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3777,7 +3777,7 @@ const screenerData = {
     "roe": 15.3,
     "roce": 15.3,
     "debtEquity": 0.0,
-    "dividend": 3.65,
+    "dividend": 3.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -3919,11 +3919,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 84.0
+        "revenue": 75.0
       },
       {
         "name": "Exports",
-        "revenue": 34.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -3960,7 +3960,7 @@ const screenerData = {
   "NTPC": {
     "name": "About",
     "sector": "Utilities",
-    "price": 300.0,
+    "price": 303.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -3969,7 +3969,7 @@ const screenerData = {
     "roe": 15.1,
     "roce": 15.1,
     "debtEquity": 0.0,
-    "dividend": 3.0,
+    "dividend": 2.97,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -4111,11 +4111,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 64.0
+        "revenue": 83.0
       },
       {
         "name": "Exports",
-        "revenue": 34.0
+        "revenue": 23.0
       },
       {
         "name": "Other",
@@ -4152,7 +4152,7 @@ const screenerData = {
   "TATASTEEL": {
     "name": "About",
     "sector": "Materials",
-    "price": 170.0,
+    "price": 172.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -4161,7 +4161,7 @@ const screenerData = {
     "roe": 11.7,
     "roce": 11.7,
     "debtEquity": 0.0,
-    "dividend": 2.35,
+    "dividend": 2.33,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -4302,11 +4302,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 60.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -4343,7 +4343,7 @@ const screenerData = {
   "JSWSTEEL": {
     "name": "About",
     "sector": "Materials",
-    "price": 1258.0,
+    "price": 1247.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -4352,7 +4352,7 @@ const screenerData = {
     "roe": 10.2,
     "roce": 10.2,
     "debtEquity": 0.0,
-    "dividend": 0.56,
+    "dividend": 0.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -4491,18 +4491,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 19.8%"
     ],
     "cons": [
-      "Stock is trading at 2.71 times its book value",
+      "Stock is trading at 2.69 times its book value",
       "Company has a low return on equity of 8.97% over last 3 years.",
       "Earnings include an other income of Rs.19,430 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -4539,7 +4539,7 @@ const screenerData = {
   "GRASIM": {
     "name": "About",
     "sector": "Materials",
-    "price": 2950.0,
+    "price": 2914.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -4689,11 +4689,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 77.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -4730,7 +4730,7 @@ const screenerData = {
   "ADANIENT": {
     "name": "About",
     "sector": "Industrials",
-    "price": 2512.0,
+    "price": 2490.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -4871,7 +4871,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 4.01 times its book value",
+      "Stock is trading at 3.97 times its book value",
       "Company has low interest coverage ratio.",
       "Promoter holding has decreased over last quarter: -2.87%",
       "Company has a low return on equity of 7.31% over last 3 years.",
@@ -4882,11 +4882,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 71.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -4923,7 +4923,7 @@ const screenerData = {
   "ADANIPORTS": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1749.0,
+    "price": 1764.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5065,17 +5065,17 @@ const screenerData = {
       "Company's median sales growth is 20.3% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 4.20 times its book value",
+      "Stock is trading at 4.23 times its book value",
       "Tax rate seems low"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 70.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -5112,7 +5112,7 @@ const screenerData = {
   "COALINDIA": {
     "name": "About",
     "sector": "Energy",
-    "price": 404.0,
+    "price": 399.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5121,7 +5121,7 @@ const screenerData = {
     "roe": 28.2,
     "roce": 28.2,
     "debtEquity": 0.0,
-    "dividend": 6.55,
+    "dividend": 6.65,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -5253,7 +5253,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is providing a good dividend yield of 6.55%.",
+      "Stock is providing a good dividend yield of 6.65%.",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 37.9%",
       "Company has been maintaining a healthy dividend payout of 46.8%"
     ],
@@ -5263,11 +5263,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 60.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 20.0
       },
       {
         "name": "Other",
@@ -5304,7 +5304,7 @@ const screenerData = {
   "ONGC": {
     "name": "About",
     "sector": "Energy",
-    "price": 228.0,
+    "price": 229.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5313,7 +5313,7 @@ const screenerData = {
     "roe": 11.6,
     "roce": 11.6,
     "debtEquity": 0.0,
-    "dividend": 5.8,
+    "dividend": 5.78,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -5445,7 +5445,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.77 times its book value",
+      "Stock is trading at 0.78 times its book value",
       "Company has been maintaining a healthy dividend payout of 32.0%"
     ],
     "cons": [
@@ -5454,11 +5454,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 88.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -5495,7 +5495,7 @@ const screenerData = {
   "IOC": {
     "name": "About",
     "sector": "Energy",
-    "price": 131.0,
+    "price": 132.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5504,7 +5504,7 @@ const screenerData = {
     "roe": 20.5,
     "roce": 20.5,
     "debtEquity": 0.0,
-    "dividend": 6.31,
+    "dividend": 6.27,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -5636,8 +5636,8 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.84 times its book value",
-      "Stock is providing a good dividend yield of 6.31%.",
+      "Stock is trading at 0.85 times its book value",
+      "Stock is providing a good dividend yield of 6.27%.",
       "Company has been maintaining a healthy dividend payout of 32.3%"
     ],
     "cons": [
@@ -5650,7 +5650,7 @@ const screenerData = {
       },
       {
         "name": "Exports",
-        "revenue": 34.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -5687,7 +5687,7 @@ const screenerData = {
   "BPCL": {
     "name": "About",
     "sector": "Energy",
-    "price": 290.0,
+    "price": 295.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5696,7 +5696,7 @@ const screenerData = {
     "roe": 28.8,
     "roce": 28.8,
     "debtEquity": 0.0,
-    "dividend": 6.04,
+    "dividend": 5.93,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -5831,7 +5831,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is providing a good dividend yield of 6.04%.",
+      "Stock is providing a good dividend yield of 5.93%.",
       "Company is expected to give good quarter",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 28.6%",
       "Company has been maintaining a healthy dividend payout of 31.5%"
@@ -5842,11 +5842,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 79.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 29.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -5883,7 +5883,7 @@ const screenerData = {
   "HINDPETRO": {
     "name": "About",
     "sector": "Energy",
-    "price": 342.0,
+    "price": 353.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -5892,7 +5892,7 @@ const screenerData = {
     "roe": 30.9,
     "roce": 30.9,
     "debtEquity": 0.0,
-    "dividend": 7.09,
+    "dividend": 6.87,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -6024,7 +6024,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is providing a good dividend yield of 7.09%.",
+      "Stock is providing a good dividend yield of 6.87%.",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 27.8%",
       "Company has been maintaining a healthy dividend payout of 29.9%"
     ],
@@ -6035,11 +6035,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 65.0
+        "revenue": 61.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 21.0
       },
       {
         "name": "Other",
@@ -6076,7 +6076,7 @@ const screenerData = {
   "WIPRO": {
     "name": "About",
     "sector": "Technology",
-    "price": 189.0,
+    "price": 187.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -6085,7 +6085,7 @@ const screenerData = {
     "roe": 15.5,
     "roce": 15.5,
     "debtEquity": 0.0,
-    "dividend": 5.82,
+    "dividend": 5.88,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -6217,7 +6217,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is providing a good dividend yield of 5.82%.",
+      "Stock is providing a good dividend yield of 5.88%.",
       "Company has been maintaining a healthy dividend payout of 46.7%"
     ],
     "cons": [
@@ -6226,11 +6226,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 84.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -6267,7 +6267,7 @@ const screenerData = {
   "TECHM": {
     "name": "About",
     "sector": "Technology",
-    "price": 1798.0,
+    "price": 1807.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -6276,7 +6276,7 @@ const screenerData = {
     "roe": 17.5,
     "roce": 17.5,
     "debtEquity": 0.0,
-    "dividend": 2.84,
+    "dividend": 2.83,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -6418,11 +6418,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -6459,7 +6459,7 @@ const screenerData = {
   "DRREDDY": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 1303.0,
+    "price": 1305.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -6608,11 +6608,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 61.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -6649,7 +6649,7 @@ const screenerData = {
   "CIPLA": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 1353.0,
+    "price": 1350.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -6677,13 +6677,6 @@ const screenerData = {
     "altmanZ": 0.0,
     "financials": {},
     "quarterly": {
-      "Jun_2023": {
-        "sales": 6329.0,
-        "expenses": 4835.0,
-        "opProfit": 24.0,
-        "netProfit": 998.0,
-        "eps": 12.33
-      },
       "Sep_2023": {
         "sales": 6678.0,
         "expenses": 4944.0,
@@ -6767,6 +6760,13 @@ const screenerData = {
         "opProfit": 17.0,
         "netProfit": 786.0,
         "eps": 9.77
+      },
+      "Sep_2026": {
+        "sales": 7404.0,
+        "expenses": 6016.0,
+        "opProfit": 19.0,
+        "netProfit": 852.0,
+        "eps": 10.86
       }
     },
     "shareholding": [
@@ -6800,11 +6800,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 88.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -6841,7 +6841,7 @@ const screenerData = {
   "DIVISLAB": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 9070.0,
+    "price": 9478.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -6850,7 +6850,7 @@ const screenerData = {
     "roe": 16.5,
     "roce": 16.5,
     "debtEquity": 0.0,
-    "dividend": 0.33,
+    "dividend": 0.32,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -6986,17 +6986,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 39.0%"
     ],
     "cons": [
-      "Stock is trading at 14.4 times its book value",
+      "Stock is trading at 15.0 times its book value",
       "The company has delivered a poor sales growth of 8.67% over past five years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -7033,7 +7033,7 @@ const screenerData = {
   "APOLLOHOSP": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 7815.0,
+    "price": 7800.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7042,7 +7042,7 @@ const screenerData = {
     "roe": 21.2,
     "roce": 21.2,
     "debtEquity": 0.0,
-    "dividend": 0.25,
+    "dividend": 0.26,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -7178,17 +7178,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 17.7%"
     ],
     "cons": [
-      "Stock is trading at 11.9 times its book value",
+      "Stock is trading at 11.8 times its book value",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 32.0
+        "revenue": 38.0
       },
       {
         "name": "Other",
@@ -7225,7 +7225,7 @@ const screenerData = {
   "BRITANNIA": {
     "name": "About",
     "sector": "Consumer",
-    "price": 4570.0,
+    "price": 4560.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7370,17 +7370,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 83.9%"
     ],
     "cons": [
-      "Stock is trading at 21.6 times its book value",
+      "Stock is trading at 21.5 times its book value",
       "The company has delivered a poor sales growth of 7.83% over past five years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 70.0
+        "revenue": 69.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -7417,7 +7417,7 @@ const screenerData = {
   "DABUR": {
     "name": "About",
     "sector": "Consumer",
-    "price": 359.0,
+    "price": 360.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7566,11 +7566,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 73.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 23.0
       },
       {
         "name": "Other",
@@ -7607,7 +7607,7 @@ const screenerData = {
   "PIDILITIND": {
     "name": "About",
     "sector": "Materials",
-    "price": 1477.0,
+    "price": 1452.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7616,7 +7616,7 @@ const screenerData = {
     "roe": 23.9,
     "roce": 23.9,
     "debtEquity": 0.0,
-    "dividend": 0.78,
+    "dividend": 0.79,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -7752,16 +7752,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 48.0%"
     ],
     "cons": [
-      "Stock is trading at 13.9 times its book value"
+      "Stock is trading at 13.6 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -7798,7 +7798,7 @@ const screenerData = {
   "SIEMENS": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3275.0,
+    "price": 3334.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7807,7 +7807,7 @@ const screenerData = {
     "roe": 19.2,
     "roce": 19.2,
     "debtEquity": 0.0,
-    "dividend": 0.55,
+    "dividend": 0.54,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -7942,18 +7942,18 @@ const screenerData = {
       "Debtor days have improved from 78.1 to 57.3 days."
     ],
     "cons": [
-      "Stock is trading at 8.43 times its book value",
+      "Stock is trading at 8.58 times its book value",
       "Earnings include an other income of Rs.2,177 Cr.",
       "Working capital days have increased from 47.5 days to 71.3 days"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 79.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -7990,7 +7990,7 @@ const screenerData = {
   "EICHERMOT": {
     "name": "About",
     "sector": "Consumer",
-    "price": 7100.0,
+    "price": 7150.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -7999,7 +7999,7 @@ const screenerData = {
     "roe": 24.0,
     "roce": 24.0,
     "debtEquity": 0.0,
-    "dividend": 1.16,
+    "dividend": 1.14,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -8136,17 +8136,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 38.7%"
     ],
     "cons": [
-      "Stock is trading at 7.76 times its book value",
+      "Stock is trading at 7.81 times its book value",
       "Earnings include an other income of Rs.2,260 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 89.0
+        "revenue": 66.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -8183,7 +8183,7 @@ const screenerData = {
   "HEROMOTOCO": {
     "name": "About",
     "sector": "Consumer",
-    "price": 5199.0,
+    "price": 5220.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -8192,7 +8192,7 @@ const screenerData = {
     "roe": 28.1,
     "roce": 28.1,
     "debtEquity": 0.0,
-    "dividend": 3.56,
+    "dividend": 3.55,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -8325,7 +8325,7 @@ const screenerData = {
     ],
     "pros": [
       "Company is almost debt free.",
-      "Stock is providing a good dividend yield of 3.56%.",
+      "Stock is providing a good dividend yield of 3.55%.",
       "Company has been maintaining a healthy dividend payout of 71.5%",
       "Debtor days have improved from 24.5 to 18.0 days."
     ],
@@ -8335,11 +8335,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -8376,7 +8376,7 @@ const screenerData = {
   "BAJAJ-AUTO": {
     "name": "About",
     "sector": "Consumer",
-    "price": 10086.0,
+    "price": 10377.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -8385,7 +8385,7 @@ const screenerData = {
     "roe": 29.2,
     "roce": 29.2,
     "debtEquity": 0.0,
-    "dividend": 1.49,
+    "dividend": 1.44,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -8526,16 +8526,16 @@ const screenerData = {
       "Promoter holding has increased by 0.94% over last quarter."
     ],
     "cons": [
-      "Stock is trading at 7.26 times its book value"
+      "Stock is trading at 7.47 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -8572,7 +8572,7 @@ const screenerData = {
   "HDFCLIFE": {
     "name": "About",
     "sector": "Financials",
-    "price": 517.0,
+    "price": 516.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -8581,7 +8581,7 @@ const screenerData = {
     "roe": 11.3,
     "roce": 11.3,
     "debtEquity": 0.0,
-    "dividend": 0.4,
+    "dividend": 0.41,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -8716,7 +8716,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 25.3%"
     ],
     "cons": [
-      "Stock is trading at 5.77 times its book value",
+      "Stock is trading at 5.76 times its book value",
       "The company has delivered a poor sales growth of 6.81% over past five years.",
       "Tax rate seems low",
       "Company has a low return on equity of 11.1% over last 3 years.",
@@ -8725,11 +8725,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 63.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -8820,11 +8820,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 80.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -8918,11 +8918,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 80.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 20.0
       },
       {
         "name": "Other",
@@ -8959,7 +8959,7 @@ const screenerData = {
   "INDUSINDBK": {
     "name": "About",
     "sector": "Financials",
-    "price": 842.0,
+    "price": 831.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -9087,7 +9087,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.97 times its book value"
+      "Stock is trading at 0.96 times its book value"
     ],
     "cons": [
       "Company has low interest coverage ratio.",
@@ -9102,11 +9102,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 68.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -9143,7 +9143,7 @@ const screenerData = {
   "CANBK": {
     "name": "About",
     "sector": "Financials",
-    "price": 117.0,
+    "price": 118.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -9152,7 +9152,7 @@ const screenerData = {
     "roe": 16.1,
     "roce": 16.1,
     "debtEquity": 0.0,
-    "dividend": 3.6,
+    "dividend": 3.56,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -9268,8 +9268,8 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.83 times its book value",
-      "Stock is providing a good dividend yield of 3.60%.",
+      "Stock is trading at 0.84 times its book value",
+      "Stock is providing a good dividend yield of 3.55%.",
       "Company has been maintaining a healthy dividend payout of 20.4%"
     ],
     "cons": [
@@ -9281,11 +9281,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -9447,7 +9447,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.86 times its book value",
+      "Stock is trading at 0.87 times its book value",
       "Company has delivered good profit growth of 48.2% CAGR over last 5 years",
       "Company has been maintaining a healthy dividend payout of 18.3%"
     ],
@@ -9462,11 +9462,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 60.0
+        "revenue": 63.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -9503,7 +9503,7 @@ const screenerData = {
   "BANKBARODA": {
     "name": "About",
     "sector": "Financials",
-    "price": 232.0,
+    "price": 233.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -9512,7 +9512,7 @@ const screenerData = {
     "roe": 12.7,
     "roce": 12.7,
     "debtEquity": 0.0,
-    "dividend": 3.66,
+    "dividend": 3.64,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -9631,8 +9631,8 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.71 times its book value",
-      "Stock is providing a good dividend yield of 3.66%.",
+      "Stock is trading at 0.72 times its book value",
+      "Stock is providing a good dividend yield of 3.64%.",
       "Company has been maintaining a healthy dividend payout of 21.3%"
     ],
     "cons": [
@@ -9643,11 +9643,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 63.0
+        "revenue": 60.0
       },
       {
         "name": "Exports",
-        "revenue": 23.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -9684,7 +9684,7 @@ const screenerData = {
   "UNIONBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 181.0,
+    "price": 185.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -9693,7 +9693,7 @@ const screenerData = {
     "roe": 15.7,
     "roce": 15.7,
     "debtEquity": 0.0,
-    "dividend": 2.76,
+    "dividend": 2.71,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -9809,7 +9809,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.96 times its book value",
+      "Stock is trading at 0.98 times its book value",
       "Company has delivered good profit growth of 46.9% CAGR over last 5 years",
       "Company has been maintaining a healthy dividend payout of 19.9%"
     ],
@@ -9822,11 +9822,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 69.0
+        "revenue": 88.0
       },
       {
         "name": "Exports",
-        "revenue": 29.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -9863,7 +9863,7 @@ const screenerData = {
   "IDFCFIRSTB": {
     "name": "About",
     "sector": "Financials",
-    "price": 71.6,
+    "price": 71.4,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10004,11 +10004,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 75.0
       },
       {
         "name": "Exports",
-        "revenue": 23.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -10045,7 +10045,7 @@ const screenerData = {
   "FEDERALBNK": {
     "name": "About",
     "sector": "Financials",
-    "price": 345.0,
+    "price": 341.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10182,11 +10182,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -10223,7 +10223,7 @@ const screenerData = {
   "GAIL": {
     "name": "About",
     "sector": "Utilities",
-    "price": 168.0,
+    "price": 166.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10232,7 +10232,7 @@ const screenerData = {
     "roe": 8.71,
     "roce": 8.71,
     "debtEquity": 0.0,
-    "dividend": 3.28,
+    "dividend": 3.31,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -10372,11 +10372,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -10413,7 +10413,7 @@ const screenerData = {
   "NHPC": {
     "name": "About",
     "sector": "Utilities",
-    "price": 70.5,
+    "price": 73.2,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10422,7 +10422,7 @@ const screenerData = {
     "roe": 9.32,
     "roce": 9.32,
     "debtEquity": 0.0,
-    "dividend": 2.28,
+    "dividend": 2.2,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -10568,11 +10568,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -10609,7 +10609,7 @@ const screenerData = {
   "TATAPOWER": {
     "name": "About",
     "sector": "Utilities",
-    "price": 339.0,
+    "price": 337.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10761,11 +10761,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -10802,7 +10802,7 @@ const screenerData = {
   "HINDALCO": {
     "name": "About",
     "sector": "Materials",
-    "price": 889.0,
+    "price": 894.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -10955,11 +10955,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -10996,7 +10996,7 @@ const screenerData = {
   "VEDL": {
     "name": "About",
     "sector": "Materials",
-    "price": 228.0,
+    "price": 226.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11005,7 +11005,7 @@ const screenerData = {
     "roe": 38.2,
     "roce": 38.2,
     "debtEquity": 0.0,
-    "dividend": 14.9,
+    "dividend": 15.0,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -11155,11 +11155,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 63.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 23.0
       },
       {
         "name": "Other",
@@ -11196,7 +11196,7 @@ const screenerData = {
   "AMBUJACEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 362.0,
+    "price": 350.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11205,7 +11205,7 @@ const screenerData = {
     "roe": 8.85,
     "roce": 8.85,
     "debtEquity": 0.0,
-    "dividend": 0.55,
+    "dividend": 0.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -11347,11 +11347,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 81.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 21.0
       },
       {
         "name": "Other",
@@ -11388,7 +11388,7 @@ const screenerData = {
   "SHREECEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 23487.0,
+    "price": 23000.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11397,7 +11397,7 @@ const screenerData = {
     "roe": 7.51,
     "roce": 7.51,
     "debtEquity": 0.0,
-    "dividend": 0.64,
+    "dividend": 0.65,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -11533,18 +11533,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 27.4%"
     ],
     "cons": [
-      "Stock is trading at 3.55 times its book value",
+      "Stock is trading at 3.47 times its book value",
       "The company has delivered a poor sales growth of 9.08% over past five years.",
       "Company has a low return on equity of 8.23% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 85.0
+        "revenue": 69.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -11581,7 +11581,7 @@ const screenerData = {
   "ACC": {
     "name": "About",
     "sector": "Materials",
-    "price": 1167.0,
+    "price": 1142.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11590,7 +11590,7 @@ const screenerData = {
     "roe": 10.9,
     "roce": 10.9,
     "debtEquity": 0.0,
-    "dividend": 0.64,
+    "dividend": 0.65,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -11723,7 +11723,7 @@ const screenerData = {
     ],
     "pros": [
       "Company is almost debt free.",
-      "Stock is trading at 1.07 times its book value"
+      "Stock is trading at 1.05 times its book value"
     ],
     "cons": [
       "Tax rate seems low",
@@ -11734,11 +11734,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -11775,7 +11775,7 @@ const screenerData = {
   "DALBHARAT": {
     "name": "About",
     "sector": "Materials",
-    "price": 1629.0,
+    "price": 1518.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11784,7 +11784,7 @@ const screenerData = {
     "roe": 6.11,
     "roce": 6.11,
     "debtEquity": 0.0,
-    "dividend": 0.55,
+    "dividend": 0.59,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -11925,11 +11925,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 86.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -11966,7 +11966,7 @@ const screenerData = {
   "BALKRISIND": {
     "name": "About",
     "sector": "Industrials",
-    "price": 2104.0,
+    "price": 2144.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -11975,7 +11975,7 @@ const screenerData = {
     "roe": 9.66,
     "roce": 9.66,
     "debtEquity": 0.0,
-    "dividend": 0.76,
+    "dividend": 0.75,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -12110,17 +12110,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 21.5%"
     ],
     "cons": [
-      "Stock is trading at 3.71 times its book value",
+      "Stock is trading at 3.78 times its book value",
       "Company has a low return on equity of 13.2% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 60.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -12157,7 +12157,7 @@ const screenerData = {
   "MRF": {
     "name": "About",
     "sector": "Consumer",
-    "price": 117270.0,
+    "price": 117752.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -12303,11 +12303,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 70.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -12344,7 +12344,7 @@ const screenerData = {
   "BATAINDIA": {
     "name": "About",
     "sector": "Consumer",
-    "price": 632.0,
+    "price": 658.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -12353,7 +12353,7 @@ const screenerData = {
     "roe": 10.6,
     "roce": 10.6,
     "debtEquity": 0.0,
-    "dividend": 3.95,
+    "dividend": 3.79,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -12491,11 +12491,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 85.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -12532,7 +12532,7 @@ const screenerData = {
   "NYKAA": {
     "name": "About",
     "sector": "Consumer",
-    "price": 330.0,
+    "price": 339.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -12673,18 +12673,18 @@ const screenerData = {
       "Company has delivered good profit growth of 27.7% CAGR over last 5 years"
     ],
     "cons": [
-      "Stock is trading at 65.7 times its book value",
+      "Stock is trading at 67.5 times its book value",
       "Though the company is reporting repeated profits, it is not paying out dividend",
       "Company has a low return on equity of 7.75% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 63.0
+        "revenue": 77.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -12721,7 +12721,7 @@ const screenerData = {
   "PAYTM": {
     "name": "About",
     "sector": "Technology",
-    "price": 1655.0,
+    "price": 1604.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -12749,13 +12749,6 @@ const screenerData = {
     "altmanZ": 0.0,
     "financials": {},
     "quarterly": {
-      "Jun_2023": {
-        "sales": 2342.0,
-        "expenses": 2652.0,
-        "opProfit": 0.0,
-        "netProfit": 0.0,
-        "eps": 0.0
-      },
       "Sep_2023": {
         "sales": 2519.0,
         "expenses": 2750.0,
@@ -12839,6 +12832,13 @@ const screenerData = {
         "opProfit": 8.0,
         "netProfit": 220.0,
         "eps": 3.44
+      },
+      "Sep_2026": {
+        "sales": 2648.0,
+        "expenses": 2381.0,
+        "opProfit": 10.0,
+        "netProfit": 225.0,
+        "eps": 3.52
       }
     },
     "shareholding": [
@@ -12864,18 +12864,18 @@ const screenerData = {
       "Company's median sales growth is 22.3% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 6.61 times its book value",
+      "Stock is trading at 6.20 times its book value",
       "Company has a low return on equity of -4.60% over last 3 years.",
-      "Earnings include an other income of Rs.625 Cr."
+      "Earnings include an other income of Rs.771 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -12912,7 +12912,7 @@ const screenerData = {
   "DELHIVERY": {
     "name": "About",
     "sector": "Industrials",
-    "price": 376.0,
+    "price": 382.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -13053,7 +13053,7 @@ const screenerData = {
       "Company's working capital requirements have reduced from 71.1 days to 37.2 days"
     ],
     "cons": [
-      "Stock is trading at 2.91 times its book value",
+      "Stock is trading at 2.95 times its book value",
       "Though the company is reporting repeated profits, it is not paying out dividend",
       "Company has low interest coverage ratio.",
       "Company has a low return on equity of -0.53% over last 3 years.",
@@ -13062,11 +13062,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 61.0
+        "revenue": 73.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -13103,7 +13103,7 @@ const screenerData = {
   "INDIGO": {
     "name": "About",
     "sector": "Industrials",
-    "price": 4600.0,
+    "price": 4619.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -13247,18 +13247,18 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 25.5 times its book value",
+      "Stock is trading at 25.6 times its book value",
       "Company has low interest coverage ratio.",
       "Promoter holding has decreased over last 3 years: -21.7%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 65.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -13295,7 +13295,7 @@ const screenerData = {
   "IRCTC": {
     "name": "About",
     "sector": "Industrials",
-    "price": 439.0,
+    "price": 448.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -13304,7 +13304,7 @@ const screenerData = {
     "roe": 34.4,
     "roce": 34.4,
     "debtEquity": 0.0,
-    "dividend": 2.05,
+    "dividend": 2.01,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -13438,16 +13438,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 49.0%"
     ],
     "cons": [
-      "Stock is trading at 8.14 times its book value"
+      "Stock is trading at 8.31 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 68.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -13538,11 +13538,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -13579,7 +13579,7 @@ const screenerData = {
   "RVNL": {
     "name": "About",
     "sector": "Industrials",
-    "price": 182.0,
+    "price": 181.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -13723,7 +13723,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 32.4%"
     ],
     "cons": [
-      "Stock is trading at 3.87 times its book value",
+      "Stock is trading at 3.84 times its book value",
       "The company has delivered a poor sales growth of 5.79% over past five years.",
       "Company has a low return on equity of 13.8% over last 3 years.",
       "Earnings include an other income of Rs.779 Cr.",
@@ -13733,11 +13733,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 80.0
+        "revenue": 61.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 21.0
       },
       {
         "name": "Other",
@@ -13774,7 +13774,7 @@ const screenerData = {
   "NBCC": {
     "name": "About",
     "sector": "Industrials",
-    "price": 68.7,
+    "price": 70.6,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -13783,7 +13783,7 @@ const screenerData = {
     "roe": 20.4,
     "roce": 20.4,
     "debtEquity": 0.0,
-    "dividend": 1.46,
+    "dividend": 1.42,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -13923,11 +13923,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 35.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -13964,7 +13964,7 @@ const screenerData = {
   "BIOCON": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 327.0,
+    "price": 334.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -14120,11 +14120,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -14161,7 +14161,7 @@ const screenerData = {
   "LUPIN": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 1950.0,
+    "price": 1959.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -14312,11 +14312,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -14353,7 +14353,7 @@ const screenerData = {
   "AUROPHARMA": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 1590.0,
+    "price": 1633.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -14497,6 +14497,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
+      "Stock is trading at 2.50 times its book value",
       "The company has delivered a poor sales growth of 6.32% over past five years.",
       "Company has a low return on equity of 10.8% over last 3 years.",
       "Company might be capitalizing the interest cost"
@@ -14504,11 +14505,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 61.0
+        "revenue": 68.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 38.0
       },
       {
         "name": "Other",
@@ -14545,7 +14546,7 @@ const screenerData = {
   "TORNTPHARM": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 4570.0,
+    "price": 4606.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -14554,7 +14555,7 @@ const screenerData = {
     "roe": 27.4,
     "roce": 27.4,
     "debtEquity": 0.0,
-    "dividend": 0.84,
+    "dividend": 0.82,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -14691,7 +14692,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 57.8%"
     ],
     "cons": [
-      "Stock is trading at 9.46 times its book value",
+      "Stock is trading at 9.53 times its book value",
       "Promoter holding has decreased over last quarter: -7.53%",
       "The company has delivered a poor sales growth of 11.8% over past five years.",
       "Company might be capitalizing the interest cost"
@@ -14699,11 +14700,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 71.0
       },
       {
         "name": "Exports",
-        "revenue": 32.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -14740,7 +14741,7 @@ const screenerData = {
   "ALKEM": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 5056.0,
+    "price": 5156.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -14749,7 +14750,7 @@ const screenerData = {
     "roe": 18.9,
     "roce": 18.9,
     "debtEquity": 0.0,
-    "dividend": 1.04,
+    "dividend": 1.02,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -14887,11 +14888,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -14928,7 +14929,7 @@ const screenerData = {
   "AARTIIND": {
     "name": "About",
     "sector": "Materials",
-    "price": 429.0,
+    "price": 436.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15072,7 +15073,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 2.61 times its book value",
+      "Stock is trading at 2.65 times its book value",
       "Tax rate seems low",
       "Company has a low return on equity of 7.10% over last 3 years.",
       "Company might be capitalizing the interest cost",
@@ -15082,11 +15083,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 62.0
+        "revenue": 80.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -15123,7 +15124,7 @@ const screenerData = {
   "DEEPAKNTR": {
     "name": "About",
     "sector": "Materials",
-    "price": 1448.0,
+    "price": 1436.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15270,11 +15271,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 80.0
+        "revenue": 66.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -15311,7 +15312,7 @@ const screenerData = {
   "SRF": {
     "name": "About",
     "sector": "Materials",
-    "price": 2340.0,
+    "price": 2337.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15320,7 +15321,7 @@ const screenerData = {
     "roe": 14.3,
     "roce": 14.3,
     "debtEquity": 0.0,
-    "dividend": 0.38,
+    "dividend": 0.39,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -15458,18 +15459,18 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 4.53 times its book value",
+      "Stock is trading at 4.52 times its book value",
       "Company has a low return on equity of 12.4% over last 3 years.",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 65.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -15506,7 +15507,7 @@ const screenerData = {
   "NAVINFLUOR": {
     "name": "About",
     "sector": "Materials",
-    "price": 7745.0,
+    "price": 8265.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15515,7 +15516,7 @@ const screenerData = {
     "roe": 19.6,
     "roce": 19.6,
     "debtEquity": 0.0,
-    "dividend": 0.2,
+    "dividend": 0.18,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -15648,16 +15649,16 @@ const screenerData = {
       "Company has delivered good profit growth of 21.4% CAGR over last 5 years"
     ],
     "cons": [
-      "Stock is trading at 9.99 times its book value"
+      "Stock is trading at 10.6 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 81.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -15694,7 +15695,7 @@ const screenerData = {
   "UPL": {
     "name": "About",
     "sector": "Materials",
-    "price": 498.0,
+    "price": 518.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15703,7 +15704,7 @@ const screenerData = {
     "roe": 5.64,
     "roce": 5.64,
     "debtEquity": 0.0,
-    "dividend": 1.21,
+    "dividend": 1.16,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -15845,11 +15846,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -15886,7 +15887,7 @@ const screenerData = {
   "COROMANDEL": {
     "name": "About",
     "sector": "Materials",
-    "price": 1735.0,
+    "price": 1740.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -15895,7 +15896,7 @@ const screenerData = {
     "roe": 16.4,
     "roce": 16.4,
     "debtEquity": 0.0,
-    "dividend": 0.64,
+    "dividend": 0.63,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -16035,11 +16036,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 75.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -16076,7 +16077,7 @@ const screenerData = {
   "TATACHEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 595.0,
+    "price": 599.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -16085,7 +16086,7 @@ const screenerData = {
     "roe": 1.27,
     "roce": 1.27,
     "debtEquity": 0.0,
-    "dividend": 1.85,
+    "dividend": 1.84,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -16228,11 +16229,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 62.0
+        "revenue": 83.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -16269,7 +16270,7 @@ const screenerData = {
   "MOTHERSON": {
     "name": "About",
     "sector": "Consumer",
-    "price": 154.0,
+    "price": 158.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -16278,7 +16279,7 @@ const screenerData = {
     "roe": 11.2,
     "roce": 11.2,
     "debtEquity": 0.0,
-    "dividend": 0.39,
+    "dividend": 0.38,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -16417,18 +16418,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 17.4%"
     ],
     "cons": [
-      "Stock is trading at 3.96 times its book value",
+      "Stock is trading at 4.06 times its book value",
       "Company has a low return on equity of 11.6% over last 3 years.",
       "Promoter holding has decreased over last 3 years: -16.2%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 63.0
+        "revenue": 88.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -16465,7 +16466,7 @@ const screenerData = {
   "BHARATFORG": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1719.0,
+    "price": 1750.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -16474,7 +16475,7 @@ const screenerData = {
     "roe": 12.0,
     "roce": 12.0,
     "debtEquity": 0.0,
-    "dividend": 0.49,
+    "dividend": 0.48,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -16610,7 +16611,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 41.6%"
     ],
     "cons": [
-      "Stock is trading at 8.58 times its book value",
+      "Stock is trading at 8.74 times its book value",
       "Promoter holding has decreased over last quarter: -0.95%",
       "Company has a low return on equity of 12.2% over last 3 years.",
       "Company might be capitalizing the interest cost"
@@ -16618,11 +16619,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 85.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 35.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -16659,7 +16660,7 @@ const screenerData = {
   "EXIDEIND": {
     "name": "About",
     "sector": "Consumer",
-    "price": 337.0,
+    "price": 339.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -16807,11 +16808,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 80.0
+        "revenue": 71.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -16848,7 +16849,7 @@ const screenerData = {
   "HAVELLS": {
     "name": "About",
     "sector": "Consumer",
-    "price": 1012.0,
+    "price": 1005.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17043,7 +17044,7 @@ const screenerData = {
   "POLYCAB": {
     "name": "About",
     "sector": "Industrials",
-    "price": 7740.0,
+    "price": 7698.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17189,17 +17190,17 @@ const screenerData = {
       "Company's working capital requirements have reduced from 47.5 days to 30.4 days"
     ],
     "cons": [
-      "Stock is trading at 8.91 times its book value",
+      "Stock is trading at 8.86 times its book value",
       "Promoter holding has decreased over last 3 years: -4.47%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 80.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -17236,7 +17237,7 @@ const screenerData = {
   "CGPOWER": {
     "name": "About",
     "sector": "Industrials",
-    "price": 833.0,
+    "price": 835.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17388,11 +17389,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 28.0
       },
       {
         "name": "Other",
@@ -17429,7 +17430,7 @@ const screenerData = {
   "THERMAX": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3165.0,
+    "price": 3130.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17579,11 +17580,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -17620,7 +17621,7 @@ const screenerData = {
   "BLUESTARCO": {
     "name": "About",
     "sector": "Consumer",
-    "price": 1493.0,
+    "price": 1517.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17765,16 +17766,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 33.0%"
     ],
     "cons": [
-      "Stock is trading at 8.95 times its book value"
+      "Stock is trading at 9.09 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -17811,7 +17812,7 @@ const screenerData = {
   "VOLTAS": {
     "name": "About",
     "sector": "Consumer",
-    "price": 945.0,
+    "price": 948.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -17955,18 +17956,18 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 45.0%"
     ],
     "cons": [
-      "Stock is trading at 4.91 times its book value",
+      "Stock is trading at 4.92 times its book value",
       "Company has a low return on equity of 8.03% over last 3 years.",
       "Earnings include an other income of Rs.221 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -18003,7 +18004,7 @@ const screenerData = {
   "DIXON": {
     "name": "About",
     "sector": "Consumer",
-    "price": 11180.0,
+    "price": 11240.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -18145,18 +18146,18 @@ const screenerData = {
       "Company's median sales growth is 45.8% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 14.5 times its book value",
+      "Stock is trading at 14.6 times its book value",
       "Earnings include an other income of Rs.1,263 Cr.",
       "Promoter holding has decreased over last 3 years: -5.30%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -18193,7 +18194,7 @@ const screenerData = {
   "LTTS": {
     "name": "About",
     "sector": "Technology",
-    "price": 4031.0,
+    "price": 4155.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -18202,7 +18203,7 @@ const screenerData = {
     "roe": 21.5,
     "roce": 21.5,
     "debtEquity": 0.0,
-    "dividend": 1.44,
+    "dividend": 1.4,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -18340,11 +18341,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -18381,7 +18382,7 @@ const screenerData = {
   "COFORGE": {
     "name": "About",
     "sector": "Technology",
-    "price": 1992.0,
+    "price": 1996.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -18528,11 +18529,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 68.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -18569,7 +18570,7 @@ const screenerData = {
   "PERSISTENT": {
     "name": "About",
     "sector": "Technology",
-    "price": 5830.0,
+    "price": 5835.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -18578,7 +18579,7 @@ const screenerData = {
     "roe": 27.2,
     "roce": 27.2,
     "debtEquity": 0.0,
-    "dividend": 0.68,
+    "dividend": 0.69,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -18763,7 +18764,7 @@ const screenerData = {
   "MPHASIS": {
     "name": "About",
     "sector": "Technology",
-    "price": 2550.0,
+    "price": 2581.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -18772,7 +18773,7 @@ const screenerData = {
     "roe": 18.5,
     "roce": 18.5,
     "debtEquity": 0.0,
-    "dividend": 2.43,
+    "dividend": 2.4,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -18915,11 +18916,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 61.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -18956,7 +18957,7 @@ const screenerData = {
   "TATAELXSI": {
     "name": "About",
     "sector": "Technology",
-    "price": 3728.0,
+    "price": 3720.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -19099,16 +19100,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 48.5%"
     ],
     "cons": [
-      "Stock is trading at 82.0 times its book value"
+      "Stock is trading at 81.8 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -19296,11 +19297,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -19337,7 +19338,7 @@ const screenerData = {
   "ADANIGREEN": {
     "name": "About",
     "sector": "Utilities",
-    "price": 1249.0,
+    "price": 1285.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -19478,7 +19479,7 @@ const screenerData = {
       "Company's median sales growth is 31.4% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 9.53 times its book value",
+      "Stock is trading at 9.80 times its book value",
       "Though the company is reporting repeated profits, it is not paying out dividend",
       "Company has low interest coverage ratio.",
       "Company has a low return on equity of 13.4% over last 3 years.",
@@ -19487,11 +19488,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 68.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 38.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -19528,7 +19529,7 @@ const screenerData = {
   "JINDALSTEL": {
     "name": "About",
     "sector": "Materials",
-    "price": 1035.0,
+    "price": 1060.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -19679,11 +19680,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 71.0
+        "revenue": 70.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -19720,7 +19721,7 @@ const screenerData = {
   "SAIL": {
     "name": "About",
     "sector": "Materials",
-    "price": 170.0,
+    "price": 172.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -19729,7 +19730,7 @@ const screenerData = {
     "roe": 6.57,
     "roce": 6.57,
     "debtEquity": 0.0,
-    "dividend": 1.38,
+    "dividend": 1.37,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -19858,7 +19859,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 1.16 times its book value",
+      "Stock is trading at 1.17 times its book value",
       "Company has been maintaining a healthy dividend payout of 27.9%"
     ],
     "cons": [
@@ -19870,11 +19871,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -19911,7 +19912,7 @@ const screenerData = {
   "NMDC": {
     "name": "About",
     "sector": "Materials",
-    "price": 66.6,
+    "price": 68.4,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -19920,7 +19921,7 @@ const screenerData = {
     "roe": 23.4,
     "roce": 23.4,
     "debtEquity": 0.0,
-    "dividend": 5.26,
+    "dividend": 5.11,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -20049,7 +20050,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is providing a good dividend yield of 5.26%.",
+      "Stock is providing a good dividend yield of 5.11%.",
       "Company is expected to give good quarter",
       "Company has a good return on equity (ROE) track record: 3 Years ROE 23.6%",
       "Company has been maintaining a healthy dividend payout of 41.3%"
@@ -20061,11 +20062,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 62.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 32.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -20102,7 +20103,7 @@ const screenerData = {
   "RAMCOCEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 747.0,
+    "price": 732.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -20255,11 +20256,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 70.0
+        "revenue": 61.0
       },
       {
         "name": "Exports",
-        "revenue": 20.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -20296,7 +20297,7 @@ const screenerData = {
   "BOSCHLTD": {
     "name": "About",
     "sector": "Industrials",
-    "price": 44835.0,
+    "price": 45500.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -20305,7 +20306,7 @@ const screenerData = {
     "roe": 14.6,
     "roce": 14.6,
     "debtEquity": 0.0,
-    "dividend": 0.6,
+    "dividend": 0.59,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -20438,16 +20439,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 49.4%"
     ],
     "cons": [
-      "Stock is trading at 8.91 times its book value"
+      "Stock is trading at 9.04 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 35.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -20484,7 +20485,7 @@ const screenerData = {
   "ABB": {
     "name": "About",
     "sector": "Industrials",
-    "price": 6350.0,
+    "price": 6550.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -20493,7 +20494,7 @@ const screenerData = {
     "roe": 22.4,
     "roce": 22.4,
     "debtEquity": 0.0,
-    "dividend": 0.62,
+    "dividend": 0.6,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -20618,17 +20619,17 @@ const screenerData = {
       "Company is almost debt free."
     ],
     "cons": [
-      "Stock is trading at 14.4 times its book value",
+      "Stock is trading at 14.8 times its book value",
       "Earnings include an other income of Rs.1,799 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 65.0
       },
       {
         "name": "Exports",
-        "revenue": 23.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -20763,7 +20764,7 @@ const screenerData = {
   "MARICO": {
     "name": "About",
     "sector": "Consumer",
-    "price": 775.0,
+    "price": 771.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -20911,17 +20912,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 65.1%"
     ],
     "cons": [
-      "Stock is trading at 23.9 times its book value",
+      "Stock is trading at 23.8 times its book value",
       "The company has delivered a poor sales growth of 11.1% over past five years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -20958,7 +20959,7 @@ const screenerData = {
   "COLPAL": {
     "name": "About",
     "sector": "Consumer",
-    "price": 1617.0,
+    "price": 1606.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -20967,7 +20968,7 @@ const screenerData = {
     "roe": 158.0,
     "roce": 158.0,
     "debtEquity": 0.0,
-    "dividend": 2.97,
+    "dividend": 2.99,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -21012,17 +21013,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 69.7%"
     ],
     "cons": [
-      "Stock is trading at 133 times its book value",
+      "Stock is trading at 132 times its book value",
       "Tax rate seems low"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 77.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -21059,7 +21060,7 @@ const screenerData = {
   "GODREJCP": {
     "name": "About",
     "sector": "Consumer",
-    "price": 836.0,
+    "price": 830.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -21068,7 +21069,7 @@ const screenerData = {
     "roe": 16.1,
     "roce": 16.1,
     "debtEquity": 0.0,
-    "dividend": 2.39,
+    "dividend": 2.41,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -21207,11 +21208,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -21302,11 +21303,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 65.0
+        "revenue": 86.0
       },
       {
         "name": "Exports",
-        "revenue": 35.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -21343,7 +21344,7 @@ const screenerData = {
   "SPICEJET": {
     "name": "About",
     "sector": "Industrials",
-    "price": 7.71,
+    "price": 8.07,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -21495,11 +21496,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -21674,7 +21675,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.92 times its book value",
+      "Stock is trading at 0.93 times its book value",
       "Company has been maintaining a healthy dividend payout of 18.9%"
     ],
     "cons": [
@@ -21685,11 +21686,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 70.0
+        "revenue": 84.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -21726,7 +21727,7 @@ const screenerData = {
   "ASHOKA": {
     "name": "About",
     "sector": "Industrials",
-    "price": 98.4,
+    "price": 97.4,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -21877,7 +21878,7 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 64.0
+        "revenue": 84.0
       },
       {
         "name": "Exports",
@@ -21918,7 +21919,7 @@ const screenerData = {
   "IRB": {
     "name": "About",
     "sector": "Industrials",
-    "price": 16.3,
+    "price": 15.8,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -21927,7 +21928,7 @@ const screenerData = {
     "roe": 4.29,
     "roce": 4.29,
     "debtEquity": 0.0,
-    "dividend": 0.95,
+    "dividend": 0.98,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -22059,7 +22060,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.94 times its book value"
+      "Stock is trading at 0.91 times its book value"
     ],
     "cons": [
       "Company has low interest coverage ratio.",
@@ -22070,11 +22071,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 67.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -22111,7 +22112,7 @@ const screenerData = {
   "GLENMARK": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 2229.0,
+    "price": 2269.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -22265,11 +22266,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 76.0
+        "revenue": 73.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -22306,7 +22307,7 @@ const screenerData = {
   "LAURUSLABS": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 2060.0,
+    "price": 2140.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -22315,7 +22316,7 @@ const screenerData = {
     "roe": 18.3,
     "roce": 18.3,
     "debtEquity": 0.0,
-    "dividend": 0.1,
+    "dividend": 0.09,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -22447,7 +22448,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 19.0%"
     ],
     "cons": [
-      "Stock is trading at 21.0 times its book value",
+      "Stock is trading at 21.8 times its book value",
       "The company has delivered a poor sales growth of 7.19% over past five years.",
       "Company has a low return on equity of 10.1% over last 3 years.",
       "Company might be capitalizing the interest cost"
@@ -22455,11 +22456,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 86.0
       },
       {
         "name": "Exports",
-        "revenue": 32.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -22496,7 +22497,7 @@ const screenerData = {
   "SYNGENE": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 360.0,
+    "price": 370.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -22505,7 +22506,7 @@ const screenerData = {
     "roe": 7.78,
     "roce": 7.78,
     "debtEquity": 0.0,
-    "dividend": 0.35,
+    "dividend": 0.34,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -22641,7 +22642,7 @@ const screenerData = {
       "Company is almost debt free."
     ],
     "cons": [
-      "Stock is trading at 3.00 times its book value",
+      "Stock is trading at 3.09 times its book value",
       "The company has delivered a poor sales growth of 11.4% over past five years.",
       "Company has a low return on equity of 10.1% over last 3 years.",
       "Dividend payout has been low at 12.0% of profits over last 3 years"
@@ -22649,11 +22650,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 63.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 23.0
+        "revenue": 37.0
       },
       {
         "name": "Other",
@@ -22690,7 +22691,7 @@ const screenerData = {
   "FLUOROCHEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 4179.0,
+    "price": 4218.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -22831,7 +22832,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 5.83 times its book value",
+      "Stock is trading at 5.90 times its book value",
       "Company has a low return on equity of 7.94% over last 3 years.",
       "Company might be capitalizing the interest cost",
       "Dividend payout has been low at 6.44% of profits over last 3 years"
@@ -22839,11 +22840,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 62.0
+        "revenue": 69.0
       },
       {
         "name": "Exports",
-        "revenue": 32.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -22880,7 +22881,7 @@ const screenerData = {
   "PIIND": {
     "name": "About",
     "sector": "Materials",
-    "price": 2011.0,
+    "price": 2089.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -22889,7 +22890,7 @@ const screenerData = {
     "roe": 11.2,
     "roce": 11.2,
     "debtEquity": 0.0,
-    "dividend": 0.74,
+    "dividend": 0.72,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23034,11 +23035,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -23075,7 +23076,7 @@ const screenerData = {
   "SUMICHEM": {
     "name": "About",
     "sector": "Materials",
-    "price": 355.0,
+    "price": 340.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23084,7 +23085,7 @@ const screenerData = {
     "roe": 16.2,
     "roce": 16.2,
     "debtEquity": 0.0,
-    "dividend": 0.37,
+    "dividend": 0.38,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23103,13 +23104,6 @@ const screenerData = {
     "altmanZ": 0.0,
     "financials": {},
     "quarterly": {
-      "Jun_2023": {
-        "sales": 724.0,
-        "expenses": 644.0,
-        "opProfit": 11.0,
-        "netProfit": 62.0,
-        "eps": 1.24
-      },
       "Sep_2023": {
         "sales": 903.0,
         "expenses": 716.0,
@@ -23193,6 +23187,13 @@ const screenerData = {
         "opProfit": 22.0,
         "netProfit": 215.0,
         "eps": 4.3
+      },
+      "Sep_2026": {
+        "sales": 907.0,
+        "expenses": 722.0,
+        "opProfit": 20.0,
+        "netProfit": 157.0,
+        "eps": 3.15
       }
     },
     "shareholding": [
@@ -23222,11 +23223,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 85.0
+        "revenue": 63.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 23.0
       },
       {
         "name": "Other",
@@ -23263,7 +23264,7 @@ const screenerData = {
   "RALLIS": {
     "name": "About",
     "sector": "Materials",
-    "price": 194.0,
+    "price": 191.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23272,7 +23273,7 @@ const screenerData = {
     "roe": 9.61,
     "roce": 9.61,
     "debtEquity": 0.0,
-    "dividend": 1.55,
+    "dividend": 1.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23414,11 +23415,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 61.0
+        "revenue": 87.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -23455,7 +23456,7 @@ const screenerData = {
   "BAYERCROP": {
     "name": "About",
     "sector": "Materials",
-    "price": 3364.0,
+    "price": 3261.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23464,7 +23465,7 @@ const screenerData = {
     "roe": 15.8,
     "roce": 15.8,
     "debtEquity": 0.0,
-    "dividend": 4.46,
+    "dividend": 4.59,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23519,18 +23520,18 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 39.8 times its book value",
+      "Stock is trading at 38.6 times its book value",
       "Company might be capitalizing the interest cost",
       "Earnings include an other income of Rs.83.7 Cr."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 78.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -23567,7 +23568,7 @@ const screenerData = {
   "MINDACORP": {
     "name": "About",
     "sector": "Consumer",
-    "price": 595.0,
+    "price": 609.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23576,7 +23577,7 @@ const screenerData = {
     "roe": 14.7,
     "roce": 14.7,
     "debtEquity": 0.0,
-    "dividend": 0.24,
+    "dividend": 0.23,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23711,7 +23712,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 5.38 times its book value",
+      "Stock is trading at 5.53 times its book value",
       "Company has a low return on equity of 13.3% over last 3 years.",
       "Dividend payout has been low at 12.4% of profits over last 3 years"
     ],
@@ -23759,7 +23760,7 @@ const screenerData = {
   "SUPRAJIT": {
     "name": "About",
     "sector": "Consumer",
-    "price": 454.0,
+    "price": 475.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23768,7 +23769,7 @@ const screenerData = {
     "roe": 13.1,
     "roce": 13.1,
     "debtEquity": 0.0,
-    "dividend": 0.77,
+    "dividend": 0.73,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -23900,17 +23901,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 29.5%"
     ],
     "cons": [
-      "Stock is trading at 4.33 times its book value",
+      "Stock is trading at 4.53 times its book value",
       "Company has a low return on equity of 9.45% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 64.0
+        "revenue": 85.0
       },
       {
         "name": "Exports",
-        "revenue": 34.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -23947,7 +23948,7 @@ const screenerData = {
   "VGUARD": {
     "name": "About",
     "sector": "Consumer",
-    "price": 266.0,
+    "price": 263.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -23956,7 +23957,7 @@ const screenerData = {
     "roe": 14.4,
     "roce": 14.4,
     "debtEquity": 0.0,
-    "dividend": 0.56,
+    "dividend": 0.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -24094,11 +24095,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 88.0
+        "revenue": 73.0
       },
       {
         "name": "Exports",
-        "revenue": 28.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -24135,7 +24136,7 @@ const screenerData = {
   "CROMPTON": {
     "name": "About",
     "sector": "Consumer",
-    "price": 194.0,
+    "price": 196.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -24144,7 +24145,7 @@ const screenerData = {
     "roe": 10.6,
     "roce": 10.6,
     "debtEquity": 0.0,
-    "dividend": 1.55,
+    "dividend": 1.53,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -24324,7 +24325,7 @@ const screenerData = {
   "KEI": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3896.0,
+    "price": 3870.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -24471,7 +24472,7 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 82.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
@@ -24512,7 +24513,7 @@ const screenerData = {
   "FINCABLES": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1145.0,
+    "price": 1164.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -24521,7 +24522,7 @@ const screenerData = {
     "roe": 12.3,
     "roce": 12.3,
     "debtEquity": 0.0,
-    "dividend": 0.79,
+    "dividend": 0.77,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -24661,11 +24662,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -24702,7 +24703,7 @@ const screenerData = {
   "AIAENG": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3582.0,
+    "price": 3594.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -24855,11 +24856,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 61.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 21.0
       },
       {
         "name": "Other",
@@ -24896,7 +24897,7 @@ const screenerData = {
   "SKFINDIA": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1426.0,
+    "price": 1407.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -24905,7 +24906,7 @@ const screenerData = {
     "roe": 14.8,
     "roce": 14.8,
     "debtEquity": 0.0,
-    "dividend": 2.81,
+    "dividend": 2.84,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -25044,11 +25045,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 87.0
+        "revenue": 75.0
       },
       {
         "name": "Exports",
-        "revenue": 37.0
+        "revenue": 25.0
       },
       {
         "name": "Other",
@@ -25085,7 +25086,7 @@ const screenerData = {
   "TIMKEN": {
     "name": "About",
     "sector": "Industrials",
-    "price": 2764.0,
+    "price": 2775.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -25184,17 +25185,17 @@ const screenerData = {
       "Company is almost debt free."
     ],
     "cons": [
-      "Stock is trading at 7.13 times its book value",
+      "Stock is trading at 7.16 times its book value",
       "Promoter holding has decreased over last 3 years: -6.65%"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -25231,7 +25232,7 @@ const screenerData = {
   "SCHAEFFLER": {
     "name": "About",
     "sector": "Industrials",
-    "price": 3510.0,
+    "price": 3671.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -25240,7 +25241,7 @@ const screenerData = {
     "roe": 20.2,
     "roce": 20.2,
     "debtEquity": 0.0,
-    "dividend": 1.0,
+    "dividend": 0.95,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -25376,16 +25377,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 46.5%"
     ],
     "cons": [
-      "Stock is trading at 8.92 times its book value"
+      "Stock is trading at 9.33 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 74.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 24.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -25422,7 +25423,7 @@ const screenerData = {
   "CARBORUNIV": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1142.0,
+    "price": 1098.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -25431,7 +25432,7 @@ const screenerData = {
     "roe": 6.92,
     "roce": 6.92,
     "debtEquity": 0.0,
-    "dividend": 0.35,
+    "dividend": 0.36,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -25571,11 +25572,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 84.0
+        "revenue": 75.0
       },
       {
         "name": "Exports",
-        "revenue": 34.0
+        "revenue": 35.0
       },
       {
         "name": "Other",
@@ -25612,7 +25613,7 @@ const screenerData = {
   "GRINDWELL": {
     "name": "About",
     "sector": "Industrials",
-    "price": 1838.0,
+    "price": 1848.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -25756,16 +25757,16 @@ const screenerData = {
       "Company's working capital requirements have reduced from 35.8 days to 23.9 days"
     ],
     "cons": [
-      "Stock is trading at 8.03 times its book value"
+      "Stock is trading at 8.06 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 89.0
+        "revenue": 88.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 38.0
       },
       {
         "name": "Other",
@@ -25802,7 +25803,7 @@ const screenerData = {
   "WHIRLPOOL": {
     "name": "About",
     "sector": "Consumer",
-    "price": 802.0,
+    "price": 837.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -25811,7 +25812,7 @@ const screenerData = {
     "roe": 7.71,
     "roce": 7.71,
     "debtEquity": 0.0,
-    "dividend": 0.62,
+    "dividend": 0.6,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -25944,6 +25945,7 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 22.8%"
     ],
     "cons": [
+      "Stock is trading at 2.55 times its book value",
       "The company has delivered a poor sales growth of 6.37% over past five years.",
       "Company has a low return on equity of 7.76% over last 3 years.",
       "Earnings include an other income of Rs.185 Cr.",
@@ -25952,11 +25954,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 69.0
+        "revenue": 86.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 26.0
       },
       {
         "name": "Other",
@@ -25993,7 +25995,7 @@ const screenerData = {
   "AMBER": {
     "name": "About",
     "sector": "Consumer",
-    "price": 5910.0,
+    "price": 6030.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -26134,18 +26136,18 @@ const screenerData = {
       "Company's median sales growth is 34.4% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 4.76 times its book value",
+      "Stock is trading at 4.85 times its book value",
       "Though the company is reporting repeated profits, it is not paying out dividend",
       "Company has a low return on equity of 7.73% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 60.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 30.0
       },
       {
         "name": "Other",
@@ -26236,11 +26238,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 70.0
+        "revenue": 84.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -26430,11 +26432,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 65.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -26471,7 +26473,7 @@ const screenerData = {
   "ZENSARTECH": {
     "name": "About",
     "sector": "Technology",
-    "price": 506.0,
+    "price": 508.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -26480,7 +26482,7 @@ const screenerData = {
     "roe": 17.3,
     "roce": 17.3,
     "debtEquity": 0.0,
-    "dividend": 2.97,
+    "dividend": 2.95,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -26624,7 +26626,7 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 62.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
@@ -26665,7 +26667,7 @@ const screenerData = {
   "SONATSOFTW": {
     "name": "About",
     "sector": "Technology",
-    "price": 236.0,
+    "price": 231.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -26674,7 +26676,7 @@ const screenerData = {
     "roe": 28.2,
     "roce": 28.2,
     "debtEquity": 0.0,
-    "dividend": 3.35,
+    "dividend": 3.41,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -26816,11 +26818,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 76.0
+        "revenue": 72.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -26857,7 +26859,7 @@ const screenerData = {
   "NEWGEN": {
     "name": "About",
     "sector": "Technology",
-    "price": 476.0,
+    "price": 470.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -26866,7 +26868,7 @@ const screenerData = {
     "roe": 19.6,
     "roce": 19.6,
     "debtEquity": 0.0,
-    "dividend": 1.26,
+    "dividend": 1.28,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -27008,11 +27010,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -27049,7 +27051,7 @@ const screenerData = {
   "REDINGTON": {
     "name": "About",
     "sector": "Technology",
-    "price": 369.0,
+    "price": 358.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -27058,7 +27060,7 @@ const screenerData = {
     "roe": 16.9,
     "roce": 16.9,
     "debtEquity": 0.0,
-    "dividend": 1.63,
+    "dividend": 1.68,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -27195,11 +27197,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 60.0
+        "revenue": 64.0
       },
       {
         "name": "Exports",
-        "revenue": 30.0
+        "revenue": 24.0
       },
       {
         "name": "Other",
@@ -27236,7 +27238,7 @@ const screenerData = {
   "INOXWIND": {
     "name": "About",
     "sector": "Energy",
-    "price": 58.5,
+    "price": 58.6,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -27386,11 +27388,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 75.0
+        "revenue": 67.0
       },
       {
         "name": "Exports",
-        "revenue": 25.0
+        "revenue": 27.0
       },
       {
         "name": "Other",
@@ -27427,7 +27429,7 @@ const screenerData = {
   "BPL": {
     "name": "About",
     "sector": "Consumer",
-    "price": 38.5,
+    "price": 41.1,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -27562,7 +27564,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.79 times its book value"
+      "Stock is trading at 0.85 times its book value"
     ],
     "cons": [
       "Company has low interest coverage ratio.",
@@ -27573,11 +27575,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 81.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -27672,11 +27674,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 66.0
+        "revenue": 69.0
       },
       {
         "name": "Exports",
-        "revenue": 26.0
+        "revenue": 29.0
       },
       {
         "name": "Other",
@@ -27713,7 +27715,7 @@ const screenerData = {
   "TORNTPOWER": {
     "name": "About",
     "sector": "Utilities",
-    "price": 1157.0,
+    "price": 1180.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -27722,7 +27724,7 @@ const screenerData = {
     "roe": 12.5,
     "roce": 12.5,
     "debtEquity": 0.0,
-    "dividend": 1.73,
+    "dividend": 1.7,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -27857,16 +27859,16 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 38.6%"
     ],
     "cons": [
-      "Stock is trading at 3.06 times its book value"
+      "Stock is trading at 3.12 times its book value"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 79.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 29.0
+        "revenue": 22.0
       },
       {
         "name": "Other",
@@ -27903,7 +27905,7 @@ const screenerData = {
   "SJVN": {
     "name": "About",
     "sector": "Utilities",
-    "price": 49.0,
+    "price": 50.8,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -27912,7 +27914,7 @@ const screenerData = {
     "roe": 4.58,
     "roce": 4.58,
     "debtEquity": 0.0,
-    "dividend": 3.06,
+    "dividend": 2.96,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -28053,11 +28055,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 86.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -28094,7 +28096,7 @@ const screenerData = {
   "CHOLAFIN": {
     "name": "About",
     "sector": "Financials",
-    "price": 1455.0,
+    "price": 1469.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -28223,18 +28225,18 @@ const screenerData = {
       "Company's median sales growth is 21.4% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 4.07 times its book value",
+      "Stock is trading at 4.13 times its book value",
       "Company has low interest coverage ratio.",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 86.0
+        "revenue": 71.0
       },
       {
         "name": "Exports",
-        "revenue": 36.0
+        "revenue": 31.0
       },
       {
         "name": "Other",
@@ -28406,11 +28408,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 83.0
+        "revenue": 70.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 20.0
       },
       {
         "name": "Other",
@@ -28447,7 +28449,7 @@ const screenerData = {
   "BAJAJFINSV": {
     "name": "About",
     "sector": "Financials",
-    "price": 1675.0,
+    "price": 1677.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -28591,18 +28593,18 @@ const screenerData = {
       "Company's median sales growth is 20.2% of last 10 years"
     ],
     "cons": [
-      "Stock is trading at 3.44 times its book value",
+      "Stock is trading at 3.45 times its book value",
       "Company has low interest coverage ratio.",
       "Company has a low return on equity of 13.8% over last 3 years."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 83.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -28639,7 +28641,7 @@ const screenerData = {
   "SUNDARMFIN": {
     "name": "About",
     "sector": "Financials",
-    "price": 3907.0,
+    "price": 3902.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -28770,17 +28772,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 21.6%"
     ],
     "cons": [
-      "Stock is trading at 2.91 times its book value",
+      "Stock is trading at 2.88 times its book value",
       "Company has low interest coverage ratio."
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 89.0
+        "revenue": 62.0
       },
       {
         "name": "Exports",
-        "revenue": 29.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -28817,7 +28819,7 @@ const screenerData = {
   "LICI": {
     "name": "About",
     "sector": "Financials",
-    "price": 382.0,
+    "price": 388.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -28826,7 +28828,7 @@ const screenerData = {
     "roe": 37.8,
     "roce": 37.8,
     "debtEquity": 0.0,
-    "dividend": 2.62,
+    "dividend": 2.58,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -28965,11 +28967,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 71.0
+        "revenue": 83.0
       },
       {
         "name": "Exports",
-        "revenue": 31.0
+        "revenue": 33.0
       },
       {
         "name": "Other",
@@ -29006,7 +29008,7 @@ const screenerData = {
   "YESBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 15.8,
+    "price": 15.9,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -29131,7 +29133,7 @@ const screenerData = {
       }
     ],
     "pros": [
-      "Stock is trading at 0.93 times its book value",
+      "Stock is trading at 0.94 times its book value",
       "Company has delivered good profit growth of 24.6% CAGR over last 5 years"
     ],
     "cons": [
@@ -29146,11 +29148,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 73.0
+        "revenue": 70.0
       },
       {
         "name": "Exports",
-        "revenue": 33.0
+        "revenue": 20.0
       },
       {
         "name": "Other",
@@ -29187,7 +29189,7 @@ const screenerData = {
   "RBLBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 348.0,
+    "price": 349.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -29330,11 +29332,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 69.0
+        "revenue": 74.0
       },
       {
         "name": "Exports",
-        "revenue": 39.0
+        "revenue": 34.0
       },
       {
         "name": "Other",
@@ -29371,7 +29373,7 @@ const screenerData = {
   "AUBANK": {
     "name": "About",
     "sector": "Financials",
-    "price": 870.0,
+    "price": 848.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -29426,11 +29428,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 82.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 32.0
       },
       {
         "name": "Other",
@@ -29467,7 +29469,7 @@ const screenerData = {
   "INDIANB": {
     "name": "About",
     "sector": "Financials",
-    "price": 829.0,
+    "price": 840.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -29476,7 +29478,7 @@ const screenerData = {
     "roe": 15.4,
     "roce": 15.4,
     "debtEquity": 0.0,
-    "dividend": 2.2,
+    "dividend": 2.17,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -29604,11 +29606,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 72.0
+        "revenue": 78.0
       },
       {
         "name": "Exports",
-        "revenue": 22.0
+        "revenue": 38.0
       },
       {
         "name": "Other",
@@ -29702,11 +29704,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 89.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -29743,7 +29745,7 @@ const screenerData = {
   "TVSMOTOR": {
     "name": "About",
     "sector": "Consumer",
-    "price": 3999.0,
+    "price": 4087.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -29752,7 +29754,7 @@ const screenerData = {
     "roe": 33.6,
     "roce": 33.6,
     "debtEquity": 0.0,
-    "dividend": 0.3,
+    "dividend": 0.29,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -29890,17 +29892,17 @@ const screenerData = {
       "Company has been maintaining a healthy dividend payout of 20.9%"
     ],
     "cons": [
-      "Stock is trading at 19.9 times its book value",
+      "Stock is trading at 20.3 times its book value",
       "Company might be capitalizing the interest cost"
     ],
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 81.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 21.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -29937,7 +29939,7 @@ const screenerData = {
   "MAXHEALTH": {
     "name": "About",
     "sector": "Healthcare",
-    "price": 835.0,
+    "price": 845.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -30078,7 +30080,7 @@ const screenerData = {
       "Strong fundamentals observed"
     ],
     "cons": [
-      "Stock is trading at 7.56 times its book value",
+      "Stock is trading at 7.68 times its book value",
       "Tax rate seems low",
       "Company has a low return on equity of 13.7% over last 3 years.",
       "Company might be capitalizing the interest cost",
@@ -30087,11 +30089,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 64.0
+        "revenue": 79.0
       },
       {
         "name": "Exports",
-        "revenue": 24.0
+        "revenue": 39.0
       },
       {
         "name": "Other",
@@ -30128,7 +30130,7 @@ const screenerData = {
   "APOLLOTYRE": {
     "name": "About",
     "sector": "Consumer",
-    "price": 389.0,
+    "price": 383.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -30137,7 +30139,7 @@ const screenerData = {
     "roe": 13.1,
     "roce": 13.1,
     "debtEquity": 0.0,
-    "dividend": 1.54,
+    "dividend": 1.57,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -30283,11 +30285,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 89.0
+        "revenue": 76.0
       },
       {
         "name": "Exports",
-        "revenue": 29.0
+        "revenue": 36.0
       },
       {
         "name": "Other",
@@ -30324,7 +30326,7 @@ const screenerData = {
   "CEATLTD": {
     "name": "About",
     "sector": "Consumer",
-    "price": 3120.0,
+    "price": 3146.0,
     "change": 0.0,
     "changePercent": 0.0,
     "marketCap": 0.0,
@@ -30333,7 +30335,7 @@ const screenerData = {
     "roe": 16.1,
     "roce": 16.1,
     "debtEquity": 0.0,
-    "dividend": 1.12,
+    "dividend": 1.11,
     "salesGrowth": 0.0,
     "volume": 0.0,
     "high52": 0.0,
@@ -30473,11 +30475,11 @@ const screenerData = {
     "segments": [
       {
         "name": "Domestic",
-        "revenue": 77.0
+        "revenue": 68.0
       },
       {
         "name": "Exports",
-        "revenue": 27.0
+        "revenue": 38.0
       },
       {
         "name": "Other",
