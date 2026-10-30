@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIPORTS",
+    "category": "Results",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e695b791-bc17-433f-b6c6-6cb3b41b0546.pdf",
+    "file_type": "pdf"
+}

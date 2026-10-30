@@ -1,0 +1,8 @@
+{
+    "ticker": "ACI",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e9f2c7ac-2298-4de2-84bc-2c2adfcd0d6b.pdf",
+    "file_type": "pdf"
+}

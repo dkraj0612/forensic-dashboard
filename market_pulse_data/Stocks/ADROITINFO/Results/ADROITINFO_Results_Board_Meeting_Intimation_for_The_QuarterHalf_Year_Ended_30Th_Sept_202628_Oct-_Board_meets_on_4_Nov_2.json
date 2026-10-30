@@ -1,0 +1,8 @@
+{
+    "ticker": "ADROITINFO",
+    "category": "Results",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=40490890-42a9-43b2-95c9-eb71d7b40160.pdf",
+    "file_type": "pdf"
+}

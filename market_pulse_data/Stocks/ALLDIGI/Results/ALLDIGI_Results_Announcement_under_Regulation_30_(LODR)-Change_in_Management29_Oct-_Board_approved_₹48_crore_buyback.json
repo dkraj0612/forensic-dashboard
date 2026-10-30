@@ -1,0 +1,8 @@
+{
+    "ticker": "ALLDIGI",
+    "category": "Results",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c41fbd44-b0e3-4d13-adb1-5783452b7f65.pdf",
+    "file_type": "pdf"
+}

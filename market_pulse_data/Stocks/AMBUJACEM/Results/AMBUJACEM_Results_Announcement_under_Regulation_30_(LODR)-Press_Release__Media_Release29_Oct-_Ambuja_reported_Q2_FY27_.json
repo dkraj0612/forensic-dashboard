@@ -1,0 +1,8 @@
+{
+    "ticker": "AMBUJACEM",
+    "category": "Results",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=330a524e-6fc2-467c-b328-80c492bfefe6.pdf",
+    "file_type": "pdf"
+}

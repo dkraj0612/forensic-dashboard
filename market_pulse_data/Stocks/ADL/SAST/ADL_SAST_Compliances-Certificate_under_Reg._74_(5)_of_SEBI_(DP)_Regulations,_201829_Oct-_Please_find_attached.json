@@ -1,0 +1,8 @@
+{
+    "ticker": "ADL",
+    "category": "SAST",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f01b96c5-ba0c-4a45-a6f8-e94af378c158.pdf",
+    "file_type": "pdf"
+}

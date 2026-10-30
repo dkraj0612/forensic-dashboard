@@ -1,0 +1,8 @@
+{
+    "ticker": "ACC",
+    "category": "SAST",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "Here's a 2-3 sentence executive summary of the financial document:  Promoters of ACC Limited (ACCL), Holderind Investments and Endeavour Trade and Investment, have placed 6.64% of ACCL's total share capital (11.72% of their holding) under an \"other covenant in the nature of encumbrance\" for lenders, facilitating Endeavour's refinancing and new financing up to USD 1.375 billion. While explicitly stating no direct pledge has been created, this arrangement restricts the free disposal of these shares and ties them to significant promoter-level debt. A notable red flag is the reporting of future dates (October 2026) for both the event and filing, suggesting a clerical error.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=EB3C97A8_B7D5_43BB_A1CD_4271C2667DCF_194235.pdf",
+    "file_type": "pdf"
+}

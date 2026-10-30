@@ -1,0 +1,8 @@
+{
+    "ticker": "ANANTRAJ",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6e344e4a-fe79-4b1b-900f-150cb7bdffdc.pdf",
+    "file_type": "pdf"
+}

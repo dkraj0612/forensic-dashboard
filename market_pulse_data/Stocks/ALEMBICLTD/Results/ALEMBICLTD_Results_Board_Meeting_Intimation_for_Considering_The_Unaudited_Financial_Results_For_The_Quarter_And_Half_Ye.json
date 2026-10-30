@@ -1,0 +1,8 @@
+{
+    "ticker": "ALEMBICLTD",
+    "category": "Results",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=141d21f6-48d6-4f2a-b89f-5c4393d55bd5.pdf",
+    "file_type": "pdf"
+}

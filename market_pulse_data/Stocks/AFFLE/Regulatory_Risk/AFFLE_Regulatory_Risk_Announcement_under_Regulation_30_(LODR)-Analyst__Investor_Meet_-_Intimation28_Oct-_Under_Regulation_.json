@@ -1,0 +1,8 @@
+{
+    "ticker": "AFFLE",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2c49bb91-f2b0-4bf9-b12d-b93909f3d33d.pdf",
+    "file_type": "pdf"
+}

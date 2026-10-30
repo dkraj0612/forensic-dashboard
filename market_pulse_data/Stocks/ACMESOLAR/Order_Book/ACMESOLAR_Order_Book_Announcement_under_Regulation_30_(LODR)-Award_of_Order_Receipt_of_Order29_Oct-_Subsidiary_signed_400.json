@@ -1,0 +1,8 @@
+{
+    "ticker": "ACMESOLAR",
+    "category": "Order_Book",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a09381a3-9d9e-4d9c-b08c-e5e1eb23f0c1.pdf",
+    "file_type": "pdf"
+}

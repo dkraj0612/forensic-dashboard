@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIENT",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-10-29",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bb00ca62-b2dc-4eaf-bd24-2a944d3324ed.pdf",
+    "file_type": "pdf"
+}
