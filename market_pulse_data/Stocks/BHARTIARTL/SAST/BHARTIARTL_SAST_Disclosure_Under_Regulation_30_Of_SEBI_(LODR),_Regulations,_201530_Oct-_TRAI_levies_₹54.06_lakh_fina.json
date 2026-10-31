@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARTIARTL",
+    "category": "SAST",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ff271f28-80be-4329-a556-8ecc1cc7684f.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CDSL",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/CDSL_31102026142410_Press_release_Signed.pdf",
+    "file_type": "pdf"
+}

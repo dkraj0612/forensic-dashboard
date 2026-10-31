@@ -1,0 +1,8 @@
+{
+    "ticker": "APOLLOPIPE",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=10cdfb09-5235-4147-a16b-72c115eadf4c.pdf",
+    "file_type": "pdf"
+}

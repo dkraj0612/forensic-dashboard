@@ -1,0 +1,8 @@
+{
+    "ticker": "BUILDPRO",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0a22850-f46a-406b-bd51-7d0d12310c71.pdf",
+    "file_type": "pdf"
+}

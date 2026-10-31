@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUEDART",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0f71e2b4-c66a-45ba-8451-cc612266eb01.pdf",
+    "file_type": "pdf"
+}

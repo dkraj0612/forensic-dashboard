@@ -1,0 +1,8 @@
+{
+    "ticker": "ATL",
+    "category": "Concalls",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=32a5f142-4f61-4360-aea7-2821c67b995f.pdf",
+    "file_type": "pdf"
+}

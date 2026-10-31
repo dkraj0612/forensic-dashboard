@@ -1,0 +1,8 @@
+{
+    "ticker": "CINEVISTA",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b85eea0f-eb28-42db-aaf2-fc7a55e5379d.pdf",
+    "file_type": "pdf"
+}

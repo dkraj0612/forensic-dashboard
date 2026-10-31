@@ -1,0 +1,8 @@
+{
+    "ticker": "AURIONPRO",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a348b7d8-99aa-4ae9-9ce8-e9a57c1c3d0b.pdf",
+    "file_type": "pdf"
+}

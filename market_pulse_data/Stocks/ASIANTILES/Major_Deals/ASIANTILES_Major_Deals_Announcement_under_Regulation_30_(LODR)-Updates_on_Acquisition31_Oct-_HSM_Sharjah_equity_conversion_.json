@@ -1,0 +1,8 @@
+{
+    "ticker": "ASIANTILES",
+    "category": "Major_Deals",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=849e315a-3bcf-4cbf-a157-c169668366df.pdf",
+    "file_type": "pdf"
+}

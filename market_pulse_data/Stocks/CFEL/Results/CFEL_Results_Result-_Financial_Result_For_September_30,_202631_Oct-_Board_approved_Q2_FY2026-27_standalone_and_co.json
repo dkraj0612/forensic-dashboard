@@ -1,0 +1,8 @@
+{
+    "ticker": "CFEL",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3c5f336f-9626-4013-bbf8-9b277cb561fc.pdf",
+    "file_type": "pdf"
+}

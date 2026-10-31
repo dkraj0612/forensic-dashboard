@@ -1,0 +1,8 @@
+{
+    "ticker": "CIFL",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=98cdf386-8b7d-4f20-8148-b26cc83287b4.pdf",
+    "file_type": "pdf"
+}

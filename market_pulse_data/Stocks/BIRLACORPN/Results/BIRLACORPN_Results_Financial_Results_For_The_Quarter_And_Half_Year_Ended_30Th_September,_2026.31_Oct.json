@@ -1,0 +1,8 @@
+{
+    "ticker": "BIRLACORPN",
+    "category": "Results",
+    "extraction_date": "2026-10-31",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2e91905d-157e-47ca-9f4e-b379045c62e0.pdf",
+    "file_type": "pdf"
+}
