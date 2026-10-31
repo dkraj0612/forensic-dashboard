@@ -1,0 +1,8 @@
+{
+    "ticker": "ADVAIT",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=747bc2ab-b25b-4e0c-9fb3-3aba1f211826.pdf",
+    "file_type": "pdf"
+}

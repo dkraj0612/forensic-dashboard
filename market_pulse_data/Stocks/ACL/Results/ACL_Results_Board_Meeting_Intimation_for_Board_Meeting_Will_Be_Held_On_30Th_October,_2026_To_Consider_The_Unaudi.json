@@ -1,0 +1,8 @@
+{
+    "ticker": "ACL",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=32829ad9-82a6-49cc-821c-090fdc561e2a.pdf",
+    "file_type": "pdf"
+}

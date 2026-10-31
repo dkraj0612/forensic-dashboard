@@ -1,0 +1,8 @@
+{
+    "ticker": "ARCIL",
+    "category": "Management_Change",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7c96fa8d-ec6e-4340-9518-571d6235097e.pdf",
+    "file_type": "pdf"
+}

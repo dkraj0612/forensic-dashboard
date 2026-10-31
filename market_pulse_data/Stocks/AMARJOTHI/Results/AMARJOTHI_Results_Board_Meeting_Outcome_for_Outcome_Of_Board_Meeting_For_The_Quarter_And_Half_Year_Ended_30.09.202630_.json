@@ -1,0 +1,8 @@
+{
+    "ticker": "AMARJOTHI",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70c6e36a-817f-439a-9264-0747873f8d43.pdf",
+    "file_type": "pdf"
+}

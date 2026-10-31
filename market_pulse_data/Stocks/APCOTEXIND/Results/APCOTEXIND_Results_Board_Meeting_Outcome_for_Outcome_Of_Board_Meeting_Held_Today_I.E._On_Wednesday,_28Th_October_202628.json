@@ -1,0 +1,8 @@
+{
+    "ticker": "APCOTEXIND",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e91718e2-0a1a-4cf5-b29b-4b507c1c7faf.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ACEVECTOR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2c0f26cb-3fb2-49c4-ab99-055f6886e608.pdf",
+    "file_type": "pdf"
+}

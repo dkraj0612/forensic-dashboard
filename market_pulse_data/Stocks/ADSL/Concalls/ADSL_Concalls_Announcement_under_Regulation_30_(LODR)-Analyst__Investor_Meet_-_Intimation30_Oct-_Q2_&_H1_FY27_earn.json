@@ -1,0 +1,8 @@
+{
+    "ticker": "ADSL",
+    "category": "Concalls",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=098a94f9-75c2-4aa1-91a3-f509a001112d.pdf",
+    "file_type": "pdf"
+}

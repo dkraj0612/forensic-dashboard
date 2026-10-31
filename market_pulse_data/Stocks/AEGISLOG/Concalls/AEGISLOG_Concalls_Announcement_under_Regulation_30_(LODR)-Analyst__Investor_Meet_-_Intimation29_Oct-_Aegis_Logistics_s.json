@@ -1,0 +1,8 @@
+{
+    "ticker": "AEGISLOG",
+    "category": "Concalls",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=58c5ff16-834a-476c-941e-b80a6ccb1c5d.pdf",
+    "file_type": "pdf"
+}

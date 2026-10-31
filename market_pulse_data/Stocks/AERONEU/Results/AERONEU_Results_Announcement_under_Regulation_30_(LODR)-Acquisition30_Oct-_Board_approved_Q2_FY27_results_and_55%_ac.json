@@ -1,0 +1,8 @@
+{
+    "ticker": "AERONEU",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=208de6d3-47bc-41a9-ae3d-279cd043fd85.pdf",
+    "file_type": "pdf"
+}

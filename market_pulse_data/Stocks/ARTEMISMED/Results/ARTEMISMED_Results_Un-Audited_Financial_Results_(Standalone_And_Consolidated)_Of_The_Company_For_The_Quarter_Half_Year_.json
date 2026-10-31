@@ -1,0 +1,8 @@
+{
+    "ticker": "ARTEMISMED",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4998698b-8d75-4606-abd2-a7e1d85bac52.pdf",
+    "file_type": "pdf"
+}

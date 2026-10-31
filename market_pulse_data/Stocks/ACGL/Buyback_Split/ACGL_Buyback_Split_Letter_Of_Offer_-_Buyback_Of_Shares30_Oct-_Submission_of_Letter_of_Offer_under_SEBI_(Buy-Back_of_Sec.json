@@ -1,0 +1,8 @@
+{
+    "ticker": "ACGL",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69d01692-70d5-4a59-972f-305ffb68a32d.pdf",
+    "file_type": "pdf"
+}

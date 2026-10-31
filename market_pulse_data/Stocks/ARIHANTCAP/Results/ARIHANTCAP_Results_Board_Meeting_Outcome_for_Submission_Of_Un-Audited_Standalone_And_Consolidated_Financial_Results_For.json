@@ -1,0 +1,8 @@
+{
+    "ticker": "ARIHANTCAP",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f3322df-daf2-4206-8dd9-6cfca2d9b7bf.pdf",
+    "file_type": "pdf"
+}

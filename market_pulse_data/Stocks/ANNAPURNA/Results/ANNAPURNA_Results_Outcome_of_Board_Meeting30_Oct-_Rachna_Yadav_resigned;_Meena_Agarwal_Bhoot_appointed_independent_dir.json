@@ -1,0 +1,8 @@
+{
+    "ticker": "ANNAPURNA",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/ASL_30102026163529_ASL_30102026.pdf",
+    "file_type": "pdf"
+}

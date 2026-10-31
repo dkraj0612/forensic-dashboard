@@ -1,0 +1,8 @@
+{
+    "ticker": "ADANIENSOL",
+    "category": "Results",
+    "extraction_date": "2026-10-30",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=21625c56-5a6a-44ee-8008-adc9444ca4a6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "ABREL"
+  call_date: "2026-10-30"
+  reporting_period: "Announcement_under_Regulation_30_(LODR)-Earnings_Call_Transcript30_Oct-_Transcript_of_Q2H1_FY2026-27"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8de7eff4-dba9-4a5e-b57e-2d666d97fa2e.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 9.51
+  total_word_volume: 8091
+---
+
+# Concall NLP Analysis: ABREL
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8de7eff4-dba9-4a5e-b57e-2d666d97fa2e.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> Aditya Birla Real Estate Limited reported robust Q2/H1 FY27 financial performance with total income soaring 309% and collections increasing 39% year-on-year, also achieving an upgraded AA positive credit outlook. A strategic decision to redesign the flagship Worli project, adding INR1,900 crores to its GDV for enhanced long-term profitability, will defer its launch to Q2 FY28. This deferral, coupled with a relatively modest Q2 booking value of INR298 crores and limited management transparency on gross presales, suggests potential near-term presales pressure and raises a minor concern regarding disclosure.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+ADITYA BIRLA REAL ESTATE SH/XIl/098 /20 26-2 7 30th October, 2026 Listing Department Corporate Relationship Department BSE Limited 1st Floor, Phiroze Jeejeebhoy Towers Dalal Street, Fort, National Stock Exchange of India Limited Exchange Plaza, 5th floor, Bandra-Kurla Complex Mumbai-400 001 Scrip Code: 500040 Bandra (East), Mumbai-400 051. Scrip Code: ABREL Dear Sir/ Madam, Sub: Transcript of Q2/H1-FY2026-27 Earnings Conference Call of Aditya Birla Real Estate Limited ('the Company') Ref: Regulation 30 of Securities and Exchange Board of India (Listing Obligations and Disclosure Requirements) Regulations, 2015 ('Listing Regulations') Pursuant to Regulation 30 of Listing Regulations, please find attached transcript of Q2/H1-FY2026-27 Earnings Conference Call conducted on 26th October, 2026 at 05:00 P.M. (1ST) after the meeting of the Board of Directors of the Company held on 26th October, 2026. The above is also available on the website of the Company viz. www.adityabirlarealestate.com This is for your information and record. Thanking you, Yours truly, For Aditya Birla Real Estate Limited (Formerly Century Textiles and Industries Limited) Atul K. Kedia Jt. President (Legal) & Company Secretary Encl: as above Aditya Birla Real Estate Limited (Formerly known as Century Textiles and Industries Limited) Regd. Office: Century Bhavan, Dr. Annie Besant Road, Worli, Mumbai - 400 030, India. T: +91 22 2495 7000 I F: +91 22 2430 9491, +91 22 2436 1980 E: abrel.info@adityabirla.com I W: www.adityabirlarealestate.com Corporate ID No.: L17120MH1897PLC000163 ATULKUMAR MOHANLAL KEDIA Digitally signed by ATULKUMAR MOHANLAL KEDIA Date: 2026.10.30 18:55:27 +05'30' Page 1 of 16 “Aditya Birla Real Estate Limited 2QFY27 Earnings Conference Call” October 26, 2026 MANAGEMENT: MR. R.K. DALMIA - MANAGING DIRECTOR - ADITYA BIRLA REAL ESTATE LIMITED MR. K. T. JITHENDRAN - MANAGING DIRECTOR AND CHIEF EXECUTIVE OFFICER - BIRLA ESTATES PRIVATE LIMITED MR. KEYUR SHAH - CHIEF FINANCIAL OFFICER - ADITYA BIRLA REAL ESTATE LIMITED MODERATOR: MR. KARAN KHANNA - AMBIT CAPITAL PRIVATE LIMITED Aditya Birla Real Estate Limited October 26, 2026 Page 2 of 16 Moderator: Ladies and gentlemen, good day and welcome to Aditya Birla Real Estate Limited 2QFY27 Earnings Call. As a reminder, all participant lines will be in the listen-only mode and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during this conference call, please signal an operator by pressing star then zero on your touchtone phone. Please note that this conference is being recorded. I now hand over the conference to Mr. Karan Khanna from AMBIT Capital Private Limited. Thank you, and over to you. Karan Khanna: Thank you, Iqra. Good evening, everybody. On behalf of AMBIT Capital, I would like to welcome you all to the 2Q and 1HFY27 Earnings Conference Call of Aditya Birla Real Estate. From the management team, we have with us today Mr. R.K. Dalmia, Managing Director, Aditya Birla Real Estate; Mr. K. T. Jithendran, MD and CEO, Birla Estates and Mr. Keyur Shah, CFO, Aditya Birla Real Estate. I will now hand over the call to the management team for the opening remarks, post which we will have the forum open for Q&A. Thank you, and over to you, gentlemen. R. K. Dalmia: Thank you, Karan. I'm R.K. Dalmia. A very good evening to you all. India's economy maintained strong momentum in 2QFY27, supported by resilient domestic demand and investment activity. 1QFY27 GDP growth stood at 7.8%, ahead of the RBI's earlier estimate with healthy PMI readings and GST collections. Reflecting this resilience, the RBI revised its FY27 GDP growth forecast upward to 7.1%.... *(Truncated for storage. See Source URL)*
