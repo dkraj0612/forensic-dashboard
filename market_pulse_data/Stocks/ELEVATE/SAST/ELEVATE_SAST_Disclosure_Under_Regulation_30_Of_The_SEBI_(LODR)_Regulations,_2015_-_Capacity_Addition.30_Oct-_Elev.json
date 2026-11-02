@@ -1,0 +1,8 @@
+{
+    "ticker": "ELEVATE",
+    "category": "SAST",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3f874336-5846-41f0-ae37-ed07e62a97d8.pdf",
+    "file_type": "pdf"
+}

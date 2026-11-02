@@ -1,0 +1,8 @@
+{
+    "ticker": "DAICHI",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2be5bd79-395d-42b8-823c-6bec892d9245.pdf",
+    "file_type": "pdf"
+}

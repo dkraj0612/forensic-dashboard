@@ -1,0 +1,8 @@
+{
+    "ticker": "DLINKINDIA",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d34f373e-cfa9-446a-b8de-4f5b48245906.pdf",
+    "file_type": "pdf"
+}

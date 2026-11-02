@@ -1,0 +1,8 @@
+{
+    "ticker": "DELHIVERY",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=03fbf78d-fe29-45fd-9f36-cd12f3c2f43d.pdf",
+    "file_type": "pdf"
+}

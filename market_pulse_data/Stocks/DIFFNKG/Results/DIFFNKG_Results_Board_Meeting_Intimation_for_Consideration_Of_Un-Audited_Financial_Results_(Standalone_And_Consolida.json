@@ -1,0 +1,8 @@
+{
+    "ticker": "DIFFNKG",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3c3e250c-19aa-474b-829c-5acc59423d3b.pdf",
+    "file_type": "pdf"
+}

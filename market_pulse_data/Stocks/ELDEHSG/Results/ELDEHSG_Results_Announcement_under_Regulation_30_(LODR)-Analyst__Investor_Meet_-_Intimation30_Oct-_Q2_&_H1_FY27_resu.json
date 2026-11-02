@@ -1,0 +1,8 @@
+{
+    "ticker": "ELDEHSG",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1541ead1-5860-4d97-b1ac-6bc370faa027.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CSBBANK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=29f66598-07d2-44d9-9d48-5871942e6d01.pdf",
+    "file_type": "pdf"
+}

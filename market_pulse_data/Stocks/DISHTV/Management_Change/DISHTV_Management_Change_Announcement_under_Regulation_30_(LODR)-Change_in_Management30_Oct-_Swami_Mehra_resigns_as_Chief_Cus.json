@@ -1,0 +1,8 @@
+{
+    "ticker": "DISHTV",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0c1b0e1b-32c8-4758-8e07-c12c58efa106.pdf",
+    "file_type": "pdf"
+}

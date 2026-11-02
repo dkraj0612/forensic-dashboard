@@ -1,0 +1,8 @@
+{
+    "ticker": "DHOOTTRANS",
+    "category": "Concalls",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=62e6a13d-c19b-4756-ad80-85518dc1dc63.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DIGIDRIVE",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=851b5b0d-5abd-4a91-a990-75a6ba7b77e1.pdf",
+    "file_type": "pdf"
+}

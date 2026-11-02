@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHOKA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f8027de6-7ef4-41e1-848c-74b5d266ff58.pdf",
+    "file_type": "pdf"
+}

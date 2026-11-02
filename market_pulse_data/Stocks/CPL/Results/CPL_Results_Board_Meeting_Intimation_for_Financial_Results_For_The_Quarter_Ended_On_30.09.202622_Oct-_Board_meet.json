@@ -1,0 +1,8 @@
+{
+    "ticker": "CPL",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=12416fd3-fd8b-45d4-9783-7f914405c7a4.pdf",
+    "file_type": "pdf"
+}

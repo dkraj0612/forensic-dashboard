@@ -1,0 +1,8 @@
+{
+    "ticker": "EICHERMOT",
+    "category": "Business_Updates",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b54f0015-6a61-4b26-aae1-8a581fd961cd.pdf",
+    "file_type": "pdf"
+}

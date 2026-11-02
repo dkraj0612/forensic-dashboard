@@ -1,0 +1,8 @@
+{
+    "ticker": "CORONA",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c50d5fbf-dd37-43a7-bb22-b347a9024828.pdf",
+    "file_type": "pdf"
+}

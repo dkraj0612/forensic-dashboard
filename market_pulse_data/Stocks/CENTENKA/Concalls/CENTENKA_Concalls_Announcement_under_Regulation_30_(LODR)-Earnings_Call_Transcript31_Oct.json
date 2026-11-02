@@ -1,0 +1,8 @@
+{
+    "ticker": "CENTENKA",
+    "category": "Concalls",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=70fb956e-0b1c-4eff-9112-f46e91a3474b.pdf",
+    "file_type": "pdf"
+}

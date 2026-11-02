@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMSRIND",
+    "category": "SAST",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6844D028_16DC_439C_B0C1_E8F915960304_151212.pdf",
+    "file_type": "pdf"
+}

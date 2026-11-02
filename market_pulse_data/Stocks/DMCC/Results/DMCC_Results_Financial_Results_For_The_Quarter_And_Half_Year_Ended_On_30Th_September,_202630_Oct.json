@@ -1,0 +1,8 @@
+{
+    "ticker": "DMCC",
+    "category": "Results",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d20ce48a-e7d3-4dd2-aa51-f16a010a1284.pdf",
+    "file_type": "pdf"
+}

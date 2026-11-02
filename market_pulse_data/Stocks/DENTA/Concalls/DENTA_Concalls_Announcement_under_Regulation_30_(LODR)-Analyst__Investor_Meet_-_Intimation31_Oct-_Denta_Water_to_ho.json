@@ -1,0 +1,8 @@
+{
+    "ticker": "DENTA",
+    "category": "Concalls",
+    "extraction_date": "2026-11-01",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5833f2f3-3727-41af-9f84-bf72aa232c98.pdf",
+    "file_type": "pdf"
+}
