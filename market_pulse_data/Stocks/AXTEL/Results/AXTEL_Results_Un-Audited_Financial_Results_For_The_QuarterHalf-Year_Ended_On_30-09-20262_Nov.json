@@ -1,0 +1,8 @@
+{
+    "ticker": "AXTEL",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a07dace8-afd0-42c4-90c4-60ad90f1325e.pdf",
+    "file_type": "pdf"
+}

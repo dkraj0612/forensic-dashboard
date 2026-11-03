@@ -1,0 +1,8 @@
+{
+    "ticker": "ASSAMENT",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=41fb6617-0522-494c-a74c-936ba54a1b17.pdf",
+    "file_type": "pdf"
+}

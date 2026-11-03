@@ -1,0 +1,8 @@
+{
+    "ticker": "ANTELOPUS",
+    "category": "Concalls",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2fadb5e-a161-4a51-9f53-9f4a1fcd027e.pdf",
+    "file_type": "pdf"
+}

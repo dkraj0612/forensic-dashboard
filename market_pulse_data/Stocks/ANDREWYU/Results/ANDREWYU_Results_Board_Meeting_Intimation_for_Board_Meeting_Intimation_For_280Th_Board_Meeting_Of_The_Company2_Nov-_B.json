@@ -1,0 +1,8 @@
+{
+    "ticker": "ANDREWYU",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c8b2ce36-e080-4b9b-a686-d20265bc2244.pdf",
+    "file_type": "pdf"
+}

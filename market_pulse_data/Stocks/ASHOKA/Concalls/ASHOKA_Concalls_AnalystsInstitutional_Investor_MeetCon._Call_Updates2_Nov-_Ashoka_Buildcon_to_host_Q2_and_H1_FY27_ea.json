@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHOKA",
+    "category": "Concalls",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=EC02AC5B-35B2-446B-B9D8-094A8DD4EC69-095506.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BECTORFOOD",
+    "category": "Concalls",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=7ca2f54f-ef16-42f1-97de-62090bfe2c7d.pdf",
+    "file_type": "pdf"
+}

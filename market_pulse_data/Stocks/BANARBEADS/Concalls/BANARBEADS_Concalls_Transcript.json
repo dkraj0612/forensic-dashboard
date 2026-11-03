@@ -1,0 +1,8 @@
+{
+    "ticker": "BANARBEADS",
+    "category": "Concalls",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8bd2e8b-6de5-4bd7-b105-6d4dea493724.pdf",
+    "file_type": "pdf"
+}

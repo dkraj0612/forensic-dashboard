@@ -1,0 +1,8 @@
+{
+    "ticker": "AUSTENG",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=39469f34-7dd8-4f9c-befb-c8cfde88ce63.pdf",
+    "file_type": "pdf"
+}

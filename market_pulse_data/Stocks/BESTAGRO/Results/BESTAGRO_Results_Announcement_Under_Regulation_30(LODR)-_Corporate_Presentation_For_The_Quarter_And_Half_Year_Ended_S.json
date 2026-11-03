@@ -1,0 +1,8 @@
+{
+    "ticker": "BESTAGRO",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a32f414c-e869-4695-971d-1dd8ff29ef8c.pdf",
+    "file_type": "pdf"
+}

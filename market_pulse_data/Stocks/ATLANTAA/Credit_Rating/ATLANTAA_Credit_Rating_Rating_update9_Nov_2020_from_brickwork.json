@@ -1,0 +1,8 @@
+{
+    "ticker": "ATLANTAA",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/Atlanta-%20Limited-9nov2020.pdf",
+    "file_type": "pdf"
+}

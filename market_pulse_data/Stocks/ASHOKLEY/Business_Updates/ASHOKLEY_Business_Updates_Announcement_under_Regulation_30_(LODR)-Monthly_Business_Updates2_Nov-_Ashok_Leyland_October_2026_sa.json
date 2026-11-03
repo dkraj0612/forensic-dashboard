@@ -1,0 +1,8 @@
+{
+    "ticker": "ASHOKLEY",
+    "category": "Business_Updates",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6cb12d05-952a-478f-802d-32554f560d93.pdf",
+    "file_type": "pdf"
+}

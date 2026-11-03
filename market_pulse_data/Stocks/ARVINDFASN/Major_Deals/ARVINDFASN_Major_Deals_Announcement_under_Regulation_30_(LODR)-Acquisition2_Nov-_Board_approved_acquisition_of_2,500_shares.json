@@ -1,0 +1,8 @@
+{
+    "ticker": "ARVINDFASN",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d771dd4c-7acf-48bf-baf4-838e509e83d6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BALRAMCHIN",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=23841880-7bf2-4881-aaa5-917a22f57ca1.pdf",
+    "file_type": "pdf"
+}

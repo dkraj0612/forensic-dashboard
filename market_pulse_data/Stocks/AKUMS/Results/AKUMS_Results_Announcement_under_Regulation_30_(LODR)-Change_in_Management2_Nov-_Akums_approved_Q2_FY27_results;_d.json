@@ -1,0 +1,8 @@
+{
+    "ticker": "AKUMS",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=37c9241c-d47d-497a-931a-aaded7723c6e.pdf",
+    "file_type": "pdf"
+}

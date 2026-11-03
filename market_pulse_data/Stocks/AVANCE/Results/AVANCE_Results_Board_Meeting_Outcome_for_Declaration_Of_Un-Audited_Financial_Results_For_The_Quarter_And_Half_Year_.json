@@ -1,0 +1,8 @@
+{
+    "ticker": "AVANCE",
+    "category": "Results",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df22a4d1-ad9e-46c8-a4fd-193041ea4ac4.pdf",
+    "file_type": "pdf"
+}

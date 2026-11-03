@@ -1,0 +1,8 @@
+{
+    "ticker": "ARHAM",
+    "category": "Concalls",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/ARHAM_19112025192127_Transcipt_of_Earning_Con_Call_Signed.pdf",
+    "file_type": "pdf"
+}

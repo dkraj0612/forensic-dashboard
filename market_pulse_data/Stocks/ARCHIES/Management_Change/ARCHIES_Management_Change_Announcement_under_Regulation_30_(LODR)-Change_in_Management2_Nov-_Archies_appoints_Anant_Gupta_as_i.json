@@ -1,0 +1,8 @@
+{
+    "ticker": "ARCHIES",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-02",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d3c6f830-9abb-4784-bb3a-006af72f8659.pdf",
+    "file_type": "pdf"
+}
