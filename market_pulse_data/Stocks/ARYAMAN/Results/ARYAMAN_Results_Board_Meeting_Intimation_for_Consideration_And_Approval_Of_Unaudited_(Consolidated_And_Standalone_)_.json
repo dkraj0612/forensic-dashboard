@@ -1,0 +1,8 @@
+{
+    "ticker": "ARYAMAN",
+    "category": "Results",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=27217426-ece5-4c08-8b54-16ed4ab09cbf.pdf",
+    "file_type": "pdf"
+}

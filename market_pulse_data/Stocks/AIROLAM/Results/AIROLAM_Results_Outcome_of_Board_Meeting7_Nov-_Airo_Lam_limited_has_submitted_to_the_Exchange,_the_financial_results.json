@@ -1,0 +1,8 @@
+{
+    "ticker": "AIROLAM",
+    "category": "Results",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.com/corporate/AIROLAM_07112026180529_Final_Result.pdf",
+    "file_type": "pdf"
+}

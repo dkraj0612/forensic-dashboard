@@ -1,0 +1,8 @@
+{
+    "ticker": "ACUTAAS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cac30dd4-97c0-4cca-a6a9-13bcd07c47d9.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AGOL",
+    "category": "Results",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=eebb4cb8-ea07-4e42-a555-e799e88446c9.pdf",
+    "file_type": "pdf"
+}

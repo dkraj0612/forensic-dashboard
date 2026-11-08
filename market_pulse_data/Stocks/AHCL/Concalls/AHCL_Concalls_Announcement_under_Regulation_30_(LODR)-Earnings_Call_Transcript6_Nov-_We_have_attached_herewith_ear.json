@@ -1,0 +1,8 @@
+{
+    "ticker": "AHCL",
+    "category": "Concalls",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e2c5a576-dcb1-48fd-8dfe-bb0e3ed7b32b.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ASTERDM",
+    "category": "Results",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6b5366eb-29da-449e-aeea-928ed50038ea.pdf",
+    "file_type": "pdf"
+}

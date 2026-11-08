@@ -1,0 +1,8 @@
+{
+    "ticker": "ALIVUS",
+    "category": "Concalls",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=16e5743e-d18c-4805-a18f-bc98238f9f4a.pdf",
+    "file_type": "pdf"
+}

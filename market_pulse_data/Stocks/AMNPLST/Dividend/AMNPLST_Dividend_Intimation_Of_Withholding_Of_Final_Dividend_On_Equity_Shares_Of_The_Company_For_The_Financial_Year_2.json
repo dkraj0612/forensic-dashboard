@@ -1,0 +1,8 @@
+{
+    "ticker": "AMNPLST",
+    "category": "Dividend",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=05882b12-25b9-411e-89a5-55770ecd19de.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ANTHEM",
+    "category": "Concalls",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c541ca07-4cd2-4f3a-94ed-2f27ee128da9.pdf",
+    "file_type": "pdf"
+}

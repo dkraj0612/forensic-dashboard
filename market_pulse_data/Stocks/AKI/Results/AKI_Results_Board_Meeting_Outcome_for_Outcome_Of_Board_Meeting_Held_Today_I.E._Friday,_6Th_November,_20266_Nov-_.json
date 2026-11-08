@@ -1,0 +1,8 @@
+{
+    "ticker": "AKI",
+    "category": "Results",
+    "extraction_date": "2026-11-07",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=909e77d4-d7c7-47de-8eec-3810602155aa.pdf",
+    "file_type": "pdf"
+}
