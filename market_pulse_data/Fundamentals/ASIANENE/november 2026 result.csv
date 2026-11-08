@@ -1,5 +1,5 @@
 Ticker,Extraction_Date,About_&_Key_Points,Top_Level_Metrics,Pros_and_Cons_Summary,Quarterly_Results,Profit_Loss,Balance_Sheet,Cash_Flow,Detailed_Ratios,Four_CAGR_Boxes,Peers,Shareholding_Pattern
-ASIANENE,2026-11-02,"About
+ASIANENE,2026-11-08,"About
 Asian Energy Services Ltd is an oilfield service and reservoir imaging company, offering a suite of geophysical services specializing in land and well seismic services and operation and maintenance services for oilfields.
 [1]
 It is one of the few companies providing end-to-end services in the upstream oil segment.
@@ -8,11 +8,11 @@ Key Points
 Business Portfolio:
 [1]
 The company is a leading and trusted service provider in the oil & gas industry, with a strong presence in the hydrocarbon and mineral sectors.
-Read More","Market Cap: ₹ 1,947 Cr.
-Current Price: ₹ 397
+Read More","Market Cap: ₹ 1,970 Cr.
+Current Price: ₹ 402
 High / Low: ₹ 566 / 230
-Stock P/E: 24.4
-Book Value: ₹ 110
+Stock P/E: 24.7
+Book Value: ₹ 127
 Dividend Yield: 0.31 %
 ROCE: 16.3 %
 ROE: 12.8 %
@@ -25,6 +25,7 @@ CONS:
 - Company has high debtors of 160 days.
 - Promoter holding has decreased over last 3 years: -6.97%","Unnamed: 0,Sep 2023,Dec 2023,Mar 2024,Jun 2024,Sep 2024,Dec 2024,Mar 2025,Jun 2025,Sep 2025,Dec 2025,Mar 2026,Jun 2026,Sep 2026
 Sales +,45,95,119,60,98,92,215,115,102,235,338,271,267
+YoY Sales growth,+82%,+228%,+314%,+31%,+115%,-3%,+81%,+92%,+4%,+157%,+57%,+135%,+161%
 Expenses +,42,80,94,54,82,79,184,104,94,207,290,250,236
 Operating Profit,4,15,25,6,15,13,31,11,8,28,48,21,30
 OPM %,8%,16%,21%,10%,16%,14%,15%,10%,8%,12%,14%,8%,11%
@@ -37,6 +38,7 @@ Net Profit +,1,13,15,2,9,8,23,6,-4,18,33,13,17
 EPS in Rs,0.27,3.30,3.56,0.50,2.07,1.84,5.03,1.24,-0.85,3.90,7.11,2.46,3.40
 Raw PDF,,,,,,,,,,,,,","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026,TTM
 Sales +,141,78,124,222,194,273,229,260,110,305,465,791,1112
+Sales growth,+16%,-45%,+60%,+79%,-13%,+41%,-16%,+14%,-58%,+177%,+52%,+70%,+112%
 Expenses +,146,101,140,182,161,207,173,194,129,263,399,696,984
 Operating Profit,-6,-24,-16,41,33,67,55,66,-19,42,66,95,127
 OPM %,-3.9%,-30%,-13%,18%,17%,24%,24%,25%,-17%,14%,14%,12%,11%
@@ -47,17 +49,17 @@ Profit before tax,-27,-25,-18,10,9,41,25,41,-45,29,56,69,105
 Tax %,0%,7%,1%,2%,1%,28%,8%,5%,-0%,11%,25%,25%,
 Net Profit +,-27,-27,-18,10,9,29,23,39,-44,26,42,52,80
 EPS in Rs,-12.10,-12.12,-6.98,2.71,2.39,7.68,5.93,10.19,-11.65,6.22,9.41,11.38,16.87
-Dividend Payout %,0%,0%,0%,0%,0%,0%,0%,0%,0%,0%,11%,11%,","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
-Equity Capital,22,22,26,38,38,38,38,38,38,41,45,45
-Reserves,15,-12,56,102,114,144,166,204,162,237,354,449
-Borrowings +,70,110,83,28,10,0,4,8,21,22,24,159
-Other Liabilities +,43,50,45,84,56,126,140,88,76,84,170,266
-Total Liabilities,150,171,209,252,218,308,348,338,297,384,592,918
-Fixed Assets +,106,95,83,100,87,90,132,112,96,112,115,115
-CWIP,0,0,0,0,0,0,0,0,0,1,3,46
-Investments,0,0,0,0,0,0,0,6,20,12,33,12
-Other Assets +,44,75,126,152,132,218,216,220,181,259,441,746
-Total Assets,150,171,209,252,218,308,348,338,297,384,592,918","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
+Dividend Payout %,0%,0%,0%,0%,0%,0%,0%,0%,0%,0%,11%,11%,","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026,Sep 2026
+Equity Capital,22,22,26,38,38,38,38,38,38,41,45,45,49
+Reserves,15,-12,56,102,114,144,166,204,162,237,354,449,572
+Borrowings +,70,110,83,28,10,0,4,8,21,22,24,159,162
+Other Liabilities +,43,50,45,84,56,126,140,88,76,84,170,266,201
+Total Liabilities,150,171,209,252,218,308,348,338,297,384,592,918,983
+Fixed Assets +,106,95,83,100,87,90,132,112,96,112,115,115,160
+CWIP,0,0,0,0,0,0,0,0,0,1,3,46,9
+Investments,0,0,0,0,0,0,0,6,20,12,33,12,32
+Other Assets +,44,75,126,152,132,218,216,220,181,259,441,746,782
+Total Assets,150,171,209,252,218,308,348,338,297,384,592,918,983","Unnamed: 0,Mar 2015,Mar 2016,Mar 2017,Mar 2018,Mar 2019,Mar 2020,Mar 2021,Mar 2022,Mar 2023,Mar 2024,Mar 2025,Mar 2026
 Cash from Operating Activity +,-8,-1,-18,27,27,89,-7,48,-3,-44,-33,53
 Cash from Investing Activity +,-12,-2,-4,-29,-19,-11,-33,-49,-18,-14,-34,-88
 Cash from Financing Activity +,18,9,42,-17,-15,-17,1,6,10,49,78,124
@@ -85,7 +87,7 @@ TTM:,113%
 10 Years:,18%
 5 Years:,24%
 3 Years:,29%
-1 Year:,23%
+1 Year:,21%
 
 [Return on Equity]
 10 Years:,9%
