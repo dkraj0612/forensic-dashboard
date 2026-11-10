@@ -1,0 +1,8 @@
+{
+    "ticker": "AUTOAXLES",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5ac4b5e5-6663-4f43-815d-c981bb14064d.pdf",
+    "file_type": "pdf"
+}

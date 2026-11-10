@@ -1,0 +1,8 @@
+{
+    "ticker": "BOSCHLTD",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=86af490a-645f-4859-bb78-484dba28475a.pdf",
+    "file_type": "pdf"
+}

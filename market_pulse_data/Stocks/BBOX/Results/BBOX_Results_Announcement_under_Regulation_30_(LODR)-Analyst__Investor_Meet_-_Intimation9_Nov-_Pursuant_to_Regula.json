@@ -1,0 +1,8 @@
+{
+    "ticker": "BBOX",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=98c56b88-afdd-452d-813d-cb21a5498ec4.pdf",
+    "file_type": "pdf"
+}

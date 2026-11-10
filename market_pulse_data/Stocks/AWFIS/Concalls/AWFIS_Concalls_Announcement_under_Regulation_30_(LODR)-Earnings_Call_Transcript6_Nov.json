@@ -1,0 +1,8 @@
+{
+    "ticker": "AWFIS",
+    "category": "Concalls",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=2762a754-afd7-4e77-8287-282c735995ce.pdf",
+    "file_type": "pdf"
+}

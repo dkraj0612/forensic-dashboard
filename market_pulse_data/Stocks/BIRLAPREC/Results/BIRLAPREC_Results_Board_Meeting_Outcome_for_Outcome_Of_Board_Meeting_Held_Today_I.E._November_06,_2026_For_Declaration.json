@@ -1,0 +1,8 @@
+{
+    "ticker": "BIRLAPREC",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6cc7f48b-2295-43f8-80a4-abff156e10cc.pdf",
+    "file_type": "pdf"
+}

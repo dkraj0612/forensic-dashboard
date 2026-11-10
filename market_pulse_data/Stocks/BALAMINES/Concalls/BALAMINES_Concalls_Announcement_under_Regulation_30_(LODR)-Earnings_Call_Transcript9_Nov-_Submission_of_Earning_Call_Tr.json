@@ -1,0 +1,8 @@
+{
+    "ticker": "BALAMINES",
+    "category": "Concalls",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11739dcb-b35d-482e-85a2-bec4deecb183.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BANCOINDIA",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=dd78fa1b-08fc-4141-aa9a-80f32ecbce73.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ASKAUTOLTD",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8dab0591-1a7c-4196-9e0c-9f02baf6a55a.pdf",
+    "file_type": "pdf"
+}

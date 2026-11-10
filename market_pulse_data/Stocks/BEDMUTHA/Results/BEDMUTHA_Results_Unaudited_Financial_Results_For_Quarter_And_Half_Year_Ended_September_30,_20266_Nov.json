@@ -1,0 +1,8 @@
+{
+    "ticker": "BEDMUTHA",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=beac64fa-bd52-4021-9892-50b1ccf6063f.pdf",
+    "file_type": "pdf"
+}

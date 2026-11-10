@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJEL",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=474c8cc2-4f60-4307-807d-032f01c953aa.pdf",
+    "file_type": "pdf"
+}

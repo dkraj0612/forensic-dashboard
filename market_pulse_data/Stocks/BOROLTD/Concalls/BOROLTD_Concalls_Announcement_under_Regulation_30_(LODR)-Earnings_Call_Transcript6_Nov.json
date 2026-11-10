@@ -1,0 +1,8 @@
+{
+    "ticker": "BOROLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=11bf67b9-b0a7-4bd2-858d-a3eacecd714f.pdf",
+    "file_type": "pdf"
+}

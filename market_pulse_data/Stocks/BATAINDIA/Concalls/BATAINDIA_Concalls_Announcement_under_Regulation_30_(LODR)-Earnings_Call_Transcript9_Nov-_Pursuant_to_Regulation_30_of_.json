@@ -1,0 +1,8 @@
+{
+    "ticker": "BATAINDIA",
+    "category": "Concalls",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=fd9e186d-8a8a-4c78-922e-6283486130c5.pdf",
+    "file_type": "pdf"
+}

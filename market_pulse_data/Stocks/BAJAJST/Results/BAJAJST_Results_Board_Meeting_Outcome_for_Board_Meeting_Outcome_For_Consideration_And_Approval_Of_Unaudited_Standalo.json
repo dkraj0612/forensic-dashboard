@@ -1,0 +1,8 @@
+{
+    "ticker": "BAJAJST",
+    "category": "Results",
+    "extraction_date": "2026-11-09",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9cd1c9d0-6ca7-4bb5-a8b9-79aeec7d6fc3.pdf",
+    "file_type": "pdf"
+}
