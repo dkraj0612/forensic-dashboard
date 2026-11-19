@@ -1,0 +1,8 @@
+{
+    "ticker": "BCSSL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9336c2c2-85fc-4900-8e8e-183181744fde.pdf",
+    "file_type": "pdf"
+}

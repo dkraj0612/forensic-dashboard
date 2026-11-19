@@ -1,0 +1,8 @@
+{
+    "ticker": "AYMSYNTEX",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a8d92ba9-cf00-4b27-b031-566efa787153.pdf",
+    "file_type": "pdf"
+}

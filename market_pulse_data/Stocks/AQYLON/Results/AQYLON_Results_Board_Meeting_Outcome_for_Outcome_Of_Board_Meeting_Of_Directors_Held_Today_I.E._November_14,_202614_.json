@@ -1,0 +1,8 @@
+{
+    "ticker": "AQYLON",
+    "category": "Results",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=69440138-2e01-46d8-9183-f404c6627563.pdf",
+    "file_type": "pdf"
+}

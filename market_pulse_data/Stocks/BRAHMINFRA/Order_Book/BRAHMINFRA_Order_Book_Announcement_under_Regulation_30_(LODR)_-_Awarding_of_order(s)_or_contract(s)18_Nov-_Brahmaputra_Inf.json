@@ -1,0 +1,8 @@
+{
+    "ticker": "BRAHMINFRA",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=0ce405bd-756d-4eb7-99ac-371c50e614a3.pdf",
+    "file_type": "pdf"
+}

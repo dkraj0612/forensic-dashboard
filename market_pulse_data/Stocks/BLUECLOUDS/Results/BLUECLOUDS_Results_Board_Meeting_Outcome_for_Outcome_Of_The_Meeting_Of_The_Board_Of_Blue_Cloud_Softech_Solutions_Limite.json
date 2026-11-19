@@ -1,0 +1,8 @@
+{
+    "ticker": "BLUECLOUDS",
+    "category": "Results",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3b33ce89-3a26-4c6c-a544-1e0bf4dedd06.pdf",
+    "file_type": "pdf"
+}

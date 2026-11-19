@@ -1,0 +1,8 @@
+{
+    "ticker": "BCG",
+    "category": "Results",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e4b473dc-2694-48c4-a98e-8ea852a99ce3.pdf",
+    "file_type": "pdf"
+}

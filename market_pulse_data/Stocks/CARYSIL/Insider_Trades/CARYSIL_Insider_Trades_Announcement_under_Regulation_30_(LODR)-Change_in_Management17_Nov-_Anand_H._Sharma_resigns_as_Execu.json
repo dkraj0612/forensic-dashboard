@@ -1,0 +1,8 @@
+{
+    "ticker": "CARYSIL",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d24cf8da-e950-46af-968a-c2550284029f.pdf",
+    "file_type": "pdf"
+}

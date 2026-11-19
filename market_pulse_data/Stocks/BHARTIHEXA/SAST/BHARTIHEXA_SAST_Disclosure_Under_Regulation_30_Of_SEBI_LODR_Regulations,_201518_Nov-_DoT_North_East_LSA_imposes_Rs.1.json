@@ -1,0 +1,8 @@
+{
+    "ticker": "BHARTIHEXA",
+    "category": "SAST",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e4c97546-e925-4790-ba4e-7676a4beaa9f.pdf",
+    "file_type": "pdf"
+}

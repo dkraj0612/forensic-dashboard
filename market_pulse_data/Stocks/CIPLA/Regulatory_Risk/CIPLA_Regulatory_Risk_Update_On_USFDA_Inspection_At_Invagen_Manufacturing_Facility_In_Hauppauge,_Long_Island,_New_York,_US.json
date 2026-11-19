@@ -1,0 +1,8 @@
+{
+    "ticker": "CIPLA",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=df40f4ad-c335-43ae-9d24-699bf1273a86.pdf",
+    "file_type": "pdf"
+}

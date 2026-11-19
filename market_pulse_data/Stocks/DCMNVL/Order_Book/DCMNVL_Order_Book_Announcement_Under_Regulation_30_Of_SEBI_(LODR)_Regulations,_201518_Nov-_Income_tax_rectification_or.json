@@ -1,0 +1,8 @@
+{
+    "ticker": "DCMNVL",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=91c6fd36-ab2f-4653-87c7-12630038e45e.pdf",
+    "file_type": "pdf"
+}

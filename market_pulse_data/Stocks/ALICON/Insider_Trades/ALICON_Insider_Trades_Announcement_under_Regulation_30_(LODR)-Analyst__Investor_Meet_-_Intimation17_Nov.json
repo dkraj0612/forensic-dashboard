@@ -1,0 +1,8 @@
+{
+    "ticker": "ALICON",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6aeb2b2f-1ec6-4d3b-8c58-9fe8d34403dd.pdf",
+    "file_type": "pdf"
+}

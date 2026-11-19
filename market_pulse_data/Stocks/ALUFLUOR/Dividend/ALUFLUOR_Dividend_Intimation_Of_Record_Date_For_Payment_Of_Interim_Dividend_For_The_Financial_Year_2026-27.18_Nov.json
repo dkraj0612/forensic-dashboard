@@ -1,0 +1,8 @@
+{
+    "ticker": "ALUFLUOR",
+    "category": "Dividend",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=54b11e8a-9a52-48e9-be8b-d488432a149f.pdf",
+    "file_type": "pdf"
+}

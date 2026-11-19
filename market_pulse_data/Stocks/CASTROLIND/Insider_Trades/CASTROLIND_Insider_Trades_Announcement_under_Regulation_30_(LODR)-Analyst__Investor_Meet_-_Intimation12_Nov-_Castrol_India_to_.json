@@ -1,0 +1,8 @@
+{
+    "ticker": "CASTROLIND",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e9dd8ae6-27b3-4ef8-b1d0-10f2df19ef27.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "AVADHSUGAR",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1665fa64-a56f-4cfe-8865-2e2d51c6460b.pdf",
+    "file_type": "pdf"
+}

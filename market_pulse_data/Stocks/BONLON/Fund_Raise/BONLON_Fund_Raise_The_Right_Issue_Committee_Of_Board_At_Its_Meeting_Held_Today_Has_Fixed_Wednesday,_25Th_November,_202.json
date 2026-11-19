@@ -1,0 +1,8 @@
+{
+    "ticker": "BONLON",
+    "category": "Fund_Raise",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=de548527-b568-4d67-9ab7-364cc9123126.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BRITANNIA",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5f191c66-1a68-4618-afc3-148091ab2f3e.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "CGVAK",
+    "category": "SAST",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=AC166F9F_6E6F_445C_A1DA_D0F5C955D309_173216.pdf",
+    "file_type": "pdf"
+}

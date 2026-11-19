@@ -1,0 +1,8 @@
+{
+    "ticker": "AAVAS",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AAVAS Financers Limited has announced an increase in its AFL Prime Lending Rate by 20 basis points, raising it from 17.70% to 17.90%, effective December 04, 2026. This strategic adjustment is expected to improve the company's net interest margin and profitability, likely reflecting a response to rising funding costs or a hardening interest rate environment. While beneficial for AAVAS, it will result in higher borrowing costs for customers with floating rate loans, and the relatively high absolute lending rate (17.90%) may indicate the company operates in a higher-risk borrower segment or faces a higher cost of capital.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b317de03-8aea-4295-951e-ad193876b6b2.pdf",
+    "file_type": "pdf"
+}

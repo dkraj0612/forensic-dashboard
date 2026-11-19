@@ -1,0 +1,8 @@
+{
+    "ticker": "BLSPOLY",
+    "category": "Results",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b9fabda9-270c-4a06-a3ee-d82ae800c869.pdf",
+    "file_type": "pdf"
+}

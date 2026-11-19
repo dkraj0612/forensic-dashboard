@@ -1,0 +1,8 @@
+{
+    "ticker": "CONFIPET",
+    "category": "Concalls",
+    "extraction_date": "2026-11-18",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d5eb933b-7914-4b95-af36-b67f8bdd9325.pdf",
+    "file_type": "pdf"
+}
