@@ -1,0 +1,8 @@
+{
+    "ticker": "BALAJITELE",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=ef5c068b-1f44-4c62-99ae-62c8d782fd2c.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "BONFIG",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d8ad549b-ba6b-467a-8ac7-4a0a4fb3b8f6.pdf",
+    "file_type": "pdf"
+}

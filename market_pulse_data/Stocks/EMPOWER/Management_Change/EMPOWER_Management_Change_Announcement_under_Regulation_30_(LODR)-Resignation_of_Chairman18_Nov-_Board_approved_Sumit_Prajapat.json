@@ -1,0 +1,8 @@
+{
+    "ticker": "EMPOWER",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a26e5e92-e937-40fe-9615-b4a32702f277.pdf",
+    "file_type": "pdf"
+}

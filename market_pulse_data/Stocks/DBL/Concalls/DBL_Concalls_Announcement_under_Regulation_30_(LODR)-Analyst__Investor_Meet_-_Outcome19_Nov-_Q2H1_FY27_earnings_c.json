@@ -1,0 +1,8 @@
+{
+    "ticker": "DBL",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=e7d547e0-e32f-41b1-b80d-c0c8975accb4.pdf",
+    "file_type": "pdf"
+}

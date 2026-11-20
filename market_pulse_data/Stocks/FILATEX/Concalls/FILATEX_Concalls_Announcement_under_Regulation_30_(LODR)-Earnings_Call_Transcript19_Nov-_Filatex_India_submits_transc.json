@@ -1,0 +1,8 @@
+{
+    "ticker": "FILATEX",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=230c9530-44eb-4305-949d-e7d6f906d5cf.pdf",
+    "file_type": "pdf"
+}

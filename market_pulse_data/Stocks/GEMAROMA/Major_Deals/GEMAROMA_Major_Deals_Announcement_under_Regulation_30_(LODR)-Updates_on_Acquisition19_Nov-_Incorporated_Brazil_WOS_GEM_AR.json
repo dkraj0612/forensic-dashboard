@@ -1,0 +1,8 @@
+{
+    "ticker": "GEMAROMA",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4c280fd5-4f91-4f48-b9b2-881a1cc99b4f.pdf",
+    "file_type": "pdf"
+}

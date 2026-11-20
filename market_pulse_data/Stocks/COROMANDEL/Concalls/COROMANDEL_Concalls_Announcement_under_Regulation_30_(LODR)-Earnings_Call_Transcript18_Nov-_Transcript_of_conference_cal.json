@@ -1,0 +1,8 @@
+{
+    "ticker": "COROMANDEL",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cc45c852-ef70-4438-8a93-45f15e7f51ff.pdf",
+    "file_type": "pdf"
+}

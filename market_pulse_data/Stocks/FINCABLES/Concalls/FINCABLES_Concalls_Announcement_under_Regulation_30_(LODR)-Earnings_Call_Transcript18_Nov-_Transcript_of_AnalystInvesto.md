@@ -1,0 +1,25 @@
+---
+metadata:
+  company_name: "FINCABLES"
+  call_date: "2026-11-19"
+  reporting_period: "Announcement_under_Regulation_30_(LODR)-Earnings_Call_Transcript18_Nov-_Transcript_of_AnalystInvesto"
+  source_url: "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abffc053-55e6-4df4-9fa1-85cfc5d3cc35.pdf"
+telemetry_matrix:
+  obfuscation_fog_index: 9.69
+  total_word_volume: 6894
+---
+
+# Concall NLP Analysis: FINCABLES
+**Source URL:** [Listen/Read Original](https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=abffc053-55e6-4df4-9fa1-85cfc5d3cc35.pdf)
+
+---
+### 🤖 AI Intelligence Summary
+> AI Skipped: Rate limit exceeded after maximum retries.
+
+---
+## 1. Behavioral Warning Flags
+* ✅ **[STABILITY]** No severe behavioral manipulation thresholds breached in the transcript language.
+
+---
+## SECTION A: PREPARED STATEMENTS
+Registered Office: 26-27, Mumbai-Pune Road, Pimpri, Pune - 411018. Tel: 020 27506200. Visit us at: www.finolex.com | Email: sales@finolex.com | CIN: L31300MH1967PL016531 FCL:SEC:SE:26:92 18th November 2026 Corporate Relations Department BSE Limited 1st Floor, New Trading Ring Rotunda Building, P J Towers Dalal Street, Fort Mumbai - 400 001 The Manager Listing Department National Stock Exchange of India Ltd `Exchange Plaza’, C-1, Block G, Bandra - Kurla Complex, Bandra (E), Mumbai - 400 051 Scrip Code: 500144 Scrip Code: FINCABLES Sub: Transcript of the Analysts/Investors Meet held on 13th November 2026 at 4.00 PM. Ref: Regulation 30 read with Clause 15(a) of PART A of Schedule III of SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015. Dear Sir/Madam, Pursuant to the above referred Regulation, please find attached the Transcript of the Analyst/Investor Meet held on 13th November 2026 at 4.00 pm (IST) to discuss financial results of the Company for the quarter ended on 30th September 2026. The transcript of recording can also be accessed on the Company’s website at https://www.finolex.com/View/Page/Analyst-meeting-transcript. Kindly take the same on record. Thanking you, Yours faithfully, For FINOLEX CABLES LIMITED Nirnoy Sur Company Secretary & General Manager (Legal) Encl.: As above NIRNOY SUR Digitally signed by NIRNOY SUR Date: 2026.11.18 12:25:20 +05'30' Page 1 of 14 “Finolex Cables Limited Q2 & H1 FY27 Earnings Conference Call” November 13, 2026 MANAGEMENT: MR. MAHESH VISWANATHAN - CHIEF EXECUTIVE OFFICER - FINOLEX CABLES LIMITED MR. SACHIN NAIK - CHIEF FINANCIAL OFFICER - FINOLEX CABLES LIMITED MODERATOR: MR. PRANAY PREMKUMAR - DENTSU ONE, INVESTOR RELATIONS Finolex Cables Limited November 13, 2026 Page 2 of 14 Moderator: Ladies and gentlemen, good day and welcome to Finolex Cables Limited Q2 and H1 FY27 Earnings Conference Call. As a reminder, all participant lines will be in the listen-only mode, and there will be an opportunity for you to ask questions after the presentation concludes. Should you need assistance during the conference call, please signal an operator by pressing star then zero on your touch-tone phone. Please note that this conference is being recorded. I now hand the conference over to Pranay Premkumar from Dentsu One Investor Relations Team. Thank you, and over to you, sir. Pranay Premkumar: Thank you, Saisa. Good evening, and thank you all for joining us on the Finolex Cables Q2 and H1 FY27 earnings conference call. Today, we have with us from the management, Mr. Mahesh Viswanathan, Chief Executive Officer, and Mr. Sachin Naik, Chief Financial Officer. We will begin the call with the opening remarks from the management, after which we will have the forum open for the interactive Q&A session. I must remind you that the discussion in today's earnings call may include certain forward- looking statements and must be viewed, therefore, in conjunction with the risk that the company faces. Please restrict your questions to the quarter performance and to strategic questions only. I would now request Mr. Mahesh Viswanathan for his opening remarks. Thank you, and over to you, sir. Mahesh Viswanathan: Thank you, Pranay. Good afternoon, ladies and gentlemen, and thank you all for joining us on this call today. I will make some brief opening remarks on the direction that the quarter took us, and Sachin will then walk you through the numbers. I am sure you have already seen the data that has been uploaded into the Stock Exchange as well as the presentation that has been hosted on our website earlier today. This quarter broadly, went very well for us. Our year-on-year revenue performance improved by almost 65%. The margins stood firm at a gross margin level of about 20%. At the EBIT and PAT levels, the numbers were even better. We clocked an EBIT of about 13.5% for the quarter, up from 10.4% in the last corresponding period of last year. For the six- months period, also the EBIT was about 13% higher than the previous year's 10% numbers. In terms of the individual segments, we have, as you know, two large segments, electrical and communication. Electrical cables also recorded a revenue growth of about 65%, and... *(Truncated for storage. See Source URL)*

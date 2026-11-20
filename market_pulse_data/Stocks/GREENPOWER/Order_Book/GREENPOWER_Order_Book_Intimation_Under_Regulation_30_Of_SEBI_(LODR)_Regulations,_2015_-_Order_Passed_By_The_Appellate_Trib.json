@@ -1,0 +1,8 @@
+{
+    "ticker": "GREENPOWER",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=62be51ca-5fc8-4353-8a48-712996bdf829.pdf",
+    "file_type": "pdf"
+}

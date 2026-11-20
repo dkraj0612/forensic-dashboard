@@ -1,0 +1,8 @@
+{
+    "ticker": "ASAHISONG",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3d4b6fda-0007-4194-bd1d-9652effd5f5c.pdf",
+    "file_type": "pdf"
+}

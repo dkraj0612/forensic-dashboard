@@ -1,0 +1,8 @@
+{
+    "ticker": "ATUL",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a87665c4-7e89-40f7-aa67-90fb70003a91.pdf",
+    "file_type": "pdf"
+}

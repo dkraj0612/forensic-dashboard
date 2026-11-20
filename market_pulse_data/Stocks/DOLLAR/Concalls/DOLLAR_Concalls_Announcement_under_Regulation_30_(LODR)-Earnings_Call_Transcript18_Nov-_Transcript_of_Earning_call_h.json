@@ -1,0 +1,8 @@
+{
+    "ticker": "DOLLAR",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d883f577-5ecd-4168-8831-087e4fe13255.pdf",
+    "file_type": "pdf"
+}

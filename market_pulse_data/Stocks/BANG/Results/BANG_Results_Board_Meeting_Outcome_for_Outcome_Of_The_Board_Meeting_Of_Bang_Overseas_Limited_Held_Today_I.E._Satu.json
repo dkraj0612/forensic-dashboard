@@ -1,0 +1,8 @@
+{
+    "ticker": "BANG",
+    "category": "Results",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f2529522-a8b5-4367-b536-c364ee543b9d.pdf",
+    "file_type": "pdf"
+}

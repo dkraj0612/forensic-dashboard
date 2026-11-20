@@ -1,0 +1,8 @@
+{
+    "ticker": "EPACKPEB",
+    "category": "Management_Change",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=8da2c0db-0026-4cee-9235-75714b6c9bd8.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "FAZE3Q",
+    "category": "Results",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=254984e3-e8a3-4569-8ad0-1ba10c003af7.pdf",
+    "file_type": "pdf"
+}

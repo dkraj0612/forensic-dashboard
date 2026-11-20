@@ -1,0 +1,8 @@
+{
+    "ticker": "GREENPOWER",
+    "category": "Concalls",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6d6744a5-4aa5-4912-b972-ab2ed6cf71c6.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DSSL",
+    "category": "Results",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=044929d7-de54-45b2-8db3-6f372ffc5764.pdf",
+    "file_type": "pdf"
+}

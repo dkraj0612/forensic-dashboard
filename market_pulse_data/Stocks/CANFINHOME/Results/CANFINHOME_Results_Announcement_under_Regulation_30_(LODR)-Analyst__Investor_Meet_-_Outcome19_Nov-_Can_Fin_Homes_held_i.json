@@ -1,0 +1,8 @@
+{
+    "ticker": "CANFINHOME",
+    "category": "Results",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c86ccae1-6bf4-405b-b9e7-b7534fefee76.pdf",
+    "file_type": "pdf"
+}

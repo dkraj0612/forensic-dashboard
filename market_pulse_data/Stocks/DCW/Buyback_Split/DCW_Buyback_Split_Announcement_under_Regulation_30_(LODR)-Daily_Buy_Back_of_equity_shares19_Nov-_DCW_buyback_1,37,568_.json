@@ -1,0 +1,8 @@
+{
+    "ticker": "DCW",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-11-19",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b569d194-ec44-4804-bec0-ac5f1e07897e.pdf",
+    "file_type": "pdf"
+}
