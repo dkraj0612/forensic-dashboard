@@ -1,0 +1,8 @@
+{
+    "ticker": "APLAPOLLO",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f6ca20bf-7b5e-42a4-b7af-8a507e85f9ea.pdf",
+    "file_type": "pdf"
+}

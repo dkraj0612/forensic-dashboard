@@ -1,0 +1,8 @@
+{
+    "ticker": "ARHAM",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.in/corporate/ARHAM_20112026141744_Outcome_for_Arham_Signed.pdf",
+    "file_type": "pdf"
+}

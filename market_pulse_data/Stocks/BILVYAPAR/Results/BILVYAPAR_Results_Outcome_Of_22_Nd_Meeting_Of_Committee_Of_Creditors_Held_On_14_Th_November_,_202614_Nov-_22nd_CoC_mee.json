@@ -1,0 +1,8 @@
+{
+    "ticker": "BILVYAPAR",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5cd1fd2e-04bc-4f44-b6e9-58befda7b383.pdf",
+    "file_type": "pdf"
+}

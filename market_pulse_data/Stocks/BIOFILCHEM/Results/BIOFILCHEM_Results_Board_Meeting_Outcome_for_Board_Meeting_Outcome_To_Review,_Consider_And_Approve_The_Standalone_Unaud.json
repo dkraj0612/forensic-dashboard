@@ -1,0 +1,8 @@
+{
+    "ticker": "BIOFILCHEM",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=520e0e13-8f67-4b0f-82ec-0c4d036fcab8.pdf",
+    "file_type": "pdf"
+}

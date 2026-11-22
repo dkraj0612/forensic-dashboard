@@ -1,0 +1,8 @@
+{
+    "ticker": "BLEL",
+    "category": "Concalls",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d75c0521-ff8b-4a7a-a44a-2abad0956258.pdf",
+    "file_type": "pdf"
+}

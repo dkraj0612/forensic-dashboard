@@ -1,0 +1,8 @@
+{
+    "ticker": "AZAD",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=87F82C7A_1E64_499E_B950_6D2DC91C4316_110946.pdf",
+    "file_type": "pdf"
+}

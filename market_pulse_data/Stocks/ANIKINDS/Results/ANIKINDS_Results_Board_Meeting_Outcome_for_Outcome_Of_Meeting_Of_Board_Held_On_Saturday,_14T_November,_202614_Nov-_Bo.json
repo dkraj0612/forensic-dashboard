@@ -1,0 +1,8 @@
+{
+    "ticker": "ANIKINDS",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=c45113ba-8202-407f-894b-eab94f591e85.pdf",
+    "file_type": "pdf"
+}

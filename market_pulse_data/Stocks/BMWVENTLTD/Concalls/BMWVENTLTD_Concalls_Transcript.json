@@ -1,0 +1,8 @@
+{
+    "ticker": "BMWVENTLTD",
+    "category": "Concalls",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=bd2fd204-6c25-47c3-9bf4-ad936c6f1109.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ANSALAPI",
+    "category": "Pledge_Action",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d063fb86-5058-4a81-b854-720ff89ea4fe.pdf",
+    "file_type": "pdf"
+}

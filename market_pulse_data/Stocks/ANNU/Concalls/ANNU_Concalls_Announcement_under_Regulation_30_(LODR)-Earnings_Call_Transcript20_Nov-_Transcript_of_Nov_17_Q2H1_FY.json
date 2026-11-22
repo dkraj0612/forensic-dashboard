@@ -1,0 +1,8 @@
+{
+    "ticker": "ANNU",
+    "category": "Concalls",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f01a3a4c-048e-4263-a833-44064bcc633b.pdf",
+    "file_type": "pdf"
+}

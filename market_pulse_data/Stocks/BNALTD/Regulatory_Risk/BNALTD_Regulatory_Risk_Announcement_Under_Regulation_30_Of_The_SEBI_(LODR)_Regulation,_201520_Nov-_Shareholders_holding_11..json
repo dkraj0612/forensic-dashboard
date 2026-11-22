@@ -1,0 +1,8 @@
+{
+    "ticker": "BNALTD",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b6dbe2fa-399a-4257-8c9d-2d06abcb1f3f.pdf",
+    "file_type": "pdf"
+}

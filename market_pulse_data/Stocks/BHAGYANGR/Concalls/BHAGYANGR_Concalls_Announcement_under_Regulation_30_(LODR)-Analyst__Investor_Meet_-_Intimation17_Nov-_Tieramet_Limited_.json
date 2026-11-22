@@ -1,0 +1,8 @@
+{
+    "ticker": "BHAGYANGR",
+    "category": "Concalls",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=44b6695e-a8f9-4341-8a63-068d7a455da8.pdf",
+    "file_type": "pdf"
+}

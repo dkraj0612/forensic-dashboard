@@ -1,0 +1,8 @@
+{
+    "ticker": "BIKAJI",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=9e069e8d-4f3b-4138-9c91-4b9f08d1ad1a.pdf",
+    "file_type": "pdf"
+}

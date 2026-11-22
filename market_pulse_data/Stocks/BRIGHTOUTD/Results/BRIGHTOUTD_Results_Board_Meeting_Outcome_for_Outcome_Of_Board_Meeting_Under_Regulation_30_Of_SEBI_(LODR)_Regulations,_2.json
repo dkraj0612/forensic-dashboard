@@ -1,0 +1,8 @@
+{
+    "ticker": "BRIGHTOUTD",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=6cabf20d-3334-4013-b3a9-75d24574b00e.pdf",
+    "file_type": "pdf"
+}

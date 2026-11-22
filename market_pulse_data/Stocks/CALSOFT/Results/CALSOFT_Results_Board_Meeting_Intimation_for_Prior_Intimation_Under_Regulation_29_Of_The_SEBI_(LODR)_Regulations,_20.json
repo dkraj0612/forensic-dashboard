@@ -1,0 +1,8 @@
+{
+    "ticker": "CALSOFT",
+    "category": "Results",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=a500d145-1439-4999-8330-b312c8ac5ac7.pdf",
+    "file_type": "pdf"
+}

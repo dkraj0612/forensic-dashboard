@@ -1,0 +1,8 @@
+{
+    "ticker": "BOMDYEING",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-21",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f35b9da1-dc36-4e8e-bba6-1259be909450.pdf",
+    "file_type": "pdf"
+}
