@@ -1,0 +1,8 @@
+{
+    "ticker": "APLAPOLLO",
+    "category": "SAST",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5CC69034_4A10_4362_A923_BB6A6D7BF5E7_101052.pdf",
+    "file_type": "pdf"
+}

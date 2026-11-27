@@ -1,0 +1,8 @@
+{
+    "ticker": "EUREKAFORB",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=35017e21-6616-4977-a726-9e0c61355ad4.pdf",
+    "file_type": "pdf"
+}

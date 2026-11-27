@@ -1,0 +1,8 @@
+{
+    "ticker": "GLAXO",
+    "category": "SAST",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=30ce07b0-dcab-4404-ab38-d8e669041504.pdf",
+    "file_type": "pdf"
+}

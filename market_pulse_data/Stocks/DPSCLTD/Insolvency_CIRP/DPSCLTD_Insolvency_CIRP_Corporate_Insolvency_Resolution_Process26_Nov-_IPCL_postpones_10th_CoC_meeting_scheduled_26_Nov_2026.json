@@ -1,0 +1,8 @@
+{
+    "ticker": "DPSCLTD",
+    "category": "Insolvency_CIRP",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://nsearchives.nseindia.in/corporate/DPSCLTD_26112026192823_IntimationofPostponmentof10thCoCMeeting.pdf",
+    "file_type": "pdf"
+}

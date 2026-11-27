@@ -1,0 +1,8 @@
+{
+    "ticker": "ENDURANCE",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1e970ecf-2d9c-4ac9-885d-d51d84b2a9b5.pdf",
+    "file_type": "pdf"
+}

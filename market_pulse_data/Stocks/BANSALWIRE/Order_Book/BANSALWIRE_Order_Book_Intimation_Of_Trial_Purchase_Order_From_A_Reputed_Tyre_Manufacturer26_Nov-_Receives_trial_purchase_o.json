@@ -1,0 +1,8 @@
+{
+    "ticker": "BANSALWIRE",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=4e98848a-a2a4-49c8-ad75-168c5fb30faa.pdf",
+    "file_type": "pdf"
+}

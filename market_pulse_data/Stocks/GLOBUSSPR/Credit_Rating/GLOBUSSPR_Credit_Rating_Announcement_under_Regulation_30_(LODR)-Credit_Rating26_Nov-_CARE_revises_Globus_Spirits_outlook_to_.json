@@ -1,0 +1,8 @@
+{
+    "ticker": "GLOBUSSPR",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=819d85eb-0024-4261-851e-45acd6f67039.pdf",
+    "file_type": "pdf"
+}

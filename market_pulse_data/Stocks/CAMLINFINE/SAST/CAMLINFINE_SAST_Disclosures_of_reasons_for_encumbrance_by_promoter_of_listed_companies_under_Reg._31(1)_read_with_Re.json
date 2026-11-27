@@ -1,0 +1,8 @@
+{
+    "ticker": "CAMLINFINE",
+    "category": "SAST",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=1918D3F5_9E41_4B9E_BF8B_FDC989F94B32_115756.pdf",
+    "file_type": "pdf"
+}

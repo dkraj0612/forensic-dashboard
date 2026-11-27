@@ -1,0 +1,8 @@
+{
+    "ticker": "DBREALTY",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=36986dc5-7159-4552-a8c9-a1f998644bb5.pdf",
+    "file_type": "pdf"
+}

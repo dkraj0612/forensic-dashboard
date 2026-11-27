@@ -1,0 +1,8 @@
+{
+    "ticker": "CRAFTSMAN",
+    "category": "Regulatory_Risk",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=5c057d20-ab81-4432-96b7-99b570284e79.pdf",
+    "file_type": "pdf"
+}

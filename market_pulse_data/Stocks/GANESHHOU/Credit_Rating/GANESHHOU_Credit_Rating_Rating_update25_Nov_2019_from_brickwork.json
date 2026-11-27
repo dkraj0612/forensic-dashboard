@@ -1,0 +1,8 @@
+{
+    "ticker": "GANESHHOU",
+    "category": "Credit_Rating",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.brickworkratings.com/Admin/PressRelease/Ganesh-Housing-Corporation-25Nov2019%20.pdf",
+    "file_type": "pdf"
+}

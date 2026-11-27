@@ -1,0 +1,8 @@
+{
+    "ticker": "FEDERALBNK",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=aba704be-e6f2-444d-9c84-34b1108f1cdc.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "ATUL",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=37948dfc-c625-4027-b998-e6e5f8b741d6.pdf",
+    "file_type": "pdf"
+}

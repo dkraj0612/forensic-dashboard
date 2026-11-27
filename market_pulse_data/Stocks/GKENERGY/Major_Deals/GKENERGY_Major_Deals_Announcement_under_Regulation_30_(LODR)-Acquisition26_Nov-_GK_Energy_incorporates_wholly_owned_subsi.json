@@ -1,0 +1,8 @@
+{
+    "ticker": "GKENERGY",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=b1b88485-b9e0-4868-9121-2f4ea1cf05b4.pdf",
+    "file_type": "pdf"
+}

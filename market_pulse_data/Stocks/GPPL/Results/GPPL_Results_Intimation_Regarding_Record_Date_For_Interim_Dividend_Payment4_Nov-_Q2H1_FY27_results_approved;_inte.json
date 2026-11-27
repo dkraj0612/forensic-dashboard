@@ -1,0 +1,8 @@
+{
+    "ticker": "GPPL",
+    "category": "Results",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=3561a399-aeb4-4b9c-a37e-ec4c0f469fa7.pdf",
+    "file_type": "pdf"
+}

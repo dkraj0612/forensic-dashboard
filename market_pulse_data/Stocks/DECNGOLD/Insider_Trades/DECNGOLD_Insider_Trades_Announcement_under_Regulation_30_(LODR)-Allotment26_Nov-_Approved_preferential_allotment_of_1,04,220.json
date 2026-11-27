@@ -1,0 +1,8 @@
+{
+    "ticker": "DECNGOLD",
+    "category": "Insider_Trades",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=284ef6d0-d0f4-4975-9311-9ebf0c5b6d7c.pdf",
+    "file_type": "pdf"
+}

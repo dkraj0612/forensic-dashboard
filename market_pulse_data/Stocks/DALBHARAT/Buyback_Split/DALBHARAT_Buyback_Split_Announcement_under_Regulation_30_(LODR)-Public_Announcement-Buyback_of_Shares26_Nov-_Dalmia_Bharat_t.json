@@ -1,0 +1,8 @@
+{
+    "ticker": "DALBHARAT",
+    "category": "Buyback_Split",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=641c9476-36a1-4e08-9844-5072d062c4d1.pdf",
+    "file_type": "pdf"
+}

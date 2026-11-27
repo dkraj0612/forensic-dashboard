@@ -1,0 +1,8 @@
+{
+    "ticker": "BALMLAWRIE",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f1364852-cf97-46e0-a7cb-5583a3f96167.pdf",
+    "file_type": "pdf"
+}

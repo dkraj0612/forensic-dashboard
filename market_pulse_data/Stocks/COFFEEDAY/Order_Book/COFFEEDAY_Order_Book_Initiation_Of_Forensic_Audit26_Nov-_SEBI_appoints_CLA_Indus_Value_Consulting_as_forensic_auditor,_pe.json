@@ -1,0 +1,8 @@
+{
+    "ticker": "COFFEEDAY",
+    "category": "Order_Book",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=f0c48338-e7f8-49c9-84b6-264813e42e0c.pdf",
+    "file_type": "pdf"
+}

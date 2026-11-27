@@ -1,0 +1,8 @@
+{
+    "ticker": "EXPLEOSOL",
+    "category": "Results",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=64e2a467-1443-4597-ab42-8298a10d9a00.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "DEVIT",
+    "category": "Concalls",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=d1cb234e-d71c-41ce-b07e-6fc2581c4d68.pdf",
+    "file_type": "pdf"
+}

@@ -1,0 +1,8 @@
+{
+    "ticker": "EXIDEIND",
+    "category": "Major_Deals",
+    "extraction_date": "2026-11-26",
+    "ai_summary": "AI Skipped: Rate limit exceeded after maximum retries.",
+    "source_url": "https://www.bseindia.com/stockinfo/AnnPdfOpen.aspx?Pname=cee7fb6e-8826-4a92-9c53-bd59bbd266ae.pdf",
+    "file_type": "pdf"
+}
